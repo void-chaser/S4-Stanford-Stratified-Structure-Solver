@@ -2178,20 +2178,20 @@ static int S4L_Simulation_GetPoyntingFluxByOrder(lua_State *L){
 static int S4L_Simulation_GetAmplitudes(lua_State *L){
 	double *amp;
 	int *G;
-	int n, i, k, ret;
+	int n, i, k, ret, layer_id;
 	const char *layer_name;
-	S4_LayerID layer;
+	S4_Layer *layer;
 	S4_Simulation *S = S4L_get_simulation(L, 1);
 	luaL_argcheck(L, S != NULL, 1, "GetAmplitudes: 'S4_Simulation' object expected.");
 
 	layer_name = luaL_checklstring(L, 2, NULL);
-	layer = S4_Simulation_GetLayerByName(S, layer_name);
+	layer = Simulation_GetLayerByName(S, layer_name, &layer_id);
 	if(NULL == layer){
 		S4L_error(L, "GetAmplitudes: S4_Layer named '%s' not found.", layer_name);
 		return 0;
 	}
 
-	ret = S4_Simulation_SolveLayer(S, layer);
+	ret = S4_Simulation_SolveLayer(S, layer_id);
 	if(0 != ret){
 		HandleSolutionErrorCode(L, "GetAmplitudes", ret);
 		return 0;
