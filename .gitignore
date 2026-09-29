@@ -1,0 +1,4 @@
+/build/
+/S4.*.so
+/S4.*.pyd
+__pycache__/

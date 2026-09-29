@@ -176,6 +176,7 @@ void Simulation_Clone(const S4_Simulation *S, S4_Simulation *T);
 */
 void Simulation_DestroySolution(S4_Simulation *S);
 void Simulation_DestroyLayerSolutions(S4_Simulation *S);
+void Simulation_InvalidateFieldCache(S4_Simulation *S);
 void Simulation_DestroyLayerModes(S4_Layer *layer);
 void S4_Simulation_DestroyLayerModes(S4_Simulation *S, S4_LayerID id);
 
@@ -238,7 +239,6 @@ int Simulation_MakeExcitationDipole(S4_Simulation *S, const double k[2], const c
 // Internal functions
 #ifdef __cplusplus
 // Field cache manipulation
-void Simulation_InvalidateFieldCache(S4_Simulation *S);
 std::complex<double>* Simulation_GetCachedField(const S4_Simulation *S, const S4_Layer *layer);
 void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 #endif

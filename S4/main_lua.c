@@ -256,10 +256,11 @@ void HandleSolutionErrorCode(lua_State *L, const char *fname, int code){
 		"No layers exist in the structure", /* 14 */
 		"A material name was not found", /* 15 */
 		"Invalid patterning for 1D lattice", /* 16 */
+		"At least two layers are required to solve fields or power flux", /* 17 */
 		def
 	};
 	const char *str = def;
-	if(0 < code && code <= 16){
+	if(0 < code && code <= 17){
 		str = errstr[code];
 		S4L_error(L, "%s: %s.", fname, str);
 	}else{

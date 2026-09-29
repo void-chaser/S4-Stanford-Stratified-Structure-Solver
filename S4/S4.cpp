@@ -1398,9 +1398,9 @@ int Simulation_GetLayerSolution(S4_Simulation *S, S4_Layer *layer, LayerModes **
 		if(L == layer){
 			if((NULL == L->modes && L->copy < 0) || (L->copy >= 0 && NULL == S->layer[L->copy].modes) || !sol->solved[i]){
 				error = Simulation_ComputeLayerSolution(S, L, layer_modes, layer_solution);
-				if(0 != error){ // should never happen
+				if(0 != error){
 					S4_TRACE("< Simulation_GetLayerSolution (failed; Simulation_ComputeLayerSolution returned %d) [omega=%f]\n", error, S->omega[0]);
-					return 2;
+					return error;
 				}
 				if(L->copy < 0){
 					L->modes = *layer_modes;
@@ -1456,6 +1456,9 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 		return 0;
 	}
 	// At this point, layer_solution != NULL, we need to get all modes
+	if(S->n_layers < 2){
+		return 17; // A scattering solution needs an input and an output layer.
+	}
 
 	S4_VERB(1, "Computing solution in layer: %s\n", NULL != L->name ? L->name : "");
 

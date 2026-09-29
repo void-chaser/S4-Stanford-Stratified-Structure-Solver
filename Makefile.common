@@ -15,6 +15,7 @@ CPPFLAGS += -IS4 -IS4/RNP -IS4/kiss_fft
 #### Compilation targets
 
 S4_LIBNAME = libS4.a
+PYTHON ?= python3
 
 all: $(OBJDIR)/$(S4_LIBNAME) $(OBJDIR)/S4 modules
 S4mpi: $(OBJDIR)/S4mpi
@@ -53,7 +54,9 @@ ifndef LAPACK_LIB
   S4_LIBOBJS += $(OBJDIR)/S4k/Eigensystems.o
 endif
 
-$(OBJDIR)/libS4.a: objdir $(S4_LIBOBJS)
+$(S4_LIBOBJS): | objdir
+
+$(OBJDIR)/libS4.a: $(S4_LIBOBJS)
 	$(AR) crvs $@ $(S4_LIBOBJS)
 
 $(OBJDIR)/S4k/S4.o: S4/S4.cpp
@@ -124,12 +127,12 @@ modules: \
 	$(OBJDIR)/FunctionSampler1D.$(SHLIB_EXT) \
 	$(OBJDIR)/FunctionSampler2D.$(SHLIB_EXT)
 
-$(OBJDIR)/RCWA.$(SHLIB_EXT):
+$(OBJDIR)/RCWA.$(SHLIB_EXT): $(OBJDIR)/$(S4_LIBNAME) | objdir
 	 $(CC) $(LUA_INC) -O3 $(SHLIB_FLAGS) -fpic S4/main_lua.c -o $@ $(LUA_MODULE_LIB) -L$(OBJDIR) -lS4 $(LA_LIBS) -lstdc++
-$(OBJDIR)/FunctionSampler1D.$(SHLIB_EXT): modules/function_sampler_1d.c modules/function_sampler_1d.h modules/lua_function_sampler_1d.c
+$(OBJDIR)/FunctionSampler1D.$(SHLIB_EXT): modules/function_sampler_1d.c modules/function_sampler_1d.h modules/lua_function_sampler_1d.c | objdir
 	$(CC) -c $(OPTFLAGS) -fpic -Wall -I. modules/function_sampler_1d.c -o $(OBJDIR)/modules/function_sampler_1d.o
 	$(CC) $(OPTFLAGS) $(SHLIB_FLAGS) -fpic -Wall $(LUA_INC) -o $@ $(OBJDIR)/modules/function_sampler_1d.o modules/lua_function_sampler_1d.c $(LUA_MODULE_LIB)
-$(OBJDIR)/FunctionSampler2D.$(SHLIB_EXT): modules/function_sampler_2d.c modules/function_sampler_2d.h modules/lua_function_sampler_2d.c
+$(OBJDIR)/FunctionSampler2D.$(SHLIB_EXT): modules/function_sampler_2d.c modules/function_sampler_2d.h modules/lua_function_sampler_2d.c | objdir
 	$(CC) -c $(OPTFLAGS) -fpic -Wall -I. modules/function_sampler_2d.c -o $(OBJDIR)/modules/function_sampler_2d.o
 	$(CC) -c -O2 -fpic -Wall -I. modules/predicates.c -o $(OBJDIR)/modules/mod_predicates.o
 	$(CC) $(OPTFLAGS) $(SHLIB_FLAGS) -fpic -Wall $(LUA_INC) -o $@ $(OBJDIR)/modules/function_sampler_2d.o $(OBJDIR)/modules/mod_predicates.o modules/lua_function_sampler_2d.c $(LUA_MODULE_LIB)
@@ -137,9 +140,7 @@ $(OBJDIR)/FunctionSampler2D.$(SHLIB_EXT): modules/function_sampler_2d.c modules/
 #### Python extension
 
 S4_pyext: objdir $(OBJDIR)/libS4.a
-	echo "$(LIBS)" > $(OBJDIR)/tmp.txt
-	sh gensetup.py.sh $(OBJDIR) $(OBJDIR)/$(S4_LIBNAME)
-	python setup.py build
+	$(PYTHON) setup.py build_ext --inplace
 
 clean:
 	rm -rf $(OBJDIR)
