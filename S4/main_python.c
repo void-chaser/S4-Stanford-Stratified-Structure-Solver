@@ -323,7 +323,7 @@ int excitation_converter(PyObject *obj, S4Excitation_Data *data)
 	for(int i = 0; i < data->n; i++)
 	{
 		PyObject *pi = PyTuple_GetItem(obj, i);
-		char *pol;
+		const char *pol;
 		Py_ssize_t polLen;
 		PyObject *pj;
 		if(!PyTuple_Check(pi))
@@ -339,16 +339,18 @@ int excitation_converter(PyObject *obj, S4Excitation_Data *data)
 			PyErr_SetString(PyExc_TypeError, "the G index must be a integer.");
 			return 0;
 		}
-		data->exg[2 * i + 0] = PyInt_AsLong(pj);
+		data->exg[2 * i + 0] = PyLong_AsLong(pj);
 
 		//get polarization: 'x' or 'y'
 		pj = PyTuple_GetItem(pi, 1);
-		if(!PyString_Check(pj))
+		if(!PyUnicode_Check(pj))
 		{
 			PyErr_SetString(PyExc_TypeError, "polalization should be specified by 'x' or 'y'.");
 			return 0;
 		}
-		PyString_AsStringAndSize(pj, &pol, &polLen);
+		pol = PyUnicode_AsUTF8AndSize(pj, &polLen);
+		if(NULL == pol)
+			return 0;
 		if(1 != polLen || ('x' != pol[0] && 'y' != pol[0]))
 		{
 			PyErr_SetString(PyExc_TypeError, "polalization should be specified by 'x' or 'y'.");
@@ -668,7 +670,7 @@ static PyObject *S4Sim_SetMaterial(S4Sim *self, PyObject *args, PyObject *kwds){
 	struct epsilon_converter_data epsdata;
 	S4_Material *M;
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "sO&:SetMaterial", kwlist, &name, &epsilon_converter, &epsdata)){ return NULL; }
-	M = S4_Simulation_GetMaterialByName(self->S, name);
+	M = Simulation_GetMaterialByName(self->S, name, NULL);
 	if(NULL == M){
 		M = Simulation_AddMaterial(self->S);
 		if(NULL == M){
@@ -738,7 +740,20 @@ static PyObject *S4Sim_SetLayer(S4Sim *self, PyObject *args, PyObject *kwds)
 	{
 		layer->thickness = thickness;
 		if(NULL != material)
-			layer->material = strdup(material);
+		{
+			int material_index;
+			S4_Material *M =
+				Simulation_GetMaterialByName(self->S, material, &material_index);
+
+			if(NULL == M)
+			{
+				PyErr_Format(PyExc_RuntimeError,
+					"SetLayer: material named '%s' not found.", material);
+				return NULL;
+			}
+
+			layer->material = material_index;
+		}
 		Simulation_RemoveLayerPatterns(self->S, layer);
 	}
 	Py_RETURN_NONE;
