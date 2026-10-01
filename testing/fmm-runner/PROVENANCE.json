@@ -1,0 +1,158 @@
+{
+  "scope": "Previously accepted fake-driver runner correction and finite acceptance tools only; no production solver changes",
+  "source_workspace": "/tmp/s4-fix4-AQA9Bd",
+  "source_manifest_sha256": "6c4d08740481d7a75c348be6f6bdc4cba9709b72e0f0861c9c71dba00195b61b",
+  "source_manifest_verified_entries": 1364,
+  "independent_review_workspace": "/tmp/s4-fix4-review-7x6ks6n9",
+  "independent_review_sha256": "7ea82aad61371b7678eeb4abb553b927ae33e4ff2c7d89377c2586a4ddbb82ed",
+  "repository_parent_head": "b97f63989c4d8192faee119e4dbcb70ef4a27219",
+  "files": [
+    {
+      "destination": "work/run-one.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/work/run-one.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/work/run-one.sh",
+      "sha256": "51e448a88b3d1df9da63a37cefbbac5e4d4dab14c8395514e0844f5d1b9c36f1",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "work/fake.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/work/fake.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/work/fake.sh",
+      "sha256": "f1a0912958d32335ee486dfccda64d8e08acaf85735679eec1260736b3cde6bd",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "before/run-one.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/before/run-one.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/before/run-one.sh",
+      "sha256": "51e448a88b3d1df9da63a37cefbbac5e4d4dab14c8395514e0844f5d1b9c36f1",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "before/fake.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/before/fake.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/before/fake.sh",
+      "sha256": "f1a0912958d32335ee486dfccda64d8e08acaf85735679eec1260736b3cde6bd",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "inputs.sha256",
+      "source": "/tmp/s4-fix4-AQA9Bd/inputs.sha256",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/inputs.sha256",
+      "sha256": "6eec6ed641c28ff04a52fa4c4c96b6c779ff462653d5faef645f0a19057c6450",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/lib.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/lib.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/lib.sh",
+      "sha256": "cd75ed4c59e44fdc40904b2d4923a79058e21e00cca3be8a737a6c371501ed2c",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/bootstrap-validate.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/bootstrap-validate.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/bootstrap-validate.sh",
+      "sha256": "7c25b2ff898afa391642c856020aa23d9af16037e9f78290e67058e2d20b500f",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/direct-fake.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/direct-fake.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/direct-fake.sh",
+      "sha256": "43b201d451fccb9439bc137e4bffd9eb62df3eefff2082234559b4edca95a950",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/matrix.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/matrix.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/matrix.sh",
+      "sha256": "33f20684999338b47ca8a293c4ccbaa3298daff38b34520085184317d9d68235",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/regression.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/regression.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/regression.sh",
+      "sha256": "867c65fcbe08ad30b82a8e903ae9db89f66f6d729e9a6608f44dcae51e567a99",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/regression-new.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/regression-new.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/regression-new.sh",
+      "sha256": "bca559fe869c0aa2c010f65507113edb1e2e3561871c43bd7474b073967cf3b7",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/run-case.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/run-case.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/run-case.sh",
+      "sha256": "18ba3d5d6d37157d6731930e3e879c8b7ffe16b6e4312cbb1313512e56a85d04",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/mutants.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/mutants.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/mutants.sh",
+      "sha256": "093ed5cb7ac4349556337f44aca99be16c43d9383b7713ba5344afbcd8a791bd",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/manifest-generate.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/manifest-generate.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/manifest-generate.sh",
+      "sha256": "3705067d19bd89937cbca7ccf9274ee03b8177e26f9ce7d5fe5bc26814408456",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/verify-manifest.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/verify-manifest.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/verify-manifest.sh",
+      "sha256": "3650d51716f95da97598ae2638f405167b52cf8fc9395b699c810928e0aa07ce",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/fault-propagation.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/fault-propagation.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/fault-propagation.sh",
+      "sha256": "1fae2b9bc3f54a0651241e584edcce03f6f6b4d19c6553f5b9480ec28039ecdc",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/run-all.sh",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/run-all.sh",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/run-all.sh",
+      "sha256": "5821e66ff73db030c18d008ee0ca460364c82b2d6eea74969dedc682807d7997",
+      "copy": "byte-identical"
+    },
+    {
+      "destination": "tests/line-replace.py",
+      "source": "/tmp/s4-fix4-AQA9Bd/tests/line-replace.py",
+      "independent_review_copy": "/tmp/s4-fix4-review-7x6ks6n9/tests/line-replace.py",
+      "sha256": "2bc018a31d896661e8d0a9be51db45ea5f96341633b8e03e127d69e67237ae14",
+      "copy": "byte-identical"
+    }
+  ],
+  "path_metadata_only": [
+    {
+      "destination": "delivered-frozen.sha256",
+      "source": "/tmp/s4-fix4-AQA9Bd/delivered-frozen.sha256",
+      "source_sha256": "06d9fc67a0a9c1c36da1cb402406c971bc5a7265071194c63d03cd1113a4a40b",
+      "change": "Absolute source-workspace paths converted to checkpoint-relative paths; content hashes and covered files unchanged"
+    }
+  ],
+  "new_checkpoint_metadata": [
+    "README.md",
+    "PROVENANCE.json",
+    ".gitignore",
+    "SHA256SUMS"
+  ],
+  "excluded": [
+    "All 19 existing tracked modifications",
+    "Existing handoff package and deficient inputs",
+    "testing/s4test and Lua regression references",
+    "Project Health Audit results and D001/D002 experiments",
+    "Historical runs/mutants/tool sandboxes/build products"
+  ]
+}
