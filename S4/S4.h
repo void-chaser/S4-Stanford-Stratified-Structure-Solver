@@ -246,6 +246,34 @@ int S4_Simulation_GetPowerFluxes(
 // Each set of n_G waves are ordered in the basis ordering.
 int S4_Simulation_GetWaves(S4_Simulation *S, S4_LayerID layer, S4_real *wave);
 
+/*
+ * Sample the field on an nxy[0] by nxy[1] grid at the global position xyz0.
+ *
+ * E and H are each optional: pass NULL to skip that output, and each buffer
+ * that is not NULL receives 3*nxy[0]*nxy[1] complex values, that is
+ * 6*nxy[0]*nxy[1] S4_real values.  Element (i, j, c) - component c of grid
+ * point (i, j) - starts at S4_real index 2*(3*(i + j*nxy[0]) + c), with the
+ * imaginary part immediately after the real part.  i is the fast axis, j the
+ * slow one, and c runs over the three components.  The caller owns those
+ * buffers; this interface has no length parameter, so it cannot check how much
+ * space was actually provided - a buffer shorter than the length above is a
+ * caller error that this function cannot detect.
+ *
+ * Returns 0 on success.  Both outputs NULL is a no-op that also returns 0 and
+ * does nothing else.  Other returns:
+ *   -1 S is NULL            -2 nxy is NULL        -3 xyz0 is NULL
+ *   -4 a grid size is not positive
+ *   -5 the grid is too large for two independent reasons, both reported as -5:
+ *      the point count would overflow the int dimension product that
+ *      kiss_fftnd_alloc forms, or the byte counts this sampling needs (the
+ *      output buffers and the intermediate FFT buffers) are not representable
+ *      in size_t.  The first bound is what binds on a 64-bit platform; the
+ *      second is what binds where size_t is 32 bits wide.
+ *   14 the simulation has no layers
+ *   1  an internal allocation failed
+ *   a positive solution error code (3, 18, ...) from the mode solve.
+ * On a non-zero return the contents of E and H are unspecified.
+ */
 int S4_Simulation_GetFieldPlane(
 	S4_Simulation *S, const int nxy[2], const S4_real *xyz0,
 	S4_real *E, S4_real *H

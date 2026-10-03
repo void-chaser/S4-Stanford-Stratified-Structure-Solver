@@ -30,7 +30,10 @@ fft_plan fft_plan_dft_2d(
 	std::complex<double> *in, std::complex<double> *out,
 	int sign
 );
-void fft_plan_exec(const fft_plan plan);
+/* Returns 0 on success and non-zero when the transform could not be completed
+ * because an execution-time temporary buffer could not be allocated.  On
+ * failure the output buffer holds a partial transform and must not be used. */
+int fft_plan_exec(const fft_plan plan);
 void fft_plan_destroy(fft_plan plan);
 
 int fft_next_fast_size(int n);

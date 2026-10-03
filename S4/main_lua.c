@@ -28,6 +28,9 @@
 #include <stdarg.h>
 #include <math.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <float.h>
+#include <limits.h>
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
@@ -236,32 +239,50 @@ void S4L_error(lua_State *L, const char *fmt, ...){
 	}
 }
 
+/* Shared solution error strings.  They live at file scope so that
+ * HandleSolutionErrorCode (which reports and, outside interactive mode, exits)
+ * and S4L_solution_error_text (which formats the same text for a caller that
+ * has to release resources before raising) cannot drift apart. */
+#define S4L_SOLUTION_ERROR_CODES 18
+static const char S4L_solution_error_default[] = "An unknown error occurred";
+static const char *const S4L_solution_errstr[S4L_SOLUTION_ERROR_CODES+1] = {
+	S4L_solution_error_default, /* 0 */
+	"A memory allocation error occurred", /* 1 */
+	S4L_solution_error_default, /* 2 */
+	"A singular interface system was encountered while solving the mode equations; no solution was returned", /* 3 */
+	S4L_solution_error_default, /* 4 */
+	S4L_solution_error_default, /* 5 */
+	S4L_solution_error_default, /* 6 */
+	S4L_solution_error_default, /* 7 */
+	S4L_solution_error_default, /* 8 */
+	"NumG was not set", /* 9 */
+	"A layer copy referenced an unknown layer", /* 10 */
+	"A layer copy referenced another layer copy", /* 11 */
+	"A duplicate layer name was found", /* 12 */
+	"Excitation layer name not found", /* 13 */
+	"No layers exist in the structure", /* 14 */
+	"A material name was not found", /* 15 */
+	"Invalid patterning for 1D lattice", /* 16 */
+	"At least two layers are required to solve fields or power flux", /* 17 */
+	"A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)", /* 18 */
+};
+
+/* The same text HandleSolutionErrorCode would print, written to a buffer so the
+ * caller can release its resources before raising the Lua error. */
+static void S4L_solution_error_text(char *out, size_t outlen, const char *fname, int code){
+	const char *str = S4L_solution_error_default;
+	if(0 < code && code <= S4L_SOLUTION_ERROR_CODES){
+		str = S4L_solution_errstr[code];
+		snprintf(out, outlen, "%s: %s.", fname, str);
+	}else{
+		snprintf(out, outlen, "%s: %s. Error code: %d", fname, str, code);
+	}
+}
+
 void HandleSolutionErrorCode(lua_State *L, const char *fname, int code){
-	static const char def[] = "An unknown error occurred";
-	static const char* errstr[] = {
-		def, /* 0 */
-		"A memory allocation error occurred", /* 1 */
-		def, /* 2 */
-		def, /* 3 */
-		def, /* 4 */
-		def, /* 5 */
-		def, /* 6 */
-		def, /* 7 */
-		def, /* 8 */
-		"NumG was not set", /* 9 */
-		"A layer copy referenced an unknown layer", /* 10 */
-		"A layer copy referenced another layer copy", /* 11 */
-		"A duplicate layer name was found", /* 12 */
-		"Excitation layer name not found", /* 13 */
-		"No layers exist in the structure", /* 14 */
-		"A material name was not found", /* 15 */
-		"Invalid patterning for 1D lattice", /* 16 */
-		"At least two layers are required to solve fields or power flux", /* 17 */
-		def
-	};
-	const char *str = def;
-	if(0 < code && code <= 17){
-		str = errstr[code];
+	const char *str = S4L_solution_error_default;
+	if(0 < code && code <= S4L_SOLUTION_ERROR_CODES){
+		str = S4L_solution_errstr[code];
 		S4L_error(L, "%s: %s.", fname, str);
 	}else{
 		S4L_error(L, "%s: %s. Error code: %d", fname, str, code);
@@ -892,76 +913,152 @@ static int S4L_NewInterpolator(lua_State *L){
 	I = (Interpolator *)lua_newuserdata(L, sizeof(Interpolator));
 	luaL_getmetatable(L, "S4.Interpolator");
 	lua_setmetatable(L, -2);
+	*I = NULL;
 
 	type_name = luaL_checklstring(L, 1, NULL);
 	if(0 == strcmp(type_name, "cubic hermite spline")){
 		type = Interpolator_CUBIC_HERMITE_SPLINE;
-	}else if(1 || 0 == strcmp(type_name, "linear")){
+	}else if(0 == strcmp(type_name, "cubic spline")){
+		type = Interpolator_CUBIC_SPLINE;
+	}else if(0 == strcmp(type_name, "linear")){
 		type = Interpolator_LINEAR;
+	}else{
+		if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: type should be 'linear'/'cubic spline'/'cubic hermite spline'.");
+		return 0;
 	}
 
 	if(!lua_istable(L, 2)){
+		if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
 		S4L_error(L, "NewInterpolator: Table expected for argument 2.");
-		goto S4L_NewInterpolator_error;
+		return 0;
 	}
 
 	n = lua_rawlen(L, 2);
 	if(n < 2){
+		if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
 		S4L_error(L, "NewInterpolator: Table must be of length 2 or more.");
-		goto S4L_NewInterpolator_error;
+		return 0;
 	}
 	for(i = 0; i < n; ++i){
 		double x;
 		lua_pushinteger(L, i+1);
 		lua_gettable(L, 2); /* {x, {y1, y2, ... }} */
 		if(!lua_istable(L, -1)){
-			S4L_error(L, "NewInterpolator: Table must contain tables.");
-			goto S4L_NewInterpolator_error;
+			if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: Table must contain tables.");
+		return 0;
 		}
 		lua_pushinteger(L, 1);
 		lua_gettable(L, -2); /* get x */
+		if(lua_type(L, -1) != LUA_TNUMBER) {
+			if (xy) { free(xy); xy = NULL; }
+			*I = NULL;
+			S4L_error(L, "NewInterpolator: x value must be a number.");
+			return 0;
+		}
 		x = lua_tonumber(L, -1); lua_pop(L, 1);
 
 		lua_pushinteger(L, 2);
 		lua_gettable(L, -2); /* {y1, y2, ... } */
 		if(!lua_istable(L, -1)){
-			S4L_error(L, "NewInterpolator: Table must contain tables of form {x, {y1, y2, ...}.");
-			goto S4L_NewInterpolator_error;
+			if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: Table must contain tables of form {x, {y1, y2, ...}.");
+		return 0;
 		}
 		if(0 == i){
 			ny = lua_rawlen(L, -1);
 			ld = 1+ny;
 			xy = (double*)malloc(sizeof(double)*n*ld);
+			if (!xy) {
+				if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: Failed to allocate memory for xy buffer.");
+		return 0;
+			}
+		} else {
+			if (lua_rawlen(L, -1) != ny) {
+				if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: Interpolation table row %d has length %d, expected %d.", i+1, (int)lua_rawlen(L, -1), ny);
+		return 0;
+			}
+		}
+
+		if (!isfinite(x)) {
+			if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: x values must be finite numbers.");
+		return 0;
 		}
 		xy[i*ld] = x;
+		if(i > 0 && xy[i*ld] <= xy[(i-1)*ld]){
+			if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: x values must be strictly monotonically increasing.");
+		return 0;
+		}
 		for(j = 0; j < ny; ++j){
 			lua_pushinteger(L, j+1);
 			lua_gettable(L, -2);
-			xy[1+j+i*ld] = lua_tonumber(L, -1);
+			if(lua_type(L, -1) != LUA_TNUMBER) {
+				if (xy) { free(xy); xy = NULL; }
+				*I = NULL;
+				S4L_error(L, "NewInterpolator: y value must be a number.");
+				return 0;
+			}
+			double y = lua_tonumber(L, -1);
+			if (!isfinite(y)) {
+				if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: y values must be finite numbers.");
+		return 0;
+			}
+			xy[1+j+i*ld] = y;
 			lua_pop(L, 1);
 		}
 		lua_pop(L, 2);
 	}
 
 	*I = Interpolator_New(n, ny, xy, type);
-	free(xy);
-	return 1;
-S4L_NewInterpolator_error:
-	*I = NULL;
+	if (!*I) {
+		if (xy) { free(xy); xy = NULL; }
+		*I = NULL;
+		S4L_error(L, "NewInterpolator: Failed to allocate memory for interpolator.");
+		return 0;
+	}
+	if (xy) { free(xy); xy = NULL; }
 	return 1;
 }
 static int S4L_Interpolator__gc(lua_State *L){
 	Interpolator *I = (Interpolator *)luaL_checkudata(L, 1, "S4.Interpolator");
-	Interpolator_Destroy(*I);
+	if(I && *I){
+		Interpolator_Destroy(*I);
+		*I = NULL;
+	}
 	return 0;
 }
 static int S4L_Interpolator_Get(lua_State *L){
 	double *y;
 	int ny, i;
 	Interpolator *I = (Interpolator *)luaL_checkudata(L, 1, "S4.Interpolator");
-	luaL_argcheck(L, I != NULL, 1, "Get: 'Interpolator' object expected.");
+	luaL_argcheck(L, I != NULL && *I != NULL, 1, "Get: \'Interpolator\' object expected and must be initialized.");
 
-	y = Interpolator_Get(*I, luaL_checknumber(L, 2), &ny);
+	double x = luaL_checknumber(L, 2);
+	if (!isfinite(x)) {
+		S4L_error(L, "Get: x must be finite.");
+		return 1;
+	}
+	y = Interpolator_Get(*I, x, &ny);
+	if (!y) {
+		S4L_error(L, "Get: Interpolation failed.");
+		return 1;
+	}
 	for(i = 0; i < ny; ++i){
 		lua_pushnumber(L, y[i]);
 	}
@@ -1686,7 +1783,7 @@ static int S4L_Simulation_SetLayerPatternRectangle(lua_State *L){
 		lua_pop(L, 1);
 	}
 	S4_real angle = luaL_checknumber(L, 5) / 360.;
-	
+
 	S4_real Lr[4];
 	S4_Simulation_GetLattice(S, Lr);
 	if(0 == Lr[1] && 0 == Lr[2] && 0 == Lr[3]){
@@ -2116,15 +2213,14 @@ static int S4L_Simulation_GetPoyntingFlux(lua_State *L){
 		layer,
 		&offset,
 		power);
-
+	if(0 != ret){
+		HandleSolutionErrorCode(L, "GetPoyntingFlux", ret);
+		return 0;
+	}
 	lua_pushnumber(L, power[0]); /* real forw (time averaged) */
 	lua_pushnumber(L, power[1]); /* real back (time averaged) */
 	lua_pushnumber(L, power[2]); /* imag forw */
 	lua_pushnumber(L, power[3]); /* imag back */
-
-	if(0 != ret){
-		HandleSolutionErrorCode(L, "GetPoyntingFlux", ret);
-	}
 	return 4;
 }
 static int S4L_Simulation_GetPoyntingFluxByOrder(lua_State *L){
@@ -2154,11 +2250,21 @@ static int S4L_Simulation_GetPoyntingFluxByOrder(lua_State *L){
 		return 0;
 	}
 
+	const double offset = luaL_checknumber(L, 3);
 	power = (double*)malloc(sizeof(double)*4*n);
-	Simulation_GetPoyntingFluxByG(S,
+	if(NULL == power){
+		HandleSolutionErrorCode(L, "GetPoyntingFluxByOrder", 1);
+		return 0;
+	}
+	ret = Simulation_GetPoyntingFluxByG(S,
 		&S->layer[layer],
-		luaL_checknumber(L, 3),
+		offset,
 		power);
+	if(0 != ret){
+		free(power);
+		HandleSolutionErrorCode(L, "GetPoyntingFluxByOrder", ret);
+		return 0;
+	}
 
 	lua_createtable(L, n, 0);
 	for(i = 0; i < n; ++i){
@@ -2677,162 +2783,278 @@ static int S4L_Simulation_GetFields(lua_State *L){
 	return 12;
 }
 
+/* ------------------------------------------------------------------------- *
+ * GetFieldPlane: native buffer ownership.
+ *
+ * filename, Efields and Hfields are owned by a Lua userdata whose __gc
+ * releases them.  The owner is created before any native allocation, so a Lua
+ * memory error raised while preparing the call cannot leak anything, and it
+ * stays on the stack while the result tables are built, so a Lua memory error
+ * raised there is still covered.  Every failure this binding controls releases
+ * explicitly and only then raises.  A memory error raised by Lua itself during
+ * result construction cannot be released before the raise - it is unprotected
+ * Lua API that longjmps - so those buffers are freed by __gc when the owner is
+ * collected.  __gc is therefore a backstop for Lua-raised errors, not the
+ * primary mechanism, and no claim is made that every allocation failure is
+ * released before the error is raised.
+ * ------------------------------------------------------------------------- */
+typedef struct {
+	char *filename;
+	double *Efields;
+	double *Hfields;
+} S4L_GridPlaneBuffer;
+
+static void S4L_grid_plane_release(S4L_GridPlaneBuffer *b){
+	if(NULL == b){ return; }
+	free(b->Hfields); b->Hfields = NULL;
+	free(b->Efields); b->Efields = NULL;
+	free(b->filename); b->filename = NULL;
+}
+
+static int S4L_grid_plane_gc(lua_State *L){
+	S4L_GridPlaneBuffer *b = (S4L_GridPlaneBuffer*)luaL_checkudata(L, 1, "S4.GridPlaneBuffer");
+	S4L_grid_plane_release(b);
+	return 0;
+}
+
+/* A sampled grid can come out non-finite.  One way that happens is a retained
+ * order landing exactly on a diffraction cutoff in the addressed layer (a layer
+ * with zero permittivity has a longitudinal wavevector of exactly zero, for
+ * instance); this is not a claim about which configurations are defined in
+ * general.  Either way, report a non-finite grid instead of returning it or
+ * writing it to disk. */
+static int S4L_grid_plane_values_are_finite(const double *values, size_t count){
+	size_t i;
+	for(i = 0; i < count; ++i){
+		const double v = values[i];
+		if(!(v == v) || v > DBL_MAX || v < -DBL_MAX){ return 0; }
+	}
+	return 1;
+}
+
+/* Write one output file.  Returns 0 on success; on failure fills err with a
+ * message naming the path and returns -1.  errno is saved before closing so
+ * the reported cause is the original failure, not a cleanup side effect. */
+static int S4L_grid_plane_write_file(char *err, size_t errlen, const char *path,
+	const char *mode, int with_z, const double *values, size_t nu, size_t nv, double z)
+{
+	FILE *fp = fopen(path, mode);
+	size_t i, j;
+	if(NULL == fp){
+		int e = errno;
+		snprintf(err, errlen, "GetFieldPlane: could not open '%s': %s", path, strerror(e));
+		return -1;
+	}
+	for(i = 0; i < nu; ++i){
+		for(j = 0; j < nv; ++j){
+			const double *v = &values[2*(3*(i+j*nu))];
+			int written;
+			if(with_z){
+				written = fprintf(fp,
+					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
+					(int)i, (int)j, z, v[0], v[1], v[2], v[3], v[4], v[5]);
+			}else{
+				written = fprintf(fp,
+					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
+					(int)i, (int)j, v[0], v[1], v[2], v[3], v[4], v[5]);
+			}
+			if(written < 0){
+				int e = errno;
+				fclose(fp);
+				snprintf(err, errlen, "GetFieldPlane: could not write '%s': %s", path, strerror(e));
+				return -1;
+			}
+		}
+		if(fprintf(fp, "\n") < 0){
+			int e = errno;
+			fclose(fp);
+			snprintf(err, errlen, "GetFieldPlane: could not write '%s': %s", path, strerror(e));
+			return -1;
+		}
+	}
+	if(with_z && fprintf(fp, "\n") < 0){
+		int e = errno;
+		fclose(fp);
+		snprintf(err, errlen, "GetFieldPlane: could not write '%s': %s", path, strerror(e));
+		return -1;
+	}
+	if(0 != fclose(fp)){
+		int e = errno;
+		snprintf(err, errlen, "GetFieldPlane: could not close '%s': %s", path, strerror(e));
+		return -1;
+	}
+	return 0;
+}
+
 /* S:GetFieldPlane(z, {nu, nv}, format, filename)
- *   z: number specify global z coordinates
- *   format: string specifying return format
- *     'Array': returns a pair (E and H) of 2D arrays of 3D complex vectors
- *     'FileWrite': dumps to filename.E or filename.H (x, y, components)
- *     'FileAppend': appends to filename.E or filename.H (x, y, z, components)
+ *   z: number specifying the global z coordinate
+ *   format: string specifying the output
+ *     'Array': returns two values, E and H, each a nu x nv array of 3D complex
+ *              vectors held as {real, imaginary} pairs
+ *     'FileWrite': writes filename.E and filename.H (x, y, components)
+ *     'FileAppend': appends to filename.E and filename.H (x, y, z, components)
+ *   filename: base name; the '.E' and '.H' suffixes are added
+ *
+ * Failures raise a Lua error, which pcall can catch.  Uncaught in batch mode it
+ * stops the run with exit code 1 and a diagnostic, never with a signal.
+ *
+ * Release ordering: every failure this function controls - input validation,
+ * allocation of the three buffers, the core solution, a non-finite grid, and
+ * file open/write/close - releases the native buffers and only then raises.  A
+ * memory error raised by Lua itself while the result tables are being built is
+ * the one case that cannot be released before the raise; the owner userdata's
+ * __gc frees those buffers when it is collected.
+ *
+ * The file formats return no values, as before; a caller that assigns the call
+ * to one variable therefore gets nil, which is assignment semantics rather than
+ * a returned nil.
  */
 static int S4L_Simulation_GetFieldPlane(lua_State *L){
-	int i, j, ret;
+	size_t i, j;
+	int ret;
 	int nxy[2];
+	size_t nu, nv, npoints, nvalues;
 	double z;
-	double *Efields, *Hfields;
 	const char *fmt;
 	const char *fbasename; size_t len;
-	char *filename;
-	FILE *fp;
+	char err[512];
+	S4L_GridPlaneBuffer *buf = NULL;
 	S4_Simulation *S = S4L_get_simulation(L, 1);
 	luaL_argcheck(L, S != NULL, 1, "GetFieldPlane: 'S4_Simulation' object expected.");
 
 	z = luaL_checknumber(L, 2);
-	luaL_argcheck(L, lua_istable(L, 3) && (lua_rawlen(L, 3) == 2), 3, "GetFieldPlane: pair of grid sample counts expected.");
+	luaL_argcheck(L, lua_istable(L, 3) && (lua_rawlen(L, 3) == 2), 3,
+		"GetFieldPlane: pair of grid sample counts expected.");
 	for(i = 0; i < 2; ++i){
-		lua_rawgeti(L, 3, i+1);
+		lua_Number v;
+		lua_rawgeti(L, 3, (int)i+1);
 		if(!lua_isnumber(L, -1)){
-			S4L_error(L, "GetFieldPlane: pair of grid sample counts expected.");
+			luaL_error(L, "GetFieldPlane: grid sample counts must be numbers.");
 		}
-		nxy[i] = (int)lua_tointeger(L, -1);
-		if(nxy[i] <= 0){
-			S4L_error(L, "GetFieldPlane: grid sample counts must be positive.");
-		}
+		v = lua_tonumber(L, -1);
 		lua_pop(L, 1);
+		/* Range-check before narrowing: a truncated count must never reach the
+		 * allocation or the core. */
+		if(!(v == floor(v)) || v < 1.0 || v > (lua_Number)INT_MAX){
+			luaL_error(L, "GetFieldPlane: grid sample counts must be integers between 1 and %d.", INT_MAX);
+		}
+		nxy[i] = (int)v;
 	}
+	nu = (size_t)nxy[0];
+	nv = (size_t)nxy[1];
+	if(nu > ((size_t)-1) / nv){
+		luaL_error(L, "GetFieldPlane: grid (%d, %d) is too large to allocate.", nxy[0], nxy[1]);
+	}
+	npoints = nu * nv;
+	if(npoints > ((size_t)-1) / 6){
+		luaL_error(L, "GetFieldPlane: grid (%d, %d) is too large to allocate.", nxy[0], nxy[1]);
+	}
+	nvalues = npoints * 6;
+	if(nvalues > ((size_t)-1) / sizeof(double)){
+		luaL_error(L, "GetFieldPlane: grid (%d, %d) is too large to allocate.", nxy[0], nxy[1]);
+	}
+
 	fmt = luaL_checkstring(L, 4);
 	len = 5;
 	fbasename = luaL_optlstring(L, 5, "field", &len);
-	filename = (char*)malloc(sizeof(char) * (len+3));
-	strcpy(filename, fbasename);
-	filename[len+0] = '.';
-	filename[len+2] = '\0';
-
-	Efields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
-	Hfields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
-
-	ret = Simulation_GetFieldPlane(S, nxy, z, Efields, Hfields);
-	if(0 != ret){
-		HandleSolutionErrorCode(L, "GetFieldPlane", ret);
+	if(len > ((size_t)-1) - 3){
+		luaL_error(L, "GetFieldPlane: output base filename is too long.");
 	}
 
-	ret = 0;
-	if(0 == strcmp("FileWrite", fmt)){
-		filename[len+1] = 'E';
-		fp = fopen(filename, "wb");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j,
-					Efields[2*(3*(i+j*nxy[0])+0)+0],
-					Efields[2*(3*(i+j*nxy[0])+0)+1],
-					Efields[2*(3*(i+j*nxy[0])+1)+0],
-					Efields[2*(3*(i+j*nxy[0])+1)+1],
-					Efields[2*(3*(i+j*nxy[0])+2)+0],
-					Efields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fclose(fp);
-		filename[len+1] = 'H';
-		fp = fopen(filename, "wb");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j,
-					Hfields[2*(3*(i+j*nxy[0])+0)+0],
-					Hfields[2*(3*(i+j*nxy[0])+0)+1],
-					Hfields[2*(3*(i+j*nxy[0])+1)+0],
-					Hfields[2*(3*(i+j*nxy[0])+1)+1],
-					Hfields[2*(3*(i+j*nxy[0])+2)+0],
-					Hfields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fclose(fp);
-	}else if(0 == strcmp("FileAppend", fmt)){
-		filename[len+1] = 'E';
-		fp = fopen(filename, "ab");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j, z,
-					Efields[2*(3*(i+j*nxy[0])+0)+0],
-					Efields[2*(3*(i+j*nxy[0])+0)+1],
-					Efields[2*(3*(i+j*nxy[0])+1)+0],
-					Efields[2*(3*(i+j*nxy[0])+1)+1],
-					Efields[2*(3*(i+j*nxy[0])+2)+0],
-					Efields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fprintf(fp, "\n");
-		fclose(fp);
-		filename[len+1] = 'H';
-		fp = fopen(filename, "ab");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j, z,
-					Hfields[2*(3*(i+j*nxy[0])+0)+0],
-					Hfields[2*(3*(i+j*nxy[0])+0)+1],
-					Hfields[2*(3*(i+j*nxy[0])+1)+0],
-					Hfields[2*(3*(i+j*nxy[0])+1)+1],
-					Hfields[2*(3*(i+j*nxy[0])+2)+0],
-					Hfields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fprintf(fp, "\n");
-		fclose(fp);
-	}else{ /* Array */
-		unsigned k, i3, i2;
-		double *F[2] = { Efields, Hfields };
+	/* Owner first: from here on a Lua-raised error has something to release. */
+	buf = (S4L_GridPlaneBuffer*)lua_newuserdata(L, sizeof(S4L_GridPlaneBuffer));
+	buf->filename = NULL;
+	buf->Efields = NULL;
+	buf->Hfields = NULL;
+	luaL_getmetatable(L, "S4.GridPlaneBuffer");
+	if(lua_isnil(L, -1)){
+		lua_pop(L, 1);
+		return luaL_error(L, "GetFieldPlane: internal error, the buffer owner metatable is not registered.");
+	}
+	lua_setmetatable(L, -2);
 
+	buf->filename = (char*)malloc(sizeof(char) * (len + 3));
+	if(NULL == buf->filename){
+		S4L_grid_plane_release(buf);
+		return luaL_error(L, "GetFieldPlane: could not allocate the output filename.");
+	}
+	strcpy(buf->filename, fbasename);
+	buf->filename[len+0] = '.';
+	buf->filename[len+2] = '\0';
+
+	buf->Efields = (double*)malloc(sizeof(double) * nvalues);
+	if(NULL == buf->Efields){
+		S4L_grid_plane_release(buf);
+		return luaL_error(L, "GetFieldPlane: could not allocate the field buffers.");
+	}
+	buf->Hfields = (double*)malloc(sizeof(double) * nvalues);
+	if(NULL == buf->Hfields){
+		S4L_grid_plane_release(buf);
+		return luaL_error(L, "GetFieldPlane: could not allocate the field buffers.");
+	}
+
+	ret = Simulation_GetFieldPlane(S, nxy, z, buf->Efields, buf->Hfields);
+	if(0 != ret){
+		S4L_solution_error_text(err, sizeof err, "GetFieldPlane", ret);
+		goto fail;
+	}
+
+	if(!S4L_grid_plane_values_are_finite(buf->Efields, nvalues) ||
+	   !S4L_grid_plane_values_are_finite(buf->Hfields, nvalues)){
+		S4L_solution_error_text(err, sizeof err, "GetFieldPlane", 18);
+		goto fail;
+	}
+
+	if(0 == strcmp("FileWrite", fmt) || 0 == strcmp("FileAppend", fmt)){
+		const int with_z = (0 == strcmp("FileAppend", fmt));
+		const char *mode = with_z ? "ab" : "wb";
+		buf->filename[len+1] = 'E';
+		if(0 != S4L_grid_plane_write_file(err, sizeof err, buf->filename, mode, with_z,
+			buf->Efields, nu, nv, z)){
+			goto fail;
+		}
+		buf->filename[len+1] = 'H';
+		if(0 != S4L_grid_plane_write_file(err, sizeof err, buf->filename, mode, with_z,
+			buf->Hfields, nu, nv, z)){
+			goto fail;
+		}
+		/* The file formats have always returned no values. */
+		S4L_grid_plane_release(buf);
+		return 0;
+	}
+
+	{ /* Array: two tables, indexed [i][j][component][real/imaginary] */
+		unsigned k, i3, i2;
+		double *F[2];
+		F[0] = buf->Efields;
+		F[1] = buf->Hfields;
 		for(k = 0; k < 2; ++k){
-			lua_createtable(L, nxy[0], 0);
-			for(i = 0; i < nxy[0]; ++i){
-				lua_createtable(L, nxy[1], 0);
-				for(j = 0; j < nxy[1]; ++j){
+			lua_createtable(L, (int)nu, 0);
+			for(i = 0; i < nu; ++i){
+				lua_createtable(L, (int)nv, 0);
+				for(j = 0; j < nv; ++j){
 					lua_createtable(L, 3, 0);
 					for(i3 = 0; i3 < 3; ++i3){
 						lua_createtable(L, 2, 0);
 						for(i2 = 0; i2 < 2; ++i2){
-							lua_pushnumber(L, F[k][2*(3*(i+j*nxy[0])+i3)+i2]);
-							lua_rawseti(L, -2, i2+1);
+							lua_pushnumber(L, F[k][2*(3*(i+j*nu)+i3)+i2]);
+							lua_rawseti(L, -2, (int)i2+1);
 						}
-						lua_rawseti(L, -2, i3+1);
+						lua_rawseti(L, -2, (int)i3+1);
 					}
-					lua_rawseti(L, -2, j+1);
+					lua_rawseti(L, -2, (int)j+1);
 				}
-				lua_rawseti(L, -2, i+1);
+				lua_rawseti(L, -2, (int)i+1);
 			}
 		}
-
-		ret = 2;
 	}
 
-	free(Hfields);
-	free(Efields);
-	free(filename);
-	return ret;
+	S4L_grid_plane_release(buf);
+	return 2;
+
+fail:
+	S4L_grid_plane_release(buf);
+	return luaL_error(L, "%s", err);
 }
 
 static int S4L_Simulation_GetSMatrixDeterminant(lua_State *L){
@@ -3099,7 +3321,7 @@ int luaopen_RCWA(lua_State *L){
 	lua_pushcfunction(L, &S4L_Simulation__gc);
 	lua_settable(L, -3);
 	lua_pop(L, 1);
-	
+
 	luaL_newmetatable(L, "S4.SpectrumSampler");
 	luaL_newlib(L, SpectrumSamplerObj);
 	lua_setfield(L, -2, "__index");
@@ -3115,7 +3337,14 @@ int luaopen_RCWA(lua_State *L){
 	lua_pushcfunction(L, S4L_Interpolator__gc);
 	lua_settable(L, -3);
 	lua_pop(L, 1);
-	
+
+	/* Owner of the GetFieldPlane native buffers; never exposed to Lua. */
+	luaL_newmetatable(L, "S4.GridPlaneBuffer");
+	lua_pushstring(L, "__gc");
+	lua_pushcfunction(L, &S4L_grid_plane_gc);
+	lua_settable(L, -3);
+	lua_pop(L, 1);
+
 	return 1;
 }
 
@@ -3303,11 +3532,15 @@ int main(int argc, char *argv[]){
 			if(error){
 				fprintf(stderr, "%s\n", lua_tostring(L, -1));
 				lua_pop(L, 1); /* pop error message from the stack */
+
+				return EXIT_FAILURE;
 			}else{
 				error = docall(L, 0, LUA_MULTRET);
 				if(error){
 					fprintf(stderr, "%s\n", lua_tostring(L, -1));
 					lua_pop(L, 1); /* pop error message from the stack */
+
+					return EXIT_FAILURE;
 				}
 			}
 		}

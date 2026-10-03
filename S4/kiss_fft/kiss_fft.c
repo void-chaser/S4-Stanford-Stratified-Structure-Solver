@@ -194,13 +194,18 @@ static void kf_bfly5(
     }
 }
 
-/* perform the butterfly for one stage of a mixed radix FFT */
+/* perform the butterfly for one stage of a mixed radix FFT.
+ * The scratch buffer is the only allocation the transform itself performs.
+ * When it cannot be obtained the butterfly cannot run, so the failure is
+ * reported through err and Fout is left untouched instead of being written
+ * through a NULL pointer. */
 static void kf_bfly_generic(
         kiss_fft_cpx * Fout,
         const size_t fstride,
         const kiss_fft_cfg st,
         int m,
-        int p
+        int p,
+        int * err
         )
 {
     int u,k,q1,q;
@@ -209,6 +214,7 @@ static void kf_bfly_generic(
     int Norig = st->nfft;
 
     kiss_fft_cpx * scratch = (kiss_fft_cpx*)KISS_FFT_TMP_ALLOC(sizeof(kiss_fft_cpx)*p);
+    if (NULL == scratch) { *err = 1; return; }
 
     for ( u=0; u<m; ++u ) {
         k=u;
@@ -241,7 +247,8 @@ void kf_work(
         const size_t fstride,
         int in_stride,
         int * factors,
-        const kiss_fft_cfg st
+        const kiss_fft_cfg st,
+        int * err
         )
 {
     kiss_fft_cpx * Fout_beg=Fout;
@@ -259,7 +266,7 @@ void kf_work(
         // execute the p different work units in different threads
 #       pragma omp parallel for
         for (k=0;k<p;++k) 
-            kf_work( Fout +k*m, f+ fstride*in_stride*k,fstride*p,in_stride,factors,st);
+            kf_work( Fout +k*m, f+ fstride*in_stride*k,fstride*p,in_stride,factors,st,err);
         // all threads have joined by this point
 
         switch (p) {
@@ -267,7 +274,7 @@ void kf_work(
             case 3: kf_bfly3(Fout,fstride,st,m); break; 
             case 4: kf_bfly4(Fout,fstride,st,m); break;
             case 5: kf_bfly5(Fout,fstride,st,m); break; 
-            default: kf_bfly_generic(Fout,fstride,st,m,p); break;
+            default: kf_bfly_generic(Fout,fstride,st,m,p,err); break;
         }
         return;
     }
@@ -284,12 +291,16 @@ void kf_work(
             // DFT of size m*p performed by doing
             // p instances of smaller DFTs of size m, 
             // each one takes a decimated version of the input
-            kf_work( Fout , f, fstride*p, in_stride, factors,st);
+            kf_work( Fout , f, fstride*p, in_stride, factors,st,err);
             f += fstride*in_stride;
         }while( (Fout += m) != Fout_end );
     }
 
     Fout=Fout_beg;
+
+    /* A failure in a recursive call means the sub-transforms are incomplete, so
+     * recombining them would produce a meaningless result. */
+    if (*err) { return; }
 
     // recombine the p smaller DFTs 
     switch (p) {
@@ -297,7 +308,7 @@ void kf_work(
         case 3: kf_bfly3(Fout,fstride,st,m); break; 
         case 4: kf_bfly4(Fout,fstride,st,m); break;
         case 5: kf_bfly5(Fout,fstride,st,m); break; 
-        default: kf_bfly_generic(Fout,fstride,st,m,p); break;
+        default: kf_bfly_generic(Fout,fstride,st,m,p,err); break;
     }
 }
 
@@ -368,23 +379,41 @@ kiss_fft_cfg kiss_fft_alloc(int nfft,int inverse_fft,void * mem,size_t * lenmem 
 }
 
 
-void kiss_fft_stride(kiss_fft_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout,int in_stride)
+/* Checked execution.  Returns 0 on success and non-zero when a temporary
+ * buffer could not be obtained, in which case the output buffer must not be
+ * used.  kiss_fft_stride() and kiss_fft() below keep their signatures and
+ * delegate here, discarding the status. */
+int kiss_fft_stride_checked(kiss_fft_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout,int in_stride)
 {
+    int err = 0;
     if (fin == fout) {
         //NOTE: this is not really an in-place FFT algorithm.
         //It just performs an out-of-place FFT into a temp buffer
         kiss_fft_cpx * tmpbuf = (kiss_fft_cpx*)KISS_FFT_TMP_ALLOC( sizeof(kiss_fft_cpx)*st->nfft);
-        kf_work(tmpbuf,fin,1,in_stride, st->factors,st);
-        memcpy(fout,tmpbuf,sizeof(kiss_fft_cpx)*st->nfft);
+        if (NULL == tmpbuf) { return 1; }
+        kf_work(tmpbuf,fin,1,in_stride, st->factors,st,&err);
+        /* On failure tmpbuf holds a partial transform; do not publish it. */
+        if (0 == err) { memcpy(fout,tmpbuf,sizeof(kiss_fft_cpx)*st->nfft); }
         KISS_FFT_TMP_FREE(tmpbuf);
     }else{
-        kf_work( fout, fin, 1,in_stride, st->factors,st );
+        kf_work( fout, fin, 1,in_stride, st->factors,st,&err );
     }
+    return (0 != err);
+}
+
+void kiss_fft_stride(kiss_fft_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout,int in_stride)
+{
+    (void)kiss_fft_stride_checked(st,fin,fout,in_stride);
+}
+
+int kiss_fft_checked(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
+{
+    return kiss_fft_stride_checked(cfg,fin,fout,1);
 }
 
 void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
 {
-    kiss_fft_stride(cfg,fin,fout,1);
+    (void)kiss_fft_checked(cfg,fin,fout);
 }
 
 

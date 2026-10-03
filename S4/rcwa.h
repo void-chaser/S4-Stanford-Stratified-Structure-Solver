@@ -245,7 +245,7 @@ void InitSMatrix(
 // lwork     - (INPUT) The length of the work array. If -1, then a
 //             workspace query is performed and the optimal lwork is
 //             returned in work[0].real().
-void GetSMatrix( // appends the layers to an existing S matrix
+int GetSMatrix( // appends the layers to an existing S matrix
 	size_t nlayers,
 	size_t n, // glist.n
 	const double *kx, const double *ky,
@@ -480,7 +480,10 @@ void GetFieldAtPoint(
 	std::complex<double> hfield[3],
 	std::complex<double> *work = NULL
 );
-void GetFieldOnGrid(
+/* Returns 0 on success and 1 if a temporary allocation in this function or in
+ * the FFT layer failed.  On failure the outputs are left untouched and every
+ * resource acquired by this call is released before returning. */
+int GetFieldOnGrid(
 	size_t n, // glist.n
 	int *G, // length 2*glist.n, pairs of uv coordinates of Lk
 	const double *kx, const double *ky,

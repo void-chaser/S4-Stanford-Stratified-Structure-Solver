@@ -87,6 +87,18 @@ fft_plan fft_plan_dft_2d(
 # endif
 	if(NULL != p){
 		plan = (fft_plan)malloc(sizeof(tag_fft_plan));
+		if(NULL == plan){
+			/* The underlying plan exists but there is nowhere to store it;
+			 * destroy it instead of leaking it, and report failure. */
+# ifdef HAVE_LIBPTHREAD
+			pthread_mutex_lock(&mutex);
+# endif
+			fftw_destroy_plan(p);
+# ifdef HAVE_LIBPTHREAD
+			pthread_mutex_unlock(&mutex);
+# endif
+			return NULL;
+		}
 		plan->plan = p;
 	}
 #else
@@ -94,6 +106,11 @@ fft_plan fft_plan_dft_2d(
 	cfg = kiss_fftnd_alloc(n, 2, sign, NULL, NULL);
 	if(NULL != cfg){
 		plan = (fft_plan)malloc(sizeof(tag_fft_plan));
+		if(NULL == plan){
+			/* Release the configuration the wrapper could not hold. */
+			free(cfg);
+			return NULL;
+		}
 		plan->cfg = cfg;
 		plan->in = in;
 		plan->out = out;
@@ -102,11 +119,16 @@ fft_plan fft_plan_dft_2d(
 	return plan;
 }
 
-void fft_plan_exec(const fft_plan plan){
+int fft_plan_exec(const fft_plan plan){
 #ifdef HAVE_LIBFFTW3
+	/* FFTW's execution has no failure return; it terminates the process itself
+	 * if it cannot obtain memory, so there is nothing to report here. */
 	fftw_execute(plan->plan);
+	return 0;
 #else
-	kiss_fftnd(plan->cfg, (const kiss_fft_cpx *)plan->in, (kiss_fft_cpx *)plan->out);
+	/* Any execution-time temporary buffer, in this dimension or a later one, is
+	 * reported instead of being written through. */
+	return kiss_fftnd_checked(plan->cfg, (const kiss_fft_cpx *)plan->in, (kiss_fft_cpx *)plan->out);
 #endif
 }
 

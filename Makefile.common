@@ -142,8 +142,61 @@ $(OBJDIR)/FunctionSampler2D.$(SHLIB_EXT): modules/function_sampler_2d.c modules/
 S4_pyext: objdir $(OBJDIR)/libS4.a
 	$(PYTHON) setup.py build_ext --inplace
 
+
+#### Test suite
+#
+# `make test` rebuilds the C++ core and the Python extension from scratch and
+# then runs the test suite.
+#
+# The rebuild is deliberate and recursive. `make S4_pyext` links against an
+# existing $(OBJDIR)/libS4.a, so if the archive is up to date the extension is
+# left alone; and `setup.py build_ext` will reuse its own stale object if it
+# thinks nothing changed. Together those make an edit to S4.cpp appear to have
+# no effect, which is exactly the failure mode a test runner must not have.
+# Removing $(OBJDIR) and the extension removes that ambiguity at a cost of
+# roughly seven seconds.
+#
+# S4_TEST_REPO_ROOT pins the suite to the extension built here, rather than
+# whatever else happens to be on sys.path.
+
+PYTEST_DIR = testing/s4test
+PYTEST_PATH = $(CURDIR):$(CURDIR)/$(PYTEST_DIR)
+
+test: test-python test-fast test-lua
+
+test-python:
+	@rm -rf $(OBJDIR)
+	@rm -f S4.cpython-*.so S4.*.so
+	@echo "=== rebuilding extension and Lua frontend from source ==="
+	$(MAKE) S4_pyext PYTHON=$(PYTHON)
+	$(MAKE) $(OBJDIR)/S4
+	@echo
+	@echo "=== original smoke tests (testing/test_python_binding.py) ==="
+	PYTHONPATH="$(PYTEST_PATH)" S4_TEST_REPO_ROOT="$(CURDIR)" \
+		$(PYTHON) -m unittest discover -s testing -p 'test_python_binding.py' -v
+	@echo
+	@echo "=== S4 test suite ($(PYTEST_DIR)) ==="
+	PYTHONPATH="$(PYTEST_PATH)" S4_TEST_REPO_ROOT="$(CURDIR)" \
+		$(PYTHON) -m unittest discover -s $(PYTEST_DIR) -p 'test_*.py' -v
+
+# Verifies the independent Fresnel/Airy reference against closed-form results.
+# Needs no built extension and runs in well under a second.
+test-fast:
+	@echo "=== analytic reference self-check ==="
+	PYTHONPATH="$(CURDIR)/$(PYTEST_DIR)" \
+		$(PYTHON) $(PYTEST_DIR)/selftest_analytic.py
+
+# The Lua cross-frontend and two-layer tests need $(OBJDIR)/S4. `test-python`
+# already builds it as part of its clean rebuild, so `make test` covers them;
+# `test-all` is kept for callers that want the suite re-run on an existing tree.
+test-all: test
+	$(MAKE) $(OBJDIR)/S4
+	PYTHONPATH="$(PYTEST_PATH)" S4_TEST_REPO_ROOT="$(CURDIR)" \
+		$(PYTHON) -m unittest discover -s $(PYTEST_DIR) -p 'test_*.py' -v
+
 clean:
 	rm -rf $(OBJDIR)
+	rm -f S4.cpython-*.so S4.*.so
 
 #### S4v2 extension
 $(OBJDIR)/S4v2.$(SHLIB_EXT): $(OBJDIR)/$(S4_LIBNAME) S4/ext_lua.c
@@ -151,3 +204,11 @@ $(OBJDIR)/S4v2.$(SHLIB_EXT): $(OBJDIR)/$(S4_LIBNAME) S4/ext_lua.c
 $(OBJDIR)/libS4_lua.a: $(OBJDIR)/$(S4_LIBNAME)
 	$(CC) -c $(LUA_INC) S4/ext_lua.c -o $(OBJDIR)/ext_lua.o
 	$(AR) crvs $@ $(OBJDIR)/ext_lua.o
+
+test-lua:
+	@echo "=== S4 Lua test suite ==="
+	cd testing && ./runtests.sh
+	@echo "=== S4 Lua test suite negative ==="
+	cd testing/s4test && ./test_lua_regression_negative.sh
+	@echo "=== S4 Lua API negative ==="
+	cd testing/s4test && python3 test_lua_api_negative.py

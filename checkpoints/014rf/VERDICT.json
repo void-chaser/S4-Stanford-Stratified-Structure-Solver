@@ -1,0 +1,19 @@
+{
+  "verdict": "LIMITED_OFFLINE_EVIDENCE_CHAIN_ACCEPTED",
+  "api_cases": 26,
+  "cli_cases": 3,
+  "unexpected_error_control": "PASS",
+  "original_eight_rows": "PASS",
+  "T01_T05": "PASS",
+  "A_saved_plan_item_binding": "CLOSED",
+  "B_public_failure_interface": "CLOSED",
+  "R2_R3": "RETAINED_CLOSED",
+  "new_chain": 0,
+  "new_SYNTHETIC_spawn": 0,
+  "native": 0,
+  "solver": 0,
+  "S4_import": 0,
+  "formal_item": 0,
+  "formal_token": 0,
+  "stage_advance": false
+}

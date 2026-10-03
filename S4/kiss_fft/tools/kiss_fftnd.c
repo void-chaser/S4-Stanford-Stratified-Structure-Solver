@@ -158,7 +158,11 @@ Stage 2 ( D=4) treats this buffer as a 4*6 matrix,
    , i.e. the summation of all 24 input elements. 
 
 */
-void kiss_fftnd(kiss_fftnd_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
+/* Checked multidimensional transform.  Returns 0 on success and non-zero when
+ * a per-dimension transform could not allocate its temporary buffer.  On
+ * failure the remaining rows, the remaining dimensions and the final buffer
+ * toggles are skipped, so no later stage consumes a partial transform. */
+int kiss_fftnd_checked(kiss_fftnd_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
 {
     int i,k;
     const kiss_fft_cpx * bufin=fin;
@@ -178,8 +182,11 @@ void kiss_fftnd(kiss_fftnd_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
         int curdim = st->dims[k];
         int stride = st->dimprod / curdim;
 
-        for ( i=0 ; i<stride ; ++i ) 
-            kiss_fft_stride( st->states[k], bufin+i , bufout+i*curdim, stride );
+        for ( i=0 ; i<stride ; ++i ) {
+            if (0 != kiss_fft_stride_checked( st->states[k], bufin+i , bufout+i*curdim, stride )) {
+                return 1;
+            }
+        }
 
         /*toggle back and forth between the two buffers*/
         if (bufout == st->tmpbuf){
@@ -190,4 +197,10 @@ void kiss_fftnd(kiss_fftnd_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
             bufin = fout;
         }
     }
+    return 0;
+}
+
+void kiss_fftnd(kiss_fftnd_cfg st,const kiss_fft_cpx *fin,kiss_fft_cpx *fout)
+{
+    (void)kiss_fftnd_checked(st,fin,fout);
 }

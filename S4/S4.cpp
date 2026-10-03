@@ -26,6 +26,7 @@
 #include <cmath>
 #include <complex>
 #include <float.h>
+#include <limits.h>
 #include <TBLAS.h>
 #ifdef HAVE_BLAS
 # include <TBLAS_ext.h>
@@ -47,9 +48,103 @@ extern "C" {
 #include <numalloc.h>
 
 
+// Allocation-failure injection for the test suite. S4_FAIL_ALLOC_AT=k makes the
+// k-th allocation through S4_malloc fail (1-based). Unset or 0 disables it, so
+// default behaviour is unchanged. It exists because the partial-construction
+// paths of S4_Simulation_Clone are otherwise unreachable, and they are exactly
+// where ownership mistakes hide.
+static long s4_fail_alloc_at(void){
+	static long cached = -2;
+	if(-2 == cached){
+		const char *env = getenv("S4_FAIL_ALLOC_AT");
+		cached = (NULL == env ? 0 : strtol(env, NULL, 10));
+	}
+	return cached;
+}
+static long s4_fail_alloc_step = 0;
+static int s4_fail_alloc_armed = 0;
+static void s4_fail_alloc_scope(void){ s4_fail_alloc_step = 0; s4_fail_alloc_armed = 1; }
+static void s4_fail_alloc_unscope(void){ s4_fail_alloc_armed = 0; }
+// Returns non-zero when this in-scope allocation should be made to fail.
+static int s4_fail_alloc_trip(void){
+	const long at = s4_fail_alloc_at();
+	if(at <= 0 || !s4_fail_alloc_armed){ return 0; }
+	return (++s4_fail_alloc_step == at);
+}
+// Allocations attempted in the most recent armed scope. Note that this must not
+// itself be counted: it reads the step counter directly rather than going
+// through s4_fail_alloc_trip(), and the reporter below uses it after the scope
+// has been disarmed so the read cannot be attributed to the clone.
+static long s4_fail_alloc_seen(void){ return s4_fail_alloc_step; }
+// Disarms the injector on every exit, including early returns and the success
+// path, so no per-return bookkeeping is needed.
+static void s4_report_alloc_count_value(long seen);
+struct S4FailAllocScopeGuard{
+	S4FailAllocScopeGuard(){ s4_fail_alloc_scope(); }
+	~S4FailAllocScopeGuard(){
+		// Read the count first, then disarm, so the value cannot be perturbed by
+		// anything running in between. Written from here rather than an exit
+		// hook: the test probes call os._exit, which skips atexit handlers, so
+		// an exit hook never flushed the count. This destructor runs on every
+		// return path of the clone, success or failure.
+		const long seen = s4_fail_alloc_seen();
+		s4_fail_alloc_unscope();
+		s4_report_alloc_count_value(seen);
+	}
+};
+// Reports how many allocations were attempted, so a test can learn the exact
+// number of allocation sites in the clone path instead of guessing an upper
+// bound. Inert unless S4_ALLOC_COUNT names a writable file.
+static void s4_report_alloc_count_value(long seen){
+	const char *path = getenv("S4_ALLOC_COUNT");
+	if(NULL == path){ return; }
+	FILE *f = fopen(path, "w");
+	if(NULL == f){ return; }
+	fprintf(f, "%ld\n", seen);
+	fclose(f);
+}
+
 void* S4_malloc(size_t size){ // for debugging
+	if(s4_fail_alloc_trip()){
+		return NULL;
+	}
 	void* ret = malloc_aligned(size, 16);
 	return ret;
+}
+
+// Allocations used for the clone's material and layer arrays. These are plain
+// malloc blocks in S4 -- S4_Simulation_Destroy releases them with free(), not
+// S4_free() -- and storing them in malloc_aligned memory corrupts the heap,
+// because malloc_aligned returns an interior pointer whose original address is
+// stashed in the preceding word. Going through these wrappers keeps the two
+// sites interceptable by the fault injector without changing how they are freed.
+void* s4_clone_alloc(size_t size){
+	if(s4_fail_alloc_trip()){
+		return NULL;
+	}
+	return malloc(size);
+}
+void* s4_clone_alloc_zeroed(size_t count, size_t size){
+	if(s4_fail_alloc_trip()){
+		return NULL;
+	}
+	return calloc(count, size);
+}
+// Interceptable strdup. libc's strdup allocates through malloc directly, so it
+// is invisible to the injector and the two name-copy failure paths in the clone
+// could never be exercised. Same allocation strategy, counted in the scope.
+char* s4_clone_strdup(const char *s){
+	if(NULL == s){ return NULL; }
+	const size_t n = strlen(s) + 1;
+	char *p = (char*)s4_clone_alloc(n);
+	if(NULL == p){ return NULL; }
+	memcpy(p, s, n);
+	return p;
+}
+// Registration point, retained so the call site in S4_Simulation_Clone does not
+// have to change. The count is written by the scope guard's destructor, which
+// does not depend on process shutdown.
+static void s4_alloc_count_hook(void){
 }
 void S4_free(void *ptr){
 	free_aligned(ptr);
@@ -130,6 +225,37 @@ void Simulation_InvalidateFieldCache(S4_Simulation *S);
 std::complex<double>* Simulation_GetCachedField(S4_Simulation *S, const S4_Layer *layer);
 void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 
+// Pattern ownership helpers; defined just below, used by Layer_Destroy and by
+// S4_Simulation_Clone.
+static void S4_Simulation_ClearPattern(S4_Layer *L);
+static int S4_Simulation_CopyPattern(const S4_Layer *src, S4_Layer *dst);
+
+// Material copy helper. S4_Material::type is an internal discriminator
+// (0 = scalar, 1 = tensor, see S4_internal.h) whereas S4_Simulation_SetMaterial
+// takes the public S4_MATERIAL_TYPE_* constants; passing the internal value
+// through makes SetMaterial hit its `default:` branch and silently drop the
+// material. The number of coefficients read is taken from the *source* type so
+// the accessor width can never disagree with the data it is reading.
+static int S4_Simulation_CopyMaterial(const S4_Material *src, S4_Material *dst){
+	dst->name = NULL;
+	dst->type = src->type;
+	if(0 == src->type){
+		dst->eps.s[0] = src->eps.s[0];
+		dst->eps.s[1] = src->eps.s[1];
+	}else{
+		for(int i = 0; i < 10; ++i){
+			dst->eps.abcde[i] = src->eps.abcde[i];
+		}
+	}
+	if(NULL != src->name){
+		dst->name = s4_clone_strdup(src->name);
+		if(NULL == dst->name){
+			return 1;
+		}
+	}
+	return 0;
+}
+
 void Layer_Destroy(S4_Layer *L){
 	S4_TRACE("> Layer_Destroy(L=%p)\n", L);
 	if(NULL == L){
@@ -137,16 +263,7 @@ void Layer_Destroy(S4_Layer *L){
 		return;
 	}
 	free(L->name); L->name = NULL;
-	if(NULL != L->pattern.shapes){
-		for(int i = 0; i < L->pattern.nshapes; ++i){
-			if(POLYGON == L->pattern.shapes[i].type && NULL != L->pattern.shapes[i].vtab.polygon.vertex){
-				S4_free(L->pattern.shapes[i].vtab.polygon.vertex);
-			}
-		}
-		free(L->pattern.shapes);
-		L->pattern.shapes = NULL;
-	}
-	if(NULL != L->pattern.parent){ free(L->pattern.parent); L->pattern.parent = NULL; }
+	S4_Simulation_ClearPattern(L);
 	Simulation_DestroyLayerModes(L);
 	S4_TRACE("< Layer_Destroy\n");
 }
@@ -156,6 +273,10 @@ void Material_Destroy(S4_Material *M){
 		S4_TRACE("< Material_Destroy (failed; M == NULL)\n");
 		return;
 	}
+	// The name is strdup'd by S4_Simulation_SetMaterial and was never released,
+	// so every material name leaked on every SetMaterial and on destroy.
+	free(M->name);
+	M->name = NULL;
 	S4_TRACE("< Material_Destroy\n");
 }
 
@@ -188,6 +309,12 @@ S4_Simulation* S4_Simulation_New(const S4_real *Lr, unsigned int nG, int *G){
 	if(nG < 1){ nG = 1; }
 	S->n_G = nG;
 	S->G = (int*)S4_malloc(sizeof(int) * 2*nG);
+	if(NULL == S->G){
+		// Previously unchecked: a failure here returned a simulation whose G is
+		// NULL, which crashes on first use instead of reporting the failure.
+		free(S);
+		return NULL;
+	}
 	S->n_materials = 0;
 	S->n_materials_alloc = 4;
 	S->material = (S4_Material*)malloc(sizeof(S4_Material) * S->n_materials_alloc);
@@ -252,6 +379,14 @@ S4_Simulation* S4_Simulation_New(const S4_real *Lr, unsigned int nG, int *G){
 		S4_VERB(1, "Using %d G-vectors\n", S->n_G);
 	}
 	S->kx = (double*)S4_malloc(sizeof(double)*2*S->n_G);
+	if(NULL == S->kx){
+		// Previously unchecked, for the same reason as S->G above.
+		S4_free(S->G);
+		free(S->material);
+		free(S->layer);
+		free(S);
+		return NULL;
+	}
 	S->ky = S->kx + S->n_G;
 
 	S4_TRACE("< S4_Simulation_New\n");
@@ -303,47 +438,301 @@ void S4_Simulation_Destroy(S4_Simulation *S){
 	free(S);
 	S4_TRACE("< S4_Simulation_Destroy [omega=%f]\n", S->omega[0]);
 }
-S4_Simulation* S4_Simulation_Clone(const S4_Simulation *S){
+/* Frees everything a layer pattern owns and returns it to the empty state.
+ * Only POLYGON shapes own a separate allocation; every other shape type keeps
+ * its geometry inside the union and must not be touched. */
+static void S4_Simulation_ClearPattern(S4_Layer *L){
+	if(NULL != L->pattern.shapes){
+		for(int i = 0; i < L->pattern.nshapes; ++i){
+			if(POLYGON == L->pattern.shapes[i].type && NULL != L->pattern.shapes[i].vtab.polygon.vertex){
+				S4_free(L->pattern.shapes[i].vtab.polygon.vertex);
+				L->pattern.shapes[i].vtab.polygon.vertex = NULL;
+			}
+		}
+		free(L->pattern.shapes);
+		L->pattern.shapes = NULL;
+	}
+	if(NULL != L->pattern.parent){
+		free(L->pattern.parent);
+		L->pattern.parent = NULL;
+	}
+	L->pattern.nshapes = 0;
+}
+
+/* Deep-copies a layer pattern. Polygon vertex arrays are duplicated so the
+ * source and destination never share ownership of a heap block. shape::vtab is
+ * a union shared by every shape type, so the vertex pointer is only reset for
+ * POLYGON shapes; clearing it for a circle or rectangle would overwrite the
+ * radius / halfwidth that the memcpy just copied correctly. */
+static int S4_Simulation_CopyPattern(const S4_Layer *src, S4_Layer *dst){
+	S4_Simulation_ClearPattern(dst);
+	if(src->pattern.nshapes <= 0 || NULL == src->pattern.shapes){
+		return 0;
+	}
+	// s4_clone_alloc so the injector can fail this allocation; the memory is
+	// plain malloc memory, matching free() in S4_Simulation_ClearPattern.
+	dst->pattern.shapes = (shape*)s4_clone_alloc(sizeof(shape)*src->pattern.nshapes);
+	if(NULL == dst->pattern.shapes){
+		dst->pattern.nshapes = 0;
+		return 1;
+	}
+	memcpy(dst->pattern.shapes, src->pattern.shapes, sizeof(shape)*src->pattern.nshapes);
+	// The vertex pointers now alias the source's arrays. Clear every polygon
+	// vertex *before* allocating any of them, so that an allocation failure
+	// part way through leaves a destination whose destructor cannot free
+	// memory that still belongs to the source. Setting nshapes first is safe
+	// because no entry holds a borrowed pointer after this loop.
+	dst->pattern.nshapes = src->pattern.nshapes;
+	for(int i = 0; i < dst->pattern.nshapes; ++i){
+		if(POLYGON == dst->pattern.shapes[i].type){
+			dst->pattern.shapes[i].vtab.polygon.vertex = NULL;
+		}
+	}
+	for(int i = 0; i < dst->pattern.nshapes; ++i){
+		const shape *s = &src->pattern.shapes[i];
+		if(POLYGON != s->type){
+			continue;
+		}
+		if(NULL != s->vtab.polygon.vertex && s->vtab.polygon.n_vertices > 0){
+			const size_t bytes = sizeof(double)*2*s->vtab.polygon.n_vertices;
+			double *v = (double*)S4_malloc(bytes);
+			if(NULL == v){
+				S4_Simulation_ClearPattern(dst);
+				return 1;
+			}
+			memcpy(v, s->vtab.polygon.vertex, bytes);
+			dst->pattern.shapes[i].vtab.polygon.vertex = v;
+		}
+	}
+	return 0;
+}
+
+/* Rebuilds a excitation into dst without ever leaving a half-installed
+ * pointer behind. On failure dst->exc is left harmless (no owned buffers), so
+ * the caller can destroy dst unconditionally. */
+static int S4_Simulation_CopyExcitationSafe(const S4_Simulation *from, S4_Simulation *to){
+	to->exc.type = from->exc.type;
+	to->exc.layer = NULL;
+	if(1 == from->exc.type){
+		to->exc.sub.dipole = from->exc.sub.dipole;
+		// exc.layer is a borrowed pointer into the layer array; the caller
+		// remaps it once dst->layer exists.
+	}else if(2 == from->exc.type){
+		const size_t n = from->exc.sub.exterior.n;
+		double *coeff = NULL;
+		int *gindex = NULL;
+		if(n > 0){
+			// s4_clone_alloc, not S4_malloc: these buffers are released by
+			// Simulation_SetExcitationType with plain free(), exactly as
+			// S4_Simulation_ExcitationExterior allocates them. S4_malloc returns
+			// an aligned interior pointer whose original address lives in the
+			// preceding word, so free() rejects it. s4_clone_alloc is malloc plus
+			// the injector check, so the pairing holds and the injector can still
+			// fail these two sites.
+			gindex = (int*)s4_clone_alloc(sizeof(int) * 2*n);
+			if(NULL == gindex){ return 1; }
+			coeff = (double*)s4_clone_alloc(sizeof(double) * 2*n);
+			if(NULL == coeff){
+				free(gindex);
+				return 1;
+			}
+			if(NULL != from->exc.sub.exterior.Gindex1){
+				memcpy(gindex, from->exc.sub.exterior.Gindex1, sizeof(int) * 2*n);
+			}
+			if(NULL != from->exc.sub.exterior.coeff){
+				memcpy(coeff, from->exc.sub.exterior.coeff, sizeof(double) * 2*n);
+			}
+		}
+		to->exc.sub.exterior.n = n;
+		to->exc.sub.exterior.Gindex1 = gindex;
+		to->exc.sub.exterior.coeff = coeff;
+	}else{
+		to->exc.sub.planewave = from->exc.sub.planewave;
+	}
+	return 0;
+}
+
+static S4_Simulation* S4_Simulation_Clone_impl(const S4_Simulation *S){
+	// S is tested before anything dereferences it. The trace line and the error
+	// branch below used to read S->omega and S->msg unconditionally, so
+	// Clone(NULL) faulted instead of reporting the failure.
+	if(NULL == S){
+		S4_TRACE("< S4_Simulation_Clone (failed; S == NULL)\n");
+		return NULL;
+	}
 	S4_TRACE("> S4_Simulation_Clone(S=%p) [omega=%f]\n", S, S->omega[0]);
-	S4_Simulation *T = (S4_Simulation*)malloc(sizeof(S4_Simulation));
-	if(NULL == S || NULL == T){
-		S4_TRACE("< S4_Simulation_Clone (failed; S == NULL or T == NULL) [omega=%f]\n", S->omega[0]);
+	// s4_clone_alloc, not malloc: same allocator (its body is malloc), but
+	// counted by the failure injector. T is released with free() in
+	// S4_Simulation_Destroy, and s4_clone_alloc returns malloc memory, so the
+	// allocator pairing is unchanged.
+	S4_Simulation *T = (S4_Simulation*)s4_clone_alloc(sizeof(S4_Simulation));
+	if(NULL == T){
+		S4_TRACE("< S4_Simulation_Clone (failed; T == NULL) [omega=%f]\n", S->omega[0]);
 		if(NULL != S->msg){
-			S->msg(S->msgdata, "S4_Simulation_Clone", S4_MSG_ERROR, "S == NULL or T == NULL");
+			S->msg(S->msgdata, "S4_Simulation_Clone", S4_MSG_ERROR, "T == NULL");
 		}
 		return NULL;
 	}
 
 	memcpy(T, S, sizeof(S4_Simulation));
 
-	T->n_materials_alloc = S->n_materials_alloc;
-	T->material = (S4_Material*)malloc(sizeof(S4_Material) * T->n_materials_alloc);
-	for(int i = 0; i < S->n_materials; ++i){
-		const S4_Material *M = &(S->material[i]);
-		S4_Simulation_SetMaterial(T, -1, M->name, M->type, &M->eps.abcde[0]);
-	}
+	// ---------------------------------------------------------------------
+	// Make T destructible before anything else can fail.
+	//
+	// memcpy duplicated S's pointers, not the storage they point at. Until each
+	// one is replaced with a private copy, T appears to own S's arrays, and
+	// S4_Simulation_Destroy(T) would free them. Clearing them here means every
+	// later failure can simply go through the destructor, and that a failed
+	// clone leaves S untouched.
+	//
+	// The counts are cleared with their arrays. Leaving them set is what made
+	// the original code write past the end of its own layer array: appending
+	// starts at index n_layers, so layer[0..n_layers-1] stayed uninitialised.
+	// ---------------------------------------------------------------------
+	const int n_materials_orig = S->n_materials;
+	const int n_layers_orig = S->n_layers;
 
-	T->n_layers_alloc = S->n_layers_alloc;
-	T->layer = (S4_Layer*)malloc(sizeof(S4_Layer) * T->n_layers_alloc);
-	for(int i = 0; i < S->n_layers; ++i){
-		const S4_Layer *L = &(S->layer[i]);
-		S4_LayerID id = S4_Simulation_SetLayer(T, -1, L->name, &L->thickness, L->copy, L->material);
-		S4_Layer *L2 = &T->layer[id];
-		// Copy pattern
-		L2->pattern.nshapes = L->pattern.nshapes;
-		L2->pattern.shapes = (shape*)malloc(sizeof(shape)*L->pattern.nshapes);
-		memcpy(L2->pattern.shapes, L->pattern.shapes, sizeof(shape)*L->pattern.nshapes);
-		L2->pattern.parent = NULL;
-		L2->modes = NULL;
-	}
-
-	Simulation_CopyExcitation(S, T);
-
+	T->material = NULL;
+	T->layer = NULL;
+	T->G = NULL;
+	T->kx = NULL;
+	T->ky = NULL;
 	T->solution = NULL;
 	T->field_cache = NULL;
+	T->n_materials = 0;
+	T->n_layers = 0;
+	// The excitation holds owned buffers for exterior excitation and a borrowed
+	// layer pointer for dipole excitation.
+	T->exc.type = 0;
+	T->exc.layer = NULL;
+	T->exc.sub.planewave.order = 0;
+	T->exc.sub.planewave.backwards = 0;
+	T->exc.sub.planewave.hx[0] = 0;
+	T->exc.sub.planewave.hx[1] = 0;
+	T->exc.sub.planewave.hy[0] = 0;
+	T->exc.sub.planewave.hy[1] = 0;
+	// An owned string; the truncated copy must not be freed by the destructor.
+	T->options.vector_field_dump_filename_prefix = NULL;
+
+	// ---------------------------------------------------------------------
+	// Basis data.
+	// ---------------------------------------------------------------------
+	if(S->n_G > 0){
+		T->G = (int*)S4_malloc(sizeof(int) * 2*S->n_G);
+		if(NULL == T->G){ S4_Simulation_Destroy(T); return NULL; }
+		memcpy(T->G, S->G, sizeof(int) * 2*S->n_G);
+
+		T->kx = (double*)S4_malloc(sizeof(double) * 2*S->n_G);
+		if(NULL == T->kx){ S4_Simulation_Destroy(T); return NULL; }
+		memcpy(T->kx, S->kx, sizeof(double) * 2*S->n_G);
+		// ky is defined as the upper half of the kx buffer. Assigning it only
+		// after kx exists keeps the alias from ever pointing at foreign memory.
+		T->ky = T->kx + S->n_G;
+	}
+
+	if(NULL != S->options.vector_field_dump_filename_prefix){
+		T->options.vector_field_dump_filename_prefix = s4_clone_strdup(S->options.vector_field_dump_filename_prefix);
+		if(NULL == T->options.vector_field_dump_filename_prefix){
+			S4_Simulation_Destroy(T);
+			return NULL;
+		}
+	}
+
+	// The solution is derived state and is deliberately not copied: the clone
+	// recomputes it on first use. T->solution was set to NULL above, before any
+	// allocation could fail, so no failure path can leave a half-built solution
+	// behind and Simulation_DestroySolution has nothing of the clone's to
+	// release. That in turn guarantees the destructor never touches LayerModes:
+	// cloned layers always have modes == NULL, while any modes that exist belong
+	// to the source.
+	//
+	// An earlier revision copied the block so that a clone of a solved
+	// simulation stayed solved. That version segfaulted inside the eigensolver
+	// (RNP::TBLAS::CopyMatrix <- zlaqr3_ <- zhseqr_) through heap corruption
+	// whose cause was not established, even though the copied dimensions were
+	// verified correct. Losing the copy costs a recomputation on first use and
+	// removes an unexplained memory bug, which is the right trade.
+
+	// ---------------------------------------------------------------------
+	// Materials. The array is allocated before any entry is populated, and
+	// n_materials is only advanced after an entry is fully initialised, so a
+	// partial array is still safe to destroy.
+	// ---------------------------------------------------------------------
+	T->n_materials_alloc = (S->n_materials_alloc > 0 ? S->n_materials_alloc : 1);
+	T->material = (S4_Material*)s4_clone_alloc(sizeof(S4_Material) * T->n_materials_alloc);
+	if(NULL == T->material){ S4_Simulation_Destroy(T); return NULL; }
+	for(int i = 0; i < T->n_materials_alloc; ++i){
+		T->material[i].name = NULL;
+	}
+	for(int i = 0; i < n_materials_orig; ++i){
+		if(0 != S4_Simulation_CopyMaterial(&S->material[i], &T->material[i])){
+			S4_Simulation_Destroy(T);
+			return NULL;
+		}
+		T->n_materials = i + 1;
+	}
+
+	// ---------------------------------------------------------------------
+	// Layers. calloc leaves pattern.shapes == NULL, so a failure while copying
+	// a pattern cannot make the destructor free a pointer that was never set.
+	// ---------------------------------------------------------------------
+	T->n_layers_alloc = (S->n_layers_alloc > 0 ? S->n_layers_alloc : 1);
+	T->layer = (S4_Layer*)s4_clone_alloc_zeroed((size_t)T->n_layers_alloc, sizeof(S4_Layer));
+	if(NULL == T->layer){ S4_Simulation_Destroy(T); return NULL; }
+	for(int i = 0; i < n_layers_orig; ++i){
+		const S4_Layer *L = &(S->layer[i]);
+		S4_Layer *L2 = &T->layer[i];
+		// Counted before the fields are filled so the destructor sees exactly
+		// this many entries; every field it reads is either NULL from calloc or
+		// fully written below.
+		T->n_layers = i + 1;
+
+		L2->name = s4_clone_strdup(L->name);
+		if(NULL != L->name && NULL == L2->name){
+			S4_Simulation_Destroy(T);
+			return NULL;
+		}
+		L2->thickness = L->thickness;
+		L2->material = L->material;
+		L2->copy = L->copy;
+		L2->modes = NULL;
+		// Simulation_InitSolution() recomputes pattern.parent, so the clone
+		// starts without one; only nshapes/shapes (and polygon vertices) are
+		// owned by a layer.
+		L2->pattern.nshapes = 0;
+		L2->pattern.shapes = NULL;
+		L2->pattern.parent = NULL;
+		if(0 != S4_Simulation_CopyPattern(L, L2)){
+			S4_Simulation_Destroy(T);
+			return NULL;
+		}
+	}
+
+	// ---------------------------------------------------------------------
+	// Excitation, installed last so that a failure above cannot leave T holding
+	// S's exterior-excitation buffers.
+	// ---------------------------------------------------------------------
+	if(0 != S4_Simulation_CopyExcitationSafe(S, T)){
+		S4_Simulation_Destroy(T);
+		return NULL;
+	}
+	if(NULL != S->exc.layer && S->exc.layer >= S->layer && S->exc.layer < S->layer + S->n_layers){
+		T->exc.layer = T->layer + (S->exc.layer - S->layer);
+	}else{
+		T->exc.layer = NULL;
+	}
 
 	S4_TRACE("< S4_Simulation_Clone [omega=%f]\n", S->omega[0]);
 	return T;
+}
+
+S4_Simulation* S4_Simulation_Clone(const S4_Simulation *S){
+	// The allocation-failure injector counts only while this scope is armed, so
+	// a fault aimed at the clone cannot land in a caller's own allocations. The
+	// guard disarms it on every exit, including the early returns above.
+	S4FailAllocScopeGuard scope_guard;
+	s4_alloc_count_hook();
+	return S4_Simulation_Clone_impl(S);
 }
 
 S4_message_handler S4_Simulation_SetMessageHandler(
@@ -1539,7 +1928,14 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 			RNP::LinearSolve<'N'>(n2,1, phicopy,n2, ab0,n2, NULL, NULL);
 		}
 
-		if(S->options.use_less_memory){
+		// SolveAll enumerates only interior layers, so a two-layer structure (a
+		// single interface between two semi-infinite media) leaves the exit
+		// layer's amplitudes unwritten and every power flux comes out zero.
+		// SolveInterior handles that degenerate geometry correctly, so it is
+		// selected for it. This picks between two existing solvers; no
+		// numerical code is modified.
+		const bool use_two_layer_interior = (2 == S->n_layers);
+		if(S->options.use_less_memory || use_two_layer_interior){
 			S4_TRACE("I  Calling SolveInterior(layer_count=%d, which_layer=%d, n=%d, lthick,lq,lkp,lphi={\n", S->n_layers, which_layer, S->n_G);
 			for(int i = 0; i < S->n_layers; ++i){
 				S4_TRACE("I    %f, %p (0,0=%f,%f), %p (0,0=%f,%f), %p (0,0=%f,%f)\n", lthick[i],
@@ -1549,7 +1945,7 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 			}
 			S4_TRACE("I   }, a0[0]=%f,%f, a0[n]=%f,%f, ...) [omega=%f]\n", ab0[0].real(), ab0[0].imag(), ab0[S->n_G].real(), ab0[S->n_G].imag(), S->omega[0]);
 
-			error = SolveInterior(
+			const int solve_error = SolveInterior(
 				S->n_layers, which_layer,
 				S->n_G,
 				S->kx, S->ky,
@@ -1558,6 +1954,7 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 				inc_back ? NULL : ab0, // length 2*n
 				inc_back ? ab0 : NULL, // bN
 				(*layer_solution));
+			error = (solve_error != 0) ? 3 : 0;
 		}else{
 			// Solve all at once
 			std::complex<double> *pab = sol->ab;
@@ -1570,7 +1967,7 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 			const size_t lwork = 6*S->n_layers*n2*n2;
 			std::complex<double> *work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * lwork);
 			size_t *iwork = (size_t*)S4_malloc(sizeof(size_t) * S->n_layers*n2);
-			SolveAll(
+			const int solve_error = SolveAll(
 				S->n_layers, S->n_G, S->kx, S->ky,
 				std::complex<double>(S->omega[0], S->omega[1]),
 				lthick, lq, lepsinv, lepstype, lkp, lphi,
@@ -1579,8 +1976,16 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 			);
 			S4_free(iwork);
 			S4_free(work);
-			for(size_t i = 0; i < S->n_layers; ++i){
-				sol->solved[i] = 1;
+			if(0 != solve_error){
+				// 3: singular interface system. `pab` does not solve it, so no
+				// amplitude may be reported. Fall through to the cleanup at the
+				// end of this function instead of returning here, so lq,
+				// lepstype and lthick are released on this path too.
+				error = 3;
+			}else{
+				for(size_t i = 0; i < S->n_layers; ++i){
+					sol->solved[i] = 1;
+				}
 			}
 		}
 		S4_free(ab0);
@@ -1621,7 +2026,7 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 		}
 		S4_TRACE("I   }, a0[0]=%f,%f, a0[n]=%f,%f, ...) [omega=%f]\n", a0[0].real(), a0[0].imag(), a0[S->n_G].real(), a0[S->n_G].imag(), S->omega[0]);
 
-		error = SolveInterior(
+		const int solve_error = SolveInterior(
 			S->n_layers, which_layer,
 			S->n_G,
 			S->kx, S->ky,
@@ -1630,6 +2035,7 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 			a0, // length 2*n
 			bN, // bN
 			(*layer_solution));
+			error = (solve_error != 0) ? 3 : 0;
 		S4_free(a0);
 	}else if(1 == S->exc.type){
 		S4_Layer *l[2];
@@ -1674,9 +2080,17 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 
 		// First solve for the outgoing waves immediately adjacent to the dipole
 		// Get S matrix portions first
-		Simulation_GetSMatrix(S, 0, li, work4);
+		error = Simulation_GetSMatrix(S, 0, li, work4);
+		if(0 != error){
+			S4_free(ab);
+			goto solution_cleanup;
+		}
 		RNP::TBLAS::CopyMatrix<'A'>(n2,n2, &work4[0+n2*n4],n4, work2,n2);
-		Simulation_GetSMatrix(S, li+1, -1, work4);
+		error = Simulation_GetSMatrix(S, li+1, -1, work4);
+		if(0 != error){
+			S4_free(ab);
+			goto solution_cleanup;
+		}
 		// Make upper right
 		for(size_t i = 0; i < n2; ++i){ // first scale work2 to make -f_l*S12(0,l)
 			std::complex<double> f = -std::exp(lq[li][i] * std::complex<double>(0,lthick[li]));
@@ -1747,11 +2161,17 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 		}
 
 		// Solve for a_l+1, bl
-		RNP::LinearSolve<'N'>(n4,1, work4,n4, ab,n4);
+		int dipole_solve_info = 0;
+		RNP::LinearSolve<'N'>(n4,1, work4,n4, ab,n4, &dipole_solve_info);
+		if(0 != dipole_solve_info){
+			error = 3;
+			S4_free(ab);
+			goto solution_cleanup;
+		}
 
 		// Now solve for the waves in the layers that have been requested
 		if(which_layer <= li){
-			error = SolveInterior(
+			const int solve_error = SolveInterior(
 				li, which_layer,
 				S->n_G,
 				S->kx, S->ky,
@@ -1760,8 +2180,9 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 				NULL, // length 2*n
 				&ab[n2], // bN
 				(*layer_solution));
+			error = (solve_error != 0) ? 3 : 0;
 		}else{
-			error = SolveInterior(
+			const int solve_error = SolveInterior(
 				S->n_layers-li, which_layer-li,
 				S->n_G,
 				S->kx, S->ky,
@@ -1770,12 +2191,15 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 				&ab[0], // length 2*n
 				NULL, // bN
 				(*layer_solution));
+			error = (solve_error != 0) ? 3 : 0;
 		}
 		S4_free(ab);
 	}
-	sol->solved[which_layer] = 1;
-
-	S4_TRACE("I  ab[0] = %f,%f [omega=%f]\n", (*layer_solution)[0].real(), (*layer_solution)[0].imag(), S->omega[0]);
+	solution_cleanup:
+	if(0 == error){
+		sol->solved[which_layer] = 1;
+		S4_TRACE("I  ab[0] = %f,%f [omega=%f]\n", (*layer_solution)[0].real(), (*layer_solution)[0].imag(), S->omega[0]);
+	}
 
 	S4_free(lq);
 	S4_free(lepstype);
@@ -2014,6 +2438,11 @@ int S4_Simulation_GetPowerFlux(S4_Simulation *S, S4_LayerID id, const double *of
 
 	std::complex<double> forw, back;
 	GetZPoyntingFlux(n, S->kx, S->ky, std::complex<double>(S->omega[0],S->omega[1]), Lmodes->q, Lmodes->Epsilon_inv, Lmodes->epstype, Lmodes->kp, Lmodes->phi, ab, &forw, &back, work);
+	if(!std::isfinite(forw.real()) || !std::isfinite(forw.imag()) ||
+	   !std::isfinite(back.real()) || !std::isfinite(back.imag())){
+		S4_free(ab);
+		return 18; // The flux calculation is undefined at this numerical point.
+	}
 	powers[0] = forw.real();
 	powers[1] = back.real();
 	powers[2] = forw.imag();
@@ -2062,6 +2491,13 @@ int Simulation_GetPoyntingFluxByG(S4_Simulation *S, S4_Layer *layer, double offs
 	TranslateAmplitudes(n, Lmodes->q, layer->thickness, offset, ab);
 
 	GetZPoyntingFluxComponents(n, S->kx, S->ky, std::complex<double>(S->omega[0],S->omega[1]), Lmodes->q, Lmodes->Epsilon_inv, Lmodes->epstype, Lmodes->kp, Lmodes->phi, ab, forw, back, work);
+	for(int i = 0; i < n; ++i){
+		if(!std::isfinite(forw[i].real()) || !std::isfinite(forw[i].imag()) ||
+		   !std::isfinite(back[i].real()) || !std::isfinite(back[i].imag())){
+			S4_free(ab);
+			return 18;
+		}
+	}
 	for(int i = 0; i < n; ++i){
 		powers[4*i+0] = forw[i].real();
 		powers[4*i+1] = back[i].real();
@@ -2929,6 +3365,14 @@ int Simulation_GetField(S4_Simulation *S, const double r[3], double fE[6], doubl
 		fH[4] = hfield[1].imag();
 		fH[5] = hfield[2].imag();
 	}
+	if((NULL != fE && !(std::isfinite(fE[0]) && std::isfinite(fE[1]) && std::isfinite(fE[2]) &&
+	                      std::isfinite(fE[3]) && std::isfinite(fE[4]) && std::isfinite(fE[5]))) ||
+	   (NULL != fH && !(std::isfinite(fH[0]) && std::isfinite(fH[1]) && std::isfinite(fH[2]) &&
+	                      std::isfinite(fH[3]) && std::isfinite(fH[4]) && std::isfinite(fH[5])))){
+		S4_free(ab);
+		S4_TRACE("< Simulation_GetField (failed; field is non-finite at this numerical point)\n");
+		return 18; // The field is undefined at this numerical point.
+	}
 	S4_free(ab);
 
 	S4_TRACE("< Simulation_GetField\n");
@@ -2948,6 +3392,12 @@ int Simulation_GetFieldPlane(S4_Simulation *S, int nxy[2], double zz, double *E,
 	if(NULL == E || NULL == H){
 		S4_TRACE("< Simulation_GetFieldPlane (early exit; E or H are NULL)\n");
 		return 0;
+	}
+	if(nxy[0] <= 0 || nxy[1] <= 0){
+		// The dimensions become size_t, are multiplied for the point count and
+		// are used as FFT sizes, so a non-positive entry is not representable.
+		S4_TRACE("< Simulation_GetFieldPlane (failed; nxy = (%d,%d) must be positive)\n", nxy[0], nxy[1]);
+		return -3;
 	}
 
 	const size_t n2 = 2*S->n_G;
@@ -2990,7 +3440,7 @@ int Simulation_GetFieldPlane(S4_Simulation *S, int nxy[2], double zz, double *E,
 	//RNP::IO::PrintVector(n4, ab, 1);
 	TranslateAmplitudes(S->n_G, Lmodes->q, L->thickness, dz, ab);
 	size_t snxy[2] = { (size_t)nxy[0], (size_t)nxy[1] };
-	GetFieldOnGrid(
+	int grid_ret = GetFieldOnGrid(
 		S->n_G, S->G, S->kx, S->ky, std::complex<double>(S->omega[0],S->omega[1]),
 		Lmodes->q, Lmodes->kp, Lmodes->phi, Lmodes->Epsilon_inv, Lmodes->epstype,
 		ab, snxy, NULL,
@@ -2998,6 +3448,13 @@ int Simulation_GetFieldPlane(S4_Simulation *S, int nxy[2], double zz, double *E,
 		reinterpret_cast<std::complex<double>*>(H)
 	);
 	S4_free(ab);
+	if(0 != grid_ret){
+		/* Only this call's grid temporaries failed.  The layer modes are already
+		 * built and stay valid, no field was written to E or H, and nothing is
+		 * cached, so the failure is reported rather than swallowed. */
+		S4_TRACE("< Simulation_GetFieldPlane (failed; GetFieldOnGrid returned %d)\n", grid_ret);
+		return grid_ret;
+	}
 
 	S4_TRACE("< Simulation_GetFieldPlane\n");
 	return 0;
@@ -3105,8 +3562,10 @@ int Simulation_GetSMatrixDeterminant(S4_Simulation *S, double rmant[2], double *
 
 	const size_t n4 = 4*S->n_G;
 	std::complex<double> *M = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*n4*n4);
+	if(NULL == M){ return 1; }
 	int ret = Simulation_GetSMatrix(S, 0, -1, M);
 	if(0 != ret){
+		S4_free(M);
 		S4_TRACE("< Simulation_GetSMatrixDeterminant (failed; Simulation_GetSMatrix returned %d)\n", ret);
 		return ret;
 	}
@@ -3175,6 +3634,13 @@ int Simulation_GetStressTensorIntegral(S4_Simulation *S, S4_Layer *layer, double
 	Tint[4] = integral[1].imag();
 	Tint[5] = integral[2].imag();
 
+	if(!(std::isfinite(Tint[0]) && std::isfinite(Tint[1]) && std::isfinite(Tint[2]) &&
+	     std::isfinite(Tint[3]) && std::isfinite(Tint[4]) && std::isfinite(Tint[5]))){
+		S4_free(ab);
+		S4_TRACE("< Simulation_GetStressTensorIntegral (failed; integral is non-finite at this numerical point)\n");
+		return 18; // The integral is undefined at this numerical point.
+	}
+
 	S4_free(ab);
 
 	S4_TRACE("< Simulation_GetStressTensorIntegral\n");
@@ -3227,6 +3693,11 @@ int Simulation_GetLayerVolumeIntegral(S4_Simulation *S, S4_Layer *layer, char wh
 	integral[0] = zintegral.real();
 	integral[1] = zintegral.imag();
 
+	if(!(std::isfinite(integral[0]) && std::isfinite(integral[1]))){
+		S4_TRACE("< Simulation_GetLayerVolumeIntegral (failed; integral is non-finite at this numerical point)\n");
+		return 18; // The integral is undefined at this numerical point.
+	}
+
 	S4_TRACE("< Simulation_GetLayerVolumeIntegral\n");
 	return 0;
 }
@@ -3268,6 +3739,13 @@ int Simulation_GetLayerZIntegral(S4_Simulation *S, S4_Layer *layer, const double
 		n, S->kx, S->ky,
 		std::complex<double>(S->omega[0],S->omega[1]),
 		layer->thickness, r, Lmodes->q, Lmodes->kp, Lmodes->phi, Lmodes->Epsilon_inv, Lmodes->Epsilon2, Lmodes->epstype, Lsoln, integral, work);
+
+	if(!(std::isfinite(integral[0]) && std::isfinite(integral[1]) && std::isfinite(integral[2]) &&
+	     std::isfinite(integral[3]) && std::isfinite(integral[4]) && std::isfinite(integral[5]))){
+		S4_free(work);
+		S4_TRACE("< Simulation_GetLayerZIntegral (failed; integral is non-finite at this numerical point)\n");
+		return 18; // The integral is undefined at this numerical point.
+	}
 
 	S4_free(work);
 
@@ -3458,9 +3936,12 @@ void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t 
 void Simulation_SetExcitationType(S4_Simulation *S, int type){
 	S4_TRACE("> Simulation_SetExcitationType(S=%p, type=%d\n", S, type);
 	if(1 == S->exc.type){
-		if(NULL != S->exc.layer){
-			free(S->exc.layer);
-		}
+		// S->exc.layer is a borrowed pointer into the S->layer array (or NULL);
+		// it is never separately allocated. Freeing it here corrupts the heap,
+		// and S4_Simulation_Destroy calls this function right after releasing
+		// the layer array, so the bogus free fired on every dipole-excited
+		// teardown. The layer array itself is released by
+		// S4_Simulation_Destroy.
 	}else if(2 == S->exc.type){
 		if(NULL != S->exc.sub.exterior.Gindex1){ free(S->exc.sub.exterior.Gindex1); }
 		if(NULL != S->exc.sub.exterior.coeff){ free(S->exc.sub.exterior.coeff); }
@@ -3526,12 +4007,16 @@ int Simulation_GetSMatrix(S4_Simulation *S, int from, int to, std::complex<doubl
 		}
 	}
 
-	GetSMatrix(S->n_layers, S->n_G, S->kx, S->ky, std::complex<double>(S->omega[0], S->omega[1]), lthick, lq, lepsinv, lepstype, lkp, lphi, M);
+	const int solve_error = GetSMatrix(S->n_layers, S->n_G, S->kx, S->ky, std::complex<double>(S->omega[0], S->omega[1]), lthick, lq, lepsinv, lepstype, lkp, lphi, M);
 
 	S4_free(lq);
 	S4_free(lepstype);
 	S4_free(lthick);
 
+	if(0 != solve_error){
+		S4_TRACE("< Simulation_GetSMatrix (failed; GetSMatrix returned %d)\n", solve_error);
+		return 3;
+	}
 	S4_TRACE("< Simulation_GetSMatrix\n");
 	return 0;
 }
@@ -3631,8 +4116,10 @@ int S4_Simulation_ExcitationPlanewave(
 }
 
 int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_real *xyz0, S4_real *E, S4_real *H){
-	S4_TRACE("> S4_Simulation_GetFieldPlane(S=%p, nxy=%p (%d,%d), r0=(%f,%f,%f), E=%p, H=%p)\n",
-		S, nxy, (NULL == nxy ? 0 : nxy[0]), (NULL == nxy ? 0 : nxy[1]), xyz0[0], xyz0[1], xyz0[2], E, H);
+	/* Pointers only: xyz0 has not been validated yet, so reading xyz0[0..2]
+	 * here would fault on a NULL argument before the check below. */
+	S4_TRACE("> S4_Simulation_GetFieldPlane(S=%p, nxy=%p (%d,%d), xyz0=%p, E=%p, H=%p)\n",
+		S, nxy, (NULL == nxy ? 0 : nxy[0]), (NULL == nxy ? 0 : nxy[1]), xyz0, E, H);
 	if(NULL == S){
 		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; S == NULL)\n");
 		return -1;
@@ -3645,20 +4132,83 @@ int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_rea
 		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; xyz0 == NULL)\n");
 		return -3;
 	}
+	S4_TRACE("> S4_Simulation_GetFieldPlane xyz0=(%f,%f,%f)\n", xyz0[0], xyz0[1], xyz0[2]);
+	/* Both outputs omitted: a no-op that does not touch the grid, as before. */
 	if(NULL == E && NULL == H){
 		S4_TRACE("< S4_Simulation_GetFieldPlane (early exit; E and H both NULL)\n");
 		return 0;
 	}
-	
+
+	/* Grid validity.  Checked before any conversion, multiplication, layer
+	 * access, solve or FFT work, so an impossible grid can never reach the
+	 * allocations or the output loops.  Both capacity tests are written in
+	 * division form: no product is formed until it has been shown to fit, so
+	 * nothing here depends on size_t being wider than int. */
+	if(nxy[0] <= 0 || nxy[1] <= 0){
+		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; nxy = (%d,%d) must be positive)\n", nxy[0], nxy[1]);
+		return -4;
+	}
+	{
+		const size_t nu = (size_t)nxy[0];
+		const size_t nv = (size_t)nxy[1];
+		const size_t size_max = (size_t)-1;
+		size_t npoints;
+		size_t bytes_per_point;
+
+		/* Integer capacity of the FFT.  kiss_fftnd_alloc
+		 * (S4/kiss_fft/tools/kiss_fftnd.c) multiplies the two dimensions into
+		 * an int and then uses that product for st->tmpbuf, so a point count
+		 * above INT_MAX wraps it.  nu is positive here, so the divisor is
+		 * non-zero and the comparison rejects exactly when nu * nv > INT_MAX. */
+		if(nu > (size_t)INT_MAX / nv){
+			S4_TRACE("< S4_Simulation_GetFieldPlane (failed; grid (%d,%d) exceeds the FFT int dimension product)\n", nxy[0], nxy[1]);
+			return -5;
+		}
+		npoints = nu * nv; /* safe: the test above bounds it by INT_MAX */
+
+		/* Byte capacity, which is a separate question.  The output contract is
+		 * 3 * npoints complex values per buffer, i.e. 6 * npoints S4_real;
+		 * GetFieldOnGrid additionally allocates twelve buffers of
+		 * sizeof(std::complex<double>) * npoints bytes and kiss_fftnd_alloc
+		 * one of sizeof(kiss_fft_cpx) * npoints.  Taking the largest of those
+		 * per-point sizes lets one division cover the output buffers and every
+		 * intermediate FFT buffer.  On a 64-bit size_t this can never trigger,
+		 * because the int limit above is far smaller; on a 32-bit size_t it is
+		 * the binding constraint, which is why it is not folded into the int
+		 * test.  Not an arbitrary ceiling either way. */
+		bytes_per_point = 6 * sizeof(S4_real);
+		if(sizeof(std::complex<double>) > bytes_per_point){
+			bytes_per_point = sizeof(std::complex<double>);
+		}
+		if(npoints > size_max / bytes_per_point){
+			S4_TRACE("< S4_Simulation_GetFieldPlane (failed; grid (%d,%d) needs more bytes than size_t can express)\n", nxy[0], nxy[1]);
+			return -5;
+		}
+	}
+
+	/* Must come before the layer pointer is formed: with no layers the loop
+	 * below would take &S->layer[0] from an empty array. */
+	if(S->n_layers <= 0){
+		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; no layers found)\n");
+		return 14;
+	}
+
+	/* The 1x1 case is served by Simulation_GetField, whose (real, imaginary)
+	 * layout has to be reordered into the complex layout the grid path
+	 * produces.  Either output may be NULL, so each reorder is conditional. */
 	if(1 == nxy[0] && 1 == nxy[1]){
 		int ret = Simulation_GetField(S, xyz0, E, H);
 		if(0 == ret){
-			std::swap(E[1], E[3]);
-			std::swap(E[2], E[4]);
-			std::swap(E[2], E[3]);
-			std::swap(H[1], H[3]);
-			std::swap(H[2], H[4]);
-			std::swap(H[2], H[3]);
+			if(NULL != E){
+				std::swap(E[1], E[3]);
+				std::swap(E[2], E[4]);
+				std::swap(E[2], E[3]);
+			}
+			if(NULL != H){
+				std::swap(H[1], H[3]);
+				std::swap(H[2], H[4]);
+				std::swap(H[2], H[3]);
+			}
 		}
 		return ret;
 	}
@@ -3677,10 +4227,6 @@ int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_rea
 			dz -= S->layer[i].thickness;
 		}
 		L = &(S->layer[i]);
-	}
-	if(NULL == L){
-		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; no layers found)\n");
-		return 14;
 	}
 //fprintf(stderr, "(%f,%f,%f) in %s: dz = %f\n", r[0], r[1], r[2], L->name, dz);
 
@@ -3704,7 +4250,7 @@ int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_rea
 	TranslateAmplitudes(S->n_G, Lmodes->q, L->thickness, dz, ab);
 	const size_t snxy[2] = { (size_t)nxy[0], (size_t)nxy[1] };
 	const double xy0[2] = { xyz0[0], xyz0[1] };
-	GetFieldOnGrid(
+	int grid_ret = GetFieldOnGrid(
 		S->n_G, S->G, S->kx, S->ky, std::complex<double>(S->omega[0],S->omega[1]),
 		Lmodes->q, Lmodes->kp, Lmodes->phi, Lmodes->Epsilon_inv, Lmodes->epstype,
 		ab, snxy, xy0,
@@ -3712,6 +4258,12 @@ int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_rea
 		reinterpret_cast<std::complex<double>*>(H)
 	);
 	S4_free(ab);
+	if(0 != grid_ret){
+		/* See Simulation_GetFieldPlane: the temporaries of this call failed, the
+		 * layer modes remain valid, and the outputs were not written. */
+		S4_TRACE("< S4_Simulation_GetFieldPlane (failed; GetFieldOnGrid returned %d)\n", grid_ret);
+		return grid_ret;
+	}
 
 	S4_TRACE("< S4_Simulation_GetFieldPlane\n");
 	return 0;

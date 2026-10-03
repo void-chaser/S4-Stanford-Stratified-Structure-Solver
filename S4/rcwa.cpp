@@ -195,10 +195,16 @@ extern "C" void zgetri_(
 	const int *ipiv, std::complex<double> *work, const int &lwork, int *info
 );
 static int Invert(size_t n, std::complex<double> *a, size_t lda, std::complex<double> *work, size_t lwork, size_t *iwork){
-	int info;
-	zgetrf_(n, n, a, lda, (int*)iwork, &info);
-	zgetri_(n, a, lda, (int*)iwork, work, lwork, &info);
-	return info;
+	// Report a singular factorization instead of letting the second call
+	// overwrite its status: inverting a singular factorization is not a valid
+	// inversion, and the caller must not use the result.
+	int factor_info = 0;
+	int invert_info = 0;
+	zgetrf_(n, n, a, lda, (int*)iwork, &factor_info);
+	if(0 == factor_info){
+		zgetri_(n, a, lda, (int*)iwork, work, lwork, &invert_info);
+	}
+	return (0 != factor_info) ? factor_info : invert_info;
 }
 
 static void Mult(size_t n, const double &alpha, const std::complex<double> *a, size_t lda, std::complex<double> *b, size_t ldb, const double &beta, std::complex<double> *c, size_t ldc){
@@ -207,6 +213,21 @@ static void Mult(size_t n, const double &alpha, const std::complex<double> *a, s
 static void Mult(size_t n, size_t m, const double &alpha, const std::complex<double> *a, size_t lda, std::complex<double> *b, const double &beta, std::complex<double> *c){
 	zgemv_("N", n, m, alpha, a, lda, b, 1, beta, c, 1);
 }
+// Record the first non-zero status from a factorization or triangular solve.
+// A factorization that reported an exact zero pivot must not be used by the
+// solves that follow it.
+static inline void S4_RecordSolveInfo(int info, int *solve_failed){
+	if(0 != info && 0 == *solve_failed){ *solve_failed = info; }
+}
+
+// Record the first non-zero status and abandon the remaining work immediately:
+// every later step of these routines depends on the factorization or triangular
+// solve that just failed, so continuing would compute with an unsolved right
+// hand side or a singular factorization.  Each using function places an
+// S4_SOLVE_DONE label on its common cleanup path.
+#define S4_RECORD_OR_DONE(info, failed) \
+	do { S4_RecordSolveInfo((info), &(failed)); if(0 != (failed)){ goto S4_SOLVE_DONE; } } while(0)
+
 static int LUFactor(size_t n, std::complex<double> *a, size_t lda, size_t *ipiv){
 	int info = 0;
 	zgetrf_(n, n, a, lda, (int*)ipiv, &info); // A = P*L*U
@@ -887,7 +908,7 @@ void InitSMatrix(
 	const size_t n4 = 4*n;
 	RNP::TBLAS::SetMatrix<'A'>(n4,n4, 0.,1., S, n4);
 }
-void GetSMatrix(
+int GetSMatrix(
 	size_t nlayers,
 	size_t n, // glist.n
 	const double *kx, const double *ky,
@@ -903,13 +924,13 @@ void GetSMatrix(
 	size_t *iwork,
 	size_t lwork
 ){
-	if(0 == nlayers){ return; }
+	if(0 == nlayers){ return 0; }
 	const size_t n2 = 2*n;
 	const size_t n4 = 2*n2;
 
 	if((size_t)-1 == lwork){
 		work_[0] = n4*(n4+1);
-		return;
+		return 0;
 	}
 	std::complex<double> *work = work_;
 	if(NULL == work_ || lwork < n4*(n4+1)){
@@ -919,6 +940,7 @@ void GetSMatrix(
 	if(NULL == iwork){
 		pivots = (size_t*)rcwa_malloc(sizeof(size_t)*n4);
 	}
+	int solve_failed = 0;
 
 	RNP::TBLAS::SetMatrix<'A'>(n4,n4, 0.,1., S, n4);
 
@@ -1056,8 +1078,9 @@ void GetSMatrix(
 #endif
 			int solve_info;
 			// Make Q in in1
-			//RNP::LinearSolve<'N'>(n2, n2, t1, n2, in1, n2, &solve_info, pivots);
-			SingularLinearSolve(n2,n2,n2, t1,n2, in1,n2, DBL_EPSILON);
+			RNP::LinearSolve<'N'>(n2, n2, t1, n2, in1, n2, &solve_info, pivots);
+			S4_RECORD_OR_DONE(solve_info, solve_failed);
+			//SingularLinearSolve(n2,n2,n2, t1,n2, in1,n2, DBL_EPSILON);
 			// Now perform the diagonal scalings
 			for(size_t i = 0; i < n2; ++i){
 				RNP::TBLAS::Scale(n2, q[l][i], &in1[i+0*n2], n2);
@@ -1087,6 +1110,7 @@ void GetSMatrix(
 			if(NULL != phi[l]){
 				RNP::TBLAS::CopyMatrix<'A'>(n2,n2, phi[l],n2, t1,n2);
 				RNP::LinearSolve<'N'>(n2, n2, t1, n2, in2, n2, &solve_info, pivots);
+				S4_RECORD_OR_DONE(solve_info, solve_failed);
 			}
 
 			RNP::TBLAS::CopyMatrix<'A'>(n2,n2, in2,n2, t1,n2); // in2 = P, t1 = P, in1 = Q
@@ -1124,7 +1148,8 @@ void GetSMatrix(
 
 		RNP::TBLAS::SetMatrix<'A'>(n2,n2, 0.,1., t2,n2);
 		int solve_info;
-		RNP::LinearSolve<'N'>(n2, n2, t1, n2, t2, n2, &solve_info, pivots); // t2 = (I11 - f_l S12 I21)^{-1}
+		RNP::LinearSolve<'N'>(n2, n2, t1, n2, t2, n2, &solve_info, pivots);
+		S4_RECORD_OR_DONE(solve_info, solve_failed);
 
 		RNP::TBLAS::CopyMatrix<'A'>(n2,n2, &S[0+0*n4],n4, t1,n2);
 		for(size_t i = 0; i < n2; ++i){ // t1 = f_l S11
@@ -1164,12 +1189,14 @@ void GetSMatrix(
 # endif
 #endif
 	}
+S4_SOLVE_DONE:
 	if(NULL == work_ || lwork < n4*(n4+1)){
 		rcwa_free(work);
 	}
 	if(NULL == iwork){
 		rcwa_free(pivots);
 	}
+	return solve_failed;
 }
 
 
@@ -1198,6 +1225,10 @@ int SolveAll(
 		return 0;
 	}
 	typedef std::complex<double> doublecomplex;
+	// Set when RNP::LinearSolve reports a zero pivot. The right-hand side is then
+	// not a solution of the interface system, so the caller must not treat the
+	// result as one.
+	int solve_failed = 0;
 	doublecomplex *work = work_;
 	if(0 == lwork && NULL == work_){
 		work = (doublecomplex*)rcwa_malloc(sizeof(doublecomplex) * minwork);
@@ -1375,6 +1406,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 			int solve_info;
 			// Make Q in in1
 			RNP::LinearSolve<'N'>(n2, n2, t1, n2, in1, n2, &solve_info, iwork);
+			S4_RECORD_OR_DONE(solve_info, solve_failed);
 			//SingularLinearSolve(n2,n2,n2, t1,n2, in1,n2, DBL_EPSILON);
 			// Now perform the diagonal scalings
 			for(size_t i = 0; i < n2; ++i){
@@ -1405,6 +1437,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 			if(NULL != phi[ip]){
 				RNP::TBLAS::CopyMatrix<'A'>(n2,n2, phi[ip],n2, t1,n2);
 				RNP::LinearSolve<'N'>(n2, n2, t1, n2, in2, n2, &solve_info, iwork);
+				S4_RECORD_OR_DONE(solve_info, solve_failed);
 			}
 
 			RNP::TBLAS::CopyMatrix<'A'>(n2,n2, in2,n2, t1,n2); // in2 = P, t1 = P, in1 = Q
@@ -1440,7 +1473,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 
 		// Exchange to interface S-matrix, and also swap block rows
 		Copy(n2,n2, in1,n2, Saa,n4);
-		Invert(n2, Saa,n4, Sbb, n22, iwork); // Use Sbb as workspace
+		S4_RECORD_OR_DONE(Invert(n2, Saa,n4, Sbb, n22, iwork), solve_failed); // Use Sbb as workspace
 		Mult(n2,  1., in2,n2, Saa,n4, 0., Sba,n4);
 		Mult(n2, -1., Saa,n4, in2,n2, 0., Sab,n4);
 		Copy(n2,n2, in1,n2, Sbb,n4);
@@ -1530,7 +1563,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 		}else{
 			Copy(n2, n2, Sab, n4, t1, n2); // t1 = Sab
 			Copy(n2, n2, Sbb, n4, Q, n2); // Q = Sbb, t1 = Sab
-			LUSolve(n2, n2, Pprev, n2, ipivP-n2, Q, n2); // Q = inv(P) Sbb, t1 = Sab
+			S4_RECORD_OR_DONE(LUSolve(n2, n2, Pprev, n2, ipivP-n2, Q, n2), solve_failed); // Q = inv(P) Sbb, t1 = Sab
 //	PrintMatrix("t1(Sab)", n2,n2, Sab, n4);
 //	PrintMatrix("         Sbb", n2,n2, Sbb, n4);
 //	PrintMatrix("invPprev Sbb", n2,n2, Q, n2);
@@ -1550,7 +1583,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 	//		PrintMatrix("P", n2,n2, P, n2);
 		}
 //	PrintMatrix("P", n2,n2, P, n2);
-		LUFactor(n2, P, n2, ipivP);
+		S4_RECORD_OR_DONE(LUFactor(n2, P, n2, ipivP), solve_failed);
 //	PrintMatrix("Pfactored", n2,n2, P, n2);
 //	for(size_t i = 0; i < n2; ++i){
 //		printf(" %d", ((int*)ipivP)[i]);
@@ -1594,7 +1627,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 //PrintMatrix("Applied matrix", n4,n2, Sba, n4);
 		Mult(n4, n2, 1., Sba, n4, &t1[n2], 1., bjp1);
 		if(j > 1){ // Second iteration should use the fact that Q = 0
-			LUSolve(n2, 1, P, n2, ipivP, t1, n2);
+			S4_RECORD_OR_DONE(LUSolve(n2, 1, P, n2, ipivP, t1, n2), solve_failed);
 			Mult(n2, n2, -1., Q, n2, t1, 0., &t1[n2]);
 			Mult(n4, n2,  1., Sba, n4, &t1[n2], 1., bjp1);
 		}
@@ -1617,7 +1650,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 		// Inverse:
 		//   [    inv(P)   0 ] [ bjm1 ]
 		//   [ -Q inv(P)   I ] [ aj   ]
-		LUSolve(n2, 1, P, n2, ipivP, bjm1, n2);
+		S4_RECORD_OR_DONE(LUSolve(n2, 1, P, n2, ipivP, bjm1, n2), solve_failed);
 //PrintMatrix("bjm1", n2,1, bjm1, n2);
 		Mult(n2, n2, -1., Q, n2, bjm1, 1., aj);
 //PrintMatrix("Q", n2,n2, Q, n2);
@@ -1652,7 +1685,7 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 		//   [       |                          ]
 		Mult(n2, n2, 1., Sbb, n4, bjp1, 0., t1);
 		if(j > 0){
-			LUSolve(n2, 1, P, n2, ipivP, t1, n2);
+			S4_RECORD_OR_DONE(LUSolve(n2, 1, P, n2, ipivP, t1, n2), solve_failed);
 		}
 		Axpy(n2, 1., t1, 1, bjm1, 1);
 		if(j > 0){
@@ -1664,10 +1697,15 @@ printf("Could not allocate %d\n", (int)minwork); fflush(stdout);
 //printf("Backward pass completed\n"); fflush(stdout);
 //PrintMatrix("RHS3", n4,nlayers, ab, n4);
 	
+S4_SOLVE_DONE:
 	if(NULL == work_){
 		rcwa_free(work);
 	}
-	return 0;
+	// A singular interface system is reported instead of being returned as a
+	// successful solve: RNP::LinearSolve leaves the right-hand side untouched
+	// when it finds a zero pivot, so the caller would otherwise use a vector
+	// that does not solve anything.
+	return solve_failed;
 }
 
 int SolveInterior(
@@ -1720,14 +1758,19 @@ int SolveInterior(
 	std::complex<double> *temp = S0l;
 	size_t ldtemp = n4;
 
-	int info;
+	int info = 0;
+	int solve_failed = 0;
 
-	GetSMatrix(which_layer+1, n, kx, ky, omega,
+	int ret1 = GetSMatrix(which_layer+1, n, kx, ky, omega,
 		thickness, q, Epsilon_inv, epstype, kp, phi,
 		S0l, work_GetSMatrix, pivots, lwork_GetSMatrix);
-	GetSMatrix(nlayers-which_layer, n, kx, ky, omega,
+	int ret2 = GetSMatrix(nlayers-which_layer, n, kx, ky, omega,
 		thickness+which_layer, q+which_layer, Epsilon_inv+which_layer, epstype+which_layer, kp+which_layer, phi+which_layer,
 		SlN, work_GetSMatrix, pivots, lwork_GetSMatrix);
+	if(0 != ret1 || 0 != ret2){
+		solve_failed = (0 != ret1) ? ret1 : ret2;
+		goto S4_SOLVE_DONE;
+	}
 
 #ifdef DUMP_MATRICES
 	if(NULL != a0){
@@ -1787,6 +1830,7 @@ int SolveInterior(
 	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S11a0, 1, al, 1); // al = S_11(0,l)*a0 + S_12(0,l)S_22(l,N)bN
 
 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, al, n2, &info, pivots);
+	S4_RECORD_OR_DONE(info, solve_failed);
 	// al done
 
 	// Make the other matrix
@@ -1803,6 +1847,7 @@ int SolveInterior(
 		std::complex<double>(0.0), bl, 1); // bl = S_21(l,N)S_11(0,l)a0
 	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S22bN, 1, bl, 1); // bl = S_21(l,N)S_11(0,l)a0 + S_22(l,N)bN
 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, bl, n2, &info, pivots);
+	S4_RECORD_OR_DONE(info, solve_failed);
 
 #ifdef DUMP_MATRICES
 	DUMP_STREAM << "al:" << std::endl;
@@ -1811,13 +1856,14 @@ int SolveInterior(
 	RNP::IO::PrintVector(n2,bl,1, DUMP_STREAM) << std::endl << std::endl;
 #endif
 
+S4_SOLVE_DONE:
 	if(NULL == work_ || lwork < lwork_needed){
 		rcwa_free(work);
 	}
 	if(NULL == iwork){
 		rcwa_free(pivots);
 	}
-	return 0;
+	return solve_failed;
 }
 
 
@@ -2072,7 +2118,7 @@ void GetFieldAtPoint(
 		rcwa_free(eh);
 	}
 }
-void GetFieldOnGrid(
+int GetFieldOnGrid(
 	size_t n, // glist.n
 	int *G,
 	const double *kx, const double *ky,
@@ -2096,22 +2142,38 @@ void GetFieldOnGrid(
 	int inxy[2] = { (int)nxy[0], (int)nxy[1] };
 	int inxy_rev[2] = { (int)nxy[1], (int)nxy[0] };
 
-	std::complex<double> *eh = (std::complex<double>*)rcwa_malloc(sizeof(std::complex<double>) * 8*n2);
+	/* Every handle starts NULL and there is a single cleanup path at the end, so
+	 * a failure at any allocation releases exactly what was acquired and frees
+	 * nothing twice.  The outputs are written only after all six transforms have
+	 * run, so a failure leaves them untouched. */
+	std::complex<double> *eh = NULL;
+	std::complex<double> *from[6] = {NULL, NULL, NULL, NULL, NULL, NULL};
+	std::complex<double> *to[6] = {NULL, NULL, NULL, NULL, NULL, NULL};
+	fft_plan plan[6] = {NULL, NULL, NULL, NULL, NULL, NULL};
+	const std::complex<double> *hx  = NULL;
+	const std::complex<double> *hy  = NULL;
+	const std::complex<double> *ney = NULL;
+	const std::complex<double> *ex  = NULL;
+	int ret = 0;
+	unsigned i;
+
+	eh = (std::complex<double>*)rcwa_malloc(sizeof(std::complex<double>) * 8*n2);
+	if(NULL == eh){ ret = 1; goto cleanup; }
 
 	GetInPlaneFieldVector(n, kx, ky, omega, q, epsilon_inv, epstype, kp, phi, ab, eh);
-	const std::complex<double> *hx  = &eh[3*n2+0];
-	const std::complex<double> *hy  = &eh[3*n2+n];
-	const std::complex<double> *ney = &eh[4*n2+0];
-	const std::complex<double> *ex  = &eh[4*n2+n];
+	hx  = &eh[3*n2+0];
+	hy  = &eh[3*n2+n];
+	ney = &eh[4*n2+0];
+	ex  = &eh[4*n2+n];
 
-	std::complex<double> *from[6];
-	std::complex<double> *to[6];
-	fft_plan plan[6];
-	for(unsigned i = 0; i < 6; ++i){
+	for(i = 0; i < 6; ++i){
 		from[i] = fft_alloc_complex(N);
+		if(NULL == from[i]){ ret = 1; goto cleanup; }
 		to[i] = fft_alloc_complex(N);
+		if(NULL == to[i]){ ret = 1; goto cleanup; }
 		memset(from[i], 0, sizeof(std::complex<double>) * N);
 		plan[i] = fft_plan_dft_2d(inxy_rev, from[i], to[i], 1);
+		if(NULL == plan[i]){ ret = 1; goto cleanup; }
 	}
 
 	for(size_t i = 0; i < n; ++i){
@@ -2142,27 +2204,41 @@ void GetFieldOnGrid(
 		}
 	}
 
-	for(unsigned i = 0; i < 6; ++i){
-		fft_plan_exec(plan[i]);
+	for(i = 0; i < 6; ++i){
+		/* An execution-time allocation failure leaves this transform's output
+		 * partial.  Stop before any later transform runs and before the output
+		 * loop below, so no partial data reaches efield or hfield. */
+		if(0 != fft_plan_exec(plan[i])){ ret = 1; goto cleanup; }
 	}
 
 	for(size_t j = 0; j < nxy[1]; ++j){
 		for(size_t i = 0; i < nxy[0]; ++i){
-			hfield[3*(i+j*nxy[0])+0] = to[0][i+j*nxy[0]];
-			hfield[3*(i+j*nxy[0])+1] = to[1][i+j*nxy[0]];
-			hfield[3*(i+j*nxy[0])+2] = to[2][i+j*nxy[0]];
-			efield[3*(i+j*nxy[0])+0] = to[3][i+j*nxy[0]];
-			efield[3*(i+j*nxy[0])+1] = to[4][i+j*nxy[0]];
-			efield[3*(i+j*nxy[0])+2] = to[5][i+j*nxy[0]];
+			/* Either output may be NULL; that is the convention documented for
+			 * this parameter pair (see GetFieldAtPoint). */
+			if(NULL != hfield){
+				hfield[3*(i+j*nxy[0])+0] = to[0][i+j*nxy[0]];
+				hfield[3*(i+j*nxy[0])+1] = to[1][i+j*nxy[0]];
+				hfield[3*(i+j*nxy[0])+2] = to[2][i+j*nxy[0]];
+			}
+			if(NULL != efield){
+				efield[3*(i+j*nxy[0])+0] = to[3][i+j*nxy[0]];
+				efield[3*(i+j*nxy[0])+1] = to[4][i+j*nxy[0]];
+				efield[3*(i+j*nxy[0])+2] = to[5][i+j*nxy[0]];
+			}
 		}
 	}
 
-	for(unsigned i = 0; i < 6; ++i){
+cleanup:
+	/* One exit for success and for every failure.  fft_plan_destroy and the
+	 * frees accept NULL, so the loop is valid part-way through the allocation
+	 * loop above. */
+	for(i = 0; i < 6; ++i){
 		fft_plan_destroy(plan[i]);
 		fft_free(to[i]);
 		fft_free(from[i]);
 	}
 	rcwa_free(eh);
+	return ret;
 }
 
 void GetZStressTensorIntegral(

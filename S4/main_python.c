@@ -35,6 +35,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <float.h>
 #include "S4.h"
 #include "convert.h"
 #include "SpectrumSampler.h"
@@ -116,7 +117,7 @@ void HandleSolutionErrorCode(const char *fname, int code){
 		def, /* 0 */
 		"A memory allocation error occurred", /* 1 */
 		def, /* 2 */
-		def, /* 3 */
+		"A singular interface system was encountered while solving the mode equations; no solution was returned.", /* 3 */
 		def, /* 4 */
 		def, /* 5 */
 		def, /* 6 */
@@ -131,10 +132,10 @@ void HandleSolutionErrorCode(const char *fname, int code){
 		"A material name was not found", /* 15 */
 		"Invalid patterning for 1D lattice", /* 16 */
 		"At least two layers are required to solve fields or power flux", /* 17 */
-		def
+		"A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)", /* 18 */
 	};
 	const char *str = def;
-	if(0 < code && code <= 17){
+	if(0 < code && code <= 18){
 		str = errstr[code];
 		PyErr_Format(PyExc_RuntimeError, "%s: %s", fname, str);
 	}else{
@@ -455,31 +456,39 @@ struct polygon_converter_data{
 };
 int polygon_converter(PyObject *obj, struct polygon_converter_data *data){
 	int i;
-	if(!PyTuple_Check(obj)){
+	PyObject *seq = PySequence_Fast(obj, "Polygon tensor must be a sequence of coordinate pairs");
+	if(!seq){
 		return 0;
 	}
-	data->nvert = PyTuple_Size(obj);
+	data->nvert = PySequence_Fast_GET_SIZE(seq);
 	data->vert = (double*)malloc(sizeof(double) * 2 * data->nvert);
 	for(i = 0; i < data->nvert; ++i){
-		PyObject *pi = PyTuple_GetItem(obj, i);
-		if(PyTuple_Check(pi) && (PyTuple_Size(pi) == 2)){
+		PyObject *pi = PySequence_Fast_GET_ITEM(seq, i);
+		PyObject *pi_seq = PySequence_Fast(pi, "Polygon vertex must be a sequence of 2 coordinates");
+		if(pi_seq && (PySequence_Fast_GET_SIZE(pi_seq) == 2)){
 			unsigned j;
 			for(j = 0; j < 2; ++j){
-				PyObject *pj = PyTuple_GetItem(pi, j);
+				PyObject *pj = PySequence_Fast_GET_ITEM(pi_seq, j);
 				if(CheckPyNumber(pj)){
 					data->vert[2*i+j] = AsNumberPyNumber(pj);
 				}else{
 					free(data->vert);
+					Py_DECREF(pi_seq);
+					Py_DECREF(seq);
 					PyErr_SetString(PyExc_TypeError, "Polygon tensor must be a list of coordinate pairs");
 					return 0;
 				}
 			}
+			Py_DECREF(pi_seq);
 		}else{
 			free(data->vert);
+			Py_XDECREF(pi_seq);
+			Py_DECREF(seq);
 			PyErr_SetString(PyExc_TypeError, "Polygon tensor must be a list of coordinate pairs");
 			return 0;
 		}
 	}
+	Py_DECREF(seq);
 	return 1;
 }
 
@@ -497,10 +506,15 @@ static int interpolator_table_converter(PyObject *args, S4Interpolator_Data *dat
 		return 0;
 	}
 
-	data->n = PyTuple_Size(args);
-	if(0 == data->n)
+	Py_ssize_t raw_n = PyTuple_Size(args);
+	if(raw_n > 2147483647) {
+		PyErr_SetString(PyExc_ValueError, "Table size exceeds INT_MAX");
+		return 0;
+	}
+	data->n = (int)raw_n;
+	if(data->n < 2)
 	{
-		PyErr_SetString(PyExc_TypeError, "the 'Table' argument can't be empty");
+		PyErr_SetString(PyExc_ValueError, "the 'Table' argument must contain at least two elements");
 		return 0;
 	}
 	for(int i = 0, ld = data->ny + 1; i < data->n; i++)
@@ -520,12 +534,47 @@ static int interpolator_table_converter(PyObject *args, S4Interpolator_Data *dat
 
 		if(NULL == data->xy)
 		{
-			data->ny = PyTuple_Size(pj);
+			Py_ssize_t raw_ny = PyTuple_Size(pj);
+			if(raw_ny > 2147483647) {
+				PyErr_SetString(PyExc_ValueError, "Table row size exceeds INT_MAX");
+				return 0;
+			}
+			data->ny = (int)raw_ny;
+			if (data->ny < 1) {
+				PyErr_SetString(PyExc_ValueError, "Interpolation table row must have at least one y value");
+				return 0;
+			}
 			return 1;
 		}
-		data->xy[i*ld + 0] = PyFloat_AsDouble(PyTuple_GetItem(pi, 0));
-		for(int j = 0; j < data->ny; j++)
-			data->xy[i*ld + j + 1] = PyFloat_AsDouble(PyTuple_GetItem(pj, j));
+		if (PyTuple_Size(pj) != data->ny) {
+			PyErr_Format(PyExc_ValueError, "Interpolation table row %d has length %zd, expected %d", i, PyTuple_Size(pj), data->ny);
+			return 0;
+		}
+		PyObject *px = PyTuple_GetItem(pi, 0);
+		if (!px) return 0;
+		double x = PyFloat_AsDouble(px);
+		if (PyErr_Occurred()) return 0;
+		if (!isfinite(x)) {
+			PyErr_SetString(PyExc_ValueError, "x values must be finite numbers");
+			return 0;
+		}
+		data->xy[i*ld + 0] = x;
+		if(i > 0 && data->xy[i*ld + 0] <= data->xy[(i-1)*ld + 0])
+		{
+			PyErr_SetString(PyExc_ValueError, "x values must be strictly monotonically increasing");
+			return 0;
+		}
+		for(int j = 0; j < data->ny; j++) {
+			PyObject *py = PyTuple_GetItem(pj, j);
+			if (!py) return 0;
+			double y = PyFloat_AsDouble(py);
+			if (PyErr_Occurred()) return 0;
+			if (!isfinite(y)) {
+				PyErr_SetString(PyExc_ValueError, "y values must be finite numbers");
+				return 0;
+			}
+			data->xy[i*ld + j + 1] = y;
+		}
 	}
 	return 1;
 }
@@ -539,6 +588,10 @@ static PyObject *S4Interpolator_new(PyTypeObject *type, PyObject *args, PyObject
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "sO&:interpolator_new", kwlist, &typeName, &interpolator_table_converter, &interData))
 		return NULL;
 	interData.xy = (double*)malloc(sizeof(double) * interData.n * (interData.ny + 1));
+	if (!interData.xy) {
+		PyErr_SetString(PyExc_MemoryError, "Failed to allocate memory for interpolation table");
+		return NULL;
+	}
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "sO&:interpolator_new", kwlist, &typeName, &interpolator_table_converter, &interData))
 	{
 		free(interData.xy); interData.xy = NULL;
@@ -551,7 +604,7 @@ static PyObject *S4Interpolator_new(PyTypeObject *type, PyObject *args, PyObject
 		Interpolator_type inter_type;
 		if(0 == strcmp("linear", typeName))
 			inter_type = Interpolator_LINEAR;
-		else if(0 == strcmp("cublic spline", typeName))
+		else if(0 == strcmp("cubic spline", typeName))
 			inter_type = Interpolator_CUBIC_SPLINE;
 		else if(0 == strcmp("cubic hermite spline", typeName))
 			inter_type = Interpolator_CUBIC_HERMITE_SPLINE;
@@ -559,9 +612,16 @@ static PyObject *S4Interpolator_new(PyTypeObject *type, PyObject *args, PyObject
 		{
 			PyErr_SetString(PyExc_TypeError, "the 'type' should be 'linear'/'cubic spline'/'cubic hermite spline'.");
 			free(interData.xy); interData.xy = NULL;
+			Py_DECREF(self);
 			return NULL;
 		}
 		self->I = Interpolator_New(interData.n, interData.ny, interData.xy, inter_type);
+		if (self->I == NULL) {
+			PyErr_SetString(PyExc_MemoryError, "Failed to allocate memory for interpolator");
+			free(interData.xy); interData.xy = NULL;
+			Py_DECREF(self);
+			return NULL;
+		}
 	}
 	free(interData.xy); interData.xy = NULL;
 	return (PyObject*)self;
@@ -576,6 +636,10 @@ static PyObject *S4Interpolator_Get(S4Interpolator *self, PyObject *args, PyObje
 	PyObject *ret;
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "d:Get", kwlist, &x))
 		return NULL;
+	if (!isfinite(x)) {
+		PyErr_SetString(PyExc_ValueError, "Get(X) requires a finite number");
+		return NULL;
+	}
 	ys = Interpolator_Get(self->I, x, &ny);
 	if(NULL == ys)
 		Py_RETURN_NONE;
@@ -593,7 +657,7 @@ static PyObject *S4SpectrumSampler_new(PyTypeObject *type, PyObject *args, PyObj
 	SpectrumSampler_Options options = {33, 0.001, 10, 1e-6, 0};
 	PyObject *py_expectBool = NULL;
 	S4SpectrumSampler *self;
-	if(!PyArg_ParseTupleAndKeywords(args, kwds, "dd|i|d|d|d|O!:SpectrumSampler_New", \
+	if(!PyArg_ParseTupleAndKeywords(args, kwds, "dd|idddO!:SpectrumSampler_New", \
 		kwlist, &x0, &x1, &options.initial_num_points, &options.range_threshold,\
 		&options.max_bend, &options.min_dx, &PyBool_Type, &py_expectBool))
 		return NULL;
@@ -657,8 +721,20 @@ static PyObject *S4Sim_Clone(S4Sim *self, PyObject *args){
 	S4Sim *cpy;
 
 	cpy = (S4Sim*)S4Sim_Type.tp_alloc(&S4Sim_Type, 0);
-	if(cpy != NULL){
-		cpy->S = S4_Simulation_Clone(self->S);
+	if(NULL == cpy){
+		return PyErr_NoMemory();
+	}
+	cpy->S = S4_Simulation_Clone(self->S);
+	if(NULL == cpy->S){
+		// The core clone failed. Returning cpy here would hand Python an
+		// S4_Simulation whose S is NULL, and every later call on it would
+		// dereference NULL instead of raising. Release the wrapper and report
+		// the failure. tp_dealloc is used directly because the object has not
+		// been exposed to the interpreter yet, so Py_DECREF would be wrong.
+		Py_TYPE(cpy)->tp_dealloc((PyObject*)cpy);
+		PyErr_SetString(PyExc_RuntimeError,
+			"Clone: could not duplicate the simulation.");
+		return NULL;
 	}
 	return (PyObject*)cpy;
 }
@@ -1038,12 +1114,24 @@ static PyObject *S4Sim_SetExcitationPlanewave(S4Sim *self, PyObject *args, PyObj
 
 static PyObject *S4Sim_SetFrequency(S4Sim *self, PyObject *args){
 	Py_complex f;
+	S4_real freq[2];
 	if(!PyArg_ParseTuple(args, "D:SetFrequency", &f)){ return NULL; }
 
-	Simulation_DestroySolution(self->S);
+	// Delegate to the C API entry point rather than reimplementing the
+	// invalidation here. S4_Simulation_SetFrequency releases everything that
+	// depends on the frequency -- the per-layer eigenmodes (S4_Layer::modes),
+	// the solution, and the cached field -- and then stores omega.
+	//
+	// The eigenmode caches matter: they are frequency dependent, so a version
+	// that only destroyed the solution left a spectral sweep on a single
+	// simulation object returning the first frequency's answer at every later
+	// point. Layer modes are only rebuilt when L->modes is NULL, so the stale
+	// modes were reused silently.
+	freq[0] = f.real;
+	freq[1] = f.imag;
+	S4_Simulation_SetFrequency(self->S, freq);
 
-	self->S->omega[0] = 2*M_PI*f.real;
-	self->S->omega[1] = 2*M_PI*f.imag;
+	// Warnings keep their original semantics, expressed on omega as before.
 	if(self->S->omega[0] <= 0){
 		PyErr_Warn(PyExc_RuntimeWarning, "A non-positive frequency was specified.");
 	}
@@ -1225,6 +1313,7 @@ static PyObject *S4Sim_GetAmplitudes(S4Sim *self, PyObject *args, PyObject *kwds
 	amp = (double*)malloc(sizeof(double)*8*n);
 	ret = Simulation_GetAmplitudes(self->S, layer, offset, amp, &amp[4*n]);
 	if(0 != ret){
+		free(amp);
 		HandleSolutionErrorCode("GetAmplitudes", ret);
 		return NULL;
 	}
@@ -1289,6 +1378,7 @@ static PyObject *S4Sim_GetPowerFluxByOrder(S4Sim *self, PyObject *args, PyObject
 	power = (double*)malloc(sizeof(double)*4*n);
 	ret = Simulation_GetPoyntingFluxByG(self->S, layer, offset, power);
 	if(0 != ret){
+		free(power);
 		HandleSolutionErrorCode("GetPowerFluxByOrder", ret);
 		return NULL;
 	}
@@ -1428,151 +1518,187 @@ static PyObject *S4Sim_GetFields(S4Sim *self, PyObject *args, PyObject *kwds){
 	);
 }
 
+// The sampled grid is undefined when the layer being addressed has an order
+// exactly at cutoff.  Report that instead of returning or writing non-finite
+// numbers that would look like a valid result.
+static int S4_grid_values_are_finite(const double *values, size_t count){
+	size_t i;
+	for(i = 0; i < count; ++i){
+		const double v = values[i];
+		if(!(v == v) || v > DBL_MAX || v < -DBL_MAX){ return 0; }
+	}
+	return 1;
+}
+
+// Write one grid file.  Returns 0 on success; on failure sets a Python
+// exception that names the path and returns -1.
+static int S4_grid_write_file(const char *path, const char *mode, int with_z,
+	const double *values, size_t nu, size_t nv, double z)
+{
+	FILE *fp = fopen(path, mode);
+	size_t i, j;
+	if(NULL == fp){
+		PyErr_SetFromErrnoWithFilename(PyExc_OSError, path);
+		return -1;
+	}
+	for(i = 0; i < nu; ++i){
+		for(j = 0; j < nv; ++j){
+			const double *v = &values[2*(3*(i+j*nu))];
+			int written;
+			if(with_z){
+				written = fprintf(fp,
+					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
+					(int)i, (int)j, z, v[0], v[1], v[2], v[3], v[4], v[5]);
+			}else{
+				written = fprintf(fp,
+					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
+					(int)i, (int)j, v[0], v[1], v[2], v[3], v[4], v[5]);
+			}
+			if(written < 0){
+				fclose(fp);
+				PyErr_Format(PyExc_OSError, "GetFieldsOnGrid: failed to write '%s'", path);
+				return -1;
+			}
+		}
+		if(fprintf(fp, "\n") < 0){
+			fclose(fp);
+			PyErr_Format(PyExc_OSError, "GetFieldsOnGrid: failed to write '%s'", path);
+			return -1;
+		}
+	}
+	if(with_z && fprintf(fp, "\n") < 0){
+		fclose(fp);
+		PyErr_Format(PyExc_OSError, "GetFieldsOnGrid: failed to write '%s'", path);
+		return -1;
+	}
+	if(0 != fclose(fp)){
+		PyErr_Format(PyExc_OSError, "GetFieldsOnGrid: failed to close '%s'", path);
+		return -1;
+	}
+	return 0;
+}
+
 static PyObject *S4Sim_GetFieldsOnGrid(S4Sim *self, PyObject *args, PyObject *kwds){
 	int i, j, ret;
 	static char *kwlist[] = { "z", "NumSamples", "Format", "BaseFilename", NULL };
 	Py_ssize_t nxy[2];
 	double z;
-	int len;
-	double *Efields, *Hfields;
+	Py_ssize_t len;
+	double *Efields = NULL, *Hfields = NULL;
 	const char *fmt;
 	const char *fbasename = "field";
-	char *filename;
-	FILE *fp;
+	char *filename = NULL;
 	int snxy[2];
+	size_t npoints;
+	PyObject *rv = NULL;
 
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "d(nn)s|s:GetFieldsOnGrid", kwlist, &z, &nxy[0], &nxy[1], &fmt, &fbasename)){ return NULL; }
-	len = strlen(fbasename);
+	len = (Py_ssize_t)strlen(fbasename);
 
-	filename = (char*)malloc(sizeof(char) * (len+3));
+	// The core takes int dimensions and multiplies them, so validate the grid
+	// here: never hand it a non-positive, truncated or overflowing size.
+	if(nxy[0] <= 0 || nxy[1] <= 0){
+		PyErr_Format(PyExc_ValueError,
+			"GetFieldsOnGrid: NumSamples must be positive, got (%zd, %zd)", nxy[0], nxy[1]);
+		return NULL;
+	}
+	if(nxy[0] > INT_MAX || nxy[1] > INT_MAX){
+		PyErr_Format(PyExc_ValueError,
+			"GetFieldsOnGrid: NumSamples entries must fit in an int, got (%zd, %zd)", nxy[0], nxy[1]);
+		return NULL;
+	}
+	if(nxy[1] > PY_SSIZE_T_MAX / nxy[0]){
+		PyErr_Format(PyExc_OverflowError,
+			"GetFieldsOnGrid: NumSamples (%zd, %zd) is too large", nxy[0], nxy[1]);
+		return NULL;
+	}
+	npoints = (size_t)nxy[0] * (size_t)nxy[1];
+	if(npoints > ((size_t)-1) / (sizeof(double) * 2 * 3)){
+		PyErr_Format(PyExc_OverflowError,
+			"GetFieldsOnGrid: NumSamples (%zd, %zd) is too large", nxy[0], nxy[1]);
+		return NULL;
+	}
+
+	filename = (char*)malloc(sizeof(char) * ((size_t)len+3));
+	if(NULL == filename){ PyErr_NoMemory(); goto done; }
 	strcpy(filename, fbasename);
 	filename[len+0] = '.';
 	filename[len+2] = '\0';
 
-	Efields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
-	Hfields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
+	Efields = (double*)malloc(sizeof(double) * 2*3 * npoints);
+	if(NULL == Efields){ PyErr_NoMemory(); goto done; }
+	Hfields = (double*)malloc(sizeof(double) * 2*3 * npoints);
+	if(NULL == Hfields){ PyErr_NoMemory(); goto done; }
 
-	snxy[0] = nxy[0];
-	snxy[1] = nxy[1];
+	snxy[0] = (int)nxy[0];
+	snxy[1] = (int)nxy[1];
 	ret = Simulation_GetFieldPlane(self->S, snxy, z, Efields, Hfields);
 	if(0 != ret){
 		HandleSolutionErrorCode("GetFieldsOnGrid", ret);
-		return NULL;
+		goto done;
 	}
 
-	ret = 0;
+	if(!S4_grid_values_are_finite(Efields, 2*3*npoints) ||
+	   !S4_grid_values_are_finite(Hfields, 2*3*npoints)){
+		PyErr_SetString(PyExc_RuntimeError,
+			"GetFieldsOnGrid: A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)");
+		goto done;
+	}
+
 	if(0 == strcmp("FileWrite", fmt)){
 		filename[len+1] = 'E';
-		fp = fopen(filename, "wb");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j,
-					Efields[2*(3*(i+j*nxy[0])+0)+0],
-					Efields[2*(3*(i+j*nxy[0])+0)+1],
-					Efields[2*(3*(i+j*nxy[0])+1)+0],
-					Efields[2*(3*(i+j*nxy[0])+1)+1],
-					Efields[2*(3*(i+j*nxy[0])+2)+0],
-					Efields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fclose(fp);
+		if(0 != S4_grid_write_file(filename, "wb", 0, Efields, (size_t)nxy[0], (size_t)nxy[1], z)){ goto done; }
 		filename[len+1] = 'H';
-		fp = fopen(filename, "wb");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j,
-					Hfields[2*(3*(i+j*nxy[0])+0)+0],
-					Hfields[2*(3*(i+j*nxy[0])+0)+1],
-					Hfields[2*(3*(i+j*nxy[0])+1)+0],
-					Hfields[2*(3*(i+j*nxy[0])+1)+1],
-					Hfields[2*(3*(i+j*nxy[0])+2)+0],
-					Hfields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fclose(fp);
-		free(Hfields);
-		free(Efields);
-		free(filename);
-		Py_RETURN_NONE;
+		if(0 != S4_grid_write_file(filename, "wb", 0, Hfields, (size_t)nxy[0], (size_t)nxy[1], z)){ goto done; }
+		rv = Py_None;
+		Py_INCREF(rv);
 	}else if(0 == strcmp("FileAppend", fmt)){
 		filename[len+1] = 'E';
-		fp = fopen(filename, "ab");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j, z,
-					Efields[2*(3*(i+j*nxy[0])+0)+0],
-					Efields[2*(3*(i+j*nxy[0])+0)+1],
-					Efields[2*(3*(i+j*nxy[0])+1)+0],
-					Efields[2*(3*(i+j*nxy[0])+1)+1],
-					Efields[2*(3*(i+j*nxy[0])+2)+0],
-					Efields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fprintf(fp, "\n");
-		fclose(fp);
+		if(0 != S4_grid_write_file(filename, "ab", 1, Efields, (size_t)nxy[0], (size_t)nxy[1], z)){ goto done; }
 		filename[len+1] = 'H';
-		fp = fopen(filename, "ab");
-		for(i = 0; i < nxy[0]; ++i){
-			for(j = 0; j < nxy[1]; ++j){
-				fprintf(fp,
-					"%d\t%d\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\t%.14g\n",
-					i, j, z,
-					Hfields[2*(3*(i+j*nxy[0])+0)+0],
-					Hfields[2*(3*(i+j*nxy[0])+0)+1],
-					Hfields[2*(3*(i+j*nxy[0])+1)+0],
-					Hfields[2*(3*(i+j*nxy[0])+1)+1],
-					Hfields[2*(3*(i+j*nxy[0])+2)+0],
-					Hfields[2*(3*(i+j*nxy[0])+2)+1]
-				);
-			}
-			fprintf(fp, "\n");
-		}
-		fprintf(fp, "\n");
-		fclose(fp);
-		free(Hfields);
-		free(Efields);
-		free(filename);
-		Py_RETURN_NONE;
+		if(0 != S4_grid_write_file(filename, "ab", 1, Hfields, (size_t)nxy[0], (size_t)nxy[1], z)){ goto done; }
+		rv = Py_None;
+		Py_INCREF(rv);
 	}else{ /* Array */
 		unsigned k, i3;
 		double *F[2] = { Efields, Hfields };
-		PyObject *rv = PyTuple_New(2);
-
+		rv = PyTuple_New(2);
+		if(NULL == rv){ goto done; }
 		for(k = 0; k < 2; ++k){
 			PyObject *pk = PyTuple_New(nxy[0]);
+			if(NULL == pk){ goto done; }
 			PyTuple_SetItem(rv, k, pk);
 			for(i = 0; i < nxy[0]; ++i){
 				PyObject *pi = PyTuple_New(nxy[1]);
+				if(NULL == pi){ goto done; }
 				PyTuple_SetItem(pk, i, pi);
 				for(j = 0; j < nxy[1]; ++j){
 					PyObject *pj = PyTuple_New(3);
+					if(NULL == pj){ goto done; }
 					PyTuple_SetItem(pi, j, pj);
 					for(i3 = 0; i3 < 3; ++i3){
-						PyTuple_SetItem(pj, i3, PyComplex_FromDoubles(
+						PyObject *pc = PyComplex_FromDoubles(
 							F[k][2*(3*(i+j*nxy[0])+i3)+0],
-							F[k][2*(3*(i+j*nxy[0])+i3)+1]
-						));
+							F[k][2*(3*(i+j*nxy[0])+i3)+1]);
+						if(NULL == pc){ goto done; }
+						PyTuple_SetItem(pj, i3, pc);
 					}
 				}
 			}
 		}
-		free(Hfields);
-		free(Efields);
-		free(filename);
-		return rv;
 	}
+
+done:
+	free(Hfields);
+	free(Efields);
+	free(filename);
+	if(NULL != PyErr_Occurred()){
+		// A partially built tuple is released safely: CPython's tuple
+		// deallocator uses Py_XDECREF on every slot.
+		Py_XDECREF(rv);
+		return NULL;
+	}
+	return rv;
 }
 
 static PyObject *S4Sim_GetSMatrixDeterminant(S4Sim *self, PyObject *args){
@@ -1849,7 +1975,7 @@ static PyMethodDef S4Sim_methods[] = {
 	{"SetRegionRectangle"		, (PyCFunction)S4Sim_SetRegionRectangle, METH_VARARGS | METH_KEYWORDS, PyDoc_STR("SetLayerPatternRectangle(layer,matname,center,angle,halfwidths) -> None")},
 	{"SetRegionPolygon"			, (PyCFunction)S4Sim_SetRegionPolygon, METH_VARARGS | METH_KEYWORDS, PyDoc_STR("SetLayerPatternPolygon(layer,matname,center,angle,vertices) -> None")},
 	{"SetExcitationPlanewave"	, (PyCFunction)S4Sim_SetExcitationPlanewave, METH_VARARGS | METH_KEYWORDS, PyDoc_STR("SetExcitationPlanewave(angles,s_amp,p_amp) -> None")},
-	{"SetExcitationExterior"	, (PyCFunction)S4Sim_SetExcitationExterior, METH_VARARGS | METH_KEYWORDS, PyDoc_STR("SetExcitationExterior(Excitations) -> None")},
+	{"SetExcitationExterior"	, (PyCFunction)S4Sim_SetExcitationExterior, METH_VARARGS | METH_KEYWORDS, PyDoc_STR("SetExcitationExterior(((g_index, pol, amplitude),...)) -> None")},
 	{"SetFrequency"				, (PyCFunction)S4Sim_SetFrequency, METH_VARARGS, PyDoc_STR("SetFrequency(freq) -> None")},
 	/* Outputs requiring no solutions */
 	{"GetReciprocalLattice"		, (PyCFunction)S4Sim_GetReciprocalLattice, METH_NOARGS, PyDoc_STR("GetReciprocalLattice() -> ((px,py),(qx,qy))")},

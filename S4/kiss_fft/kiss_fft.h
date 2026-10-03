@@ -97,6 +97,14 @@ void kiss_fft(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
  * */
 void kiss_fft_stride(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout,int fin_stride);
 
+/* Checked variants.  They return 0 on success and non-zero if the transform
+ * could not be completed because an execution-time temporary buffer could not
+ * be allocated; on failure the output buffer holds a partial transform and must
+ * not be used.  The unqualified functions above keep their signatures and
+ * cannot report the failure. */
+int kiss_fft_checked(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+int kiss_fft_stride_checked(kiss_fft_cfg cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout,int fin_stride);
+
 /* If kiss_fft_alloc allocated a buffer, it is one contiguous 
    buffer and can be simply free()d when no longer needed*/
 #define kiss_fft_free free

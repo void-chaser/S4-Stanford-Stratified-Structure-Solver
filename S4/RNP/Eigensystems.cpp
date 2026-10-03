@@ -1041,7 +1041,37 @@ size_t zlahqr_(bool wantt, bool wantz, size_t n, size_t ilo, size_t ihi, std::co
 	// Quick return if possible
 	// 
 	if( n == 0 ) return 0;
+	// The documented precondition is 1 <= ilo <= ihi <= n. Two cases have to be
+	// separated, and an earlier version of this guard conflated them:
+	//
+	//   ilo == ihi  a legal single-element range. The eigenvalue is the diagonal
+	//               entry and must be written.
+	//   ilo >  ihi  an empty range. Nothing may be written.
+	//
+	// Conflating them dropped the eigenvalue write, which test_zlahqr_direct.py
+	// catches with a sentinel in W. The empty range matters because of the guard
+	// further down:
+	//
+	//     if( ilo <= ihi-2 ) h[(ihi-1)+(( ihi-2 )-1)*ldh] = zero;
+	//
+	// ihi-2 is computed in size_t, so with ihi < 2 it wraps to SIZE_MAX, the
+	// guard passes, and the index goes negative. Measured with a patterned slab
+	// at NumBasis=1, the smallest basis that reaches the layer eigensolver:
+	//
+	//     [ZLAQR] n=2 ilo=2 ihi=1 ldh=2 h_off=0 idx=-4 byte_off=-64
+	//     AddressSanitizer: 64 bytes before 128-byte region  (WRITE of size 16)
+	//
+	// The empty test therefore comes first, and before the ihi > n clamp:
+	// raising ihi to n first would turn ilo=2, ihi=1 into ilo == ihi == 2, which
+	// looks legal and lets the routine run into the underflowing code.
+	if(ilo < 1){ ilo = 1; }
+	if(ilo > ihi){
+		return 0;
+	}
+	if(ihi > n){ ihi = n; }
 	if( ilo == ihi ){
+		// Single element: the eigenvalue is the diagonal entry. Returning here
+		// also means the wrapping guard below is never reached for this case.
 		w[ilo-1] = h[(ilo-1)+(ilo-1)*ldh];
 		return 0;
 	}
@@ -2836,15 +2866,31 @@ int ztrevc_(char howmny, bool *_select, size_t n, std::complex<double> *_t, size
 	//const bool bothv = rightv && leftv;
 	
 	/* Parameter adjustments */
-	--select;
+	// These decrements implement the f2c 1-based indexing trick: the pointer is
+	// moved one element before the array so that index 1 lands on the first
+	// element. The offset element is never dereferenced, but forming a pointer
+	// before the start of an object is undefined behaviour in C++, and UBSan
+	// reports it because zgeev calls this routine with vl == NULL and
+	// _select == NULL when only right eigenvectors are wanted:
+	//
+	//   Eigensystems.cpp:2869: runtime error: applying non-zero offset
+	//     18446744073709551615 to null pointer
+	//   Eigensystems.cpp:2873: runtime error: applying non-zero offset
+	//     18446744073709551584 to null pointer
+	//
+	// Skipping the adjustment for a NULL pointer changes no index: the adjusted
+	// pointer is NULL - offset and indexing it at [i] gives the same address as
+	// indexing NULL, so every access that was valid stays valid, and the
+	// elements that were never accessed still are not.
+	if(NULL != select){ --select; }
 	t_offset = 1 + ldt;
-	t -= t_offset;
+	if(NULL != t){ t -= t_offset; }
 	vl_offset = 1 + ldvl;
-	vl -= vl_offset;
+	if(NULL != vl){ vl -= vl_offset; }
 	vr_offset = 1 + ldvr;
-	vr -= vr_offset;
-	--work;
-	--rwork;
+	if(NULL != vr){ vr -= vr_offset; }
+	if(NULL != work){ --work; }
+	if(NULL != rwork){ --rwork; }
 
 	/* Function Body */
 

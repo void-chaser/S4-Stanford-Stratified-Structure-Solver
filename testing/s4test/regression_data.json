@@ -1,0 +1,191 @@
+{
+  "_comment": [
+    "Small, human-reviewable numerical regression baseline for the S4 Python binding.",
+    "Regenerate deliberately with gen_regression_data.py; never update automatically, because a baseline that updates itself cannot detect a regression.",
+    "Each row states its parameters, expected value, tolerance, how the expected value was obtained, and (where one exists) the independent analytic reference it agrees with.  test_regression_baseline.py verifies that the analytic reference really does produce the stored value, so a row cannot be recorded from a buggy build.",
+    "Rows with analytic_ref = null are S4-only change guards; they carry no claim of physical correctness and say so in 'origin'.",
+    "No generated or binary files are stored here."
+  ],
+  "environment": {
+    "os": "Ubuntu 26.04",
+    "python": "3.14.4",
+    "compiler": "gcc/g++ 15.2.0",
+    "baseline_commit": "b97f639"
+  },
+  "units": "lengths in lattice constants; frequency in c/a",
+  "rows": [
+    {
+      "name": "fresnel_bare_interface_normal_s",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 0.0,
+        "n_below": 2.0,
+        "theta_deg": 0.0,
+        "freq": 1.0,
+        "polarization": "s"
+      },
+      "R": 0.1111111111111111,
+      "T": 0.8888888888888888,
+      "tol": 1e-12,
+      "origin": "exact: R = ((n1-n2)/(n1+n2))^2 = 1/9, T = 8/9; the zero-thickness middle layer makes the S4 stack algebraically a single interface",
+      "analytic_ref": "fresnel_rt(1,2,0,'s')"
+    },
+    {
+      "name": "fresnel_bare_interface_30deg_s",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 0.0,
+        "n_below": 2.0,
+        "theta_deg": 30.0,
+        "freq": 1.0,
+        "polarization": "s"
+      },
+      "R": 0.14589803375031546,
+      "T": 0.8541019662496845,
+      "tol": 1e-09,
+      "origin": "closed-form Fresnel; the zero-thickness middle layer makes the S4 stack algebraically a single interface",
+      "analytic_ref": "fresnel_rt(1,2,30,'s')"
+    },
+    {
+      "name": "fresnel_bare_interface_30deg_p",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 0.0,
+        "n_below": 2.0,
+        "theta_deg": 30.0,
+        "freq": 1.0,
+        "polarization": "p"
+      },
+      "R": 0.08000958314107982,
+      "T": 0.9199904168589201,
+      "tol": 1e-09,
+      "origin": "closed-form Fresnel; the zero-thickness middle layer makes the S4 stack algebraically a single interface",
+      "analytic_ref": "fresnel_rt(1,2,30,'p')"
+    },
+    {
+      "name": "halfwave_film_full_transmission",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 1.0,
+        "n_below": 1.0,
+        "theta_deg": 0.0,
+        "freq": 0.25,
+        "polarization": "s"
+      },
+      "R": 8.43614877747295e-33,
+      "T": 1.0,
+      "tol": 1e-09,
+      "origin": "exact half-wave condition: d = 1/(2*f*n_film) = 1, so the round-trip phase is 2*pi and the film is invisible",
+      "analytic_ref": "airy_rt(1,...,0,'s',0.25)"
+    },
+    {
+      "name": "quarterwave_arc_coating",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 0.125,
+        "n_below": 4.0,
+        "theta_deg": 0.0,
+        "freq": 1.0,
+        "polarization": "s"
+      },
+      "R": 2.1090371943682376e-33,
+      "T": 1.0,
+      "tol": 1e-09,
+      "origin": "exact quarter-wave coating: n_film = sqrt(n_sub) = 2 and d = 1/(4*f*n_film) = 0.125",
+      "analytic_ref": "airy_rt(0.125,...,0,'s',1)"
+    },
+    {
+      "name": "brewster_angle_p_no_reflection",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 3.0,
+        "d": 0.0,
+        "n_below": 3.0,
+        "theta_deg": 71.56505117707799,
+        "freq": 1.0,
+        "polarization": "p"
+      },
+      "R": 2.4347558803117641e-32,
+      "T": 1.0000000000000002,
+      "tol": 1e-12,
+      "origin": "exact: theta_B = atan(n2/n1) = 71.5650511771 deg, where the p reflectance vanishes identically",
+      "analytic_ref": "airy_rt(0,...,71.5651,'p',1)"
+    },
+    {
+      "name": "total_internal_reflection_35deg_s",
+      "params": {
+        "n_above": 2.0,
+        "n_film": 1.0,
+        "d": 0.0,
+        "n_below": 1.0,
+        "theta_deg": 35.0,
+        "freq": 1.0,
+        "polarization": "s"
+      },
+      "R": 0.9999999999999998,
+      "T": 0.0,
+      "tol": 1e-12,
+      "origin": "exact: theta = 35 deg exceeds theta_c = asin(1/2) = 30 deg, so all power is reflected",
+      "analytic_ref": "airy_rt(0,...,35,'s',1)"
+    },
+    {
+      "name": "lossless_film_energy_conservation",
+      "params": {
+        "n_above": 1.0,
+        "n_film": 2.0,
+        "d": 0.5,
+        "n_below": 1.5,
+        "theta_deg": 0.0,
+        "freq": 0.5,
+        "polarization": "s"
+      },
+      "R": 0.04000000000000001,
+      "T": 0.9600000000000002,
+      "tol": 1e-09,
+      "origin": "Airy sum; R + T == 1 to 4.4e-16",
+      "analytic_ref": "airy_rt(0.5,...,0,'s',0.5)"
+    },
+    {
+      "name": "lossy_silicon_film_absorption",
+      "params": {
+        "n_above": 1.0,
+        "eps_film": [
+          12.0,
+          1.0
+        ],
+        "d": 0.5,
+        "n_below": 1.5,
+        "theta_deg": 0.0,
+        "freq": 0.5,
+        "polarization": "s"
+      },
+      "R": 0.3822115350472735,
+      "T": 0.36205358955095,
+      "tol": 1e-09,
+      "origin": "Airy sum, the only valid reference here: the transfer-matrix formulation is ill conditioned for absorbing films and returns R + T > 1 (asserted in selftest_analytic.py).  Absorbed fraction 1 - R - T = 0.255734875.",
+      "analytic_ref": "airy_rt(0.5, sqrt(12+1j), 1, 1.5, 0, 's', 0.5)"
+    },
+    {
+      "name": "patterned_slab_photonic_crystal_num_basis_225",
+      "params": {
+        "lattice": "square a=1",
+        "num_basis": 225,
+        "n_above": 1.0,
+        "n_slab": 3.4641016151377544,
+        "slab_d": 0.5,
+        "hole_radius": 0.2,
+        "freq": 0.5,
+        "polarization": "s"
+      },
+      "T": 0.357134,
+      "tol": 0.002,
+      "origin": "S4 only -- no analytic reference exists for a patterned slab. The tolerance is the measured NumBasis convergence spread over the last three refinements (1.04e-3) widened to 2e-3.  This row guards against numerical regressions; it does NOT validate the physics.",
+      "analytic_ref": null
+    }
+  ]
+}
