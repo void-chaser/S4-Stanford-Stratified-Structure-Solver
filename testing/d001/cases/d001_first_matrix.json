@@ -1,0 +1,221 @@
+{
+  "schema": "p01.d001_first_matrix.v1",
+  "note": "Variant-neutral D001 first-matrix model entries. P01 plans but does not execute them; P02 runs the same 12 entries against the baseline and the candidate subject, i.e. 12 x 2 = 24 physical cases.",
+  "provenance": {
+    "model_settings_source": "audit-workspace/010/010-20261002T104530Z-602b34dc/scripts/run_one_case_010.py",
+    "historical_case_matrix": "audit-workspace/010/010-20261002T104530Z-602b34dc/CASE_MATRIX.json",
+    "historical_case_matrix_sha256": "8230bb66e491cef6aac8d06b5fa3f60f050368b0296becfb32738010fa19f26e",
+    "run_one_case_010_py_sha256": "77bb1d957251ddb18b451f1d41a881a677d45ff57313bb25a1ce07a36f0e450b",
+    "recovered_by": "P01 byte-read of the whitelisted historical files (read-only)"
+  },
+  "common": {
+    "lattice": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "ambient_epsilon": 1.0,
+    "film_epsilon_scalar": 4.0,
+    "film_epsilon_tensor": [
+      [
+        4.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        4.0
+      ]
+    ],
+    "stack": [
+      {
+        "name": "AirTop",
+        "thickness": 0.0,
+        "material": "Air"
+      },
+      {
+        "name": "Film",
+        "thickness": 0.25,
+        "material": "Film"
+      },
+      {
+        "name": "AirBottom",
+        "thickness": 0.0,
+        "material": "Air"
+      }
+    ],
+    "circle": {
+      "layer": "Film",
+      "material": "Film",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 0.2
+    },
+    "excitation": {
+      "incidence_angles_deg": [
+        0.0,
+        0.0
+      ],
+      "order": 0,
+      "sAmplitude": [
+        1.0,
+        0.0
+      ],
+      "pAmplitude": [
+        0.0,
+        0.0
+      ]
+    },
+    "setOptions_called": false,
+    "representation_semantics": {
+      "A_SCALAR": "scalar Film material, no region",
+      "B_SAME_MATERIAL_CIRCLE": "scalar Film material plus a same-material circle region inside Film",
+      "C_ISOTROPIC_TENSOR": "tensor diag(4,4,4), all off-diagonal zero, no region"
+    }
+  },
+  "execution_plan": {
+    "variants": [
+      "baseline",
+      "candidate"
+    ],
+    "entries_per_variant": 12,
+    "expected_total_physical_cases": 24,
+    "executed_in_p01": 0,
+    "execution_round": "P02"
+  },
+  "flux_convention": {
+    "read": [
+      "AirTop.forward",
+      "AirTop.backward",
+      "AirBottom.forward",
+      "AirBottom.backward"
+    ],
+    "incident": "Re(AirTop.forward)",
+    "R": "-Re(AirTop.backward)/incident",
+    "T": "Re(AirBottom.forward)/incident",
+    "primary_threshold": "absolute 1e-10"
+  },
+  "cases": [
+    {
+      "index": 1,
+      "case_key": "N1|A_SCALAR|r1",
+      "requested_num_basis": 1,
+      "representation": "A_SCALAR",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 2,
+      "case_key": "N1|A_SCALAR|r2",
+      "requested_num_basis": 1,
+      "representation": "A_SCALAR",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 3,
+      "case_key": "N1|B_SAME_MATERIAL_CIRCLE|r1",
+      "requested_num_basis": 1,
+      "representation": "B_SAME_MATERIAL_CIRCLE",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 4,
+      "case_key": "N1|B_SAME_MATERIAL_CIRCLE|r2",
+      "requested_num_basis": 1,
+      "representation": "B_SAME_MATERIAL_CIRCLE",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 5,
+      "case_key": "N1|C_ISOTROPIC_TENSOR|r1",
+      "requested_num_basis": 1,
+      "representation": "C_ISOTROPIC_TENSOR",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 6,
+      "case_key": "N1|C_ISOTROPIC_TENSOR|r2",
+      "requested_num_basis": 1,
+      "representation": "C_ISOTROPIC_TENSOR",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 7,
+      "case_key": "N9|A_SCALAR|r1",
+      "requested_num_basis": 9,
+      "representation": "A_SCALAR",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 8,
+      "case_key": "N9|A_SCALAR|r2",
+      "requested_num_basis": 9,
+      "representation": "A_SCALAR",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 9,
+      "case_key": "N9|B_SAME_MATERIAL_CIRCLE|r1",
+      "requested_num_basis": 9,
+      "representation": "B_SAME_MATERIAL_CIRCLE",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 10,
+      "case_key": "N9|B_SAME_MATERIAL_CIRCLE|r2",
+      "requested_num_basis": 9,
+      "representation": "B_SAME_MATERIAL_CIRCLE",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 11,
+      "case_key": "N9|C_ISOTROPIC_TENSOR|r1",
+      "requested_num_basis": 9,
+      "representation": "C_ISOTROPIC_TENSOR",
+      "repeat": 1,
+      "frequency": 0.427,
+      "polarization": "s"
+    },
+    {
+      "index": 12,
+      "case_key": "N9|C_ISOTROPIC_TENSOR|r2",
+      "requested_num_basis": 9,
+      "representation": "C_ISOTROPIC_TENSOR",
+      "repeat": 2,
+      "frequency": 0.427,
+      "polarization": "s"
+    }
+  ]
+}

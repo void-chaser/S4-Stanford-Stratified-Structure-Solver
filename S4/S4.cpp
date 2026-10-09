@@ -1344,6 +1344,23 @@ void Simulation_DestroyLayerModes(S4_Layer *layer){
 		layer->modes = NULL;
 	}
 }
+// Free a LayerModes that was never installed on its layer, e.g. because the
+// layer eigensystem failed.  The single q allocation owns kp/phi/Epsilon_* as
+// interior and trailing pointers, so only q and the struct itself are freed.
+//
+// File scope, after Simulation_DestroyLayerModes closes: the first revision
+// nested this definition inside that function's body, which is not valid C++.
+// static (internal linkage) because only this translation unit calls it and
+// S4_internal.h does not declare it, so the header/ABI surface is unchanged.
+static void Simulation_DiscardLayerModes(LayerModes **layer_modes){
+	if(NULL != layer_modes && NULL != *layer_modes){
+		if(NULL != (*layer_modes)->q){ S4_free((*layer_modes)->q); }
+		(*layer_modes)->q = NULL;
+		free(*layer_modes);
+		*layer_modes = NULL;
+	}
+}
+
 void S4_Simulation_DestroyLayerModes(S4_Simulation *S, S4_LayerID id){
 	if(id < 0){
 		for(int i = 0; i < S->n_layers; ++i){
@@ -1836,7 +1853,11 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 		S, L, (NULL != L && NULL != L->name ? L->name : ""), layer_modes, (NULL != layer_modes ? *layer_modes : NULL), layer_solution, (NULL != layer_solution ? *layer_solution : NULL), S->omega[0]);
 	if(NULL != layer_modes && NULL == layer_solution){
 		// only need to compute modes for L
-		Simulation_ComputeLayerModes(S, L, layer_modes);
+		const int modes_error = Simulation_ComputeLayerModes(S, L, layer_modes);
+		if(0 != modes_error){
+			S4_TRACE("< Simulation_ComputeLayerSolution (failed; Simulation_ComputeLayerModes returned %d) [omega=%f]\n", modes_error, S->omega[0]);
+			return modes_error;
+		}
 		S4_TRACE("< Simulation_ComputeLayerSolution [omega=%f]\n", S->omega[0]);
 		return 0;
 	}
@@ -1862,7 +1883,11 @@ int Simulation_ComputeLayerSolution(S4_Simulation *S, S4_Layer *L, LayerModes **
 	for(int i = 0; i < S->n_layers; ++i){
 		S4_Layer *SL = &(S->layer[i]);
 		if(NULL == SL->modes && SL->copy < 0){
-			Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			const int modes_error = Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			if(0 != modes_error){
+				S4_TRACE("< Simulation_ComputeLayerSolution (failed; Simulation_ComputeLayerModes returned %d for layer %d) [omega=%f]\n", modes_error, i, S->omega[0]);
+				return modes_error;
+			}
 		}
 		if(L == SL){
 			found_layer = true;
@@ -2328,9 +2353,14 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 			RNP::TBLAS::SetMatrix<'A'>(n,n,0.,std::complex<double>(M->eps.abcde[6],M->eps.abcde[7]),&pB->Epsilon2[n+n*n2], n2);
 
 			S4_VERB(1, "Solving eigensystem of layer: %s\n", NULL != L->name ? L->name : "");
-			SolveLayerEigensystem(
+			const int eigen_info = SolveLayerEigensystem(
 				std::complex<double>(S->omega[0],S->omega[1]), n, S->kx, S->ky,
 				pB->Epsilon_inv, pB->Epsilon2, pB->epstype, pB->q, pB->kp, pB->phi);
+			if(0 != eigen_info){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; SolveLayerEigensystem returned %d) [omega=%f]\n", eigen_info, S->omega[0]);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 		}
 	}else{ // not a uniform layer
 		S4_VERB(1, "Generating epsilon matrix of layer: %s\n", NULL != L->name ? L->name : "");
@@ -2372,16 +2402,22 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 			double *rwork = (double*)S4_malloc(sizeof(double) * 4*n);
 			std::complex<double> *work = NULL;
 			std::complex<double> dum;
-			SolveLayerEigensystem(
+			const int query_info = SolveLayerEigensystem(
 				std::complex<double>(S->omega[0],S->omega[1]), n,
 				S->kx, S->ky,
 				pB->Epsilon_inv, pB->Epsilon2, pB->epstype,
 				pB->q, pB->kp, pB->phi,
 				&dum, rwork, lwork
 			);
+			if(0 != query_info){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; SolveLayerEigensystem workspace query returned %d) [omega=%f]\n", query_info, S->omega[0]);
+				S4_free(rwork);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 			lwork = (int)(dum.real() + 0.5);
 			work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * lwork);
-			SolveLayerEigensystem(
+			const int eigen_info = SolveLayerEigensystem(
 				std::complex<double>(S->omega[0],S->omega[1]), n,
 				S->kx, S->ky,
 				pB->Epsilon_inv, pB->Epsilon2, pB->epstype,
@@ -2390,6 +2426,11 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 			);
 			S4_free(work);
 			S4_free(rwork);
+			if(0 != eigen_info){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; SolveLayerEigensystem returned %d) [omega=%f]\n", eigen_info, S->omega[0]);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 		}
 	}
 	S4_TRACE("I  q[0] = %f,%f [omega=%f]\n", pB->q[0].real(), pB->q[0].imag(), S->omega[0]);
@@ -2529,7 +2570,11 @@ int Simulation_GetPropagationConstants(S4_Simulation *S, S4_Layer *L, double *q)
 	for(int i = 0; i < S->n_layers; ++i){
 		S4_Layer *SL = &(S->layer[i]);
 		if(NULL == SL->modes && SL->copy < 0){
-			Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			const int modes_error = Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			if(0 != modes_error){
+				S4_TRACE("< Simulation_GetPropagationConstants (failed; Simulation_ComputeLayerModes returned %d for layer %d) [omega=%f]\n", modes_error, i, S->omega[0]);
+				return modes_error;
+			}
 		}
 		if(L == SL){
 			found_layer = true;
@@ -3982,7 +4027,11 @@ int Simulation_GetSMatrix(S4_Simulation *S, int from, int to, std::complex<doubl
 		S4_Layer *SL = &(S->layer[i]);
 		if(from <= i && (-1 == to || i <= to)){
 			if(NULL == SL->modes){
-				Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			const int modes_error = Simulation_ComputeLayerModes(S, SL, &SL->modes);
+			if(0 != modes_error){
+				S4_TRACE("< Simulation_GetSMatrix (failed; Simulation_ComputeLayerModes returned %d for layer %d) [omega=%f]\n", modes_error, i, S->omega[0]);
+				return modes_error;
+			}
 			}
 		}
 	}

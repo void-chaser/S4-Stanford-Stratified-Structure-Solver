@@ -110,7 +110,15 @@
 // lwork       - (INPUT) The length of the work array. If -1, then a
 //               workspace query is performed and the optimal lwork
 //               is returned in work[0].real().
-void SolveLayerEigensystem(
+// Returns   - 0 on success, or the first non-zero RNP solver info on failure.
+//             The value is the *raw signed* info from RNP, so positive
+//             (algorithmic) and negative (argument) failures stay distinct at
+//             this layer; RCWA also writes the raw value to stderr.  On
+//             failure q, kp and phi are not usable and must not be installed
+//             as layer modes.  Note that the public S4 layer maps every
+//             non-zero info to the single public code 20, so downstream
+//             callers cannot recover the sign from the public return value.
+int SolveLayerEigensystem(
 	std::complex<double> omega,
 	size_t n,
 	const double *kx,

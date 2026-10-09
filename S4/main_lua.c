@@ -243,7 +243,7 @@ void S4L_error(lua_State *L, const char *fmt, ...){
  * HandleSolutionErrorCode (which reports and, outside interactive mode, exits)
  * and S4L_solution_error_text (which formats the same text for a caller that
  * has to release resources before raising) cannot drift apart. */
-#define S4L_SOLUTION_ERROR_CODES 18
+#define S4L_SOLUTION_ERROR_CODES 20
 static const char S4L_solution_error_default[] = "An unknown error occurred";
 static const char *const S4L_solution_errstr[S4L_SOLUTION_ERROR_CODES+1] = {
 	S4L_solution_error_default, /* 0 */
@@ -265,6 +265,8 @@ static const char *const S4L_solution_errstr[S4L_SOLUTION_ERROR_CODES+1] = {
 	"Invalid patterning for 1D lattice", /* 16 */
 	"At least two layers are required to solve fields or power flux", /* 17 */
 	"A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)", /* 18 */
+	S4L_solution_error_default, /* 19: reserved, not produced by this change */
+	"The layer eigensystem could not be solved; no solution was returned", /* 20 */
 };
 
 /* The same text HandleSolutionErrorCode would print, written to a buffer so the
@@ -2310,10 +2312,15 @@ static int S4L_Simulation_GetAmplitudes(lua_State *L){
 	}
 
 	amp = (double*)malloc(sizeof(double)*8*n);
-	Simulation_GetAmplitudes(S,
+	ret = Simulation_GetAmplitudes(S,
 		layer,
 		luaL_checknumber(L, 3),
 		amp, &amp[4*n]);
+	if(0 != ret){
+		free(amp);
+		HandleSolutionErrorCode(L, "GetAmplitudes", ret);
+		return 0;
+	}
 
 	lua_createtable(L, 2*n, 0);
 	for(i = 0; i < 2*n; ++i){
