@@ -1,0 +1,12 @@
+# before cleanup 2026-10-09T08:49:54Z
+codex-review bytes=26426758584 files=1368258
+audit-workspace bytes=5394270338 files=2323017
+testing/phase1-d001 bytes=255236 files=18
+testing/phase1-d002 bytes=739655 files=24
+testing/phase1-prep bytes=138756 files=18
+handoff bytes=2744099 files=162
+build bytes=3945238 files=30
+root_so 742368
+pycache_dirs 376
+pycache_bytes 14455256
+disk_used_bytes 31838232987

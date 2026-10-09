@@ -1,0 +1,28 @@
+{
+ "argv": [
+  "g++",
+  "-O1",
+  "-g",
+  "-fsanitize=address,undefined",
+  "-fno-omit-frame-pointer",
+  "-fcx-limited-range",
+  "-I",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP",
+  "-I",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4",
+  "-DD002_SRC=\"/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP/Eigensystems.cpp\"",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/testing/d002/tools/d002_driver.cpp",
+  "-o",
+  "/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_asan_candidate"
+ ],
+ "binary": "/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_asan_candidate",
+ "binary_sha256": "e57cd1f9d5876a039c568dd17c5e872858922f5efafcf50beaa9efc9d8b25237",
+ "built_utc": "2026-10-09T08:49:36Z",
+ "eigensystems": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP/Eigensystems.cpp",
+ "eigensystems_sha256": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+ "exit": 0,
+ "seam_derivation": null,
+ "src_root": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z",
+ "stderr": "",
+ "variant": "asan_candidate"
+}

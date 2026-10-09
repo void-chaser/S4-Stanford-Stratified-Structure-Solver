@@ -1,0 +1,19 @@
+# sha256 of artifacts used by the checks above
+fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build/libS4.a
+2acbb80416e3eca2b6cc81df71ea556191ffa7557d72a3743c6d3dd4e912ead2  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build/S4
+0c4d776ec689f4119272b247f215a88605444438312225b6a445b700c7c836c6  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build/RCWA.so
+9e71b762ce73dcb4fe3a336859328ea11ca31625a254a6f5324319e056cf959e  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4.cpython-314-x86_64-linux-gnu.so
+047188053aa33771639634dedb268c9f4e7cda7f43fa8cf68a3aea104e238ba2  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build-seam/libS4.a
+2a4d913599926fe0536ef71d1524b9c847cb92529f11ff77914f43aaf5c1c1c0  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build-seam/S4
+fbed0a12fe7bdd16bd1d4c255dd50727dd185205298ffe86810652eb9f8976a7  /srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build-seam/py/S4.cpython-314-x86_64-linux-gnu.so
+879a46069a1b792feaa2730e9e04c7e408c2664f58f365bc4388749dbc3f2c0e  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/baseline-src/build/libS4.a
+19daaa776dc740d4f26540f5faef1bebf636c79b3045bd8bd2ca902132d44432  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/baseline-src/build/S4
+cb474bb939229f6c362a716f8f18efbb9e4b7b614207dbfe68f9fd9ce7d5dfe3  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/baseline-src/S4.cpython-314-x86_64-linux-gnu.so
+e7d533f0ecd6b8457eb8850d0a17c8baf531747f955cbd4f125b7602aeba0e59  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_asan_baseline
+e57cd1f9d5876a039c568dd17c5e872858922f5efafcf50beaa9efc9d8b25237  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_asan_candidate
+4dfad8ea442b40b65a5c0aca4b02abb044b2da2b6bf810490769cc39224ad18f  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_ord_baseline
+993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_ord_candidate
+19b6cb00af85f5526f08674191ddd16f93277de19dba0bbb652dfafc95a4980c  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_seam_asan_baseline
+42bfcd77e7c83e04c771172ef8e32792085450a6f5d8a1d4521725dc34efc810  /srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_seam_asan_candidate
+# candidate Eigensystems.cpp: 71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353
+# baseline  Eigensystems.cpp: 76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de

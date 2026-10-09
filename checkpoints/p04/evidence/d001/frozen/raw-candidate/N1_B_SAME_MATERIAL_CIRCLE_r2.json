@@ -1,0 +1,35 @@
+{
+ "R": 0.34786732368558093,
+ "RplusT": 0.9999999999999999,
+ "T": 0.652132676314419,
+ "actual_G": [
+  [
+   0,
+   0
+  ]
+ ],
+ "actual_G_count": 1,
+ "case_key": "N1|B_SAME_MATERIAL_CIRCLE|r2",
+ "fluxes": {
+  "AirBottom_backward": [
+   0.0,
+   0.0
+  ],
+  "AirBottom_forward": [
+   0.652132676314419,
+   0.0
+  ],
+  "AirTop_backward": [
+   -0.34786732368558093,
+   0.0
+  ],
+  "AirTop_forward": [
+   1.0,
+   0.0
+  ]
+ },
+ "incident": 1.0,
+ "python": "3.14.4",
+ "s4_file": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4.cpython-314-x86_64-linux-gnu.so",
+ "s4_sha256": "9e71b762ce73dcb4fe3a336859328ea11ca31625a254a6f5324319e056cf959e"
+}

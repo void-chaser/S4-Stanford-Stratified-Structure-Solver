@@ -1,0 +1,34 @@
+{
+ "argv": [
+  "g++",
+  "-O1",
+  "-g",
+  "-fsanitize=address,undefined",
+  "-fno-omit-frame-pointer",
+  "-fcx-limited-range",
+  "-I",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP",
+  "-I",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4",
+  "-DD002_SRC=\"/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/seam_src_seam_asan_candidate/Eigensystems.cpp\"",
+  "-DD002_TEST_SEAM",
+  "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/testing/d002/tools/d002_driver.cpp",
+  "-o",
+  "/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_seam_asan_candidate"
+ ],
+ "binary": "/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/d002_seam_asan_candidate",
+ "binary_sha256": "42bfcd77e7c83e04c771172ef8e32792085450a6f5d8a1d4521725dc34efc810",
+ "built_utc": "2026-10-09T08:49:46Z",
+ "eigensystems": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP/Eigensystems.cpp",
+ "eigensystems_sha256": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+ "exit": 0,
+ "seam_derivation": {
+  "derived_from": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/S4/RNP/Eigensystems.cpp",
+  "derived_path": "/srv/nvme/projects/S4-p04-runs-20261009T082631Z/verify-final/d002/bin/seam_src_seam_asan_candidate/Eigensystems.cpp",
+  "derived_sha256": "b4400fbb2a1573715b1dcea30ff2b93653fa7e707af34a06f2ba7dbc8729485a",
+  "rule": "rename the single definition zhseqr_ -> d002_inner_zhseqr_"
+ },
+ "src_root": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z",
+ "stderr": "",
+ "variant": "seam_asan_candidate"
+}

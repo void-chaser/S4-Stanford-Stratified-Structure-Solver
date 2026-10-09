@@ -1,0 +1,11 @@
+--- a/S4/RNP/Eigensystems.cpp
++++ b/S4/RNP/Eigensystems.cpp
+@@ -4658,7 +4658,7 @@
+ 		// (CWorkspace: need 1, prefer HSWORK (see comments) )
+ 		// (RWorkspace: none)
+ 		iwrk = itau;
+-		zhseqr_('E', 'N', n, ilo, ihi, a, lda, w, vr, ldvr, &work[iwrk]);
++		info = zhseqr_('E', 'N', n, ilo, ihi, a, lda, w, vr, ldvr, &work[iwrk]);
+ 	}
+ 
+ 	if(info == 0){

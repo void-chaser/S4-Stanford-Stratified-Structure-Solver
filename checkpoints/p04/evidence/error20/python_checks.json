@@ -1,0 +1,120 @@
+{
+ "checks": [
+  {
+   "check": "unset_reference_solves",
+   "detail": [
+    1.0,
+    -0.34786732368558093,
+    0.652132676314419,
+    0.0
+   ],
+   "pass": true
+  },
+  {
+   "check": "inject_1_power_flux_raises_20",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "inject_1_message_names_entry",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "same_object_retry_matches_reference",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "inject_1_amplitudes_raises_20",
+   "detail": "GetAmplitudes: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "inject_negative_3_raises_20",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['0']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['abc']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['1x']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection[' 1']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['+']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['-']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['1.0']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['2147483648']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['-2147483649']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  }
+ ],
+ "python_ext": "/srv/nvme/projects/S4-p04-verify2-20261009T082631Z/build-seam/py/S4.cpython-314-x86_64-linux-gnu.so",
+ "python_ext_sha256": "fbed0a12fe7bdd16bd1d4c255dd50727dd185205298ffe86810652eb9f8976a7",
+ "reference_flux": [
+  1.0,
+  -0.34786732368558093,
+  0.652132676314419,
+  0.0
+ ],
+ "run_utc": "2026-10-09T08:50:27Z"
+}

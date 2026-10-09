@@ -1,0 +1,26 @@
+--- a/S4/RNP/Eigensystems.cpp
++++ b/S4/RNP/Eigensystems.cpp
+@@ -672,9 +672,9 @@
+ 					continue;
+ 				}
+ 				if(i < ilo){
+-					i = ilo - ii;
++					i = ilo - 1 - ii;
+ 				}
+-				size_t k = (int)scale[i];
++				size_t k = (size_t)((int)scale[i] - 1);
+ 				if(k != i){
+ 					RNP::TBLAS::Swap(m, &v[i+0*ldv], ldv, &v[k+0*ldv], ldv);
+ 				}
+@@ -688,9 +688,9 @@
+ 					continue;
+ 				}
+ 				if(i < ilo){
+-					i = ilo - ii;
++					i = ilo - 1 - ii;
+ 				}
+-				size_t k = (int)scale[i];
++				size_t k = (size_t)((int)scale[i] - 1);
+ 				if(k != i){
+ 					RNP::TBLAS::Swap(m, &v[i+0*ldv], ldv, &v[k+0*ldv], ldv);
+ 				}
