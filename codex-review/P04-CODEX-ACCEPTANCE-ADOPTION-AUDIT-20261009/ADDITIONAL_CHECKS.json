@@ -1,0 +1,77 @@
+{
+  "prior_independent_audit_sha256": "a336dceb9d2cb3442a9484b2b2885aa550d3fdba0cda17745bfe0c234f76eb9b",
+  "freeze_mode_recorded": 0,
+  "d002_maxima": {
+    "eig_rel_err_hungarian": 6.6409345817712195e-15,
+    "right_res_max": 1.6657754266100855e-15,
+    "left_res_max": 8.167727450892484e-16,
+    "right_norm_dev": 6.661338147750939e-16,
+    "left_norm_dev": 7.771561172376096e-16,
+    "matrix_text_vs_json_maxdiff": 0.0
+  },
+  "d002_all_exit_zero": true,
+  "d002_all_stderr_empty": true,
+  "helper_rows": {
+    "H-01/asan_candidate/candidate": {
+      "scale": [
+        1.0,
+        1.0,
+        3.0
+      ],
+      "ilo": 1,
+      "ihi": 2,
+      "lapack_rows": [
+        0,
+        1,
+        2
+      ],
+      "padding_bad": 0
+    },
+    "H-01/ord_candidate/candidate": {
+      "scale": [
+        1.0,
+        1.0,
+        3.0
+      ],
+      "ilo": 1,
+      "ihi": 2,
+      "lapack_rows": [
+        0,
+        1,
+        2
+      ],
+      "padding_bad": 0
+    },
+    "H-08/asan_candidate/candidate": {
+      "scale": [
+        1.0,
+        1.0,
+        3.0
+      ],
+      "ilo": 1,
+      "ihi": 2,
+      "lapack_rows": [
+        0,
+        1,
+        2
+      ],
+      "padding_bad": 0
+    },
+    "H-08/ord_candidate/candidate": {
+      "scale": [
+        1.0,
+        1.0,
+        3.0
+      ],
+      "ilo": 1,
+      "ihi": 2,
+      "lapack_rows": [
+        0,
+        1,
+        2
+      ],
+      "padding_bad": 0
+    }
+  },
+  "numeric_identity_caveat": "Replayed Claude script; review of implementation plus prior independent Airy audit. Not a new native run."
+}

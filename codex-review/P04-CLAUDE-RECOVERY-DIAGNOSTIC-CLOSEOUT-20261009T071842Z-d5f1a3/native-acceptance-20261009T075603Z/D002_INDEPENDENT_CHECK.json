@@ -1,0 +1,2684 @@
+{
+ "observations": {
+  "A-10r/asan_candidate/candidate": {
+   "exit": 1,
+   "final_classification": "CONTRACT_PROBE_RECORDED",
+   "judge_state": "CONTRACT_PROBE_RECORDED",
+   "raw_nonempty": false,
+   "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "record_output_sha256": null,
+   "signal_exit": false,
+   "stderr": {
+    "AddressSanitizer": true,
+    "N1_nonzero_offset_null": false,
+    "bytes": 4738,
+    "runtime_error": false
+   }
+  },
+  "A-10r/ord_candidate/candidate": {
+   "exit": -11,
+   "final_classification": "CONTRACT_PROBE_RECORDED",
+   "judge_state": "CONTRACT_PROBE_RECORDED",
+   "raw_nonempty": true,
+   "raw_sha256": "5c8a9119e18a5002098019f9c2943add88eb163be0caa8535d08520501d443e5",
+   "record_output_sha256": null,
+   "signal_exit": true,
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  }
+ },
+ "problems": [],
+ "records": {
+  "A-02/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-02/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A1",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 1,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 0.0,
+   "right_padding_touched": 0,
+   "right_res_max": 0.0,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "exact"
+  },
+  "A-02/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-02/ord_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A1",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 1,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 0.0,
+   "right_padding_touched": 0,
+   "right_res_max": 0.0,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "exact"
+  },
+  "A-06/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-06/asan_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.2154857342241947e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.2154857342241947e-16,
+     "record": 3.2154857342241947e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.4171664964444404e-16,
+     "record": 3.4171664964444404e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.4171664964444404e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-06/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-06/ord_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.522388139941304e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.522388139941304e-16,
+     "record": 3.522388139941304e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.230776111200553e-16,
+     "record": 3.230776111200553e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.230776111200553e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-07/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-07/asan_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "internal"
+  },
+  "A-07/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-07/ord_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "internal"
+  },
+  "A-08/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-08/asan_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "query_ok": true,
+   "query_work0": [
+    6.0,
+    0.0
+   ],
+   "record_vs_independent": {},
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "query"
+  },
+  "A-08/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-08/ord_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "query_ok": true,
+   "query_work0": [
+    6.0,
+    0.0
+   ],
+   "record_vs_independent": {},
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "query"
+  },
+  "A-09/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-09/asan_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.4171664964444404e-16,
+     "record": 3.4171664964444404e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.4171664964444404e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "null_lwork"
+  },
+  "A-09/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-09/ord_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.230776111200553e-16,
+     "record": 3.230776111200553e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.230776111200553e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "null_lwork"
+  },
+  "A-11/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-11/asan_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.4171664964444404e-16,
+     "record": 3.4171664964444404e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.4171664964444404e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-11/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-11/ord_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.230776111200553e-16,
+     "record": 3.230776111200553e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.230776111200553e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-12/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-12/asan_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.4171664964444404e-16,
+     "record": 3.4171664964444404e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.4171664964444404e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-12/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-12/ord_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.230776111200553e-16,
+     "record": 3.230776111200553e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.230776111200553e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-13/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-13/asan_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.2154857342241947e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.2154857342241947e-16,
+     "record": 3.2154857342241947e-16,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-13/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-13/ord_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.522388139941304e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.522388139941304e-16,
+     "record": 3.522388139941304e-16,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-14/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.224749965332847e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-14/asan_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.2154857342241947e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.224749965332847e-16,
+     "record": 5.224749965332847e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.2154857342241947e-16,
+     "record": 3.2154857342241947e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.4171664964444404e-16,
+     "record": 3.4171664964444404e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.4171664964444404e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "exact"
+  },
+  "A-14/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 5.55646598832066e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-14/ord_candidate/candidate",
+   "left_norm_dev": 2.220446049250313e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 3.522388139941304e-16,
+   "left_res_ok": true,
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 5.55646598832066e-16,
+     "record": 5.55646598832066e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 3.522388139941304e-16,
+     "record": 3.522388139941304e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 3.230776111200553e-16,
+     "record": 3.230776111200553e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 3.230776111200553e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "exact"
+  },
+  "A-20/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-20/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A3d",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 0.0,
+   "right_padding_touched": 0,
+   "right_res_max": 0.0,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-20/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-20/ord_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A3d",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 0.0,
+   "right_padding_touched": 0,
+   "right_res_max": 0.0,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-22/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-22/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A3d",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-22/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 0.0,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-22/ord_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 0.0,
+   "left_res_ok": true,
+   "matrix_id": "A3d",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-25/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 2.5015466677050293e-19,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-25/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 1.8233053489699605e-19,
+   "left_res_ok": true,
+   "matrix_id": "A3s",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 2.5015466677050293e-19,
+     "record": 2.5015466677050293e-19,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.8233053489699605e-19,
+     "record": 1.8233053489699605e-19,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 8.827998762504937e-19,
+     "record": 8.827998762504937e-19,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 8.827998762504937e-19,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-25/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 2.38140147937143e-19,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-25/ord_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 1.355253175976889e-19,
+   "left_res_ok": true,
+   "matrix_id": "A3s",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 2.38140147937143e-19,
+     "record": 2.38140147937143e-19,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.355253175976889e-19,
+     "record": 1.355253175976889e-19,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 1.0246724607283596e-18,
+     "record": 1.0246724607283596e-18,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 1.0246724607283596e-18,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-27/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 2.5015466677050293e-19,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-27/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 1.8233053489699605e-19,
+   "left_res_ok": true,
+   "matrix_id": "A3s",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 2.5015466677050293e-19,
+     "record": 2.5015466677050293e-19,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.8233053489699605e-19,
+     "record": 1.8233053489699605e-19,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-27/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 2.38140147937143e-19,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-27/ord_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 1.355253175976889e-19,
+   "left_res_ok": true,
+   "matrix_id": "A3s",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 2.38140147937143e-19,
+     "record": 2.38140147937143e-19,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.355253175976889e-19,
+     "record": 1.355253175976889e-19,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vl",
+   "work_mode": "exact"
+  },
+  "A-28/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.0529100551958841e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-28/asan_candidate/candidate",
+   "left_norm_dev": 0.0,
+   "left_padding_touched": 0,
+   "left_res_max": 1.6231673246839768e-16,
+   "left_res_ok": true,
+   "matrix_id": "A2t",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 2,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.0529100551958841e-16,
+     "record": 1.0529100551958841e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 0.0,
+     "record": 0.0,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.6231673246839768e-16,
+     "record": 1.6231673246839768e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 1.682592350585619e-16,
+     "record": 1.682592350585619e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 1.682592350585619e-16,
+   "right_res_ok": true,
+   "scalea": "1",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-28/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.0529100551958841e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-28/ord_candidate/candidate",
+   "left_norm_dev": 1.1102230246251565e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 1.2350451473345786e-16,
+   "left_res_ok": true,
+   "matrix_id": "A2t",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 2,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.0529100551958841e-16,
+     "record": 1.0529100551958841e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.2350451473345786e-16,
+     "record": 1.2350451473345786e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 1.253618297018668e-16,
+     "record": 1.253618297018668e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 1.253618297018668e-16,
+   "right_res_ok": true,
+   "scalea": "1",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-29/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.0405828501053308e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-29/asan_candidate/candidate",
+   "left_norm_dev": 1.1102230246251565e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 1.0962573991985799e-16,
+   "left_res_ok": true,
+   "matrix_id": "A2L",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 2,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.0405828501053308e-16,
+     "record": 1.0405828501053308e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.0962573991985799e-16,
+     "record": 1.0962573991985799e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 6.798699777552592e-17,
+     "record": 6.798699777552592e-17,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 6.798699777552592e-17,
+   "right_res_ok": true,
+   "scalea": "1",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-29/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.1634069945279969e-16,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-29/ord_candidate/candidate",
+   "left_norm_dev": 1.1102230246251565e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 1.0366623890968929e-16,
+   "left_res_ok": true,
+   "matrix_id": "A2L",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 2,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.1634069945279969e-16,
+     "record": 1.1634069945279969e-16,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 1.0366623890968929e-16,
+     "record": 1.0366623890968929e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 1.1102230246251565e-16,
+     "record": 1.1102230246251565e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 1.0749688212373143e-16,
+     "record": 1.0749688212373143e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 1.1102230246251565e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 1.0749688212373143e-16,
+   "right_res_ok": true,
+   "scalea": "1",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-32/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.4001176420128261e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-32/asan_candidate/candidate",
+   "matrix_id": "A6p",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 6,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.4001176420128261e-15,
+     "record": 1.4001176420128261e-15,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 7.747230957304317e-16,
+     "record": 7.747230957304317e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 7.747230957304317e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-32/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 1.5308298770850385e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-32/ord_candidate/candidate",
+   "matrix_id": "A6p",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 6,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 1.5308298770850385e-15,
+     "record": 1.5308298770850387e-15,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 2.220446049250313e-16,
+     "record": 2.220446049250313e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 8.174787497229716e-16,
+     "record": 8.174787497229716e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 2.220446049250313e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 8.174787497229716e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-34/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 3.681302912399164e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-34/ord_candidate/candidate",
+   "matrix_id": "A76",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 76,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 3.681302912399164e-15,
+     "record": 3.681302912399163e-15,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 6.661338147750939e-16,
+     "record": 6.661338147750939e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 8.153080176448573e-16,
+     "record": 8.153080176448573e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 6.661338147750939e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 8.153080176448573e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-35/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 3.681302912399164e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-35/ord_candidate/candidate",
+   "left_norm_dev": 7.771561172376096e-16,
+   "left_padding_touched": 0,
+   "left_res_max": 8.167727450892484e-16,
+   "left_res_ok": true,
+   "matrix_id": "A76",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 76,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 3.681302912399164e-15,
+     "record": 3.681302912399163e-15,
+     "record_ok": true
+    },
+    "left_norm_dev": {
+     "independent": 7.771561172376096e-16,
+     "record": 7.771561172376096e-16,
+     "record_ok": true
+    },
+    "left_res_max": {
+     "independent": 8.167727450892484e-16,
+     "record": 8.167727450892484e-16,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 6.661338147750939e-16,
+     "record": 6.661338147750939e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 8.153080176448573e-16,
+     "record": 8.153080176448573e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 6.661338147750939e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 8.153080176448573e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "both",
+   "work_mode": "internal"
+  },
+  "A-38/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 3.681302912399164e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-38/ord_candidate/candidate",
+   "matrix_id": "A76",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 76,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 3.681302912399164e-15,
+     "record": 3.681302912399163e-15,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "exact"
+  },
+  "A-39/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 3.702569349277274e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-39/asan_candidate/candidate",
+   "matrix_id": "A40p",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 40,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 3.702569349277274e-15,
+     "record": 3.702569349277274e-15,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 4.440892098500626e-16,
+     "record": 4.440892098500626e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 9.975716507405127e-16,
+     "record": 9.975716507405127e-16,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 4.440892098500626e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 9.975716507405127e-16,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-39/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 6.6409345817712195e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-39/ord_candidate/candidate",
+   "matrix_id": "A40p",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 40,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 6.6409345817712195e-15,
+     "record": 6.6409345817712195e-15,
+     "record_ok": true
+    },
+    "right_norm_dev": {
+     "independent": 5.551115123125783e-16,
+     "record": 5.551115123125783e-16,
+     "record_ok": true
+    },
+    "right_res_max": {
+     "independent": 1.6657754266100855e-15,
+     "record": 1.6657754266100855e-15,
+     "record_ok": true
+    }
+   },
+   "right_norm_dev": 5.551115123125783e-16,
+   "right_padding_touched": 0,
+   "right_res_max": 1.6657754266100855e-15,
+   "right_res_ok": true,
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "vr",
+   "work_mode": "exact"
+  },
+  "A-41/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "eig_ok": true,
+   "eig_rel_err_hungarian": 6.6409345817712195e-15,
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "A-41/ord_candidate/candidate",
+   "matrix_id": "A40p",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "numeric",
+   "n": 40,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "record_vs_independent": {
+    "eig_rel_err": {
+     "independent": 6.6409345817712195e-15,
+     "record": 6.6409345817712195e-15,
+     "record_ok": true
+    }
+   },
+   "scalea": "0",
+   "spec_sha_ok": true,
+   "status": "NUMERIC_PASS",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   },
+   "w_count_ok": true,
+   "want": "none",
+   "work_mode": "internal"
+  },
+  "C-01/seam_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": 1,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 1,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-01/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": 1,
+   "seam_mode": 1,
+   "seam_onlyvalues_real_info": 0,
+   "seam_onlyvalues_returned_info": 1,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "C-02/seam_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": 3,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 3,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-02/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": 3,
+   "seam_mode": 1,
+   "seam_onlyvalues_real_info": 0,
+   "seam_onlyvalues_returned_info": 3,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "C-03/seam_candidate/candidate": {
+   "C03_real_status_passthrough_ok": true,
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 0,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-03/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": 0,
+   "seam_mode": 0,
+   "seam_onlyvalues_real_info": 0,
+   "seam_onlyvalues_returned_info": 0,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "C-04/seam_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": -1,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": -1,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-04/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": -1,
+   "seam_mode": 1,
+   "seam_onlyvalues_real_info": 0,
+   "seam_onlyvalues_returned_info": -1,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "C-05/seam_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": 1,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 1,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-05/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": 1,
+   "seam_mode": 2,
+   "seam_onlyvalues_real_info": -12345,
+   "seam_onlyvalues_returned_info": -12345,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "C-06/seam_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "649ae7a1b1a64d7d85e6d5ff260ab0ff716a30612f2c8b6515ca446512ce5b5d",
+   "exit": 0,
+   "expected_info": 2,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "info": 2,
+   "info_ok": true,
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "C-06/seam_candidate/candidate",
+   "matrix_id": "A3n",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "seam",
+   "n": 3,
+   "n_out_ok": true,
+   "out_sha_ok": true,
+   "pass": true,
+   "problems": [],
+   "scalea": "0",
+   "seam_forced": 2,
+   "seam_mode": 2,
+   "seam_onlyvalues_real_info": -12345,
+   "seam_onlyvalues_returned_info": -12345,
+   "spec_sha_ok": true,
+   "status": "SEAM_PROPAGATED",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "H-01/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "ihi": 2,
+   "ilo": 1,
+   "job": "P",
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "H-01/asan_candidate/candidate",
+   "lapack_rows": [
+    0,
+    1,
+    2
+   ],
+   "matrix_id": "A3p2",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "helper",
+   "n": 3,
+   "n_out_ok": true,
+   "observed_rows_col0": [
+    0,
+    1,
+    2
+   ],
+   "out_sha_ok": true,
+   "padding_bad": 0,
+   "padding_untouched": true,
+   "pass": true,
+   "perm_mismatches": 0,
+   "perm_ok": true,
+   "problems": [],
+   "scale": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "scalea": "0",
+   "side": "R",
+   "spec_sha_ok": true,
+   "status": "HELPER_OK",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "H-01/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "ihi": 2,
+   "ilo": 1,
+   "job": "P",
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "H-01/ord_candidate/candidate",
+   "lapack_rows": [
+    0,
+    1,
+    2
+   ],
+   "matrix_id": "A3p2",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "helper",
+   "n": 3,
+   "n_out_ok": true,
+   "observed_rows_col0": [
+    0,
+    1,
+    2
+   ],
+   "out_sha_ok": true,
+   "padding_bad": 0,
+   "padding_untouched": true,
+   "pass": true,
+   "perm_mismatches": 0,
+   "perm_ok": true,
+   "problems": [],
+   "scale": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "scalea": "0",
+   "side": "R",
+   "spec_sha_ok": true,
+   "status": "HELPER_OK",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "H-08/asan_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "8ad52b00a794687d4708febdb79c982207d11f13dd62f66e1482145b31bc656f",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "ihi": 2,
+   "ilo": 1,
+   "job": "P",
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "H-08/asan_candidate/candidate",
+   "lapack_rows": [
+    0,
+    1,
+    2
+   ],
+   "matrix_id": "A3p2",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "helper",
+   "n": 3,
+   "n_out_ok": true,
+   "observed_rows_col0": [
+    0,
+    1,
+    2
+   ],
+   "out_sha_ok": true,
+   "padding_bad": 0,
+   "padding_untouched": true,
+   "pass": true,
+   "perm_mismatches": 0,
+   "perm_ok": true,
+   "problems": [],
+   "scale": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "scalea": "0",
+   "side": "R",
+   "spec_sha_ok": true,
+   "status": "HELPER_OK",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  },
+  "H-08/ord_candidate/candidate": {
+   "attempt_record_sha_ok": true,
+   "binary_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+   "exit": 0,
+   "final_classification": "SCIENTIFIC_PASS",
+   "identity_ok": true,
+   "ihi": 2,
+   "ilo": 1,
+   "job": "P",
+   "judge_meta_consumed": true,
+   "judge_state": "VALID",
+   "key": "H-08/ord_candidate/candidate",
+   "lapack_rows": [
+    0,
+    1,
+    2
+   ],
+   "matrix_id": "A3p2",
+   "matrix_sha_ok": true,
+   "matrix_text_vs_json_maxdiff": 0.0,
+   "mode": "helper",
+   "n": 3,
+   "n_out_ok": true,
+   "observed_rows_col0": [
+    0,
+    1,
+    2
+   ],
+   "out_sha_ok": true,
+   "padding_bad": 0,
+   "padding_untouched": true,
+   "pass": true,
+   "perm_mismatches": 0,
+   "perm_ok": true,
+   "problems": [],
+   "scale": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "scalea": "0",
+   "side": "R",
+   "spec_sha_ok": true,
+   "status": "HELPER_OK",
+   "stderr": {
+    "AddressSanitizer": false,
+    "N1_nonzero_offset_null": false,
+    "bytes": 0,
+    "runtime_error": false
+   }
+  }
+ },
+ "run": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/codex-review/P04-CLAUDE-RECOVERY-DIAGNOSTIC-CLOSEOUT-20261009T071842Z-d5f1a3/package/object-RUN",
+ "schema": "p04.d002.independent_offline_check.v1",
+ "summary": {
+  "by_mode": {
+   "helper": 4,
+   "numeric": 38,
+   "seam": 6
+  },
+  "consumption_ok": 48,
+  "fail": 0,
+  "judge_state_counts": {
+   "VALID": 48
+  },
+  "non_probe_records": 48,
+  "observations": 2,
+  "pass": 48
+ },
+ "thresholds": {
+  "eig_rel_tol": 1e-10,
+  "residual_tol": 1e-10,
+  "vector_norm_tol": 1e-12
+ }
+}

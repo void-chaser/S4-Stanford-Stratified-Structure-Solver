@@ -1,0 +1,225 @@
+{
+  "reconciliation": {
+    "cost_items": 137,
+    "executed_items": 137,
+    "scientific_pass": 132,
+    "contract_observation": 2,
+    "positive_controls": [
+      "B-POS-pos_asan",
+      "B-POS-pos_asan_ubsan",
+      "B-POS-pos_ubsan"
+    ],
+    "missing_execution": [],
+    "extra_execution": [],
+    "unclassified": [],
+    "category_overlap": []
+  },
+  "positive_controls": [
+    {
+      "id": "B-POS-pos_asan",
+      "exit": "1",
+      "signature": "AddressSanitizer: heap-buffer-overflow",
+      "independent_signature_found": true,
+      "verdict": "SIGNATURE_MATCHED"
+    },
+    {
+      "id": "B-POS-pos_asan_ubsan",
+      "exit": "1",
+      "signature": "AddressSanitizer: heap-buffer-overflow",
+      "independent_signature_found": true,
+      "verdict": "SIGNATURE_MATCHED"
+    },
+    {
+      "id": "B-POS-pos_ubsan",
+      "exit": "0",
+      "signature": "runtime error: signed integer overflow",
+      "independent_signature_found": true,
+      "verdict": "SIGNATURE_MATCHED"
+    }
+  ],
+  "freeze": {
+    "records": 402,
+    "mismatches": []
+  },
+  "shim": {
+    "producer_sha": "e265d84f4fd0718e953e7dccfa829cf8ddf94f75b3ca82f63f71b1cd4841a605",
+    "first_freeze_sha": "e265d84f4fd0718e953e7dccfa829cf8ddf94f75b3ca82f63f71b1cd4841a605",
+    "verifier_input_sha": "e265d84f4fd0718e953e7dccfa829cf8ddf94f75b3ca82f63f71b1cd4841a605",
+    "current_sha": "e265d84f4fd0718e953e7dccfa829cf8ddf94f75b3ca82f63f71b1cd4841a605",
+    "verifier_output_paths": [
+      "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/codex-review/P04-CLAUDE-RECOVERY-DIAGNOSTIC-CLOSEOUT-20261009T071842Z-d5f1a3/package/object-RUN/d002_shim/SHIM_VERIFY.json"
+    ],
+    "verifier_input_unchanged": true,
+    "verdict": "SHIM_VERIFY_OK",
+    "first_freeze_utc": "2026-10-09T07:41:57Z"
+  },
+  "d002_provenance": {
+    "case_records": 48,
+    "raw_and_attempt_digest_mismatches": [],
+    "independent_numeric_recomputation": "NOT_PERFORMED"
+  },
+  "d001_common": {
+    "lattice": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "ambient_epsilon": 1.0,
+    "film_epsilon_scalar": 4.0,
+    "film_epsilon_tensor": [
+      [
+        4.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        4.0
+      ]
+    ],
+    "stack": [
+      {
+        "name": "AirTop",
+        "thickness": 0.0,
+        "material": "Air"
+      },
+      {
+        "name": "Film",
+        "thickness": 0.25,
+        "material": "Film"
+      },
+      {
+        "name": "AirBottom",
+        "thickness": 0.0,
+        "material": "Air"
+      }
+    ],
+    "circle": {
+      "layer": "Film",
+      "material": "Film",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 0.2
+    },
+    "excitation": {
+      "incidence_angles_deg": [
+        0.0,
+        0.0
+      ],
+      "order": 0,
+      "sAmplitude": [
+        1.0,
+        0.0
+      ],
+      "pAmplitude": [
+        0.0,
+        0.0
+      ]
+    },
+    "setOptions_called": false,
+    "representation_semantics": {
+      "A_SCALAR": "scalar Film material, no region",
+      "B_SAME_MATERIAL_CIRCLE": "scalar Film material plus a same-material circle region inside Film",
+      "C_ISOTROPIC_TENSOR": "tensor diag(4,4,4), all off-diagonal zero, no region"
+    }
+  },
+  "d001_independent_raw_airy": [
+    {
+      "tag": "P02-12",
+      "rows": 12,
+      "unique_keys": 12,
+      "integrity_mismatches": [],
+      "max_abs_error": 1.1102230246251565e-16,
+      "above_1e_10": 0
+    },
+    {
+      "tag": "LUA-12",
+      "rows": 12,
+      "unique_keys": 12,
+      "integrity_mismatches": [],
+      "max_abs_error": 1.1102230246251565e-16,
+      "above_1e_10": 0
+    },
+    {
+      "tag": "EXT-16",
+      "rows": 16,
+      "unique_keys": 16,
+      "integrity_mismatches": [],
+      "max_abs_error": 1.6653345369377348e-16,
+      "above_1e_10": 0
+    },
+    {
+      "tag": "STAGE2",
+      "rows": 66,
+      "unique_keys": 66,
+      "integrity_mismatches": [],
+      "max_abs_error": 1.6653345369377348e-16,
+      "above_1e_10": 0
+    }
+  ],
+  "integration": {
+    "verdict": "INTEGRATION_PASS",
+    "counts": {
+      "checked": 25,
+      "fail": 0,
+      "not_run": 0,
+      "pass": 25
+    },
+    "not_run": [],
+    "problems": [],
+    "mock_evidence_nodes": []
+  },
+  "unified_cc_ledger": {
+    "granted": {
+      "compile": 41,
+      "link": 14,
+      "ar": 1
+    },
+    "caps": {
+      "compile": 48,
+      "link": 14,
+      "ar": 2
+    },
+    "refused": {
+      "compile": 0,
+      "link": 0,
+      "ar": 0
+    },
+    "not_executed": {}
+  },
+  "production_source_comparison": [
+    {
+      "path": "S4/RNP/Eigensystems.cpp",
+      "source_equals_run": true,
+      "source_equals_production": false
+    },
+    {
+      "path": "S4/S4.cpp",
+      "source_equals_run": true,
+      "source_equals_production": false
+    },
+    {
+      "path": "S4/rcwa.cpp",
+      "source_equals_run": true,
+      "source_equals_production": false
+    },
+    {
+      "path": "S4/main_python.c",
+      "source_equals_run": true,
+      "source_equals_production": false
+    }
+  ]
+}

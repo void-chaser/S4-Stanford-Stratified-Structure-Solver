@@ -1,0 +1,356 @@
+{
+ "contract_probe_recorded": [
+  "B-ASAN-A-10r",
+  "B-ORD-A-10r"
+ ],
+ "cost_items": 137,
+ "cost_unique": 137,
+ "executed_items": 137,
+ "exit_files": 334,
+ "extra_in_execution": [],
+ "identity_137_eq_132_2_3": true,
+ "missing_from_execution": [],
+ "nonzero_exits": 14,
+ "nonzero_rows": [
+  {
+   "call_id": "B-ASAN-A-10r",
+   "exit": "1",
+   "log": "B-ASAN-A-10r",
+   "matches_registration": null,
+   "registered_expect": null
+  },
+  {
+   "call_id": "B-ORD-A-10r",
+   "exit": "-11",
+   "log": "B-ORD-A-10r",
+   "matches_registration": null,
+   "registered_expect": null
+  },
+  {
+   "call_id": "B-POS-pos_asan",
+   "exit": "1",
+   "log": "B-POS-pos_asan",
+   "matches_registration": null,
+   "registered_expect": null
+  },
+  {
+   "call_id": "B-POS-pos_asan_ubsan",
+   "exit": "1",
+   "log": "B-POS-pos_asan_ubsan",
+   "matches_registration": null,
+   "registered_expect": null
+  },
+  {
+   "call_id": "D10:partial-analysis",
+   "exit": "1",
+   "log": "D10_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D1:partial-analysis",
+   "exit": "1",
+   "log": "D1_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D2:partial-analysis",
+   "exit": "1",
+   "log": "D2_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D3:partial-analysis",
+   "exit": "1",
+   "log": "D3_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D4:partial-analysis",
+   "exit": "1",
+   "log": "D4_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D5:partial-analysis",
+   "exit": "1",
+   "log": "D5_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D6:partial-analysis",
+   "exit": "1",
+   "log": "D6_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D7:partial-analysis",
+   "exit": "1",
+   "log": "D7_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D8:partial-analysis",
+   "exit": "1",
+   "log": "D8_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  },
+  {
+   "call_id": "D9:partial-analysis",
+   "exit": "1",
+   "log": "D9_partial-analysis",
+   "matches_registration": true,
+   "registered_expect": {
+    "exit": 1
+   }
+  }
+ ],
+ "observed_and_expected_failure_overlap": [],
+ "partial_analysis": {
+  "D1": {
+   "aggregate": "PASS 1/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D10": {
+   "aggregate": "PASS 10/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D11"
+   ]
+  },
+  "D11": {
+   "aggregate": "PASS 11/11",
+   "exit": "0"
+  },
+  "D2": {
+   "aggregate": "PASS 2/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D3": {
+   "aggregate": "PASS 3/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D4": {
+   "aggregate": "PASS 4/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D5",
+    "D6",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D5": {
+   "aggregate": "PASS 5/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D6",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D6": {
+   "aggregate": "PASS 6/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D7",
+    "D8",
+    "D9"
+   ]
+  },
+  "D7": {
+   "aggregate": "PASS 7/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D8",
+    "D9"
+   ]
+  },
+  "D8": {
+   "aggregate": "PASS 8/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11",
+    "D9"
+   ]
+  },
+  "D9": {
+   "aggregate": "PASS 9/11",
+   "exit": "1",
+   "own_wave_ok": true,
+   "waves_missing_exit_file": [
+    "D10",
+    "D11"
+   ]
+  }
+ },
+ "pass_and_expected_failure_overlap": [],
+ "pass_and_observed_overlap": [],
+ "phase_verdicts": {
+  "A-d001": {
+   "executed": 4,
+   "verdict": "COMPLETE_OK"
+  },
+  "A-freeze-identity": {
+   "executed": 1,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-analysis-P0": {
+   "executed": 1,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-analysis-P2-P7": {
+   "executed": 57,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-asan": {
+   "executed": 20,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-known-fail": {
+   "executed": 4,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-ord": {
+   "executed": 20,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-positives": {
+   "executed": 3,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-seam": {
+   "executed": 6,
+   "verdict": "COMPLETE_OK"
+  },
+  "B-d002-shim": {
+   "executed": 1,
+   "verdict": "COMPLETE_OK"
+  },
+  "C-getwaves": {
+   "executed": 11,
+   "verdict": "COMPLETE_OK"
+  },
+  "C-mapping-contracts": {
+   "executed": 2,
+   "verdict": "COMPLETE_OK"
+  },
+  "D-entries": {
+   "executed": 5,
+   "verdict": "COMPLETE_OK"
+  },
+  "Z-integration": {
+   "executed": 2,
+   "verdict": "COMPLETE_OK"
+  }
+ },
+ "positive_controls": [
+  {
+   "exit": "1",
+   "id": "B-POS-pos_asan",
+   "signature": "AddressSanitizer: heap-buffer-overflow",
+   "signature_in_stderr": true,
+   "verdict": "SIGNATURE_MATCHED"
+  },
+  {
+   "exit": "1",
+   "id": "B-POS-pos_asan_ubsan",
+   "signature": "AddressSanitizer: heap-buffer-overflow",
+   "signature_in_stderr": true,
+   "verdict": "SIGNATURE_MATCHED"
+  },
+  {
+   "exit": "0",
+   "id": "B-POS-pos_ubsan",
+   "signature": "runtime error: signed integer overflow",
+   "signature_in_stderr": true,
+   "verdict": "SIGNATURE_MATCHED"
+  }
+ ],
+ "registered_expected_failure": [
+  "B-POS-pos_asan",
+  "B-POS-pos_asan_ubsan",
+  "B-POS-pos_ubsan"
+ ],
+ "scientific_pass": 132,
+ "unclassified": []
+}
