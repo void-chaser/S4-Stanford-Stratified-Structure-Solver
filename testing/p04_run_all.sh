@@ -22,12 +22,12 @@ mkdir -p "$LOG" "$OUT/d001" "$OUT/d002" "$OUT/error20" "$OUT/regress"
 
 # run NAME COMMAND...  : log output, record the return code, keep going
 run() {
-    name=$1
+    _run_name=$1
     shift
-    "$@" > "$LOG/$name.log" 2>&1
-    rc=$?
-    echo "$name rc=$rc" >> "$OUT/STEPS.txt"
-    echo "[$rc] $name"
+    "$@" > "$LOG/$_run_name.log" 2>&1
+    _run_rc=$?
+    echo "$_run_name rc=$_run_rc" >> "$OUT/STEPS.txt"
+    echo "[$_run_rc] $_run_name"
 }
 
 echo "root=$ROOT out=$OUT"
