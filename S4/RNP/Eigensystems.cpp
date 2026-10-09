@@ -672,9 +672,9 @@ static void zgebak_(char job, char side, size_t n, size_t ilo, size_t ihi, doubl
 					continue;
 				}
 				if(i < ilo){
-					i = ilo - ii;
+					i = ilo - 1 - ii;
 				}
-				size_t k = (int)scale[i];
+				size_t k = (size_t)((int)scale[i] - 1);
 				if(k != i){
 					RNP::TBLAS::Swap(m, &v[i+0*ldv], ldv, &v[k+0*ldv], ldv);
 				}
@@ -688,9 +688,9 @@ static void zgebak_(char job, char side, size_t n, size_t ilo, size_t ihi, doubl
 					continue;
 				}
 				if(i < ilo){
-					i = ilo - ii;
+					i = ilo - 1 - ii;
 				}
-				size_t k = (int)scale[i];
+				size_t k = (size_t)((int)scale[i] - 1);
 				if(k != i){
 					RNP::TBLAS::Swap(m, &v[i+0*ldv], ldv, &v[k+0*ldv], ldv);
 				}
@@ -1470,7 +1470,7 @@ static void zlaqr3_(bool wantt, bool wantz, size_t n, size_t ktop, size_t kbot, 
 	std::complex<double> *z__ = (std::complex<double>*)_z__;
 	std::complex<double> *work = (std::complex<double>*)_work;
 	
-	size_t h_offset, t_offset, v_offset, z_offset;
+	size_t h_offset, t_offset, v_offset;
 
 	// ******************************************************************
 	// Aggressive early deflation:
@@ -1611,8 +1611,9 @@ static void zlaqr3_(bool wantt, bool wantz, size_t n, size_t ktop, size_t kbot, 
 	/* Parameter adjustments */
 	h_offset = 1 + ldh;
 	h__ -= h_offset;
-	z_offset = 1 + ldz;
-	z__ -= z_offset;
+	if (wantz) {
+		z__ -= (1 + ldz);
+	}
 	--sh;
 	v_offset = 1 + ldv;
 	v -= v_offset;
@@ -3667,7 +3668,7 @@ static size_t zlaqr0_(bool wantt, bool wantz, size_t n, size_t ilo, size_t ihi, 
 	std::complex<double> *work = (std::complex<double>*)_work;
 	
 	/* System generated locals */
-	int h_offset, z_offset, i__2, i__3;
+	int h_offset, i__2, i__3;
 
 	// Purpose
 	// =======
@@ -3830,8 +3831,9 @@ static size_t zlaqr0_(bool wantt, bool wantz, size_t n, size_t ilo, size_t ihi, 
 	h_offset = 1 + ldh;
 	h__ -= h_offset;
 	--w;
-	z_offset = 1 + ldz;
-	z__ -= z_offset;
+	if (wantz) {
+		z__ -= (1 + ldz);
+	}
 	--work;
 
 
@@ -3983,7 +3985,7 @@ static size_t zlaqr0_(bool wantt, bool wantz, size_t n, size_t ilo, size_t ihi, 
 
 		// Aggressive early deflation
 		size_t ls, ld;
-		zlaqr3_(wantt, wantz, n, ktop, kbot, nw, &h__[h_offset], ldh, iloz, ihiz, &z__[z_offset], ldz, &ls, &ld, &w[1], &h__[kv + ldh], ldh, nho, &h__[kv + kt * ldh], ldh, nve, &h__[kwv + ldh], ldh, &work[1], is_zero);
+		zlaqr3_(wantt, wantz, n, ktop, kbot, nw, &h__[h_offset], ldh, iloz, ihiz, _z__, ldz, &ls, &ld, &w[1], &h__[kv + ldh], ldh, nho, &h__[kv + kt * ldh], ldh, nve, &h__[kwv + ldh], ldh, &work[1], is_zero);
 
 		// Adjust KBOT accounting for new deflations.
 		kbot -= ld;
@@ -4658,7 +4660,7 @@ int RNP::Eigensystem(size_t n,
 		// (CWorkspace: need 1, prefer HSWORK (see comments) )
 		// (RWorkspace: none)
 		iwrk = itau;
-		zhseqr_('E', 'N', n, ilo, ihi, a, lda, w, vr, ldvr, &work[iwrk]);
+		info = zhseqr_('E', 'N', n, ilo, ihi, a, lda, w, vr, ldvr, &work[iwrk]);
 	}
 
 	if(info == 0){

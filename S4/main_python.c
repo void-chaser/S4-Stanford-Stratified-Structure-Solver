@@ -133,9 +133,11 @@ void HandleSolutionErrorCode(const char *fname, int code){
 		"Invalid patterning for 1D lattice", /* 16 */
 		"At least two layers are required to solve fields or power flux", /* 17 */
 		"A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)", /* 18 */
+		def, /* 19 */
+		"The layer eigensystem could not be solved; no solution was returned", /* 20 */
 	};
 	const char *str = def;
-	if(0 < code && code <= 18){
+	if(0 < code && code <= 20){
 		str = errstr[code];
 		PyErr_Format(PyExc_RuntimeError, "%s: %s", fname, str);
 	}else{

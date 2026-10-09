@@ -243,7 +243,7 @@ void S4L_error(lua_State *L, const char *fmt, ...){
  * HandleSolutionErrorCode (which reports and, outside interactive mode, exits)
  * and S4L_solution_error_text (which formats the same text for a caller that
  * has to release resources before raising) cannot drift apart. */
-#define S4L_SOLUTION_ERROR_CODES 18
+#define S4L_SOLUTION_ERROR_CODES 20
 static const char S4L_solution_error_default[] = "An unknown error occurred";
 static const char *const S4L_solution_errstr[S4L_SOLUTION_ERROR_CODES+1] = {
 	S4L_solution_error_default, /* 0 */
@@ -265,6 +265,8 @@ static const char *const S4L_solution_errstr[S4L_SOLUTION_ERROR_CODES+1] = {
 	"Invalid patterning for 1D lattice", /* 16 */
 	"At least two layers are required to solve fields or power flux", /* 17 */
 	"A numerical result is non-finite at this frequency; no result was returned (a diffraction cutoff is a common cause)", /* 18 */
+	S4L_solution_error_default, /* 19: reserved, not produced by this change */
+	"The layer eigensystem could not be solved; no solution was returned", /* 20 */
 };
 
 /* The same text HandleSolutionErrorCode would print, written to a buffer so the
@@ -301,20 +303,25 @@ S4_Simulation *S4L_get_simulation(lua_State *L, int index){
 typedef struct S4_solve_in_parallel_data_{
 	S4_Simulation *S;
 	S4_LayerID layer;
+	int rc; /* SolveLayer status: written by the worker, read after it has been joined */
 } S4_solve_in_parallel_data;
 
 void* S4_solve_in_parallel(void *p){
 	S4_solve_in_parallel_data *data = (S4_solve_in_parallel_data*)p;
-	S4_Simulation_SolveLayer(data->S, data->layer);
+	data->rc = S4_Simulation_SolveLayer(data->S, data->layer);
 	return NULL;
 }
 /* Expected stack:
  *   1 layer name string
  *   2 S4_Simulation object
  *   : S4_Simulation objects
+ * Every argument is checked before any worker starts, so an argument error never leaves
+ * a worker running on the work buffer.  A failed layer solve is reported only after all
+ * started workers have been joined and the buffer has been released, through the same
+ * HandleSolutionErrorCode path as the serial calls (with and without pthreads).
  */
 static int S4L_SolveInParallel(lua_State *L){
-	int i, n;
+	int i, n, rc = 0;
 	S4_solve_in_parallel_data *data;
 	const char *layer_name = luaL_checklstring(L, 1, NULL);
 
@@ -330,11 +337,19 @@ static int S4L_SolveInParallel(lua_State *L){
 		}
 		data[i-2].S = S;
 		data[i-2].layer = layer;
-
-		S4_threads_run(L, i-2, &S4_solve_in_parallel, (void*)&data[i-2]);
+		data[i-2].rc = 0;
+	}
+	for(i = 0; i < n-1; ++i){
+		S4_threads_run(L, i, &S4_solve_in_parallel, (void*)&data[i]);
 	}
 	S4_threads_join(L, n-1);
+	for(i = 0; i < n-1 && rc == 0; ++i){
+		rc = data[i].rc;
+	}
 	free(data);
+	if(rc != 0){
+		HandleSolutionErrorCode(L, "SolveInParallel", rc);
+	}
 
 	return 0;
 }
@@ -2310,10 +2325,15 @@ static int S4L_Simulation_GetAmplitudes(lua_State *L){
 	}
 
 	amp = (double*)malloc(sizeof(double)*8*n);
-	Simulation_GetAmplitudes(S,
+	ret = Simulation_GetAmplitudes(S,
 		layer,
 		luaL_checknumber(L, 3),
 		amp, &amp[4*n]);
+	if(0 != ret){
+		free(amp);
+		HandleSolutionErrorCode(L, "GetAmplitudes", ret);
+		return 0;
+	}
 
 	lua_createtable(L, 2*n, 0);
 	for(i = 0; i < 2*n; ++i){

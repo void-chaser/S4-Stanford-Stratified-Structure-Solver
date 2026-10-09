@@ -48,6 +48,12 @@
 
 #include <numalloc.h>
 
+#ifdef S4_TEST_EIGEN_INFO
+// TEST-ONLY.  Never included by a normal build; see testing/s4test/test_seams/seam.h for the
+// frozen strict-parse and real-failure-wins policy.
+# include "seam.h"
+#endif
+
 static inline void* rcwa_malloc(size_t size){
 	void *ret = malloc_aligned(size, 16);
 	//memset(ret, 0x0, size);
@@ -523,7 +529,7 @@ void SolveLayerEigensystem_uniform(
 }
 
 #ifdef HAVE_LAPACK
-void SolveLayerEigensystem_real(
+int SolveLayerEigensystem_real(
 	double omega,
 	size_t n,
 	const double *kx,
@@ -543,14 +549,17 @@ void SolveLayerEigensystem_real(
 		double tmp;
 		RNP::Eigensystem_real(n2, NULL, n2, q, NULL, 1, phi, n2, &tmp, lwork);
 		work_[0] = tmp + n2*n2;
-		return;
+		return 0;
 	}else if(0 == lwork){
 		lwork = n2*n2+2*n2;
 	}
 
 	double *work = (double*)work_;
 	size_t eigenlwork;
-	if(NULL == work_ || lwork < n2*n2+4*n2){
+	// N3: decide internal-work ownership here, before lwork is overwritten
+	// with the (size_t)-1 query sentinel below; the release path must use it.
+	const bool owns_work = (NULL == work_ || lwork < n2*n2+4*n2);
+	if(owns_work){
 		lwork = (size_t)-1;
 		double tmp;
 		RNP::Eigensystem_real(n2, NULL, n2, q, NULL, 1, phi, n2, &tmp, lwork);
@@ -648,6 +657,11 @@ void SolveLayerEigensystem_real(
 # endif
 #endif
 	int info = RNP::Eigensystem_real(n2, op, n2, q, NULL, 1, phi, n2, eigenwork, eigenlwork);
+#ifdef S4_TEST_EIGEN_INFO
+	// TEST-ONLY seam.  The real RNP numbers above are left untouched; the
+	// policy is strict-parse + real-non-zero-wins (testing/s4test/test_seams/seam.h).
+	info = s4c_seam_resolve(info, "real");
+#endif
 	if(0 != info){
 		fprintf(stderr, "Layer eigensystem returned info = %d\n", info);
 	}
@@ -674,7 +688,7 @@ void SolveLayerEigensystem_real(
 # endif
 #endif
 
-	for(size_t i = 0; i < n2; ++i){
+	for(size_t i = 0; i < n2 && 0 == info; ++i){
 		// Set the \hat{q} vector (diagonal matrix) while we're at it
 		q[i] = std::sqrt(q[i]);
 		if(q[i].imag() < 0){
@@ -692,17 +706,29 @@ void SolveLayerEigensystem_real(
 # endif
 #endif
 
-	if(NULL == work_ || lwork < n2*n2+4*n2){
+	if(owns_work){
 		rcwa_free(work);
 	}
-	
+
+	if(0 != info){
+		// Solver failure: q/kp/phi are not usable.  The internal workspace (if
+		// any) was released above; the caller's borrowed buffers are left
+		// alone.  Return here, before the q post-processing loop (already
+		// guarded by "0 == info") and before MakeKPMatrix, so a failed solve
+		// does no further work and rebuilds nothing.  This branch is compiled
+		// out of the fixed configuration (HAVE_LAPACK is undefined), so it has
+		// static review only and no native evidence.
+		return info;
+	}
+
 	// Re-make kp in complex arithmetic for future use
 	std::complex<double> *kp_use_actual = (NULL != kp ? kp : phi);
 	MakeKPMatrix(omega, n, kx, ky, Epsilon_inv, EPSILON2_TYPE_FULL, NULL, kp_use_actual, n2);
+	return info;
 }
 #endif // HAVE_LAPACK
 
-void SolveLayerEigensystem(
+int SolveLayerEigensystem(
 	std::complex<double> omega,
 	size_t n,
 	const double *kx,
@@ -738,11 +764,10 @@ void SolveLayerEigensystem(
 		}
 	}
 	if(isreal && 0 == omega.imag() && EPSILON2_TYPE_FULL == epstype){
-		SolveLayerEigensystem_real(
+		return SolveLayerEigensystem_real(
 			omega.real(), n, kx, ky, Epsilon_inv, Epsilon2,
 			q, kp, phi, work_, rwork_, lwork
 		);
-		return;
 	}
 #endif
 
@@ -750,14 +775,17 @@ void SolveLayerEigensystem(
 		double dum;
 		RNP::Eigensystem(n2, NULL, n2, q, NULL, 1, phi, n2, work_, &dum, lwork);
 		work_[0] += n2*n2;
-		return;
+		return 0;
 	}else if(0 == lwork){
 		lwork = n2*n2+2*n2;
 	}
 
 	std::complex<double> *work = work_;
 	size_t eigenlwork;
-	if(NULL == work_ || lwork < n2*n2+2*n2){
+	// N3: decide internal-work ownership here, before lwork is overwritten
+	// with the (size_t)-1 query sentinel below; the release path must use it.
+	const bool owns_work = (NULL == work_ || lwork < n2*n2+2*n2);
+	if(owns_work){
 		lwork = (size_t)-1;
 		RNP::Eigensystem(n2, NULL, n2, q, NULL, 1, phi, n2, q, NULL, lwork);
 		eigenlwork = (size_t)q[0].real();
@@ -846,6 +874,11 @@ void SolveLayerEigensystem(
 # endif
 #endif
 	int info = RNP::Eigensystem(n2, op, n2, q, NULL, 1, phi, n2, eigenwork, rwork, eigenlwork);
+#ifdef S4_TEST_EIGEN_INFO
+	// TEST-ONLY seam.  The real RNP numbers above are left untouched; the
+	// policy is strict-parse + real-non-zero-wins (testing/s4test/test_seams/seam.h).
+	info = s4c_seam_resolve(info, "complex");
+#endif
 	if(0 != info){
 		fprintf(stderr, "Layer eigensystem returned info = %d\n", info);
 	}
@@ -863,7 +896,7 @@ void SolveLayerEigensystem(
 # endif
 #endif
 
-	for(size_t i = 0; i < n2; ++i){
+	for(size_t i = 0; i < n2 && 0 == info; ++i){
 		// Set the \hat{q} vector (diagonal matrix) while we're at it
 		if(0 == omega.imag()){ // Not bandsolving
 			q[i] = std::sqrt(q[i]);
@@ -892,12 +925,13 @@ void SolveLayerEigensystem(
 # endif
 #endif
 
-	if(NULL == work_ || lwork < n2*n2+2*n2){
+	if(owns_work){
 		rcwa_free(work);
 	}
 	if(NULL == rwork_){
 		rcwa_free(rwork);
 	}
+	return info;
 }
 
 
