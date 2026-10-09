@@ -43,3 +43,5 @@ RAW_EVIDENCE_REPLAY.json 中 d002_provenance.independent_numeric_recomputation=N
 这些报告引用的旧 RUN、二进制和原始物理输出仍在本地，**该文档分支不能独立恢复完整运行现场**。下一阶段须将最小修复与可重复的测试资产纳入源码分支；本次不上传整份 audit-workspace 或历史现场。
 
 续执行全文见 NEXT_CLAUDE_PROMPT.md。Git 发布结果由当前聊天最终回复报告；本文件描述上传范围与关闭决定，不冒称远端已发布。
+
+后续用户明确调整执行顺序：Claude 先完成最小源码修复、提交版本验证和本地缓存/历史目录清理，独立复核后才统一处理产品 Git push 与 issue/milestone 关闭。NEXT_CLAUDE_PROMPT.md 已据此更新；本阶段不再要求 Claude 提前推送产品 PR。缓存可删除，唯一源码/原始证据须提取保留或集中归档，归档从日常搜索排除，当前回归须脱离旧产物运行。
