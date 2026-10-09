@@ -1,0 +1,200 @@
+[
+ {
+  "expect": "reject: 0 of 59 cases executed",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 0,
+  "name": "empty_RUN_INDEX",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=0 judged=0 not_applicable=0 probes_recorded=0",
+  "verdicts": {}
+ },
+ {
+  "expect": "reject: 58 cases missing, rc=-11",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 1,
+  "name": "partial_RUN_INDEX_SIGSEGV_rc-11",
+  "pass": 1,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=1 fail=0 judged=1 not_applicable=0 probes_recorded=0",
+  "verdicts": {
+   "A-01": [
+    "judged",
+    true,
+    "info=0 eig_rel_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: no output",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "listed_case_without_output",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-01   API      no output",
+  "verdicts": {
+   "A-01": [
+    "judged",
+    false,
+    "no output"
+   ]
+  }
+ },
+ {
+  "expect": "reject: non-finite",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 1,
+  "name": "NaN_eigenvalues_and_vectors",
+  "pass": 1,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=1 fail=0 judged=1 not_applicable=0 probes_recorded=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    true,
+    "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: n disagree with matrix A1",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 1,
+  "name": "missing_n_line_uses_default_0",
+  "pass": 1,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=1 fail=0 judged=1 not_applicable=0 probes_recorded=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    true,
+    "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: n disagrees with matrix",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 1,
+  "name": "driver_n_0_for_1x1_matrix",
+  "pass": 1,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=1 fail=0 judged=1 not_applicable=0 probes_recorded=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    true,
+    "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: index uniqueness/range",
+  "fail": 0,
+  "judge_exit": 0,
+  "judged": 1,
+  "name": "duplicate_and_extra_vector_indices",
+  "pass": 1,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=1 fail=0 judged=1 not_applicable=0 probes_recorded=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    true,
+    "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: numerically wrong",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "CONTROL_wrong_values",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-02   API      info=0 eig_rel_err=26.9 vr_res=26.9 vr_norm_err=0 vl_res=26.9 vl_norm_err=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    false,
+    "info=0 eig_rel_err=26.9 vr_res=26.9 vr_norm_err=0 vl_res=26.9 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: info != 0",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "CONTROL_info_nonzero",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-02   API      info=1 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    false,
+    "info=1 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0"
+   ]
+  }
+ },
+ {
+  "expect": "reject: sanitizer",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "CONTROL_sanitizer_stderr",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-02   API      sanitizer report: AddressSanitizer",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    false,
+    "sanitizer report: AddressSanitizer"
+   ]
+  }
+ },
+ {
+  "expect": "reject: ||v|| != 1",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "CONTROL_vectors_absent",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-02   API      info=0 eig_rel_err=0 vr_res=0 vr_norm_err=1 vl_res=0 vl_norm_err=1",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    false,
+    "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=1 vl_res=0 vl_norm_err=1"
+   ]
+  }
+ },
+ {
+  "expect": "reject: non-finite",
+  "fail": 1,
+  "judge_exit": 1,
+  "judged": 1,
+  "name": "CONTROL_infinite_values",
+  "pass": 0,
+  "stderr_tail": [],
+  "stdout": "judge ord: pass=0 fail=1 judged=1 not_applicable=0 probes_recorded=0\n  FAIL A-02   API      info=0 eig_rel_err=inf vr_res=0 vr_norm_err=inf vl_res=0 vl_norm_err=inf",
+  "verdicts": {
+   "A-02": [
+    "judged",
+    false,
+    "info=0 eig_rel_err=inf vr_res=0 vr_norm_err=inf vl_res=0 vl_norm_err=inf"
+   ]
+  }
+ }
+]

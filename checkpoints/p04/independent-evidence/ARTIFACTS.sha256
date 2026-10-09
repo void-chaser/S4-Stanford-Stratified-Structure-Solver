@@ -1,0 +1,19 @@
+# sha256 of artifacts used by the checks above
+fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build/libS4.a
+2acbb80416e3eca2b6cc81df71ea556191ffa7557d72a3743c6d3dd4e912ead2  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build/S4
+0c4d776ec689f4119272b247f215a88605444438312225b6a445b700c7c836c6  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build/RCWA.so
+27dcea578f5c5941d35d906663a3ce7d1786a96099bf71b71c5eda8a188468c4  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/S4.cpython-314-x86_64-linux-gnu.so
+047188053aa33771639634dedb268c9f4e7cda7f43fa8cf68a3aea104e238ba2  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build-seam/libS4.a
+2a4d913599926fe0536ef71d1524b9c847cb92529f11ff77914f43aaf5c1c1c0  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build-seam/S4
+b56804997fb165fd74c01cb4a7840aa6637fe7abde5290fa71f13c0c28018a9a  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build-seam/py/S4.cpython-314-x86_64-linux-gnu.so
+879a46069a1b792feaa2730e9e04c7e408c2664f58f365bc4388749dbc3f2c0e  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/build/libS4.a
+19daaa776dc740d4f26540f5faef1bebf636c79b3045bd8bd2ca902132d44432  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/build/S4
+03adb827c0f809efdcc6c42904df4ef8a60451350e75367d79574b5ef331c3f4  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4.cpython-314-x86_64-linux-gnu.so
+de0684b8121ea49473217d6b9eebb4aaf5a0a84078aac6cb1d9aa347e34b2c96  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_asan_baseline
+444b6ea3126d619d42cee592472598ee5d2d42ed7932bff478e07675097f0478  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_asan_candidate
+4dfad8ea442b40b65a5c0aca4b02abb044b2da2b6bf810490769cc39224ad18f  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_ord_baseline
+993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_ord_candidate
+47d67224c7f674abc107435b342b651225c28e79d67215cc2e9164e65d3b8549  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_seam_asan_baseline
+6f73bd54160881bb95b866f3dac633faad3fa7c4010b155dfbd4d41196c53f7d  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_seam_asan_candidate
+# candidate Eigensystems.cpp: 71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353
+# baseline  Eigensystems.cpp: 76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de

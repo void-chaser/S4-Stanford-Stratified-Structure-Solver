@@ -1,0 +1,44 @@
+[
+  {
+    "variant": "ord_candidate",
+    "original_pass": 53,
+    "strict_pass": 53,
+    "judged": 53,
+    "flips": []
+  },
+  {
+    "variant": "asan_candidate",
+    "original_pass": 53,
+    "strict_pass": 53,
+    "judged": 53,
+    "flips": []
+  },
+  {
+    "variant": "seam_asan_candidate",
+    "original_pass": 58,
+    "strict_pass": 58,
+    "judged": 58,
+    "flips": []
+  },
+  {
+    "variant": "ord_baseline",
+    "original_pass": 31,
+    "strict_pass": 31,
+    "judged": 53,
+    "flips": []
+  },
+  {
+    "variant": "asan_baseline",
+    "original_pass": 26,
+    "strict_pass": 26,
+    "judged": 53,
+    "flips": []
+  },
+  {
+    "variant": "seam_asan_baseline",
+    "original_pass": 27,
+    "strict_pass": 27,
+    "judged": 58,
+    "flips": []
+  }
+]

@@ -1,0 +1,244 @@
+{
+ "bin": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_ord_candidate",
+ "bin_sha256": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+ "cases": [
+  {
+   "case_id": "A-01",
+   "rc": 0
+  },
+  {
+   "case_id": "A-02",
+   "rc": 0
+  },
+  {
+   "case_id": "A-03",
+   "rc": 0
+  },
+  {
+   "case_id": "A-04",
+   "rc": 0
+  },
+  {
+   "case_id": "A-05",
+   "rc": 0
+  },
+  {
+   "case_id": "A-06",
+   "rc": 0
+  },
+  {
+   "case_id": "A-07",
+   "rc": 0
+  },
+  {
+   "case_id": "A-08",
+   "rc": 0
+  },
+  {
+   "case_id": "A-09",
+   "rc": 0
+  },
+  {
+   "case_id": "A-10",
+   "rc": 0
+  },
+  {
+   "case_id": "A-10r",
+   "rc": -11
+  },
+  {
+   "case_id": "A-11",
+   "rc": 0
+  },
+  {
+   "case_id": "A-12",
+   "rc": 0
+  },
+  {
+   "case_id": "A-13",
+   "rc": 0
+  },
+  {
+   "case_id": "A-14",
+   "rc": 0
+  },
+  {
+   "case_id": "A-15",
+   "rc": 0
+  },
+  {
+   "case_id": "A-16",
+   "rc": 0
+  },
+  {
+   "case_id": "A-17",
+   "rc": 0
+  },
+  {
+   "case_id": "A-18",
+   "rc": 0
+  },
+  {
+   "case_id": "A-19",
+   "rc": 0
+  },
+  {
+   "case_id": "A-20",
+   "rc": 0
+  },
+  {
+   "case_id": "A-21",
+   "rc": 0
+  },
+  {
+   "case_id": "A-22",
+   "rc": 0
+  },
+  {
+   "case_id": "A-23",
+   "rc": 0
+  },
+  {
+   "case_id": "A-24",
+   "rc": 0
+  },
+  {
+   "case_id": "A-25",
+   "rc": 0
+  },
+  {
+   "case_id": "A-26",
+   "rc": 0
+  },
+  {
+   "case_id": "A-27",
+   "rc": 0
+  },
+  {
+   "case_id": "A-28",
+   "rc": 0
+  },
+  {
+   "case_id": "A-29",
+   "rc": 0
+  },
+  {
+   "case_id": "A-30",
+   "rc": 0
+  },
+  {
+   "case_id": "A-31",
+   "rc": 0
+  },
+  {
+   "case_id": "A-32",
+   "rc": 0
+  },
+  {
+   "case_id": "A-33",
+   "rc": 0
+  },
+  {
+   "case_id": "A-34",
+   "rc": 0
+  },
+  {
+   "case_id": "A-35",
+   "rc": 0
+  },
+  {
+   "case_id": "A-36",
+   "rc": 0
+  },
+  {
+   "case_id": "A-37",
+   "rc": 0
+  },
+  {
+   "case_id": "A-38",
+   "rc": 0
+  },
+  {
+   "case_id": "A-39",
+   "rc": 0
+  },
+  {
+   "case_id": "A-40",
+   "rc": 0
+  },
+  {
+   "case_id": "A-41",
+   "rc": 0
+  },
+  {
+   "case_id": "C-01",
+   "rc": 0
+  },
+  {
+   "case_id": "C-02",
+   "rc": 0
+  },
+  {
+   "case_id": "C-03",
+   "rc": 0
+  },
+  {
+   "case_id": "C-04",
+   "rc": 0
+  },
+  {
+   "case_id": "C-05",
+   "rc": 0
+  },
+  {
+   "case_id": "C-06",
+   "rc": 0
+  },
+  {
+   "case_id": "H-01",
+   "rc": 0
+  },
+  {
+   "case_id": "H-02",
+   "rc": 0
+  },
+  {
+   "case_id": "H-03",
+   "rc": 0
+  },
+  {
+   "case_id": "H-04",
+   "rc": 0
+  },
+  {
+   "case_id": "H-05",
+   "rc": 0
+  },
+  {
+   "case_id": "H-06",
+   "rc": 0
+  },
+  {
+   "case_id": "H-07",
+   "rc": 0
+  },
+  {
+   "case_id": "H-08",
+   "rc": 0
+  },
+  {
+   "case_id": "H-09",
+   "rc": 0
+  },
+  {
+   "case_id": "H-10",
+   "rc": 0
+  },
+  {
+   "case_id": "H-11",
+   "rc": 0
+  }
+ ],
+ "run_utc": "2026-10-09T09:16:42Z",
+ "variant": "ord_candidate"
+}

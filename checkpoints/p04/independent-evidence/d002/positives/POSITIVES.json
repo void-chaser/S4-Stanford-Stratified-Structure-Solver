@@ -1,0 +1,23 @@
+[
+ {
+  "control": "pos_asan",
+  "exit": 1,
+  "pass": true,
+  "signature": "AddressSanitizer: heap-buffer-overflow",
+  "signature_seen": true
+ },
+ {
+  "control": "pos_ubsan",
+  "exit": 0,
+  "pass": true,
+  "signature": "runtime error: signed integer overflow",
+  "signature_seen": true
+ },
+ {
+  "control": "pos_asan_ubsan",
+  "exit": 1,
+  "pass": true,
+  "signature": "AddressSanitizer: heap-buffer-overflow",
+  "signature_seen": true
+ }
+]

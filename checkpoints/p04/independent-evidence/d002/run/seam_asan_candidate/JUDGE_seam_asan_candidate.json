@@ -1,0 +1,554 @@
+{
+ "cases_fail": 0,
+ "cases_judged": 58,
+ "cases_not_applicable": 0,
+ "cases_pass": 58,
+ "cases_recorded_probe": 1,
+ "cases_total": 59,
+ "judged_utc": "2026-10-09T09:17:01Z",
+ "results": [
+  {
+   "case_id": "A-01",
+   "detail": "info=0 eig_rel_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A0",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-02",
+   "detail": "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A1",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-03",
+   "detail": "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A1",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-04",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-05",
+   "detail": "info=0 eig_rel_err=5.95e-16 vl_res=3.62e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-06",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16 vl_res=3.62e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-07",
+   "detail": "info=0 eig_rel_err=5.95e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-08",
+   "detail": "info=0 work0=(6+0j) expected=(6+0j)",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-09",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-10",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-10r",
+   "detail": "contract probe; rc=1 sanitizer=AddressSanitizer",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": false,
+   "status": "recorded"
+  },
+  {
+   "case_id": "A-11",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-12",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-13",
+   "detail": "info=0 eig_rel_err=5.95e-16 vl_res=3.62e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-14",
+   "detail": "info=0 eig_rel_err=5.95e-16 vr_res=4.31e-16 vr_norm_err=1.11e-16 vl_res=3.62e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-15",
+   "detail": "info=0 eig_rel_err=2.07e-17 vr_res=8.88e-17 vr_norm_err=0 vl_res=1.78e-16 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3p1",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-16",
+   "detail": "info=0 eig_rel_err=2.07e-17 vr_res=8.88e-17 vr_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3p1",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-17",
+   "detail": "info=0 eig_rel_err=0 vr_res=1.27e-16 vr_norm_err=1.11e-16 vl_res=1.18e-16 vl_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-18",
+   "detail": "info=0 eig_rel_err=0 vr_res=1.27e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-19",
+   "detail": "info=0 eig_rel_err=0 vl_res=1.18e-16 vl_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-20",
+   "detail": "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0 vl_res=0 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3d",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-21",
+   "detail": "info=0 eig_rel_err=0 vr_res=0 vr_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3d",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-22",
+   "detail": "info=0 eig_rel_err=0 vl_res=0 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3d",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-23",
+   "detail": "info=0 eig_rel_err=2.44e-17 vr_res=2.22e-16 vr_norm_err=1.11e-16 vl_res=2.22e-16 vl_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A4L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-24",
+   "detail": "info=0 eig_rel_err=2.44e-17 vr_res=2.22e-16 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A4L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-25",
+   "detail": "info=0 eig_rel_err=7.94e-16 vr_res=9e-19 vr_norm_err=1.11e-16 vl_res=1.77e-19 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3s",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-26",
+   "detail": "info=0 eig_rel_err=7.94e-16 vr_res=9e-19 vr_norm_err=1.11e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3s",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-27",
+   "detail": "info=0 eig_rel_err=7.94e-16 vl_res=1.77e-19 vl_norm_err=0",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A3s",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-28",
+   "detail": "info=0 eig_rel_err=1.19e-16 vr_res=1.69e-16 vr_norm_err=2.22e-16 vl_res=1.18e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A2t",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-29",
+   "detail": "info=0 eig_rel_err=1.18e-16 vr_res=2.15e-16 vr_norm_err=2.22e-16 vl_res=1.16e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A2L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-30",
+   "detail": "info=0 eig_rel_err=1.19e-16 vr_res=1.69e-16 vr_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A2t",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-31",
+   "detail": "info=0 eig_rel_err=1.18e-16 vl_res=1.16e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A2L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-32",
+   "detail": "info=0 eig_rel_err=1.4e-15 vr_res=9.08e-16 vr_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A6p",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-33",
+   "detail": "info=0 eig_rel_err=1.4e-15 vr_res=9.08e-16 vr_norm_err=2.22e-16 vl_res=9.02e-16 vl_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A6p",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-34",
+   "detail": "info=0 eig_rel_err=6.43e-15 vr_res=6.26e-15 vr_norm_err=6.66e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A76",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-35",
+   "detail": "info=0 eig_rel_err=6.43e-15 vr_res=6.26e-15 vr_norm_err=6.66e-16 vl_res=6.26e-15 vl_norm_err=5.55e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A76",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-36",
+   "detail": "info=0 eig_rel_err=1.19e-16",
+   "entry": "API",
+   "group": "S2",
+   "matrix": "A2t",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-37",
+   "detail": "info=0 eig_rel_err=1.18e-16",
+   "entry": "API",
+   "group": "S2",
+   "matrix": "A2L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-38",
+   "detail": "info=0 eig_rel_err=6.43e-15",
+   "entry": "API",
+   "group": "S2",
+   "matrix": "A76",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-39",
+   "detail": "info=0 eig_rel_err=3.42e-15 vr_res=3.32e-15 vr_norm_err=2.22e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A40p",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-40",
+   "detail": "info=0 eig_rel_err=3.42e-15 vr_res=3.32e-15 vr_norm_err=2.22e-16 vl_res=3.32e-15 vl_norm_err=5.55e-16",
+   "entry": "API",
+   "group": "S1",
+   "matrix": "A40p",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "A-41",
+   "detail": "info=0 eig_rel_err=3.42e-15",
+   "entry": "API",
+   "group": "S2",
+   "matrix": "A40p",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-01",
+   "detail": "info=1 expected_forced=1 real_last=0",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-02",
+   "detail": "info=3 expected_forced=3 real_last=0",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-03",
+   "detail": "info=0 eig_rel_err=5.95e-16",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-04",
+   "detail": "info=-1 expected_forced=-1 real_last=0",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-05",
+   "detail": "info=1 expected_forced=1 real_last=0",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "C-06",
+   "detail": "info=2 expected_forced=2 real_last=0",
+   "entry": "API",
+   "group": "SEAM",
+   "matrix": "A3n",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-01",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-02",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-03",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3d",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-04",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A4L",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-05",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-06",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-07",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-08",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3p2",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-09",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3s",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-10",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A3s",
+   "pass": true,
+   "status": "judged"
+  },
+  {
+   "case_id": "H-11",
+   "detail": "max_rel_err=0",
+   "entry": "HELPER_GEBAK",
+   "group": "HELPER",
+   "matrix": "A6p",
+   "pass": true,
+   "status": "judged"
+  }
+ ],
+ "thresholds": {
+  "eig_rel_tol": 1e-10,
+  "padding_init_value": [
+   0.0,
+   0.0
+  ],
+  "per_case_timeout_s": 60,
+  "query_work0_expected": "2*n exactly",
+  "residual_tol": 1e-10,
+  "vector_norm_tol": 1e-12
+ },
+ "variant": "seam_asan_candidate"
+}

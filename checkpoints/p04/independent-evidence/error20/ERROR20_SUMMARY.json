@@ -1,0 +1,232 @@
+{
+ "checks": [
+  {
+   "check": "unset_reference_solves",
+   "detail": [
+    1.0,
+    -0.34786732368558093,
+    0.652132676314419,
+    0.0
+   ],
+   "pass": true
+  },
+  {
+   "check": "inject_1_power_flux_raises_20",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "inject_1_message_names_entry",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "same_object_retry_matches_reference",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "inject_1_amplitudes_raises_20",
+   "detail": "GetAmplitudes: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "inject_negative_3_raises_20",
+   "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['0']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['abc']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['1x']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection[' 1']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['+']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['-']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['1.0']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['2147483648']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "invalid_value_no_injection['-2147483649']",
+   "detail": {
+    "max_abs_diff": 0.0
+   },
+   "pass": true
+  },
+  {
+   "check": "normal_vs_seam_unset_flux_equal",
+   "detail": {
+    "max_abs_diff": 0.0,
+    "normal": [
+     1.0,
+     -0.34786732368558093,
+     0.652132676314419,
+     0.0
+    ],
+    "seam_unset": [
+     1.0,
+     -0.34786732368558093,
+     0.652132676314419,
+     0.0
+    ]
+   },
+   "pass": true
+  },
+  {
+   "check": "lua_inject1_exits_nonzero",
+   "detail": {
+    "rc": 1
+   },
+   "pass": true
+  },
+  {
+   "check": "lua_inject1_message_on_stderr",
+   "detail": [
+    "GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."
+   ],
+   "pass": true
+  },
+  {
+   "check": "lua_inject1_no_result_printed",
+   "detail": {},
+   "pass": true
+  },
+  {
+   "check": "lua_unset_GetPowerFlux_first_solves",
+   "detail": {
+    "status": "ok",
+    "text": "1 -0.34786732368558093"
+   },
+   "pass": true
+  },
+  {
+   "check": "lua_unset_GetPowerFlux_again_solves",
+   "detail": {
+    "status": "ok",
+    "text": "0.65213267631441896 0"
+   },
+   "pass": true
+  },
+  {
+   "check": "lua_unset_GetPowerFlux_fresh_solves",
+   "detail": {
+    "status": "ok",
+    "text": "0.65213267631441896 0"
+   },
+   "pass": true
+  },
+  {
+   "check": "lua_unset_script_exit_zero",
+   "detail": {
+    "unset_rc": 0
+   },
+   "pass": true
+  },
+  {
+   "check": "c_inject1_GetPowerFlux_first_rc20",
+   "detail": 20,
+   "pass": true
+  },
+  {
+   "check": "c_inject1_SolveLayer_film_rc20",
+   "detail": 20,
+   "pass": true
+  },
+  {
+   "check": "c_inject1_GetPowerFlux_bottom_rc20",
+   "detail": 20,
+   "pass": true
+  },
+  {
+   "check": "c_inject1_GetPowerFlux_fresh_rc20",
+   "detail": 20,
+   "pass": true
+  },
+  {
+   "check": "c_unset_GetPowerFlux_first_rc0",
+   "detail": 0,
+   "pass": true
+  },
+  {
+   "check": "c_unset_SolveLayer_film_rc0",
+   "detail": 0,
+   "pass": true
+  },
+  {
+   "check": "c_unset_GetPowerFlux_bottom_rc0",
+   "detail": 0,
+   "pass": true
+  },
+  {
+   "check": "c_unset_GetPowerFlux_fresh_rc0",
+   "detail": 0,
+   "pass": true
+  },
+  {
+   "check": "c_program_exit_zero",
+   "detail": {
+    "inject_rc": 0,
+    "unset_rc": 0
+   },
+   "pass": true
+  }
+ ],
+ "checks_fail": 0,
+ "checks_pass": 33,
+ "checks_total": 33,
+ "generated_utc": "2026-10-09T09:17:31Z"
+}

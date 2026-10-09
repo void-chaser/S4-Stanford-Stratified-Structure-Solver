@@ -3,3 +3,7 @@
 /S4.*.pyd
 __pycache__/
 /build-seam/
+
+# Local archive and review/build workspaces
+/.local-archive/
+/.p04-review/

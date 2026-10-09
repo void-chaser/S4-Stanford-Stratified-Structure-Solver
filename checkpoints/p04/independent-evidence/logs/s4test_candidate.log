@@ -1,0 +1,355 @@
+test_energy_is_conserved_at_every_num_basis (test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis)
+Convergence must not come at the cost of energy conservation. ... ok
+test_extra_basis_orders_do_not_change_a_planar_result (test_analytic_reference.ConvergenceTests.test_extra_basis_orders_do_not_change_a_planar_result)
+Adding Fourier orders to a structure with no pattern changes nothing. ... ok
+test_transmission_converges_with_num_basis (test_analytic_reference.ConvergenceTests.test_transmission_converges_with_num_basis) ... ok
+test_unpatterned_limit_is_exact_at_one_basis (test_analytic_reference.ConvergenceTests.test_unpatterned_limit_is_exact_at_one_basis)
+A planar slab needs exactly one Fourier order. ... ok
+test_backward_flux_is_negative_in_the_incidence_layer (test_analytic_reference.FluxConventionTests.test_backward_flux_is_negative_in_the_incidence_layer) ... ok
+test_incident_amplitude_sign_convention (test_analytic_reference.FluxConventionTests.test_incident_amplitude_sign_convention)
+Pin the signs that ``r = sign * backward/forward`` relies on. ... ok
+test_incident_power_is_normalised_to_cos_theta (test_analytic_reference.FluxConventionTests.test_incident_power_is_normalised_to_cos_theta)
+The incident Poynting flux is Re(kz/k0), not 1. ... ok
+test_reflected_amplitude_equals_fresnel_r (test_analytic_reference.FluxConventionTests.test_reflected_amplitude_equals_fresnel_r)
+backward[component] / forward[component] is the Fresnel amplitude r. ... ok
+test_transmitted_amplitude_ratio_matches_fresnel_t (test_analytic_reference.FluxConventionTests.test_transmitted_amplitude_ratio_matches_fresnel_t)
+The same ratio on the exit side gives Fresnel's t. ... ok
+test_brewster_angle_kills_p_reflection (test_analytic_reference.FresnelBenchmarkTests.test_brewster_angle_kills_p_reflection)
+At theta_B = atan(n2/n1) the p reflectance must vanish. ... ok
+test_normal_incidence_quarter_wave_stack (test_analytic_reference.FresnelBenchmarkTests.test_normal_incidence_quarter_wave_stack)
+n=1 -> n=2 at normal incidence: R = 1/9 exactly. ... ok
+test_oblique_incidence_all_polarizations (test_analytic_reference.FresnelBenchmarkTests.test_oblique_incidence_all_polarizations) ... ok
+test_total_internal_reflection (test_analytic_reference.FresnelBenchmarkTests.test_total_internal_reflection)
+Above the critical angle all power must be reflected. ... ok
+test_all_outputs_are_finite (test_analytic_reference.LosslessConstraintTests.test_all_outputs_are_finite) ... ok
+test_energy_conservation_across_parameters (test_analytic_reference.LosslessConstraintTests.test_energy_conservation_across_parameters) ... ok
+test_reciprocity_of_reflectance (test_analytic_reference.LosslessConstraintTests.test_reciprocity_of_reflectance)
+R must be the same when the incidence and exit media are swapped. ... ok
+test_absorbed_power_grows_with_absorption_strength (test_analytic_reference.LossyMediumTests.test_absorbed_power_grows_with_absorption_strength) ... ok
+test_absorbed_power_is_positive_and_bounded (test_analytic_reference.LossyMediumTests.test_absorbed_power_is_positive_and_bounded) ... ok
+test_absorption_matches_reference_for_both_polarizations (test_analytic_reference.LossyMediumTests.test_absorption_matches_reference_for_both_polarizations)
+Absorption must also be right for p polarisation. ... ok
+test_absorption_matches_transfer_matrix_reference (test_analytic_reference.LossyMediumTests.test_absorption_matches_transfer_matrix_reference)
+Absorbing films are checked against the Airy formula. ... ok
+test_absorption_scales_linearly_with_the_imaginary_part (test_analytic_reference.LossyMediumTests.test_absorption_scales_linearly_with_the_imaginary_part)
+In the weak-absorption limit 1 - R - T must be proportional to Im(eps). ... ok
+test_frequency_dependence_matches_reference (test_analytic_reference.TransferMatrixBenchmarkTests.test_frequency_dependence_matches_reference)
+This is the benchmark that a working sweep must satisfy. ... ok
+test_quarter_wave_anti_reflection_coating (test_analytic_reference.TransferMatrixBenchmarkTests.test_quarter_wave_anti_reflection_coating)
+A quarter-wave film with n = sqrt(n_sub) must give R ~ 0. ... ok
+test_single_film_various_thicknesses (test_analytic_reference.TransferMatrixBenchmarkTests.test_single_film_various_thicknesses) ... ok
+test_two_film_stack (test_analytic_reference.TransferMatrixBenchmarkTests.test_two_film_stack) ... ok
+test_byte_limit_is_the_portability_bound_not_the_binding_one_here (test_capi_field_plane.FieldPlaneCapacityTests.test_byte_limit_is_the_portability_bound_not_the_binding_one_here)
+On this platform the int limit binds first; that is stated, not assumed. ... ok
+test_capacity_arithmetic_matches_the_division_form (test_capi_field_plane.FieldPlaneCapacityTests.test_capacity_arithmetic_matches_the_division_form)
+The boundary is a division test, checked without allocating anything. ... ok
+test_grid_just_above_the_fft_int_product_is_rejected (test_capi_field_plane.FieldPlaneCapacityTests.test_grid_just_above_the_fft_int_product_is_rejected)
+46341^2 exceeds INT_MAX while 46340^2 does not, so the boundary is exact. ... ok
+test_both_outputs_null_is_a_no_op (test_capi_field_plane.FieldPlaneContractTests.test_both_outputs_null_is_a_no_op) ... ok
+test_non_positive_grid_is_rejected (test_capi_field_plane.FieldPlaneContractTests.test_non_positive_grid_is_rejected) ... ok
+test_null_arguments_return_their_codes (test_capi_field_plane.FieldPlaneContractTests.test_null_arguments_return_their_codes) ... ok
+test_oversized_grid_is_rejected_before_allocating (test_capi_field_plane.FieldPlaneContractTests.test_oversized_grid_is_rejected_before_allocating) ... ok
+test_structure_without_layers_reports_error_14 (test_capi_field_plane.FieldPlaneContractTests.test_structure_without_layers_reports_error_14) ... ok
+test_each_output_combination_works_and_agrees (test_capi_field_plane.FieldPlaneOutputTests.test_each_output_combination_works_and_agrees) ... ok
+test_grid_layout_matches_the_python_binding (test_capi_field_plane.FieldPlaneOutputTests.test_grid_layout_matches_the_python_binding)
+The public C entry point and the Python binding agree element by element. ... ok
+test_single_point_layout_matches_the_grid_path (test_capi_field_plane.FieldPlaneOutputTests.test_single_point_layout_matches_the_grid_path)
+The 1x1 reorder must produce the same layout as the sampled grid path. ... ok
+test_patterned_grid_matches_the_python_binding (test_capi_field_plane.FieldPlanePatternedTests.test_patterned_grid_matches_the_python_binding) ... ok
+test_patterned_grid_origin_matches_the_point_field (test_capi_field_plane.FieldPlanePatternedTests.test_patterned_grid_origin_matches_the_point_field)
+At a represented resolution the grid origin reproduces the point field. ... ok
+test_patterned_outputs_vary_and_single_outputs_agree (test_capi_field_plane.FieldPlanePatternedTests.test_patterned_outputs_vary_and_single_outputs_agree) ... ok
+test_patterned_public_1x1_matches_the_point_field (test_capi_field_plane.FieldPlanePatternedTests.test_patterned_public_1x1_matches_the_point_field)
+The public 1x1 branch is the point-field computation, so it must equal it. ... ok
+test_state_cases (test_capi_field_plane.FieldPlaneStateTests.test_state_cases) ... ok
+test_clone_is_usable_after_original_frequency_change (test_clone_equivalence.CloneIndependenceTests.test_clone_is_usable_after_original_frequency_change) ... ok
+test_clone_is_usable_after_original_material_change (test_clone_equivalence.CloneIndependenceTests.test_clone_is_usable_after_original_material_change) ... ok
+test_clone_then_destroy_clone (test_clone_equivalence.CloneIndependenceTests.test_clone_then_destroy_clone) ... ok
+test_clone_then_destroy_original (test_clone_equivalence.CloneIndependenceTests.test_clone_then_destroy_original) ... ok
+test_destroy_original_first_then_use_clone (test_clone_equivalence.CloneIndependenceTests.test_destroy_original_first_then_use_clone) ... ok
+test_many_clones_do_not_corrupt_each_other (test_clone_equivalence.CloneIndependenceTests.test_many_clones_do_not_corrupt_each_other)
+Exercise allocator reuse, which is what exposed the original bug. ... ok
+test_original_is_usable_after_clone_modification (test_clone_equivalence.CloneIndependenceTests.test_original_is_usable_after_clone_modification) ... ok
+test_repeated_cloning_is_stable (test_clone_equivalence.CloneIndependenceTests.test_repeated_cloning_is_stable)
+Cloning a clone must not degrade or leak into the chain. ... ok
+test_two_clones_are_independent (test_clone_equivalence.CloneIndependenceTests.test_two_clones_are_independent) ... ok
+test_isolated_cases_are_all_registered (test_clone_equivalence.CloneIsolatedTests.test_isolated_cases_are_all_registered) ... ok
+test_isolated_clone_scenarios (test_clone_equivalence.CloneIsolatedTests.test_isolated_clone_scenarios) ... ok
+test_many_materials_all_survive (test_clone_equivalence.CloneMaterialEquivalenceTests.test_many_materials_all_survive) ... ok
+test_scalar_and_complex_materials_survive (test_clone_equivalence.CloneMaterialEquivalenceTests.test_scalar_and_complex_materials_survive) ... ok
+test_tensor_material_survives (test_clone_equivalence.CloneMaterialEquivalenceTests.test_tensor_material_survives)
+A tensor material is the case the internal/public type mismatch broke. ... ok
+test_every_shape_survives_clone (test_clone_equivalence.ClonePatternEquivalenceTests.test_every_shape_survives_clone) ... ok
+test_polygon_vertices_are_deep_copied (test_clone_equivalence.ClonePatternEquivalenceTests.test_polygon_vertices_are_deep_copied)
+Mutating one object's polygon must not disturb the other. ... ok
+test_shape_geometry_is_sampled_not_just_the_response (test_clone_equivalence.ClonePatternEquivalenceTests.test_shape_geometry_is_sampled_not_just_the_response)
+Compare the permittivity field, which is independent of the solver. ... ok
+test_shapes_are_optically_distinct (test_clone_equivalence.ClonePatternEquivalenceTests.test_shapes_are_optically_distinct)
+Guard against the shapes being interchangeable in this geometry. ... ok
+test_unpatterned_layer_stays_unpatterned (test_clone_equivalence.ClonePatternEquivalenceTests.test_unpatterned_layer_stays_unpatterned) ... ok
+test_every_fixture_has_a_nonzero_allocation_count (test_clone_fault_injection.CoverageSummaryTests.test_every_fixture_has_a_nonzero_allocation_count) ... ok
+test_exterior_fixture_reaches_the_excitation_buffers (test_clone_fault_injection.CoverageSummaryTests.test_exterior_fixture_reaches_the_excitation_buffers)
+Exterior excitation adds two buffers, so it must exceed a plain stack. ... ok
+test_the_fixtures_reach_different_numbers_of_sites (test_clone_fault_injection.CoverageSummaryTests.test_the_fixtures_reach_different_numbers_of_sites)
+The fixtures must not all reduce to the same allocation path. ... ok
+test_each_injection_hit_the_intended_site (test_clone_fault_injection.ExteriorFixtureSweep.test_each_injection_hit_the_intended_site)
+allocations_seen == k proves site k was reached and failed. ... ok
+test_every_k_leaves_the_original_intact_and_destroyable (test_clone_fault_injection.ExteriorFixtureSweep.test_every_k_leaves_the_original_intact_and_destroyable) ... ok
+test_injector_is_inert_when_disabled (test_clone_fault_injection.ExteriorFixtureSweep.test_injector_is_inert_when_disabled) ... ok
+test_no_k_crashes (test_clone_fault_injection.ExteriorFixtureSweep.test_no_k_crashes) ... ok
+test_no_k_returns_a_partial_clone (test_clone_fault_injection.ExteriorFixtureSweep.test_no_k_returns_a_partial_clone)
+A failed clone must raise, never hand back a half-built object. ... ok
+test_one_past_the_last_site_does_not_hit (test_clone_fault_injection.ExteriorFixtureSweep.test_one_past_the_last_site_does_not_hit)
+k past the final allocation must behave exactly like no injection. ... ok
+test_successful_clones_are_equivalent (test_clone_fault_injection.ExteriorFixtureSweep.test_successful_clones_are_equivalent) ... ok
+test_the_sweep_exercised_real_failure_paths (test_clone_fault_injection.ExteriorFixtureSweep.test_the_sweep_exercised_real_failure_paths)
+Guard: if nothing ever failed, the sweep proves nothing. ... ok
+test_each_injection_hit_the_intended_site (test_clone_fault_injection.PlanewaveFixtureSweep.test_each_injection_hit_the_intended_site)
+allocations_seen == k proves site k was reached and failed. ... ok
+test_every_k_leaves_the_original_intact_and_destroyable (test_clone_fault_injection.PlanewaveFixtureSweep.test_every_k_leaves_the_original_intact_and_destroyable) ... ok
+test_injector_is_inert_when_disabled (test_clone_fault_injection.PlanewaveFixtureSweep.test_injector_is_inert_when_disabled) ... ok
+test_no_k_crashes (test_clone_fault_injection.PlanewaveFixtureSweep.test_no_k_crashes) ... ok
+test_no_k_returns_a_partial_clone (test_clone_fault_injection.PlanewaveFixtureSweep.test_no_k_returns_a_partial_clone)
+A failed clone must raise, never hand back a half-built object. ... ok
+test_one_past_the_last_site_does_not_hit (test_clone_fault_injection.PlanewaveFixtureSweep.test_one_past_the_last_site_does_not_hit)
+k past the final allocation must behave exactly like no injection. ... ok
+test_successful_clones_are_equivalent (test_clone_fault_injection.PlanewaveFixtureSweep.test_successful_clones_are_equivalent) ... ok
+test_the_sweep_exercised_real_failure_paths (test_clone_fault_injection.PlanewaveFixtureSweep.test_the_sweep_exercised_real_failure_paths)
+Guard: if nothing ever failed, the sweep proves nothing. ... ok
+test_each_injection_hit_the_intended_site (test_clone_fault_injection.PolygonFixtureSweep.test_each_injection_hit_the_intended_site)
+allocations_seen == k proves site k was reached and failed. ... ok
+test_every_k_leaves_the_original_intact_and_destroyable (test_clone_fault_injection.PolygonFixtureSweep.test_every_k_leaves_the_original_intact_and_destroyable) ... ok
+test_injector_is_inert_when_disabled (test_clone_fault_injection.PolygonFixtureSweep.test_injector_is_inert_when_disabled) ... ok
+test_no_k_crashes (test_clone_fault_injection.PolygonFixtureSweep.test_no_k_crashes) ... ok
+test_no_k_returns_a_partial_clone (test_clone_fault_injection.PolygonFixtureSweep.test_no_k_returns_a_partial_clone)
+A failed clone must raise, never hand back a half-built object. ... ok
+test_one_past_the_last_site_does_not_hit (test_clone_fault_injection.PolygonFixtureSweep.test_one_past_the_last_site_does_not_hit)
+k past the final allocation must behave exactly like no injection. ... ok
+test_successful_clones_are_equivalent (test_clone_fault_injection.PolygonFixtureSweep.test_successful_clones_are_equivalent) ... ok
+test_the_sweep_exercised_real_failure_paths (test_clone_fault_injection.PolygonFixtureSweep.test_the_sweep_exercised_real_failure_paths)
+Guard: if nothing ever failed, the sweep proves nothing. ... ok
+test_cutoff_cases_are_finite_or_a_known_error (test_cutoff_safety.AccessorAuditTests.test_cutoff_cases_are_finite_or_a_known_error) ... ok
+test_flat_successes_match_the_closed_form (test_cutoff_safety.AccessorAuditTests.test_flat_successes_match_the_closed_form) ... ok
+test_ordinary_cases_succeed_for_every_accessor (test_cutoff_safety.AccessorAuditTests.test_ordinary_cases_succeed_for_every_accessor) ... ok
+test_patterned_ordinary_cases_succeed_and_conserve_energy (test_cutoff_safety.AccessorAuditTests.test_patterned_ordinary_cases_succeed_and_conserve_energy) ... ok
+test_call_order_does_not_change_the_outcome (test_cutoff_safety.AccessorOrderTests.test_call_order_does_not_change_the_outcome) ... ok
+test_repeated_reads_on_one_object_agree (test_cutoff_safety.AccessorOrderTests.test_repeated_reads_on_one_object_agree) ... ok
+test_neighbours_are_exact_for_every_num_basis (test_cutoff_safety.CutoffNeighbourhoodTests.test_neighbours_are_exact_for_every_num_basis) ... ok
+test_num_basis_one_has_no_cutoff_order (test_cutoff_safety.CutoffNeighbourhoodTests.test_num_basis_one_has_no_cutoff_order) ... ok
+test_ordinary_frequencies_are_unaffected (test_cutoff_safety.CutoffNeighbourhoodTests.test_ordinary_frequencies_are_unaffected) ... ok
+test_exact_cutoff_is_explicit_or_correct (test_cutoff_safety.CutoffSafetyTests.test_exact_cutoff_is_explicit_or_correct) ... ok
+test_neighbors_match_fresnel (test_cutoff_safety.CutoffSafetyTests.test_neighbors_match_fresnel) ... ok
+test_oblique_cutoff_is_explicit_or_correct (test_cutoff_safety.CutoffSafetyTests.test_oblique_cutoff_is_explicit_or_correct) ... ok
+test_cutoff_neighbourhood_of_the_family_is_exact (test_cutoff_safety.ExactCutoffFamilyTests.test_cutoff_neighbourhood_of_the_family_is_exact) ... ok
+test_every_exact_cutoff_is_explicit_or_exact (test_cutoff_safety.ExactCutoffFamilyTests.test_every_exact_cutoff_is_explicit_or_exact) ... ok
+test_every_accessor_works_again_after_a_failed_cutoff (test_cutoff_safety.FailureRecoveryTests.test_every_accessor_works_again_after_a_failed_cutoff) ... ok
+test_cutoff_never_reports_a_non_finite_number (test_cutoff_safety.PatternedCutoffTests.test_cutoff_never_reports_a_non_finite_number) ... ok
+test_exact_patterned_cutoff_is_explicit_or_bracketed (test_cutoff_safety.PatternedCutoffTests.test_exact_patterned_cutoff_is_explicit_or_bracketed) ... ok
+test_failed_cutoff_is_not_cached (test_cutoff_safety.PatternedCutoffTests.test_failed_cutoff_is_not_cached) ... ok
+test_patterned_cutoff_neighbourhood_is_smooth (test_cutoff_safety.PatternedCutoffTests.test_patterned_cutoff_neighbourhood_is_smooth) ... ok
+test_patterned_repeats_are_deterministic (test_cutoff_safety.PatternedCutoffTests.test_patterned_repeats_are_deterministic) ... ok
+test_patterned_small_bases_solve (test_eigensolver_workspace.EigensolverSmallBasisTests.test_patterned_small_bases_solve)
+The overflowing configuration completes and returns sane numbers. ... ok
+test_solve_survives_in_isolation (test_eigensolver_workspace.EigensolverSmallBasisTests.test_solve_survives_in_isolation)
+Isolated so that a future hard failure is attributable to this input. ... ok
+test_unpatterned_slab_never_enters_the_layer_eigensolver (test_eigensolver_workspace.EigensolverSmallBasisTests.test_unpatterned_slab_never_enters_the_layer_eigensolver)
+Control: the defect needs a patterned layer. ... ok
+test_cases_are_registered (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_cases_are_registered) ... ok
+test_destroy_clone_first (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_destroy_clone_first) ... ok
+test_destroy_original_first (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_destroy_original_first) ... ok
+test_original_alone_is_clean (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_original_alone_is_clean)
+Control: without a clone the teardown must already be correct. ... ok
+test_solved_then_destroy_clone_first (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_solved_then_destroy_clone_first) ... ok
+test_solved_then_destroy_original_first (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_solved_then_destroy_original_first) ... ok
+test_two_clones (test_exterior_excitation.ExteriorExcitationOwnershipTests.test_two_clones) ... ok
+test_clone_matches_original_response (test_exterior_excitation.ExteriorExcitationValueTests.test_clone_matches_original_response) ... ok
+test_every_non_file_format_returns_arrays_and_writes_nothing (test_grid_output_safety.GridArrayTests.test_every_non_file_format_returns_arrays_and_writes_nothing) ... ok
+test_fileappend_keeps_existing_content_and_adds_the_z_column (test_grid_output_safety.GridArrayTests.test_fileappend_keeps_existing_content_and_adds_the_z_column) ... ok
+test_filewrite_writes_both_files_and_matches_the_array_result (test_grid_output_safety.GridArrayTests.test_filewrite_writes_both_files_and_matches_the_array_result) ... ok
+test_ordinary_grid_returns_finite_nested_arrays (test_grid_output_safety.GridArrayTests.test_ordinary_grid_returns_finite_nested_arrays) ... ok
+test_core_failure_propagates_and_writes_nothing (test_grid_output_safety.GridErrorTests.test_core_failure_propagates_and_writes_nothing) ... ok
+test_invalid_num_samples_is_rejected (test_grid_output_safety.GridErrorTests.test_invalid_num_samples_is_rejected) ... ok
+test_non_finite_grid_is_reported_not_returned_or_written (test_grid_output_safety.GridErrorTests.test_non_finite_grid_is_reported_not_returned_or_written) ... ok
+test_object_is_reusable_after_a_grid_failure (test_grid_output_safety.GridErrorTests.test_object_is_reusable_after_a_grid_failure) ... ok
+test_repeated_failures_keep_raising (test_grid_output_safety.GridErrorTests.test_repeated_failures_keep_raising) ... ok
+test_unwritable_output_path_raises_instead_of_crashing (test_grid_output_safety.GridErrorTests.test_unwritable_output_path_raises_instead_of_crashing) ... ok
+test_full_device_raises_for_both_write_modes_and_object_survives (test_grid_output_safety.GridPartialFileTests.test_full_device_raises_for_both_write_modes_and_object_survives) ... ok
+test_second_file_failure_keeps_the_first_and_object_survives (test_grid_output_safety.GridPartialFileTests.test_second_file_failure_keeps_the_first_and_object_survives) ... ok
+test_cubic_spline_natural (test_interpolator.InterpolatorTests.test_cubic_spline_natural) ... ok
+test_cubic_spline_nodes (test_interpolator.InterpolatorTests.test_cubic_spline_nodes) ... ok
+test_cubic_spline_non_equidistant (test_interpolator.InterpolatorTests.test_cubic_spline_non_equidistant) ... ok
+test_degenerate_len2 (test_interpolator.InterpolatorTests.test_degenerate_len2) ... ok
+test_dimension_mismatch (test_interpolator.InterpolatorTests.test_dimension_mismatch) ... ok
+test_duplicate_out_of_order_x (test_interpolator.InterpolatorTests.test_duplicate_out_of_order_x) ... ok
+test_empty_output (test_interpolator.InterpolatorTests.test_empty_output) ... ok
+test_hermite_endpoints (test_interpolator.InterpolatorTests.test_hermite_endpoints) ... ok
+test_linear_basic (test_interpolator.InterpolatorTests.test_linear_basic) ... ok
+test_multi_output (test_interpolator.InterpolatorTests.test_multi_output) ... ok
+test_nan_get (test_interpolator.InterpolatorTests.test_nan_get) ... ok
+test_nan_inputs (test_interpolator.InterpolatorTests.test_nan_inputs) ... ok
+test_oom_memory_error (test_interpolator.InterpolatorTests.test_oom_memory_error) ... skipped 'Code Review Only: C-level allocation failure paths in Interpolator_New are verified by code review. Python-level RLIMIT_AS tests cannot isolate C-level malloc failures without first failing Python tuple allocations.'
+test_argument_type_errors_are_reported (test_lua_field_plane.FieldPlaneFailureTests.test_argument_type_errors_are_reported) ... ok
+test_core_failure_is_catchable_and_writes_nothing (test_lua_field_plane.FieldPlaneFailureTests.test_core_failure_is_catchable_and_writes_nothing) ... ok
+test_e_and_h_open_failures_are_reported_separately (test_lua_field_plane.FieldPlaneFailureTests.test_e_and_h_open_failures_are_reported_separately) ... ok
+test_invalid_grid_sizes_are_rejected_without_hanging (test_lua_field_plane.FieldPlaneFailureTests.test_invalid_grid_sizes_are_rejected_without_hanging) ... ok
+test_missing_parent_directory_is_a_reported_error (test_lua_field_plane.FieldPlaneFailureTests.test_missing_parent_directory_is_a_reported_error) ... ok
+test_non_finite_grid_is_rejected_and_writes_nothing (test_lua_field_plane.FieldPlaneFailureTests.test_non_finite_grid_is_rejected_and_writes_nothing) ... ok
+test_object_recovers_after_a_failure (test_lua_field_plane.FieldPlaneFailureTests.test_object_recovers_after_a_failure) ... ok
+test_repeated_failures_never_report_success (test_lua_field_plane.FieldPlaneFailureTests.test_repeated_failures_never_report_success) ... ok
+test_uncaught_failure_exits_nonzero_without_a_signal (test_lua_field_plane.FieldPlaneFailureTests.test_uncaught_failure_exits_nonzero_without_a_signal) ... ok
+test_write_failure_on_a_full_device_is_reported (test_lua_field_plane.FieldPlaneFailureTests.test_write_failure_on_a_full_device_is_reported) ... ok
+test_array_shape_and_finiteness_for_1x1_and_4x3 (test_lua_field_plane.FieldPlaneSuccessTests.test_array_shape_and_finiteness_for_1x1_and_4x3) ... ok
+test_file_formats_return_no_values (test_lua_field_plane.FieldPlaneSuccessTests.test_file_formats_return_no_values)
+'No values' means zero results, not a single nil result. ... ok
+test_fileappend_preserves_the_existing_bytes_and_adds_z (test_lua_field_plane.FieldPlaneSuccessTests.test_fileappend_preserves_the_existing_bytes_and_adds_z)
+The append must keep every earlier byte, not merely make the file longer. ... ok
+test_filewrite_rows_match_both_array_tables (test_lua_field_plane.FieldPlaneSuccessTests.test_filewrite_rows_match_both_array_tables)
+Both files are checked against the array result, component by component. ... ok
+test_both_frontends_conserve_energy (test_lua_python_cross.Fig12CrossFrontendTests.test_both_frontends_conserve_energy)
+Independent of each other, both must satisfy R + T == 1. ... ok
+test_lua_mirror_ran (test_lua_python_cross.Fig12CrossFrontendTests.test_lua_mirror_ran) ... ok
+test_python_mirror_ran (test_lua_python_cross.Fig12CrossFrontendTests.test_python_mirror_ran) ... ok
+test_reflectance_has_a_guided_resonance_feature (test_lua_python_cross.Fig12CrossFrontendTests.test_reflectance_has_a_guided_resonance_feature)
+The sweep must show structure, not a flat line. ... ok
+test_same_number_of_frequencies (test_lua_python_cross.Fig12CrossFrontendTests.test_same_number_of_frequencies) ... ok
+test_transmission_and_reflection_agree (test_lua_python_cross.Fig12CrossFrontendTests.test_transmission_and_reflection_agree) ... ok
+test_fig12_lua_example_runs (test_lua_python_cross.ShippedExampleStillRunsTests.test_fig12_lua_example_runs) ... ok
+test_alias_methods_are_the_same_callable (test_python_api.BuildAndImportTests.test_alias_methods_are_the_same_callable)
+GetPoyntingFlux is documented as an alias of GetPowerFlux. ... ok
+test_extension_imports_from_the_checkout (test_python_api.BuildAndImportTests.test_extension_imports_from_the_checkout) ... ok
+test_module_level_entry_points_exist (test_python_api.BuildAndImportTests.test_module_level_entry_points_exist) ... ok
+test_simulation_exposes_the_documented_methods (test_python_api.BuildAndImportTests.test_simulation_exposes_the_documented_methods) ... ok
+test_malformed_lattice_raises (test_python_api.InvalidInputTests.test_malformed_lattice_raises) ... ok
+test_negative_thickness_raises (test_python_api.InvalidInputTests.test_negative_thickness_raises) ... ok
+test_num_basis_must_be_positive (test_python_api.InvalidInputTests.test_num_basis_must_be_positive) ... ok
+test_patterning_a_layer_copy_raises (test_python_api.InvalidInputTests.test_patterning_a_layer_copy_raises) ... ok
+test_power_flux_needs_two_layers (test_python_api.InvalidInputTests.test_power_flux_needs_two_layers) ... ok
+test_region_on_unknown_layer_raises (test_python_api.InvalidInputTests.test_region_on_unknown_layer_raises) ... ok
+test_unknown_layer_raises (test_python_api.InvalidInputTests.test_unknown_layer_raises) ... ok
+test_unknown_material_raises (test_python_api.InvalidInputTests.test_unknown_material_raises) ... ok
+test_verbosity_range_is_enforced (test_python_api.InvalidInputTests.test_verbosity_range_is_enforced) ... ok
+test_clone_and_destroy_both_objects (test_python_api.IsolatedRobustnessTests.test_clone_and_destroy_both_objects)
+Regression test for the Clone() ownership bug. ... ok
+test_clone_outliving_the_original (test_python_api.IsolatedRobustnessTests.test_clone_outliving_the_original)
+A clone must remain fully usable after the original is destroyed. ... ok
+test_import_and_surface_probe_do_not_crash (test_python_api.IsolatedRobustnessTests.test_import_and_surface_probe_do_not_crash) ... ok
+test_invalid_input_sweep_raises_python_exceptions (test_python_api.IsolatedRobustnessTests.test_invalid_input_sweep_raises_python_exceptions) ... ok
+test_spectrum_sampler_two_argument_form (test_python_api.IsolatedRobustnessTests.test_spectrum_sampler_two_argument_form) ... ok
+test_amplitudes_are_a_two_by_twice_ngrid_tuple (test_python_api.OutputApiTests.test_amplitudes_are_a_two_by_twice_ngrid_tuple)
+GetAmplitudes returns (forward, backward), each of length 2*n_G. ... ok
+test_get_fields_returns_two_three_vectors (test_python_api.OutputApiTests.test_get_fields_returns_two_three_vectors) ... ok
+test_grid_output_all_formats_succeed (test_python_api.OutputApiTests.test_grid_output_all_formats_succeed) ... ok
+test_layer_integral_rejects_bad_quantity (test_python_api.OutputApiTests.test_layer_integral_rejects_bad_quantity) ... ok
+test_layer_integrals_are_finite_and_ordering_consistent (test_python_api.OutputApiTests.test_layer_integrals_are_finite_and_ordering_consistent) ... ok
+test_pattern_export_writes_requested_files (test_python_api.OutputApiTests.test_pattern_export_writes_requested_files) ... ok
+test_reflected_amplitude_matches_fresnel (test_python_api.OutputApiTests.test_reflected_amplitude_matches_fresnel)
+The backward wave amplitude in the incidence layer is Fresnel's r. ... ok
+test_smatrix_determinant_is_a_triple (test_python_api.OutputApiTests.test_smatrix_determinant_is_a_triple) ... ok
+test_stress_tensor_returns_three_components (test_python_api.OutputApiTests.test_stress_tensor_returns_three_components) ... ok
+test_dispersive_sweep_does_vary (test_python_api.SimulationModellingTests.test_dispersive_sweep_does_vary)
+A sweep that *does* change the optics must change the answer. ... ok
+test_excitation_polarizations_differ_off_normal (test_python_api.SimulationModellingTests.test_excitation_polarizations_differ_off_normal) ... ok
+test_frequency_sweep_is_well_defined (test_python_api.SimulationModellingTests.test_frequency_sweep_is_well_defined)
+Power is conserved at every frequency of a sweep. ... ok
+test_lattice_forms (test_python_api.SimulationModellingTests.test_lattice_forms) ... ok
+test_layer_copy_shares_the_pattern (test_python_api.SimulationModellingTests.test_layer_copy_shares_the_pattern) ... ok
+test_material_scalar_and_complex (test_python_api.SimulationModellingTests.test_material_scalar_and_complex) ... ok
+test_non_orthogonal_lattice (test_python_api.SimulationModellingTests.test_non_orthogonal_lattice)
+GetReciprocalLattice returns the inverse of the lattice matrix. ... ok
+test_pattern_shapes_all_run (test_python_api.SimulationModellingTests.test_pattern_shapes_all_run) ... ok
+test_reciprocal_lattice_inverts_the_lattice (test_python_api.SimulationModellingTests.test_reciprocal_lattice_inverts_the_lattice)
+Numerically, Lk must satisfy ``Lr @ Lk == identity`` in row order. ... ok
+test_remove_layer_regions_restores_planar_response (test_python_api.SimulationModellingTests.test_remove_layer_regions_restores_planar_response) ... ok
+test_set_layer_thickness_has_an_effect (test_python_api.SimulationModellingTests.test_set_layer_thickness_has_an_effect) ... ok
+test_set_material_changes_the_answer (test_python_api.SimulationModellingTests.test_set_material_changes_the_answer) ... ok
+test_set_options_all_recognised_keys (test_python_api.SimulationModellingTests.test_set_options_all_recognised_keys) ... ok
+test_set_options_rejects_bad_enum (test_python_api.SimulationModellingTests.test_set_options_rejects_bad_enum) ... ok
+test_baseline_is_small_and_reviewable (test_regression_baseline.BaselineIntegrityTests.test_baseline_is_small_and_reviewable) ... ok
+test_baseline_records_its_environment (test_regression_baseline.BaselineIntegrityTests.test_baseline_records_its_environment) ... ok
+test_every_row_documents_its_provenance (test_regression_baseline.BaselineIntegrityTests.test_every_row_documents_its_provenance) ... ok
+test_rows_without_an_analytic_reference_are_labelled (test_regression_baseline.BaselineIntegrityTests.test_rows_without_an_analytic_reference_are_labelled)
+A row with no independent reference must say so explicitly. ... ok
+test_replay_all_rows (test_regression_baseline.BaselineReplayTests.test_replay_all_rows) ... ok
+test_rows_claiming_an_analytic_reference_really_have_one (test_regression_baseline.BaselineReplayTests.test_rows_claiming_an_analytic_reference_really_have_one)
+Verify the analytic value, not just S4's repeatability. ... ok
+test_complex_frequency_is_accepted (test_sweep_frequency.SetFrequencyWarningTests.test_complex_frequency_is_accepted)
+A negative imaginary part is the physical lossy convention: no warn. ... ok
+test_non_positive_frequency_warns (test_sweep_frequency.SetFrequencyWarningTests.test_non_positive_frequency_warns) ... ok
+test_ordinary_frequency_does_not_warn (test_sweep_frequency.SetFrequencyWarningTests.test_ordinary_frequency_does_not_warn) ... ok
+test_positive_imaginary_part_warns (test_sweep_frequency.SetFrequencyWarningTests.test_positive_imaginary_part_warns) ... ok
+test_ascending_equals_descending_equals_fresh (test_sweep_frequency.SweepRegressionTests.test_ascending_equals_descending_equals_fresh)
+Order independence, compared directly between S4 runs. ... ok
+test_ascending_sweep_on_one_object (test_sweep_frequency.SweepRegressionTests.test_ascending_sweep_on_one_object) ... ok
+test_descending_sweep_on_one_object (test_sweep_frequency.SweepRegressionTests.test_descending_sweep_on_one_object) ... ok
+test_energy_conserved_at_every_sweep_point (test_sweep_frequency.SweepRegressionTests.test_energy_conserved_at_every_sweep_point) ... ok
+test_fresh_object_per_frequency_matches_analytic (test_sweep_frequency.SweepRegressionTests.test_fresh_object_per_frequency_matches_analytic)
+Control case: this worked even before the fix. ... ok
+test_oblique_sweep_both_polarizations (test_sweep_frequency.SweepRegressionTests.test_oblique_sweep_both_polarizations)
+The invalidation must also be complete for p polarisation. ... ok
+test_reference_is_non_degenerate (test_sweep_frequency.SweepRegressionTests.test_reference_is_non_degenerate)
+Guard: if the analytic curve were flat, every test below would pass ... ok
+test_repeating_a_frequency_is_idempotent (test_sweep_frequency.SweepRegressionTests.test_repeating_a_frequency_is_idempotent) ... ok
+test_returning_to_a_frequency_reproduces_it (test_sweep_frequency.SweepRegressionTests.test_returning_to_a_frequency_reproduces_it)
+A round trip must land on the same answer, not a cached neighbour. ... ok
+test_sweep_over_a_changing_material (test_sweep_frequency.SweepRegressionTests.test_sweep_over_a_changing_material)
+Change the material *and* the frequency between points. ... ok
+test_lossy_interface_at_three_basis_sizes (test_two_layer_acceptance.BasisSizeTests.test_lossy_interface_at_three_basis_sizes)
+s polarisation only: the p case is in KNOWN_REFERENCE_DISCREPANCIES. ... ok
+test_total_internal_reflection_at_three_basis_sizes (test_two_layer_acceptance.BasisSizeTests.test_total_internal_reflection_at_three_basis_sizes) ... ok
+test_uniform_interface_at_three_basis_sizes (test_two_layer_acceptance.BasisSizeTests.test_uniform_interface_at_three_basis_sizes) ... ok
+test_energy_conserved_to_machine_precision (test_two_layer_acceptance.LossyIncidentMediumTests.test_energy_conserved_to_machine_precision) ... ok
+test_the_reference_discrepancy_is_real_and_recorded (test_two_layer_acceptance.LossyIncidentMediumTests.test_the_reference_discrepancy_is_real_and_recorded)
+Documents that the gap exists, so it cannot be mistaken for zero. ... ok
+test_two_layer_equals_three_layer_control (test_two_layer_acceptance.LossyIncidentMediumTests.test_two_layer_equals_three_layer_control) ... ok
+test_lua_two_layer_probe_matches (test_two_layer_acceptance.LuaEntryPointTests.test_lua_two_layer_probe_matches)
+The Lua front end must produce the same R and T as Python. ... ok
+test_matches_three_layer_at_all_basis_sizes (test_two_layer_acceptance.ThreeLayerEquivalenceTests.test_matches_three_layer_at_all_basis_sizes) ... ok
+test_matches_three_layer_with_a_different_spacer_index (test_two_layer_acceptance.ThreeLayerEquivalenceTests.test_matches_three_layer_with_a_different_spacer_index)
+A zero-thickness spacer cannot affect the optics, whatever its index. ... ok
+test_three_layer_route_is_itself_correct (test_two_layer_acceptance.ThreeLayerEquivalenceTests.test_three_layer_route_is_itself_correct)
+Guard: the comparison is only meaningful if the control is right. ... ok
+test_brewster_angle_p_reflectance_virtually_vanishes (test_two_layer_acceptance.UniformInterfaceTests.test_brewster_angle_p_reflectance_virtually_vanishes)
+At Brewster's angle R_p is zero; this is a value check, not R+T. ... ok
+test_lossless_normal_incidence_both_polarizations (test_two_layer_acceptance.UniformInterfaceTests.test_lossless_normal_incidence_both_polarizations) ... ok
+test_lossless_oblique_both_polarizations (test_two_layer_acceptance.UniformInterfaceTests.test_lossless_oblique_both_polarizations) ... ok
+test_lossy_interface_matches_fresnel_on_r_and_t_separately (test_two_layer_acceptance.UniformInterfaceTests.test_lossy_interface_matches_fresnel_on_r_and_t_separately)
+Lossy exit medium with a real incidence medium. ... ok
+test_polarizations_are_actually_distinct (test_two_layer_acceptance.UniformInterfaceTests.test_polarizations_are_actually_distinct)
+Guard: the two polarisations must not return the same numbers. ... ok
+test_total_internal_reflection (test_two_layer_acceptance.UniformInterfaceTests.test_total_internal_reflection)
+From the dense side, beyond the critical angle: R = 1, T = 0. ... ok
+test_spacer_refractive_index_is_irrelevant_at_zero_thickness (test_two_layer_interface.ThreeLayerEquivalenceTests.test_spacer_refractive_index_is_irrelevant_at_zero_thickness)
+With d = 0 the spacer cannot affect the optics, whatever its index. ... ok
+test_three_layer_route_matches_analytic (test_two_layer_interface.ThreeLayerEquivalenceTests.test_three_layer_route_matches_analytic)
+Establish that the three-layer route is the correct one. ... ok
+test_zero_thickness_spacer_matches_two_layer (test_two_layer_interface.ThreeLayerEquivalenceTests.test_zero_thickness_spacer_matches_two_layer) ... ok
+test_incident_power_is_nonzero (test_two_layer_interface.TwoLayerBareInterfaceTests.test_incident_power_is_nonzero)
+A zero incident flux is the signature of this defect. ... ok
+test_match_vacuum_has_no_reflection (test_two_layer_interface.TwoLayerBareInterfaceTests.test_match_vacuum_has_no_reflection)
+n1 == n2 must give R = 0 and T = 1; there is no interface at all. ... ok
+test_normal_incidence_n1_to_n2 (test_two_layer_interface.TwoLayerBareInterfaceTests.test_normal_incidence_n1_to_n2) ... ok
+test_normal_incidence_various_contrasts (test_two_layer_interface.TwoLayerBareInterfaceTests.test_normal_incidence_various_contrasts) ... ok
+test_oblique_incidence_both_polarizations (test_two_layer_interface.TwoLayerBareInterfaceTests.test_oblique_incidence_both_polarizations) ... ok
+test_lua_two_layer_matches_analytic (test_two_layer_interface.TwoLayerLuaFrontendTests.test_lua_two_layer_matches_analytic)
+The Lua probe columns are n_exit, R, T -- not freq, R, T. ... ok
+test_shipped_fresnel_example_is_not_all_zero (test_two_layer_interface.TwoLayerLuaFrontendTests.test_shipped_fresnel_example_is_not_all_zero)
+The repository's own example must produce non-zero power. ... ok
+test_empty_range_does_not_write (test_zlahqr_direct.ZlahqrDirectTests.test_empty_range_does_not_write)
+ilo > ihi must return without touching memory. ... ok
+test_empty_range_with_zero_ihi (test_zlahqr_direct.ZlahqrDirectTests.test_empty_range_with_zero_ihi)
+ihi = 0 is the shape whose ihi-2 underflows. ... ok
+test_single_element_1x1_returns_the_diagonal (test_zlahqr_direct.ZlahqrDirectTests.test_single_element_1x1_returns_the_diagonal)
+n = ilo = ihi = 1: W[0] must become H[0] = 3+4i. ... ok
+test_single_element_inside_a_larger_matrix (test_zlahqr_direct.ZlahqrDirectTests.test_single_element_inside_a_larger_matrix)
+ilo == ihi in the middle: that entry must be written. ... ok
+test_single_element_real (test_zlahqr_direct.ZlahqrDirectTests.test_single_element_real) ... ok
+test_two_by_two_produces_both_eigenvalues (test_zlahqr_direct.ZlahqrDirectTests.test_two_by_two_produces_both_eigenvalues)
+n = 2, ilo = 1, ihi = 2: an upper triangular matrix keeps its diagonal. ... ok
+
+----------------------------------------------------------------------
+Ran 257 tests in 17.902s
+
+OK (skipped=1)
+driver compile: g++ -I /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/S4 -O1 /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/testing/s4test/capi_field_plane_driver.cpp -o /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build/capi_field_plane_driver -L /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build -lS4 -llapack -lblas
+driver /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/build/capi_field_plane_driver sha256=b45e46446a564f6d
+libS4.a sha256=fb9ac3f5fd2c1216

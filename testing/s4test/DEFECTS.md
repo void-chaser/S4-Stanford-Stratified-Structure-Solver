@@ -1,5 +1,12 @@
 # S4 defects found while building the Python test suite
 
+> **历史缺陷记录（legacy D1–D15），不是当前执行登记表。**
+> 从 2026-10-03 起，项目统一使用 [ISSUE_REGISTRY.md](ISSUE_REGISTRY.md)
+> 中的 D001–D015 和根目录 [PROJECT_ROADMAP.md](../../PROJECT_ROADMAP.md)。
+> 本文保留原编号、复现和历史验证描述；例如本文 D2 是 Clone 问题，
+> 当前 D002 是 RNP 工作项，二者不是同一缺陷。本文的 FIXED/测试数量
+> 只代表各段所述历史范围，不能直接视为最新 checkpoint 的重新验收。
+
 Baseline: branch `feature/python314-binding`, commit `b97f639`, Ubuntu 26.04,
 Python 3.14.4, GCC 15.2.0.
 

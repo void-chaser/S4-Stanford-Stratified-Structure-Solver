@@ -1,0 +1,34 @@
+{
+ "argv": [
+  "g++",
+  "-O1",
+  "-g",
+  "-fsanitize=address,undefined",
+  "-fno-omit-frame-pointer",
+  "-fcx-limited-range",
+  "-I",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP",
+  "-I",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4",
+  "-DD002_SRC=\"/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/seam_src_seam_asan_baseline/Eigensystems.cpp\"",
+  "-DD002_TEST_SEAM",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/testing/d002/tools/d002_driver.cpp",
+  "-o",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_seam_asan_baseline"
+ ],
+ "binary": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_seam_asan_baseline",
+ "binary_sha256": "47d67224c7f674abc107435b342b651225c28e79d67215cc2e9164e65d3b8549",
+ "built_utc": "2026-10-09T09:17:27Z",
+ "eigensystems": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP/Eigensystems.cpp",
+ "eigensystems_sha256": "76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de",
+ "exit": 0,
+ "seam_derivation": {
+  "derived_from": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP/Eigensystems.cpp",
+  "derived_path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/seam_src_seam_asan_baseline/Eigensystems.cpp",
+  "derived_sha256": "8d69209cb43848b0511a4d4cc2a22222581ecf060c5d9f046829056dbd85ddf0",
+  "rule": "rename the single definition zhseqr_ -> d002_inner_zhseqr_"
+ },
+ "src_root": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src",
+ "stderr": "",
+ "variant": "seam_asan_baseline"
+}

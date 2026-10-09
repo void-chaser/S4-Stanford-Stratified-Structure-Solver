@@ -1,0 +1,28 @@
+{
+ "argv": [
+  "g++",
+  "-O1",
+  "-g",
+  "-fsanitize=address,undefined",
+  "-fno-omit-frame-pointer",
+  "-fcx-limited-range",
+  "-I",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP",
+  "-I",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4",
+  "-DD002_SRC=\"/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP/Eigensystems.cpp\"",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/repo/testing/d002/tools/d002_driver.cpp",
+  "-o",
+  "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_asan_baseline"
+ ],
+ "binary": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/d002/bin/d002_asan_baseline",
+ "binary_sha256": "de0684b8121ea49473217d6b9eebb4aaf5a0a84078aac6cb1d9aa347e34b2c96",
+ "built_utc": "2026-10-09T09:17:16Z",
+ "eigensystems": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src/S4/RNP/Eigensystems.cpp",
+ "eigensystems_sha256": "76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de",
+ "exit": 0,
+ "seam_derivation": null,
+ "src_root": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/run-orig/baseline-src",
+ "stderr": "",
+ "variant": "asan_baseline"
+}
