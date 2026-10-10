@@ -166,3 +166,38 @@ Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3.tar.gz
               size=119000 bytes  sha256=d500f7afb5ab332f839dfed884122045e33dd1282b60f00ef40b86d966febe86
               extracts to 154 files, all match the manifest (verified from the archive).
 Earlier archive kept unchanged: evidence-s1-s2.tar.gz (71185 bytes, 2cacdc0a...a1a5f75f).
+
+S4 (sensitivity control and reachability map) — appended
+=========================================================
+Gate        : HEAD 0973f32; no tracked/staged change; untracked only under checkpoints/p05/ (corrected, see report 5.9).
+Report      : checkpoints/p05/S4_SENSITIVITY_AND_REACHABILITY.md (not ignored; to be committed)
+Evidence    : checkpoints/p05/evidence/s4/ (ignored; not committed)
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 296 files (s4/: 142); sha256sum -c all OK
+
+T16 sensitivity control (NB=1, fft, no injection; Epsilon_inv[0] := 1 at S4.cpp:2375):
+  Epsilon_inv[0] at eigensystem input (rcwa.cpp:823): control=0.45911632377820932  modified=1
+  kp diagonal after solve: control=39.399500247566323  modified=39.399500247566323 (same); eigen_info 0/0
+  first-call E/H: 144/144 identical; dumps byte-identical
+  -> conclusion (b): NB=1 normal incidence is insensitive to Epsilon_inv (kx=ky=0).
+     The write is verified to reach the solver (positive control), so this is not a null result.
+  C stays OPEN: the test needs non-zero kx/ky configurations.
+
+T17 reachability (O0, no injection), NB -> grid -> in-window (arm=2) malloc count:
+  window nonzero only for NB 1,2,3,4, grid 1x1, 10 calls each, all 16 bytes (kf_bfly_generic p=1).
+  NB 5-30: window count 0 (grids 8x8 for 5-12, 16x16 for 13-28, 24x24 for 29-30).
+  Two independent O0 count sets agree on grid/RC/window for 12 NB values (0 disagreements).
+  O3 check (NB 1,9,16) matches O0 exactly.
+  B danger proposal: conditionally reachable; no output-level harm observed where reachable
+  (NB 1-4 are the normal-incidence, kx=ky=0 configurations of T16).
+
+T18 O-1 n_G (gdb reads S->n_G at driver.cpp:82; cross-checked with Python amp_len/2 for NB 5-9):
+  NB 1-4 -> n_G=1,1,1,1 (VL fails)   NB 5-8 -> n_G=5,5,5,5 (VL ok)   NB 9 -> n_G=9 (VL ok)
+  O-1 boundary is n_G: n_G=1 fails; n_G in {5,9} succeeds.
+
+T19 regression (no observation variable set): 22 cases vs S1B index (T4 10 + T5 12): 0 differences
+  comparator sensitivity-checked (a corrupted row is detected).
+
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b.tar.gz
+              size=183106 bytes  sha256=7b182b93cd6af4095f5f83ae23168bb615e5d728f2615429b2e460bc61baea51
+              extracts to 296 files, all match the manifest (verified from the archive).
+Earlier archives kept unchanged: evidence-s1-s2.tar.gz, evidence-s1-s2-s3.tar.gz, evidence-s1-s2-s3-s4.tar.gz.
