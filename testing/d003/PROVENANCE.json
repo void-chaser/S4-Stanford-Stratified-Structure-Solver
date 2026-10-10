@@ -1,0 +1,60 @@
+{
+  "scope": "D003 fault-injection harness for the FMM epsilon path (P05-S2). Test-only. No production solver change. Nothing under S4/, Makefile*, or setup.py is modified.",
+  "round": "P05-S2",
+  "baseline_commit": "5b72793051eb705f0e9b2e5398e1a5f0484da0cb",
+  "gate_commit": "17d151c9764ff908a3e5cb7f1248341523e186e1",
+  "origin_note": "Historical sources are copied read-only from a path outside this repository. The source paths below are recorded for provenance only; the harness never reads them at run time (verified by strace, see checkpoints/p05/P05_S2_TEST_HARNESS.md section 3.3).",
+  "files": [
+    {
+      "destination": "testing/d003/src/history/driver.history.cpp",
+      "source": "/home/jackal/s4-fmm-accept/src/driver.cpp",
+      "sha256": "1be57c35f66e6822fdb21f2ea1d0c36f684d4b1860240cb5a4728841282f3b4d",
+      "copy": "byte-identical (cmp)",
+      "role": "history driver, base of the consolidated driver"
+    },
+    {
+      "destination": "testing/d003/src/history/inject.history.cpp",
+      "source": "/home/jackal/s4-fmm-accept/src/inject.cpp",
+      "sha256": "13b2cbf5c23489c7203dcbdeb71e47103889a6fde7df6cccf6569c852da733da",
+      "copy": "byte-identical (cmp)",
+      "role": "history injector, base of the consolidated injector"
+    },
+    {
+      "destination": "testing/d003/src/history/run-faults.history.sh",
+      "source": "/home/jackal/s4-fmm-accept/run-faults.sh",
+      "sha256": "f95b1a5b3ffe21ce3dd01b92599ba4f2a90909e75b3e11fb117cd2bc428dfaa1",
+      "copy": "byte-identical (cmp)",
+      "role": "history strict/baseline matrix script, kept for reference; not executed by the harness"
+    },
+    {
+      "destination": "testing/d003/src/history/driver.s1b-patched.reference.cpp",
+      "source": "reconstructed: testing/d003/src/history/driver.history.cpp + checkpoints/p05/evidence/s1b/driver-patch.diff (patch -o)",
+      "sha256": "8db5afcfb99360697639346347eefdd673428a75eec6840f4d3ffbd0dfb8ab56",
+      "copy": "byte-identical to independent patch reconstruction (cmp)",
+      "role": "S1B patched driver; byte reference for the default-output check"
+    }
+  ],
+  "consolidated_sources": {
+    "note": "Exact hashes are recorded by each run's SHA256SUMS, not here, so that this file does not change when the sources are edited under review.",
+    "files": [
+      "testing/d003/src/driver_d003.cpp",
+      "testing/d003/src/inject_d003.cpp",
+      "testing/d003/judge_d003.py",
+      "testing/d003/matrix_d003.py",
+      "testing/d003/run_d003.sh"
+    ]
+  },
+  "rounds_in_consolidated_driver": [
+    {"round": "S1B", "change": "FieldCache loop removed (struct is opaque)", "env": null},
+    {"round": "S2", "change": "retry E/H dump", "env": "S4FMM_DUMP"},
+    {"round": "S3", "change": "first-call E/H dump", "env": "S4FMM_DUMP1"},
+    {"round": "S5", "change": "oblique incidence theta/phi", "env": "S4FMM_THETA, S4FMM_PHI"},
+    {"round": "S5b", "change": "polarisation s/p/mix", "env": "S4FMM_POL"},
+    {"round": "P05-S2", "change": "requested-but-unreached injection fails; swallowed injection fails; HITCOUNT line", "env": "S4FMM_INJECT (request signal)"}
+  ],
+  "known_limits": [
+    "LinearSolve injection is not covered: needs a production-side seam (not implemented, awaiting approval).",
+    "S4FMM_STAGE, S4FMM_PLAN_CALL, S4FMM_ALLOC, S4FMM_EXEC are echoed in the header line only; the injector does not read them (S1B appendix d.3).",
+    "The S5 and S5b driver versions were derived from diffs; no independent original copy of the S5 driver exists (S5b s5b-driver-base.PROVENANCE.txt)."
+  ]
+}
