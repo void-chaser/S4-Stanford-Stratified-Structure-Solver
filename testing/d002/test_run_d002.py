@@ -1026,21 +1026,85 @@ class A36AsanBaselineTests(FixtureTest):
         self.assertEqual((r["integrity_kind"], r["pass"]), ("ok", True))
         self.assertTrue(s["signature"]["ok"], s["signature"])
 
-    def test_a36_nonzero_info_verdict_keeps_the_signature(self):
-        # Uninitialised info that reaches the verdict on a normal exit: a judged failure.
-        text = re.sub(r"^info -?\d+$", "info 8", read(self.out_path("A-36")), flags=re.M)
+    def set_a36_info(self, value):
+        """Only the info record of the saved A-36 observation changes (the verdict stops at info)."""
+        text = re.sub(r"^info -?\d+$", "info %d" % value, read(self.out_path("A-36")), flags=re.M)
+        write(self.out_path("A-36"), text)
+
+    def test_a36_nonzero_info_inside_the_window_is_the_registered_outcome(self):
+        # n = 2 and the scaled loop touches w[info..n-1] only for 1 <= info <= n (see the constants).
+        for value in (1, 2):
+            with self.subTest(info=value):
+                self.set_a36_info(value)
+                s = self.judge()
+                r = self.case(s, "A-36")
+                self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]),
+                                 ("ok", False, "nonzero_info_window"), r)
+                self.assertIn("info=%d, expected 0" % value, r["detail"])
+                self.assertTrue(s["signature"]["ok"], s["signature"])
+                self.assertEqual(s["signature"]["damaged"], [])
+
+    def test_a36_nonzero_info_outside_the_window_is_unregistered(self):
+        # A value outside [1, n] makes the baseline's scaled loop leave w: not a clean outcome.
+        for value in (-1, 3, 8):
+            with self.subTest(info=value):
+                self.set_a36_info(value)
+                s = self.judge()
+                r = self.case(s, "A-36")
+                self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]),
+                                 ("outcome_unregistered", False, ""), r)
+                self.assertIn("A-36", s["signature"]["damaged"])
+                self.assertFalse(s["signature"]["ok"])
+                self.assertFalse(s["accepted"])
+
+    def test_a36_info_zero_with_a_wrong_eigenvalue_fails_the_signature(self):
+        # Review counterexample 1: a finite but wrong eigenvalue with info 0 is not the mechanism.
+        text = re.sub(r"^w 0 .*$", "w 0 1 0", read(self.out_path("A-36")), count=1, flags=re.M)
         write(self.out_path("A-36"), text)
         s = self.judge()
         r = self.case(s, "A-36")
-        self.assertEqual((r["integrity_kind"], r["pass"]), ("ok", False))
-        self.assertIn("info=8, expected 0", r["detail"])
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("outcome_unregistered", False, ""))
+        self.assertIn("eigenvalue error", r["detail"])
+        self.assertIn("A-36", s["signature"]["damaged"])
+        self.assertFalse(s["signature"]["ok"])
+        self.assertFalse(s["accepted"])
+
+    def test_a36_info_zero_with_a_severe_but_finite_eigenvalue_error_fails_the_signature(self):
+        # Relative error 1e-3 against the frozen 1e-10 tolerance: finite, wrong, not registered.
+        def scale_w0(match):
+            re_part, im_part = float(match.group(1)), float(match.group(2))
+            return "w 0 %r %r" % (re_part * 1.001, im_part * 1.001)
+        text = re.sub(r"^w 0 (\S+) (\S+)$", scale_w0, read(self.out_path("A-36")), count=1, flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        self.assertEqual(self.case(s, "A-36")["integrity_kind"], "outcome_unregistered")
+        self.assertFalse(s["signature"]["ok"])
+
+    def test_a36_info_zero_within_the_frozen_tolerance_keeps_the_signature(self):
+        # A perturbation of 1e-13 relative is inside eig_rel_tol 1e-10: the verdict still passes.
+        def nudge(match):
+            re_part, im_part = float(match.group(1)), float(match.group(2))
+            return "w 1 %r %r" % (re_part * (1 + 1e-13), im_part * (1 + 1e-13))
+        text = re.sub(r"^w 1 (\S+) (\S+)$", nudge, read(self.out_path("A-36")), count=1, flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"]), ("ok", True), r)
         self.assertTrue(s["signature"]["ok"], s["signature"])
+
+    def test_a36_missing_eigenvalue_record_is_damage(self):
+        text = re.sub(r"^w 1 .*\n", "", read(self.out_path("A-36")), count=1, flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        self.assertEqual(self.case(s, "A-36")["integrity_kind"], "evidence")
+        self.assertIn("A-36", s["signature"]["damaged"])
+        self.assertFalse(s["signature"]["ok"])
 
     def test_a36_crash_at_the_registered_site_is_the_registered_defect(self):
         self.crash_a36()
         s = self.judge()
         r = self.case(s, "A-36")
-        self.assertEqual((r["integrity_kind"], r["pass"]), ("exit", False))
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("exit", False, "registered_site"))
         self.assertIn("abnormal exit rc=1 (AddressSanitizer report)", r["integrity"])
         self.assertTrue(s["signature"]["ok"], s["signature"])
         self.assertEqual(s["signature"]["damaged"], [])
@@ -1072,6 +1136,69 @@ class A36AsanBaselineTests(FixtureTest):
         self.assertEqual(self.case(s, "A-36")["integrity_kind"], "evidence")
         self.assertIn("A-36", s["signature"]["damaged"])
         self.assertFalse(s["signature"]["ok"])
+
+
+    def test_a36_registered_report_plus_an_unrelated_asan_report_is_damage(self):
+        # Review counterexample 2: the registered SEGV report followed by an unrelated ASan report.
+        extra = ("ERROR: AddressSanitizer: heap-buffer-overflow on address 0x123\n"
+                 "    #0 0x123 in unrelated_bug other.cpp:1\n")
+        self.crash_a36(read(self.SITE_STDERR) + extra)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_repeated_registered_report_is_damage(self):
+        seg = read(self.SITE_STDERR)
+        self.crash_a36(seg + seg)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_summary_of_another_kind_is_damage(self):
+        text = read(self.SITE_STDERR).replace("SUMMARY: AddressSanitizer: SEGV ",
+                                              "SUMMARY: AddressSanitizer: heap-buffer-overflow ")
+        self.crash_a36(text)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_other_sanitizer_token_in_the_report_is_damage(self):
+        self.crash_a36(read(self.SITE_STDERR) + "runtime error: signed integer overflow\n")
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_unsymbolised_site_frames_are_damage(self):
+        # Fail closed: without the function names and source line the site cannot be matched.
+        text = re.sub(r" in RNP::[^\n]*", " (d002_asan_baseline+0x9bde4)", read(self.SITE_STDERR))
+        self.crash_a36(text)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+
+class A36RuleFunctionTests(unittest.TestCase):
+    """The A-36 outcome rule and the single-report site check, as functions (real saved text)."""
+
+    def test_nonzero_info_rule_is_the_asan_baseline_window_only(self):
+        rule = d002.registered_verdict_failure
+        by_info = (lambda info: {"info": str(info)})
+        info_reason = d002.Reject("info=1, expected 0", reason="info")
+        numeric = d002.Reject("eigenvalue error 1 > 1e-10", reason="numeric")
+        self.assertTrue(rule("asan_baseline", "A-36", info_reason, by_info(1), 2))
+        self.assertTrue(rule("asan_baseline", "A-36", info_reason, by_info(2), 2))
+        self.assertFalse(rule("asan_baseline", "A-36", info_reason, by_info(0), 2))
+        self.assertFalse(rule("asan_baseline", "A-36", info_reason, by_info(3), 2))
+        self.assertFalse(rule("asan_baseline", "A-36", numeric, by_info(1), 2))
+        self.assertFalse(rule("seam_asan_baseline", "A-36", info_reason, by_info(1), 2))
+        self.assertFalse(rule("seam_asan_baseline", "A-36", numeric, by_info(1), 2))
+        # candidates and every other case keep their judged verdict unchanged
+        self.assertTrue(rule("asan_candidate", "A-36", numeric, by_info(0), 2))
+        self.assertTrue(rule("asan_baseline", "A-07", numeric, by_info(0), 3))
+
+    def test_site_check_accepts_one_whole_registered_report_only(self):
+        seg = read(os.path.join(FIXTURES, "a36_asan_baseline_segv.stderr.txt"))
+        other = ("ERROR: AddressSanitizer: heap-buffer-overflow on address 0x123\n"
+                 "    #0 0x123 in unrelated_bug other.cpp:1\n")
+        self.assertTrue(d002.site_registered("asan_baseline", "A-36", seg))
+        self.assertTrue(d002.site_registered("seam_asan_baseline", "A-36", seg))
+        self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg + other))
+        self.assertFalse(d002.site_registered("asan_baseline", "A-36", other + seg))
+        self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg + seg))
+        self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg.replace("SEGV on", "BUS on")))
+        # A case without a registered site is not constrained by this check
+        self.assertTrue(d002.site_registered("ord_baseline", "A-36", other))
+        self.assertTrue(d002.site_registered("asan_candidate", "A-36", other))
 
 
 class SeamBaselineA36Tests(FixtureTest):
@@ -1115,6 +1242,22 @@ class AsanCandidateA36Tests(FixtureTest):
         s = self.judge()
         self.assertFalse(self.case(s, "A-36")["pass"])
         self.assertFalse(s["all_judged_pass"])
+        self.assertFalse(s["accepted"])
+
+    def test_candidate_numeric_failure_with_info_zero_is_not_accepted(self):
+        text = re.sub(r"^w 0 .*$", "w 0 1 0", read(self.out_path("A-36")), count=1, flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("ok", False, ""), r)
+        self.assertFalse(s["accepted"])
+
+    def test_candidate_nonzero_info_inside_the_window_is_not_accepted(self):
+        text = re.sub(r"^info -?\d+$", "info 1", read(self.out_path("A-36")), flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("ok", False, ""), r)
         self.assertFalse(s["accepted"])
 
 

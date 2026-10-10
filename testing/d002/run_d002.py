@@ -111,6 +111,8 @@ LEGACY_SCHEMA = 1  # the 2026-10-09 runs; judged only with allow_legacy (explici
 #   driver        the driver itself reported an error or driver_rc != 0 -- not a registered mechanism
 #   missing       a required record file is absent -- evidence failure
 #   evidence      malformed, truncated, wrong identity, invalid rc type -- evidence failure
+#   outcome_unregistered  a judged verdict failure that the case's registered outcome rule does
+#                 not allow (A-36 only, see A36_OUTCOME_VARIANTS) -- evidence failure, not a mechanism
 # Only exit and sanitizer are registered baseline defect mechanisms (observed in the saved
 # baseline runs); the others never satisfy a defect signature, and a damaged record in any
 # signature case fails the signature.
@@ -134,16 +136,32 @@ ASAN_REPORT_RE = re.compile(r"ERROR: AddressSanitizer: (?:heap-buffer-overflow|S
                             r"|AddressSanitizer:DEADLYSIGNAL")
 # Registered crash sites (site_registered).  A-36 (values-only + scalea) in asan_baseline and
 # seam_asan_baseline: the baseline discards zhseqr_'s return on the values-only branch, so `info`
-# is read uninitialised, and RescaleMatrix(&w[info], n-info) at Eigensystems.cpp:4715 can read far
-# outside w.  The registered crash is an ASan SEGV in RescaleMatrix called from RNP::Eigensystem at
-# that line.  Evidence: testing/d002/evidence/A36_RULE_CORRECTION.md.
+# is read uninitialised.  The scaled call RescaleMatrix<'G'>(..., n - info, 1, &w[info], ...) at
+# Eigensystems.cpp:4715 touches w[info..n-1] only for 1 <= info <= n; any other info makes the loop
+# run outside w.  The registered crash is therefore one whole ASan SEGV report whose stack has
+# RescaleMatrix called from RNP::Eigensystem at that line, and nothing else.
+# Evidence: testing/d002/evidence/A36_RULE_CORRECTION.md.
 SEGV_REPORT_RE = re.compile(r"ERROR: AddressSanitizer: SEGV on unknown address")
+SEGV_SUMMARY_RE = re.compile(r"^SUMMARY: AddressSanitizer: SEGV ", re.M)
 A36_SITE_RE = re.compile(r"\s#\d+ [^\n]*in RNP::TLASupport::RescaleMatrix<[^\n]*\n"
                          r"\s+#\d+ [^\n]*in RNP::Eigensystem\([^\n]*Eigensystems\.cpp:4715\b")
 REGISTERED_SITES = {
-    ("asan_baseline", "A-36"): (SEGV_REPORT_RE, A36_SITE_RE),
-    ("seam_asan_baseline", "A-36"): (SEGV_REPORT_RE, A36_SITE_RE),
+    ("asan_baseline", "A-36"): (SEGV_REPORT_RE, SEGV_SUMMARY_RE, A36_SITE_RE),
+    ("seam_asan_baseline", "A-36"): (SEGV_REPORT_RE, SEGV_SUMMARY_RE, A36_SITE_RE),
 }
+# Any of these in stderr means more than the one registered report kind: not registered.
+OTHER_REPORT_TOKENS = ("runtime error:", "LeakSanitizer", "ThreadSanitizer", "MemorySanitizer",
+                       "UndefinedBehaviorSanitizer")
+
+# A-36 verdict outcomes (values-only + scalea), evidence/A36_RULE_CORRECTION.md section 5.  A judged
+# failure of A-36 is a registered outcome only as set out here.  asan_baseline: a complete normal
+# exit whose info is non-zero and inside [1, n] is the uninitialised value returned by the baseline
+# (A-07 shows the same returned value on the same branch; the scaled loop stays inside w there).
+# Every other verdict failure (eigenvalue, residual, padding, info outside [1, n]) is not the
+# mechanism.  seam_asan_baseline: no verdict failure is registered; its must_fail is shown only by
+# the registered crash.  Candidates and other cases keep their judged verdicts unchanged.
+A36_OUTCOME_VARIANTS = ("asan_baseline", "seam_asan_baseline")
+A36_NONZERO_INFO_VARIANTS = ("asan_baseline",)
 # Sanitizer lines on a normal exit (rc 0; UBSan continues after its report).  Only the two forms
 # that the saved asan_baseline runs show for A-38 (RNP pointer offsets) are registered.  The
 # source path, line, column, offsets and addresses are not bound.
@@ -225,9 +243,11 @@ class Reject(Exception):
     """A check failed; the message is the human-readable reason and kind says which class
     of failure it is (see DEFECT_KINDS and the kinds listed above)."""
 
-    def __init__(self, msg, kind="evidence"):
+    def __init__(self, msg, kind="evidence", reason=None):
         Exception.__init__(self, msg)
         self.kind = kind
+        # Structured cause of a verdict failure ("info" or "numeric"); None for other checks.
+        self.reason = reason
 
 
 class RunFatal(Exception):
@@ -672,9 +692,32 @@ def abnormal_mechanism(rc, err_text):
 
 
 def site_registered(variant, cid, err_text):
-    """False when (variant, cid) has a registered crash site that this stderr does not show."""
-    sites = REGISTERED_SITES.get((variant, cid))
-    return sites is None or all(rx.search(err_text) for rx in sites)
+    """False when (variant, cid) has a registered crash site that this stderr does not show.
+
+    The registered crash must be one whole ASan report: exactly one ERROR header and one SUMMARY
+    line (both SEGV), no other sanitizer token, exactly one stack (frame #0 once), and the site
+    frame pair inside that stack.  An extra report, a duplicated report, or a header and frames
+    taken from different reports does not match.  Unsymbolised frames do not match either, so a
+    missing symbolisation fails closed."""
+    rules = REGISTERED_SITES.get((variant, cid))
+    if rules is None:
+        return True
+    if err_text.count("ERROR: AddressSanitizer:") != 1 or err_text.count("SUMMARY:") != 1:
+        return False
+    if any(token in err_text for token in OTHER_REPORT_TOKENS):
+        return False
+    if len(re.findall(r"^\s+#0 ", err_text, re.M)) != 1:
+        return False
+    return all(rx.search(err_text) for rx in rules)
+
+
+def registered_verdict_failure(variant, cid, exc, bundle, n):
+    """True when this judged verdict failure is a registered outcome of the case.  Only A-36 in
+    the baseline variants has a rule; every other case keeps its judged verdict unchanged."""
+    if cid != "A-36" or variant not in A36_OUTCOME_VARIANTS:
+        return True
+    info = int(bundle["info"])
+    return variant in A36_NONZERO_INFO_VARIANTS and exc.reason == "info" and 1 <= info <= n
 
 
 API_LAYOUT_KEYS = ("ldvl", "ldvr", "lwork_passed", "work_mode", "rwork_mode", "want",
@@ -899,7 +942,7 @@ def verdict(case, variant, mats, th, bundle, n):
             raise Reject("info=%d, expected 0" % info)
         return "info=0 work0=2n"
     if info != 0:
-        raise Reject("info=%d, expected 0" % info)
+        raise Reject("info=%d, expected 0" % info, reason="info")
     caps = api_caps(case, n, mats_lda(mats, case))
     if "seam" in variant and case["case_id"] == "C-03":
         if sc["seam_onlyvalues_real_info"] != "0":
@@ -930,7 +973,7 @@ def verdict(case, variant, mats, th, bundle, n):
         if not ok_l:
             failures.append("left vectors residual %.3g / norm %.3g" % (lr, ln))
     if failures:
-        raise Reject("; ".join(failures) + " [" + detail + "]")
+        raise Reject("; ".join(failures) + " [" + detail + "]", reason="numeric")
     return detail
 
 
@@ -971,7 +1014,10 @@ def judge_case(case, variant, mats, th, rc, out_text, err_text, stdout_text, sch
     probe = cid in CONTRACT_PROBES
     rec = {"case_id": cid, "entry": case["entry"], "matrix": case["matrix"],
            "group": case["group"], "rc": rc, "status": "judged", "pass": False,
-           "detail": "", "integrity": "ok", "integrity_kind": "ok"}
+           "detail": "", "integrity": "ok", "integrity_kind": "ok",
+           # Structured reason of a registered baseline outcome: "registered_site" for a crash at
+           # REGISTERED_SITES, "nonzero_info_window" for a clean non-zero info (see A36_OUTCOME_VARIANTS).
+           "basis": ""}
     bundle = None
     try:
         bundle = verify_integrity(case, variant, n, mats_lda(mats, case), rc, out_text, err_text,
@@ -979,6 +1025,8 @@ def judge_case(case, variant, mats, th, rc, out_text, err_text, stdout_text, sch
     except Reject as exc:
         rec["integrity"] = str(exc)
         rec["integrity_kind"] = exc.kind
+        if exc.kind == "exit" and (variant, cid) in REGISTERED_SITES:
+            rec["basis"] = "registered_site"
     if probe:
         rec["status"] = "recorded"
         rec["pass"] = None
@@ -998,6 +1046,11 @@ def judge_case(case, variant, mats, th, rc, out_text, err_text, stdout_text, sch
         rec["pass"] = True
     except Reject as exc:
         rec["detail"] = str(exc)
+        if not registered_verdict_failure(variant, cid, exc, bundle, n):
+            rec["integrity_kind"] = "outcome_unregistered"
+            rec["integrity"] = "judged failure is not a registered outcome of %s: %s" % (cid, exc)
+        elif cid == "A-36" and variant in A36_NONZERO_INFO_VARIANTS and exc.reason == "info":
+            rec["basis"] = "nonzero_info_window"
     return rec
 
 
