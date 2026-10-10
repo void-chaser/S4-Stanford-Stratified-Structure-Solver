@@ -112,7 +112,8 @@ LEGACY_SCHEMA = 1  # the 2026-10-09 runs; judged only with allow_legacy (explici
 #   missing       a required record file is absent -- evidence failure
 #   evidence      malformed, truncated, wrong identity, invalid rc type -- evidence failure
 #   outcome_unregistered  a judged verdict failure that the case's registered outcome rule does
-#                 not allow (A-36 only, see A36_OUTCOME_VARIANTS) -- evidence failure, not a mechanism
+#                 not allow (A-36 only, see A36_OUTCOME_VARIANTS) -- evidence failure, not a
+#                 mechanism
 # Only exit and sanitizer are registered baseline defect mechanisms (observed in the saved
 # baseline runs); the others never satisfy a defect signature, and a damaged record in any
 # signature case fails the signature.
@@ -155,11 +156,12 @@ OTHER_REPORT_TOKENS = ("runtime error:", "LeakSanitizer", "ThreadSanitizer", "Me
 
 # A-36 verdict outcomes (values-only + scalea), evidence/A36_RULE_CORRECTION.md section 5.  A judged
 # failure of A-36 is a registered outcome only as set out here.  asan_baseline: a complete normal
-# exit whose info is non-zero and inside [1, n] is the uninitialised value returned by the baseline
-# (A-07 shows the same returned value on the same branch; the scaled loop stays inside w there).
-# Every other verdict failure (eigenvalue, residual, padding, info outside [1, n]) is not the
-# mechanism.  seam_asan_baseline: no verdict failure is registered; its must_fail is shown only by
-# the registered crash.  Candidates and other cases keep their judged verdicts unchanged.
+# exit whose info is non-zero is the uninitialised value returned by the baseline when it lies in
+# [1, n]: only there does the scaled loop read and write w without leaving it (A-07 shows the same
+# returned value on the same values-only branch, without the scaled call).  Every other verdict
+# failure (eigenvalue, residual, padding, info outside [1, n]) is not the mechanism.
+# seam_asan_baseline: no verdict failure is registered; its must_fail is shown only by the
+# registered crash.  Candidates and other cases keep their judged verdicts unchanged.
 A36_OUTCOME_VARIANTS = ("asan_baseline", "seam_asan_baseline")
 A36_NONZERO_INFO_VARIANTS = ("asan_baseline",)
 # Sanitizer lines on a normal exit (rc 0; UBSan continues after its report).  Only the two forms
@@ -1016,7 +1018,8 @@ def judge_case(case, variant, mats, th, rc, out_text, err_text, stdout_text, sch
            "group": case["group"], "rc": rc, "status": "judged", "pass": False,
            "detail": "", "integrity": "ok", "integrity_kind": "ok",
            # Structured reason of a registered baseline outcome: "registered_site" for a crash at
-           # REGISTERED_SITES, "nonzero_info_window" for a clean non-zero info (see A36_OUTCOME_VARIANTS).
+           # REGISTERED_SITES, "nonzero_info_window" for a clean non-zero info (see
+           # A36_OUTCOME_VARIANTS).
            "basis": ""}
     bundle = None
     try:

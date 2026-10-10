@@ -1027,12 +1027,12 @@ class A36AsanBaselineTests(FixtureTest):
         self.assertTrue(s["signature"]["ok"], s["signature"])
 
     def set_a36_info(self, value):
-        """Only the info record of the saved A-36 observation changes (the verdict stops at info)."""
+        """Only the info record of the saved A-36 observation changes; the verdict stops at info."""
         text = re.sub(r"^info -?\d+$", "info %d" % value, read(self.out_path("A-36")), flags=re.M)
         write(self.out_path("A-36"), text)
 
     def test_a36_nonzero_info_inside_the_window_is_the_registered_outcome(self):
-        # n = 2 and the scaled loop touches w[info..n-1] only for 1 <= info <= n (see the constants).
+        # n = 2: the scaled loop touches w[info..n-1] only for 1 <= info <= n (see the constants).
         for value in (1, 2):
             with self.subTest(info=value):
                 self.set_a36_info(value)
@@ -1063,7 +1063,8 @@ class A36AsanBaselineTests(FixtureTest):
         write(self.out_path("A-36"), text)
         s = self.judge()
         r = self.case(s, "A-36")
-        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("outcome_unregistered", False, ""))
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]),
+                         ("outcome_unregistered", False, ""))
         self.assertIn("eigenvalue error", r["detail"])
         self.assertIn("A-36", s["signature"]["damaged"])
         self.assertFalse(s["signature"]["ok"])
@@ -1074,7 +1075,8 @@ class A36AsanBaselineTests(FixtureTest):
         def scale_w0(match):
             re_part, im_part = float(match.group(1)), float(match.group(2))
             return "w 0 %r %r" % (re_part * 1.001, im_part * 1.001)
-        text = re.sub(r"^w 0 (\S+) (\S+)$", scale_w0, read(self.out_path("A-36")), count=1, flags=re.M)
+        text = re.sub(r"^w 0 (\S+) (\S+)$", scale_w0, read(self.out_path("A-36")), count=1,
+                      flags=re.M)
         write(self.out_path("A-36"), text)
         s = self.judge()
         self.assertEqual(self.case(s, "A-36")["integrity_kind"], "outcome_unregistered")
@@ -1104,7 +1106,8 @@ class A36AsanBaselineTests(FixtureTest):
         self.crash_a36()
         s = self.judge()
         r = self.case(s, "A-36")
-        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]), ("exit", False, "registered_site"))
+        self.assertEqual((r["integrity_kind"], r["pass"], r["basis"]),
+                         ("exit", False, "registered_site"))
         self.assertIn("abnormal exit rc=1 (AddressSanitizer report)", r["integrity"])
         self.assertTrue(s["signature"]["ok"], s["signature"])
         self.assertEqual(s["signature"]["damaged"], [])
@@ -1215,7 +1218,8 @@ class A36RuleFunctionTests(unittest.TestCase):
         self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg + other))
         self.assertFalse(d002.site_registered("asan_baseline", "A-36", other + seg))
         self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg + seg))
-        self.assertFalse(d002.site_registered("asan_baseline", "A-36", seg.replace("SEGV on", "BUS on")))
+        bus = seg.replace("SEGV on", "BUS on")
+        self.assertFalse(d002.site_registered("asan_baseline", "A-36", bus))
         # A case without a registered site is not constrained by this check
         self.assertTrue(d002.site_registered("ord_baseline", "A-36", other))
         self.assertTrue(d002.site_registered("asan_candidate", "A-36", other))
