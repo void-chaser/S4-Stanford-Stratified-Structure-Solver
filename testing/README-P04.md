@@ -46,7 +46,7 @@ a changed signature all fail the run.
   thresholds: eig_rel_tol 1e-10, residual_tol 1e-10, vector_norm_tol 1e-12, query work[0]
   == 2n), `cases/matrices.json` (fixed matrices and analytic eigenvalues),
   `run_d002.py` (build / run / judge / positives).
-* `testing/d002/test_run_d002.py` — negative and positive tests of the judge (151 tests).
+* `testing/d002/test_run_d002.py` — negative and positive tests of the judge (153 tests).
   The formal fixture is the schema-2 control run `tests/fixtures/p04_schema2_control.tar.gz`
   (real saved driver output of all six variants, plus the D001 summaries and the sanitizer
   positives).  `tests/fixtures/*_legacy_run.tar.gz` are schema-1 runs, read only by

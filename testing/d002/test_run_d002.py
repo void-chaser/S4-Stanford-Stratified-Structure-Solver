@@ -1126,6 +1126,26 @@ class A36AsanBaselineTests(FixtureTest):
         self.crash_a36(text)
         self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
 
+    def test_a36_nonzero_info_with_an_unrequested_vector_record_is_damage(self):
+        # A-36 requests no vectors (want none): a vector record is a layout failure, and a layout
+        # failure must not be taken for the info outcome that the window rule allows.
+        self.set_a36_info(1)
+        text = read(self.out_path("A-36")).replace("driver_rc 0\n", "vr_flat 0 1 0\ndriver_rc 0\n")
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        self.assertEqual(self.case(s, "A-36")["integrity_kind"], "evidence")
+        self.assertIn("A-36", s["signature"]["damaged"])
+        self.assertFalse(s["signature"]["ok"])
+
+    def test_a36_crash_header_and_frames_from_different_reports_is_damage(self):
+        # The ERROR header says heap-buffer-overflow while the summary and frames are the SEGV
+        # report's: one header of the wrong kind, so the report is not the registered crash.
+        seg = read(self.SITE_STDERR)
+        mixed = seg.replace("ERROR: AddressSanitizer: SEGV on unknown address",
+                            "ERROR: AddressSanitizer: heap-buffer-overflow on address 0x1", 1)
+        self.crash_a36(mixed)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
     def test_a36_unsanitized_sigsegv_is_damage(self):
         self.crash_a36(stderr_text="", rc=-11)
         self.assert_a36_damage(self.judge(), "abnormal exit rc=-11 is not a registered mechanism")

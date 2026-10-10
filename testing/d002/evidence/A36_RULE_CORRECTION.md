@@ -123,13 +123,14 @@ info 非零时为何属于已确认机制，理由有四点：
 
 ## 7. 测试
 
-`testing/d002/test_run_d002.py`：137 → 151 项，全部通过（修订二新增 15 项，替换 1 项即修订一的 info=8 用例，净增 14 项）。
+`testing/d002/test_run_d002.py`：137 → 153 项，全部通过（修订二新增 17 项，替换 1 项即修订一的 info=8 用例，净增 16 项）。
 
 - `A36AsanBaselineTests`：
   - 窗口：info 1 与 2 为登记结果（`basis=nonzero_info_window`）；info -1、3、8 为 `outcome_unregistered`。
   - 数值：`w 0 1 0` 与相对误差 1e-3 的有限误差均使签名失败；相对扰动 1e-13 的正确控制通过。
   - 缺失记录：删去 `w 1` 为损坏（`evidence`）。
-  - 站点：注册报告通过（`basis=registered_site`）；行号 4700、其他调用者、heap-buffer-overflow、rc=-11、错误身份的部分记录、无关报告附加、重复报告、SUMMARY 类型不一致、其他 sanitizer 标记、未符号化的帧，均拒绝。
+  - 站点：注册报告通过（`basis=registered_site`）；行号 4700、其他调用者、heap-buffer-overflow、rc=-11、错误身份的部分记录、无关报告附加、重复报告、SUMMARY 类型不一致、其他 sanitizer 标记、未符号化的帧、头部与帧来自不同报告的混合记录，均拒绝。
+  - 布局：窗口内的非零 info 叠加未请求的向量记录（`want none`）为损坏（`evidence`），不被窗口规则接受。
 - `A36RuleFunctionTests`：窗口规则只对 asan_baseline 有效；候选与其他用例不受影响；站点检查只接受一个完整注册报告。
 - `AsanCandidateA36Tests`：候选上的注册报告、数值失败、窗口内非零 info 均不被接受。
 - `SeamBaselineA36Tests`、`BaselineA36ClassTests`：保留修订一的站点与分类检查。

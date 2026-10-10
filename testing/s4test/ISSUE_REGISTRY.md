@@ -92,7 +92,7 @@
 - 内容：`testing/d002/run_d002.py` 中 asan_baseline 的 A-36 由 must_pass 改为 may_fail，但结果受 A-36 专用规则限制：注册站点崩溃须为一份完整 ASan SEGV 报告，且其调用栈显示 `RescaleMatrix` 由 `RNP::Eigensystem` 在 `Eigensystems.cpp:4715` 调用；正常退出须通过完整判定，唯一例外是 info 非零且位于 `[1, n]`。seam_asan_baseline 的 A-36 保持 must_fail，仅接受同一站点崩溃。
 - 原因：基线仅值分支丢弃 `zhseqr_` 返回值，`info` 未初始化。2026-10-10 的 26 次 asan_baseline 重跑中 17 次在该站点崩溃、9 次 info 为 0 通过；原 must_pass 只依据此前的通过记录。修订一曾允许任意数值失败，修订二（commit `168d081`）已收紧，两个审核反例的修正前后判定见 `A36_RULE_CORRECTION.md` 第 6 节。
 - 不变：产品源码（S4 子树仍为 `1d738e64`）、PLAN 阈值、候选判定、A-07/A-37/C-03 的既有 may_fail 规则、其它 ASan 报告、rc=-11、损坏与错误身份规则；ord_baseline 的 A-36 仍为 must_pass。20/20 重复 info 为 0 只是已观察结果，不证明未初始化读取必然通过。
-- 测试：判定器测试 124 → 151 项，全部通过；变异检查确认窗口、数值与单报告规则均被约束。
+- 测试：判定器测试 124 → 153 项，全部通过；变异检查确认窗口、数值与单报告规则均被约束。
 - 证据：`testing/d002/evidence/A36_RULE_CORRECTION.md`（80 条归档记录逐条复判，结论无变化）、`testing/d002/evidence/A36_RAW_20261010.tar.gz`。
 - 残余缺口：A-07、A-37、C-03 的 asan_baseline 通用 may_fail 仍会接受任意完整数值失败，本轮按要求未改，需单独立项；A-36 的窗口规则由代码推导，尚无 rc=0 非零 info 的实测观察。
 - 状态：执行者自审修正，未经独立审核；不改变 D002 的技术接受、有限关闭范围或必要 leak 的 B 限制，不改变 GitHub issue 状态。
