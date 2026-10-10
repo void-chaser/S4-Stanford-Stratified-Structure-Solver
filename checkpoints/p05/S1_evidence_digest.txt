@@ -121,3 +121,48 @@ Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2.tar.gz
               size=71185 bytes  sha256=2cacdc0a2d665a853268c899fe90d66d6d76e1b468279df8953aeddee1a5f75f
               members extract to 105 files; all match the manifest (verified from the archive).
 Stale historical statements (kept unedited; superseded by S2): see S2 report section 6, item 7.
+
+S3 (open items and scope freeze) — appended
+==========================================
+Gate        : HEAD 9fee83d, status clean; only checkpoints/p05/ changed since base.
+Report      : checkpoints/p05/S3_OPEN_ITEMS_AND_SCOPE_FREEZE.md (not ignored; to be committed)
+Evidence    : checkpoints/p05/evidence/s3/ (ignored; not committed)
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 154 files (s3/: 49); sha256sum -c all OK
+
+SUPERSEDES the S2 digest entry for T11. The S2 T11 comparison used the RETRY call.
+It does not answer whether the failed call wrote a wrong value; the S2 wording is withdrawn.
+
+T12 first-call E/H, scratch vs control (NB=1, fft):
+  scratch1 identical=144/144   scratch2 identical=144/144   (no sentinel left in either)
+  BUT intermediate values differ (gdb, fmm_FFT.cpp:205 and S4.cpp:2375):
+  solve_info      control=0  scratch1=1
+  Epsilon_inv[0]  control=0.45911632377820932  scratch1=1
+  -> intermediate matrix WRONG; solve failure not reported (F6). Output propagation: OPEN.
+
+T13 S4_malloc attribution (NB=9, fft, O0): total 18 (matches T10 18)
+  in fmm_*.cpp (FMMGetEpsilon_FFT, fmm_FFT.cpp:74,81): 2
+  direct from Simulation_ComputeLayerModes (S4.cpp):   5
+  other S4.cpp callers:                                11
+  current injector cannot reach these FMM points (outside fft_plan_* window).
+
+T14 O-1 (VL, ClosedForm, f=0.427, th=0): NB=5,6,7,8 ok (n_G=5); NB=9 ok (n_G=9).
+  O-1 variable is n_G, not NumBasis. NB=1-4 n_G UNDETERMINED (they fail; no output).
+
+NB1 (replaces NB1-REACHABLE, which is withdrawn):
+  NB1-EXPLICIT-FAIL = YES     (ClosedForm Python, FFT Python, driver vl)
+  NB1-NONFINITE     = NOT-REPRODUCED
+
+D003 scope (frozen in S3 report section 4):
+  A plan failure -> NULL plan executed -> crash           : INCLUDE (5 branches)
+  B exec alloc failure -> wrong Epsilon_inv, solve unreported: INCLUDE (intermediate level, measured)
+  C intermediate error -> final output                    : OPEN
+  D exec boundary (simulated)                             : EXCLUDE
+  E O-1                                                   : EXCLUDE
+  F historical VL non-finite                              : EXCLUDE (cause undetermined)
+
+Stale statements: 16 items listed in the S3 report section 2.5 (T15); historical files not edited.
+
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3.tar.gz
+              size=119000 bytes  sha256=d500f7afb5ab332f839dfed884122045e33dd1282b60f00ef40b86d966febe86
+              extracts to 154 files, all match the manifest (verified from the archive).
+Earlier archive kept unchanged: evidence-s1-s2.tar.gz (71185 bytes, 2cacdc0a...a1a5f75f).
