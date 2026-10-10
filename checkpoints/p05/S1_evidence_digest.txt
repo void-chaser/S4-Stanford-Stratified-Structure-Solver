@@ -26,7 +26,18 @@ Commands (verbatim intent)
   build_driver_baseline    g++ driver.cpp inject.cpp ... (run-faults.sh recipe)
   t6_*                     python3 -B <script> <baseline>
 
-T4 (controls) and T5 (baseline fault reproduction): NOT RUN (driver does not compile).
+S1 (historical): T4/T5 were NOT RUN because the history driver does not compile.
+S1B (superseding): driver copy patched (1 hunk, -5/+2; s1b/driver-patch.diff), then run.
+  T4 controls (no injection, 10 cases): 9 rc=0 hit=0; vl NB=1 rc=1 RC first/retry 20 (native).
+  T5 injections (12 cases, real injector env S4FMM_INJECT/S4FMM_NTH):
+    crash             = 5   plan1 x {fft,kottke,jones,nv,vl}   (SIGSEGV, fft_plan_exec(p=0x0))
+    silent (real)     = 2   scratch1, scratch2 (fft NB=1)      (RC 0 with HIT>=1)
+    silent (boundary) = 5   exec1 x {fft,kottke,jones,nv,vl}   (simulated; not a real fault)
+    reported (待核验) = 0
+    invalid           = 0
+  T6b (VL NB scan, no injection): NB 1,2,3 -> rc=1 info=20; NB 5,9 -> rc=0. Threshold in [4,5).
+  Full tables, hashes, gdb transcripts: checkpoints/p05/S1B_T4_T5_ADDENDUM.md
+  Evidence manifest: checkpoints/p05/evidence/EVIDENCE.sha256 (60 files; sha256sum -c all OK)
 
 Build identity
 --------------
