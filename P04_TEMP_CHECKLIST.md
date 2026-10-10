@@ -1,6 +1,6 @@
 # P04 临时推进清单（更新：2026-10-10）
 
-用途：组织下一轮有限修复与复核，不替代正式 issue registry、冻结关闭条件或 REMAINING_ITEMS。未勾选不代表全部需要在本轮完成。当前结论：D001/D002/P04 在冻结有限范围已关闭，固定候选已本地采纳、正式状态已在工作区落地；状态文档按负责人要求未提交，P05 未启动。独立动态 LSan 未认证的披露限制保持，不作为已选 B 路径的新待办。
+用途：组织下一轮有限修复与复核，不替代正式 issue registry、冻结关闭条件或 REMAINING_ITEMS。未勾选不代表全部需要在本轮完成。当前结论：D001/D002/P04 在冻结有限范围已关闭，固定候选已本地采纳、正式状态已在工作区落地；本阶段文档及精选审核归档已整合提交并推送到既有 `feature/python314-binding`；本地采纳检出的正式文档仍未跟踪，P05 未启动。独立动态 LSan 未认证的披露限制保持，不作为已选 B 路径的新待办。
 
 当前采纳基点：`5cf534ce5ec223a6388d29bbb2c58f981f070241`，父 `963ccf153855734de968e6cf71477f324e33329c`，本地分支 `codex/p04-adoption-20261010`；33 路径已核验。`PROJECT_ROADMAP.md` 与 `testing/s4test/ISSUE_REGISTRY.md` 已应用审核状态差异，仍未跟踪未提交，暂存区为空。实际执行记录：`.p04-review/remediation/acceptance/adoption-exec-20261010-1/EXECUTION_RECORD.md`；独立实施核验：`.p04-review/adoption-verification-audit/20261010-codex-01/REVIEW.md`。
 
@@ -75,7 +75,7 @@ LSan 是检测工具，不是一个独立待修缺陷。其结果用于支持 P0
 - [x] 负责人决定（2026-10-10）：必要 leak 行 1–4 采用 B 保存证据验收，非独立动态 LSan 认证；记录 `.p04-review/remediation/acceptance/acceptance-B-rows1-4-20261010/`，行 3 误报勘误 `.p04-review/remediation/acceptance/closeout-B-erratum-20261010-1/ACCEPTANCE_B_ERRATUM.md`。
 - [x] 最终候选交独立生产审核：Codex 最终生产技术审核已接受 D001、D002、P04（限冻结有限范围），记录 `.p04-review/final-production-audit/20261010-codex-5cf534c-01/FINAL_REVIEW.md`，SHA256 `1f469a8bd92058b37442088ff020d989db55887faeec63449a0f76c79353061c`。
 - [x] 负责人前三项批准已实施：固定候选 `5cf534c` 已采纳于 `codex/p04-adoption-20261010`，已审核正式状态差异已应用，D001/D002/P04 按 FINAL_REVIEW 冻结范围有限关闭。执行记录及独立实施核验见本文当前采纳基点；两份正式文档未跟踪未提交，暂存区为空；P05 未启动。
-- 状态文档 Git 提交及 push：按负责人“先不提交”暂缓，未执行；属于归档/发布操作，不是本轮技术关闭条件。后续明确批准后，提交仅包含具名收尾文档和精选审核证据，不包含用户 `.gitignore`/`DEFECTS.md` 改动或整个 `.p04-review/`。
+- 状态文档 Git 提交及 push：负责人随后明确授权“整理之后直接 push”，已在隔离发布副本整合到既有 `feature/python314-binding`，保留此前发布历史；首次发布整合提交 `823870579b41cfd536e9f9c6e862e8113db386f1`。归档与状态已随分支发布，本地原采纳工作区未切换、不夹入用户修改；未发布新的 adoption 分支。
 
 当前最终技术审核：`.p04-review/final-production-audit/20261010-codex-5cf534c-01/FINAL_REVIEW.md`；当前实施核验：`.p04-review/adoption-verification-audit/20261010-codex-01/REVIEW.md`。本轮清单已结束。Git 发布准备见 `.p04-review/closeout-maintenance/20261010-codex-01/PUSH_PLAN.md`；后续修复优先 P05/D003，但尚未启动。原第十三轮等提示词及审核保留为历史输入，不要求重新执行旧采纳前预检。
 

@@ -1,0 +1,7 @@
+# P04 发布记录（2026-10-10，Australia/Sydney）
+
+负责人要求整理后直接push到此前使用的feature/python314-binding。已完成第一次远端发布并核对SHA：823870579b41cfd536e9f9c6e862e8113db386f1。
+
+此整合提交的第一父为昨日发布969f7af024984adc489d242a6d970bbb882e7143，第二父为固定审核候选5cf534ce5ec223a6388d29bbb2c58f981f070241。33个候选路径blob和完整S4树保持固定候选一致；原发布历史保留，没有force-push，也没有创建新的远端adoption分支。
+
+本记录和清单状态同步属于后续文档提交，不改变产品/测试。Git归档已包含正式状态和精选审核记录；本地原采纳工作区仍在codex/p04-adoption-20261010，用户修改保持。P05未启动，无PR/merge到master/tag。
