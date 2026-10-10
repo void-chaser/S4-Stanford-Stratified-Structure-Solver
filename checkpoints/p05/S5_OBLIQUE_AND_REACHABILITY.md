@@ -9,7 +9,7 @@
 
 ## 0. 结论摘要
 
-- **C（注入错误是否传播到输出）：保持开放，但问题已被精确化。** 在斜入射 θ=30°（φ=0 与 φ=45°），NB=1，FFT 路径，**Python-Option `PolarizationBasis='Default'` bei `PolarizationDecomposition=True`（Quellcode: VL-Zweig, `S4.cpp:2387–2394`; Laufzeitnachweis noch ausstehend, siehe Abschnitt 1.2）**下：手动把 `Epsilon_inv[0]` 改为 1，与真实 scratch1、scratch2 注入，**第一次调用的 144 个 E/H 与对照均无超出舍入的变化**。这属于 S5 所定义的结论 (c)。但同一配置下，**特征值层面确实敏感**：`Epsilon_inv` 的改变使本征值 `q[1]` 从 8.7159 变为 8.0226（φ=0），并使本征向量 `phi` 在 φ=45° 时发生变化（`phi[0]` 从 1 变为 0.7071）。因此 C 的开放问题应表述为：**特征值层面的变化为什么没有进入 E/H**，而不是笼统的"传播是否发生"。
+- **C（注入错误是否传播到输出）：保持开放，但问题已被精确化。** 在斜入射 θ=30°（φ=0 与 φ=45°），NB=1，FFT 路径，**Python-Option `PolarizationBasis='Default'` bei `PolarizationDecomposition=True`（VL-Zweig, belegt im Quellcode `S4.cpp:2387–2394` und zur Laufzeit gezählt: VL=1, NV=0, Jones=0; siehe Abschnitt 1.2）**下：手动把 `Epsilon_inv[0]` 改为 1，与真实 scratch1、scratch2 注入，**第一次调用的 144 个 E/H 与对照均无超出舍入的变化**。这属于 S5 所定义的结论 (c)。但同一配置下，**特征值层面确实敏感**：`Epsilon_inv` 的改变使本征值 `q[1]` 从 8.7159 变为 8.0226（φ=0），并使本征向量 `phi` 在 φ=45° 时发生变化（`phi[0]` 从 1 变为 0.7071）。因此 C 的开放问题应表述为：**特征值层面的变化为什么没有进入 E/H**，而不是笼统的"传播是否发生"。
 - **B（执行期分配失败的危险等级）：条件可达；输出层面在所测配置下未观察到伤害。** 可达性在 S5 中被扩大：`kf_bfly_generic` 的命中不只出现在 square 晶格的 NB=1–4（S4 的结论），还出现在 hex 的 NB=1–4、rect 的 NB=1–4（有 72 次命中的 NB=3、4 也在其中）。但**"可达"不等于"有害"**：S5 没有对这些新增的可达配置测量输出是否改变。
 - **T20 的 scratch2 解释被否定**：S5 工作过程中的初步推断（本报告内部，S4 报告中并无此假设）认为 scratch2 落在 `plans[0]`（第 212 行，`Epsilon2` 块），栈显示它实际落在 `fmm_FFT.cpp:183`（`plans[4]`，计算 `Epsilon_inv` 的那次）。因此 scratch1 与 scratch2 命中同一次 FFT 执行的两个窗口内分配，两者的中间量结果不同（scratch1：`solve_info=1`、`Epsilon_inv=1`；scratch2：`solve_info=0`、`Epsilon_inv=0.4591`）。**这一差异的机制未解释**，列入残余风险。
 - **T21 的重要新事实：偏振基改变 `kf_bfly_generic` 的命中次数。** 在 `n_G` 相同（hex NB=1–4：n_G=1；rect NB=3、4：n_G=3）且两个偏振基都完整求解的 6 个组合上，VL 与 Normal 的命中次数不同：rect 72 对 40，hex 18 对 10。S4 与本轮早先的"求解中途失败造成计数差异"的解释**被推翻**（第 6 节第 2 条）。
@@ -43,11 +43,12 @@
 
 ---
 
-### 1.2 Zweigzuordnung der Standardoption (Laufzeitnachweis ausstehend)
+### 1.2 Zweigzuordnung der Standardoption (Laufzeitnachweis vorhanden)
 
-- Quellcode (Lesezugriff, `S4/S4.cpp:2375–2394` und `S4/main_python.c:1799–1816`): Bei `PolarizationDecomposition=True` setzt die Option `PolarizationBasis='Default'` beide Basisflags auf 0 und `use_polarization_basis=1`. Die Verzweigung in `S4.cpp:2387–2394` wählt dann den **VL-Zweig** (`FMMGetEpsilon_PolBasisVL`), weil weder Jones noch Normal gesetzt sind.
-- **Nicht belegt**: Die Matrix-Transkripte enthalten nur Zählzeilen (`KFBFLY_HIT`), keine Funktionsaufrufe. Ein Laufzeitnachweis, dass `FMMGetEpsilon_PolBasisVL` tatsächlich betreten wird, liegt bisher nicht vor. Die Zuordnung "VL" in den Tabellen beruht auf der Quellcode-Lesung.
-- Nachweis-Auftrag (Haltepunkte auf `FMMGetEpsilon_PolBasisVL/NV/Jones`, Lauf quadratisch NB=1 FFT): vorbereitet als `s5/gdb/t21-branch.gdb`; der erste Versuch wurde durch das Gate abgebrochen, weil eine verfolgte Datei (`S1_evidence_digest.txt`) geändert war.
+- **Quellcode** (Lesezugriff, `S4/S4.cpp:2375–2394` und `S4/main_python.c:1799–1816`): Bei `PolarizationDecomposition=True` setzt die Option `PolarizationBasis='Default'` beide Basisflags auf 0 und `use_polarization_basis=1`. Die Verzweigung in `S4.cpp:2387–2394` wählt dann den VL-Zweig (`FMMGetEpsilon_PolBasisVL`), weil weder Jones noch Normal gesetzt sind.
+- **Laufzeitnachweis** (`s5/t21/branch-VL-count.gdb.txt`, `s5/gdb/t21-branch-count.gdb`): Für die Konfiguration quadratisch, NB=1, FFT, `PolarizationBasis='Default'`, `PolarizationDecomposition=True` zählen die Haltepunkte **VL = 1, NV = 0, Jones = 0**. Der Lauf endet regulär (gdb rc 0). Der Eintritt in `FMMGetEpsilon_PolBasisVL` ist damit zur Laufzeit belegt.
+- **Abgleich mit der Matrix**: Dieselbe Zelle hat in der Matrix denselben Status `EXCEPTION` mit identischer Fehlermeldung (`eigensystem could not be solved`), siehe `s5/t21/matrix-index.txt`. Die Matrix-Transkripte enthalten nur Zählzeilen; der Zweig wurde deshalb für diese eine Zelle separat gezählt, nicht für alle 54.
+- **Verfahrensnotiz**: Zwei frühere Versuche sind gescheitert und bleiben als Dateien erhalten. `s5/t21/branch-VL-check.gdb.txt` (Haltepunkte ohne Fortsetzung: der Lauf hielt am ersten Treffer, deshalb fehlte die Statuszeile) und der Gate-Abbruch von bash-411 (verfolgte Datei `S1_evidence_digest.txt` war geändert). Beide Fehler sind behoben; der belegte Stand ist die Zählung mit Fortsetzung.
 
 ## 2. T20：斜入射 + NB=1 的敏感性对照
 
@@ -349,7 +350,7 @@ S4 把 O-1 写成"`n_G=1` 失败，`n_G∈{5,9}` 成功"。T21 显示这一边�
 
 1. **C 是否关闭。** 推荐：不关闭。结论 (c) 只在 θ=30°、NB=1、FFT、VL 下成立，且特征值层面的敏感性说明 C 的开放问题是"为什么不传到 E/H"，而不是"是否传播"。要关闭需要 NB≥2 与 Normal/Jones 基的配置，超出本轮。
 2. **B 的危险等级。** 推荐：采用"条件可达；输出层面在所测配置下未观察到伤害；新增的可达配置（hex、rect NB=1–4，rect NB=3、4）未测输出"。不升为"输出错误"，也不降为"不可达"。
-3. **O-1 的定义。** 推荐：不再以 `n_G` 单独定义，改为"Option `PolarizationBasis='Default'` 与 `PolarizationDecomposition=True`、FFT 路径、晶格相关的特征值失败"（VL-Zweig 的 Laufzeitbeleg ausstehend, Abschnitt 1.2），并列出第 4.2 节的三种晶格的结果。
+3. **O-1 的定义。** 推荐：不再以 `n_G` 单独定义，改为"Option `PolarizationBasis='Default'` 与 `PolarizationDecomposition=True`、FFT 路径、晶格相关的特征值失败"（VL-Zweig, zur Laufzeit belegt, Abschnitt 1.2），并列出第 4.2 节的三种晶格的结果。
 4. **证据外存。** 推荐：外存本轮的归档（第 8.1 节）。当前唯一完整副本仍在仓库内被忽略的目录中，沙箱 `/tmp` 会清空。
 5. **残余风险是否接受为最终状态。** 推荐：接受。第 7 节的 10 项都是机制研究或超出证据收集范围的问题；用户已规定本轮是最后一轮。
 

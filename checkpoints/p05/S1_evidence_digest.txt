@@ -219,7 +219,7 @@ T20 oblique sensitivity (NB=1, fft, option Default with decomposition; theta=30;
   scratch2's eigensystem outputs were NOT read (only solve_info and Epsilon_inv[0]); no claim is made for scratch2 there.
   scratch2 stack: fmm_FFT.cpp:183 (plans[4]), NOT plans[0]; scratch1 and scratch2 hit the same plan execution.
   Conclusion (c) for: theta=30, NB=1, FFT, option PolarizationBasis=Default with PolarizationDecomposition=True
-  (source: VL branch; runtime confirmation of the VL branch PENDING, report section 1.2), f=0.999.
+  (VL branch: confirmed at runtime for square NB=1 FFT, counts VL=1 NV=0 Jones=0; report section 1.2), f=0.999.
   C open: why eigensystem change does not reach E/H (residual).
 
 T21 reachability (54 cells: 3 lattices x 9 NB x 2 paths; VL; O0; no injection):
