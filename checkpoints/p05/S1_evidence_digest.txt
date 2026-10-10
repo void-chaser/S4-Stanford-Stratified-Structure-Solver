@@ -201,3 +201,36 @@ Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b.tar.gz
               size=183106 bytes  sha256=7b182b93cd6af4095f5f83ae23168bb615e5d728f2615429b2e460bc61baea51
               extracts to 296 files, all match the manifest (verified from the archive).
 Earlier archives kept unchanged: evidence-s1-s2.tar.gz, evidence-s1-s2-s3.tar.gz, evidence-s1-s2-s3-s4.tar.gz.
+
+S5 (oblique sensitivity and reachability map) — appended
+=========================================================
+Gate        : HEAD 4cb0793; no tracked/staged change; no untracked file outside checkpoints/p05/ (ratified definition).
+Report      : checkpoints/p05/S5_OBLIQUE_AND_REACHABILITY.md (not ignored; to be committed)
+Evidence    : checkpoints/p05/evidence/s5/ (ignored; not committed)
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 470 files (s5/: 174); sha256sum -c all OK
+Regression  : T19 22 cases vs S1B index, default behaviour (no S4FMM_THETA/PHI): 0 differences; comparator sensitivity-checked.
+
+T20 oblique sensitivity (NB=1, fft, option Default with decomposition; theta=30; phi 0 and 45; threshold 1e-12 fixed before reading):
+  phi=0 : manual write B, scratch1 C, scratch2 D vs control A: identical 144/144, 144/144, 144/144.
+  phi=45: manual write B and scratch1 C: rounding-level (144 differ, max 4.44e-16, signs mixed, mean/sd -0.18);
+          scratch2 D: identical 144/144.
+  eigensystem IS sensitive: q[1] control 8.7159 -> manual 8.0226 (phi=0); phi[0] control 1 -> manual 0.7071 (phi=45).
+  real injection scratch1 equals manual write at the eigensystem (q, phi, kp, eigen_info identical).
+  scratch2's eigensystem outputs were NOT read (only solve_info and Epsilon_inv[0]); no claim is made for scratch2 there.
+  scratch2 stack: fmm_FFT.cpp:183 (plans[4]), NOT plans[0]; scratch1 and scratch2 hit the same plan execution.
+  Conclusion (c) for: theta=30, NB=1, FFT, option PolarizationBasis=Default with PolarizationDecomposition=True
+  (source: VL branch; runtime confirmation of the VL branch PENDING, report section 1.2), f=0.999.
+  C open: why eigensystem change does not reach E/H (residual).
+
+T21 reachability (54 cells: 3 lattices x 9 NB x 2 paths; VL; O0; no injection):
+  kf_bfly_generic hits > 0 in 12 cells (all FFT; all (p,m)=(1,1)); VL failures among them: 6 of 12.
+  Normal basis on 6 VL-failed + 6 VL-ok FFT cells: all complete; VL vs Normal hits differ with n_G equal
+  (rect NB3,4: 72 vs 40; hex NB1-4: 18 vs 10). The basis changes the call count.
+  O-1 boundary depends on the lattice, not only n_G (hex NB1-4, n_G=1, all succeed; square n_G=1, all fail).
+
+Residual risks: 10 items in report section 7 (none to be tested in this round).
+
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5.tar.gz
+              size=260075 bytes  sha256=df87cb3b0d3180555f27a5405ccf938d6907d45b997d21082d3d97d8ca1a9366
+              extracts to 470 files, all match the manifest (verified from the archive).
+Earlier archives kept unchanged.
