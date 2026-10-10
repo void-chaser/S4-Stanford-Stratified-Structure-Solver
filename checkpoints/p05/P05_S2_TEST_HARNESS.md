@@ -342,14 +342,13 @@ S1B 索引共 27 行：T4 对照 10 行、T5 注入 12 行、T6b 5 行。任务�
 
 ---
 
-## 10. 提交后的复核（待填写）
+## 10. 提交后的复核
 
-提交后需要用户复核以下命令的输出（本节在提交前无法填写）：
+以下数据在两次提交完成后取得（装置提交 `e18854c`，报告提交见交付说明）：
 
-```
-git diff --stat 5b72793 HEAD
-```
+- `git diff --stat 5b72793 HEAD`：**19 个文件，4560 行新增**。
+- 路径前缀：`checkpoints/p05/`（9 个）与 `testing/d003/`（10 个）。其中 `checkpoints/p05/` 的 9 个为：本阶段新增 2 个（`P05_S2_TEST_HARNESS.md`、`S1_evidence_digest.txt` 的 S2 追加段）与 S1–S5b 既有文档 7 个（`git diff --name-only 17d151c HEAD -- checkpoints/p05` 只列出前 2 个，已核对）。
+- **不在 `checkpoints/p05/` 或 `testing/d003/` 下的路径：0 个。** 满足"只能出现 `checkpoints/p05/` 与 `testing/d003/`"的要求。
+- 装置提交 `e18854c` 的内容与工作区逐字节一致（`git diff --quiet HEAD -- testing/d003` 通过）。
 
-应当只出现 `checkpoints/p05/` 与 `testing/d003/` 下的文件。
-
-*本节由提交者在提交后补写，或由用户复核。*
+> 注：`git diff --stat 5b72793 HEAD` 包含 `17d151c` 之前已有的 P05 文档提交（S1–S5b）。它们在 `checkpoints/p05/` 下，不由本阶段引入。本阶段引入的路径为 `checkpoints/p05/P05_S2_TEST_HARNESS.md`、`checkpoints/p05/S1_evidence_digest.txt` 与 `testing/d003/` 下的 10 个文件。
