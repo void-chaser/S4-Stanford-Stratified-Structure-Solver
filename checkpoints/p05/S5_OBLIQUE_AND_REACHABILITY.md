@@ -335,13 +335,13 @@ S4 把 O-1 写成"`n_G=1` 失败，`n_G∈{5,9}` 成功"。T21 显示这一边�
 
 ### 8.1 归档
 
-- 文件名：`checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5.tar.gz`（新文件名，未覆盖任何旧归档）
-- 大小：**260075 字节**
-- sha256：`df87cb3b0d3180555f27a5405ccf938d6907d45b997d21082d3d97d8ca1a9366`
-- 成员：不含归档自身；位于被 `.git/info/exclude` 忽略的目录，未被 git 跟踪。
-- 校验：从归档解出后，**470 个文件全部与清单一致**（0 个非 OK）。
-- 清单：`checkpoints/p05/evidence/EVIDENCE.sha256`，470 个文件，`s5/` 下 174 个；`sha256sum -c` 结果见 `checkpoints/p05/evidence/logs/s5-verify.txt`。
-- 早先的归档 `evidence-s1-s2.tar.gz`、`evidence-s1-s2-s3.tar.gz`、`evidence-s1-s2-s3-s4.tar.gz`、`evidence-s1-s2-s3-s4b.tar.gz` 均未改动。
+- **Aktuelles Archiv**: `checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest478.tar.gz`
+- Größe: **270345 Byte**
+- sha256: `2084f25c26d38b559e5fd54fcc69dee817d9503b126efe44829e773118bf3259`
+- Inhalt: 478 Dateien, darunter die 8 Zweignachweise (`s5/t21/branch-VL-*`, `s5/gdb/t21-branch*`, zugehörige Build-Logs). Enthält kein Archiv.
+- Prüfung: Nach dem Entpacken stimmen alle **478 Einträge** mit `EVIDENCE.sha256` überein (0 abweichend).
+- Manifest: `checkpoints/p05/evidence/EVIDENCE.sha256`, **478 Einträge**, `s5/` darin **182**. Ausgeschlossen sind Verify-Protokolle, das Manifest selbst und temporäre Dateien. `sha256sum -c` auf dem Bestand: 478 OK, 0 abweichend (`checkpoints/p05/evidence/logs/s5-verify.txt`).
+- **Überholtes Archiv** `evidence-s1-s2-s3-s4b-s5.tar.gz` (260075 Byte, sha256 `df87cb3b…a1a9366`): enthält nur 470 Einträge und keinen Zweignachweis. Es wird nicht als aktueller Stand geführt, ist aber nicht gelöscht. Die Vorgänger-Archive `evidence-s1-s2.tar.gz`, `evidence-s1-s2-s3.tar.gz`, `evidence-s1-s2-s3-s4.tar.gz` und `evidence-s1-s2-s3-s4b.tar.gz` sind unverändert.
 - 未移到仓库外，未提交。是否外存由主脑决定（第 9 节第 4 条）。
 
 ---

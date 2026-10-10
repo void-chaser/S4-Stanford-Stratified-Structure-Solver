@@ -207,7 +207,7 @@ S5 (oblique sensitivity and reachability map) — appended
 Gate        : HEAD 4cb0793; no tracked/staged change; no untracked file outside checkpoints/p05/ (ratified definition).
 Report      : checkpoints/p05/S5_OBLIQUE_AND_REACHABILITY.md (not ignored; to be committed)
 Evidence    : checkpoints/p05/evidence/s5/ (ignored; not committed)
-Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 470 files (s5/: 174); sha256sum -c all OK
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 478 files (s5/: 182); sha256sum -c all OK; excludes verify logs, the manifest itself and temp files
 Regression  : T19 22 cases vs S1B index, default behaviour (no S4FMM_THETA/PHI): 0 differences; comparator sensitivity-checked.
 
 T20 oblique sensitivity (NB=1, fft, option Default with decomposition; theta=30; phi 0 and 45; threshold 1e-12 fixed before reading):
@@ -230,7 +230,9 @@ T21 reachability (54 cells: 3 lattices x 9 NB x 2 paths; VL; O0; no injection):
 
 Residual risks: 10 items in report section 7 (none to be tested in this round).
 
-Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5.tar.gz
-              size=260075 bytes  sha256=df87cb3b0d3180555f27a5405ccf938d6907d45b997d21082d3d97d8ca1a9366
-              extracts to 470 files, all match the manifest (verified from the archive).
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest478.tar.gz   (CURRENT)
+              size=270345 bytes  sha256=2084f25c26d38b559e5fd54fcc69dee817d9503b126efe44829e773118bf3259
+              extracts to 478 files, all match the manifest (verified from the archive, 0 non-OK).
+              Superseded: evidence-s1-s2-s3-s4b-s5.tar.gz (260075 bytes, sha256 df87cb3b...a1a9366) has 470
+              entries and no branch proof; it is kept unchanged and is not the current state.
 Earlier archives kept unchanged.
