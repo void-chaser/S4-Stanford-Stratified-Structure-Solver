@@ -303,20 +303,25 @@ S4_Simulation *S4L_get_simulation(lua_State *L, int index){
 typedef struct S4_solve_in_parallel_data_{
 	S4_Simulation *S;
 	S4_LayerID layer;
+	int rc; /* SolveLayer status: written by the worker, read after it has been joined */
 } S4_solve_in_parallel_data;
 
 void* S4_solve_in_parallel(void *p){
 	S4_solve_in_parallel_data *data = (S4_solve_in_parallel_data*)p;
-	S4_Simulation_SolveLayer(data->S, data->layer);
+	data->rc = S4_Simulation_SolveLayer(data->S, data->layer);
 	return NULL;
 }
 /* Expected stack:
  *   1 layer name string
  *   2 S4_Simulation object
  *   : S4_Simulation objects
+ * Every argument is checked before any worker starts, so an argument error never leaves
+ * a worker running on the work buffer.  A failed layer solve is reported only after all
+ * started workers have been joined and the buffer has been released, through the same
+ * HandleSolutionErrorCode path as the serial calls (with and without pthreads).
  */
 static int S4L_SolveInParallel(lua_State *L){
-	int i, n;
+	int i, n, rc = 0;
 	S4_solve_in_parallel_data *data;
 	const char *layer_name = luaL_checklstring(L, 1, NULL);
 
@@ -332,11 +337,19 @@ static int S4L_SolveInParallel(lua_State *L){
 		}
 		data[i-2].S = S;
 		data[i-2].layer = layer;
-
-		S4_threads_run(L, i-2, &S4_solve_in_parallel, (void*)&data[i-2]);
+		data[i-2].rc = 0;
+	}
+	for(i = 0; i < n-1; ++i){
+		S4_threads_run(L, i, &S4_solve_in_parallel, (void*)&data[i]);
 	}
 	S4_threads_join(L, n-1);
+	for(i = 0; i < n-1 && rc == 0; ++i){
+		rc = data[i].rc;
+	}
 	free(data);
+	if(rc != 0){
+		HandleSolutionErrorCode(L, "SolveInParallel", rc);
+	}
 
 	return 0;
 }

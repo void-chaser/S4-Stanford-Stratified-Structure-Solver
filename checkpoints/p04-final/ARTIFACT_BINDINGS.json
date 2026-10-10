@@ -1,0 +1,128 @@
+[
+  {
+    "label": "candidate-lib",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build/libS4.a",
+    "expected": "fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba",
+    "actual": "fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba",
+    "match": true
+  },
+  {
+    "label": "candidate-cli",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build/S4",
+    "expected": "9b05692e7b340d3009e7411f1a5c220245ba85bdd0f7a2af77c3b1798a62e983",
+    "actual": "9b05692e7b340d3009e7411f1a5c220245ba85bdd0f7a2af77c3b1798a62e983",
+    "match": true
+  },
+  {
+    "label": "candidate-rcwa",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build/RCWA.so",
+    "expected": "8e14129d7796207e993fd678666e4220df4df279c4b872246e28356b6e5ec50e",
+    "actual": "8e14129d7796207e993fd678666e4220df4df279c4b872246e28356b6e5ec50e",
+    "match": true
+  },
+  {
+    "label": "candidate-pyext",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/S4.cpython-314-x86_64-linux-gnu.so",
+    "expected": "97d91302f51af197bc22fefbc8d0d785d35bfdb836d916ad8ba2760c84998cb8",
+    "actual": "97d91302f51af197bc22fefbc8d0d785d35bfdb836d916ad8ba2760c84998cb8",
+    "match": true
+  },
+  {
+    "label": "candidate-Eigensystems.cpp",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/S4/RNP/Eigensystems.cpp",
+    "expected": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+    "actual": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+    "match": true
+  },
+  {
+    "label": "seam-lib",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build-seam/libS4.a",
+    "expected": "047188053aa33771639634dedb268c9f4e7cda7f43fa8cf68a3aea104e238ba2",
+    "actual": "047188053aa33771639634dedb268c9f4e7cda7f43fa8cf68a3aea104e238ba2",
+    "match": true
+  },
+  {
+    "label": "seam-cli",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build-seam/S4",
+    "expected": "9c38115f5c065c0636493a8480b27d0816bb1c11b3f104a4e12a9018d4e47580",
+    "actual": "9c38115f5c065c0636493a8480b27d0816bb1c11b3f104a4e12a9018d4e47580",
+    "match": true
+  },
+  {
+    "label": "seam-pyext",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/candidate/build-seam/py/S4.cpython-314-x86_64-linux-gnu.so",
+    "expected": "e7014f79b8ee2fdae63e0ff6445516f45e37f241f764a6b4a7e8dab39a7a7111",
+    "actual": "e7014f79b8ee2fdae63e0ff6445516f45e37f241f764a6b4a7e8dab39a7a7111",
+    "match": true
+  },
+  {
+    "label": "baseline-lib",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/baseline-src/build/libS4.a",
+    "expected": "879a46069a1b792feaa2730e9e04c7e408c2664f58f365bc4388749dbc3f2c0e",
+    "actual": "879a46069a1b792feaa2730e9e04c7e408c2664f58f365bc4388749dbc3f2c0e",
+    "match": true
+  },
+  {
+    "label": "baseline-cli",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/baseline-src/build/S4",
+    "expected": "19daaa776dc740d4f26540f5faef1bebf636c79b3045bd8bd2ca902132d44432",
+    "actual": "19daaa776dc740d4f26540f5faef1bebf636c79b3045bd8bd2ca902132d44432",
+    "match": true
+  },
+  {
+    "label": "baseline-pyext",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/baseline-src/S4.cpython-314-x86_64-linux-gnu.so",
+    "expected": "ee80d43ca71601ced962021c94a7404a25448df1e988619872da6e85f5be4253",
+    "actual": "ee80d43ca71601ced962021c94a7404a25448df1e988619872da6e85f5be4253",
+    "match": true
+  },
+  {
+    "label": "baseline-Eigensystems.cpp",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/baseline-src/S4/RNP/Eigensystems.cpp",
+    "expected": "76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de",
+    "actual": "76db4bb77ea4febe03b3aae892936a0bda889d97ece6b3157a3005c201cc99de",
+    "match": true
+  },
+  {
+    "label": "d002-bin-ord_candidate",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_ord_candidate",
+    "expected": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+    "actual": "993f7f0489efb7211ee46d588d9ed018b111ae11eb10461692d31c8600d0f5dc",
+    "match": true
+  },
+  {
+    "label": "d002-bin-asan_candidate",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_asan_candidate",
+    "expected": "d02522e4acf9043e8760f9b12771f0ea5bf2c955de45597f54e29da05e58f9e3",
+    "actual": "d02522e4acf9043e8760f9b12771f0ea5bf2c955de45597f54e29da05e58f9e3",
+    "match": true
+  },
+  {
+    "label": "d002-bin-seam_asan_candidate",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_seam_asan_candidate",
+    "expected": "a53331d61e9f0826b234a8463ce587950fc4765f8e7b7c12be4be33bffe72095",
+    "actual": "a53331d61e9f0826b234a8463ce587950fc4765f8e7b7c12be4be33bffe72095",
+    "match": true
+  },
+  {
+    "label": "d002-bin-ord_baseline",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_ord_baseline",
+    "expected": "4dfad8ea442b40b65a5c0aca4b02abb044b2da2b6bf810490769cc39224ad18f",
+    "actual": "4dfad8ea442b40b65a5c0aca4b02abb044b2da2b6bf810490769cc39224ad18f",
+    "match": true
+  },
+  {
+    "label": "d002-bin-asan_baseline",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_asan_baseline",
+    "expected": "655d8ab2d3a1b67713cdd9c509dc9587f400b5bc3f8315e683fb4e7531ad8ef0",
+    "actual": "655d8ab2d3a1b67713cdd9c509dc9587f400b5bc3f8315e683fb4e7531ad8ef0",
+    "match": true
+  },
+  {
+    "label": "d002-bin-seam_asan_baseline",
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round9/adoption-20261010-a745a3e/pipeline-run/d002/bin/d002_seam_asan_baseline",
+    "expected": "e51cf7a16db1e1130acede06e590f01827c3acdd45112cbb176e7d8b7e01a9aa",
+    "actual": "e51cf7a16db1e1130acede06e590f01827c3acdd45112cbb176e7d8b7e01a9aa",
+    "match": true
+  }
+]

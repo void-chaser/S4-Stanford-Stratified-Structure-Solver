@@ -1,0 +1,121 @@
+[
+  {
+    "path": "S4/rcwa.cpp",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/S4/rcwa.cpp",
+    "expected": "78a81faf1abec108db324e398b082e5bd55cb26ef57498a5136f47ad4c550c8c",
+    "actual": "78a81faf1abec108db324e398b082e5bd55cb26ef57498a5136f47ad4c550c8c",
+    "match": true
+  },
+  {
+    "path": "S4/rcwa.h",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/S4/rcwa.h",
+    "expected": "67f94ec7a48e4c348ca518dfcf90b43a03b79abfb73eb42e2b76fa5d27303eb9",
+    "actual": "67f94ec7a48e4c348ca518dfcf90b43a03b79abfb73eb42e2b76fa5d27303eb9",
+    "match": true
+  },
+  {
+    "path": "S4/RNP/Eigensystems.cpp",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/S4/RNP/Eigensystems.cpp",
+    "expected": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+    "actual": "71817d22ce99d3d3af7b35d6ce841bc312c0518778152d65c4ca74362beac353",
+    "match": true
+  },
+  {
+    "path": "testing/s4test/test_seams/seam.h",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/testing/s4test/test_seams/seam.h",
+    "expected": "ce0569b0f096e1af33909cb30485f557916e858596aff0fb7901faf8b5dc52bf",
+    "actual": "ce0569b0f096e1af33909cb30485f557916e858596aff0fb7901faf8b5dc52bf",
+    "match": true
+  },
+  {
+    "path": "build-seam-asan/libS4.a",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/build-seam-asan/libS4.a",
+    "expected": "ae77a0b37347439d56540e75f4d04edcb492a12a86e676e82b7896497c3ef601",
+    "actual": "ae77a0b37347439d56540e75f4d04edcb492a12a86e676e82b7896497c3ef601",
+    "match": true
+  },
+  {
+    "path": "build-seam-asan/S4k/rcwa.o",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/src/build-seam-asan/S4k/rcwa.o",
+    "expected": "7170d96669e31bf2ab2ba2ab872dcb8717f0ce2005d56cf5782bb24a544c3d92",
+    "actual": "7170d96669e31bf2ab2ba2ab872dcb8717f0ce2005d56cf5782bb24a544c3d92",
+    "match": true
+  },
+  {
+    "path": "owned_failure_rcwa.cpp",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/repro/rcwa_failure_workspace/owned_failure_rcwa.cpp",
+    "expected": "2026252c0074b5cedfdacf6a5d2df46ae25d2302f758609ac15f68e797194577",
+    "actual": "2026252c0074b5cedfdacf6a5d2df46ae25d2302f758609ac15f68e797194577",
+    "match": true
+  },
+  {
+    "path": "run.sh",
+    "resolved": "Git 4b20233:checkpoints/p04-remediation/repro/rcwa_failure_workspace/run.sh",
+    "expected": "74db3a91e69d9a7bfc6c84f113cd9d6572d88b87b43749ce45ea6c75f48f62ae",
+    "actual": "74db3a91e69d9a7bfc6c84f113cd9d6572d88b87b43749ce45ea6c75f48f62ae",
+    "match": true
+  },
+  {
+    "path": "check_results.py",
+    "resolved": "Git 4b20233:checkpoints/p04-remediation/repro/rcwa_failure_workspace/check_results.py",
+    "expected": "49cfc72a89a85f9daa85c0c33018216c190b7aaccdb915e8a972eab45f2ff405",
+    "actual": "49cfc72a89a85f9daa85c0c33018216c190b7aaccdb915e8a972eab45f2ff405",
+    "match": true
+  },
+  {
+    "path": "../lsan_controls/lost.c",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/repro/lsan_controls/lost.c",
+    "expected": "197e11684c472fe5f7f1c6b72558a2eac20350088acfab8ec9bb7ee649408034",
+    "actual": "197e11684c472fe5f7f1c6b72558a2eac20350088acfab8ec9bb7ee649408034",
+    "match": true
+  },
+  {
+    "path": "../lsan_controls/freed.c",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/repro/lsan_controls/freed.c",
+    "expected": "23d5e9e295c065df4e726a4889f8598387a4d5cb79c7b8a18aac847229705859",
+    "actual": "23d5e9e295c065df4e726a4889f8598387a4d5cb79c7b8a18aac847229705859",
+    "match": true
+  },
+  {
+    "path": "../lsan_controls/reachable.c",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/repro/lsan_controls/reachable.c",
+    "expected": "2dbc8670588e20e4a9228effd2e19734c842020547899e5dbac537242034903f",
+    "actual": "2dbc8670588e20e4a9228effd2e19734c842020547899e5dbac537242034903f",
+    "match": true
+  },
+  {
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/owned_failure_rcwa",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/owned_failure_rcwa",
+    "expected": "dcfdcec7477b7bbe759a0bfa38887a5e3b856dd15df9264b06c10d91998cd9a0",
+    "actual": "dcfdcec7477b7bbe759a0bfa38887a5e3b856dd15df9264b06c10d91998cd9a0",
+    "match": true
+  },
+  {
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/lost",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/lost",
+    "expected": "08eb826e4d111fd125f51c50f40b119fc5ad0d2f5760328bda7ef0b2b1ebde24",
+    "actual": "08eb826e4d111fd125f51c50f40b119fc5ad0d2f5760328bda7ef0b2b1ebde24",
+    "match": true
+  },
+  {
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/freed",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/freed",
+    "expected": "4fb51abc059c1398c14f98cbbb3d1bee3dcd48a12e193e8bab97baf89afb718a",
+    "actual": "4fb51abc059c1398c14f98cbbb3d1bee3dcd48a12e193e8bab97baf89afb718a",
+    "match": true
+  },
+  {
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/reachable",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/controls/reachable",
+    "expected": "122d49ec507d3d04bddc75d64d20b47981fa6923457e257185b30c751b68fdfa",
+    "actual": "122d49ec507d3d04bddc75d64d20b47981fa6923457e257185b30c751b68fdfa",
+    "match": true
+  },
+  {
+    "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/owned_failure_rcwa_leakctl",
+    "resolved": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/round6/run-rcwa-final/owned_failure_rcwa_leakctl",
+    "expected": "ef46400e2f447424a80b529e72059e4e3e5d7b4e000bf7a2ac918190f37279af",
+    "actual": "ef46400e2f447424a80b529e72059e4e3e5d7b4e000bf7a2ac918190f37279af",
+    "match": true
+  }
+]

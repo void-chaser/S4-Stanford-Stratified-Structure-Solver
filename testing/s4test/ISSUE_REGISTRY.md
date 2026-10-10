@@ -1,6 +1,6 @@
 # S4 当前缺陷登记表
 
-更新：2026-10-09（Australia/Sydney）。执行顺序和阶段验收见 [PROJECT_ROADMAP.md](../../PROJECT_ROADMAP.md)。
+更新：2026-10-10（Australia/Sydney）。执行顺序和阶段验收见 [PROJECT_ROADMAP.md](../../PROJECT_ROADMAP.md)。
 
 ## 编号与证据口径
 
@@ -16,14 +16,15 @@
 它是当前可执行工作项；原始历史 D002 定义/因果的 provenance 仍未知。
 修复当前工作项不改变这个历史结论。
 
-未更新工作项中的源码观察保留 2026-10-03 基线口径。D001/D002 已更新到 2026-10-09 的整合构建与独立复跑结果，详见 [P04 当前状态](../../checkpoints/p04/CURRENT_STATUS.md)。实现、测试通过和正式关闭分别记录。
+以下“源码观察”来自本轮静态阅读，“历史有限通过”来自已保存的独立审核。
+本段为建立登记表时的静态阅读口径；D001/D002 后续有限生产验收、采纳与关闭以本表 2026-10-10 最终记录为准，其它条目仍按各自证据状态处理。
 
 ## 当前工作项
 
 | 编号 / 优先级 | 当前定义 | 已知状态与证据强度 | 下一动作 / 关闭判据 |
 |---|---|---|---|
-| D001 / P0 | scalar、同材质区域、isotropic tensor 等价表示产生不同物理解 | 44f4a09 已纳入四行置换修复；8b13d67 clean build 与独立复跑：冻结 12/12、扩展 113/113，baseline 8/12、60/113 | 已测有限范围得到支持；正式关闭另行处理；证据见 checkpoints/p04/CURRENT_STATUS.md |
-| D002 / P1 | RNP backtransform 防御性内存缺陷；仅值分支返回状态不可靠（current working registry definition） | 最小修复已整合；独立 native ord 53/53、ASan+UBSan 53/53、seam 58/58；error20 33/33；历史 provenance 未知 | 后续处理判定器/流水线、Lua 返回值缺口和未验证边界；不宣称完整内存/泄漏安全；见 CURRENT_STATUS.md |
+| D001 / P0 | scalar、同材质区域、isotropic tensor 等价表示产生不同物理解 | 有限范围 CLOSED；固定候选 5cf534ce5ec223a6388d29bbb2c58f981f070241 已采纳于 codex/p04-adoption-20261010；Codex 最终生产技术审核接受，详见末节 | 默认 Linux 冻结12例及扩展113例，绝对阈值1e-10；其余材料/参数和配置不作全面认证 |
+| D002 / P1 | RNP backtransform 防御性内存缺陷；仅值分支返回状态不可靠（current working registry definition） | 默认构建冻结范围 CLOSED；与D001相同采纳SHA，必要leak按负责人四行B验收，非独立动态LSan认证，详见末节 | 原生契约、仅值状态接收、rcwa失败清理不安装及S4/Python/Lua错误20传播；HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance为范围外登记 |
 | D003 / P1 | FFT prepare/execute 失败处理及上层传播不完整 | checkpoint 已含 FFT wrapper/kiss FFT/网格路径的部分处理。历史六文件 FMM 候选和 runner 存在；完整候选未生产验收/集成 | 列实际计算分支、计划/执行调用点；复用候选与现有注入器，补缺口；失败不得安装模式/缓存；恢复后重试与全新对象一致；Python/Lua 报错可见 |
 | D004 / P1 | 求解后 SetOptions 沿用旧模式/缓存 | Python SetOptions 直接更新 options 后返回，当前函数未显式失效旧状态；现有测试主要在首次求解前设置选项，未覆盖该缺陷 | 同对象 solve→SetOptions→solve 与按最终选项新建的对象比较；覆盖改变截断/离散化/偏振基/内存模式的选项；非法选项失败后的对象状态有明确契约 |
 | D005 / P1 | 核心更新未重新链接 Python extension；header dependency 缺失 | Makefile 多数对象只声明 cpp/c 依赖；setup.py 链接既有 build/libS4.a。make test-python 使用清空构建的绕行方法，普通增量构建问题仍有历史记录 | 核心实现、头文件、binding 各一次有可观测影响的修改，普通构建自动更新应受影响产物且加载新代码；清空重建不作为增量修复证明 |
@@ -69,8 +70,36 @@
 
 注：legacy DEFECTS 的编号与用户已有内容未改动。baseline 的失败结果是缺陷对照，不是流水线失败。
 
-## 2026-10-09 发布整理后的当前口径
+## 2026-10-10 P04 最终有限关闭记录
 
-上一节为 Claude 执行阶段的历史状态。当前 feature/python314-binding 发布已完成的代码、测试与整理记录：整合构建和独立运行复核已完成，未关闭 issue/milestone。已测试和未测试范围见 [CURRENT_STATUS.md](../../checkpoints/p04/CURRENT_STATUS.md)，其当前说明优先于旧交接中的时间状态。
+最终生产技术审核：Codex 独立审核会话，记录 `checkpoints/p04-final/FINAL_REVIEW.md`。D001、D002、P04 在以下有限范围技术接受。负责人批准并完成本地采纳后本节才可落地；本节不是批准签名。
 
-正式 D002 判定器和流水线加固、Lua SolveInParallel 返回值处理、有效动态泄漏验证、HAVE_LAPACK 原生运行等留作后续工作。A-10r 的契约外越界继续披露；既有编号保持。
+采纳源码 SHA：`5cf534ce5ec223a6388d29bbb2c58f981f070241`，父 `963ccf153855734de968e6cf71477f324e33329c`；本地分支 `codex/p04-adoption-20261010`。状态文档提交另记录实际产生的提交号，不将本文预备文本当作已执行操作。
+
+| 项 | 有限关闭范围与证据 |
+|---|---|
+| D001 | 默认 Linux、HAVE_LAPACK未定义；zgebak四行置换索引修正；冻结12/12、扩展113/113、绝对阈值1e-10；第九轮独立TMM保存数值复算12/12与113/113，非独立动态物理运行 |
+| D002 非leak | 默认构建原生契约ord53/53、asan53/53、seam58/58；第五轮独立正式judge124/124、aggregate71/71，B1–B4及A-07有限校正保持；zhseqr仅值状态接收、NULL/工作区归属、rcwa失败清理及S4/Python/Lua错误20，error20保存43/43 |
+| 必要有限leak | 负责人原批准记录 `.p04-review/remediation/acceptance/acceptance-B-rows1-4-20261010/ACCEPTANCE_B_ROWS1-4.md`（SHA256 64149930e3094f85d3132413d712e642c1a30c4a1405e86cb17a15a3f4852f07）；行1–4全部采用B保存证据验收，非独立动态LSan认证。行3路径解析误报已在最终审核撤销，正确绑定17/17；不缩小原批准范围 |
+| P04 | 固定候选clean保存流水线38步PASS、0unexpected、18/18产物绑定；主测试total257/pass256/skip1（OOM为Code Review Only）、Lua回归及binding smoke4/4；上述有限范围关闭，P05未启动 |
+
+覆盖限制：行1–3仅n=2 dense；行4仅S4非均匀层失败，均匀张量未动态运行；Python/Lua未在sanitizer下运行；Lua GetAmplitudes新增分支未独立命中。SolveInParallel在所有worker join且释放data后，对首个非零层状态报错，包括20以外状态；保留既有默认/保存pthread有限结果，不称线程全面认证。
+
+范围外（不升格关闭前提）：HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance。根历史manifest中evidence/README.md、REMAINING_ITEMS.md、REMEDIATION_REPORT.md三处文档差异仍披露。上方2026-10-09状态表为历史记录，其旧待审项不覆盖本次有限最终结论。
+
+## P04 范围外后续登记（2026-10-10）
+
+这些事项不撤销已验的 D001/D002/P04 有限关闭。先登记已知反例、待验证契约和配置覆盖缺口，未验证不写成已确认生产缺陷；R-P04 编号是后续登记引用，不替代 D001–D015。正常受支持输入中新确认的独立缺陷再按更新规则追加 D016 起，避免重复编号。以下排期是建议，尚未开始执行。
+
+| 引用 | 项目与当前性质 | 下一次有限核验 / 完成标准 | 建议排期与提前条件 |
+|---|---|---|---|
+| R-P04-01 | A-10r 契约外短工作区越界；保存 SIGSEGV 探针存在，非正式 judged 用例 | 核对实际分配大小、lwork 与公开契约；确认正常公共调用能否触发。支持范围内则构造最小反例并修复，契约外则明确前置条件或制定防御行为 | P05 主线之后安排 RNP 防御专项；若正常受支持输入可达内存破坏则提前 |
+| R-P04-02 | query 防御性失败路径，属于未覆盖契约 | query 失败不安装模式、不继续使用无效尺寸，临时资源释放；用具名失败输入/最小 seam 及成功对照，不重跑全部矩阵 | RNP/rcwa 防御专项；若新证据影响默认求解则提前 |
+| R-P04-03 | HAVE_LAPACK 原生运行未认证；额外构建配置覆盖缺口 | 固定实际编译/链接配置，核验真实 LAPACK 分支、原生 info、工作区所有权及前端错误传播；语法通过不当作原生通过 | 声明支持该配置前必做，发布支持配置矩阵前安排；非当前默认构建关闭前提 |
+| R-P04-04 | pthread/HAVE_UNISTD_H、ParallelInvoke、线程池/OOM；配置及生命周期核验缺口 | 固定线程配置，定向检查构建、worker/join、参数/分配失败和资源清理；具名场景分别接受，区分 Lua 与 Python 入口 | 声明线程配置支持前专项；若受支持正常调用出现崩溃/泄漏/无效成功则提前 |
+| R-P04-05 | n>2、其它层类型、线程下所有权覆盖扩展 | 先选代表矩阵与实际变更/风险路径，分别核验成功/失败/重复调用、必要阳性能力和清理；保持每个配置的覆盖限制 | 随相关路径变更或发布范围扩展分批安排，不建无限“全面认证”前提 |
+| R-P04-06 | D001 新科学矩阵与更广材料/参数；科学覆盖扩展 | 用独立物理参考挑选新增材料/各向异性/参数情形，保存输入及误差阈值；发现正常输入实质反例时登记影响范围 | 科学验证扩展专项；出现具名错误物理结果则提前 |
+| R-P04-07 | 历史 D002 等 provenance 未知；证据溯源事项 | 找到原定义/提交/输入则记录明确来源；找不到保持未知。不得用当前有限修复补造历史因果 | 并行资料整理或文档阶段，默认不阻塞 P05 |
+| D012（既有 issue） | Python SolveInParallel 静默 no-op，已有 P2 条目 | 按原条目默认 NotImplementedError/unsupported 契约及回归；不另起重复 issue，不外推为实现完整并行 | 仍按 P11 排期；若当前用户流程依赖该入口，可单独提前小修复 |
+
+下一轮默认修复顺序仍为 P05/D003 → P06/D004；P05 应核对实际 FMM/FFT 失败传播和已登记 VL NB1 可达性。以上后续事项仅在其自身任务明确启动后执行，不回头扩大本次 P04 验收。

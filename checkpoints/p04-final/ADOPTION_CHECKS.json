@@ -1,0 +1,243 @@
+{
+  "head": "5cf534ce5ec223a6388d29bbb2c58f981f070241",
+  "parent": "963ccf153855734de968e6cf71477f324e33329c",
+  "branch": "codex/p04-adoption-20261010",
+  "checkpoint_ref": "963ccf153855734de968e6cf71477f324e33329c",
+  "temporary_ref": "5cf534ce5ec223a6388d29bbb2c58f981f070241",
+  "patch_sha256": "eb9b76d68ace80e58ea849e7a297c376d0d7d17cbd078d938abb6c29f8a712b5",
+  "paths": [
+    "S4/RNP/Eigensystems.cpp",
+    "S4/S4.cpp",
+    "S4/S4_internal.h",
+    "S4/main_lua.c",
+    "S4/main_python.c",
+    "S4/rcwa.cpp",
+    "S4/rcwa.h",
+    "testing/README-P04.md",
+    "testing/d001/cases/d001_first_matrix.json",
+    "testing/d001/model_d001.py",
+    "testing/d001/oracle_d001.py",
+    "testing/d001/oracle_d001_ext.py",
+    "testing/d001/run_d001_extension.py",
+    "testing/d001/run_d001_matrix.py",
+    "testing/d002/PLAN.json",
+    "testing/d002/cases/matrices.json",
+    "testing/d002/run_d002.py",
+    "testing/d002/test_run_d002.py",
+    "testing/d002/tests/fixtures/ord_candidate_legacy_run.tar.gz",
+    "testing/d002/tests/fixtures/p04_schema2_control.tar.gz",
+    "testing/d002/tests/fixtures/seam_asan_candidate_legacy_run.tar.gz",
+    "testing/d002/tools/d002_driver.cpp",
+    "testing/d002/tools/pos_asan.cpp",
+    "testing/d002/tools/pos_ubsan.cpp",
+    "testing/p04_aggregate.py",
+    "testing/p04_aggregate_test.py",
+    "testing/p04_run_all.sh",
+    "testing/s4test/error20/error20_capi.c",
+    "testing/s4test/error20/error20_lua.lua",
+    "testing/s4test/error20/error20_lua_parallel.lua",
+    "testing/s4test/error20/link_seam_ext.py",
+    "testing/s4test/error20/run_error20.py",
+    "testing/s4test/test_seams/seam.h"
+  ],
+  "whitelist_equal": true,
+  "staged": "",
+  "status": " M .gitignore\n M testing/s4test/DEFECTS.md\n?? .diag_path_tmp\n?? .p04-review/\n?? DEEPSEEK_P01_EXECUTION_PROMPT.md\n?? P04_CLAUDE_NEXT_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND10_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND11_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND12_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND13_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND4_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND5_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND6_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND7_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND8_EXECUTION_PROMPT.md\n?? P04_CLAUDE_ROUND9_EXECUTION_PROMPT.md\n?? P04_DEEPSEEK_REMEDIATION_PROMPT.md\n?? P04_TEMP_CHECKLIST.md\n?? PROJECT_ROADMAP.md\n?? testing/s4test/ISSUE_REGISTRY.md\n",
+  "blobs": [
+    {
+      "path": "S4/RNP/Eigensystems.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/S4.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/S4_internal.h",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/main_lua.c",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/main_python.c",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/rcwa.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "S4/rcwa.h",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/README-P04.md",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/cases/d001_first_matrix.json",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/model_d001.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/oracle_d001.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/oracle_d001_ext.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/run_d001_extension.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d001/run_d001_matrix.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/PLAN.json",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/cases/matrices.json",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/run_d002.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/test_run_d002.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tests/fixtures/ord_candidate_legacy_run.tar.gz",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tests/fixtures/p04_schema2_control.tar.gz",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tests/fixtures/seam_asan_candidate_legacy_run.tar.gz",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tools/d002_driver.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tools/pos_asan.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/d002/tools/pos_ubsan.cpp",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/p04_aggregate.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/p04_aggregate_test.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/p04_run_all.sh",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/error20/error20_capi.c",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/error20/error20_lua.lua",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/error20/error20_lua_parallel.lua",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/error20/link_seam_ext.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/error20/run_error20.py",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    },
+    {
+      "path": "testing/s4test/test_seams/seam.h",
+      "head_matches_candidate": true,
+      "workfile_matches_candidate": true
+    }
+  ],
+  "user_files": {
+    ".gitignore": {
+      "actual": "a1e3dd44fdd83cf0ffcccc2d77fc3d6e036405f6a60259473d6316aee3962a42",
+      "previous": "a1e3dd44fdd83cf0ffcccc2d77fc3d6e036405f6a60259473d6316aee3962a42",
+      "match": true
+    },
+    "testing/s4test/DEFECTS.md": {
+      "actual": "e79dfde90cbea30278817f005a7607eabbb7874658bc8efc82749dfbb7990547",
+      "previous": "e79dfde90cbea30278817f005a7607eabbb7874658bc8efc82749dfbb7990547",
+      "match": true
+    }
+  },
+  "official_documents": {
+    "PROJECT_ROADMAP.md": {
+      "sha256": "c1fc466d46fc69d0d1d197262c178896e439fe956d742474040b37d9ec1dedc1",
+      "matches_reviewed_text": true,
+      "tracked": false
+    },
+    "testing/s4test/ISSUE_REGISTRY.md": {
+      "sha256": "0b4d17dd281780154d5e661c48b1d8395df34626222ad64b798041b234bd2154",
+      "matches_reviewed_text": true,
+      "tracked": false
+    }
+  },
+  "execution_record_sha256": "4f3e816057d76b18885f6a7d599e6b4e1f764df548de58524b832123310b5401",
+  "final_review_sha256": "1f469a8bd92058b37442088ff020d989db55887faeec63449a0f76c79353061c",
+  "B_original_sha256": "64149930e3094f85d3132413d712e642c1a30c4a1405e86cb17a15a3f4852f07",
+  "preflight_pass_count": 24,
+  "preflight_fail_count": 0,
+  "checklist_implementation_stale": true
+}

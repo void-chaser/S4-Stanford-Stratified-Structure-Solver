@@ -1,0 +1,589 @@
+{
+  "main_head": "963ccf153855734de968e6cf71477f324e33329c",
+  "candidate_head": "5cf534ce5ec223a6388d29bbb2c58f981f070241",
+  "parent": "963ccf153855734de968e6cf71477f324e33329c",
+  "candidate_status": "?? build-seam/\n",
+  "paths": [
+    "S4/RNP/Eigensystems.cpp",
+    "S4/S4.cpp",
+    "S4/S4_internal.h",
+    "S4/main_lua.c",
+    "S4/main_python.c",
+    "S4/rcwa.cpp",
+    "S4/rcwa.h",
+    "testing/README-P04.md",
+    "testing/d001/cases/d001_first_matrix.json",
+    "testing/d001/model_d001.py",
+    "testing/d001/oracle_d001.py",
+    "testing/d001/oracle_d001_ext.py",
+    "testing/d001/run_d001_extension.py",
+    "testing/d001/run_d001_matrix.py",
+    "testing/d002/PLAN.json",
+    "testing/d002/cases/matrices.json",
+    "testing/d002/run_d002.py",
+    "testing/d002/test_run_d002.py",
+    "testing/d002/tests/fixtures/ord_candidate_legacy_run.tar.gz",
+    "testing/d002/tests/fixtures/p04_schema2_control.tar.gz",
+    "testing/d002/tests/fixtures/seam_asan_candidate_legacy_run.tar.gz",
+    "testing/d002/tools/d002_driver.cpp",
+    "testing/d002/tools/pos_asan.cpp",
+    "testing/d002/tools/pos_ubsan.cpp",
+    "testing/p04_aggregate.py",
+    "testing/p04_aggregate_test.py",
+    "testing/p04_run_all.sh",
+    "testing/s4test/error20/error20_capi.c",
+    "testing/s4test/error20/error20_lua.lua",
+    "testing/s4test/error20/error20_lua_parallel.lua",
+    "testing/s4test/error20/link_seam_ext.py",
+    "testing/s4test/error20/run_error20.py",
+    "testing/s4test/test_seams/seam.h"
+  ],
+  "path_count": 33,
+  "whitelist_equal": true,
+  "patch_sha256": "eb9b76d68ace80e58ea849e7a297c376d0d7d17cbd078d938abb6c29f8a712b5",
+  "patch_file_equal": true,
+  "source_blobs": [
+    {
+      "path": "S4/RNP/Eigensystems.cpp",
+      "candidate": "e7357aae9fa9e65d6995728293e4622fe3d24f7c",
+      "source": "e7357aae9fa9e65d6995728293e4622fe3d24f7c"
+    },
+    {
+      "path": "S4/S4.cpp",
+      "candidate": "51fcabf1afca5e0a976f02f8839932929c511dfa",
+      "source": "51fcabf1afca5e0a976f02f8839932929c511dfa"
+    },
+    {
+      "path": "S4/S4_internal.h",
+      "candidate": "0b0ca24b8009b42dce1383c24a8c322530bc8452",
+      "source": "0b0ca24b8009b42dce1383c24a8c322530bc8452"
+    },
+    {
+      "path": "S4/main_lua.c",
+      "candidate": "8bb7029f801666b78479ca7c1704c76465e8b3e3",
+      "source": "8bb7029f801666b78479ca7c1704c76465e8b3e3"
+    },
+    {
+      "path": "S4/main_python.c",
+      "candidate": "f0de44d0b92ed75c86311e7174c0909bb48b49c8",
+      "source": "f0de44d0b92ed75c86311e7174c0909bb48b49c8"
+    },
+    {
+      "path": "S4/rcwa.cpp",
+      "candidate": "6409749d6794c3c0240165bf7958f11ffb8aaa64",
+      "source": "6409749d6794c3c0240165bf7958f11ffb8aaa64"
+    },
+    {
+      "path": "S4/rcwa.h",
+      "candidate": "1c94d343abfce8e54a0856313ca0d4526aabc478",
+      "source": "1c94d343abfce8e54a0856313ca0d4526aabc478"
+    },
+    {
+      "path": "testing/README-P04.md",
+      "candidate": "59a3e8f69e0315f05afc0802cb88fbea6fc2f848",
+      "source": "59a3e8f69e0315f05afc0802cb88fbea6fc2f848"
+    },
+    {
+      "path": "testing/d001/cases/d001_first_matrix.json",
+      "candidate": "fdbe00498b54b26d35a78b754454eda48f8318b7",
+      "source": "fdbe00498b54b26d35a78b754454eda48f8318b7"
+    },
+    {
+      "path": "testing/d001/model_d001.py",
+      "candidate": "6dd237effdb5defd84d23e371eed5806a307e506",
+      "source": "6dd237effdb5defd84d23e371eed5806a307e506"
+    },
+    {
+      "path": "testing/d001/oracle_d001.py",
+      "candidate": "a0309898e22ba01c6834bc3eaa1a2bbbfe04376f",
+      "source": "a0309898e22ba01c6834bc3eaa1a2bbbfe04376f"
+    },
+    {
+      "path": "testing/d001/oracle_d001_ext.py",
+      "candidate": "c3807cbe0dfecbd41d660a137c0ffe28e770bb85",
+      "source": "c3807cbe0dfecbd41d660a137c0ffe28e770bb85"
+    },
+    {
+      "path": "testing/d001/run_d001_extension.py",
+      "candidate": "d6e3c71929fb70794ba193c50713d9cbe7ca81bb",
+      "source": "d6e3c71929fb70794ba193c50713d9cbe7ca81bb"
+    },
+    {
+      "path": "testing/d001/run_d001_matrix.py",
+      "candidate": "128e5ecdac3dfd412f857401114add548553a3f3",
+      "source": "128e5ecdac3dfd412f857401114add548553a3f3"
+    },
+    {
+      "path": "testing/d002/PLAN.json",
+      "candidate": "0c934983f8b01764b05460170a81c36cdbdebb2d",
+      "source": "0c934983f8b01764b05460170a81c36cdbdebb2d"
+    },
+    {
+      "path": "testing/d002/cases/matrices.json",
+      "candidate": "13d5aebff05f90c5ae518247dd6f679bc5fc38e4",
+      "source": "13d5aebff05f90c5ae518247dd6f679bc5fc38e4"
+    },
+    {
+      "path": "testing/d002/run_d002.py",
+      "candidate": "4149b030392c3f3bf06c4601f6e51ff6b493eb09",
+      "source": "4149b030392c3f3bf06c4601f6e51ff6b493eb09"
+    },
+    {
+      "path": "testing/d002/test_run_d002.py",
+      "candidate": "229f3fb131f46798622d64619ed2bf853c119d92",
+      "source": "229f3fb131f46798622d64619ed2bf853c119d92"
+    },
+    {
+      "path": "testing/d002/tests/fixtures/ord_candidate_legacy_run.tar.gz",
+      "candidate": "57668e5b938b0c9336af6e57537db2e8679ce1fe",
+      "source": "57668e5b938b0c9336af6e57537db2e8679ce1fe"
+    },
+    {
+      "path": "testing/d002/tests/fixtures/p04_schema2_control.tar.gz",
+      "candidate": "97594b83e2c20b3e43a4485250c1f4f82215b811",
+      "source": "97594b83e2c20b3e43a4485250c1f4f82215b811"
+    },
+    {
+      "path": "testing/d002/tests/fixtures/seam_asan_candidate_legacy_run.tar.gz",
+      "candidate": "eb9434d10fad10f94a9a9352f64269e5153eb0e1",
+      "source": "eb9434d10fad10f94a9a9352f64269e5153eb0e1"
+    },
+    {
+      "path": "testing/d002/tools/d002_driver.cpp",
+      "candidate": "dd1a3a9298e6c6baa565f60696eccb3b7a0a42db",
+      "source": "dd1a3a9298e6c6baa565f60696eccb3b7a0a42db"
+    },
+    {
+      "path": "testing/d002/tools/pos_asan.cpp",
+      "candidate": "9e2f21f523b4970384b043b09d66fe02c1d15ec3",
+      "source": "9e2f21f523b4970384b043b09d66fe02c1d15ec3"
+    },
+    {
+      "path": "testing/d002/tools/pos_ubsan.cpp",
+      "candidate": "a1bb61ba42301df707111ab4efd4cc4910b8285e",
+      "source": "a1bb61ba42301df707111ab4efd4cc4910b8285e"
+    },
+    {
+      "path": "testing/p04_aggregate.py",
+      "candidate": "fa8282c158f01b438f55b82130014642fae5a6e6",
+      "source": "fa8282c158f01b438f55b82130014642fae5a6e6"
+    },
+    {
+      "path": "testing/p04_aggregate_test.py",
+      "candidate": "6fcc93b6195fe360bf8ef89baeb274f8a1d5942b",
+      "source": "6fcc93b6195fe360bf8ef89baeb274f8a1d5942b"
+    },
+    {
+      "path": "testing/p04_run_all.sh",
+      "candidate": "0b98fda28c9c4532ec3c38f535552b621cd3cf6c",
+      "source": "0b98fda28c9c4532ec3c38f535552b621cd3cf6c"
+    },
+    {
+      "path": "testing/s4test/error20/error20_capi.c",
+      "candidate": "028b1bc3c25062d7cd78ca9fbf5fc3d2d03a9573",
+      "source": "028b1bc3c25062d7cd78ca9fbf5fc3d2d03a9573"
+    },
+    {
+      "path": "testing/s4test/error20/error20_lua.lua",
+      "candidate": "576373985d1d3b823939d30ba35bc95d7efa80f4",
+      "source": "576373985d1d3b823939d30ba35bc95d7efa80f4"
+    },
+    {
+      "path": "testing/s4test/error20/error20_lua_parallel.lua",
+      "candidate": "e1a90a3d9d04d5a2e49e23220644ae6422a52f95",
+      "source": "e1a90a3d9d04d5a2e49e23220644ae6422a52f95"
+    },
+    {
+      "path": "testing/s4test/error20/link_seam_ext.py",
+      "candidate": "218773307911e4fec3d7bf6336961cb4fb8a6f20",
+      "source": "218773307911e4fec3d7bf6336961cb4fb8a6f20"
+    },
+    {
+      "path": "testing/s4test/error20/run_error20.py",
+      "candidate": "d21665335dbaf8ef7b04199d28d533035fea7128",
+      "source": "d21665335dbaf8ef7b04199d28d533035fea7128"
+    },
+    {
+      "path": "testing/s4test/test_seams/seam.h",
+      "candidate": "c65bbca94f6bac096243041c1dee0b9ee663f6bf",
+      "source": "c65bbca94f6bac096243041c1dee0b9ee663f6bf"
+    }
+  ],
+  "worktree_blobs_match": true,
+  "manifests": {
+    ".p04-review/remediation/round9/adoption-20261010-a745a3e/MANIFEST.sha256": {
+      "total": 2353,
+      "failed": []
+    },
+    ".p04-review/remediation/repo/checkpoints/p04-remediation/evidence/round3/MANIFEST.sha256": {
+      "total": 118,
+      "failed": []
+    },
+    ".p04-review/remediation/repo/checkpoints/p04-remediation/evidence/round6/MANIFEST.sha256": {
+      "total": 78,
+      "failed": []
+    },
+    ".p04-review/remediation/round11/closeout-20261010-5cf534c/selfrun-20261010-c/MANIFEST.sha256": {
+      "total": 60,
+      "failed": []
+    },
+    ".p04-review/remediation/round11/closeout-20261010-5cf534c/selfrun-20261010-c/BINARIES.sha256": {
+      "total": 7,
+      "failed": []
+    }
+  },
+  "root_historical_manifest": {
+    "total": 161,
+    "failed": [
+      {
+        "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/evidence/README.md",
+        "expected": "ef2f90d95a0689a5b0f6b1e9ae773c1755b7ec6cb4bd139e17b0e7b1ba7b5a4d",
+        "actual": "78f211688e1aea81a973cc2b3944684459ea845e952755561c2c044fe22207b4",
+        "match": false
+      },
+      {
+        "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/REMAINING_ITEMS.md",
+        "expected": "da738c4cf19662bd4e4b9c2a20bc86a3cd18902ea56bca05bfcac62974b9df45",
+        "actual": "c563600fd94f22259945658b9cdc822719b12caf4f12835f11bf1b7eae747b57",
+        "match": false
+      },
+      {
+        "path": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.p04-review/remediation/repo/checkpoints/p04-remediation/REMEDIATION_REPORT.md",
+        "expected": "ab4e8ddd43918ad314a1ec3a98c02ad3fa611650ccb82e8a193a34f67794f3c1",
+        "actual": "b9339475b670b0984f61f67ed5d8aa426e8aa19704bbe3189c8cd75c7037bd73",
+        "match": false
+      }
+    ]
+  },
+  "artifacts": {
+    "total": 18,
+    "matched": 18
+  },
+  "aggregate": {
+    "overall": "PASS",
+    "steps_recorded": 38,
+    "unexpected": [],
+    "saved_equal": true
+  },
+  "row3": {
+    "total": 17,
+    "matched": 17
+  },
+  "approval_B_sha256": "64149930e3094f85d3132413d712e642c1a30c4a1405e86cb17a15a3f4852f07",
+  "default_build_macros": {
+    "build_candidate_lib.log": {
+      "S4_TEST_EIGEN_INFO": 0,
+      "HAVE_LAPACK": 0
+    },
+    "build_candidate_pyext.log": {
+      "S4_TEST_EIGEN_INFO": 0,
+      "HAVE_LAPACK": 0
+    }
+  },
+  "error20": {
+    "checks": [
+      {
+        "check": "unset_reference_solves",
+        "detail": [
+          1.0,
+          -0.34786732368558093,
+          0.652132676314419,
+          0.0
+        ],
+        "pass": true
+      },
+      {
+        "check": "inject_1_power_flux_raises_20",
+        "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+        "pass": true
+      },
+      {
+        "check": "inject_1_message_names_entry",
+        "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+        "pass": true
+      },
+      {
+        "check": "same_object_retry_matches_reference",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "inject_1_amplitudes_raises_20",
+        "detail": "GetAmplitudes: The layer eigensystem could not be solved; no solution was returned",
+        "pass": true
+      },
+      {
+        "check": "inject_negative_3_raises_20",
+        "detail": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned",
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['0']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['abc']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['1x']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection[' 1']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['+']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['-']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['1.0']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['2147483648']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "invalid_value_no_injection['-2147483649']",
+        "detail": {
+          "max_abs_diff": 0.0
+        },
+        "pass": true
+      },
+      {
+        "check": "normal_vs_seam_unset_flux_equal",
+        "detail": {
+          "max_abs_diff": 0.0,
+          "normal": [
+            1.0,
+            -0.34786732368558093,
+            0.652132676314419,
+            0.0
+          ],
+          "seam_unset": [
+            1.0,
+            -0.34786732368558093,
+            0.652132676314419,
+            0.0
+          ]
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_inject1_exits_nonzero",
+        "detail": {
+          "rc": 1
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_inject1_message_on_stderr",
+        "detail": [
+          "GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_inject1_no_result_printed",
+        "detail": {},
+        "pass": true
+      },
+      {
+        "check": "lua_unset_GetPowerFlux_first_solves",
+        "detail": {
+          "status": "ok",
+          "text": "1 -0.34786732368558093"
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_unset_GetPowerFlux_again_solves",
+        "detail": {
+          "status": "ok",
+          "text": "0.65213267631441896 0"
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_unset_GetPowerFlux_fresh_solves",
+        "detail": {
+          "status": "ok",
+          "text": "0.65213267631441896 0"
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_unset_script_exit_zero",
+        "detail": {
+          "unset_rc": 0
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_par_one_inject1_exits_nonzero",
+        "detail": {
+          "rc": 1
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_par_one_inject1_message",
+        "detail": [
+          "SolveInParallel: The layer eigensystem could not be solved; no solution was returned."
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_par_one_inject1_no_success_marker",
+        "detail": [
+          "RESULT parallel_start"
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_par_one_unset_returns_normally",
+        "detail": {
+          "rc": 0,
+          "stderr": "S4_TEST_EIGEN_SEAM_EVENT branch=complex solver_info=0 env_state=unset requested=0 final=0"
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_par_one_unset_solution_usable",
+        "detail": [
+          "RESULT flux_after 1"
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_par_two_inject1_exits_nonzero",
+        "detail": {
+          "rc": 1
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_par_two_inject1_message",
+        "detail": [
+          "SolveInParallel: The layer eigensystem could not be solved; no solution was returned."
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_par_two_inject1_no_success_marker",
+        "detail": [
+          "RESULT parallel_start"
+        ],
+        "pass": true
+      },
+      {
+        "check": "lua_par_two_unset_returns_normally",
+        "detail": {
+          "rc": 0,
+          "stderr": "S4_TEST_EIGEN_SEAM_EVENT branch=complex solver_info=0 env_state=unset requested=0 final=0\nS4_TEST_EIGEN_SEAM_EVENT branch=complex solver_info=0 env_state=unset requested=0 final=0"
+        },
+        "pass": true
+      },
+      {
+        "check": "lua_par_two_unset_solution_usable",
+        "detail": [
+          "RESULT flux_after 1"
+        ],
+        "pass": true
+      },
+      {
+        "check": "c_inject1_GetPowerFlux_first_rc20",
+        "detail": 20,
+        "pass": true
+      },
+      {
+        "check": "c_inject1_SolveLayer_film_rc20",
+        "detail": 20,
+        "pass": true
+      },
+      {
+        "check": "c_inject1_GetPowerFlux_bottom_rc20",
+        "detail": 20,
+        "pass": true
+      },
+      {
+        "check": "c_inject1_GetPowerFlux_fresh_rc20",
+        "detail": 20,
+        "pass": true
+      },
+      {
+        "check": "c_unset_GetPowerFlux_first_rc0",
+        "detail": 0,
+        "pass": true
+      },
+      {
+        "check": "c_unset_SolveLayer_film_rc0",
+        "detail": 0,
+        "pass": true
+      },
+      {
+        "check": "c_unset_GetPowerFlux_bottom_rc0",
+        "detail": 0,
+        "pass": true
+      },
+      {
+        "check": "c_unset_GetPowerFlux_fresh_rc0",
+        "detail": 0,
+        "pass": true
+      },
+      {
+        "check": "c_program_exit_zero",
+        "detail": {
+          "inject_rc": 0,
+          "unset_rc": 0
+        },
+        "pass": true
+      }
+    ],
+    "checks_fail": 0,
+    "checks_pass": 43,
+    "checks_total": 43,
+    "generated_utc": "2026-10-09T22:08:48Z"
+  },
+  "user_files_unchanged": true,
+  "main_status_unchanged": true
+}

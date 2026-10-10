@@ -1,14 +1,15 @@
 # S4 项目执行路线与计划表
 
-更新：2026-10-09（Australia/Sydney）。下一次工作从本文和 [当前缺陷登记表](testing/s4test/ISSUE_REGISTRY.md) 开始。
-当前交付已完成 P04 最小修复的整合构建与独立运行复验；结果和未完成项见 [P04 当前状态](checkpoints/p04/CURRENT_STATUS.md)。
-后续步骤保持待执行，本次仅发布已完成成果。
+更新：2026-10-03（Australia/Sydney）。下一次工作从本文和 [当前缺陷登记表](testing/s4test/ISSUE_REGISTRY.md) 开始。
+本轮交付是规划与编号整理，没有执行 native build、S4 import、solver、生产修复、commit 或 push。
+表中“待执行”不是本轮测试结果，也不启动后续任务。
 
 ## 1. 当前基线与目标
 
 基线提交：963ccf153855734de968e6cf71477f324e33329c。
-当前发布分支：feature/python314-binding。历史基线分支：checkpoint/014rf-offline-evidence-accepted-20261003。
-2026-10-03 的基线观察作为历史记录保留；2026-10-09 已同步 feature/python314-binding，发布整合成果。旧 audit-workspace/、handoff/ 已归档，路径映射见 checkpoints/p04/CLEANUP.md。
+分支：checkpoint/014rf-offline-evidence-accepted-20261003。
+本轮只读 Git 观察：该分支与本地 origin 跟踪引用一致，生产 tracked 文件无未提交修改；audit-workspace/、handoff/ 是既有 untracked 目录。
+没有重新联网 fetch，不将本地跟踪引用状态冒称远端的实时核验。
 
 [014RF checkpoint](CHECKPOINT_014RF_LIMITED_OFFLINE_EVIDENCE_ACCEPTED.md) 和 [最新独立复核](checkpoints/014rf/FINAL_REVIEW.md)
 接受的是有限离线证据重建/签收链。保留这一结论并结束 014RF 修复循环。
@@ -16,7 +17,7 @@
 
 下一主目标：让用户经 S4 公共 API 调用时，物理等价输入给出经独立参考核验的等价结果；随后修复状态、错误传播、构建安装和资源/API 契约。
 历史独立审核 010/011 已支持四行逆平衡候选在有限均匀膜矩阵中的物理效果，不能把它写成“从未做过真实物理验证”。
-当前发布分支已纳入索引修复并完成 clean build、独立物理参考及集成后回归。主检出仍保留旧基线，两者状态分开记录。
+当前生产文件仍保留旧索引，因此要完成的是当前源码的验证、候选集成和集成后回归。
 
 ## 2. 对原规划的取舍
 
@@ -43,10 +44,10 @@ Pxx 是计划步骤，不是优先级、缺陷号或历史 Task 号。
 | 步骤 | 阶段 / 项目 | 具体动作 | 验收和交付物 | 前置条件 | 当前状态 |
 |---|---|---|---|---|---|
 | P00 | Phase 0：基线与编号 | 采用 963ccf1 checkpoint；区分当前 D001–D015、legacy D1–D15 和审计 Task 号 | 本路线图 + 当前登记表；014RF 接受边界保持 | 无 | 已完成（本轮文档） |
-| P01 | Phase 1 前置：恢复与构建 | 从基线建立新的隔离源码目录；核对 D001 四行候选、最小原失败输入、独立公式及必要 D002 用例；把必要源码/patch/输入纳入可恢复交付 | 新环境不依赖整份 audit-workspace 或旧 .so；明确实际 flags、源提交/patch、库/extension 路径及哈希 | P00 | 已完成：可恢复源码/测试已提交，独立 clean checkout 构建通过 |
-| P02 | D001：当前生产反例与候选 | 用相同 flags 新构建 baseline/candidate；先看 baseline 的 A/B/C，再比较候选和独立参考；保留原始 flux/G/R/T | baseline 复现已知 N9 B/C 错误；candidate 修正且 A/N1 控制不退化；最小差异、原始结果与常规回归测试 | P01 | 已实现并定向验证（2026-10-09，分支 codex/p04-d001-d002-production-20261009T082631Z @ 8b13d67）：baseline N9 B/C 复现，candidate 修正；独立复跑 12/12、113/113，有限范围得到支持 |
-| P03 | D002：RNP 两类契约 | 分开处理 backtransform 边界/布局和仅值返回状态；复用既有候选/保护，缺什么补什么；核对左右/仅值路径和工作区 | 真实 native RNP 入口 targeted；相关 ASan/UBSan、必要 leak 检查及阳性对照；错误状态不会变成成功；明确生产可达性 | P02 初步结果；共用文件改动可审查 | 已实现并定向验证（同上）：native RNP 契约 ord 53/53、ASan+UBSan 53/53、seam 58/58，独立复跑一致；正式判定器及其他缺口见 CURRENT_STATUS；历史来源不补证 |
-| P04 | Phase 1：生产集成验收 | 将通过的最小修复集成到工作分支并全新构建；经 Python、Lua 和相关 C/RNP 路径复验；跑既有主套件 | D001 生产物理矩阵通过；D002 原生契约通过；相关历史回归无新增失败；独立复核后记录源码提交和关闭范围 | P02、P03 | 整合构建、回归、独立运行复核和目录整理完成；当前发布已完成成果，剩余项单列；不执行 issue/milestone 关闭 |
+| P01 | Phase 1 前置：恢复与构建 | 从基线建立新的隔离源码目录；核对 D001 四行候选、最小原失败输入、独立公式及必要 D002 用例；把必要源码/patch/输入纳入可恢复交付 | 新环境不依赖整份 audit-workspace 或旧 .so；明确实际 flags、源提交/patch、库/extension 路径及哈希 | P00 | 待执行；下一步 |
+| P02 | D001：当前生产反例与候选 | 用相同 flags 新构建 baseline/candidate；先看 baseline 的 A/B/C，再比较候选和独立参考；保留原始 flux/G/R/T | baseline 复现已知 N9 B/C 错误；candidate 修正且 A/N1 控制不退化；最小差异、原始结果与常规回归测试 | P01 | 已实现并定向验证（2026-10-09，分支 codex/p04-d001-d002-production-20261009T082631Z @ 8b13d67）：baseline N9 B/C 复现，candidate 修正；待独立生产验收 |
+| P03 | D002：RNP 两类契约 | 分开处理 backtransform 边界/布局和仅值返回状态；复用既有候选/保护，缺什么补什么；核对左右/仅值路径和工作区 | 真实 native RNP 入口 targeted；相关 ASan/UBSan、必要 leak 检查及阳性对照；错误状态不会变成成功；明确生产可达性 | P02 初步结果；共用文件改动可审查 | 已实现并定向验证（同上）：native RNP 契约 53/53（ord/asan）、seam 58/58、阳性对照通过；待独立生产验收；历史来源不补证 |
+| P04 | Phase 1：生产集成验收 | 将通过的最小修复集成到工作分支并全新构建；经 Python、Lua 和相关 C/RNP 路径复验；跑既有主套件 | D001 生产物理矩阵通过；D002 原生契约通过；相关历史回归无新增失败；独立复核后记录源码提交和关闭范围 | P02、P03 | 2026-10-10 有限范围 CLOSED：固定候选 5cf534ce5ec223a6388d29bbb2c58f981f070241 经 Codex 最终生产技术审核接受（checkpoints/p04-final/FINAL_REVIEW.md）；必要 leak 行1–4按负责人B保存证据验收，非独立动态LSan认证。负责人批准后采纳于 codex/p04-adoption-20261010，采纳SHA为上述固定候选；范围与限制见登记表。P05未启动。 |
 | P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重试正确 | P04；固定选项、全新对象避免依赖 D004 | 待执行；优先复用已有候选 |
 | P06 | Phase 2 A：D004 + core smoke | 修正 solve 后 SetOptions 的失效/状态契约；测试同对象和全新对象一致，再测 D003 失败→改选项→重试组合 | targeted + D003/D004 core smoke；原生产物理回归仍通过；两缺陷各有最小 diff | P05 | 待执行 |
 | P07 | Phase 2 B：D005/D006 | 先修增量依赖/重新链接，再修 clean wheel/editable/sdist；从只含提交文件的新 clone 构建安装 | 增量可观测改动确实进入产物；安装矩阵通过；源码目录外加载正确安装模块并跑独立解析物理 smoke | P06；D013 若构成阻塞在本步提前处理 | 待执行 |

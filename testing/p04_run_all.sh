@@ -3,24 +3,41 @@
 #
 #     sh testing/p04_run_all.sh OUT_DIR
 #
+# OUT_DIR must not exist or must be empty; an existing run is never overwritten.
+#
 # It exports the baseline commit 963ccf1 into OUT_DIR/baseline-src, builds the
 # candidate (this tree) and the baseline, builds a TEST-ONLY seam library of the
-# candidate, and then runs every check.  Each step's return code is appended to
-# OUT_DIR/STEPS.txt; a non-zero code is recorded, not hidden.  The pass/fail
-# judgement of each check is in its own JSON summary under OUT_DIR.
+# candidate, and runs every check.  Each step's raw return code is appended to
+# OUT_DIR/STEPS.txt and is never rewritten.  The last step, testing/p04_aggregate.py,
+# reads STEPS.txt and each step's judgement file, classifies every step as ok,
+# expected_defect (a baseline that reproduces the registered defect) or unexpected,
+# writes OUT_DIR/AGGREGATE.json, and this script exits with its status (0 = PASS).
 #
 # Requires: git, make, gcc/g++, python3 (3.14 used), liblapack/libblas, lua5.2 headers.
 
+if [ "$#" -ne 1 ]; then
+    echo "usage: sh testing/p04_run_all.sh OUT_DIR" >&2
+    exit 2
+fi
 ROOT=$(cd "$(dirname "$0")/.." && pwd -P)
-OUT=$(mkdir -p "$1" && cd "$1" && pwd -P)
+if [ -e "$1" ] && [ -n "$(ls -A "$1" 2>/dev/null)" ]; then
+    echo "refusing to reuse non-empty output directory: $1" >&2
+    exit 2
+fi
+if ! OUT=$(mkdir -p "$1" && cd "$1" && pwd -P) || [ -z "$OUT" ]; then
+    echo "cannot create output directory: $1" >&2
+    exit 2
+fi
 BASE=963ccf153855734de968e6cf71477f324e33329c
 PY=${PYTHON:-python3}
 JOBS=${JOBS:-$(nproc)}
 LOG="$OUT/logs"
-mkdir -p "$LOG" "$OUT/d001" "$OUT/d002" "$OUT/error20" "$OUT/regress"
-: > "$OUT/STEPS.txt"
+if ! { mkdir -p "$LOG" "$OUT/d001" "$OUT/d002" "$OUT/error20" "$OUT/regress" && : > "$OUT/STEPS.txt"; }; then
+    echo "cannot initialise output directory: $OUT" >&2
+    exit 2
+fi
 
-# run NAME COMMAND...  : log output, record the return code, keep going
+# run NAME COMMAND...  : log output, record the raw return code, keep going
 run() {
     _run_name=$1
     shift
@@ -56,8 +73,10 @@ run d001_ext_candidate sh -c "cd '$ROOT/testing/d001' && $PY -I -B run_d001_exte
 run d001_ext_baseline sh -c "cd '$ROOT/testing/d001' && $PY -I -B run_d001_extension.py --s4-dir '$OUT/baseline-src' --out '$OUT/d001/ext-baseline' --label baseline"
 run d001_oracle_selfcheck sh -c "cd '$ROOT/testing/d001' && $PY -I -B oracle_d001_ext.py"
 
-# 5. D002 native contract: six driver identities, then sanitizer positive controls
+# 5. D002 native contract: judge self-tests, six driver identities, sanitizer controls
 D2="$ROOT/testing/d002/run_d002.py"
+run d002_unit_tests $PY -I -B "$ROOT/testing/d002/test_run_d002.py"
+run p04_aggregate_selftest $PY -I -B "$ROOT/testing/p04_aggregate_test.py"
 for spec in "ord_candidate $ROOT" "asan_candidate $ROOT" "seam_asan_candidate $ROOT" \
             "ord_baseline $OUT/baseline-src" "asan_baseline $OUT/baseline-src" \
             "seam_asan_baseline $OUT/baseline-src"; do
@@ -82,19 +101,44 @@ run s4test_baseline sh -c "cd '$OUT/baseline-src' && PYTHONPATH='$OUT/baseline-s
 run lua_regression sh -c "cd '$ROOT/testing' && S4_BIN=../build/S4 sh runtests.sh"
 run python_binding_smoke sh -c "cd '$ROOT' && PYTHONPATH='$ROOT' $PY testing/test_python_binding.py"
 
-# 8. identities of every artifact that a result depends on
+# 8. identities of every artifact that a result depends on.  One record per label:
+#    SHA256<TAB>LABEL<TAB>PATH, or "# MISSING<TAB>LABEL<TAB>PATH" when the file is absent.
+#    The aggregator re-hashes every recorded path and rejects any label that is not recorded.
+artifact() {
+    if [ -f "$2" ]; then
+        printf '%s\t%s\t%s\n' "$(sha256sum "$2" | cut -d' ' -f1)" "$1" "$2"
+    else
+        printf '# MISSING\t%s\t%s\n' "$1" "$2"
+    fi
+}
+set -- "$ROOT"/S4.cpython-*.so
+cand_pyext=$1
+set -- "$ROOT/build-seam/py"/S4*.so
+seam_pyext=$1
+set -- "$OUT"/baseline-src/S4.cpython-*.so
+base_pyext=$1
 {
-    echo "# sha256 of artifacts used by the checks above"
-    for f in "$ROOT/build/libS4.a" "$ROOT/build/S4" "$ROOT/build/RCWA.so" \
-             "$ROOT"/S4.cpython-*.so "$ROOT/build-seam/libS4.a" "$ROOT/build-seam/S4" \
-             "$ROOT/build-seam/py"/S4*.so \
-             "$OUT/baseline-src/build/libS4.a" "$OUT/baseline-src/build/S4" \
-             "$OUT"/baseline-src/S4.cpython-*.so \
-             "$OUT"/d002/bin/d002_*; do
-        [ -f "$f" ] && sha256sum "$f"
+    artifact candidate-lib "$ROOT/build/libS4.a"
+    artifact candidate-cli "$ROOT/build/S4"
+    artifact candidate-rcwa "$ROOT/build/RCWA.so"
+    artifact candidate-pyext "$cand_pyext"
+    artifact candidate-Eigensystems.cpp "$ROOT/S4/RNP/Eigensystems.cpp"
+    artifact seam-lib "$ROOT/build-seam/libS4.a"
+    artifact seam-cli "$ROOT/build-seam/S4"
+    artifact seam-pyext "$seam_pyext"
+    artifact baseline-lib "$OUT/baseline-src/build/libS4.a"
+    artifact baseline-cli "$OUT/baseline-src/build/S4"
+    artifact baseline-pyext "$base_pyext"
+    artifact baseline-Eigensystems.cpp "$OUT/baseline-src/S4/RNP/Eigensystems.cpp"
+    for v in ord_candidate asan_candidate seam_asan_candidate \
+             ord_baseline asan_baseline seam_asan_baseline; do
+        artifact "d002-bin-$v" "$OUT/d002/bin/d002_$v"
     done
-    echo "# candidate Eigensystems.cpp: $(sha256sum "$ROOT/S4/RNP/Eigensystems.cpp" | cut -d' ' -f1)"
-    echo "# baseline  Eigensystems.cpp: $(sha256sum "$OUT/baseline-src/S4/RNP/Eigensystems.cpp" | cut -d' ' -f1)"
 } > "$OUT/ARTIFACTS.sha256"
 
-echo "done; see $OUT/STEPS.txt"
+# 9. aggregate: classify every step from its raw rc and its judgement file
+$PY -I -B "$ROOT/testing/p04_aggregate.py" "$OUT" > "$OUT/AGGREGATE.txt" 2>&1
+AGG_RC=$?
+cat "$OUT/AGGREGATE.txt"
+echo "aggregate rc=$AGG_RC  (details: $OUT/AGGREGATE.json)"
+exit $AGG_RC

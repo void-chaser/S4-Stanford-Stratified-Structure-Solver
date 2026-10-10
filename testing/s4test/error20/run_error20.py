@@ -194,6 +194,52 @@ def lua_checks(lua_exe, out_dir):
     return checks
 
 
+def lua_parallel_checks(lua_exe, out_dir):
+    """SolveInParallel must propagate a failed layer solve, with and without pthreads.
+
+    One process per scenario (one or two simulation objects, injection on or off).  A failed
+    worker solve is reported after every worker has been joined, through the same message
+    path as the serial calls, and the script never reaches its success marker.  With the
+    environment unset the parallel call returns normally and the solution is usable.
+    """
+    checks = []
+    script = os.path.join(HERE, "error20_lua_parallel.lua")
+    for scenario in ("one", "two"):
+        rc, out, err = run_lua_script(lua_exe, script, scenario, "1", out_dir,
+                                      "par_%s_inject1" % scenario)
+        checks.append({"check": "lua_par_%s_inject1_exits_nonzero" % scenario, "pass": rc != 0,
+                       "detail": {"rc": rc}})
+        checks.append({"check": "lua_par_%s_inject1_message" % scenario,
+                       "pass": (FAIL_TEXT in err and "SolveInParallel:" in err),
+                       "detail": err.strip().splitlines()[-1:] if err.strip() else []})
+        checks.append({"check": "lua_par_%s_inject1_no_success_marker" % scenario,
+                       "pass": "RESULT parallel_returned_normally" not in out,
+                       "detail": out.strip().splitlines()[-1:]})
+        rc0, out0, err0 = run_lua_script(lua_exe, script, scenario, None, out_dir,
+                                         "par_%s_unset" % scenario)
+        checks.append({"check": "lua_par_%s_unset_returns_normally" % scenario,
+                       "pass": rc0 == 0 and "RESULT parallel_returned_normally" in out0,
+                       "detail": {"rc": rc0, "stderr": err0.strip()[-200:]}})
+        flux_ok = any(line.startswith("RESULT flux_after ") for line in out0.splitlines())
+        checks.append({"check": "lua_par_%s_unset_solution_usable" % scenario, "pass": flux_ok,
+                       "detail": [ln for ln in out0.splitlines() if ln.startswith("RESULT flux_after")]})
+    return checks
+
+
+def run_lua_script(lua_exe, script, scenario, value, out_dir, tag):
+    env = {"PATH": os.environ.get("PATH", ""), "LANG": "C.UTF-8",
+           "ERROR20_PARALLEL_SCENARIO": scenario}
+    if value is not None:
+        env[ENV] = value
+    pr = subprocess.run([lua_exe, script], capture_output=True, text=True, env=env,
+                        timeout=120, cwd=out_dir)
+    with open(os.path.join(out_dir, "lua_%s.stdout" % tag), "w") as fh:
+        fh.write(pr.stdout)
+    with open(os.path.join(out_dir, "lua_%s.stderr" % tag), "w") as fh:
+        fh.write(pr.stderr)
+    return pr.returncode, pr.stdout, pr.stderr
+
+
 def compile_c(include_dir, lib, out_dir):
     src = os.path.join(HERE, "error20_capi.c")
     exe = os.path.join(out_dir, "error20_capi")
@@ -256,8 +302,9 @@ def main():
     cross = {"check": "normal_vs_seam_unset_flux_equal", "pass": diff <= 1e-12,
              "detail": {"max_abs_diff": diff, "normal": normal, "seam_unset": seam_ref}}
     lua = lua_checks(args.seam_lua, args.out_dir)
+    lua_par = lua_parallel_checks(args.seam_lua, args.out_dir)
     cc = c_checks(args.src_include, args.seam_lib, args.out_dir)
-    checks = py + [cross] + lua + cc
+    checks = py + [cross] + lua + lua_par + cc
     failed = [c for c in checks if not c["pass"]]
     summary = {"generated_utc": utcnow(), "checks_total": len(checks),
                "checks_pass": len(checks) - len(failed), "checks_fail": len(failed),
