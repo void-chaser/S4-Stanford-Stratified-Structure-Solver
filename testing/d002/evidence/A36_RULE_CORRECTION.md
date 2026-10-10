@@ -41,7 +41,7 @@
 
 ### 3.1 逐条清单（80 条归档原始记录）
 
-以“来源 + 变体 + 运行编号”去重；每条记录只计一次。`scratch/inventory.py` 用修订一与修订二的判定器各判定一遍（结果见第 8 节）。
+以“来源 + 变体 + 运行编号”去重；每条记录只计一次。计数由两份判定器各判定一遍得到（修订一为 `cada030` 的 `testing/d002`，修订二为当前 `testing/d002`），结果见第 8 节。计数脚本未入库，原始输入见 `A36_RAW_20261010.tar.gz` 与控制归档。
 
 | 来源 | asan_baseline | asan_candidate | seam_asan_baseline | seam_asan_candidate | ord_baseline | ord_candidate | 合计 |
 |---|---|---|---|---|---|---|---|
