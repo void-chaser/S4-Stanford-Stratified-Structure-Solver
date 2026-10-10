@@ -6,17 +6,25 @@ Report      : checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md
 Raw logs    : checkpoints/p05/evidence/  (git-ignored via .git/info/exclude; NOT committed)
 Run driver  : checkpoints/p05/evidence/s1_run.sh  (not a product file)
 
-Key commands and exit codes (from checkpoints/p05/evidence/rc.txt)
+Key commands and exit codes (from checkpoints/p05/evidence/rc.txt, sha256 e1d638eba3c57d6b...)
 ------------------------------------------------------------------
-export_baseline            rc=0   git archive 5b72793 | tar -x -C /tmp/S4-p05-baseline
-build_lib                  rc=0   make -j16 build/libS4.a build/S4 build/RCWA.so build/FunctionSampler2D.so
-build_pyext                rc=0   python3 setup.py build_ext --inplace
-copy_driver_src            rc=0   cp -p /home/jackal/s4-fmm-accept/src/{driver,inject}.cpp
-build_driver_baseline      rc=1   g++ driver.cpp inject.cpp ... (FieldCache incomplete type, 4 errors)
-driver_syntax_diagnostic   rc=1   g++ -fsyntax-only driver.cpp (same 4 errors)
-t6_python                  rc=0   python3 -B t6_vl_nb1.py <baseline> (12 main + 6 near-cutoff)
-t6_diag_layer              rc=0   python3 -B t6_diag_layer.py <baseline> (per-layer)
-t6_repeat                  rc=0   python3 -B t6_repeat.py <baseline> 5 (repeatability)
+export_baseline            rc=0
+build_lib                  rc=0
+build_pyext                rc=0
+copy_driver_src            rc=0
+build_driver_baseline      rc=1
+driver_syntax_diagnostic   rc=1
+t6_python                  rc=0
+t6_diag_layer              rc=0
+t6_repeat                  rc=0
+
+Commands (verbatim intent)
+  export_baseline          git archive 5b72793 | tar -x -C /tmp/S4-p05-baseline
+  build_lib                make -j16 build/libS4.a build/S4 build/RCWA.so build/FunctionSampler2D.so
+  build_pyext              python3 setup.py build_ext --inplace
+  copy_driver_src          cp -p /home/jackal/s4-fmm-accept/src/{driver,inject}.cpp
+  build_driver_baseline    g++ driver.cpp inject.cpp ... (run-faults.sh recipe)
+  t6_*                     python3 -B <script> <baseline>
 
 T4 (controls) and T5 (baseline fault reproduction): NOT RUN (driver does not compile).
 
@@ -42,20 +50,20 @@ Driver source (history, read-only copy)
 1be57c35f66e6822fdb21f2ea1d0c36f684d4b1860240cb5a4728841282f3b4d  driver.cpp
 13b2cbf5c23489c7203dcbdeb71e47103889a6fde7df6cccf6569c852da733da  inject.cpp
 
-Driver compile error (verbatim, 4 errors, 2 sites)
---------------------------------------------------
+Driver compile error (4 errors, 2 sites; logs/21-driver-syntax-diagnostic.log)
+------------------------------------------------------------------------------
 driver.cpp:151  error: invalid use of incomplete type 'struct FieldCache'
 driver.cpp:152  error: invalid use of incomplete type 'struct FieldCache'  (x3 member accesses)
 
-T6 key results (verbatim from logs/60-t6-main.log, logs/62-t6-repeat.log)
-------------------------------------------------------------------------
-VL  NB=1 f=0.427 th=0   EXCEPTION RuntimeError('GetPowerFlux: The layer eigensystem could not be solved; no solution was returned')
-VL  NB=1 f=0.427 th=30  EXCEPTION (same)
-VL  NB=9 f=0.427 th=0   ok, flux finite, top=(1+0j),(-0.020047106810471088+0j)
-Jones/Normal NB=1,9 x th{0,30}: ok, all finite (8 cases)
-Repeat VL NB=1 x5: 5/5 identical EXCEPTION; VL NB=9 x5: 5/5 identical OK
-Near-cutoff f=0.999: VL NB=1 EXCEPTION; all others ok (not mixed into main matrix)
-Per-layer VL NB=1: Air_above, Slab, Air_below all EXCEPTION (info=2)
+T6 key results (from logs/60-t6-results.json; ClosedForm path, DiscretizedEpsilon NOT set)
+-----------------------------------------------------------------------------------------
+VL  NB=1 f=0.427 th=0   EXCEPTION  (RuntimeError: eigensystem info=2)
+VL  NB=1 f=0.427 th=30  EXCEPTION  (same)
+VL  NB=9 f=0.427 th=0   ok  top=((1+1.3552527156068805e-20j), (-0.02046114055244115-1.3552527156068805e-20j))  amp_all_finite=True
+Jones/Normal NB=1,9 x th{0,30}: ok, all flux and amp finite (8 cases)
+Repeat VL NB=1 x5 : kinds=EXC  (5/5 identical EXCEPTION)
+Repeat VL NB=9 x5 : kinds=OK  value=((1+1.3552527156068805e-20j), (-0.02046114055244115-1.3552527156068805e-20j))
+Per-layer VL NB=1 : Air_above, Slab, Air_below all EXC (info=2); VL NB=9 and Jones/Normal all OK
 
 History log (read-only reference, NOT re-run)
 ---------------------------------------------
@@ -65,4 +73,10 @@ and "Layer eigensystem returned info = 2" in the same run. Causality NOT establi
 
 Evidence checksum manifest
 --------------------------
-checkpoints/p05/evidence/EVIDENCE.sha256 (19 files; verified with sha256sum -c: all OK)
+checkpoints/p05/evidence/EVIDENCE.sha256 (19 files; sha256sum -c: all OK)
+  EVIDENCE.sha256 sha256 is not listed inside itself (manifest excludes itself)
+  logs/60-t6-results.json        2e25f8efe076c4167ea11f18f8b45e210e94b65a2be47836bf05a747297fa6c7
+  logs/61-t6-diag-layer.log      8414e987aea992ece7d7868ed3110d925f1afcd8d2ac196353e1a2d90d4b91b5
+  logs/62-t6-repeat.log          f70150cc1bfb07ab40f276e7f7e7de59df51ad7a553370cfe647f8f121969936
+  rc.txt                         e1d638eba3c57d6bfec8ce612a26e415a24b2a503b883d4c211566f34cf94489
+  s1_run.sh                      6591080120548a52a784abcabfe322556f891de0654f6e54ad85fc61b7e4d000
