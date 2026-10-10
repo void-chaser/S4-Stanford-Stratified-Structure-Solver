@@ -1,0 +1,68 @@
+P05 / S1 evidence digest
+=========================
+Base commit : 5b72793051eb705f0e9b2e5398e1a5f0484da0cb (Master)
+Branch      : codex/p05-d003-fft-error-propagation
+Report      : checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md
+Raw logs    : checkpoints/p05/evidence/  (git-ignored via .git/info/exclude; NOT committed)
+Run driver  : checkpoints/p05/evidence/s1_run.sh  (not a product file)
+
+Key commands and exit codes (from checkpoints/p05/evidence/rc.txt)
+------------------------------------------------------------------
+export_baseline            rc=0   git archive 5b72793 | tar -x -C /tmp/S4-p05-baseline
+build_lib                  rc=0   make -j16 build/libS4.a build/S4 build/RCWA.so build/FunctionSampler2D.so
+build_pyext                rc=0   python3 setup.py build_ext --inplace
+copy_driver_src            rc=0   cp -p /home/jackal/s4-fmm-accept/src/{driver,inject}.cpp
+build_driver_baseline      rc=1   g++ driver.cpp inject.cpp ... (FieldCache incomplete type, 4 errors)
+driver_syntax_diagnostic   rc=1   g++ -fsyntax-only driver.cpp (same 4 errors)
+t6_python                  rc=0   python3 -B t6_vl_nb1.py <baseline> (12 main + 6 near-cutoff)
+t6_diag_layer              rc=0   python3 -B t6_diag_layer.py <baseline> (per-layer)
+t6_repeat                  rc=0   python3 -B t6_repeat.py <baseline> 5 (repeatability)
+
+T4 (controls) and T5 (baseline fault reproduction): NOT RUN (driver does not compile).
+
+Build identity
+--------------
+baseline tree_hash (878 files) : 6a75e1f04bab6d1ba9f9c0548e6356c3fc002c2a45e13d923196e40985fe9472
+FFT backend                     : kiss (HAVE_LIBFFTW3 not defined; grep rc=1)
+toolchain                       : gcc/g++ 15.2.0, GNU Make 4.4.1, Python 3.14.4, Lua 5.2.4, nproc 16
+sanitizer/CFLAGS/CXXFLAGS env   : none
+
+Artifact sha256
+---------------
+fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba  build/libS4.a
+9b05692e7b340d3009e7411f1a5c220245ba85bdd0f7a2af77c3b1798a62e983  build/S4
+6f3a8cacb422713e2a507791e51918789ec31caac706e874adc118fa5e6e93dc  S4.cpython-314-x86_64-linux-gnu.so
+
+Loading identity (T6)
+---------------------
+S4.__file__ = /tmp/S4-p05-baseline/S4.cpython-314-x86_64-linux-gnu.so  (startswith baseline: True)
+
+Driver source (history, read-only copy)
+---------------------------------------
+1be57c35f66e6822fdb21f2ea1d0c36f684d4b1860240cb5a4728841282f3b4d  driver.cpp
+13b2cbf5c23489c7203dcbdeb71e47103889a6fde7df6cccf6569c852da733da  inject.cpp
+
+Driver compile error (verbatim, 4 errors, 2 sites)
+--------------------------------------------------
+driver.cpp:151  error: invalid use of incomplete type 'struct FieldCache'
+driver.cpp:152  error: invalid use of incomplete type 'struct FieldCache'  (x3 member accesses)
+
+T6 key results (verbatim from logs/60-t6-main.log, logs/62-t6-repeat.log)
+------------------------------------------------------------------------
+VL  NB=1 f=0.427 th=0   EXCEPTION RuntimeError('GetPowerFlux: The layer eigensystem could not be solved; no solution was returned')
+VL  NB=1 f=0.427 th=30  EXCEPTION (same)
+VL  NB=9 f=0.427 th=0   ok, flux finite, top=(1+0j),(-0.020047106810471088+0j)
+Jones/Normal NB=1,9 x th{0,30}: ok, all finite (8 cases)
+Repeat VL NB=1 x5: 5/5 identical EXCEPTION; VL NB=9 x5: 5/5 identical OK
+Near-cutoff f=0.999: VL NB=1 EXCEPTION; all others ok (not mixed into main matrix)
+Per-layer VL NB=1: Air_above, Slab, Air_below all EXCEPTION (info=2)
+
+History log (read-only reference, NOT re-run)
+---------------------------------------------
+logs: /home/jackal/s4-fmm-accept/logs/after-vl-{plan,exec,scratch}-1.log
+each contains: RC first 1 / RC retry 0 / CHECK retry output is finite FAILED,
+and "Layer eigensystem returned info = 2" in the same run. Causality NOT established.
+
+Evidence checksum manifest
+--------------------------
+checkpoints/p05/evidence/EVIDENCE.sha256 (19 files; verified with sha256sum -c: all OK)
