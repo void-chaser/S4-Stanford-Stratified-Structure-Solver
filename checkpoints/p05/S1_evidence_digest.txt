@@ -236,3 +236,37 @@ Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest
               Superseded: evidence-s1-s2-s3-s4b-s5.tar.gz (260075 bytes, sha256 df87cb3b...a1a9366) has 470
               entries and no branch proof; it is kept unchanged and is not the current state.
 Earlier archives kept unchanged.
+
+S5b (polarisation sensitivity) — appended
+=========================================
+Report      : checkpoints/p05/S5B_POLARIZATION_SENSITIVITY.md (not ignored; to be committed)
+Evidence    : checkpoints/p05/evidence/s5b/ (ignored; not committed)
+Preregistration: sha256 6f61279ad3cd7dd6143aa1f5cc6ad8e93ef92d01e477ef52f9a0e8880ca6ec47 (verified)
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 625 files (s5b/: 147); sha256sum -c all OK
+
+Regression  : T19 22 cases vs S1B index, S4FMM_POL unset: 0 differences; logs byte-identical to S5.
+
+T23 polarisation (NB=1, fft, theta=30; threshold 1e-12; first-call E/H, 144 elements):
+  s-phi0    B(vs A): n_diff=  0 max=0.0000e+00   C(vs A): n_diff=  0 max=0.0000e+00   class c
+  s-phi45   B(vs A): n_diff=144 max=4.4409e-16   C(vs A): n_diff=144 max=4.4409e-16   class c
+  p-phi0    B(vs A): n_diff= 72 max=2.6335e-01   C(vs A): n_diff= 72 max=2.6335e-01   class a
+  p-phi45   B(vs A): n_diff=144 max=2.6335e-01   C(vs A): n_diff=144 max=2.6335e-01   class a
+  mix-phi0  B(vs A): n_diff= 72 max=2.6335e-01   C(vs A): n_diff= 72 max=2.6335e-01   class a
+  mix-phi45 B(vs A): n_diff=144 max=2.6335e-01   C(vs A): n_diff=144 max=2.6335e-01   class a
+  C==B bitwise in all 6 configurations.
+  D (scratch2) identical to control in all 6; solve_info=0; Epsilon_inv[0]=0.4591; kp,q,phi equal across s,p,mix.
+
+Predictions (preregistered, unchanged):
+  P1 (p, phi0, max|A-B|>1e-6): HOLDS (2.6335e-01)
+  P2 (s, phi0, identical): HOLDS (0.0000e+00)
+  P3 (mix, phi0, max|A-B|>1e-6): HOLDS (2.6335e-01)
+  P4 (p, scratch1 reproduces manual write, <=1e-12): HOLDS (max|B-C|=0.0000e+00; P1 quantity max|A-B|=2.6335e-01)
+
+T24 (rect NB=3, p, theta=30, GetAmplitudes, manual diagonal write of Epsilon_inv in Slab, manual only):
+  phi=0: n_G=3  n_diff=6/12  max_abs_diff=6.0005e-02  max|amp|=1.0000  -> SENSITIVE
+  phi=45: n_G=3  n_diff=6/12  max_abs_diff=5.5334e-02  max|amp|=0.7071  -> SENSITIVE
+
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest478-s5b.tar.gz   (CURRENT)
+              size=379246 bytes  sha256=01fe8e6fe03bd66e5c265a99cdbf9288cb661d9d5d1589f025de00e86832669a
+              extracts to 625 files, all match the manifest (verified from the archive).
+Earlier archives kept unchanged.
