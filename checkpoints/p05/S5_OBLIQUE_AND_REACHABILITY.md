@@ -9,12 +9,12 @@
 
 ## 0. 结论摘要
 
-- **C（注入错误是否传播到输出）：保持开放，但问题已被精确化。** 在斜入射 θ=30°（φ=0 与 φ=45°），NB=1，FFT 路径，**Python-Option `PolarizationBasis='Default'` bei `PolarizationDecomposition=True`（VL-Zweig, belegt im Quellcode `S4.cpp:2387–2394` und zur Laufzeit gezählt: VL=1, NV=0, Jones=0; siehe Abschnitt 1.2）**下：手动把 `Epsilon_inv[0]` 改为 1，与真实 scratch1、scratch2 注入，**第一次调用的 144 个 E/H 与对照均无超出舍入的变化**。这属于 S5 所定义的结论 (c)。但同一配置下，**特征值层面确实敏感**：`Epsilon_inv` 的改变使本征值 `q[1]` 从 8.7159 变为 8.0226（φ=0），并使本征向量 `phi` 在 φ=45° 时发生变化（`phi[0]` 从 1 变为 0.7071）。因此 C 的开放问题应表述为：**特征值层面的变化为什么没有进入 E/H**，而不是笼统的"传播是否发生"。
+- **C（注入错误是否传播到输出）：保持开放，但问题已被精确化。** 在斜入射 θ=30°（φ=0 与 φ=45°），NB=1，FFT 路径，**Python 选项 `PolarizationBasis='Default'`，且 `PolarizationDecomposition=True`（VL 分支，源码依据 `S4.cpp:2387–2394`，并经运行时计数确认：VL=1, NV=0, Jones=0；见第 1.2 节）**下：手动把 `Epsilon_inv[0]` 改为 1，与真实 scratch1、scratch2 注入，**第一次调用的 144 个 E/H 与对照均无超出舍入的变化**。这属于 S5 所定义的结论 (c)。但同一配置下，**特征值层面确实敏感**：`Epsilon_inv` 的改变使本征值 `q[1]` 从 8.7159 变为 8.0226（φ=0），并使本征向量 `phi` 在 φ=45° 时发生变化（`phi[0]` 从 1 变为 0.7071）。因此 C 的开放问题应表述为：**特征值层面的变化为什么没有进入 E/H**，而不是笼统的"传播是否发生"。
 - **B（执行期分配失败的危险等级）：条件可达；输出层面在所测配置下未观察到伤害。** 可达性在 S5 中被扩大：`kf_bfly_generic` 的命中不只出现在 square 晶格的 NB=1–4（S4 的结论），还出现在 hex 的 NB=1–4、rect 的 NB=1–4（有 72 次命中的 NB=3、4 也在其中）。但**"可达"不等于"有害"**：S5 没有对这些新增的可达配置测量输出是否改变。
 - **T20 的 scratch2 解释被否定**：S5 工作过程中的初步推断（本报告内部，S4 报告中并无此假设）认为 scratch2 落在 `plans[0]`（第 212 行，`Epsilon2` 块），栈显示它实际落在 `fmm_FFT.cpp:183`（`plans[4]`，计算 `Epsilon_inv` 的那次）。因此 scratch1 与 scratch2 命中同一次 FFT 执行的两个窗口内分配，两者的中间量结果不同（scratch1：`solve_info=1`、`Epsilon_inv=1`；scratch2：`solve_info=0`、`Epsilon_inv=0.4591`）。**这一差异的机制未解释**，列入残余风险。
 - **T21 的重要新事实：偏振基改变 `kf_bfly_generic` 的命中次数。** 在 `n_G` 相同（hex NB=1–4：n_G=1；rect NB=3、4：n_G=3）且两个偏振基都完整求解的 6 个组合上，VL 与 Normal 的命中次数不同：rect 72 对 40，hex 18 对 10。S4 与本轮早先的"求解中途失败造成计数差异"的解释**被推翻**（第 6 节第 2 条）。
-- **T22 的重合：** Option `PolarizationBasis='Default'` 下 54 个组合中，命中次数 >0 的有 12 个；其中 6 个失败，6 个成功。命中**不是**失败的充分条件。Die Trefferzahl 18 erscheint sowohl bei erfolgreichem (hex NB=1) als auch bei fehlgeschlagenem Lauf (square NB=1), sie hängt also nicht vom Erfolg ab (V-E, geprüft).
-- **Kottke 路径（`SubpixelSmoothing=True`）**: Bei NB=1–4 mit VL-Zweig (Option `Default`) erfolgreich (n_G=1), Trefferzahl 0. Die O-1-Messung in S4 fand auf der ClosedForm-Route statt; hier wurde nur die Kottke-Route mit der FFT-Route verglichen. Eine Aussage "O-1 tritt auf Kottke nicht auf" ist deshalb nicht belegt und wird nicht gemacht.
+- **T22 的重合：** Option `PolarizationBasis='Default'` 下 54 个组合中，命中次数 >0 的有 12 个；其中 6 个失败，6 个成功。命中**不是**失败的充分条件。命中数 18 既出现在成功的运行中（hex NB=1），也出现在失败的运行中（square NB=1），因此它不取决于求解是否成功（V-E，已核对）。
+- **Kottke 路径（`SubpixelSmoothing=True`）**: 在 NB=1–4、VL 分支（选项 `Default`）下求解成功（n_G=1），命中数为 0。 S4 中的 O-1 测量是在 ClosedForm 路径上进行的；此处只比较了 Kottke 路径与 FFT 路径。因此"O-1 在 Kottke 上不出现"这一说法没有证据支持，本报告不作此断言。
 
 ---
 
@@ -43,12 +43,12 @@
 
 ---
 
-### 1.2 Zweigzuordnung der Standardoption (Laufzeitnachweis vorhanden)
+### 1.2 标准选项的分支归属（已有运行时证据）
 
-- **Quellcode** (Lesezugriff, `S4/S4.cpp:2375–2394` und `S4/main_python.c:1799–1816`): Bei `PolarizationDecomposition=True` setzt die Option `PolarizationBasis='Default'` beide Basisflags auf 0 und `use_polarization_basis=1`. Die Verzweigung in `S4.cpp:2387–2394` wählt dann den VL-Zweig (`FMMGetEpsilon_PolBasisVL`), weil weder Jones noch Normal gesetzt sind.
-- **Laufzeitnachweis** (`s5/t21/branch-VL-count.gdb.txt`, `s5/gdb/t21-branch-count.gdb`): Für die Konfiguration quadratisch, NB=1, FFT, `PolarizationBasis='Default'`, `PolarizationDecomposition=True` zählen die Haltepunkte **VL = 1, NV = 0, Jones = 0**. Der Lauf endet regulär (gdb rc 0). Der Eintritt in `FMMGetEpsilon_PolBasisVL` ist damit zur Laufzeit belegt.
-- **Abgleich mit der Matrix**: Dieselbe Zelle hat in der Matrix denselben Status `EXCEPTION` mit identischer Fehlermeldung (`eigensystem could not be solved`), siehe `s5/t21/matrix-index.txt`. Die Matrix-Transkripte enthalten nur Zählzeilen; der Zweig wurde deshalb für diese eine Zelle separat gezählt, nicht für alle 54.
-- **Verfahrensnotiz**: Zwei frühere Versuche sind gescheitert und bleiben als Dateien erhalten. `s5/t21/branch-VL-check.gdb.txt` (Haltepunkte ohne Fortsetzung: der Lauf hielt am ersten Treffer, deshalb fehlte die Statuszeile) und der Gate-Abbruch von bash-411 (verfolgte Datei `S1_evidence_digest.txt` war geändert). Beide Fehler sind behoben; der belegte Stand ist die Zählung mit Fortsetzung.
+- **源码**（只读，`S4/S4.cpp:2375–2394` 与 `S4/main_python.c:1799–1816`）：当 `PolarizationDecomposition=True` 时，选项 `PolarizationBasis='Default'` 将两个基标志均设为 0，并令 `use_polarization_basis=1`。随后 `S4.cpp:2387–2394` 的分支选择 VL 分支（`FMMGetEpsilon_PolBasisVL`），因为 Jones 与 Normal 均未设置。
+- **Laufzeitnachweis** (`s5/t21/branch-VL-count.gdb.txt`, `s5/gdb/t21-branch-count.gdb`): 对于配置 square、NB=1、FFT、 `PolarizationBasis='Default'`, `PolarizationDecomposition=True` 断点计数为 **VL = 1, NV = 0, Jones = 0**。运行正常结束（gdb rc 0）。因此 `FMMGetEpsilon_PolBasisVL` 的进入在运行时得到证实。
+- **与矩阵比对**：同一单元在矩阵中的状态同为 `EXCEPTION`，错误信息相同（`eigensystem could not be solved`），见 `s5/t21/matrix-index.txt`。 矩阵转录只含计数行；因此分支仅对该单元单独计数，而非全部 54 个单元。
+- **过程说明**：两次更早的尝试失败，但其文件保留。`s5/t21/branch-VL-check.gdb.txt`（断点无继续执行：运行在第一次命中时停止，因此缺少状态行），以及 bash-411 的门禁中止（被跟踪的文件 `S1_evidence_digest.txt` 已被修改）。两个错误均已修复；已证实的结果是带继续执行的计数。
 
 ## 2. T20：斜入射 + NB=1 的敏感性对照
 
@@ -338,10 +338,10 @@ S4 把 O-1 写成"`n_G=1` 失败，`n_G∈{5,9}` 成功"。T21 显示这一边�
 - **Aktuelles Archiv**: `checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest478.tar.gz`
 - Größe: **270345 Byte**
 - sha256: `2084f25c26d38b559e5fd54fcc69dee817d9503b126efe44829e773118bf3259`
-- Inhalt: 478 Dateien, darunter die 8 Zweignachweise (`s5/t21/branch-VL-*`, `s5/gdb/t21-branch*`, zugehörige Build-Logs). Enthält kein Archiv.
-- Prüfung: Nach dem Entpacken stimmen alle **478 Einträge** mit `EVIDENCE.sha256` überein (0 abweichend).
-- Manifest: `checkpoints/p05/evidence/EVIDENCE.sha256`, **478 Einträge**, `s5/` darin **182**. Ausgeschlossen sind Verify-Protokolle, das Manifest selbst und temporäre Dateien. `sha256sum -c` auf dem Bestand: 478 OK, 0 abweichend (`checkpoints/p05/evidence/logs/s5-verify.txt`).
-- **Überholtes Archiv** `evidence-s1-s2-s3-s4b-s5.tar.gz` (260075 Byte, sha256 `df87cb3b…a1a9366`): enthält nur 470 Einträge und keinen Zweignachweis. Es wird nicht als aktueller Stand geführt, ist aber nicht gelöscht. Die Vorgänger-Archive `evidence-s1-s2.tar.gz`, `evidence-s1-s2-s3.tar.gz`, `evidence-s1-s2-s3-s4.tar.gz` und `evidence-s1-s2-s3-s4b.tar.gz` sind unverändert.
+- 内容：478 个文件，其中包括 8 个分支证据（`s5/t21/branch-VL-*`、`s5/gdb/t21-branch*` 及相关构建日志）。不含归档文件。
+- 校验：解压后，**478 条**记录与 `EVIDENCE.sha256` 一致（0 条不一致）。
+- 清单：`checkpoints/p05/evidence/EVIDENCE.sha256`，**478 条**，其中 `s5/` 下 **182 条**。排除项为校验日志、清单文件本身及临时文件。 对现有记录执行 `sha256sum -c`：478 OK，0 条不一致 (`checkpoints/p05/evidence/logs/s5-verify.txt`).
+- **已被取代的归档** `evidence-s1-s2-s3-s4b-s5.tar.gz` (260075 Byte, sha256 `df87cb3b…a1a9366`): 仅含 470 条记录，不含分支证据。它不作为当前状态记录，但未被删除。早期归档 `evidence-s1-s2.tar.gz`、`evidence-s1-s2-s3.tar.gz`、`evidence-s1-s2-s3-s4.tar.gz` 与 `evidence-s1-s2-s3-s4b.tar.gz` 保持不变。
 - 未移到仓库外，未提交。是否外存由主脑决定（第 9 节第 4 条）。
 
 ---
@@ -350,7 +350,7 @@ S4 把 O-1 写成"`n_G=1` 失败，`n_G∈{5,9}` 成功"。T21 显示这一边�
 
 1. **C 是否关闭。** 推荐：不关闭。结论 (c) 只在 θ=30°、NB=1、FFT、VL 下成立，且特征值层面的敏感性说明 C 的开放问题是"为什么不传到 E/H"，而不是"是否传播"。要关闭需要 NB≥2 与 Normal/Jones 基的配置，超出本轮。
 2. **B 的危险等级。** 推荐：采用"条件可达；输出层面在所测配置下未观察到伤害；新增的可达配置（hex、rect NB=1–4，rect NB=3、4）未测输出"。不升为"输出错误"，也不降为"不可达"。
-3. **O-1 的定义。** 推荐：不再以 `n_G` 单独定义，改为"Option `PolarizationBasis='Default'` 与 `PolarizationDecomposition=True`、FFT 路径、晶格相关的特征值失败"（VL-Zweig, zur Laufzeit belegt, Abschnitt 1.2），并列出第 4.2 节的三种晶格的结果。
+3. **O-1 的定义。** 推荐：不再以 `n_G` 单独定义，改为"Option `PolarizationBasis='Default'` 与 `PolarizationDecomposition=True`、FFT 路径、晶格相关的特征值失败"（VL 分支，运行时已证实，见第 1.2 节），并列出第 4.2 节的三种晶格的结果。
 4. **证据外存。** 推荐：外存本轮的归档（第 8.1 节）。当前唯一完整副本仍在仓库内被忽略的目录中，沙箱 `/tmp` 会清空。
 5. **残余风险是否接受为最终状态。** 推荐：接受。第 7 节的 10 项都是机制研究或超出证据收集范围的问题；用户已规定本轮是最后一轮。
 
