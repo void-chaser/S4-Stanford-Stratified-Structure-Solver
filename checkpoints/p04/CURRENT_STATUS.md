@@ -5,7 +5,7 @@
 每一项独立判断，不得互相替代：
 
 - **技术接受**：D001、D002、P04 在冻结有限范围经 Codex 最终生产技术审核接受（[最终审核](../p04-final/FINAL_REVIEW.md)）。本轮未改变该结论。
-- **有限范围关闭**：D001、D002、P04 在[登记表](../../testing/s4test/ISSUE_REGISTRY.md)所列范围 CLOSED。必要 leak 为负责人 B 保存证据验收，不是独立动态 LSan 认证；HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance 不在关闭范围内。
+- **有限范围关闭**：D001、D002、P04 在[登记表](../../testing/s4test/ISSUE_REGISTRY.md)所列范围 CLOSED。必要 leak 为负责人 B 保存证据验收，不是独立动态 LSan 认证；HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、材料/参数扩展（D001 行所列其余材料、参数与配置）、n>2、A-10r（R-P04-01）、D012、历史 provenance 不在关闭范围内。
 - **Feature 已发布**：远端分支 `origin/feature/python314-binding` 位于 `2c3bf89f171dcfd68e57c67b5fb4bd1ef8ac3580`，其 S4 源码子树 `1d738e64f9864a475fdb3de34cd3601605df2c64` 与固定候选 `5cf534ce5ec223a6388d29bbb2c58f981f070241` 相同。
 - **GitHub issue #1/#2**：仍为 OPEN；本轮未关闭、未修改 milestone。
 - **尚未合入 Master**：`origin/master` 仍为 `7fd00a231610bff51f5c7de5f723e3956eab7453`；Feature 相对 master 为 0/12，可快进，但本轮未合并、未推送。
@@ -13,7 +13,7 @@
 
 本轮改动：D002 判定器 A-36 规则修正（asan_baseline 由 must-pass 改为 may-fail，并要求注册站点；seam 基线保持 must-fail 并加站点规则），判定测试 124→137，证据 [A36_RULE_CORRECTION.md](../../testing/d002/evidence/A36_RULE_CORRECTION.md)；P01–P03 状态与路线图入口同步。产品源码未改。
 
-环境注记：本轮沙箱内 LeakSanitizer 报 `does not work under ptrace`，沙箱内 ASan 结果不能作为验收依据；正式复验在允许 sanitizer 工作的环境中执行。
+环境注记：本轮审核前的沙箱内原始流水线中，ASan 相关步骤的 LeakSanitizer 报 `does not work under ptrace`，该轮 ASan 结果不能作为验收依据。正式复验时 LeakSanitizer 正常工作，未设置 `detect_leaks=0`，未删除 stderr，未关闭沙箱。
 
 下一主线：**P05/D003**，再 P06/D004。P05 未启动。
 
