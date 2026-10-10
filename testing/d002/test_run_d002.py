@@ -988,6 +988,149 @@ class AbnormalExitAsanTests(FixtureTest):
         self.assertFalse(s["signature"]["ok"])
 
 
+class A36AsanBaselineTests(FixtureTest):
+    """A-36 (values-only + scalea) in asan_baseline is may_fail: its uninitialised info is 0 in
+    some runs (pass) and a wild index in others (ASan SEGV at REGISTERED_SITES).  Evidence:
+    testing/d002/evidence/A36_RULE_CORRECTION.md.  The crash record is the real native-run stderr
+    of 2026-10-10; any other ASan crash of A-36 is damage, not the defect."""
+
+    variant = "asan_baseline"
+    SITE_STDERR = os.path.join(FIXTURES, "a36_asan_baseline_segv.stderr.txt")
+
+    def crash_a36(self, stderr_text=None, rc=1, out_text=""):
+        idx = self.index()
+        for c in idx["cases"]:
+            if c["case_id"] == "A-36":
+                c["rc"] = rc
+        self.save_index(idx)
+        write(self.out_path("A-36"), out_text)
+        write(self.out_path("A-36", "stderr"),
+              read(self.SITE_STDERR) if stderr_text is None else stderr_text)
+
+    def assert_a36_damage(self, s, fragment):
+        r = self.case(s, "A-36")
+        self.assertEqual(r["integrity_kind"], "exit_unknown", r)
+        self.assertIn(fragment, r["integrity"])
+        self.assertIn("A-36", s["signature"]["damaged"])
+        self.assertFalse(s["signature"]["ok"])
+        self.assertFalse(s["accepted"])
+
+    def test_a36_is_may_fail_not_must_pass_in_asan_baseline(self):
+        s = self.judge()
+        self.assertIn("A-36", s["signature"]["may_fail"])
+        self.assertNotIn("A-36", s["signature"]["must_pass"])
+
+    def test_a36_saved_pass_with_info_zero_keeps_the_signature(self):
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"]), ("ok", True))
+        self.assertTrue(s["signature"]["ok"], s["signature"])
+
+    def test_a36_nonzero_info_verdict_keeps_the_signature(self):
+        # Uninitialised info that reaches the verdict on a normal exit: a judged failure.
+        text = re.sub(r"^info -?\d+$", "info 8", read(self.out_path("A-36")), flags=re.M)
+        write(self.out_path("A-36"), text)
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"]), ("ok", False))
+        self.assertIn("info=8, expected 0", r["detail"])
+        self.assertTrue(s["signature"]["ok"], s["signature"])
+
+    def test_a36_crash_at_the_registered_site_is_the_registered_defect(self):
+        self.crash_a36()
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"]), ("exit", False))
+        self.assertIn("abnormal exit rc=1 (AddressSanitizer report)", r["integrity"])
+        self.assertTrue(s["signature"]["ok"], s["signature"])
+        self.assertEqual(s["signature"]["damaged"], [])
+
+    def test_a36_asan_crash_at_another_line_is_damage(self):
+        text = read(self.SITE_STDERR).replace("Eigensystems.cpp:4715", "Eigensystems.cpp:4700")
+        self.crash_a36(text)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_asan_crash_through_another_caller_is_damage(self):
+        text = read(self.SITE_STDERR).replace("in RNP::Eigensystem(", "in RNP::Eigensystem_other(")
+        self.crash_a36(text)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_heap_overflow_at_the_registered_site_is_damage(self):
+        text = read(self.SITE_STDERR).replace(
+            "ERROR: AddressSanitizer: SEGV on unknown address",
+            "ERROR: AddressSanitizer: heap-buffer-overflow on address")
+        self.crash_a36(text)
+        self.assert_a36_damage(self.judge(), "is not at the registered site of A-36")
+
+    def test_a36_unsanitized_sigsegv_is_damage(self):
+        self.crash_a36(stderr_text="", rc=-11)
+        self.assert_a36_damage(self.judge(), "abnormal exit rc=-11 is not a registered mechanism")
+
+    def test_a36_crash_with_a_wrong_identity_partial_record_is_damage(self):
+        self.crash_a36(out_text="case_id A-07\n")
+        s = self.judge()
+        self.assertEqual(self.case(s, "A-36")["integrity_kind"], "evidence")
+        self.assertIn("A-36", s["signature"]["damaged"])
+        self.assertFalse(s["signature"]["ok"])
+
+
+class SeamBaselineA36Tests(FixtureTest):
+    """A-36 in seam_asan_baseline is must_fail: the saved control crashes at REGISTERED_SITES
+    (20 of 20 repeats on 2026-10-10 as well).  A crash elsewhere does not show the seam defect."""
+
+    variant = "seam_asan_baseline"
+
+    def test_a36_registered_site_crash_is_the_seam_defect(self):
+        s = self.judge()
+        r = self.case(s, "A-36")
+        self.assertEqual((r["integrity_kind"], r["pass"]), ("exit", False))
+        self.assertNotIn("A-36", s["signature"]["not_failing"])
+        self.assertTrue(s["signature"]["ok"], s["signature"])
+
+    def test_a36_crash_at_another_line_does_not_show_the_seam_defect(self):
+        text = read(self.out_path("A-36", "stderr")).replace("Eigensystems.cpp:4715",
+                                                              "Eigensystems.cpp:4700")
+        write(self.out_path("A-36", "stderr"), text)
+        s = self.judge()
+        self.assertEqual(self.case(s, "A-36")["integrity_kind"], "exit_unknown")
+        self.assertIn("A-36", s["signature"]["not_failing"])
+        self.assertFalse(s["signature"]["ok"])
+
+
+class AsanCandidateA36Tests(FixtureTest):
+    """The candidate has no registered site: the baseline's A-36 crash is a failure of the
+    candidate, not an accepted defect (the judge is strict for candidates)."""
+
+    variant = "asan_candidate"
+
+    def test_candidate_with_the_baseline_crash_is_not_accepted(self):
+        idx = self.index()
+        for c in idx["cases"]:
+            if c["case_id"] == "A-36":
+                c["rc"] = 1
+        self.save_index(idx)
+        write(self.out_path("A-36"), "")
+        write(self.out_path("A-36", "stderr"),
+              read(os.path.join(FIXTURES, "a36_asan_baseline_segv.stderr.txt")))
+        s = self.judge()
+        self.assertFalse(self.case(s, "A-36")["pass"])
+        self.assertFalse(s["all_judged_pass"])
+        self.assertFalse(s["accepted"])
+
+
+class BaselineA36ClassTests(unittest.TestCase):
+    """The per-identity classes of A-36 (2026-10-10 evidence, see A36_RULE_CORRECTION.md)."""
+
+    def test_a36_classes_per_identity(self):
+        table = d002.BASELINE_SIGNATURE
+        self.assertIn("A-36", table["ord_baseline"]["must_pass"])
+        self.assertIn("A-36", table["asan_baseline"]["may_fail"])
+        self.assertNotIn("A-36", table["asan_baseline"]["must_pass"])
+        self.assertIn("A-36", table["seam_asan_baseline"]["must_fail"])
+        self.assertEqual(set(d002.REGISTERED_SITES),
+                         {("asan_baseline", "A-36"), ("seam_asan_baseline", "A-36")})
+
+
 class SelectCasesTests(unittest.TestCase):
     def test_unknown_subset_id_is_refused(self):
         with self.assertRaises(SystemExit):

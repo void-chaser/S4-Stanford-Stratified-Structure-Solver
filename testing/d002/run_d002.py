@@ -125,11 +125,25 @@ DEFECT_KINDS = ("exit", "sanitizer")
 #       recorded and never judged.  A judged case that exits this way is exit_unknown, whatever
 #       its record says.
 #   rc 1 (ASan default exitcode): an AddressSanitizer report of a kind seen in the saved
-#       asan_baseline and seam_asan_baseline runs (ASAN_REPORT_RE).
+#       asan_baseline and seam_asan_baseline runs (ASAN_REPORT_RE).  A case listed in
+#       REGISTERED_SITES must also crash at its registered site (site_registered); any other
+#       ASan report of that case is exit_unknown, not the defect.
 # Any other exit status or signal is not a registered mechanism, whatever the signature says.
 GLIBC_ABORT_LINES = ("free(): invalid size",)
 ASAN_REPORT_RE = re.compile(r"ERROR: AddressSanitizer: (?:heap-buffer-overflow|SEGV)\b"
                             r"|AddressSanitizer:DEADLYSIGNAL")
+# Registered crash sites (site_registered).  A-36 (values-only + scalea) in asan_baseline and
+# seam_asan_baseline: the baseline discards zhseqr_'s return on the values-only branch, so `info`
+# is read uninitialised, and RescaleMatrix(&w[info], n-info) at Eigensystems.cpp:4715 can read far
+# outside w.  The registered crash is an ASan SEGV in RescaleMatrix called from RNP::Eigensystem at
+# that line.  Evidence: testing/d002/evidence/A36_RULE_CORRECTION.md.
+SEGV_REPORT_RE = re.compile(r"ERROR: AddressSanitizer: SEGV on unknown address")
+A36_SITE_RE = re.compile(r"\s#\d+ [^\n]*in RNP::TLASupport::RescaleMatrix<[^\n]*\n"
+                         r"\s+#\d+ [^\n]*in RNP::Eigensystem\([^\n]*Eigensystems\.cpp:4715\b")
+REGISTERED_SITES = {
+    ("asan_baseline", "A-36"): (SEGV_REPORT_RE, A36_SITE_RE),
+    ("seam_asan_baseline", "A-36"): (SEGV_REPORT_RE, A36_SITE_RE),
+}
 # Sanitizer lines on a normal exit (rc 0; UBSan continues after its report).  Only the two forms
 # that the saved asan_baseline runs show for A-38 (RNP pointer offsets) are registered.  The
 # source path, line, column, offsets and addresses are not bound.
@@ -163,11 +177,18 @@ BASELINE_SIGNATURE = {
         # Round-5 correction, asan_baseline only: A-07's value branch never receives zhseqr_'s
         # info (uninitialised), so the saved observations are info 0 (pass) and non-zero (fail).
         # The frozen observation of round 4 was a failure; the evidence is in the round-4 report.
+        # A-36 is the same values-only branch with scalea (w[info], n-info): its uninitialised info
+        # is either 0 (pass) or a wild index that crashes at REGISTERED_SITES.  It was must_pass
+        # before 2026-10-10; that was wrong: in the 2026-10-10 reruns 17 of 26 asan_baseline A-36
+        # runs crashed at the site and 9 passed with info 0.  Evidence:
+        # testing/d002/evidence/A36_RULE_CORRECTION.md.
         "must_fail": S1_DEFECT_FAIL + ["A-38", "A-41"],
-        "may_fail": ["A-07", "A-37", "C-03"],
-        "must_pass": [c for c in ORD_CONTROL_PASS if c not in ("A-07", "A-37", "A-38", "A-41")],
+        "may_fail": ["A-07", "A-36", "A-37", "C-03"],
+        "must_pass": [c for c in ORD_CONTROL_PASS
+                      if c not in ("A-07", "A-36", "A-37", "A-38", "A-41")],
     },
     "seam_asan_baseline": {
+        # A-36 crashes at REGISTERED_SITES in every recorded run (20 of 20 repeats, 2026-10-10).
         "must_fail": S1_DEFECT_FAIL + ["A-07", "A-36", "A-37", "A-38", "A-41",
                                        "C-01", "C-02", "C-03", "C-04"],
         "may_fail": [],
@@ -650,6 +671,12 @@ def abnormal_mechanism(rc, err_text):
     return None
 
 
+def site_registered(variant, cid, err_text):
+    """False when (variant, cid) has a registered crash site that this stderr does not show."""
+    sites = REGISTERED_SITES.get((variant, cid))
+    return sites is None or all(rx.search(err_text) for rx in sites)
+
+
 API_LAYOUT_KEYS = ("ldvl", "ldvr", "lwork_passed", "work_mode", "rwork_mode", "want",
                    "a_capacity_elems", "vl_capacity_elems", "vr_capacity_elems",
                    "work_capacity_elems", "rwork_capacity_elems")
@@ -738,6 +765,9 @@ def verify_integrity(case, variant, n, lda, rc, out_text, err_text, stdout_text,
         mech = abnormal_mechanism(rc, err_text)
         if mech is None:
             raise Reject("abnormal exit rc=%d is not a registered mechanism" % rc, "exit_unknown")
+        if not site_registered(variant, cid, err_text):
+            raise Reject("abnormal exit rc=%d (%s) is not at the registered site of %s"
+                         % (rc, mech, cid), "exit_unknown")
         raise Reject("abnormal exit rc=%d (%s)" % (rc, mech), "exit")
     if schema >= 2 and stdout_text != "":
         raise Reject("unexpected stdout output")

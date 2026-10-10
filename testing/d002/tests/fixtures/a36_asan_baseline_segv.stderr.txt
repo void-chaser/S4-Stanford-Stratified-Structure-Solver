@@ -1,0 +1,20 @@
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1228394==ERROR: AddressSanitizer: SEGV on unknown address 0x7441aac25ea0 (pc 0x5e48dfffc827 bp 0x7ffda8836d10 sp 0x7ffda88368f0 T0)
+==1228394==The signal is caused by a READ memory access.
+    #0 0x5e48dfffc827 in std::complex<double>::operator*=(double) /usr/include/c++/15/complex:1684
+    #1 0x5e48dfffc827 in RNP::TLASupport::RescaleMatrix<(char)71>::RescaleMatrix<double, std::complex<double> >(unsigned long, unsigned long, double const&, double const&, unsigned long, unsigned long, std::complex<double>*, unsigned long) /tmp/s4-master-integration-results-20261010/baseline-src/S4/RNP/TLASupport.h:429
+    #2 0x5e48dfffc827 in RNP::Eigensystem(unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, std::complex<double>*, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, double*, unsigned long) /tmp/s4-master-integration-results-20261010/baseline-src/S4/RNP/Eigensystems.cpp:4715
+    #3 0x5e48e0002a82 in main /tmp/s4-master-integration-audit-20261010/testing/d002/tools/d002_driver.cpp:246
+    #4 0x7811ab82a600 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:59
+    #5 0x7811ab82a717 in __libc_start_main_impl ../csu/libc-start.c:360
+    #6 0x5e48dffb9de4 in _start (/tmp/s4-master-integration-results-20261010/d002/bin/d002_asan_baseline+0x9bde4) (BuildId: a5aae77b1a0b861702c66752f8a9a8c66fd40d32)
+
+==1228394==Register values:
+rax = 0x0000000000000000  rbx = 0x00007441aac25ea0  rcx = 0x0000000000000001  rdx = 0x00007441aac25ea0  
+rdi = 0x00007411a9af34a0  rsi = 0x00007441aac25ea0  rbp = 0x00007ffda8836d10  rsp = 0x00007ffda88368f0  
+ r8 = 0x00007811ab998400   r9 = 0x00000000fffffff5  r10 = 0x0000000000000000  r11 = 0x000000000000205d  
+r12 = 0x00007441aac25ea0  r13 = 0x0000000000000000  r14 = 0xffffffffffffba28  r15 = 0x00007441aac25ea0  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /tmp/s4-master-integration-results-20261010/baseline-src/S4/RNP/TLASupport.h:429 in RNP::TLASupport::RescaleMatrix<(char)71>::RescaleMatrix<double, std::complex<double> >(unsigned long, unsigned long, double const&, double const&, unsigned long, unsigned long, std::complex<double>*, unsigned long)
+==1228394==ABORTING

@@ -46,7 +46,7 @@ a changed signature all fail the run.
   thresholds: eig_rel_tol 1e-10, residual_tol 1e-10, vector_norm_tol 1e-12, query work[0]
   == 2n), `cases/matrices.json` (fixed matrices and analytic eigenvalues),
   `run_d002.py` (build / run / judge / positives).
-* `testing/d002/test_run_d002.py` — negative and positive tests of the judge (124 tests).
+* `testing/d002/test_run_d002.py` — negative and positive tests of the judge (137 tests).
   The formal fixture is the schema-2 control run `tests/fixtures/p04_schema2_control.tar.gz`
   (real saved driver output of all six variants, plus the D001 summaries and the sanitizer
   positives).  `tests/fixtures/*_legacy_run.tar.gz` are schema-1 runs, read only by
@@ -99,7 +99,13 @@ a changed signature all fail the run.
   shows the defect, whatever the case's classification.  Round-5 correction (asan_baseline
   only): A-07 moved from must-fail to may-fail, because its saved observations are both
   info 0 (pass) and non-zero (fail); seam_asan_baseline A-07 stays must-fail.  See
-  `checkpoints/p04-remediation/REMEDIATION_REPORT_ROUND5.md`.
+  `checkpoints/p04-remediation/REMEDIATION_REPORT_ROUND5.md`.  Self-audit correction of
+  2026-10-10 (not independently reviewed; asan_baseline only): A-36 moved from must-pass to
+  may-fail, because the same uninitialised `info` either gives info 0 (pass) or crashes in
+  RescaleMatrix at Eigensystems.cpp:4715 (ASan SEGV, 17 of 26 reruns).  Such a crash counts
+  as the defect only at that registered site (`REGISTERED_SITES`); seam_asan_baseline A-36
+  stays must-fail under the same site rule.  Evidence and limits:
+  `testing/d002/evidence/A36_RULE_CORRECTION.md`.
 * D001 summaries are checked as a complete set: every expected case key exactly once with
   its identity; a baseline's failures must be exactly the registered defect set (frozen:
   N9 B/C; extension: N9/N25 B/C and the memory-mode rows) and every other row must pass.
