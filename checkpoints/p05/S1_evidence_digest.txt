@@ -270,3 +270,57 @@ Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2-s3-s4b-s5-manifest
               size=379246 bytes  sha256=01fe8e6fe03bd66e5c265a99cdbf9288cb661d9d5d1589f025de00e86832669a
               extracts to 625 files, all match the manifest (verified from the archive).
 Earlier archives kept unchanged.
+
+P05-S2 (test harness, D003) — appended
+=====================================
+Status      : P05-S2 NOT complete; awaiting user review. Report: checkpoints/p05/P05_S2_TEST_HARNESS.md
+Evidence    : checkpoints/p05/evidence/p05-s2/ (ignored; NOT committed)
+Run (final) : checkpoints/p05/evidence/p05-s2/run-4/ (index.txt, sensitivity.txt, STEPS.txt, SHA256SUMS)
+Reproduced  : run-5/ and run-6/ (audit reruns) match run-4 in index, sensitivity and libS4.a hash.
+Harness     : testing/d003/ (run_d003.sh, matrix_d003.py, judge_d003.py, src/driver_d003.cpp, src/inject_d003.cpp, src/history/)
+
+Archive     : checkpoints/p05/evidence/archive/evidence-p05-s2.tar.gz   (INCREMENTAL, S2 files only)
+              size=1195874 bytes  sha256=5144397de84c99396b31c81898f036610e34d9ac174dd13829d7c80b8e8e147c
+              414 files; every extracted file re-hashed against the list, 0 mismatches.
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 1048 entries = 625 existing (unchanged, as an exact prefix)
+              + 415 P05-S2 files + 8 archives (the S2 archive and 7 earlier ones); sha256sum -c 1048/1048 OK.
+Audit clist : checkpoints/p05/evidence/p05-s2/AUDIT_EVIDENCE.sha256 — 106 entries, all OK (run-5, run-6, strace).
+
+Baseline    : libS4.a built from git archive 5b72793 = fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba
+              (same hash as section 1.2 of S1_BASELINE_AND_ENUMERATION.md; reproducible across run-4/5/6).
+Reference   : driver.s1b-patched.reference.cpp = 8db5afcfb99360697639346347eefdd673428a75eec6840f4d3ffbd0dfb8ab56
+              (rebuilt from history driver + s1b/driver-patch.diff; byte-identical).
+Consolidated: driver-d003 (run-4/bin) = 678b6caa236e9c60c4d60c0c3d0b4b53f72efb19c2fad7d1b9235720a59d61e5
+
+Default output: consolidated driver == S1B reference binary on all 10 controls (5 branches x NG{9,1}), byte-identical.
+
+22 S1B cases (T4 10 + T5 12) vs run-4 index:
+  class       : 22/22 identical (CONTROL_OK 9, INVALID 1 [control-vl-ng1], CRASH 5, SILENT_SWALLOW 7 — see report)
+  raw fields  : 15/22 identical (rc, rc1, rc2, hit); 7/22 differ ONLY in rc: exec1 x5, scratch1, scratch2
+                S1B rc=0 -> new rc=1 (driver verdict fix: a reached but swallowed injection is now FAIL, not PASS).
+                rc1, rc2 and hit unchanged in all 7.
+  S1B PASS on these 7 is a false PASS (HIT>=1 with 'RESULT no injection fired' and 'PASS'), see report section 6.3.
+
+New coverage (run-4):
+  s4malloc k=1 (fmm_FFT.cpp:74, 6144 B)  CRASH  rc=139 hit=1
+  s4malloc k=2 (fmm_FFT.cpp:81, 16 B)    CRASH  rc=139 hit=2
+  s4malloc k=3 (not reached)             INVALID rc=1 hit=0
+  LinearSolve                            NOT COVERED: needs production seam (fmm_FFT.cpp:204, fmm_kottke.cpp:279); awaiting approval.
+
+Output sensitivity (first-call E/H, NB=1, theta=30, threshold 1e-12, 144 elements):
+  p vs s                : SENSITIVE 144/144, max|diff| 1.0925
+  mix vs s              : MIXED 72/144, max|diff| 1.0925  (expectation corrected after data; S5b digest mix-phi0 n_diff=72)
+  s vs s (control)      : INSENSITIVE 0/144
+  PolBasis vl/jones/nv, NB9, s vs p: SENSITIVE 144/144 each, max|diff| 2.7097 / 2.6122 / 2.9180
+  Tamper (p replaced by s): detected as INSENSITIVE, reported as a failed check.
+
+Judge self-tests: judge_d003.py selftest 19/19 ok; selftest-sensitivity 7/7 ok.
+Digests     : run-4/SHA256SUMS 956/956 OK; run-5 and run-6 956/956 OK (each checked inside its own directory).
+
+Boundary audit (strace over the whole entry script, run-5 and run-6):
+  /tmp opens: 0.   /home/jackal: 6 successful opens, all by git child processes (user config only).
+  writes outside the repo: 0 (AT_FDCWD writes resolved with chdir tracking: 130; dirfd writes: 878, none from /tmp or /home).
+  execve from /tmp or /home: 0.
+
+Known incidents (all disclosed in the report, section 8): stray /tmp redirections (4 attempts, no files left);
+  run-1 moved to run-1-before-judge-fix (internal paths keep old name); one unverified archive deleted and regenerated.
