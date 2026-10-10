@@ -11,7 +11,13 @@
 - **尚未合入 Master**：`origin/master` 仍为 `7fd00a231610bff51f5c7de5f723e3956eab7453`；Feature 相对 master 为 0/12，可快进，但本轮未合并、未推送。
 - **本次执行者自审**：在本地隔离分支 `codex/master-integration-gate-20261010` 上完成，结论见交付报告。这是执行者自审，不是独立审核。
 
-本轮改动：D002 判定器 A-36 规则修正（asan_baseline 由 must-pass 改为 may-fail，并要求注册站点；seam 基线保持 must-fail 并加站点规则），判定测试 124→137，证据 [A36_RULE_CORRECTION.md](../../testing/d002/evidence/A36_RULE_CORRECTION.md)；P01–P03 状态与路线图入口同步。产品源码未改。
+本轮改动：
+- 修订一（`91bb715`）：D002 判定器 A-36 规则（asan_baseline 由 must-pass 改为 may-fail，并要求注册站点；seam 基线保持 must-fail 并加站点规则）。
+- 修订二（`168d081`，执行者自审）：收紧 A-36 结果规则。正常退出的数值失败不再被 may-fail 接受；窗口 `[1, n]` 外的非零 info 不接受；注册崩溃须为一份完整的 ASan SEGV 报告。判定测试 124→137→151。
+- 证据与逐条计数：[A36_RULE_CORRECTION.md](../../testing/d002/evidence/A36_RULE_CORRECTION.md)（80 条归档记录逐条复判，结论无变化）。
+- P01–P03 状态与路线图入口同步。产品源码、PLAN 阈值与其他用例分类未改。
+
+安装验证的当前结论：预构建核心库后的 wheel 构建/安装，以及已有构建树上的 editable 安装，通过并可从源码目录外导入、通过物理烟雾。这只说明预构建路径。全新 checkout 不先执行 make 时，wheel 与 editable 安装失败（缺 `build/libS4.a`，链接期失败）；sdist 不自包含，回装失败。以上均登记为 D006 后续工作，未修复。D005 的 mtime/dry-run 观测（头文件变化不触发重编；核心库变化不重新链接扩展）只是有限证据，未做行为修复验证。
 
 环境注记：本轮审核前的沙箱内原始流水线中，ASan 相关步骤的 LeakSanitizer 报 `does not work under ptrace`，该轮 ASan 结果不能作为验收依据。正式复验时 LeakSanitizer 正常工作，未设置 `detect_leaks=0`，未删除 stderr，未关闭沙箱。
 

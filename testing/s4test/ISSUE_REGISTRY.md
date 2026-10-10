@@ -27,8 +27,8 @@
 | D002 / P1 | RNP backtransform 防御性内存缺陷；仅值分支返回状态不可靠（current working registry definition） | 默认构建冻结范围 CLOSED；与D001相同采纳SHA，必要leak按负责人四行B验收，非独立动态LSan认证，详见末节 | 原生契约、仅值状态接收、rcwa失败清理不安装及S4/Python/Lua错误20传播；HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance为范围外登记 |
 | D003 / P1 | FFT prepare/execute 失败处理及上层传播不完整 | checkpoint 已含 FFT wrapper/kiss FFT/网格路径的部分处理。历史六文件 FMM 候选和 runner 存在；完整候选未生产验收/集成 | 列实际计算分支、计划/执行调用点；复用候选与现有注入器，补缺口；失败不得安装模式/缓存；恢复后重试与全新对象一致；Python/Lua 报错可见 |
 | D004 / P1 | 求解后 SetOptions 沿用旧模式/缓存 | Python SetOptions 直接更新 options 后返回，当前函数未显式失效旧状态；现有测试主要在首次求解前设置选项，未覆盖该缺陷 | 同对象 solve→SetOptions→solve 与按最终选项新建的对象比较；覆盖改变截断/离散化/偏振基/内存模式的选项；非法选项失败后的对象状态有明确契约 |
-| D005 / P1 | 核心更新未重新链接 Python extension；header dependency 缺失 | Makefile 多数对象只声明 cpp/c 依赖；setup.py 链接既有 build/libS4.a。make test-python 使用清空构建的绕行方法，普通增量构建问题仍有历史记录 | 核心实现、头文件、binding 各一次有可观测影响的修改，普通构建自动更新应受影响产物且加载新代码；清空重建不作为增量修复证明 |
-| D006 / P1 | clean wheel/editable 与 sdist 回装失败 | setup.py 依赖预先存在的 build/libS4.a；本轮未执行安装矩阵 | 在隔离环境分别做 clean wheel、editable、sdist→wheel→安装；从源码目录外 import/执行解析物理 smoke；不依赖开发树残留 archive/so |
+| D005 / P1 | 核心更新未重新链接 Python extension；header dependency 缺失 | Makefile 多数对象只声明 cpp/c 依赖；setup.py 链接既有 build/libS4.a。make test-python 使用清空构建的绕行方法，普通增量构建问题仍有历史记录。2026-10-10 有限观测：改动 `TLASupport.h` 后 `make -n` 不重编 Eigensystems 对象；改动 `build/libS4.a` 后 `setup.py build_ext` 不更新扩展（mtime 不变）；仅为 mtime/dry-run 观测，未做行为修复验证 | 核心实现、头文件、binding 各一次有可观测影响的修改，普通构建自动更新应受影响产物且加载新代码；清空重建不作为增量修复证明 |
+| D006 / P1 | clean wheel/editable 与 sdist 回装失败 | setup.py 依赖预先存在的 build/libS4.a。2026-10-10 执行者自审：预构建核心库后的 wheel 与 editable 安装、源码目录外 import 与物理烟雾通过；全新 checkout 不先 make 时，wheel 与 editable 失败（缺 build/libS4.a，链接期失败），sdist 不自包含（缺 S4/config.h 与核心源码）、由 sdist 回装失败。仍为 OPEN，未修复 | 在隔离环境分别做 clean wheel、editable、sdist→wheel→安装；从源码目录外 import/执行解析物理 smoke；不依赖开发树残留 archive/so |
 | D007 / P1 | Python robust geometry predicates 未初始化 | threadsafe_init 定义含 exactinit，但 PyInit_S4 中调用被注释；本轮未动态验证几何后果 | 在 fresh Python 进程验证正确初始化生命周期；稳健/近退化几何回归，用独立几何预期核验，辅以 Python/Lua 一致性 |
 | D008 / P2 | Python conversion/warning 异常传播不完整 | 已有部分转换检查；仍存在数值转换和 warning 返回值待审查点 | 能抛异常的 __float__/__bool__、warnings-as-errors 等触发测试；保留原异常，不出现带 pending exception 的成功返回；操作失败后的状态符合契约 |
 | D009 / P2 | polygon 错误路径资源泄漏 | 历史 legacy D6 是输入转换问题，不证明资源问题已关闭；当前工作项待定点复现 | malformed vertices、转换异常、相关分配失败的所有权检查；针对该路径的 sanitizer/leak 检查及成功对照 |
@@ -89,11 +89,12 @@
 
 ### 2026-10-10 执行者自审修正：D002 A-36 判定（尚未独立审核）
 
-- 内容：`testing/d002/run_d002.py` 中 asan_baseline 的 A-36 由 must_pass 改为 may_fail，且只接受注册站点的 ASan SEGV（`RescaleMatrix` ← `RNP::Eigensystem` 于基线 `Eigensystems.cpp:4715`）。seam_asan_baseline 的 A-36 保持 must_fail，并加同一站点规则。
-- 原因：基线仅值分支丢弃 `zhseqr_` 返回值，`info` 未初始化。2026-10-10 的 26 次 asan_baseline 重跑中 17 次在该站点崩溃、9 次 info 为 0 通过；原 must_pass 只依据此前的通过记录。
-- 不变：产品源码（S4 子树仍为 `1d738e64`）、PLAN 阈值、候选判定、其它 ASan 报告、rc=-11、损坏与错误身份规则；ord_baseline 的 A-36 仍为 must_pass（20/20 重复 info 为 0，仍为未初始化读取，需按同一方法重判若将来失败）。
-- 测试：判定器测试 124→137 项（新增 13 项），变异检查确认站点规则与分类均被约束。
-- 证据：`testing/d002/evidence/A36_RULE_CORRECTION.md`、`testing/d002/evidence/A36_RAW_20261010.tar.gz`。
+- 内容：`testing/d002/run_d002.py` 中 asan_baseline 的 A-36 由 must_pass 改为 may_fail，但结果受 A-36 专用规则限制：注册站点崩溃须为一份完整 ASan SEGV 报告，且其调用栈显示 `RescaleMatrix` 由 `RNP::Eigensystem` 在 `Eigensystems.cpp:4715` 调用；正常退出须通过完整判定，唯一例外是 info 非零且位于 `[1, n]`。seam_asan_baseline 的 A-36 保持 must_fail，仅接受同一站点崩溃。
+- 原因：基线仅值分支丢弃 `zhseqr_` 返回值，`info` 未初始化。2026-10-10 的 26 次 asan_baseline 重跑中 17 次在该站点崩溃、9 次 info 为 0 通过；原 must_pass 只依据此前的通过记录。修订一曾允许任意数值失败，修订二（commit `168d081`）已收紧，两个审核反例的修正前后判定见 `A36_RULE_CORRECTION.md` 第 6 节。
+- 不变：产品源码（S4 子树仍为 `1d738e64`）、PLAN 阈值、候选判定、A-07/A-37/C-03 的既有 may_fail 规则、其它 ASan 报告、rc=-11、损坏与错误身份规则；ord_baseline 的 A-36 仍为 must_pass。20/20 重复 info 为 0 只是已观察结果，不证明未初始化读取必然通过。
+- 测试：判定器测试 124 → 151 项，全部通过；变异检查确认窗口、数值与单报告规则均被约束。
+- 证据：`testing/d002/evidence/A36_RULE_CORRECTION.md`（80 条归档记录逐条复判，结论无变化）、`testing/d002/evidence/A36_RAW_20261010.tar.gz`。
+- 残余缺口：A-07、A-37、C-03 的 asan_baseline 通用 may_fail 仍会接受任意完整数值失败，本轮按要求未改，需单独立项；A-36 的窗口规则由代码推导，尚无 rc=0 非零 info 的实测观察。
 - 状态：执行者自审修正，未经独立审核；不改变 D002 的技术接受、有限关闭范围或必要 leak 的 B 限制，不改变 GitHub issue 状态。
 
 ## P04 范围外后续登记（2026-10-10）
