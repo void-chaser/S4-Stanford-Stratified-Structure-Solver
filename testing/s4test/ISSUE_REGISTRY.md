@@ -87,6 +87,15 @@
 
 范围外（不升格关闭前提）：HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance。根历史manifest中evidence/README.md、REMAINING_ITEMS.md、REMEDIATION_REPORT.md三处文档差异仍披露。上方2026-10-09状态表为历史记录，其旧待审项不覆盖本次有限最终结论。
 
+### 2026-10-10 执行者自审修正：D002 A-36 判定（尚未独立审核）
+
+- 内容：`testing/d002/run_d002.py` 中 asan_baseline 的 A-36 由 must_pass 改为 may_fail，且只接受注册站点的 ASan SEGV（`RescaleMatrix` ← `RNP::Eigensystem` 于基线 `Eigensystems.cpp:4715`）。seam_asan_baseline 的 A-36 保持 must_fail，并加同一站点规则。
+- 原因：基线仅值分支丢弃 `zhseqr_` 返回值，`info` 未初始化。2026-10-10 的 26 次 asan_baseline 重跑中 17 次在该站点崩溃、9 次 info 为 0 通过；原 must_pass 只依据此前的通过记录。
+- 不变：产品源码（S4 子树仍为 `1d738e64`）、PLAN 阈值、候选判定、其它 ASan 报告、rc=-11、损坏与错误身份规则；ord_baseline 的 A-36 仍为 must_pass（20/20 重复 info 为 0，仍为未初始化读取，需按同一方法重判若将来失败）。
+- 测试：判定器测试 124→137 项（新增 13 项），变异检查确认站点规则与分类均被约束。
+- 证据：`testing/d002/evidence/A36_RULE_CORRECTION.md`、`testing/d002/evidence/A36_RAW_20261010.tar.gz`。
+- 状态：执行者自审修正，未经独立审核；不改变 D002 的技术接受、有限关闭范围或必要 leak 的 B 限制，不改变 GitHub issue 状态。
+
 ## P04 范围外后续登记（2026-10-10）
 
 这些事项不撤销已验的 D001/D002/P04 有限关闭。先登记已知反例、待验证契约和配置覆盖缺口，未验证不写成已确认生产缺陷；R-P04 编号是后续登记引用，不替代 D001–D015。正常受支持输入中新确认的独立缺陷再按更新规则追加 D016 起，避免重复编号。以下排期是建议，尚未开始执行。

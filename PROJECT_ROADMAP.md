@@ -1,8 +1,8 @@
 # S4 项目执行路线与计划表
 
-更新：2026-10-03（Australia/Sydney）。下一次工作从本文和 [当前缺陷登记表](testing/s4test/ISSUE_REGISTRY.md) 开始。
-本轮交付是规划与编号整理，没有执行 native build、S4 import、solver、生产修复、commit 或 push。
-表中“待执行”不是本轮测试结果，也不启动后续任务。
+更新：2026-10-10（Australia/Sydney）。下一次工作从本文、[P04 当前交付状态](checkpoints/p04/CURRENT_STATUS.md) 和 [当前缺陷登记表](testing/s4test/ISSUE_REGISTRY.md) 开始；主线为 **P05/D003**，再 P06/D004。
+2026-10-10 更新只同步 P01–P04 的状态与当前入口：P01–P04 的有限范围关闭以已有证据为准，未启动 P05，未合入或推送 Master，未关闭 GitHub issue。
+表中“待执行”仍表示尚无该阶段运行结果；“已完成”只指该行目标已满足。
 
 ## 1. 当前基线与目标
 
@@ -44,9 +44,9 @@ Pxx 是计划步骤，不是优先级、缺陷号或历史 Task 号。
 | 步骤 | 阶段 / 项目 | 具体动作 | 验收和交付物 | 前置条件 | 当前状态 |
 |---|---|---|---|---|---|
 | P00 | Phase 0：基线与编号 | 采用 963ccf1 checkpoint；区分当前 D001–D015、legacy D1–D15 和审计 Task 号 | 本路线图 + 当前登记表；014RF 接受边界保持 | 无 | 已完成（本轮文档） |
-| P01 | Phase 1 前置：恢复与构建 | 从基线建立新的隔离源码目录；核对 D001 四行候选、最小原失败输入、独立公式及必要 D002 用例；把必要源码/patch/输入纳入可恢复交付 | 新环境不依赖整份 audit-workspace 或旧 .so；明确实际 flags、源提交/patch、库/extension 路径及哈希 | P00 | 待执行；下一步 |
-| P02 | D001：当前生产反例与候选 | 用相同 flags 新构建 baseline/candidate；先看 baseline 的 A/B/C，再比较候选和独立参考；保留原始 flux/G/R/T | baseline 复现已知 N9 B/C 错误；candidate 修正且 A/N1 控制不退化；最小差异、原始结果与常规回归测试 | P01 | 已实现并定向验证（2026-10-09，分支 codex/p04-d001-d002-production-20261009T082631Z @ 8b13d67）：baseline N9 B/C 复现，candidate 修正；待独立生产验收 |
-| P03 | D002：RNP 两类契约 | 分开处理 backtransform 边界/布局和仅值返回状态；复用既有候选/保护，缺什么补什么；核对左右/仅值路径和工作区 | 真实 native RNP 入口 targeted；相关 ASan/UBSan、必要 leak 检查及阳性对照；错误状态不会变成成功；明确生产可达性 | P02 初步结果；共用文件改动可审查 | 已实现并定向验证（同上）：native RNP 契约 53/53（ord/asan）、seam 58/58、阳性对照通过；待独立生产验收；历史来源不补证 |
+| P01 | Phase 1 前置：恢复与构建 | 从基线建立新的隔离源码目录；核对 D001 四行候选、最小原失败输入、独立公式及必要 D002 用例；把必要源码/patch/输入纳入可恢复交付 | 新环境不依赖整份 audit-workspace 或旧 .so；明确实际 flags、源提交/patch、库/extension 路径及哈希 | P00 | 已完成（有限前置）：D001 四行候选 44f4a09；最小原失败输入 `testing/d001/cases/d001_first_matrix.json`；独立参考 `testing/d001/oracle_d001*.py`；D002 PLAN `testing/d002/PLAN.json`；补丁 `checkpoints/p04/review-inputs/patches/`。流水线 `testing/p04_run_all.sh` 从 Git 树与 963ccf1 归档构建并记录 ARTIFACTS.sha256。新 clone 的正式复验见执行者自审报告 |
+| P02 | D001：当前生产反例与候选 | 用相同 flags 新构建 baseline/candidate；先看 baseline 的 A/B/C，再比较候选和独立参考；保留原始 flux/G/R/T | baseline 复现已知 N9 B/C 错误；candidate 修正且 A/N1 控制不退化；最小差异、原始结果与常规回归测试 | P01 | 已完成（有限范围）：2026-10-09 实现并定向验证（分支 codex/p04-d001-d002-production-20261009T082631Z @ 8b13d67），baseline N9 B/C 复现，candidate 修正；2026-10-10 随 P04 固定候选 5cf534c 经 Codex 最终生产技术审核接受并有限关闭（`checkpoints/p04-final/FINAL_REVIEW.md`）。D001 范围限制见 ISSUE_REGISTRY |
+| P03 | D002：RNP 两类契约 | 分开处理 backtransform 边界/布局和仅值返回状态；复用既有候选/保护，缺什么补什么；核对左右/仅值路径和工作区 | 真实 native RNP 入口 targeted；相关 ASan/UBSan、必要 leak 检查及阳性对照；错误状态不会变成成功；明确生产可达性 | P02 初步结果；共用文件改动可审查 | 已完成（有限范围）：native RNP 契约 ord 53/53、asan 53/53、seam 58/58，阳性对照通过；必要 leak 按负责人 B 保存证据验收，非独立动态 LSan 认证；随 P04 固定候选有限关闭。历史来源不补证。2026-10-10 执行者自审修正 asan_baseline 的 A-36 判定（may_fail 加注册站点），尚未经独立审核，见 `testing/d002/evidence/A36_RULE_CORRECTION.md` |
 | P04 | Phase 1：生产集成验收 | 将通过的最小修复集成到工作分支并全新构建；经 Python、Lua 和相关 C/RNP 路径复验；跑既有主套件 | D001 生产物理矩阵通过；D002 原生契约通过；相关历史回归无新增失败；独立复核后记录源码提交和关闭范围 | P02、P03 | 2026-10-10 有限范围 CLOSED：固定候选 5cf534ce5ec223a6388d29bbb2c58f981f070241 经 Codex 最终生产技术审核接受（checkpoints/p04-final/FINAL_REVIEW.md）；必要 leak 行1–4按负责人B保存证据验收，非独立动态LSan认证。负责人批准后采纳于 codex/p04-adoption-20261010，采纳SHA为上述固定候选；范围与限制见登记表。P05未启动。 |
 | P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重试正确 | P04；固定选项、全新对象避免依赖 D004 | 待执行；优先复用已有候选 |
 | P06 | Phase 2 A：D004 + core smoke | 修正 solve 后 SetOptions 的失效/状态契约；测试同对象和全新对象一致，再测 D003 失败→改选项→重试组合 | targeted + D003/D004 core smoke；原生产物理回归仍通过；两缺陷各有最小 diff | P05 | 待执行 |
@@ -150,13 +150,13 @@ P14 之前重查这些已知边界：若属于声明支持范围内的重大错�
 
 ## 7. 后续如何对照执行
 
-下一次从 **P01** 开始，单次工作携带当前步骤、基线、涉及缺陷与验收条件即可。
-P01 先把既有 D001 候选和用例恢复为最小可运行输入，完成新隔离构建来源记录；随后进入 P02。
+下一次从 **P05/D003** 开始，单次工作携带当前步骤、基线、涉及缺陷与验收条件即可；P05 先核对实际 FMM/FFT 失败传播和已登记 VL NB1 可达性，随后进入 P06/D004。
+P01–P04 已有有限范围关闭记录，上表与登记表是其状态来源；这里不再把 P01 作为下一步。
 不要求新的会话阅读整份 audit-workspace，也不让旧 S4_HANDOFF.md 的历史“下一轮”覆盖本文。
 
 每完成一步，更新本表状态以及当前登记表的提交、证据和关闭范围。
 各阶段 checkpoint 使用明确的源码提交锚点；新开发分支默认用 codex/ 前缀。
-本轮不自动提交/推送规划文件、不启动 P01；后续按用户要求执行具体阶段。
+2026-10-10 同步不启动 P05，不合并或推送 Master；后续按用户要求执行具体阶段。
 
 ## 8. 本次规划依据
 
