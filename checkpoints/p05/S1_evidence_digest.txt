@@ -91,3 +91,33 @@ checkpoints/p05/evidence/EVIDENCE.sha256 (19 files; sha256sum -c: all OK)
   logs/62-t6-repeat.log          f70150cc1bfb07ab40f276e7f7e7de59df51ad7a553370cfe647f8f121969936
   rc.txt                         e1d638eba3c57d6bfec8ce612a26e415a24b2a503b883d4c211566f34cf94489
   s1_run.sh                      6591080120548a52a784abcabfe322556f891de0654f6e54ad85fc61b7e4d000
+
+S2 (scope and gaps) — appended
+=============================
+Gate        : HEAD dc3be83, status clean; base 5b72793 is ancestor; only checkpoints/p05/ changed.
+Report      : checkpoints/p05/S2_SCOPE_AND_GAPS.md (not ignored; to be committed)
+Evidence    : checkpoints/p05/evidence/s2/ (ignored; not committed)
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 105 files (s2/: 45); sha256sum -c all OK
+              (supersedes the 60/19-file counts stated earlier in this digest)
+
+T7 FFT path, VL, DiscretizedEpsilon=True, f=0.427:
+  fft-VL-nb1-th0     NB=1 th=0  EXCEPTION info=2
+  fft-VL-nb1-th30    NB=1 th=30  EXCEPTION info=2
+  fft-VL-nb9-th0     NB=9 th=0  ok flux_finite=True amp_finite=True
+  fft-VL-nb9-th30    NB=9 th=30  ok flux_finite=True amp_finite=True
+T8 NB=4 (ClosedForm+PolBasisVL):
+  python  closed-VL-nb4-th0  NB=4  EXCEPTION info=2
+  driver  vl NB=4  rc=1 RC first=20 RC retry=20  (s2/t8/driver-vl-nb4.log)
+T9 history vs copy: source differs only by the S1B patch; NB/frequency of history loads UNDETERMINED;
+    history san/ tree differs from Master in Eigensystems.cpp and S4.cpp (uncommitted).
+T10 S4_malloc -> malloc: YES (run evidence, -O0 -fno-inline -fno-omit-frame-pointer).
+    91 malloc calls total. Calls with frame1=S4_malloc (via malloc_aligned): 18 (in 1 distinct frame pair).
+    Calls with frame1=rcwa_malloc (via malloc_aligned): 2 (in 1 distinct frame pair).
+    (Counts are CALLS, weighted; "distinct pair" counts only the number of unique (frame0,frame1) pairs.)
+    FMM attribution of the S4_malloc calls: UNDETERMINED (only two frames recorded).
+T11 scratch1 vs control (fft NB=1), retry E/H dump: 144/144 elements bit-identical; max abs diff 0.0
+    (first, failed call output not captured: UNVERIFIED)
+Archive     : checkpoints/p05/evidence/archive/evidence-s1-s2.tar.gz
+              size=71185 bytes  sha256=2cacdc0a2d665a853268c899fe90d66d6d76e1b468279df8953aeddee1a5f75f
+              members extract to 105 files; all match the manifest (verified from the archive).
+Stale historical statements (kept unedited; superseded by S2): see S2 report section 6, item 7.
