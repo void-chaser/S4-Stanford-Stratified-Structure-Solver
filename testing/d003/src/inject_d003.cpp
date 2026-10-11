@@ -422,6 +422,46 @@ extern "C" void S4_TEST_FMMPERT_AFTER(int id, std::complex<double> *e2, std::com
 	std::fprintf(stderr, "S4FMM HIT fmmpert id=%d call=%ld (hit=%ld)\n", id, fp_calls[ix], n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * Family F (P05-S2R5, R5-2).  Test-only hook at the three H caller checks of
+ * Simulation_AddFieldToCache (fmm_PolBasisJones 340, fmm_PolBasisNV 228, fmm_PolBasisVL 237).
+ *   addf:ID:K   S4_TEST_ADDFIELD_AFTER(id, ret) returns 1 for the K-th call of the requested ID
+ *               (IDs 160 Jones, 161 NV, 162 VL), otherwise the real return value ret.  The function
+ *               itself has already run in full; only the caller's test is affected.  This isolates the
+ *               caller's check and cleanup from the function's own NULL check (S4.cpp 4010-4012).
+ * Unrequested runs: returns ret unchanged.  Unparsable or unknown requests never match (fail closed).
+ * ------------------------------------------------------------------------ */
+static int fa_req_ok = 0, fa_req_id = 0, fa_req_k = 0;
+static long fa_calls[3] = {0};
+static const int fa_ids[3] = {160, 161, 162};
+
+static int fa_index(int id){
+	for(int i = 0; i < 3; ++i){ if(fa_ids[i] == id){ return i; } }
+	return -1;
+}
+
+static void fa_parse_request(void){
+	const char *m = mode();
+	fa_req_ok = 0;
+	if(0 != strncmp(m, "addf:", 5)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 5, "%d:%d", &id, &k)){ return; }
+	if(fa_index(id) < 0 || k < 1){ return; }
+	fa_req_id = id; fa_req_k = k; fa_req_ok = 1;
+}
+
+extern "C" int S4_TEST_ADDFIELD_AFTER(int id, int ret){
+	fa_parse_request();
+	const int ix = fa_index(id);
+	if(ix < 0){ return ret; }
+	fa_calls[ix]++;
+	if(!fa_req_ok || id != fa_req_id){ return ret; }
+	if(fa_calls[ix] != fa_req_k){ return ret; }
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT addf id=%d call=%ld ret=%d->1 (hit=%ld)\n", id, fa_calls[ix], ret, n_hits);
+	return 1;
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);
