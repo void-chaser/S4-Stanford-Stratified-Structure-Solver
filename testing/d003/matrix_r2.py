@@ -39,7 +39,8 @@ MODES = ("fft", "kottke", "jones", "nv", "vl",
          # [P05-S2R3] new driver modes (T1/T2); appended, existing five unchanged.
          "experimental", "closed2d", "closed1d", "tensor", "fftjones", "fftnv", "fftvl")
 STACKS = ("pattern", "flat")
-REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc")
+# [P05-S2R3 3b] "linearsolve_null2:" is the family-B2 request (H tree), appended per user decision.
+REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc", "linearsolve_null2:")
 
 
 def _child_env(extra):
