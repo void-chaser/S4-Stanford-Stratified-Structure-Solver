@@ -70,6 +70,9 @@ struct Buf {
 static int g_ng = 1;
 static S4_Simulation *make_stack(const char *which, double freq){
 	S4_real Lr[4] = {1, 0, 0, 1};
+	/* [P05-S2R3 T2] closed1d is the only new mode that needs a different lattice (1D). Every
+	 * historical and other new mode keeps {1,0,0,1}. */
+	if(NULL != getenv("FMM_MODE") && 0 == strcmp(getenv("FMM_MODE"), "closed1d")){ Lr[0] = 1; Lr[1] = 0; Lr[2] = 0; Lr[3] = 0; }
 	S4_Simulation *S = S4_Simulation_New(Lr, (unsigned int)g_ng, NULL);
 	if(NULL == S){ return NULL; }
 	/* [S1B] FMM_MODE selects the epsilon branch (unchanged from the history driver). */
@@ -77,17 +80,31 @@ static S4_Simulation *make_stack(const char *which, double freq){
 	if(mode && !strcmp(mode,"fft")) S->options.use_discretized_epsilon=1;
 	if(mode && !strcmp(mode,"kottke")){S->options.use_discretized_epsilon=1;S->options.use_subpixel_smoothing=1;}
 	if(mode && (!strcmp(mode,"jones")||!strcmp(mode,"nv")||!strcmp(mode,"vl"))){S->options.use_polarization_basis=1;S->options.use_jones_vector_basis=!strcmp(mode,"jones");S->options.use_normal_vector_basis=!strcmp(mode,"nv");}
+	/* [P05-S2R3 T2] new modes: options only (structure is chosen below by 'which' and the mode). */
+	if(mode && !strcmp(mode,"experimental")){ S->options.use_experimental_fmm = 1; }
+	if(mode && (!strcmp(mode,"fftjones")||!strcmp(mode,"fftnv")||!strcmp(mode,"fftvl"))){
+		S->options.use_discretized_epsilon = 1; S->options.use_polarization_basis = 1;
+		S->options.use_jones_vector_basis = !strcmp(mode,"fftjones"); S->options.use_normal_vector_basis = !strcmp(mode,"fftnv");
+	}
 
 	S4_real air[1] = {1.0}, glass[1] = {4.0};
+	S4_real ten[5] = {4.0, 0.0, 4.0, 0.0, 4.0}; /* [P05-S2R3 T2] XYTENSOR_REAL components for mode tensor */
 	S4_MaterialID mAir = S4_Simulation_SetMaterial(S, -1, "Air", S4_MATERIAL_TYPE_SCALAR_REAL, air);
-	S4_MaterialID mGlass = S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_SCALAR_REAL, glass);
+	S4_MaterialID mGlass = (NULL != mode && 0 == strcmp(mode, "tensor"))
+		? S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_XYTENSOR_REAL, ten)
+		: S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_SCALAR_REAL, glass);
 	S4_real zero = 0.0, half = 0.5;
 	if(0 == strcmp(which, "pattern")){
 		S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
 		S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
 		S4_real radius[2] = {0.25, 0.25}, center[2] = {0.0, 0.0}, angle_frac = 0.0;
-		if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, S4_REGION_TYPE_CIRCLE,
-		                                     radius, center, &angle_frac)){
+		/* [P05-S2R3 T2] closed1d: a 1D lattice accepts only INTERVAL regions. */
+		const int is1d = (NULL != mode && 0 == strcmp(mode, "closed1d"));
+		const int rtype = is1d ? S4_REGION_TYPE_INTERVAL : S4_REGION_TYPE_CIRCLE;
+		/* For INTERVAL only the first halfwidth is meaningful; a zero second value avoids the warning path. */
+		S4_real ival[2] = {0.25, 0.0};
+		if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype,
+		                                     is1d ? ival : radius, center, &angle_frac)){
 			S4_Simulation_Destroy(S);
 			return NULL;
 		}
@@ -153,7 +170,9 @@ int main(int argc, char **argv){
 	const S4_real xyz[3] = {0.0, 0.0, 0.05};
 
 	const char *mode = getenv("FMM_MODE");
-	if(NULL == mode || (strcmp(mode,"fft") && strcmp(mode,"kottke") && strcmp(mode,"jones") && strcmp(mode,"nv") && strcmp(mode,"vl"))){
+	if(NULL == mode || (strcmp(mode,"fft") && strcmp(mode,"kottke") && strcmp(mode,"jones") && strcmp(mode,"nv") && strcmp(mode,"vl")
+	    && strcmp(mode,"experimental") && strcmp(mode,"closed2d") && strcmp(mode,"closed1d") && strcmp(mode,"tensor")
+	    && strcmp(mode,"fftjones") && strcmp(mode,"fftnv") && strcmp(mode,"fftvl"))){
 		std::fprintf(stderr, "S4FMM ARGERROR invalid or missing FMM_MODE=%s\n", mode ? mode : "(unset)"); return 2; }
 	g_ng = argi("S4FMM_NG", 1, 64);
 	std::printf("S4FMM DRIVER actual mode=%s num_basis=%d stage=%s plan_call=%s alloc=%s exec=%s\n",

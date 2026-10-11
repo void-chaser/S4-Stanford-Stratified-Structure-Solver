@@ -33,7 +33,9 @@ TIMEOUT_S = 300
 GRID = ["pattern", "both", "4", "3"]
 ENV_ALLOW = ("PATH", "LANG", "LC_ALL")
 EXPECTED_CLASSES = ("CRASH", "SILENT_SWALLOW", "REPORTED_FAILURE", "INVALID", "CONTROL_OK")
-MODES = ("fft", "kottke", "jones", "nv", "vl")
+MODES = ("fft", "kottke", "jones", "nv", "vl",
+         # [P05-S2R3] new driver modes (T1/T2); appended, existing five unchanged.
+         "experimental", "closed2d", "closed1d", "tensor", "fftjones", "fftnv", "fftvl")
 STACKS = ("pattern", "flat")
 REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc")
 
