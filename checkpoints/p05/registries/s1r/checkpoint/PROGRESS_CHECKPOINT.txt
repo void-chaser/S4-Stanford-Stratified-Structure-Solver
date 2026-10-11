@@ -1,0 +1,260 @@
+Q1 static counts (git grep on committed trees; no working-tree reads):
+- fft_plan_dft_2d FMM call sites: 5 on B/A/H.  NULL check after the call: B 0/5 ; A 5/5 ; H 5/5.  [源码]
+- fft_plan_exec FMM-side call sites: 10 on B/A/H (not 12).  B: 10 discarded; A and H: 10 consumed.  rcwa.cpp:2245 consumed on all.  [源码]
+- FMMGetEpsilon_* call sites in S4.cpp: 10 on B/A/H (not 11).  B: bare; A and H: captured (fmm_ret) and tested once (A 2400, H 2413).  [源码]
+- active S4_malloc call sites in S4/fmm (comments excluded): 17 on B/A/H (same per-file distribution).  NULL test within the next 3 lines: B 0/17; A 16/17; H 17/17.
+  The A exception is fmm_experimental.cpp:40 (no check on A).  The H check at that site is 'if(NULL == ivalues){ return 20; }' after a comment block (full-context read).  [源码]
+- HARNESS NOTE: an attempted variable-specific regex pass produced invalid results (sed expression error); discarded, not reported.
+Q2 SOURCE FACTS (B 37a82e8, exported to evidence/p05-s1r/src/B_gsel.c; read with the read tool)  [源码]
+- G_select (gsel.c:167-184): if(1==*NG) returns G={(0,0)} directly (gsel.c:172-176). So NumBasis=1 -> n_G=1 by construction.
+- Gsel_circular (gsel.c:117-165): circ_area = NG_requested*|u x v|; circ_radius = sqrt(circ_area/pi)+u+v; box extents from radius;
+  enumerates box points, sorts by |G| (sort at 147); j=min(NG_requested, box size) (149); back-off loop 150-154 avoids
+  splitting a degenerate shell; *NG = i (155).  => n_G is the requested count trimmed to a complete shell; NOT equal to NumBasis in general.
+- Gsel_parallelogramic (gsel.c:93-115) is method 1 (not used by default; lattice_truncation default is 0 = circular: check S4.cpp option default before claiming).
+Q2 DEBUG PROBE BUILD (scratch, evidence only)
+- B 37a82e8 exported to evidence/p05-s1r/dbg-B (899 files, matches the blob count).
+- Built with repo default flags plus -g (CXXFLAGS/CFLAGS override).  Library sha256 0d873ff1... (plain B is fb9ac3f5...; the difference is debug info).
+- .text of rcwa.o: plain 88190 bytes, debug 88190 bytes, byte-identical => -g does not change code.  The debug build is valid for the probe.
+- Note: a first comparison used a wrong object path (dbgobj/S4k/rcwa.o); it produced no result and was not reported.
+Q2 DISPATCH RULE (B debug tree, rcwa.cpp:749-772) [源码]
+- isreal = (n > 10), then cleared if any Epsilon_inv or Epsilon2 entry has nonzero imaginary part.
+- real branch (SolveLayerEigensystem_real, print at :666) only if isreal && omega.imag()==0 && epstype==EPSILON2_TYPE_FULL.
+- otherwise complex branch (RNP::Eigensystem, print at :883).
+- Consequence: for n<=10 the complex branch is taken (print site :883).  Observation still required (gdb).
+Q2 CORRECTION (found by the gdb probe, verified by the compile command)
+- The default build does NOT define HAVE_LAPACK: rcwa.cpp compile line (dbg-B-build.log) has no -DHAVE_LAPACK.
+- rcwa.cpp:531-729 (SolveLayerEigensystem_real) and the real dispatch at :748-772 are inside '#ifdef HAVE_LAPACK' -> compiled out.
+- gdb: 'No compiled code for line 666 in file rcwa.cpp'.  So the :666 print site does not exist in this build.
+- Consequence: in the default build SolveLayerEigensystem ALWAYS takes the complex path (RNP::Eigensystem, print site :883).
+  The 'isreal=(n>10)' rule recorded earlier applies only when HAVE_LAPACK is defined; it is NOT the default-build dispatch.
+- The earlier statement "for n<=10 the complex branch is taken" was incomplete: in the default build it is always the complex branch.
+Q2 gdb MEASUREMENT (B debug build, driver_d003 debug, no injection, FMM_MODE=vl, S4FMM_NG=1 and 9)  [实测 gdb]
+- Simulation_ComputeLayerModes entry (S4.cpp:2274): n_G = 1 (NG=1, nn=1) ; n_G = 9 (NG=9, nn=81).   [A probe, 3 hits each]
+- SolveLayerEigensystem entry: n = 1 (NG=1) ; n = 9 (NG=9).   [C probe]
+- rcwa.cpp:883 (complex-branch error print site): NG=1 reached 2 times, info=2 both times, process exit 1.
+                                                     NG=9 reached 1 time,  info=0, process exit 0 (line reached, no error).
+- Driver stderr: NG=1 has 2 'returned info' lines (matches 2 hits); NG=9 has 0 (matches info=0).
+- Real-branch print site rcwa.cpp:666: no code in the default library (HAVE_LAPACK undefined); not probed.
+Q2 NB SWEEP on B (VL, no injection, debug build; probe A n_G at entry; rcwa.cpp:883 info at every hit):
+  NG 1..4 -> n_G 1 -> info 2,2 (both calls) -> driver exit 1       [FAILURE]
+  NG 5..8 -> n_G 5 -> info 0               -> driver exit 0       [OK]
+  NG 9    -> n_G 9 -> info 0               -> driver exit 0       [OK]
+  => threshold in n_G: n_G=1 fails (eigensystem info=2); n_G in {5,9} succeeds.  n_G=2..4 never occur (NG 2-4 trim to 1).
+  (S3 record had NB=1-4 n_G undetermined; now measured: NB=2,3,4 -> n_G=1.)
+Q2 THREE-TREE NB SWEEP (VL, no injection, debug builds, probe reads S->n_G at ComputeLayerModes entry)  [实测 gdb]
+  NG 1-4: n_G=1, error-site hits 2, info=2 at both hits (both calls), driver exit 1 -- on B, A and H alike.
+  NG 5-8: n_G=5, hits 1, info=0, exit 0 -- on B, A and H alike.
+  NG 9:   n_G=9, hits 1, info=0, exit 0 -- on B, A and H alike.
+  gdb rc 0 on all 27 runs.  Table: evidence/p05-s1r/grep/nb_sweep_three_trees.txt.
+  H does NOT differ from B for this failure.  Stop condition (H differs and unexplained) not triggered.
+  Probe robustness: the local 'n' is <optimized out> on the H debug build; the probe reads S->n_G (verified readable on all trees).
+Q2 STEP-5 CHAIN (B, NG=1, gdb finish of SolveLayerEigensystem, four returns in order)  [实测 gdb]
+  return 1: 0   (workspace query, lwork==-1 path; computes nothing)
+  return 2: 2   (real solve; prints 'Layer eigensystem returned info = 2' at rcwa.cpp:883)
+  return 3: 0   (workspace query of the retry)
+  return 4: 2   (real solve of the retry; prints info=2 again)
+- The value that reaches ComputeLayerModes eigen_info (S4.cpp:2356-2363) on the real solve is 2 -> 'return 20' at S4.cpp:2362.
+- CORRECTION (own miscount): a breakpoint at S4.cpp:2362 resolved to line 2366 (function entry), not the return path;
+  the earlier 'return-20 path hits: 2' measured the entry.  Not used.  Step 5 is now measured via SolveLayerEigensystem returns.
+- Same source statement on A and H (A 2359/2362, H 2372/2375; line shift = S3R additions).
+Q2 BASIS COMPARISON (B, same geometry, same n_G=1; probe A and rcwa.cpp:883 info at each hit)  [实测 gdb]
+  jones NG=1: n_G=1, info=0 at its hit, exits normally.
+  nv    NG=1: n_G=1, info=0 at its hit, exits normally.
+  vl    NG=1: n_G=1, info=2 at both hits, exits 1.
+  => at n=1 the 1x1 eigenproblem SOLVES for jones and nv, and FAILS only for vl.  Not a plain 'n too small' effect.
+Q2 MATRIX OBSERVATION (B debug, NG=1, gdb print at SolveLayerEigensystem entry)  [实测 gdb]
+  jones: n=1, Epsilon_inv and Epsilon2 entries FINITE (e.g. 0.8527, 1.3808+1.3e-33j, 3.8e-18+0.208j).
+  nv:    n=1, entries FINITE and REAL (0.8527, 1.3808, 1.6e-18).
+  vl:    n=1, Epsilon_inv and Epsilon2 entries are -nan(0x8000000000000) (NaN) after the first entry.
+  => for VL NB=1 the eigensystem receives NaN input.  The info=2 is downstream of a NaN produced before the solve.
+  This contradicts S1 section 7.3 'not a silent NaN' only in the sense that the NaN is in an INTERMEDIATE matrix,
+  not in the reported output (S1 measured output finiteness; it did not inspect the eigensystem input).
+Q2 NaN LOCALISATION (B debug, NG=1)  [实测 gdb]
+- FMMGetEpsilon_PolBasisVL on return: pB->Epsilon_inv[1] and Epsilon2[1] are NaN  -> NaN is produced by the VL construction.
+- Lattice S->Lr = {1,0,0,1}: ndim=2, so the 1D trivial-field branch (PolBasisVL.cpp:128-137) does NOT run.
+- ngrid = {1,1} at NG=1 (allzero grid).  Before the normalisation (PolBasisVL.cpp:163): vfield[0],[1] = NaN.  At NG=9 ngrid={8,8}, vfield finite.
+- Pattern_GenerateFlowField(...) (PolBasisVL.cpp:140) RETURNS 0 and leaves vfield = NaN for NG=1.  => the NaN is from the flow-field
+  generation for the 1x1 grid, and the function reports success.  Source of the flow field: to be read (Pattern_GenerateFlowField).
+Q2 FLOW-FIELD CHAIN (B; pattern.c exported to evidence/p05-s1r/src/B_pattern.c)  [源码]
+- Pattern_GenerateFlowField (pattern.c:2155) -> pattern_generate_flow_field (2089).
+- Lattice L={1,0,0,1}: uv=0 -> lattice_type|=1 -> pattern_generate_flow_field_rect (line 2133) returns max_field.
+- Line 2145: max_field = 1./max_field; line 2148-2149: field *= max_field.  If _rect returns 0 -> inf * 0 = NaN, and the function
+  still returns 0 (no check after normalisation, lines 2146-2163).  This matches the measurement (return 0, NaN field).
+- To confirm: measure _rect's return value at NG=1 (NOT yet done).
+Q2 MEASURED MECHANISM (B debug; gdb at pattern.c:2145, the line 'max_field = 1./max_field')  [实测 gdb]
+- NG=1: nu=1, nv=1, max_field = 0 (before the reciprocal) -> 1./0 = inf -> field *= inf -> NaN in vfield (measured) -> return 0.
+- NG=9: nu=8, nv=8, max_field = 0.0402298 (finite) -> field finite.
+- pattern_generate_flow_field_rect is static and inlined (no symbol); the value was read at the caller's line 2145.
+- The function has no check on max_field after the reciprocal (pattern.c:2145-2152): a zero maximum is silently turned into NaN and returned as success.
+- OPEN: why is the 1x1 field identically zero for this pattern?  (classification depends on it.)
+Q2 CONSTRAINT STRUCTURE (B, pattern.c:1551-1601) [源码]
+- The 1x1 periodic Laplacian's diagonal is 2*(dy_dx3+_dxdy); off-diagonal -_dxdy; on a 1x1 periodic cell the self-edges cancel to a
+  singular operator (constant mode undetermined) UNLESS constraints pin it.
+- Constraints: for each edge with an intersection (c>0): x[row]=1, b[row]+=cross, and then M[diag] += x (pins the diagonal).
+- So: if NO edge of the single cell meets the shape (c==0 everywhere), nothing pins the constant mode -> singular -> zero/NaN.
+- TO MEASURE: the number of constraints (c>0 count) for nu=nv=1 at NG=1, and the diagonal M[0] after assembly.
+Q2 PINNING MEASUREMENT (O0 debug build, verified to reproduce NG=1 fail / NG=9 ok; pattern.c:1599 before constraints applied) [实测 gdb]
+  NG=1: N2=2, M[0]=4, x[0]=1, x[1]=1 (BOTH edges constrained), b[0]=0, nu=nv=1.
+  NG=9: N2=128, M[0]=4, x[0]=0, x[1]=0, b[0]=0, nu=nv=8.
+- CORRECTION: the hypothesis 'the 1x1 system is unpinned (singular diagonal)' is FALSE for this build: both edges are constrained
+  for NG=1 and M[0]=4 (nonzero).  The zero max_field is NOT caused by a zero diagonal.  The source of max_field==0 is still open.
+Q2 SOLVE RESULT (O0 debug, after sparse_linsolve_d at pattern.c:1622) [实测 gdb]
+  NG=1: b = {0,0} (N2=2), x = {0,0}.  The field is identically zero -> max_field = 0 -> 1/0 -> NaN.
+  NG=9: b nonzero at the shape-crossing edges (0.1210, -0.0827, 0.0827, ...), x nonzero, max_field 0.0402 finite.
+  => The zero at NG=1 is the RIGHT-HAND SIDE being zero: no constraint crossing is recorded for the single cell.
+  OPEN: is 'no crossing for the 1x1 cell' the true geometry, or a defect in the crossing test?  (classification depends on it.)
+Q2 CROSSING COUNT: NOT VALID YET (own instrument error, not reported as a result).
+  The 'print c' loop: NG=1 exited after 18 hits and printed a non-int union ({i=..,x=1,d=1}) after the scope ended; NG=9 hit the 200-cap.
+  Counts 187 / 0 are therefore INVALID and withdrawn.  The instrument must be fixed (stop at every return with a conditional, no
+  fixed-count loop) before any crossing count is reported.
+Q2 CROSSING CONTRIBUTIONS, NG=1 (O0 debug, conditional breakpoint at pattern.c:1432 'if c>0'; VALID)  [实测 gdb]
+  4 crossed edges on the single 1x1 cell:
+    p0=(0,-1)  dp=(0,1)   value=+1
+    p0=(-1,0)  dp=(1,0)   value=+1
+    p0=(0,0)   dp=(1,0)   value=-1
+    p0=(0,0)   dp=(0,1)   value=-1
+  Contributions to b cancel pairwise (+1+1-1-1=0)  ->  b={0,0}  ->  x={0,0}  ->  max_field=0  ->  1/0  ->  NaN field  ->  info=2.
+  NG=9: 16 crossed edges with c=1 on the 8x8 grid (exit normal).
+OPEN: are the signs (+/-) of 'value' correct for these edges?  i.e. is the cancellation the true net flux or a sign error?
+Q2 GEOMETRIC CHECK OF THE CROSSING SIGNS (independent Python computation, circle r=0.25 at origin, unit cell)  [推断 from geometry; measured inputs]
+  Each measured edge crosses the circle ONCE.  Geometric crossing signs (dp . outward-normal):
+    (0,-1)->dp(0,1):  -1 at t=0.75   measured value +1
+    (-1,0)->dp(1,0):  -1 at t=0.75   measured value +1
+    (0,0)->dp(1,0):   +1 at t=0.25   measured value -1
+    (0,0)->dp(0,1):   +1 at t=0.25   measured value -1
+  Measured values = global negative of my sign convention on all four edges (consistent).  The RELATIVE signs agree with the geometry:
+  the two edge pairs have opposite signs, and the net over the closed cell boundary is zero.  => the cancellation is the true net crossing
+  flux of this closed cell, not a per-edge sign error.  The global sign convention does not change the cancellation.
+Q2 CLASSIFICATION LOGIC (before any category is chosen)
+  Established: VL NB=1 -> zero field (max_field=0) -> 1/0 -> NaN -> info=2.  Zero field from zero b from cancelling crossings.
+  Crossings are geometrically consistent (relative signs agree; net flux zero).
+  Open: does Jones/NV at NG=1 build a field through the SAME normalisation (pattern_generate_flow_field) at all?
+        (Jones/NV call Pattern_GenerateFlowField too: PolBasisJones.cpp:181, PolBasisNV.cpp:136.)  If they share the same
+        max_field==0 path, why do they NOT produce NaN?  This decides whether the defect is VL-specific.
+Q2 DECISIVE BASIS DIFFERENCE (O0 debug, NG=1, break at pattern.c:2145, 'max_field' before reciprocal)  [实测 gdb]
+  jones: grid nu=nv=8, max_field=0.0402298 (finite, nonzero), field[0]=0.00296.
+  nv:    grid nu=nv=8, max_field=0.0402298, field[0]=0.00296.
+  vl:    grid nu=nv=1, max_field=0 (zero), field[0]=0 -> 1/0 -> NaN.
+  => The VL basis uses a 1x1 flow-field grid at NG=1; Jones/NV use 8x8 at the SAME NG=1.  The zero-field defect is VL-specific.
+  OPEN: why does the grid size differ by basis?  (grid selection: PolBasisVL.cpp:98-112 vs the Jones/NV blocks.)
+Q2 SOURCE CAUSE OF THE BASIS DIFFERENCE [源码]
+  VL  PolBasisVL.cpp:98-112 : has an 'allzero' branch (lines 100,103,105): if all G components of a direction are 0 -> ngrid=1 and
+        the resolution scaling (line 109) and fft_next_fast_size (line 110) are SKIPPED.  NG=1 -> G=(0,0) -> ngrid={1,1}.
+  Jones fmm_PolBasisJones.cpp:142-149 and NV fmm_PolBasisNV.cpp:99-106: NO allzero branch; ngrid *= resolution (8) -> {8,8}.
+  => the 1x1 flow-field grid (zero field) exists only in the VL basis, by this branch.
+Q2 COUNTERFACTUAL (scratch only: evidence/p05-s1r/cf; S4/ untouched; the single change = VL 'allzero' branch also applies resolution scaling)
+  Result: VL NG=1 -> driver rc 0, no 'returned info', RC first 0 (was rc 1, info=2, RC first 20).   VL NG=9 unchanged (rc 0).
+  => the 1x1 grid forced by the allzero branch is SUFFICIENT for the NG=1 failure (in this build).
+  NOT yet shown: that the now-successful field is physically correct (success alone could be a wrong finite field).
+Q2 COUNTERFACTUAL FIELD MATCH: cf VL NG=1 max_field = 0.0402298 on an 8x8 grid == Jones and NV NG=1 max_field (same value).
+Q2 PUBLIC-API ROUTE, B (O0 debug extension in dbg-B0; public_nb.py; ClosedForm default; freq 0.427, normal incidence)  [实测]
+  VL NB 1-4: EXC 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'  (stderr info = 2)
+  VL NB 5-9: OK finite.  Jones NB 1-9: OK finite.  Normal NB 1-9: OK finite.
+  Flux values agree with S1 T6 table (e.g. VL NB9 flux_bot 0.9795388594, Jones NB1 flux_bot 0.9713563556).
+  Repeat: 27 records identical across the two runs.
+  Probe bug found and fixed before the run: GetPowerFlux keyword is S4_Layer (not Layer), checked against main_python.c.
+Q2 PUBLIC ROUTE, THREE TREES (all libraries -O3; public_nb.py; extensions in dbg-B3, dbg-A, dbg-H)
+  Status: 0 of 27 rows differ across B, A, H.  Exception text identical on all trees (VL NB1-4):
+    'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'.
+  Flux: 23 rows OK on all three trees.  Jones rows (NB1-9) differ at 1e-14..8e-14; VL and Normal are identical.
+  The Jones spread is the SAME ORDER as the variation within ONE tree: B(O3) vs B(O3,repeat) differs 3.3e-14 at NB9.
+  => rounding-level, not separable from run-to-run variation at this precision.  Not attributed to a source change.
+  Stop condition (H differs from B and unexplained) NOT triggered for the status; flux differences explained as rounding.
+  Data: evidence/p05-s1r/public/{B,B3,B-rep,A,H}/public_nb_*.json
+Q2 UNIFORM-LAYER CORRECTION (gdb layer probe + public uniform-only stack)  [实测]
+  Layer probe, B O0, NG=1: LAYER Above (nshapes=0) enters first and does NOT reach SolveLayerEigensystem.
+    LAYER Slab (nshapes=1) -> EIG inv1/eps2 = NaN -> rcwa.cpp:883 print.  Retry repeats the same.
+  Public, stack WITHOUT patterned Slab (homogeneous eps=4 layer), B: Default/Jones/Normal, NB 1 and 9 -> ALL OK (rc 0).
+  => S1 section 7.4 'Air_above/Air_below EXC' is a probe artefact: GetPowerFlux(layer) evaluates the whole stack, so the failing
+     patterned Slab fails the query for the uniform layers too.  The uniform layers' own eigensystems are not failing.
+  S1 section 7.4 and 9 statement 'uniform layers also fail' is therefore NOT a property of the uniform layers.  Recorded as a correction.
+Q2 COUNTERFACTUAL, PUBLIC ROUTE (single source change in fmm_PolBasisVL.cpp allzero branch; verified by diff)
+  VL NB 1-4: B EXC -> counterfactual OK, flux_bot = 0.9588956831286288 (new value; no other run to compare against).
+  VL NB 5-9: B and counterfactual agree to ~1e-13 (non-allzero cases; edit not taken).  e.g. NB9 0.979538859447551 vs 0.9795388594474672.
+  Note on NB 5-8: B flux 0.9774505339943679 vs cf 0.9774505339944561 (1e-13 rounding), so the edit does not change the non-allzero cases.
+  Open: whether 0.95890 is the CORRECT flux at n_G=1 (no independent reference yet).
+Q2 NB=1 INDEPENDENT CHECK (inconclusive)  [实测]
+  Transmitted flux at NB=1, normal incidence: Jones 0.9713564, Normal 0.9744100, VL counterfactual 0.9588957.
+  Formulations differ at one plane-wave term, so exact agreement is not expected; the 1-2% spread is NOT a verdict either way.
+  => The counterfactual value is NOT established as correct.  The category cannot rest on the counterfactual flux alone.
+Q2 CATEGORY DETERMINATION (recommendation only; the final attribution is the user's)
+  A (legitimate rejection): NOT SUPPORTED. With a correct 8x8 grid the eigenproblem at n_G=1 is solvable and gives a finite
+     transmitted flux (0.9589).  The singularity is not intrinsic.
+  B (independent defect): SUPPORTED in its mechanism: the 1x1 grid from the allzero branch produces 1/0 -> NaN silently; the routine
+     returns success; the solver then reports info=2 (misattributed).  Removing the branch's 1x1 grid removes the failure.
+     NOT YET CONFIRMED: (i) correctness of the counterfactual flux (no reference), (ii) design intent of the allzero branch.
+  => Recommendation: B, with the two open items stated.  If the user requires the correctness of the counterfactual before B, the
+     category is C for the correctness question only.
+Q2 FFT CROSS-CHECK [源码]
+  fmm_FFT.cpp:55-60 (B) has the SAME allzero->ngrid=1 convention as VL (lines 11-12 of the read).
+  BUT fmm_FFT.cpp does NOT call Pattern_GenerateFlowField or the flow-field normaliser; it builds epsilon via Pattern_DiscretizeCell (line 93).
+  => the shared convention is common; the zero-field -> 1/0 -> NaN step is specific to the basis flow-field path (VL, Jones, NV use the normaliser).
+  Jones and NV use grid 8x8 at NG=1 because they have NO allzero branch (measured), so they never form the zero field.
+Q2 ATTRIBUTION VERIFICATION
+  S2R line 410 quotation: exact MATCH.  S3 line 171 quotation: exact.
+  n_G per tree (A,B,H): NG1-4->1, NG5-8->5, NG9->9 : identical on all three trees (sweep table).
+  Uniform-only stack: now run on A, H and B: 6 OK / 0 EXC on each (was B only before; the attribution text now has the three-tree evidence).
+Q2 DELIVERABLES WRITTEN: P05_S1R_O1_ATTRIBUTION.md (recommendation B, with open items), P05_S1R_O1_ISSUE_DRAFT.md (D016 suggested; not entered).
+Q1 STATUS: partially verified.  Verified so far (static, git grep / read):  fft_plan_dft_2d 5 sites (B unchecked; A,H checked);
+  fft_plan_exec FMM 10 (B discarded; A,H consumed); FMMGetEpsilon_* 10 (not 11); S4_malloc 17 active (B 0/17 checked; A 16/17; H 17/17);
+  solve_info read (B no; A and H yes at FFT and kottke; H also PolBasis and closed).  T1 reachability table read.
+  NOT YET VERIFIED for Q1: S1 sections 4.1-4.9 (injector/driver), section 8 F1-F11 (F8 not accessible by spec), section 9/10 items,
+  section 12 decisions (partly settled by later rounds), the 'transmitted' half-coverage claim (3.1), F10 current state.
+Q1 S1 section 3.1 (HALF-COVERAGE) VERDICT
+  Source (committed, [源码]): B 37a82e8 S4.cpp:2374-2382: FFT result discarded; PolBasis unconditional -> PolBasis overwrites Epsilon2 after FFT failure.
+                              H 64eb0b5 S4.cpp:2386-2396: FFT result captured fmm_ret; PolBasis guarded by if(0==fmm_ret) -> PolBasis SKIPPED after FFT failure; failure returned (return 20 at ~2416).
+  Registry (REG_3C2_FFTCHAIN, [实测 INFLUENCED]): B classes CRASH / SILENT_SWALLOW at PB sites; A and H all REPORTED_FAILURE.
+  Matrix CONTENTS of Epsilon2 after the half-covered state: NOT recorded in any registry row (0 matches).  => only FAILURE-CATEGORY evidence.
+  H caveat: the guard skips PolBasis, but the source does not show that FFT partial writes to Epsilon2 are cleared; the failure is reported, the content is not checked.
+Q1 S1 SECTION 4.5 (injector cannot cover LinearSolve): SUPERSEDED.
+  Current inject_d003.cpp has LinearSolve families: A (linearsolve:, S4_TEST_LINEARSOLVE_SEAM, trees B,A),
+  B (linearsolve_null:, _NULLINFO, trees B,A), B2 (linearsolve_null2:, _NULLINFO2, tree H), B2buf (linearsolve_null2buf:, _NULLINFO2BUF).
+  Family B points absent on H (solve changed to &solve_info) -> README L3 / D-U1 (accepted known limitation).
+  The S1 injector file (inject.cpp, sha 13b2cbf5...) is NOT in the repository; no candidate matches its hash -> S1 section 4 detail
+  cannot be re-checked against the S1 file itself; only the superseding current injector is verifiable.
+Q1 S1 SECTION 4.6 / F7 (guard only in clone): STILL HOLDS.  Guard instantiated once: S4.cpp:733 inside S4_Simulation_Clone (B and H).
+  Zero instantiations inside Simulation_ComputeLayerModes on B and H.
+Q1 F10 (S1 section 8): CURRENT STATUS = partly confirmed; cause UNDETERMINED.  Source: S2_SCOPE_AND_GAPS.md section 3 (F10 subsection),
+  S3 line 184/252, S5 residual 9 (line 317), S5B residual 9 (line 277).
+  Excluded (exclusion-based, not direct proof): 'FFT leftover causes the non-finite output'.  This round's measurements agree: VL NB=1
+    fails on the ClosedForm route with no FFT (public route, uniform/Jones/Normal fine).
+  Undetermined: the historical NB and frequency (no DRIVER line in its logs); the historical library source differs from Master.
+  => S1 F10 cannot be resolved from the repository; it stays OPEN, needing the historical load to be reproduced.
+Q1 S1 SECTION 8 F-TABLE (verified against baseline B 37a82e8 source unless noted):
+  F1 CONFIRMED (fft_plan_dft_2d returns NULL on failure; fft_iface.cpp).
+  F2 CONFIRMED (rcwa.cpp 2204-2270 per-site NULL and exec checks, 4 matching lines).
+  F3 CONFIRMED (fmm_closed.cpp and fmm_experimental.cpp contain 0 fft_plan calls).
+  F4 CONFIRMED on B (10 bare FMMGetEpsilon calls at S4.cpp 2365-2395; S1 said 11: count corrected to 10).
+  F5 CONFIRMED on B (17 unchecked S4_malloc).  SUPERSEDED on A (16 checked) and H (17 checked; fmm_experimental:40 check at line 42).
+  F6 CONFIRMED on B (solve_info unread at FFT:204, kottke:279).  SUPERSEDED on A and H (read at FFT:209/284 etc.).
+  F11 CONFIRMED (CRLF: S4.cpp 4319/4319, fmm_FFT.cpp 239/239, rcwa.cpp 2632/2632).
+Q1 S1 SECTION 9 (baseline locations): 9.4 CONFIRMED (S4.cpp:3971 unchecked, still open on B); 9.5 CONFIRMED (kottke:77 unchecked);
+  9.6 divisions PRESENT (3 by abcd entries; safety NOT evaluated); 9.7 location CONFIRMED, index bounds UNVERIFIED;
+  9.8 CONFIRMED (S4.cpp 2267, 2295, 2402, 2419 allocation sites).
+Q1 S1 SECTION 12 DECISIONS: 1 DECIDED (S3 freeze line 18/171: O-1 not in D003; revised by S1R attribution as B, recommendation only).
+  2 DECIDED in substance (driver no longer touches FieldCache: driver_d003.cpp 13, 251-258; compiles on B, rc 0; T4 controls run in S2R2).
+  3 ADOPTED (evidence under checkpoints/p05/evidence/, git-excluded; the same rule still holds).
+Q1 S2 CONVERGENCE G-ROWS (S2R6 table) VERIFIED FOR THE SIGN-OFF INPUT:
+  G1 (S4_malloc, closed in scope): ACCURATE.  S2R5 6.1 limits 'closed' to the in-scope FMM sites; out-of-scope points excluded by decision.
+  G2 (LinearSolve, closed in scope): ACCURATE on the same basis.
+  G3 (two-step branch, 'closed per S2 original report 4.3'): CITATION ERROR.  S2_SCOPE_AND_GAPS.md 4.3 is 'Recommendations', not the
+     two-step definition.  The closure itself is supported by S2R4 (line 224) and S2R5 (line 204): plan real, scratch real, exec boundary
+     (not counted as a real defect); cache-hit public API excluded as U-1.  => correct the citation, keep the substance.
+Q1 KOTTKE RED-POINT CORRECTION (source-verified):
+  B 37a82e8: fft_alloc_complex(6*ng2) at fmm_kottke.cpp:77 (UNCHECKED; S1 2.3 correct).  Line 78 is 'fxx = work'.
+  H 64eb0b5: fft_alloc_complex at fmm_kottke.cpp:78, followed by 'if(NULL==work){return 1;}' at line 80 (CHECKED).
+  => the errata holds: the site S3 named is repaired on H.  Citations must use the tree's own line numbers (77 on B, 78 on H).
+  Only remaining 'red point' wording: P05_S2R6_CLOSEOUT.md line 201 (historical; the errata corrects it in place).
+Q1 S1 SECTION 3 (branch table) vs T1 (reachability): the FFT-free statement for experimental is CORRECT (fmm_experimental.cpp: 0 fft_plan).
+  S1 table did not address reachability; T1 now records experimental:40 REACHABLE (probe EXPMALLOC40=1, EXPCHECK44=1).
+  => S1 section 3 'driver-unreachable' for experimental:40 is SUPERSEDED (reclassified reachable by S2R3 T1 / S2R5 mode 'experimental').
+Q1 S1 SECTION 3 REACHABILITY (premise check): S1 contains NO explicit 'driver-unreachable' label for experimental:40, closed 130/133/138/235
+  or the FFT->PolBasis chains (exact search: 不可达 / unreachable / 静态 found only in the count method statements).
+  The 'static reading only (unreachable)' status is the prior_status in S2R3 T1_REACHABILITY_TABLE.tsv (S2R3's own pre-reclassification
+  reading).  The reclassification to REACHABLE is measured in S2R3/S2R5.  => the task premise 'S1 labelled these unreachable' is NOT
+  supported by the S1 text; reported as a finding about the record, not as an S1 error.
+RECONCILIATION REPORT (P05_S1R_RECONCILIATION.md) WRITTEN; corrections applied in-report:
+  - count section corrected to reproducible figures (66 items in section 1; 12/8/31/11/4)
+  - fmm_experimental:40 check line 42 -> 44
+  - section 9.4 H status: superseded (H checks at S4.cpp:4007, S3R D1); open list item 6 closed
+  - earlier typed counts (18/25/70; 13/31/71) recorded as wrong in the report

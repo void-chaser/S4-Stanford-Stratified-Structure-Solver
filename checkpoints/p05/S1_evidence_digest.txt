@@ -601,3 +601,29 @@ Corrections : several counts and one claim (MAP_R4_3 'drops two rows'; 'result l
 Open (S2)   : driver byte-reproducibility (needs a pinned injector revision if required); historical 38-case run; S2R2/R2-D not in
               run_all.sh; injector revision for fmmpert and addf rows; the 13-column T4 converter.  Decisions are the user's.
 Not done    : S2 sign-off; any stage completion.  P05-S1, S2, S3, S4 are not declared complete.
+
+====================================================================================================================
+P05-S1R (S1 reconciliation: S1 conclusions against the current harness, and VL NB=1 (O-1) attribution)  -  STATUS: NOT COMPLETE, awaiting user review.
+====================================================================================================================
+Scope       : supplementary sub-task of P05-S1 (not a new stage).  Reports: checkpoints/p05/P05_S1R_CLOSEOUT.md, P05_S1R_RECONCILIATION.md,
+              P05_S1R_O1_ATTRIBUTION.md, P05_S1R_O1_ISSUE_DRAFT.md.  Starting HEAD 56cccf1; S4/ changes vs 64eb0b5 = 0.
+Baseline    : S4/ of 37a82e8 (B) is byte-identical to Master 5b72793 (git diff empty, 70 blobs).
+Q1          : S1 conclusions reconciled one by one (66 items in the report's section 1: 12 still hold, 8 corrected, 31 superseded,
+              11 open, 4 out of S1 scope).  Corrections: exec FMM count 10 (not 12); FMMGetEpsilon count 10 (not 11); the printed
+              eigensystem site is rcwa.cpp:883 (rcwa.cpp:666 is absent from the default library); the uniform-layer failure in S1 7.4 is
+              a probe artefact of GetPowerFlux evaluating the whole stack; solve_info and FFT-path allocation checks are superseded on A/H.
+Q1 open     : F10 cause (historical load not reproducible); F8 (not accessible by spec); half-coverage contents of Epsilon2 (only failure
+              categories are recorded); 9.6 and 9.7 bounds; the S1 injector file (sha 13b2cbf5) is not in the repository.
+Q2          : VL NB=1..4 (n_G=1) fail with info=2 on B, A and H alike (public API and driver).  NB 5..9 (n_G=5, 9) succeed.  Mechanism
+              measured: the patterned Slab's flow field uses a 1x1 grid (allzero branch, PolBasisVL.cpp:98-112); the zero field from
+              cancelling shape crossings gives 1/0 -> NaN; pattern_generate_flow_field returns 0 unchecked (pattern.c:2145-2152).
+              Recommendation: class B (independent defect), with two open items: correctness of a counterfactual flux (no reference) and
+              design intent of the allzero branch.  Not a ruling; the attribution is the user's.
+Q3          : the S2R3 first-round /tmp violation row (git show > /tmp/__never_write): no residue found; /tmp is empty at both boundary
+              snapshots of this round (sha e3b0c442...); the historical moment cannot be proved unwritten (see the closeout, section 6).
+Violations  : rows of this round recorded in the closeout's single table.  No write landed outside the repository (/tmp count 0 at start
+              and end).  Two shell mistakes (a doubled path refused by the filesystem; stray EOF lines printed as command-not-found) left
+              no residue; both are listed in the table.
+Corrections : my own typed counts (18/25/70, then 13/31/71) were wrong and were replaced by the count reproduced from the table (66);
+              an S2 citation (G3 cites S2 section 4.3, which is recommendations) is recorded as a citation error, substance supported by S2R4/S2R5.
+Not done    : S2 sign-off; any stage completion; registry edits (P05-S5); S4/ edits.  P05-S1, S2, S3, S4 are not declared complete.

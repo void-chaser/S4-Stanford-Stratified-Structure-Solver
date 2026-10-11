@@ -1,0 +1,88 @@
+# S1R Q1 static greps, read-only (git grep on committed trees).  [源码]
+# fft_plan_dft_2d call sites (S4/fmm/*.cpp), with NULL test within 2 lines
+37a82e8:S4/fmm/fft_iface.cpp:73:fft_plan fft_plan_dft_2d(
+37a82e8:S4/fmm/fmm_FFT.cpp:85:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+37a82e8:S4/fmm/fmm_PolBasisJones.cpp:245:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+37a82e8:S4/fmm/fmm_PolBasisNV.cpp:190:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+37a82e8:S4/fmm/fmm_PolBasisVL.cpp:200:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+37a82e8:S4/fmm/fmm_kottke.cpp:89:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+876181c:S4/fmm/fft_iface.cpp:73:fft_plan fft_plan_dft_2d(
+876181c:S4/fmm/fmm_FFT.cpp:89:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+876181c:S4/fmm/fmm_PolBasisJones.cpp:249:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+876181c:S4/fmm/fmm_PolBasisNV.cpp:194:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+876181c:S4/fmm/fmm_PolBasisVL.cpp:204:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+876181c:S4/fmm/fmm_kottke.cpp:93:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+64eb0b5:S4/fmm/fft_iface.cpp:73:fft_plan fft_plan_dft_2d(
+64eb0b5:S4/fmm/fmm_FFT.cpp:89:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+64eb0b5:S4/fmm/fmm_PolBasisJones.cpp:249:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+64eb0b5:S4/fmm/fmm_PolBasisNV.cpp:194:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+64eb0b5:S4/fmm/fmm_PolBasisVL.cpp:204:		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+64eb0b5:S4/fmm/fmm_kottke.cpp:93:		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+# fft_plan_exec call sites
+37a82e8:37a82e8:S4/fmm/fft_iface.cpp:122:int fft_plan_exec(const fft_plan plan){
+37a82e8:37a82e8:S4/fmm/fmm_FFT.cpp:183:		fft_plan_exec(plans[4]);
+37a82e8:37a82e8:S4/fmm/fmm_FFT.cpp:212:		fft_plan_exec(plans[w]);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisJones.cpp:258:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisJones.cpp:277:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisJones.cpp:296:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisJones.cpp:315:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisNV.cpp:206:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_PolBasisVL.cpp:215:			fft_plan_exec(plan);
+37a82e8:37a82e8:S4/fmm/fmm_kottke.cpp:263:		fft_plan_exec(plans[4]);
+37a82e8:37a82e8:S4/fmm/fmm_kottke.cpp:287:		fft_plan_exec(plans[w]);
+37a82e8:37a82e8:S4/rcwa.cpp:2245:		if(0 != fft_plan_exec(plan[i])){ ret = 1; goto cleanup; }
+876181c:876181c:S4/fmm/fft_iface.cpp:122:int fft_plan_exec(const fft_plan plan){
+876181c:876181c:S4/fmm/fmm_FFT.cpp:188:		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
+876181c:876181c:S4/fmm/fmm_FFT.cpp:218:		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
+876181c:876181c:S4/fmm/fmm_PolBasisJones.cpp:263:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_PolBasisJones.cpp:282:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_PolBasisJones.cpp:301:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_PolBasisJones.cpp:320:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_PolBasisNV.cpp:211:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_PolBasisVL.cpp:220:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+876181c:876181c:S4/fmm/fmm_kottke.cpp:268:		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
+876181c:876181c:S4/fmm/fmm_kottke.cpp:293:		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
+876181c:876181c:S4/rcwa.cpp:2245:		if(0 != fft_plan_exec(plan[i])){ ret = 1; goto cleanup; }
+64eb0b5:64eb0b5:S4/fmm/fft_iface.cpp:122:int fft_plan_exec(const fft_plan plan){
+64eb0b5:64eb0b5:S4/fmm/fmm_FFT.cpp:188:		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
+64eb0b5:64eb0b5:S4/fmm/fmm_FFT.cpp:218:		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisJones.cpp:263:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisJones.cpp:282:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisJones.cpp:301:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisJones.cpp:320:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisNV.cpp:211:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_PolBasisVL.cpp:220:			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
+64eb0b5:64eb0b5:S4/fmm/fmm_kottke.cpp:268:		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
+64eb0b5:64eb0b5:S4/fmm/fmm_kottke.cpp:293:		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
+64eb0b5:64eb0b5:S4/rcwa.cpp:2245:		if(0 != fft_plan_exec(plan[i])){ ret = 1; goto cleanup; }
+# FMMGetEpsilon_* call lines in S4.cpp
+37a82e8:37a82e8:S4/S4.cpp:2368:			FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2372:					FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2374:					FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2377:							FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2379:							FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2381:							FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2386:				FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2389:						FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2391:						FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+37a82e8:37a82e8:S4/S4.cpp:2393:						FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2369:			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2373:					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2375:					fmm_ret = FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2378:							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2380:							fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2382:							fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2387:				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2390:						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2392:						fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+876181c:876181c:S4/S4.cpp:2394:						fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2382:			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2386:					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2388:					fmm_ret = FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2391:							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2393:							fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2395:							fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2400:				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2403:						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2405:						fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+64eb0b5:64eb0b5:S4/S4.cpp:2407:						fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);

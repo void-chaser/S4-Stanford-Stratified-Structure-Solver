@@ -1,0 +1,437 @@
+{
+ "S4_file": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s1r/cf/S4.cpython-314-x86_64-linux-gnu.so",
+ "records": [
+  {
+   "basis": "VL",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.041104316871370825+0j)"
+   ],
+   "flux_bot": [
+    "(0.9588956831286288+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.041104316871370825+0j)"
+   ],
+   "flux_bot": [
+    "(0.9588956831286288+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.041104316871370825+0j)"
+   ],
+   "flux_bot": [
+    "(0.9588956831286288+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.041104316871370825+0j)"
+   ],
+   "flux_bot": [
+    "(0.9588956831286288+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-5.421010862427522e-20j)",
+    "(-0.022549466005565472+5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339944561+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-5.421010862427522e-20j)",
+    "(-0.022549466005565472+5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339944561+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-5.421010862427522e-20j)",
+    "(-0.022549466005565472+5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339944561+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-5.421010862427522e-20j)",
+    "(-0.022549466005565472+5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339944561+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02046114055243707+0j)"
+   ],
+   "flux_bot": [
+    "(0.9795388594474672+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-2.168404344971009e-19j)",
+    "(-0.015973984142219955+2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959954005+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-2.168404344971009e-19j)",
+    "(-0.015973984142219955+2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959954005+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-2.168404344971009e-19j)",
+    "(-0.015973984142219955+2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959954005+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-2.168404344971009e-19j)",
+    "(-0.015973984142219955+2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959954005+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.014611716741596394+0j)"
+   ],
+   "flux_bot": [
+    "(0.985850290856151+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.0192591498907529+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092479+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.0192591498907529+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092479+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.0192591498907529+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092479+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.0192591498907529+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092479+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.01757702516932719+0j)"
+   ],
+   "flux_bot": [
+    "(0.9824229748306726+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  }
+ ]
+}

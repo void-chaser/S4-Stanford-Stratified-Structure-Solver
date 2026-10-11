@@ -1,0 +1,409 @@
+{
+ "S4_file": "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s1r/dbg-B3/S4.cpython-314-x86_64-linux-gnu.so",
+ "records": [
+  {
+   "basis": "VL",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "EXC",
+   "exc_type": "RuntimeError",
+   "exc_text": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned"
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "EXC",
+   "exc_type": "RuntimeError",
+   "exc_text": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned"
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "EXC",
+   "exc_type": "RuntimeError",
+   "exc_text": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned"
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "EXC",
+   "exc_type": "RuntimeError",
+   "exc_text": "GetPowerFlux: The layer eigensystem could not be solved; no solution was returned"
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+5.421010862427522e-20j)",
+    "(-0.02254946600556442-5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339943679+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+5.421010862427522e-20j)",
+    "(-0.02254946600556442-5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339943679+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+5.421010862427522e-20j)",
+    "(-0.02254946600556442-5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339943679+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+5.421010862427522e-20j)",
+    "(-0.02254946600556442-5.421010862427522e-20j)"
+   ],
+   "flux_bot": [
+    "(0.9774505339943679+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "VL",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+1.3552527156068805e-20j)",
+    "(-0.02046114055244115-1.3552527156068805e-20j)"
+   ],
+   "flux_bot": [
+    "(0.979538859447551+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1-8.673617379884035e-19j)",
+    "(-0.028643644391032563+8.673617379884035e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9713563556089675+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+2.168404344971009e-19j)",
+    "(-0.015973984142220336-2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959956002+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+2.168404344971009e-19j)",
+    "(-0.015973984142220336-2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959956002+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+2.168404344971009e-19j)",
+    "(-0.015973984142220336-2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959956002+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+2.168404344971009e-19j)",
+    "(-0.015973984142220336-2.168404344971009e-19j)"
+   ],
+   "flux_bot": [
+    "(0.9839975959956002+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Jones",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.014611716741595416+0j)"
+   ],
+   "flux_bot": [
+    "(0.9858502908561179+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 1,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 2,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 3,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 4,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.02559004066097157+0j)"
+   ],
+   "flux_bot": [
+    "(0.9744099593390286+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 5,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.019259149890752926+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092473+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 6,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.019259149890752926+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092473+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 7,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.019259149890752926+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092473+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 8,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.019259149890752926+0j)"
+   ],
+   "flux_bot": [
+    "(0.9807408501092473+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  },
+  {
+   "basis": "Normal",
+   "NumBasis": 9,
+   "freq": 0.427,
+   "theta_deg": 0.0,
+   "status": "OK",
+   "flux_top": [
+    "(1+0j)",
+    "(-0.017577025169325446+0j)"
+   ],
+   "flux_bot": [
+    "(0.9824229748305989+0j)",
+    "0j"
+   ],
+   "flux_finite": true
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+scope: section 1 (lines '## 1.' to before '## 2.'); header and pointer rows excluded
+items: 66
+超出 S1 范围 4
+悬而未决 11
+已更正 8
+已取代 31
+仍成立 12
