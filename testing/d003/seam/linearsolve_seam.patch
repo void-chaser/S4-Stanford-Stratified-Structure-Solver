@@ -1,0 +1,46 @@
+diff -ruN -x '*.o' -x '*.d' pristine/S4/fmm/fmm_FFT.cpp baseline-src/S4/fmm/fmm_FFT.cpp
+--- a/S4/fmm/fmm_FFT.cpp
++++ b/S4/fmm/fmm_FFT.cpp
+@@ -35,6 +35,9 @@
+ #include <kiss_fft.h>
+ #include <tools/kiss_fftnd.h>
+ #include "fft_iface.h"
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<double> *b, int n);
++#endif
+ 
+ int FMMGetEpsilon_FFT(const S4_Simulation *S, const S4_Layer *L, const int n, std::complex<double> *Epsilon2, std::complex<double> *Epsilon_inv){
+ 	const int n2 = 2*n;
+@@ -202,6 +205,9 @@
+ 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
+ 	int solve_info;
+ 	RNP::LinearSolve<'N'>(n,n, Epsilon2,n, Epsilon_inv,n, &solve_info, NULL);
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++S4_TEST_LINEARSOLVE_AFTER(1, &solve_info, Epsilon_inv, n);
++#endif
+ 
+ 	// We fill in the quarter blocks of F in Fortran order
+ 	for(int w = 0; w < 4; ++w){
+diff -ruN -x '*.o' -x '*.d' pristine/S4/fmm/fmm_kottke.cpp baseline-src/S4/fmm/fmm_kottke.cpp
+--- a/S4/fmm/fmm_kottke.cpp
++++ b/S4/fmm/fmm_kottke.cpp
+@@ -38,6 +38,9 @@
+ //#include <tools/kiss_fftnd.h>
+ #include <cstdio>
+ #include "fft_iface.h"
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<double> *b, int n);
++#endif
+ 
+ 
+ // M and RMR are row-major
+@@ -277,6 +280,9 @@
+ 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
+ 	int solve_info;
+ 	RNP::LinearSolve<'N'>(n,n, Epsilon2,n, Epsilon_inv,n, &solve_info, NULL);
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++S4_TEST_LINEARSOLVE_AFTER(2, &solve_info, Epsilon_inv, n);
++#endif
+ //fprintf(stderr, "Epsilon_inv[0] = %f+I %f\n", Epsilon_inv[0].real(), Epsilon_inv[0].imag());
+ 
+ 	// We fill in the quarter blocks of F in Fortran order

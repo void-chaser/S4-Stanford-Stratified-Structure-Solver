@@ -65,6 +65,28 @@ CASES = [
     ("s2/s4malloc1-fft-ng9",  "fft",    9, "s4malloc", "1", None, False, True,  "CRASH",          "S2-NEW(observed)"),
     ("s2/s4malloc2-fft-ng9",  "fft",    9, "s4malloc", "2", None, False, True,  "CRASH",          "S2-NEW(observed)"),
     ("s2/s4malloc3-fft-ng9",  "fft",    9, "s4malloc", "3", None, False, True,  "INVALID",        "S2-NEW(observed)"),
+    # --- S2.6 LinearSolve call-site seam (EXPECTATIONS REGISTERED BEFORE ANY RUN) ----
+    # Registration time (UTC): 2026-10-11T02:06:37Z, recorded in
+    # checkpoints/p05/evidence/p05-s2b/EXPECTATION_TIMESTAMP_UTC.txt.
+    # The inject field carries "linearsolve:SITE:K:MODE"; nth is None (not used).
+    # SITE 1 = fmm_FFT.cpp:204, SITE 2 = fmm_kottke.cpp:279 (set by the seam patch).
+    # MODE info      : *info := 1 only.
+    # MODE faithful  : *info := 1 and Epsilon_inv := identity (the generic template
+    #                  leaves b untouched when info != 0; see the probe in p05-s2b/faithful/).
+    # The faithful sensitivity expectation is a PREDICTION, not a verified result.
+    ("s2b/ls-fft-info-k1",        "fft",    9, "linearsolve:1:1:info",     None, None, False, True, "SILENT_SWALLOW", "S2.6-pre-registered"),
+    ("s2b/ls-kottke-info-k1",     "kottke", 9, "linearsolve:2:1:info",     None, None, False, True, "SILENT_SWALLOW", "S2.6-pre-registered"),
+    ("s2b/ls-fft-faithful-k1",    "fft",    9, "linearsolve:1:1:faithful", None, None, False, True, "SILENT_SWALLOW", "S2.6-pre-registered"),
+    ("s2b/ls-kottke-faithful-k1", "kottke", 9, "linearsolve:2:1:faithful", None, None, False, True, "SILENT_SWALLOW", "S2.6-pre-registered"),
+    ("s2b/ls-fft-xsite",          "fft",    9, "linearsolve:2:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-kottke-xsite",       "kottke", 9, "linearsolve:1:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-fft-k99",            "fft",    9, "linearsolve:1:99:info",    None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-jones-s1",           "jones",  9, "linearsolve:1:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-jones-s2",           "jones",  9, "linearsolve:2:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-nv-s1",              "nv",     9, "linearsolve:1:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-nv-s2",              "nv",     9, "linearsolve:2:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-vl-s1",              "vl",     9, "linearsolve:1:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
+    ("s2b/ls-vl-s2",              "vl",     9, "linearsolve:2:1:info",     None, None, False, True, "INVALID",        "S2.6-pre-registered"),
 ]
 
 ENV_ALLOW = ("PATH", "LANG", "LC_ALL")
@@ -90,7 +112,9 @@ def _run_case(binary, case, runs_dir):
     extra = {"FMM_MODE": mode, "S4FMM_NG": str(ng)}
     if inj is not None:
         extra["S4FMM_INJECT"] = inj
-        extra["S4FMM_NTH"] = nth
+        # The linearsolve syntax carries its own K inside the value; NTH is not used.
+        if nth is not None:
+            extra["S4FMM_NTH"] = nth
     if pol is not None:
         extra["S4FMM_POL"] = pol
     log_path = os.path.join(runs_dir, name.replace("/", "__") + ".log")
@@ -116,7 +140,13 @@ def cmd_run(args):
     os.makedirs(args.runs, exist_ok=True)
     records = []
     for case in CASES:
-        rc, log_path = _run_case(args.bin, case, args.runs)
+        # LinearSolve-seam cases need the seam-built driver.  When no seam driver is
+        # given they run on the default (unseamed) driver, which must answer INVALID.
+        if case[3] is not None and str(case[3]).startswith("linearsolve:"):
+            binary = args.seam_bin if getattr(args, "seam_bin", None) else args.bin
+        else:
+            binary = args.bin
+        rc, log_path = _run_case(binary, case, args.runs)
         records.append({"name": case[0], "rc": rc, "log": log_path,
                         "sha256": _sha256(log_path)})
     with open(os.path.join(args.runs, "raw_rc.json"), "w", encoding="utf-8") as fh:
@@ -139,6 +169,20 @@ SENS_CASES = [
     ("sens/fft-nb1-s-s",   "fft",    1, "s", "s",   "INSENSITIVE", "control"),
 ]
 SENS_THETA = "30"
+
+# S2.6 injection-type sensitivity (added after SENS_CASES; SENS_CASES itself is unchanged).
+# Each row compares the first-call E/H of a LinearSolve-seam injection with the matched
+# un-injected control (base=None).  Registration time: see
+# checkpoints/p05/evidence/p05-s2b/INJ_SENS_REGISTRATION_UTC.txt.
+# Status of every expectation below: OBSERVED REPRODUCTION.  A single probe run was made
+# before this table existed (fft faithful: SENSITIVE 144/144; fft info: INSENSITIVE), so
+# these rows check that the observed behaviour reproduces inside the harness.  They are
+# not blind pre-registrations.
+INJ_SENS_CASES = [
+    ("inj-sens/fft-info",        "fft",    9, None, "linearsolve:1:1:info",     "INSENSITIVE", "observed reproduction (probe)"),
+    ("inj-sens/fft-faithful",    "fft",    9, None, "linearsolve:1:1:faithful", "SENSITIVE",   "observed reproduction (probe)"),
+    ("inj-sens/kottke-faithful", "kottke", 9, None, "linearsolve:2:1:faithful", "SENSITIVE",   "PREDICTION (kottke faithful E/H never compared before this row)"),
+]
 
 
 def _first_dump(binary, mode, ng, pol, dump_path):
@@ -187,6 +231,52 @@ def cmd_sensitivity(args):
     return 0
 
 
+def _seam_dump(binary, mode, ng, inj, dump_path):
+    """First-call E/H dump with an optional LinearSolve injection (inj=None: control)."""
+    extra = {"FMM_MODE": mode, "S4FMM_NG": str(ng), "S4FMM_THETA": SENS_THETA,
+             "S4FMM_DUMP1": dump_path}
+    if inj is not None:
+        extra["S4FMM_INJECT"] = inj
+    proc = subprocess.run([binary] + GRID, env=_child_env(extra),
+                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                          timeout=TIMEOUT_S)
+    return proc.returncode
+
+
+def cmd_inj_sensitivity(args):
+    """Injection-type output sensitivity (S2.6).  Control and injected runs use the SAME
+    seam-built driver, so the only difference between them is the injection itself."""
+    if not args.seam_bin:
+        raise SystemExit("inj-sensitivity needs --seam-bin (the seam-built driver)")
+    os.makedirs(args.runs, exist_ok=True)
+    lines = ["# case\tclass\texpected\tmatch\tn\tn_over_1e-12\tmax_abs\tbasis"]
+    bad = 0
+    for name, mode, ng, base, changed, want, basis in INJ_SENS_CASES:
+        ctl = os.path.join(args.runs, "injsens-%s-%s-ctl.txt" % (mode, ng))
+        inj = os.path.join(args.runs, "injsens-%s-%s-%s.txt" % (mode, ng, name.split("/")[1]))
+        rc_c = _seam_dump(args.seam_bin, mode, ng, base, ctl)
+        rc_i = _seam_dump(args.seam_bin, mode, ng, changed, inj)
+        if rc_c != 0 or rc_i not in (0, 1):
+            lines.append("\t".join([name, "INVALID", want, "NO", "-", "-", "-",
+                                    "dump run rc control=%s injected=%s" % (rc_c, rc_i)]))
+            bad += 1
+            continue
+        with open(ctl, encoding="utf-8") as fh:
+            vc = J.read_dump(fh.read())
+        with open(inj, encoding="utf-8") as fh:
+            vi = J.read_dump(fh.read())
+        cls, n, nover, mx = J.sensitivity(vc, vi)
+        ok = cls == want
+        bad += 0 if ok else 1
+        lines.append("\t".join([name, cls, want, "yes" if ok else "NO", str(n), str(nover),
+                                "%.4e" % mx, basis]))
+    os.makedirs(args.out, exist_ok=True)
+    with open(os.path.join(args.out, "inj_sensitivity.txt"), "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines) + "\n")
+    print("inj-sensitivity cases=%d mismatches=%d" % (len(INJ_SENS_CASES), bad))
+    return 0
+
+
 def _facts(log_path):
     with open(log_path, "rb") as fh:
         text = fh.read().decode("utf-8", errors="replace")
@@ -221,6 +311,8 @@ def main(argv=None):
     sub = p.add_subparsers(dest="cmd", required=True)
     r = sub.add_parser("run")
     r.add_argument("--bin", required=True)
+    r.add_argument("--seam-bin", default=None,
+                   help="seam-built driver for linearsolve cases (default: use --bin)")
     r.add_argument("--ref", default=None)
     r.add_argument("--runs", required=True)
     r.add_argument("--root", default=None)
@@ -232,12 +324,21 @@ def main(argv=None):
     s.add_argument("--bin", required=True)
     s.add_argument("--runs", required=True)
     s.add_argument("--out", required=True)
+    isn = sub.add_parser("inj-sensitivity")
+    isn.add_argument("--seam-bin", required=True)
+    isn.add_argument("--runs", required=True)
+    isn.add_argument("--out", required=True)
     args = p.parse_args(argv)
     if args.cmd == "run":
         return cmd_run(args)
     if args.cmd == "sensitivity":
         return cmd_sensitivity(args)
-    return cmd_classify(args)
+    if args.cmd == "inj-sensitivity":
+        return cmd_inj_sensitivity(args)
+    if args.cmd == "classify":
+        return cmd_classify(args)
+    # Never fall through to a default command: an unrouted subcommand must fail loudly.
+    raise SystemExit("unrouted subcommand: %r" % args.cmd)
 
 
 if __name__ == "__main__":

@@ -29,6 +29,7 @@
  * to refuse a PASS when a requested injection was never reached.
  */
 #include "fmm/fft_iface.h"
+#include <complex>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -73,6 +74,65 @@ extern "C" void *__wrap_malloc(size_t n){
 		}
 	}
 	return __real_malloc(n);
+}
+
+/* ------------------------------------------------------------------------
+ * LinearSolve call-site seam (P05-S2.6).  Active only when the driver is linked
+ * against a baseline built with -DS4_TEST_LINEARSOLVE_SEAM, which testing/d003/seam
+ * applies to the exported copy OUT/baseline-src.  The hook is called after the two
+ * FMM call sites:  SITE 1 = fmm_FFT.cpp:204,  SITE 2 = fmm_kottke.cpp:279.
+ *
+ *   S4FMM_INJECT = linearsolve:SITE:K:MODE   (SITE 1|2, K >= 1, MODE info|faithful)
+ *
+ *   info     : *info := 1.  The LU is not re-run; Epsilon_inv keeps what the solve wrote.
+ *   faithful : *info := 1 AND Epsilon_inv := identity.  This models a real singular
+ *              factorisation: the generic template skips the triangular solves when
+ *              iinfo != 0, so b keeps the identity that SetMatrix wrote.  Evidence:
+ *              p05-s2b/faithful/ls_b_probe (info=2 gives b = identity; info=0 gives b = inv).
+ *
+ * Counting is per site.  A request for site S is reached only when the hook is called
+ * with site S; a request for the other site, or K greater than the calls seen, leaves
+ * hits = 0 and the driver reports the injection as not reached.  An unparsable value
+ * is treated as a request that is never reached (fails closed, never PASS).
+ * ------------------------------------------------------------------------ */
+static int ls_req_ok = 0, ls_req_site = 0, ls_req_k = 0, ls_req_faithful = 0;
+static long ls_calls[3] = {0, 0, 0};   /* hook calls seen per site */
+static long ls_hits[3] = {0, 0, 0};    /* injections applied per site */
+
+static void ls_parse_request(void){
+	const char *m = mode();
+	ls_req_ok = 0;
+	if(0 != strncmp(m, "linearsolve:", 12)){ return; }
+	int site = 0, k = 0;
+	char tail[32] = {0};
+	if(3 != sscanf(m + 12, "%d:%d:%31s", &site, &k, tail)){ return; }
+	if(site != 1 && site != 2){ return; }
+	if(k < 1){ return; }
+	if(0 == strcmp(tail, "info")){ ls_req_faithful = 0; }
+	else if(0 == strcmp(tail, "faithful")){ ls_req_faithful = 1; }
+	else { return; }
+	ls_req_site = site; ls_req_k = k; ls_req_ok = 1;
+}
+
+extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<double> *b, int n){
+	ls_parse_request();
+	if(site < 1 || site > 2){ return; }
+	ls_calls[site]++;
+	if(!ls_req_ok || site != ls_req_site){ return; }
+	if(ls_calls[site] != ls_req_k){ return; }
+	if(NULL == info){ return; }          /* defensive: the patch passes &solve_info, never NULL */
+	*info = 1;
+	if(ls_req_faithful){
+		for(int j = 0; j < n; ++j){
+			for(int i = 0; i < n; ++i){
+				b[i + j*n] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+			}
+		}
+	}
+	ls_hits[site]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT linearsolve site=%d call=%ld mode=%s (hit=%ld)\n",
+	             site, ls_calls[site], ls_req_faithful ? "faithful" : "info", n_hits);
 }
 
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in

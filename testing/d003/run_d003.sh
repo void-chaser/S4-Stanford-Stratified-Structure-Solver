@@ -74,14 +74,38 @@ LIBFLAGS="-llapack -lblas -Wl,--wrap=malloc -Wl,--wrap=_Z13fft_plan_execP12tag_f
 run build_driver_d003 sh -c "g++ -O1 -Wall -Wextra -Wno-unused-parameter -I '$OUT/baseline-src/S4' -I '$OUT/baseline-src/S4/fmm' '$H/src/driver_d003.cpp' '$H/src/inject_d003.cpp' -o '$OUT/bin/driver-d003' -L '$OUT/baseline-src/build' -lS4 $LIBFLAGS"
 run build_driver_s1b_ref sh -c "g++ -O1 -I '$OUT/baseline-src/S4' -I '$OUT/baseline-src/S4/fmm' '$H/src/history/driver.s1b-patched.reference.cpp' '$H/src/inject_d003.cpp' -o '$OUT/bin/driver-s1b-ref' -L '$OUT/baseline-src/build' -lS4 $LIBFLAGS"
 
+# 3b. OPTIONAL LinearSolve call-site seam (P05-S2.6), off unless SEAM=1.
+#     The seam patch is applied ONLY to a second, separate export (OUT/seam-src), never to
+#     the default OUT/baseline-src, and the seam library is built in its own directory.
+#     The default driver above is therefore unchanged whether or not SEAM is set.
+if [ "${SEAM:-0}" = "1" ]; then
+    rm -rf "$OUT/seam-src" && mkdir -p "$OUT/seam-src"
+    run seam_export sh -c "git -C '$ROOT' archive '$BASE' | tar -x -C '$OUT/seam-src'"
+    run seam_patch sh -c "cd '$OUT/seam-src' && patch -p1 < '$H/seam/linearsolve_seam.patch'"
+    # Only the static library is built here.  build/S4 (the Lua front end) would fail to
+    # link with the seam macro: the hook is defined in the driver's injector, not in S4.
+    # That failure was observed on 2026-10-11 (undefined S4_TEST_LINEARSOLVE_AFTER) and is
+    # recorded in the report; the library itself builds and carries the expected references.
+    run seam_build_lib sh -c "cd '$OUT/seam-src' && make -j$JOBS CPPFLAGS='-DS4_TEST_LINEARSOLVE_SEAM -IS4 -IS4/RNP -IS4/kiss_fft' build/libS4.a"
+    run build_driver_seam sh -c "g++ -O1 -Wall -Wextra -Wno-unused-parameter -DS4_TEST_LINEARSOLVE_SEAM -I '$OUT/seam-src/S4' -I '$OUT/seam-src/S4/fmm' '$H/src/driver_d003.cpp' '$H/src/inject_d003.cpp' -o '$OUT/bin/driver-d003-seam' -L '$OUT/seam-src/build' -lS4 $LIBFLAGS"
+fi
+
 # 4. matrix.  The runner writes one log per case into OUT/runs and one record per case.
-run matrix "$PY" -I -B "$H/matrix_d003.py" run --bin "$OUT/bin/driver-d003" --ref "$OUT/bin/driver-s1b-ref" --runs "$OUT/runs" --root "$ROOT" --out "$OUT"
+#    linearsolve cases use the seam driver when SEAM=1 was set; otherwise they run on the
+#    unseamed driver and must come out INVALID (the runner does not invent a pass).
+SEAM_ARG=""
+if [ "${SEAM:-0}" = "1" ]; then SEAM_ARG="--seam-bin $OUT/bin/driver-d003-seam"; fi
+run matrix "$PY" -I -B "$H/matrix_d003.py" run --bin "$OUT/bin/driver-d003" $SEAM_ARG --ref "$OUT/bin/driver-s1b-ref" --runs "$OUT/runs" --root "$ROOT" --out "$OUT"
 
 # 5. judge the matrix (classification is written next to the runs; compare vs S1B)
 run judge "$PY" -I -B "$H/judge_d003.py" selftest
 run judge_sensitivity "$PY" -I -B "$H/judge_d003.py" selftest-sensitivity
 run classify "$PY" -I -B "$H/matrix_d003.py" classify --runs "$OUT/runs" --out "$OUT"
 run sensitivity "$PY" -I -B "$H/matrix_d003.py" sensitivity --bin "$OUT/bin/driver-d003" --runs "$OUT/sens" --out "$OUT"
+# S2.6 injection-type sensitivity: only when the seam driver was built (SEAM=1).
+if [ "${SEAM:-0}" = "1" ]; then
+    run inj_sensitivity "$PY" -I -B "$H/matrix_d003.py" inj-sensitivity --seam-bin "$OUT/bin/driver-d003-seam" --runs "$OUT/injsens" --out "$OUT"
+fi
 
 # 6. digests.  SHA256SUMS covers every file that is FINAL when it is computed.  The
 #    records written after it (STEPS.txt, which gains the "digests" line, and
