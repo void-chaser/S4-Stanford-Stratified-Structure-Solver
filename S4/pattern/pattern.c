@@ -2142,6 +2142,12 @@ int pattern_generate_flow_field(
 			type, L, nu, nv, field);
 	}
 
+	/* P05-S3R2 D-D (D016): a zero or non-finite maximum makes 1./max_field
+	 * non-finite, and the field would be multiplied into NaN.  Report it here
+	 * instead of returning success.  -9 is taken by pattern_discretize_cell. */
+	if(!(max_field > 0) || !isfinite(max_field)){
+		return -10;
+	}
 	max_field = 1./max_field;
 	for(j = 0; j < nv; ++j){
 		for(i = 0; i < nu; ++i){
