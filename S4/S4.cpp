@@ -2265,6 +2265,12 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 	S4_VERB(1, "Computing modes of layer: %s\n", NULL != L->name ? L->name : "");
 
 	*layer_modes = (LayerModes*)malloc(sizeof(LayerModes));
+	// P05-S3R rule R1: nothing else is allocated yet, so there is nothing to release.  Check before
+	// pB is first used (pB->epstype below); *layer_modes is NULL here and the caller sees no mode.
+	if(NULL == *layer_modes){
+		S4_TRACE("< Simulation_ComputeLayerModes (failed; LayerModes malloc returned NULL) [omega=%f]\n", S->omega[0]);
+		return 20;
+	}
 	LayerModes *pB = *layer_modes;
 	const int n = S->n_G;
 	const int n2 = 2*n;
@@ -2296,6 +2302,13 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 		2*n + // for q
 		kp_size + phi_size + Epsilon_inv_size + Epsilon2_size
 		));
+	// P05-S3R rule R2: q is NULL and the pointer arithmetic below would use it.  Discard frees the
+	// struct and is NULL-safe for q, so nothing is released twice.
+	if(NULL == pB->q){
+		S4_TRACE("< Simulation_ComputeLayerModes (failed; q allocation returned NULL) [omega=%f]\n", S->omega[0]);
+		Simulation_DiscardLayerModes(layer_modes);
+		return 20;
+	}
 	pB->kp = pB->q + n2;
 	pB->phi = pB->kp + kp_size;
 	pB->Epsilon_inv = pB->phi + phi_size;
@@ -2406,6 +2419,14 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 		{
 			size_t lwork = (size_t)-1;
 			double *rwork = (double*)S4_malloc(sizeof(double) * 4*n);
+			// P05-S3R rule R3: rwork is NULL.  SolveLayerEigensystem would absorb the NULL and allocate its own
+			// workspace, so the failure would be invisible here.  Stop before the solver runs.  q is live and
+			// Discard frees it; rwork is NULL and is not freed.
+			if(NULL == rwork){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; rwork allocation returned NULL) [omega=%f]\n", S->omega[0]);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 			std::complex<double> *work = NULL;
 			std::complex<double> dum;
 			const int query_info = SolveLayerEigensystem(
@@ -2423,6 +2444,15 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 			}
 			lwork = (int)(dum.real() + 0.5);
 			work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * lwork);
+			// P05-S3R rule R4: work is NULL.  rwork was allocated above and is still live; free it here,
+			// then discard the modes (which frees q).  work is NULL and is not freed.  Returning before the
+			// success-path frees below means each pointer is released exactly once.
+			if(NULL == work){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; work allocation returned NULL) [omega=%f]\n", S->omega[0]);
+				S4_free(rwork);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 			const int eigen_info = SolveLayerEigensystem(
 				std::complex<double>(S->omega[0],S->omega[1]), n,
 				S->kx, S->ky,
