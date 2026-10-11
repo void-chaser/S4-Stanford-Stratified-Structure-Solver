@@ -194,6 +194,63 @@ extern "C" void S4_TEST_LINEARSOLVE_NULLINFO_AFTER(int id, std::complex<double> 
 	             id, ln_calls[id], model, n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * Family B2 (P05-S2R3 stage 2).  Test-only hook placed AFTER each H-tree LinearSolve and
+ * BEFORE its existing check.  It sets *info (solve_info) non-zero when requested, so the
+ * check takes its failure return.  Independent of family B above: its own request prefix,
+ * its own counters, its own ID set (the seven H-tree sites).
+ *
+ *   S4FMM_INJECT = linearsolve_null2:ID:K     (ID in {134,138,144,244,375,265,273}, K >= 1)
+ *
+ * Model: the output buffer is written by the hook as the RHS model passed by the call site
+ * (1 = identity RHS, 2 = computed RHS kept).  The hook writes ONLY when requested, so an
+ * unrequested run is unaffected.  An unparsable or unknown request is never reached (fails
+ * closed).
+ * ------------------------------------------------------------------------ */
+static int b2_req_ok = 0, b2_req_id = 0, b2_req_k = 0;
+static const int b2_ids[7] = {134, 138, 144, 244, 375, 265, 273};
+static long b2_calls[7] = {0};
+static long b2_hits[7] = {0};
+
+static int b2_index(int id){
+	for(int i = 0; i < 7; ++i){ if(b2_ids[i] == id){ return i; } }
+	return -1;
+}
+
+static void b2_parse_request(void){
+	const char *m = mode();
+	b2_req_ok = 0;
+	if(0 != strncmp(m, "linearsolve_null2:", 18)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 18, "%d:%d", &id, &k)){ return; }
+	if(b2_index(id) < 0){ return; }
+	if(k < 1){ return; }
+	b2_req_id = id; b2_req_k = k; b2_req_ok = 1;
+}
+
+extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2_AFTER(int id, int *info, std::complex<double> *b, int n, int ld, int model){
+	b2_parse_request();
+	const int ix = b2_index(id);
+	if(ix < 0){ return; }
+	b2_calls[ix]++;
+	if(!b2_req_ok || id != b2_req_id){ return; }
+	if(b2_calls[ix] != b2_req_k){ return; }
+	if(NULL == info){ return; }
+	*info = 1;                                  /* models a zero pivot: the existing check takes its failure return */
+	if(1 == model){
+		/* identity RHS with the solve's real leading dimension ld */
+		for(int j = 0; j < n; ++j){
+			for(int i = 0; i < n; ++i){
+				b[i + j*ld] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+			}
+		}
+	}
+	b2_hits[ix]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT linearsolve_null2 id=%d call=%ld model=%d (hit=%ld)\n",
+	             id, b2_calls[ix], model, n_hits);
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);
