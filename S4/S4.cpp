@@ -2364,38 +2364,44 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 		}
 	}else{ // not a uniform layer
 		S4_VERB(1, "Generating epsilon matrix of layer: %s\n", NULL != L->name ? L->name : "");
+		int fmm_ret = 0;
 		if(S->options.use_experimental_fmm){
-			FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 		}else{
 			if(S->options.use_discretized_epsilon){
 				if(S->options.use_subpixel_smoothing){
-					FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 				}else{ // not using subpixel smoothing
-					FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
-					if(S->options.use_polarization_basis){
+					fmm_ret = FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+					if(0 == fmm_ret && S->options.use_polarization_basis){
 						if(S->options.use_jones_vector_basis){
-							FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}else if(S->options.use_normal_vector_basis){
-							FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}else{
-							FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}
 					}
 				}
 			}else{
-				FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
-				if(S->options.use_polarization_basis){
+				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+				if(0 == fmm_ret && S->options.use_polarization_basis){
 					if(S->options.use_jones_vector_basis){
-						FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}else if(S->options.use_normal_vector_basis){
-						FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}else{
-						FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}
 				}
 			}
 		}
 //std::cerr << pB->Epsilon2[0] << "\t" << pB->Epsilon2[1] << "\t" << pB->Epsilon_inv[0] << "\t" << pB->Epsilon_inv[1] << std::endl;
+		if(0 != fmm_ret){
+			S4_TRACE("< Simulation_ComputeLayerModes (failed; FMM epsilon generation returned %d) [omega=%f]\n", fmm_ret, S->omega[0]);
+			Simulation_DiscardLayerModes(layer_modes);
+			return 20;
+		}
 		S4_VERB(1, "Solving eigensystem of layer: %s\n", NULL != L->name ? L->name : "");
 		{
 			size_t lwork = (size_t)-1;
