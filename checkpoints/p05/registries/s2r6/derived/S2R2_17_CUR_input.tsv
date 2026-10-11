@@ -1,0 +1,17 @@
+t4/cache-hit-work-nv-k7	S4	CUR	s4malloc	7	pattern	nv	9	REPORTED_FAILURE	nv:233 check returns 1 (S3); RC retry 20
+t4/cache-hit-work-vl-k7	S4	CUR	s4malloc	7	pattern	vl	9	REPORTED_FAILURE	vl:242 check returns 1 (S3); RC retry 20
+t1/kottke-work-k1	D	CUR	kottke_alloc:31:1	-	pattern	kottke	9	REPORTED_FAILURE	cur fmm_kottke:79 returns 1 -> S4.cpp:2400-2403 returns 20
+t2/fft-work-n1	S4	CUR	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	fmm_FFT:75 check returns 1
+t2/fft-discval-n2	S4	CUR	s4malloc	2	pattern	fft	9	REPORTED_FAILURE	fmm_FFT:84 check returns 1
+t2/kottke-discval-n1	S4	CUR	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	fmm_kottke:88 check returns 1
+t2/closed-ivalues-jones-n1	S4	CUR	s4malloc	1	pattern	jones	9	REPORTED_FAILURE	fmm_closed:41 check returns 1
+t2/jones-ivalues-n2	S4	CUR	s4malloc	2	pattern	jones	9	REPORTED_FAILURE	fmm_PolBasisJones:108 check returns 1
+t2/jones-work-merge-n3	S4	CUR	s4malloc	3	pattern	jones	9	REPORTED_FAILURE	fmm_PolBasisJones:158 check returns 1
+t2/jones-vfield-n4	S4	CUR	s4malloc	4	pattern	jones	9	REPORTED_FAILURE	fmm_PolBasisJones:171 check returns 1 (via S4_free guard)
+t2/nv-ivalues-n2	S4	CUR	s4malloc	2	pattern	nv	9	REPORTED_FAILURE	fmm_PolBasisNV:59 check returns 1
+t2/nv-work-n3	S4	CUR	s4malloc	3	pattern	nv	9	REPORTED_FAILURE	fmm_PolBasisNV:111 check returns 1
+t2/nv-vfield-n4	S4	CUR	s4malloc	4	pattern	nv	9	REPORTED_FAILURE	fmm_PolBasisNV:126 check returns 1
+t2/vl-ivalues-n2	S4	CUR	s4malloc	2	pattern	vl	9	REPORTED_FAILURE	fmm_PolBasisVL:59 check returns 1
+t2/vl-work-n3	S4	CUR	s4malloc	3	pattern	vl	9	REPORTED_FAILURE	fmm_PolBasisVL:116 check returns 1
+t2/vl-vfield-n4	S4	CUR	s4malloc	4	pattern	vl	9	REPORTED_FAILURE	fmm_PolBasisVL:128 check returns 1
+t4/cache-hit-work-k7	S4	CUR	s4malloc	7	pattern	jones	9	REPORTED_FAILURE	INFLUENCED

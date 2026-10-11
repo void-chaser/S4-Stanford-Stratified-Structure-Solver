@@ -1,0 +1,17 @@
+# R2-D expectation registry (P05-S2R).  Registered at the UTC time in R2D_REGISTRY_TIMESTAMP_UTC.txt.
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+# basis: PRE = derived from the source/inventory BEFORE R2-E; OBS = already observed in R2-B/R2-C
+#        (recorded, NOT a blind prediction).  A later mismatch is a finding; expectations are not edited.
+new/A-fft-info-k1	A	CUR	linearsolve:1:1:info	-	pattern	fft	9	REPORTED_FAILURE	OBS (R2-B smoke, cur)
+new/A-kottke-info-k1	A	CUR	linearsolve:2:1:info	-	pattern	kottke	9	REPORTED_FAILURE	PRE (S3 checks solve_info -> ret=1 -> 20)
+new/N-jones-id15-k1	B	CUR	linearsolve_null:15:1	-	pattern	jones	9	SILENT_SWALLOW	OBS-CUR (R2-B smoke run observed this class before registration; not a blind prediction)
+new/N-nv-id16-k1	B	CUR	linearsolve_null:16:1	-	pattern	nv	9	SILENT_SWALLOW	PRE
+new/N-vl-id17-k1	B	CUR	linearsolve_null:17:1	-	pattern	vl	9	INVALID	OBS
+new/N-closed-id11-k1	B	CUR	linearsolve_null:11:1	-	pattern	jones	9	INVALID	PRE (same)
+new/C-alloc-id21-k1	C	CUR	alloc:21:1	-	pattern	fft	9	CRASH	OBS-CUR (R2-C fft and jones census crash); baseline equality PRE
+new/C-alloc-id22-k1	C	CUR	alloc:22:1	-	pattern	fft	9	CRASH	OBS-CUR (R2-C fft census crash); baseline equality PRE
+new/C-alloc-id23-k1	C	CUR	alloc:23:1	-	pattern	fft	9	SILENT_SWALLOW	OBS-CUR (R2-C fft census: HITCOUNT 1, RC first 0)
+new/C-alloc-id24-k1	C	CUR	alloc:24:1	-	pattern	fft	9	SILENT_SWALLOW	OBS-CUR (R2-C fft census: HITCOUNT 1, RC first 0)
+new/C-alloc-id25-k1	C	CUR	alloc:25:1	-	pattern	jones	9	CRASH	PRE (unchanged by S3)
+new/C-alloc-id25-fft	C	CUR	alloc:25:1	-	pattern	fft	9	INVALID	PRE (same)
+new/F-fmm-s4malloc1-fft	F	CUR	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	basis: PRE (S3 guards fmm_FFT:75 -> ret 1) | request text was: s4malloc (nth 1, FFT work 6144B)

@@ -1,0 +1,29 @@
+# P05-S2R3 stage 3c.3: closed four points, three columns (B, A family-B output model; H family B2 failure model).
+# MODEL NOTE (task section 2 item 3): B and A use family B (output model: RHS written, info stays NULL, a failure is
+#   never reported). H uses family B2 (*info=1: a zero pivot that IS reported). These are DIFFERENT MODELS.  The B/A to H
+#   change therefore mixes the fix with the model.  It is not the sole evidence of the repair effect.
+# ID CORRESPONDENCE (by LinearSolve argument text, verified by content, not by line number):
+#   A 130 (Epsilon_inv, &Epsilon2[n+n*n2])  <->  family B id 11  <->  H 134 (B2 id 134)
+#   A 133 (&Epsilon2[n+0*n2], Epsilon_inv)  <->  family B id 12  <->  H 138 (B2 id 138)
+#   A 138 (&Epsilon2[0+0*n2], Epsilon_inv)  <->  family B id 13  <->  H 144 (B2 id 144)
+#   A 235 (&Epsilon2[0+0*n2], Epsilon_inv)  <->  family B id 14  <->  H 244 (B2 id 244)
+# Reachability: the S2R2 static registry REGISTRY_T3_static.tsv and P05_S2R_HARNESS_SUPPLEMENT.md mark these points
+#   UNREACHABLE.  That was true for the driver of that time.  Measured in this round: each point is reached in the mode
+#   named below (closed1d: 130 and 133; closed2d: 138; tensor: 235).  Overturned, disclosed in the report.
+# Every row INFLUENCED: all observations were made BEFORE this registration (stage3/build3a/closed*, closedH/).
+# Judge: class from facts (rc, signal, hit, rc1).  Driver PASS/FAIL line never read.
+# case	tree	mode	request	point	expected_class	basis
+# Layout: 10 columns (matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+3c3-closed130-BASE	B	BASE	linearsolve_null:11:1	-	pattern	closed1d	9	SILENT_SWALLOW	[实测 INFLUENCED] closed1d family-B id11: HIT, rc1 0; family-B output model (info NULL) MODEL DIFFERS from H | point: closed:130 (ID 11, model 2)
+3c3-closed133-BASE	B	BASE	linearsolve_null:12:1	-	pattern	closed1d	9	SILENT_SWALLOW	[实测 INFLUENCED] closed1d family-B id12: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:133 (ID 12, model 1)
+3c3-closed138-BASE	B	BASE	linearsolve_null:13:1	-	pattern	closed2d	9	SILENT_SWALLOW	[实测 INFLUENCED] closed2d family-B id13: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:138 (ID 13, model 1)
+3c3-closed235-BASE	B	BASE	linearsolve_null:14:1	-	pattern	tensor	9	SILENT_SWALLOW	[实测 INFLUENCED] tensor family-B id14: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:235 (ID 14, model 1)
+3c3-closed130-CUR	B	CUR	linearsolve_null:11:1	-	pattern	closed1d	9	SILENT_SWALLOW	[实测 INFLUENCED] A closed1d family-B id11: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:130 (ID 11, model 2)
+3c3-closed133-CUR	B	CUR	linearsolve_null:12:1	-	pattern	closed1d	9	SILENT_SWALLOW	[实测 INFLUENCED] A closed1d family-B id12: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:133 (ID 12, model 1)
+3c3-closed138-CUR	B	CUR	linearsolve_null:13:1	-	pattern	closed2d	9	SILENT_SWALLOW	[实测 INFLUENCED] A closed2d family-B id13: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:138 (ID 13, model 1)
+3c3-closed235-CUR	B	CUR	linearsolve_null:14:1	-	pattern	tensor	9	SILENT_SWALLOW	[实测 INFLUENCED] A tensor family-B id14: HIT, rc1 0; output model MODEL DIFFERS from H | point: closed:235 (ID 14, model 1)
+3c3-closed130-H	B2	H	linearsolve_null2:134:1	-	pattern	closed1d	9	REPORTED_FAILURE	[实测 INFLUENCED] H closed1d B2 134: HIT, rc1 20; B2 failure model (info=1) MODEL DIFFERS from B/A | point: closed:130 (B2 134, model 2)
+3c3-closed133-H	B2	H	linearsolve_null2:138:1	-	pattern	closed1d	9	REPORTED_FAILURE	[实测 INFLUENCED] H closed1d B2 138: HIT, rc1 20; B2 failure model MODEL DIFFERS from B/A | point: closed:133 (B2 138, model 1)
+3c3-closed138-H	B2	H	linearsolve_null2:144:1	-	pattern	closed2d	9	REPORTED_FAILURE	[实测 INFLUENCED] H closed2d B2 144: HIT, rc1 20; B2 failure model MODEL DIFFERS from B/A | point: closed:138 (B2 144, model 1)
+3c3-closed235-H	B2	H	linearsolve_null2:244:1	-	pattern	tensor	9	REPORTED_FAILURE	[实测 INFLUENCED] H tensor B2 244: HIT, rc1 20 (also stage 2 b2-244-tensor); B2 failure model MODEL DIFFERS from B/A | point: closed:235 (B2 244, model 1)

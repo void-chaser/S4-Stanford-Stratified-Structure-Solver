@@ -1,0 +1,17 @@
+# R2-D expectation registry (P05-S2R).  Registered at the UTC time in R2D_REGISTRY_TIMESTAMP_UTC.txt.
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+# basis: PRE = derived from the source/inventory BEFORE R2-E; OBS = already observed in R2-B/R2-C
+#        (recorded, NOT a blind prediction).  A later mismatch is a finding; expectations are not edited.
+new/A-fft-info-k1	A	BASE	linearsolve:1:1:info	-	pattern	fft	9	REPORTED_FAILURE	OBS (R2-B smoke, cur)
+new/A-kottke-info-k1	A	BASE	linearsolve:2:1:info	-	pattern	kottke	9	SILENT_SWALLOW	PRE (baseline: no solve_info check, S3 not yet applied)
+new/N-jones-id15-k1	B	BASE	linearsolve_null:15:1	-	pattern	jones	9	SILENT_SWALLOW	PRE (info=NULL, zero pivot discarded on both trees)
+new/N-nv-id16-k1	B	BASE	linearsolve_null:16:1	-	pattern	nv	9	SILENT_SWALLOW	PRE
+new/N-vl-id17-k1	B	BASE	linearsolve_null:17:1	-	pattern	vl	9	INVALID	OBS (VL NB=9 control rc0; injection reached; RC20 only at NB 1-4)
+new/N-closed-id11-k1	B	BASE	linearsolve_null:11:1	-	pattern	jones	9	INVALID	PRE (not reached: 1-D lattice required; driver Lr={1,0,0,1})
+new/C-alloc-id21-k1	C	BASE	alloc:21:1	-	pattern	fft	9	CRASH	PRE (NULL *layer_modes dereferenced; unchanged by S3)
+new/C-alloc-id22-k1	C	BASE	alloc:22:1	-	pattern	fft	9	CRASH	PRE (NULL pB->q dereferenced)
+new/C-alloc-id23-k1	C	BASE	alloc:23:1	-	pattern	fft	9	SILENT_SWALLOW	PRE (rwork unchecked; solver accepts NULL)
+new/C-alloc-id24-k1	C	BASE	alloc:24:1	-	pattern	fft	9	SILENT_SWALLOW	PRE (work unchecked)
+new/C-alloc-id25-k1	C	BASE	alloc:25:1	-	pattern	jones	9	CRASH	PRE-SRC (source) and OBS-CUR (R2-C jones census crash)
+new/C-alloc-id25-fft	C	BASE	alloc:25:1	-	pattern	fft	9	INVALID	PRE (fft never calls AddFieldToCache: not reached)
+new/F-fmm-s4malloc1-fft	F	BASE	s4malloc	1	pattern	fft	9	CRASH	basis: OBS (S2, existing; FMM not guarded on base) | request text was: s4malloc (nth 1, FFT work 6144B)

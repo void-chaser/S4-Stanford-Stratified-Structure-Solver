@@ -1,0 +1,42 @@
+# P05-S2R3 stage 3b: three-column comparison of the eight red points (B, A, H), two runs per tree.
+# Registered BEFORE the formal three-column runs.  Columns (10, matrix_r2.py format):
+#   case  family  tree  request  NTH  stack  mode  NG  expected_class  basis
+# Tree roles (verified by source, see PROGRESS_CHECKPOINT.txt):
+#   B = 37a82e8: S2R BASE.  Nothing checked.
+#   A = 876181c: S2 FMM allocation checks present (PolBasis cache-hit, NV/kottke work), S3R fixes ABSENT.
+#   H = 64eb0b5: S3R fixes present (ComputeLayerModes x4, AddFieldToCache, PolBasis info=NULL -> info checked).
+# MODEL NOTE (task section 2 item 3, mandatory): the B and A columns use family B (PolBasis, output model
+#   "model 1": RHS overwritten by identity, info stays NULL, so no failure is ever reported) or family C
+#   (allocation returns NULL).  The H column uses family B2 for PolBasis (sets *info=1 and writes the
+#   identity RHS: a zero pivot that IS reported to the caller).  These are DIFFERENT MODELS.  A B/A-to-H
+#   difference therefore mixes the fix with the model.  It is NOT the sole evidence of the repair effect.
+# Rows whose class already appears in an earlier observation are marked INFLUENCED in the basis column.
+# Expected classes come from the registered source reading and the earlier formal runs (3a regression,
+# S3R, S2R).  Judged from facts only (rc, signal, hit, rc1); the driver PASS/FAIL line is never read.
+#
+# Column 'expected_class' for family B on B/A: SILENT_SWALLOW (rc1 0, hit 1, no signal).
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+3b-pb369-jones	B	BASE	linearsolve_null:15:1	-	pattern	jones	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-jones-id15-k1 BASE]; model 1 (identity RHS, info NULL). MODEL DIFFERS from H (B2 sets info)
+3b-pb369-jones	B	CUR	linearsolve_null:15:1	-	pattern	jones	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-jones-id15-k1 CUR]; model 1 (identity RHS, info NULL). MODEL DIFFERS from H
+3b-pb369-jones	B	H	linearsolve_null2:375:1	-	pattern	jones	9	REPORTED_FAILURE	[实测 INFLUENCED: accept-B2 H rc1 20]; model B2 (*info=1, identity RHS). MODEL DIFFERS from B/A
+3b-pb260-nv	B	BASE	linearsolve_null:16:1	-	pattern	nv	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-nv-id16-k1 BASE]; model 1. MODEL DIFFERS from H
+3b-pb260-nv	B	CUR	linearsolve_null:16:1	-	pattern	nv	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-nv-id16-k1 CUR]; model 1. MODEL DIFFERS from H
+3b-pb260-nv	B	H	linearsolve_null2:265:1	-	pattern	nv	9	REPORTED_FAILURE	[实测 INFLUENCED: this round nth-scan/B2-265-nv.out HITCOUNT 1, RC first 20; fftnv gives the same]; model B2. MODEL DIFFERS from B/A
+3b-pb268-vl	B	BASE	linearsolve_null:17:1	-	pattern	vl	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-vl-id17-k1 BASE]; model 1. MODEL DIFFERS from H
+3b-pb268-vl	B	CUR	linearsolve_null:17:1	-	pattern	vl	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression N-vl-id17-k1 CUR]; model 1. MODEL DIFFERS from H
+3b-pb268-vl	B	H	linearsolve_null2:273:1	-	pattern	vl	9	REPORTED_FAILURE	[实测 INFLUENCED: this round nth-scan/B2-273-vl.out HITCOUNT 1, RC first 20; fftvl gives the same]; model B2. MODEL DIFFERS from B/A
+3b-cl2267	C	BASE	alloc:21:1	-	pattern	fft	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id21-k1 BASE rc 139]; family C id 21 replaces malloc, unchecked on B
+3b-cl2267	C	CUR	alloc:21:1	-	pattern	fft	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id21-k1 CUR rc 139]; A line 2267 unchecked (pre-S3R)
+3b-cl2267	C	H	alloc:21:1	-	pattern	fft	9	REPORTED_FAILURE	[源码 H S4.cpp:2270-2272 return 20; 实测 INFLUENCED: this round nth-scan/H-alloc-21-fft.out HITCOUNT 1, RC first 20]; family C
+3b-cl2295	C	BASE	alloc:22:1	-	pattern	fft	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id22-k1 BASE rc 139]; unchecked on B
+3b-cl2295	C	CUR	alloc:22:1	-	pattern	fft	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id22-k1 CUR rc 139]; unchecked on A (pre-S3R)
+3b-cl2295	C	H	alloc:22:1	-	pattern	fft	9	REPORTED_FAILURE	[源码 H checks q alloc, returns 20; 实测 INFLUENCED: this round nth-scan/H-alloc-22-fft.out HITCOUNT 1, RC first 20]; family C
+3b-cl2408	C	BASE	alloc:23:1	-	pattern	fft	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression C-alloc-id23-k1 BASE rc1 0]; rwork unchecked, NULL is accepted
+3b-cl2408	C	CUR	alloc:23:1	-	pattern	fft	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression C-alloc-id23-k1 CUR rc1 0]; rwork unchecked on A (pre-S3R)
+3b-cl2408	C	H	alloc:23:1	-	pattern	fft	9	REPORTED_FAILURE	[源码 H checks rwork, returns 20; 实测 INFLUENCED: this round nth-scan/H-alloc-23-fft.out HITCOUNT 1, RC first 20]; family C
+3b-cl2425	C	BASE	alloc:24:1	-	pattern	fft	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression C-alloc-id24-k1 BASE rc1 0]; work unchecked on B
+3b-cl2425	C	CUR	alloc:24:1	-	pattern	fft	9	SILENT_SWALLOW	[实测 INFLUENCED: 3a regression C-alloc-id24-k1 CUR rc1 0]; work unchecked on A (pre-S3R)
+3b-cl2425	C	H	alloc:24:1	-	pattern	fft	9	REPORTED_FAILURE	[源码 H checks work, returns 20; 实测 INFLUENCED: this round nth-scan/H-alloc-24-fft.out HITCOUNT 1, RC first 20]; family C
+3b-acache3977	C	BASE	alloc:25:1	-	pattern	jones	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id25-k1 BASE rc 139]; FieldCache alloc unchecked on B
+3b-acache3977	C	CUR	alloc:25:1	-	pattern	jones	9	CRASH	[实测 INFLUENCED: 3a regression C-alloc-id25-k1 CUR rc 139]; AddFieldToCache unchecked on A (pre-S3R)
+3b-acache3977	C	H	alloc:25:1	-	pattern	jones	9	REPORTED_FAILURE	[源码 H S4.cpp:4010-4012 AddFieldToCache returns 1 (S3R commit e83255f); 实测 INFLUENCED: this round HITCOUNT 1, RC first 20 under jones, nv, vl (fft does not reach AddFieldToCache, HITCOUNT 0); the middle of the 20 chain is not traced line by line]; family C

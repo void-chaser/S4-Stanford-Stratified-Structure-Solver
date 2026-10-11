@@ -576,3 +576,28 @@ Corrections : D-R5-8 withdraws an earlier 24/24 object-identity wording (path-se
 Open (S2)   : none unclosed in section 6; four items need the user's decision before S2 sign-off: the tree-B model choice
               (L5), the scope split of AddFieldToCache checks (L4), the configuration limit (L10), and the L9 acceptance.
 Not done    : S2 sign-off; any stage completion.  P05-S1, S2, S3, S4 are not declared complete.
+
+P05-S2R6 (S2 supplement: unified entry point, safe wrapper, reproduction self-check)  -  STATUS: NOT COMPLETE, awaiting user review.
+Scope       : supplementary sub-task of P05-S2 (not a new stage).  Report: checkpoints/p05/P05_S2R6_CLOSEOUT.md.
+Start       : HEAD f5ea8e7; branch codex/p05-d003-fft-error-propagation; S4/ unchanged vs 64eb0b5; worktree clean.
+R6-1        : testing/d003/safe_run.sh (commit 58065b8).  Three positive and three negative cases plus system-read and usage checks.
+              Refusals happen before any subcommand runs and are logged.  No write outside the repository from any negative case.
+R6-2        : testing/d003/run_all.sh, summarize_r6.py, README.md (commit e693892); report-stage manifest fix (commit cd93378).
+              Plain and family libraries (12) each reproduce the frozen sha256.  Export, build, seam, drivers, matrix, judge, report.
+R6-3        : zero-start run (repro-R6-3, 87 s, exit 0).  Libraries: 12/12 identical to frozen.  REG_3B 24/24 per row;
+              S2R5 ten points 30/30 cells; family F 6/6; S2R4 seven sites 21/21 observed; S2R2 17 cases 17/17 (separate step);
+              R2-D 13 cases: mismatch set equals the declared S2R set exactly; historical 38 case (H): classification replay byte-identical.
+              Driver binaries: 1 of 12 byte-identical; the other 11 differ by injector source revision (proven: the bb08729 injector
+              reproduces the frozen r5-1/bin-H driver byte for byte).  Driver hashes are not a reproduction criterion in the records.
+Limits      : the historical 38-case RUN cannot be reproduced (no driver path recorded); only its classification is replayed.
+              run_all.sh does not include S2R2 17 or R2-D 13 (separate steps).  The 13-column REGISTRY_T4.tsv has no recorded converter.
+Package     : checkpoints/p05/registries/s2r6/ (11 frozen copies verified by sha256; 4 derived run inputs); MANIFEST +16 rows, the
+              original 74 lines byte-identical.
+Violations  : three S2R6 rows in the report's single table (rows 4-6).  Row 4: a repository-internal write landed (test directory,
+              removed after path check).  Row 5: a symbolic link with a root-level target inside the evidence tree (target never created).
+              Row 6: a '/tmp' literal passed as an argument, refused before any write.  No repository-external write landed.
+Corrections : several counts and one claim (MAP_R4_3 'drops two rows'; 'result level unaffected by injector revision') were wrong
+              when first written and were corrected; the report's section 6.5 lists them.
+Open (S2)   : driver byte-reproducibility (needs a pinned injector revision if required); historical 38-case run; S2R2/R2-D not in
+              run_all.sh; injector revision for fmmpert and addf rows; the 13-column T4 converter.  Decisions are the user's.
+Not done    : S2 sign-off; any stage completion.  P05-S1, S2, S3, S4 are not declared complete.
