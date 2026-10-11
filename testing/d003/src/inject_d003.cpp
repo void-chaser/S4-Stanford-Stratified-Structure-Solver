@@ -249,6 +249,41 @@ extern "C" int S4_TEST_ALLOC_HOOK(int id, size_t size){
 	return 1;
 }
 
+/* ------------------------------------------------------------------------
+ * Family D (P05-S2R2, T1): the kottke work allocation, fmm_kottke.cpp:78.
+ * Independent of family C: own macro (S4_TEST_KOTTKE_SEAM), own hook
+ * (S4_TEST_KOTTKE_HOOK), own request prefix (kottke_alloc:).  The seam calls this
+ * hook at the one call site, so the k-th call counted is the kottke allocation only;
+ * the 24 field-output fft_alloc_complex calls in rcwa.cpp are not counted.
+ *
+ *   S4FMM_INJECT = kottke_alloc:31:K      (K >= 1)
+ *
+ * On the K-th hit the seam returns NULL for the work allocation.
+ * Unreached K: hits = 0, reported as not reached (judge: INVALID).
+ * ------------------------------------------------------------------------ */
+static int kd_req_ok = 0, kd_req_id = 0, kd_req_k = 0;
+static long kd_calls[32] = {0};
+static void kd_parse_request(void){
+	const char *m = mode();
+	kd_req_ok = 0;
+	if(0 != strncmp(m, "kottke_alloc:", 13)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 13, "%d:%d", &id, &k)){ return; }
+	if(id != 31){ return; }
+	if(k < 1){ return; }
+	kd_req_id = id; kd_req_k = k; kd_req_ok = 1;
+}
+extern "C" int S4_TEST_KOTTKE_HOOK(int id, size_t n){
+	kd_parse_request();
+	if(id != 31){ return 0; }
+	kd_calls[id]++;
+	if(!kd_req_ok){ return 0; }
+	if(kd_calls[id] != kd_req_k){ return 0; }
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT kottke_alloc id=%d call=%ld n=%zu (hit=%ld)\n", id, kd_calls[id], n, n_hits);
+	return 1;
+}
+
 extern "C" fft_plan __real__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(int*, std::complex<double>*, std::complex<double>*, int);
 extern "C" fft_plan __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(int *n, std::complex<double>*a, std::complex<double>*b, int s){
 	n_plan_calls++;

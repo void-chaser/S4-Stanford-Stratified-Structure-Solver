@@ -183,6 +183,17 @@ int main(int argc, char **argv){
 		}
 	}
 
+	/* [T4 / P05-S2R2] Optional single-layer mode destroy between the two calls.  Default:
+	 * S4FMM_TWICE unset, no call.  S4FMM_TWICE=slab destroys the modes of layer 1 (the patterned
+	 * Slab; order fixed by make_stack: Above=0, Slab=1, Below=2).  Layer 1's modes are then
+	 * recomputed on the second call, PolBasisJones is re-entered, and the field cache (kept by
+	 * S4_Simulation_DestroyLayerModes, which does not invalidate it) is looked up.  This reaches
+	 * the cache-hit branch fmm_PolBasisJones.cpp:344 (work = S4_malloc(nn)).  Internal interface
+	 * (S4_internal.h:181); this is a test-harness route, not a public-API route. */
+	if(const char *tw = getenv("S4FMM_TWICE")){
+		if(0 == strcmp(tw, "slab")){ S4_Simulation_DestroyLayerModes(S, 1); }
+	}
+
 	/* Second call: the injection has already fired, so this must succeed. */
 	Buf retry_e(n), retry_h(n);
 	S4_real *Ep2 = (0 == strcmp(outs, "h") ? NULL : retry_e.ptr());

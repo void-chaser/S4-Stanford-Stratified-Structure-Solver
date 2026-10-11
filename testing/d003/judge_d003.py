@@ -52,11 +52,22 @@ def _opt_int(text):
     return int(text)
 
 
-def classify(rc, rc1, rc2, hit, control, real=True):
-    """Return (class, label, reason).  Pure function; no I/O."""
+def classify(rc, rc1, rc2, hit, control, real=True, inj_call=1):
+    """Return (class, label, reason).  Pure function; no I/O.
+
+    inj_call (P05-S2R2 T4): the 1-based index of the field-plane call that the injection
+    targets.  1 (default) is the historical behaviour: the first-call return code rc1 decides
+    the class, exactly as before.  2 selects rc2 (the retry call) in its place, for runs where
+    the driver's S4FMM_TWICE route injects into the second call.  Any other value is rejected
+    (fail-closed), so a wrong index cannot silently pick the wrong return code.
+    """
+    if inj_call not in (1, 2):
+        return "INVALID", "", "inj_call must be 1 or 2, got %r" % (inj_call,)
     label = "" if real else "(boundary simulation)"
     if rc is None:
         return "INVALID", label, "rc missing: the run did not complete"
+    if inj_call == 2:
+        rc1 = rc2
     if control:
         if hit != 0:
             return "INVALID", label, "control run reached an injection (hit=%d)" % hit

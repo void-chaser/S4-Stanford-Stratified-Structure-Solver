@@ -35,7 +35,7 @@ ENV_ALLOW = ("PATH", "LANG", "LC_ALL")
 EXPECTED_CLASSES = ("CRASH", "SILENT_SWALLOW", "REPORTED_FAILURE", "INVALID", "CONTROL_OK")
 MODES = ("fft", "kottke", "jones", "nv", "vl")
 STACKS = ("pattern", "flat")
-REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "s4malloc")
+REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc")
 
 
 def _child_env(extra):
@@ -91,7 +91,17 @@ def build_env(row):
         extra["S4FMM_INJECT"] = row["request"]
     if row["nth"] not in ("-", ""):
         extra["S4FMM_NTH"] = row["nth"]
+    # P05-S2R2 T4: cases whose id starts with "t4/" run the second-call route (the driver's
+    # S4FMM_TWICE=slab destroys layer 1 modes between the two field calls).  Every other case
+    # gets no S4FMM_TWICE, so the historical environment is unchanged.
+    if row["case"].startswith("t4/"):
+        extra["S4FMM_TWICE"] = "slab"
     return extra
+
+
+def inj_call_of(row):
+    """Index of the field call the injection targets: 2 for t4/ cases, else 1 (historical)."""
+    return 2 if row["case"].startswith("t4/") else 1
 
 
 def control_of(row):
@@ -142,7 +152,7 @@ def cmd_run(args):
             text = fh.read().decode("utf-8", errors="replace")
         facts = J.facts_from_log(text)
         cls, label, reason = J.classify(rc, facts["rc1"], facts["rc2"], facts["hit"],
-                                        control=control_of(row))
+                                        control=control_of(row), inj_call=inj_call_of(row))
         recs.append(dict(row, rc=rc, facts=facts, observed=cls, reason=reason,
                          label=label, log=log_path, log_sha256=_sha256(log_path)))
     with open(os.path.join(args.out, "raw_%s.json" % args.tree), "w", encoding="utf-8") as fh:

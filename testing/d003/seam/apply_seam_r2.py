@@ -177,40 +177,45 @@ DECL_C = [
 ]
 
 
-def plan_c(root, repo):
-    """Family C: replace exact S4.cpp allocation lines under #ifdef S4_TEST_ALLOC_SEAM.
+def plan_replace(root, repo, rel, sites, macro, decl, fam, base_text=None):
+    """Replace exact source lines under #ifdef <macro>, keeping the original as #else.
 
-    Returns (old_text, new_text, log).  Every site must match exactly once.  The declaration
-    goes after the last #include, which precedes all uses.
+    Generic engine shared by families C and D (P05-S2R2).  Every site must match exactly
+    once in <rel>; the declaration goes after the last #include, which precedes all uses.
+    base_text: if given, the replacement is applied on top of this in-memory text (the output
+    of an earlier family on the same file) instead of the file on disk.  This prevents a later
+    family from silently overwriting an earlier family's changes to the same file.
+    Returns (old_text, new_text, log).  Writes nothing.
     """
-    rel = S4CPP
     path = os.path.join(root, rel)
     _assert_under_root(path, root, repo)
     with open(path, "rb") as fh:
-        text = fh.read().decode("utf-8")
+        disk_text = fh.read().decode("utf-8")
+    # the text being edited: the on-disk file, or the layered output of an earlier family
+    text = disk_text if base_text is None else base_text
     rows = _rows(text)
     crlf = "\r\n" if any(raw.endswith("\r\n") for _, raw in rows) else "\n"
     # locate and validate every site first, so a single bad anchor writes nothing
     spans = []
     log = []
-    for s in FAMILY_C_SITES:
+    for s in sites:
         old = s["old"]
         hits = [i for i in range(len(rows) - len(old) + 1)
                 if all(rows[i + k][0] == old[k] for k in range(len(old)))]
         if len(hits) != 1:
-            raise SystemExit("ANCHOR ERROR family C id %d in %s: matched %d time(s); refusing to guess"
-                             % (s["id"], rel, len(hits)))
+            raise SystemExit("ANCHOR ERROR family %s id %d in %s: matched %d time(s); refusing to guess"
+                             % (fam, s["id"], rel, len(hits)))
         spans.append((hits[0], hits[0] + len(old), s))
-        log.append("family C id %d: lines %d..%d replaced under S4_TEST_ALLOC_SEAM"
-                   % (s["id"], hits[0] + 1, hits[0] + len(old)))
+        log.append("family %s id %d: lines %d..%d replaced under %s"
+                   % (fam, s["id"], hits[0] + 1, hits[0] + len(old), macro))
     spans.sort(key=lambda t: t[0])
     for a, b in zip(spans, spans[1:]):
         if a[1] > b[0]:
-            raise SystemExit("OVERLAP ERROR family C ids %d and %d" % (a[2]["id"], b[2]["id"]))
+            raise SystemExit("OVERLAP ERROR family %s ids %d and %d" % (fam, a[2]["id"], b[2]["id"]))
     # the declaration anchor: last #include line in the file, which precedes every site
     incl = [i for i, (b, _) in enumerate(rows) if b.startswith("#include ")]
     if not incl or max(incl) >= spans[0][0]:
-        raise SystemExit("ORDER ERROR family C: no #include before the first site")
+        raise SystemExit("ORDER ERROR family %s: no #include before the first site" % fam)
     decl_at = max(incl)
     out = []
     site_at = {a: (b, s) for a, b, s in spans}
@@ -219,7 +224,7 @@ def plan_c(root, repo):
     while i < n_lines:
         if i in site_at:
             b, s = site_at[i]
-            out.append("#ifdef S4_TEST_ALLOC_SEAM" + crlf)
+            out.append("#ifdef %s" % macro + crlf)
             for line in s["new"]:
                 out.append(line + crlf)
             out.append("#else" + crlf)
@@ -230,12 +235,46 @@ def plan_c(root, repo):
             continue
         out.append(rows[i][1])
         if i == decl_at:
-            for line in DECL_C:
+            for line in decl:
                 out.append(line + crlf)
         i += 1
     new_text = "".join(out)
-    log.append("family C declaration after line %d" % (decl_at + 1))
-    return text, new_text, log
+    log.append("family %s declaration after line %d" % (fam, decl_at + 1))
+    return disk_text, new_text, log
+
+
+def plan_c(root, repo):
+    """Family C: replace exact S4.cpp allocation lines under #ifdef S4_TEST_ALLOC_SEAM."""
+    return plan_replace(root, repo, S4CPP, FAMILY_C_SITES, "S4_TEST_ALLOC_SEAM", DECL_C, "C")
+
+
+# family D (P05-S2R2 T1): the kottke work allocation in fmm_kottke.cpp:78.  It is a call to
+# fft_alloc_complex, which --wrap cannot target without also hitting the 24 field-output calls
+# in rcwa.cpp (GetFieldOnGrid, out of scope).  The seam is therefore placed at this one call
+# site only.  Independent macro and hook from family C.  Default output: the original line.
+FAMILY_D_FILE = FMM + "fmm_kottke.cpp"
+FAMILY_D_SITES = [
+    {"id": 31, "old": [
+        "\tstd::complex<double> *work = fft_alloc_complex(6*ng2);"],
+     "new": [
+        "\tstd::complex<double> *work = (S4_TEST_KOTTKE_HOOK(31, 6*ng2) ? NULL : fft_alloc_complex(6*ng2));"]},
+]
+DECL_D = [
+    "#ifdef S4_TEST_KOTTKE_SEAM",
+    'extern "C" int S4_TEST_KOTTKE_HOOK(int id, size_t n);',
+    "#endif",
+]
+
+
+def plan_d(root, repo, base_text=None):
+    """Family D: replace the kottke fft_alloc_complex call under #ifdef S4_TEST_KOTTKE_SEAM.
+
+    base_text: the already-patched text of FAMILY_D_FILE from families A/B, if any.
+    Returns (original_disk_text, new_text, log) so that diffs show the cumulative change.
+    """
+    old_disk, new_text, log = plan_replace(root, repo, FAMILY_D_FILE, FAMILY_D_SITES,
+                                           "S4_TEST_KOTTKE_SEAM", DECL_D, "D", base_text=base_text)
+    return old_disk, new_text, log
 
 
 def plan(root, repo, families):
@@ -306,7 +345,7 @@ def main(argv=None):
     args = p.parse_args(argv)
     fams = [f.strip() for f in args.families.split(",") if f.strip()]
     for f in fams:
-        if f not in ("A", "B", "C"):
+        if f not in ("A", "B", "C", "D"):
             raise SystemExit("unknown family %r" % f)
     ab = [f for f in fams if f in ("A", "B")]
     res = plan(args.root, args.repo, ab) if ab else {}
@@ -315,6 +354,16 @@ def main(argv=None):
         if S4CPP in res:
             raise SystemExit("INTERNAL ERROR: family C file already planned by A/B")
         res[S4CPP] = (old_c, new_c, log_c)
+    if "D" in fams:
+        # family D edits fmm_kottke.cpp, which families A also edit.  Layer D on top of A/B's
+        # output so neither family silently drops the other's changes (P05-S2R2 probe).
+        base = res[FAMILY_D_FILE][1] if FAMILY_D_FILE in res else None
+        old_d, new_d, log_d = plan_d(args.root, args.repo, base_text=base)
+        if FAMILY_D_FILE in res:
+            old_disk, _, log_ab = res[FAMILY_D_FILE]
+            res[FAMILY_D_FILE] = (old_disk, new_d, log_ab + log_d)
+        else:
+            res[FAMILY_D_FILE] = (old_d, new_d, log_d)
     out_lines = ["apply_seam_r2: %s  families=%s" % ("CHECK ONLY (no write)" if args.check_only else "WRITTEN", ",".join(fams))]
     for rel in sorted(res):
         old, new, log = res[rel]
