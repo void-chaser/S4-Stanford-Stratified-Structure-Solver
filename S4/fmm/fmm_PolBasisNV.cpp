@@ -225,7 +225,9 @@ plan_done:
 		if(NULL != vfield){ S4_free(vfield); }
 		if(0 != ret){ S4_free(work); S4_free(ivalues); return 1; }
 		// Add to cache
-		Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn);
+		if(0 != Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn)){
+			S4_free(work); S4_free(ivalues); return 1;
+		}
 	}else{
 		// P contains the cached version
 		// We still need temporary space to compute -Delta

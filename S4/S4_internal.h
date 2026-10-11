@@ -240,7 +240,7 @@ int Simulation_MakeExcitationDipole(S4_Simulation *S, const double k[2], const c
 #ifdef __cplusplus
 // Field cache manipulation
 std::complex<double>* Simulation_GetCachedField(const S4_Simulation *S, const S4_Layer *layer);
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 #endif
 
 //////////////////////// Simulation solutions ////////////////////////

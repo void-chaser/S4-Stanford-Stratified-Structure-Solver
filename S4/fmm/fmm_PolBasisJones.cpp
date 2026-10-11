@@ -337,7 +337,9 @@ plan_done:
 		RNP::TLASupport::LUDecomposition(n2,n2, P,n2, ipiv);
 
 		// Add to cache (assume that ipiv is immediately after P
-		Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn+2*n);
+		if(0 != Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn+2*n)){
+			S4_free(work); S4_free(ivalues); return 1;
+		}
 	}else{
 		// P contains the cached version
 		//work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*2*nn);

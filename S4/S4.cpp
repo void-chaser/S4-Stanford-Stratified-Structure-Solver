@@ -223,7 +223,7 @@ int Simulation_GetSMatrix(S4_Simulation *S, int layer_from, int layer_to, std::c
 // Field cache manipulation
 void Simulation_InvalidateFieldCache(S4_Simulation *S);
 std::complex<double>* Simulation_GetCachedField(S4_Simulation *S, const S4_Layer *layer);
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 
 // Pattern ownership helpers; defined just below, used by Layer_Destroy and by
 // S4_Simulation_Clone.
@@ -3972,9 +3972,15 @@ std::complex<double>* Simulation_GetCachedField(const S4_Simulation *S, const S4
 	S4_TRACE("< Simulation_GetCachedField returning P = %p [omega=%f]\n", P, S->omega[0]);
 	return P;
 }
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen){
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen){
 	S4_TRACE("> Simulation_AddFieldToCache(S=%p, layer=%p, n=%d, P=%p) [omega=%f]\n", S, layer, (int)n, P, S->omega[0]);
 	FieldCache *f = (FieldCache*)S4_malloc(sizeof(FieldCache)+sizeof(std::complex<double>)*Plen);
+	// P05-S3R D1: a failed allocation must not reach the dereferences below.  The list head is
+	// not touched on this path, so S->field_cache keeps every node it already had.
+	if(NULL == f){
+		S4_TRACE("< Simulation_AddFieldToCache (failed; allocation returned NULL) [omega=%f]\n", S->omega[0]);
+		return 1;
+	}
 	f->P = (std::complex<double>*)(f+1);
 	memcpy(f->P, P, sizeof(std::complex<double>)*Plen);
 	f->layer = layer;
@@ -3982,6 +3988,7 @@ void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t 
 	f->next = S->field_cache;
 	S->field_cache = f;
 	S4_TRACE("< Simulation_AddFieldToCache [omega=%f]\n", S->omega[0]);
+	return 0;
 }
 
 void Simulation_SetExcitationType(S4_Simulation *S, int type){
