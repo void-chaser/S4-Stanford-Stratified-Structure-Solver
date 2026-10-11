@@ -375,6 +375,53 @@ extern "C" void S4_TEST_FMMBUF_AFTER(int id, std::complex<double> *e2, std::comp
 	std::fprintf(stderr, "S4FMM HIT fmmbuf id=%d call=%ld (hit=%ld)\n", id, fe_calls[ix], n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * Family E, tree B perturbation (P05-S2R5, R5-1 correction 2; see r5-1/B_MODEL_DESIGN.txt).
+ *   fmmpert:ID:K   S4_TEST_FMMPERT_AFTER(id, e2, einv, n, n2) writes the IDENTITY into the
+ *                  FMM output buffers for the K-th call of the requested ID:
+ *                     Epsilon_inv (n x n, ld n)        := identity
+ *                     Epsilon2 diagonal blocks (ld n2) := identity  (the 2x2 block layout of the uniform branch)
+ *                  This is the repository's family-B model 1 (identity buffer) applied to the FMM outputs.
+ *                  It is a CHOICE with that precedent, not a value defined by the FMM source.
+ * Unrequested runs: no write.  Unparsable requests never match (fail closed).
+ * ------------------------------------------------------------------------ */
+static int fp_req_ok = 0, fp_req_id = 0, fp_req_k = 0;
+static long fp_calls[10] = {0};
+
+static void fp_parse_request(void){
+	const char *m = mode();
+	fp_req_ok = 0;
+	if(0 != strncmp(m, "fmmpert:", 8)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 8, "%d:%d", &id, &k)){ return; }
+	if(fe_index(id) < 0 || k < 1){ return; }
+	fp_req_id = id; fp_req_k = k; fp_req_ok = 1;
+}
+
+extern "C" void S4_TEST_FMMPERT_AFTER(int id, std::complex<double> *e2, std::complex<double> *einv, int n, int n2){
+	fp_parse_request();
+	const int ix = fe_index(id);
+	if(ix < 0){ return; }
+	fp_calls[ix]++;
+	if(!fp_req_ok || id != fp_req_id){ return; }
+	if(fp_calls[ix] != fp_req_k){ return; }
+	for(int j = 0; j < n; ++j){
+		for(int i = 0; i < n; ++i){
+			einv[i + j*n] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+		}
+	}
+	for(int blk = 0; blk < 4; ++blk){
+		const int r0 = (blk & 1) ? n : 0, c0 = (blk & 2) ? n : 0;
+		for(int j = 0; j < n; ++j){
+			for(int i = 0; i < n; ++i){
+				e2[(r0 + i) + (c0 + j)*n2] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+			}
+		}
+	}
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT fmmpert id=%d call=%ld (hit=%ld)\n", id, fp_calls[ix], n_hits);
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);

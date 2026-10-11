@@ -53,6 +53,8 @@ MACRO_AH = "S4_TEST_FMMRET_SEAM"
 HOOK_AH = "S4_TEST_FMMRET_AFTER"
 MACRO_B = "S4_TEST_FMMBUF_SEAM"
 HOOK_B = "S4_TEST_FMMBUF_AFTER"
+MACRO_P = "S4_TEST_FMMPERT_SEAM"
+HOOK_P = "S4_TEST_FMMPERT_AFTER"
 FILE = "S4/S4.cpp"
 
 
@@ -92,8 +94,13 @@ def plan(root, repo, tree):
     bodies = [b for b, _ in rows]
     eol = "\r\n" if b"\r\n" in raw else "\n"
     with_capture = tree in ("A", "H")
-    macro = MACRO_AH if with_capture else MACRO_B
-    hook = HOOK_AH if with_capture else HOOK_B
+    perturb = tree == "BPERT"
+    if with_capture:
+        macro, hook = MACRO_AH, HOOK_AH
+    elif perturb:
+        macro, hook = MACRO_P, HOOK_P
+    else:
+        macro, hook = MACRO_B, HOOK_B
     if macro in text:
         raise SystemExit("REFUSED: %s already carries %s" % (FILE, macro))
 
@@ -114,12 +121,20 @@ def plan(root, repo, tree):
                 "#endif",
             ]
         else:
-            # B: observe the buffers the call just wrote; the hook writes nothing (no status exists in B).
-            block = [
-                "#ifdef " + macro,
-                "%s%s(%d, pB->Epsilon2, pB->Epsilon_inv, n);" % ("\t" * tabs, hook, pid),
-                "#endif",
-            ]
+            if perturb:
+                # BPERT: write the identity model into the FMM outputs (no status exists in B).
+                block = [
+                    "#ifdef " + macro,
+                    "%s%s(%d, pB->Epsilon2, pB->Epsilon_inv, n, n2);" % ("\t" * tabs, hook, pid),
+                    "#endif",
+                ]
+            else:
+                # B: observe the buffers the call just wrote; the hook writes nothing.
+                block = [
+                    "#ifdef " + macro,
+                    "%s%s(%d, pB->Epsilon2, pB->Epsilon_inv, n);" % ("\t" * tabs, hook, pid),
+                    "#endif",
+                ]
         inserts_after.setdefault(at, []).extend(block)
         plan_rows.append((pid, name, tabs, at + 1))
 
@@ -130,6 +145,8 @@ def plan(root, repo, tree):
     decl_after = includes[-1]
     if with_capture:
         decl = 'extern "C" int %s(int id, int ret);' % hook
+    elif perturb:
+        decl = 'extern "C" void %s(int id, std::complex<double> *e2, std::complex<double> *einv, int n, int n2);' % hook
     else:
         decl = 'extern "C" void %s(int id, std::complex<double> *e2, std::complex<double> *einv, int n);' % hook
     inserts_after[decl_after] = ["#ifdef " + macro, decl, "#endif"] + inserts_after.get(decl_after, [])
@@ -145,7 +162,7 @@ def plan(root, repo, tree):
 
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    p.add_argument("--tree", required=True, choices=("A", "H", "B"))
+    p.add_argument("--tree", required=True, choices=("A", "H", "B", "BPERT"))
     p.add_argument("--root", required=True, help="exported tree to edit (git archive copy)")
     p.add_argument("--repo", default=None, help="repository root; its S4/ tree is refused")
     p.add_argument("--check-only", action="store_true", help="validate anchors; write nothing")
