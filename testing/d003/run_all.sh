@@ -416,7 +416,11 @@ stage_judge() {
 stage_report() {
     [ -s "$OUT/report/summary.tsv" ] || fail report "summary.tsv missing (run stage judge first)"
     [ -s "$OUT/report/SUMMARY.txt" ] || fail report "SUMMARY.txt missing (run stage judge first)"
-    run_safe sh -c 'cd "$1" && find report trees drivers matrix seam -type f 2>/dev/null | LC_ALL=C sort | xargs sha256sum > "$1/report/SHA256SUMS.txt"' \
+    # The manifest covers the harness outputs only: the summary, the drivers, the matrix, the seam
+    # and build records, and the library checksums.  It does NOT cover trees/ (a git-archive copy of
+    # whole commits, which tracks unrelated checkpoints/ evidence), and it excludes itself
+    # (SHA256SUMS.txt cannot contain its own checksum).  Same convention as run_d003.sh.
+    run_safe sh -c 'cd "$1" && find report drivers matrix seam -type f ! -name SHA256SUMS.txt 2>/dev/null | LC_ALL=C sort | xargs sha256sum > "$1/report/SHA256SUMS.txt"' \
         sh "$OUT" || fail report "could not write report/SHA256SUMS.txt"
     record report DONE "trees=$TREES"
 }
