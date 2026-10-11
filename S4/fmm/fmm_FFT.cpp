@@ -37,6 +37,7 @@
 #include "fft_iface.h"
 
 int FMMGetEpsilon_FFT(const S4_Simulation *S, const S4_Layer *L, const int n, std::complex<double> *Epsilon2, std::complex<double> *Epsilon_inv){
+	int ret = 0;
 	const int n2 = 2*n;
 	const int *G = S->G;
 
@@ -72,6 +73,7 @@ int FMMGetEpsilon_FFT(const S4_Simulation *S, const S4_Layer *L, const int n, st
 	// We actually make 5 different grids to facilitate the fft routines
 
 	std::complex<double> *work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*(6*ng2));
+	if(NULL == work){ return 1; }
 	std::complex<double>*fxx = work;
 	std::complex<double>*fxy = fxx + ng2;
 	std::complex<double>*fyx = fxy + ng2;
@@ -79,10 +81,13 @@ int FMMGetEpsilon_FFT(const S4_Simulation *S, const S4_Layer *L, const int n, st
 	std::complex<double>*fzz = fyy + ng2;
 	std::complex<double>*Fto = fzz + ng2;
 	double *discval = (double*)S4_malloc(sizeof(double)*(L->pattern.nshapes+1));
+	if(NULL == discval){ S4_free(work); return 1; }
 
 	fft_plan plans[5];
+	for(int i = 0; i <= 4; ++i){ plans[i] = NULL; }
 	for(int i = 0; i <= 4; ++i){
 		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+		if(NULL == plans[i]){ ret = 1; goto cleanup; }
 	}
 
 	int ii[2];
@@ -180,7 +185,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 	// Make Epsilon_inv first
 	{
 		//kiss_fftnd(fftcfg, (const kiss_fft_cpx *)(fxx+4*ng2), (kiss_fft_cpx *)Fto);
-		fft_plan_exec(plans[4]);
+		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
 		for(int j = 0; j < n; ++j){
 			for(int i = 0; i < n; ++i){
 				int f[2] = {G[2*i+0]-G[2*j+0],G[2*i+1]-G[2*j+1]};
@@ -202,6 +207,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
 	int solve_info;
 	RNP::LinearSolve<'N'>(n,n, Epsilon2,n, Epsilon_inv,n, &solve_info, NULL);
+	if(0 != solve_info){ ret = 1; goto cleanup; }
 
 	// We fill in the quarter blocks of F in Fortran order
 	for(int w = 0; w < 4; ++w){
@@ -209,7 +215,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 		int Erow = (w&2 ? n : 0);
 
 		//kiss_fftnd(fftcfg, (const kiss_fft_cpx *)(fxx+w*ng2), (kiss_fft_cpx *)Fto);
-		fft_plan_exec(plans[w]);
+		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
 
 		for(int j = 0; j < n; ++j){
 			for(int i = 0; i < n; ++i){
@@ -228,6 +234,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 			}
 		}
 	}
+cleanup:
 	for(int i = 0; i <= 4; ++i){
 		fft_plan_destroy(plans[i]);
 	}
@@ -235,5 +242,5 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 
 	S4_free(discval);
 	S4_free(work);
-	return 0;
+	return ret;
 }

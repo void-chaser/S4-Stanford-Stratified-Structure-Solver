@@ -38,6 +38,7 @@ int FMMGetEpsilon_ClosedForm(const S4_Simulation *S, const S4_Layer *L, const in
 	const int *G = S->G;
 	const int ndim = (0 == S->Lr[2] && 0 == S->Lr[3]) ? 1 : 2;
 	double *ivalues = (double*)S4_malloc(sizeof(double)*(2+10)*(L->pattern.nshapes+1));
+	if(NULL == ivalues){ return 1; }
 	double *values = ivalues + 2*(L->pattern.nshapes+1);
 
 	S4_TRACE("I  Closed-form epsilon\n");
