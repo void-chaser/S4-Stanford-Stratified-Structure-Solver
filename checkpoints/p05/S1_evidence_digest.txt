@@ -477,3 +477,28 @@ Not closed  : nv/vl cache-hit two-run formal runs; closed 130/133/138/235 and ex
 Incidents   : stale driver used by runner (T4 4 INVALID, fixed); mixed baseline/current line numbers in a check (fixed);
               wrong sidecar filename in an integrity check (rechecked, all UNCHANGED); T5 duplicate-key check misread
               (per tree, corrected); judge read the wrong return code for second-call injections (fixed).
+
+P05-S3R (P05-S3 minimal-fix supplement) — STOPPED, not complete; awaiting user review
+=======================================================================================
+Status      : P05-S3 NOT complete.  Round stopped at the normal-path check.  No stage (S1-S4) is declared complete.
+              P05-S3R is a supplement of the formal stage P05-S3, not a new stage.
+Report      : checkpoints/p05/P05_S3R_MINIMAL_FIX_SUPPLEMENT.md (commit e28facb).
+Start       : HEAD 876181c; baseline 37a82e8; /tmp start snapshot e3b0c442... (0 entries).
+Commits     : 37d603a (R3-0, driver identity pinned in matrix_r2.py: --driver-sha256, manifest, refusal; judge unchanged,
+              selftests byte-identical 25/25 and 10/10);
+              e83255f (AddFieldToCache returns int; Jones/NV/VL check it); 73e00ef (ComputeLayerModes four allocation
+              checks, return 20); df3bb02 (seven info=NULL solves check their status, return 1); 35cd7b3 (experimental
+              allocation check, return 20, static only).  Each commit: awaiting user review.
+Build       : clean full builds of each state compile 12 objects, 0 errors, and the same 71 warning lines as 876181c.
+Red baseline: pre-fix red measured on 37a82e8 and 876181c (own measurement, registry REGISTRY_S3R_PRE sha256 655349cc...,
+              INFLUENCED): identical; no point changed by S3.
+STOP        : normal path changed for Jones by commit df3bb02 (rounding-order, max relative 1.2e-12; 8 of 38 field dumps,
+              all Jones).  Bisect and isolation attribute it to that commit alone.  Mechanism: non-NULL info changes the
+              compiler's scheduling of the Jones body (142 -> 152 rounding operations); the solve's arithmetic is unchanged.
+              Decision left to the user: accept a tolerance for this mode, change the status channel, or withdraw commit 3.
+Not done    : family-B injection (blocked: sites 13/14 anchors not unique after commit 3; hook never sets solve_info);
+              the three-column red-to-green matrix; the out-of-scope draft (R3-E).
+Not closed  : seven info=NULL sites have no injection-based red-to-green evidence; closed 130/133/138/235 and
+              experimental:40 static only [未验证-仅静态]; LAPACK info semantics [未验证]; the uncommitted seam change
+              (testing/d003/seam/apply_seam_r2.py) is intentionally not committed (family B still does not apply).
+Sample      : one end strace sample (267 events): 0 under /tmp; 0 write opens outside the repository.  A sample, not an audit.
