@@ -302,6 +302,15 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 			}
 		}
 	}
+	// P05-S3R2 D-K (K-1): the averaged tensors are not checked anywhere else; a
+	// non-finite divisor (abcd or abcde equal to zero or overflowing) reaches
+	// Epsilon2 and Epsilon_inv and then the eigensolver.  Reject it here.
+	for(int q = 0; q < n2*n2; ++q){
+		if(!std::isfinite(Epsilon2[q].real()) || !std::isfinite(Epsilon2[q].imag())){ ret = 1; goto cleanup; }
+	}
+	for(int q = 0; q < n*n; ++q){
+		if(!std::isfinite(Epsilon_inv[q].real()) || !std::isfinite(Epsilon_inv[q].imag())){ ret = 1; goto cleanup; }
+	}
 //fprintf(stderr, "Epsilon2[0] = %f+I %f\n", Epsilon2[0].real(), Epsilon2[0].imag());
 cleanup:
 	for(int i = 0; i <= 4; ++i){
