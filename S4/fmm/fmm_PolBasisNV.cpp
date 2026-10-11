@@ -139,6 +139,16 @@ int FMMGetEpsilon_PolBasisNV(const S4_Simulation *S, const S4_Layer *L, const in
 			S4_VERB(1, "Generating polarization vector field of size %d x %d\n", ngrid[0], ngrid[1]);
 			error = Pattern_GenerateFlowField(&L->pattern, 0, S->Lr, ngrid[0], ngrid[1], vfield);
 
+			// P05-S3R2 D-N (R-NV-1): check the flow-field error before normalising,
+			// so that an unwritten vfield is never read on the error path.
+			if(0 != error){
+				S4_TRACE("< Simulation_ComputeLayerBands (failed; Pattern_GenerateFlowField returned %d) [omega=%f]\n", error, S->omega[0]);
+				if(NULL != vfield){ S4_free(vfield); }
+				if(NULL != work){ S4_free(work); }
+				if(NULL != ivalues){ S4_free(ivalues); }
+				return error;
+			}
+
 			// Normalize the field
 			for(ii[1] = 0; ii[1] < ngrid[1]; ++ii[1]){
 				for(ii[0] = 0; ii[0] < ngrid[0]; ++ii[0]){
@@ -153,14 +163,6 @@ int FMMGetEpsilon_PolBasisNV(const S4_Simulation *S, const S4_Layer *L, const in
 						vfield[2*(ii[0]+ii[1]*ngrid[0])+1] = 0;
 					}
 				}
-			}
-
-			if(0 != error){
-				S4_TRACE("< Simulation_ComputeLayerBands (failed; Pattern_GenerateFlowField returned %d) [omega=%f]\n", error, S->omega[0]);
-				if(NULL != vfield){ S4_free(vfield); }
-				if(NULL != work){ S4_free(work); }
-				if(NULL != ivalues){ S4_free(ivalues); }
-				return error;
 			}
 		}
 
