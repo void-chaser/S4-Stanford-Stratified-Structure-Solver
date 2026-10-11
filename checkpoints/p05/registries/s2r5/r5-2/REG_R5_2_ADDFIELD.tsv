@@ -1,0 +1,26 @@
+# P05-S2R5 R5-2 registry: family F (AddFieldToCache CALLER check), tree H only.  REGISTERED BEFORE ANY INJECTION RUN.
+# No row is POST-HOC.  Each expected class is derived from source (chain below) and marked INFLUENCED, because the
+#   chain is source-derived and no run of these rows existed when this file was written.
+# Source chain for H (read-only, [源码]):
+#   fmm_PolBasisJones.cpp:340-341: if(0 != Simulation_AddFieldToCache(...)) { S4_free(work); S4_free(ivalues); return 1; }
+#   fmm_PolBasisJones.cpp:91 FMMGetEpsilon_PolBasisJones returns that 1 to the caller;
+#   S4.cpp:2391 fmm_ret = FMMGetEpsilon_PolBasisJones(...); S4.cpp:2413 if(0 != fmm_ret) { DiscardLayerModes; return 20; }.
+#   Same pattern for NV (fmm_PolBasisNV.cpp:228-229, dispatch 2393, 2405) and VL (fmm_PolBasisVL.cpp:237-238, dispatch 2395, 2407).
+#   => expected REPORTED_FAILURE with rc1 20 for IDs 160 (jones), 161 (nv), 162 (vl).
+# CHAIN NOTE: each PolBasis FMM function is called from two dispatch sites: the FFT chain (Jones 2391, NV 2393,
+#   VL 2395; driver modes fftjones/fftnv/fftvl) and the ClosedForm chain (Jones 2403, NV 2405, VL 2407; driver modes
+#   jones/nv/vl).  The caller check (fmm_PolBasis*.cpp 340/228/237) is inside the function, so it runs for BOTH chains.
+#   The rows below use the ClosedForm chain (the driver modes jones/nv/vl).  The FFT-chain coverage of the same check
+#   is NOT registered here; it is an explicit gap for this round (see the report), not a silent omission.
+# A and B: NO EQUIVALENT POINT.  Simulation_AddFieldToCache is void in A (876181c) and B (37a82e8) (S4.cpp declaration 226),
+#   so no return value exists to force.  They are recorded as explicit non-rows below, not as expectations.
+# Trees: H = export 64eb0b5 with the family F seam (build: r5-2/export-H-w, macro on), driver r5-2/bin-F/driver-d003-seam.
+# Each row is run twice (R5-2 step: two runs, identical).
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+R5-2-H160-jones	F	H	addf:160:1	-	pattern	jones	9	REPORTED_FAILURE	INFLUENCED: fmm_PolBasisJones.cpp:340-341 caller returns 1 -> dispatch 2391 -> status check 2413 returns 20 (src)
+R5-2-H161-nv	F	H	addf:161:1	-	pattern	nv	9	REPORTED_FAILURE	INFLUENCED: fmm_PolBasisNV.cpp:228-229 caller returns 1 -> dispatch 2405 -> status check 2413 returns 20 (src)
+R5-2-H162-vl	F	H	addf:162:1	-	pattern	vl	9	REPORTED_FAILURE	INFLUENCED: fmm_PolBasisVL.cpp:237-238 caller returns 1 -> dispatch 2407 -> status check 2413 returns 20 (src)
+# ---- explicit non-rows (not expectations) ----
+# A (876181c): NO EQUIVALENT POINT (void function).  Recorded here so the absence is visible.
+# B (37a82e8): NO EQUIVALENT POINT (void function).  Recorded here so the absence is visible.

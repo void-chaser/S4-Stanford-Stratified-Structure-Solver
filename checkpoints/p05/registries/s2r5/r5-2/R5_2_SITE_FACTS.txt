@@ -1,0 +1,25 @@
+R5-2 source facts (read-only; [源码]).  Gathered before any design or registration.
+
+Existing evidence reviewed first:
+  - S2R3 3b row acache3977 (REG_3B_THREECOLUMN.tsv): alloc:25:1 (family C) under jones -> B CRASH, A CRASH, H REPORTED_FAILURE.
+    This injects an ALLOCATION failure inside Simulation_AddFieldToCache (the FieldCache S4_malloc, H S4.cpp:4007-4013).
+    It exercises the FUNCTION's own NULL check.  It does NOT isolate the CALLER's check.  L4 is the caller's check.
+
+AddFieldToCache return type (the decisive fact for the A and B columns):
+  B 37a82e8 : 'void Simulation_AddFieldToCache(...)'  (S4.cpp 3969; declaration 226).  No return value.
+  A 876181c : 'void Simulation_AddFieldToCache(...)'  (S4.cpp 3975; declaration 226).  No return value.
+  H 64eb0b5 : 'int  Simulation_AddFieldToCache(...)'  (S4.cpp 4005; declaration 226).  Returns 1 on allocation failure (4011-4012).
+  => A and B cannot be driven by a forced return value of this function.  Their columns are NO EQUIVALENT POINT (void),
+     not an expectation.  No A or B column is invented.
+
+H callers (the caller check under test):
+  fmm_PolBasisJones.cpp:340   if(0 != Simulation_AddFieldToCache(...)){ S4_free(work); S4_free(ivalues); return 1; }
+  fmm_PolBasisNV.cpp:228      if(0 != Simulation_AddFieldToCache(...)){ S4_free(work); S4_free(ivalues); return 1; }
+  fmm_PolBasisVL.cpp:237      if(0 != Simulation_AddFieldToCache(...)){ S4_free(work); S4_free(ivalues); return 1; }
+  Cleanup pair identical in the three callers: S4_free(work), S4_free(ivalues), return 1.
+
+Isolation design (family F, H only):
+  Force the RETURN VALUE of the call at each of the three H call sites to 1 from the call site, leaving the function's
+  internal allocation path untouched (the function runs normally, then its result is replaced).  This tests the CALLER's
+  check and cleanup independently of the function's own NULL check (S4.cpp 4010-4012).
+  Each call site is a separate point (IDs 160, 161, 162), one per PolBasis caller, so the caller of each is isolated.

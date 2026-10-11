@@ -1,0 +1,63 @@
+# P05-S2R5 R5-1 expectations for family E (FMMGetEpsilon dispatch).  REGISTERED BEFORE ANY INJECTION RUN.
+# No row is POST-HOC.  Rows whose outcome is already determined by source reading are marked INFLUENCED
+# (the source basis is written in the basis column).  Rows that depend on a measured buffer effect are NOT
+# asserted: they are marked OPEN and carry no expected class.
+# Trees: A = 876181c (status column), H = 64eb0b5 (status column), B = 37a82e8 (buffer column; no status exists).
+# Driver: the seam drivers built from the exports (H: build3a/bin-H/driver-d003-seam with family E seam;
+#   A: export with the family E seam; B: export with the fmmbuf seam).  Every row is run twice (R5-1 step 4).
+#
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# The request column carries the family E request.  NTH is '-' (not an s4malloc count).
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+# ---- status column, tree H (same status check as A at 2413) ----
+R5-1-H150-exp	E	H	fmmret:150:1	-	pattern	experimental	9	REPORTED_FAILURE	INFLUENCED: 2382 status -> 2413 check returns 20 (src)
+R5-1-H151-kot	E	H	fmmret:151:1	-	pattern	kottke	9	REPORTED_FAILURE	INFLUENCED: 2386 status -> 2413 check returns 20 (src)
+R5-1-H152-fft	E	H	fmmret:152:1	-	pattern	fft	9	REPORTED_FAILURE	INFLUENCED: 2388 status -> nested PolBasis skipped (2389) -> 2413 returns 20 (src)
+R5-1-H152-fftjones	E	H	fmmret:152:1	-	pattern	fftjones	9	REPORTED_FAILURE	INFLUENCED: 2388 forced -> PolBasis 2391 skipped -> 2413 returns 20 (src)
+R5-1-H152-fftnv	E	H	fmmret:152:1	-	pattern	fftnv	9	REPORTED_FAILURE	INFLUENCED: 2388 forced -> PolBasis 2393 skipped -> 2413 returns 20 (src)
+R5-1-H152-fftvl	E	H	fmmret:152:1	-	pattern	fftvl	9	REPORTED_FAILURE	INFLUENCED: 2388 forced -> PolBasis 2395 skipped -> 2413 returns 20 (src)
+R5-1-H153-fftjones	E	H	fmmret:153:1	-	pattern	fftjones	9	REPORTED_FAILURE	INFLUENCED: 2391 forced; nothing later in chain -> 2413 returns 20 (src)
+R5-1-H154-fftnv	E	H	fmmret:154:1	-	pattern	fftnv	9	REPORTED_FAILURE	INFLUENCED: 2393 forced -> 2413 returns 20 (src)
+R5-1-H155-fftvl	E	H	fmmret:155:1	-	pattern	fftvl	9	REPORTED_FAILURE	INFLUENCED: 2395 forced -> 2413 returns 20 (src)
+R5-1-H156-jones	E	H	fmmret:156:1	-	pattern	jones	9	REPORTED_FAILURE	INFLUENCED: 2403 forced -> 2413 returns 20 (src)
+R5-1-H157-nv	E	H	fmmret:157:1	-	pattern	nv	9	REPORTED_FAILURE	INFLUENCED: 2405 forced -> 2413 returns 20 (src)
+R5-1-H158-vl	E	H	fmmret:158:1	-	pattern	vl	9	REPORTED_FAILURE	INFLUENCED: 2407 forced -> 2413 returns 20 (src)
+R5-1-H159-closed1d	E	H	fmmret:159:1	-	pattern	closed1d	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> 2413 returns 20 (src)
+R5-1-H159-closed2d	E	H	fmmret:159:1	-	pattern	closed2d	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> 2413 returns 20 (src)
+R5-1-H159-tensor	E	H	fmmret:159:1	-	pattern	tensor	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> 2413 returns 20 (src)
+R5-1-H159-jones	E	H	fmmret:159:1	-	pattern	jones	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> PolBasis 2403 skipped (2401) -> 2413 returns 20 (src)
+R5-1-H159-nv	E	H	fmmret:159:1	-	pattern	nv	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> PolBasis 2405 skipped (2401) -> 2413 returns 20 (src)
+R5-1-H159-vl	E	H	fmmret:159:1	-	pattern	vl	9	REPORTED_FAILURE	INFLUENCED: 2400 forced -> PolBasis 2407 skipped (2401) -> 2413 returns 20 (src)
+# ---- status column, tree A (same status check at 2400) ----
+R5-1-A150-exp	E	CUR	fmmret:150:1	-	pattern	experimental	9	REPORTED_FAILURE	INFLUENCED: 2369 status -> 2400 check returns 20 (src)
+R5-1-A151-kot	E	CUR	fmmret:151:1	-	pattern	kottke	9	REPORTED_FAILURE	INFLUENCED: 2373 status -> 2400 check returns 20 (src)
+R5-1-A152-fft	E	CUR	fmmret:152:1	-	pattern	fft	9	REPORTED_FAILURE	INFLUENCED: 2375 status -> nested PolBasis skipped (2376) -> 2400 returns 20 (src)
+R5-1-A152-fftjones	E	CUR	fmmret:152:1	-	pattern	fftjones	9	REPORTED_FAILURE	INFLUENCED: 2375 forced -> PolBasis 2378 skipped -> 2400 returns 20 (src)
+R5-1-A152-fftnv	E	CUR	fmmret:152:1	-	pattern	fftnv	9	REPORTED_FAILURE	INFLUENCED: 2375 forced -> PolBasis 2380 skipped -> 2400 returns 20 (src)
+R5-1-A152-fftvl	E	CUR	fmmret:152:1	-	pattern	fftvl	9	REPORTED_FAILURE	INFLUENCED: 2375 forced -> PolBasis 2382 skipped -> 2400 returns 20 (src)
+R5-1-A153-fftjones	E	CUR	fmmret:153:1	-	pattern	fftjones	9	REPORTED_FAILURE	INFLUENCED: 2378 forced -> 2400 returns 20 (src)
+R5-1-A154-fftnv	E	CUR	fmmret:154:1	-	pattern	fftnv	9	REPORTED_FAILURE	INFLUENCED: 2380 forced -> 2400 returns 20 (src)
+R5-1-A155-fftvl	E	CUR	fmmret:155:1	-	pattern	fftvl	9	REPORTED_FAILURE	INFLUENCED: 2382 forced -> 2400 returns 20 (src)
+R5-1-A156-jones	E	CUR	fmmret:156:1	-	pattern	jones	9	REPORTED_FAILURE	INFLUENCED: 2390 forced -> 2400 returns 20 (src)
+R5-1-A157-nv	E	CUR	fmmret:157:1	-	pattern	nv	9	REPORTED_FAILURE	INFLUENCED: 2392 forced -> 2400 returns 20 (src)
+R5-1-A158-vl	E	CUR	fmmret:158:1	-	pattern	vl	9	REPORTED_FAILURE	INFLUENCED: 2394 forced -> 2400 returns 20 (src)
+R5-1-A159-closed1d	E	CUR	fmmret:159:1	-	pattern	closed1d	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> 2400 returns 20 (src)
+R5-1-A159-closed2d	E	CUR	fmmret:159:1	-	pattern	closed2d	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> 2400 returns 20 (src)
+R5-1-A159-tensor	E	CUR	fmmret:159:1	-	pattern	tensor	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> 2400 returns 20 (src)
+R5-1-A159-jones	E	CUR	fmmret:159:1	-	pattern	jones	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> PolBasis 2390 skipped (2388) -> 2400 returns 20 (src)
+R5-1-A159-nv	E	CUR	fmmret:159:1	-	pattern	nv	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> PolBasis 2392 skipped (2388) -> 2400 returns 20 (src)
+R5-1-A159-vl	E	CUR	fmmret:159:1	-	pattern	vl	9	REPORTED_FAILURE	INFLUENCED: 2387 forced -> PolBasis 2394 skipped (2388) -> 2400 returns 20 (src)
+# ---- buffer column, tree B (no status; the hook writes nothing) ----
+# B's expected class is the class the driver's judge reads from the buffer-level run, NOT derived here.
+# The source basis is: after the discarded call, B continues straight into the eigensystem (2399).
+# A SILENT_SWALLOW row is a PREDICTION recorded before the run; it is marked OPEN, not asserted.
+R5-1-B150-exp	E	BASE	fmmbuf:150:1	-	pattern	experimental	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B151-kot	E	BASE	fmmbuf:151:1	-	pattern	kottke	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B152-fft	E	BASE	fmmbuf:152:1	-	pattern	fft	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B153-fftjones	E	BASE	fmmbuf:153:1	-	pattern	fftjones	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B154-fftnv	E	BASE	fmmbuf:154:1	-	pattern	fftnv	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B155-fftvl	E	BASE	fmmbuf:155:1	-	pattern	fftvl	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B156-jones	E	BASE	fmmbuf:156:1	-	pattern	jones	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B157-nv	E	BASE	fmmbuf:157:1	-	pattern	nv	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B158-vl	E	BASE	fmmbuf:158:1	-	pattern	vl	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class
+R5-1-B159-closed1d	E	BASE	fmmbuf:159:1	-	pattern	closed1d	9	SILENT_SWALLOW	PREDICTION (not yet measured) recorded before the run: no status, continues at 2399; judge class SILENT_SWALLOW is the predicted class

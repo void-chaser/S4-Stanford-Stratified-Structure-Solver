@@ -1,0 +1,21 @@
+# P05-S2R5 R5-1 tree-B IDENTITY-PERTURBATION registry (NEW file; the frozen REG_R5_1_FMMRET.tsv is not edited).
+# Registered BEFORE the perturbed runs of these rows.  Model: r5-1/B_MODEL_DESIGN.txt (identity buffers; a repository
+#   precedent, family-B model 1; a CHOICE, not a source-defined FMM failure value).
+# Expected class SILENT_SWALLOW is a PREDICTION: tree B has no status, the eigensystem consumes the identity buffers
+#   with no failure report (source: 37a82e8 2405-2409, 2420).  One positive control was run before this file was
+#   frozen (experimental 150: HIT 1, rc1 0, output differs from the no-request control; judge SILENT_SWALLOW);
+#   that control is disclosed as INFLUENCED on the experimental row.  The other nine rows are not yet run.
+# Trees: BPERT = export 37a82e8 with the BPERT seam (fmmpert hook).  Driver: r5-1/bin-BPERT/driver-d003-seam.
+#   Each row is run twice (R5-1 step 4).
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+R5-1-P150-exp	E	BASE	fmmpert:150:1	-	pattern	experimental	9	SILENT_SWALLOW	INFLUENCED (positive control measured before freeze: rc1 0, hit 1, dump differs); prediction SILENT (no status)
+R5-1-P151-kot	E	BASE	fmmpert:151:1	-	pattern	kottke	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed by the eigensystem (2405-2420)
+R5-1-P152-fft	E	BASE	fmmpert:152:1	-	pattern	fft	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P153-fftjones	E	BASE	fmmpert:153:1	-	pattern	fftjones	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P154-fftnv	E	BASE	fmmpert:154:1	-	pattern	fftnv	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P155-fftvl	E	BASE	fmmpert:155:1	-	pattern	fftvl	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P156-jones	E	BASE	fmmpert:156:1	-	pattern	jones	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P157-nv	E	BASE	fmmpert:157:1	-	pattern	nv	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P158-vl	E	BASE	fmmpert:158:1	-	pattern	vl	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)
+R5-1-P159-closed1d	E	BASE	fmmpert:159:1	-	pattern	closed1d	9	SILENT_SWALLOW	PREDICTION: no status in B; identity buffers consumed (2405-2420)

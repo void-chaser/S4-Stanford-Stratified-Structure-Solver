@@ -1,0 +1,28 @@
+R5-1 tree B buffer model: design decision (written BEFORE the perturbed B runs; no B perturbed run existed when this was written).
+
+Finding (measured): the observe-only fmmbuf hook changes nothing: the dump is identical to the no-request control
+  (r5-1/bufcheck: B experimental 150 and fftjones 153, dump SAME).  The B SILENT_SWALLOW measured earlier therefore
+  came from an UN-PERTURBED run and is not evidence about a failure.  The B column as first designed measured nothing.
+
+Source facts (read-only):
+  - B has no fmm_ret; each FMMGetEpsilon_X return is discarded (37a82e8 2368-2393).
+  - After the dispatch, B passes pB->Epsilon_inv and pB->Epsilon2 to SolveLayerEigensystem (2405-2409, 2420).
+  - The failure paths of the FMM functions do not exist in B (B's FFT returns 0 at 238; no early return before the writes).
+  - The buffers' content before the call depends on prior state (uniform branch writes them with SetMatrix at 14-24;
+    non-uniform branch relies on the FMM call).  No defined "not written" constant exists in the source.
+
+Consequence: a B "failed FMM" model cannot be taken from the code path; any buffer value is a MODEL CHOICE.
+
+Model chosen (a choice, labelled as such):
+  identity model, the repository's established model for a failed solve's buffer:
+    injector header, family B model 1 (inject_d003.cpp lines ~145-155): "the solve's output b is overwritten with the identity";
+    family B faithful (lines ~88-91): "Epsilon_inv := identity ... models a real singular ... result".
+  Applied to the FMM outputs: Epsilon_inv := identity (n x n) and the diagonal blocks of Epsilon2 := identity (n x n).
+  This is a CHOICE with a precedent in this repository, not a value defined by the FMM source.  The B column is
+  therefore "B under the identity perturbation", and it is NOT the same model as A/H status.  The report must say so.
+
+Registration rule: the B perturbed rows are registered as NEW rows (family E, fmmbuf perturbed, new IDs or a new
+  request prefix), in a NEW registry file, registered before their runs.  The frozen REG_R5_1_FMMRET.tsv is not edited.
+  Their expected class is a PREDICTION recorded before the run (SILENT_SWALLOW: the identity buffers are consumed by the
+  eigensystem with no status), and the basis says so.  The earlier observe-only B rows are kept as a measured null
+  (they measured no perturbation) and disclosed.

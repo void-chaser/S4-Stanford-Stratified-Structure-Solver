@@ -1,0 +1,29 @@
+# P05-S2R5 R5-1 CORRECTION 1 to REG_R5_1_FMMRET.tsv (frozen, sha256 70464ca3...; NOT edited).  Written after the runs.
+# Correction type: BASIS ONLY.  No expected class changes.  Every affected row keeps its registered class.
+# Reason (measured, gdb, read-only, repository-local HOME): in a forced run the injected call is the FIRST call of
+#   its point and its nested PolBasis call is indeed skipped (no PolBasis entry between the forced call and the
+#   retry).  The driver's SECOND solve (the retry, unforced, rc2 = 0) then runs the PolBasis call, so PolBasis
+#   entries appear in the run.  The registered basis said the chain was skipped with no mention of the retry;
+#   that is incomplete.  Evidence: r5-1/nested/gdb/order2-forced.out, order3-forced.out, order4-forced.out,
+#   and hit records r5-1/nested/H-fftjones-152.out (HIT call=1, RC first 20, RC retry 0).
+# Correction date: 2026-10-11T08:57:39Z
+# Affected rows (basis text corrected; class unchanged):
+#   H : 152 fft, 152 fftjones, 152 fftnv, 152 fftvl, 159 jones, 159 nv, 159 vl
+#   CUR: 152 fft, 152 fftjones, 152 fftnv, 152 fftvl, 159 jones, 159 nv, 159 vl
+# New basis (for these rows): forced first call skips the nested PolBasis call; the driver's unforced retry (rc2 = 0)
+#   runs it.  Observed class is taken from the first call (rc1 = 20): REPORTED_FAILURE.
+# columns: row_id	corrected_basis
+R5-1-H152-fft	forced first call skips nested PolBasis (2389); unforced retry (rc2 0) runs it; class from rc1 20
+R5-1-H152-fftjones	forced first call skips PolBasis Jones (2391); unforced retry runs it; class from rc1 20
+R5-1-H152-fftnv	forced first call skips PolBasis NV (2393); unforced retry runs it; class from rc1 20
+R5-1-H152-fftvl	forced first call skips PolBasis VL (2395); unforced retry runs it; class from rc1 20
+R5-1-H159-jones	forced first call skips PolBasis Jones (2403); unforced retry runs it; class from rc1 20
+R5-1-H159-nv	forced first call skips PolBasis NV (2405); unforced retry runs it; class from rc1 20
+R5-1-H159-vl	forced first call skips PolBasis VL (2407); unforced retry runs it; class from rc1 20
+R5-1-A152-fft	forced first call skips nested PolBasis (2376); unforced retry runs it; class from rc1 20
+R5-1-A152-fftjones	forced first call skips PolBasis Jones (2378); unforced retry runs it; class from rc1 20
+R5-1-A152-fftnv	forced first call skips PolBasis NV (2380); unforced retry runs it; class from rc1 20
+R5-1-A152-fftvl	forced first call skips PolBasis VL (2382); unforced retry runs it; class from rc1 20
+R5-1-A159-jones	forced first call skips PolBasis Jones (2390); unforced retry runs it; class from rc1 20
+R5-1-A159-nv	forced first call skips PolBasis NV (2392); unforced retry runs it; class from rc1 20
+R5-1-A159-vl	forced first call skips PolBasis VL (2394); unforced retry runs it; class from rc1 20

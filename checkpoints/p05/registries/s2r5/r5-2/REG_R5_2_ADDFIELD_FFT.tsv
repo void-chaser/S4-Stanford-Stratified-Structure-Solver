@@ -1,0 +1,17 @@
+# P05-S2R5 R5-2 registry, FFT-chain rows of family F (the gap named in REG_R5_2_ADDFIELD.tsv).  REGISTERED BEFORE ANY RUN.
+# No row is POST-HOC.  Expected classes are source-derived and marked INFLUENCED (no run of these rows existed when written).
+# Source chain for the FFT chain on H (read-only, [源码]):
+#   S4.cpp:2388  fmm_ret = FMMGetEpsilon_FFT(...)   (FFT succeeds: fmm_ret = 0)
+#   S4.cpp:2389  if(0 == fmm_ret && use_polarization_basis)  -> the nested PolBasis test PASSES, so PolBasis runs
+#   S4.cpp:2391/2393/2395  fmm_ret = FMMGetEpsilon_PolBasis{Jones,NV,VL}(...)
+#   fmm_PolBasis{Jones,NV,VL}.cpp:340 / 228 / 237  the caller check is forced -> return 1 (after its cleanup)
+#   S4.cpp:2413  if(0 != fmm_ret) { DiscardLayerModes; return 20; }
+#   => expected REPORTED_FAILURE, rc1 20.  The FFT call runs in full first (fmm_ret = 0 before PolBasis); the forced value
+#      enters only at the caller check inside PolBasis.  This differs from the family E FFT row, where the forced value
+#      is the FFT status itself.
+# Trees: H only.  Driver: r5-2/bin-F/driver-d003-seam (same driver as the ClosedForm-chain rows).
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+R5-2-H160-fftjones	F	H	addf:160:1	-	pattern	fftjones	9	REPORTED_FAILURE	INFLUENCED: FFT ok (2388) -> nested test passes (2389) -> PolBasis Jones 2391 caller forced -> 2413 returns 20 (src)
+R5-2-H161-fftnv	F	H	addf:161:1	-	pattern	fftnv	9	REPORTED_FAILURE	INFLUENCED: FFT ok (2388) -> nested test passes (2389) -> PolBasis NV 2393 caller forced -> 2413 returns 20 (src)
+R5-2-H162-fftvl	F	H	addf:162:1	-	pattern	fftvl	9	REPORTED_FAILURE	INFLUENCED: FFT ok (2388) -> nested test passes (2389) -> PolBasis VL 2395 caller forced -> 2413 returns 20 (src)

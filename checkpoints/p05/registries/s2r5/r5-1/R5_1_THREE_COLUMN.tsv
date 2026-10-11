@@ -1,0 +1,11 @@
+point	mode	H (status, fmmret)	A (status, fmmret)	B (buffer identity, fmmpert)	H_repeat	A_repeat	B_repeat	B_nonfinite_entries_in_first_dump
+150	experimental	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+151	kottke	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+152	fft	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+153	fftjones	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+154	fftnv	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+155	fftvl	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+156	jones	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+157	nv	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+158	vl	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	72
+159	closed1d	REPORTED_FAILURE (rc1 20, hit 1)	REPORTED_FAILURE (rc1 20, hit 1)	SILENT_SWALLOW (rc1 0, hit 1)	yes	yes	yes	0

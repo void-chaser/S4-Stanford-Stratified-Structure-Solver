@@ -1,0 +1,47 @@
+R5-1 source facts (read-only; [源码]).  Gathered before any design or registration.
+Commands: git show <commit>:S4/S4.cpp  (commits 37a82e8 = B, 876181c = A, 64eb0b5 = H).
+
+FMMGetEpsilon dispatch in Simulation_ComputeLayerModes:
+  B 37a82e8 : 10 call statements, return value DISCARDED (no fmm_ret variable at all).  Lines 2368-2393.
+              After the dispatch: no status check; the next code uses pB->Epsilon2 / Epsilon_inv as written.
+  A 876181c : 10 assignments  fmm_ret = FMMGetEpsilon_*(...)   lines 2369-2394.
+              Single check after the dispatch: line 2400  if(0 != fmm_ret){ DiscardLayerModes; return 20 }.
+              Inside the dispatch, the nested test  if(0 == fmm_ret && use_polarization_basis)  appears at 2376 and 2388.
+  H 64eb0b5 : 10 assignments  fmm_ret = FMMGetEpsilon_*(...)   lines 2382-2407.
+              Single check after the dispatch: line 2413  if(0 != fmm_ret){ DiscardLayerModes; return 20 }.
+              Nested tests  if(0 == fmm_ret && ...)  at 2389 and 2401.
+
+Consequence (the task's premise corrected):
+  - B discards the status: a forced failure has no status to read; only the output buffers can be altered.
+  - A and H both read the status at one point after the dispatch (2400 in A, 2413 in H).  A forced fmm_ret=1 in
+    A and H therefore reaches the failure return.  A's behaviour is NOT "discard" (the earlier premise was wrong
+    for A).
+  - In A and H the nested 'if(0 == fmm_ret ...)' tests read the status between calls, so forcing fmm_ret=1 right after
+    a call also changes which later calls run.  The hook must force the value at ONE place (the statement's own
+    assignment), and the effect on later nested calls is part of the observed outcome, not a separate point.
+
+Injection anchor for family E (design):
+  - H: the anchor is the assignment statement itself: the line 'fmm_ret = FMMGetEpsilon_X(S, L, n, pB->Epsilon2, pB->Epsilon_inv);'
+    with the call text unique per function name, plus the occurrence index within the tree for the duplicated
+    PolBasis calls (the same call text occurs at 2391, 2393, 2395 and at 2403, 2405, 2407 (differently indented)).
+  - A: same statement text at 2369..2394 (same functions), so the same anchors plus indentation-independent matching.
+  - B: no fmm_ret variable.  B has no status to force.  B is measured on its output buffers only, see design note.
+
+Control flow after a forced fmm_ret=1 (source reading, [源码]):
+  A (876181c): line 2400 'if(0 != fmm_ret){ return 20 }' is the single check after the dispatch.  A forced value reaches
+               'return 20' with the layer modes discarded.  A is NOT a discard tree.  The task's premise (A discards) is wrong for A.
+  H (64eb0b5): line 2413 is the same check, returns 20.  Same outcome as A.
+  B (37a82e8): no fmm_ret, no check.  Control continues into 'Solving eigensystem' at line 2399.  A failed FMM call can
+               only be observed through the output buffers Epsilon2 / Epsilon_inv.  B is therefore measured on buffers only.
+  Per-point effect on H (and A):
+    2382 experimental, 2386 kottke, 2400 closed-form: the forced value is the only status; check at 2413 returns 20.
+    2388 FFT: the nested tests at 2389 read fmm_ret; with fmm_ret=1 the PolBasis calls at 2391/2393/2395 are NOT executed;
+              check at 2413 returns 20.  This is the one point where forcing changes LATER calls.
+    2391, 2393, 2395, 2403, 2405, 2407 (PolBasis): nothing later in the chain; check at 2413 returns 20.
+
+Design consequences recorded before registration:
+  - Hook placement: replace nothing; force the value at the assignment statement itself (after the real call), i.e.
+    the seam text is inserted immediately after the real call, and sets fmm_ret = 1 when requested.
+  - B has no fmm_ret: a B seam cannot force a status.  The B column is therefore NOT a same-model column.
+  - The A column is a status column (same model as H), not a discard column.  The task's expectation "A: SILENT_SWALLOW"
+    is withdrawn for A and replaced by the source-derived expectation (REPORTED_FAILURE) registered below.
