@@ -368,7 +368,14 @@ plan_done:
 		}
 	}
 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., &Epsilon2[n+n*n2],n2);
-	RNP::LinearSolve<'N'>(n,n, Eta,n, &Epsilon2[n+n*n2],n2, NULL, NULL);
+	// P05-S3R D4: a zero pivot leaves the right-hand side unsolved.  Continuing would combine that
+	// unsolved matrix into Epsilon2 below, so stop here.  The cache entry (inserted before this point)
+	// is a valid LU factorisation of F and is kept.  work and ivalues are live on both branches.
+	int solve_info = 0;
+	RNP::LinearSolve<'N'>(n,n, Eta,n, &Epsilon2[n+n*n2],n2, &solve_info, NULL);
+	if(0 != solve_info){
+		S4_free(work); S4_free(ivalues); return 1;
+	}
 
 	// P stores the LU factors of F at this point.
 	// We want:

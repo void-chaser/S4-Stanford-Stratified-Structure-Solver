@@ -259,7 +259,13 @@ plan_done:
 	// mDelta will contain -Delta = inv(Eta) - Epsilon
 	// Epsilon2 still only has Epsilon along its diagonal
 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., mDelta,n);
-	RNP::LinearSolve<'N'>(n,n, Eta,n, mDelta,n, NULL, NULL);
+	// P05-S3R D4: a zero pivot leaves mDelta unsolved; the loop below would combine it into Epsilon2.
+	// work holds mDelta and Eta on both branches, and ivalues is live.  Return the existing code 1.
+	int solve_info = 0;
+	RNP::LinearSolve<'N'>(n,n, Eta,n, mDelta,n, &solve_info, NULL);
+	if(0 != solve_info){
+		S4_free(work); S4_free(ivalues); return 1;
+	}
 	for(int i = 0; i < n; ++i){
 		RNP::TBLAS::Axpy(n, std::complex<double>(-1.), &Epsilon2[0+i*n2],1, &mDelta[0+i*n],1);
 	}

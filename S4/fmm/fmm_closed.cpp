@@ -39,6 +39,8 @@ int FMMGetEpsilon_ClosedForm(const S4_Simulation *S, const S4_Layer *L, const in
 	const int ndim = (0 == S->Lr[2] && 0 == S->Lr[3]) ? 1 : 2;
 	double *ivalues = (double*)S4_malloc(sizeof(double)*(2+10)*(L->pattern.nshapes+1));
 	if(NULL == ivalues){ return 1; }
+	// P05-S3R D4: one status variable for the four solves below.  Only one branch of each pair runs.
+	int solve_info = 0;
 	double *values = ivalues + 2*(L->pattern.nshapes+1);
 
 	S4_TRACE("I  Closed-form epsilon\n");
@@ -127,15 +129,20 @@ int FMMGetEpsilon_ClosedForm(const S4_Simulation *S, const S4_Layer *L, const in
 					}
 				}
 				RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., &Epsilon2[n+n*n2],n2);
-				RNP::LinearSolve<'N'>(n,n, Epsilon_inv,n, &Epsilon2[n+n*n2],n2, NULL, NULL);
+				// P05-S3R D4: check each solve before the next statement overwrites or reads its result.
+				// The check at the first solve must precede SetMatrix on Epsilon_inv, which discards the RHS.
+				RNP::LinearSolve<'N'>(n,n, Epsilon_inv,n, &Epsilon2[n+n*n2],n2, &solve_info, NULL);
+				if(0 != solve_info){ S4_free(ivalues); return 1; }
 				RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
 				RNP::TBLAS::CopyMatrix<'A'>(n,n,&Epsilon2[0+0*n2],n2, &Epsilon2[n+0*n2],n2); // use lower block for temp storage; will be cleaned up later
-				RNP::LinearSolve<'N'>(n,n, &Epsilon2[n+0*n2],n2, Epsilon_inv,n, NULL, NULL);
+				RNP::LinearSolve<'N'>(n,n, &Epsilon2[n+0*n2],n2, Epsilon_inv,n, &solve_info, NULL);
+				if(0 != solve_info){ S4_free(ivalues); return 1; }
 			}else{
 				// Upper block of diagonal of Epsilon2 is already Epsilon
 				RNP::TBLAS::CopyMatrix<'A'>(n,n,&Epsilon2[0+0*n2],n2, &Epsilon2[n+n*n2],n2);
 				RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
-				RNP::LinearSolve<'N'>(n,n, &Epsilon2[0+0*n2],n2, Epsilon_inv,n, NULL, NULL);
+				RNP::LinearSolve<'N'>(n,n, &Epsilon2[0+0*n2],n2, Epsilon_inv,n, &solve_info, NULL);
+				if(0 != solve_info){ S4_free(ivalues); return 1; }
 				RNP::TBLAS::CopyMatrix<'A'>(n,n,&Epsilon2[n+n*n2],n2, &Epsilon2[0+0*n2],n2);
 			}
 		}else{
@@ -232,7 +239,10 @@ int FMMGetEpsilon_ClosedForm(const S4_Simulation *S, const S4_Layer *L, const in
 					}
 				}
 				RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
-				RNP::LinearSolve<'N'>(n,n, &Epsilon2[0+0*n2],n2, Epsilon_inv,n, NULL, NULL);
+				// P05-S3R D4: the tensor branch's solution is the output of this function; a zero pivot
+				// leaves it unsolved, so report it instead of returning success.
+				RNP::LinearSolve<'N'>(n,n, &Epsilon2[0+0*n2],n2, Epsilon_inv,n, &solve_info, NULL);
+				if(0 != solve_info){ S4_free(ivalues); return 1; }
 			}else{
 				const int ib = k&1 ? n : 0;
 				const int jb = k&2 ? n : 0;
