@@ -1,0 +1,13 @@
+R2-0 GATE (P05-S3R2)
+UTC=2026-10-11T12:51:15Z
+HEAD=d262520  expected d262520
+branch=codex/p05-d003-fft-error-propagation  expected codex/p05-d003-fft-error-propagation
+git status lines=0  expected 0
+judge_d003.py sha256=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb  expected d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+S4/ changed files vs 35cd7b3=0  expected 0
+S4/ diff lines vs 35cd7b3=0  expected 0
+S4/ unregistered (status+staged+ignored)=0  expected 0
+35cd7b3 ancestor of HEAD: yes
+df3bb02 ancestor of HEAD: yes
+/tmp entries=0  sha=e3b0c44298fc1c14
+driver sha256 pin: to be fixed at R2-2 (driver is built in R2-1/R2-2 and pinned there)

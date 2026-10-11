@@ -157,3 +157,28 @@ s1r2/strace_sample_END.txt	292b885275ccf55b190eee6728c6540f73b47355b78f120b2f920
 s1r2/strace_sample_START.txt	7810496f477bbc57b04e4f5b85a80af56bf066ee0948663d581c889c49ab6bd8	991	copy of checkpoints/p05/evidence/p05-s1r2/strace_sample_START.txt; P05-S1R2 J1-J6 text result (awaiting user review)	text
 s1r2/tmp_top_snapshot_END.txt	c5bccb00cb9628795dab6d3f7ed24962f6685d7ac969b26538130a570a1bcdd8	103	copy of checkpoints/p05/evidence/p05-s1r2/tmp_top_snapshot_END.txt; P05-S1R2 J1-J6 text result (awaiting user review)	text
 s1r2/tmp_top_snapshot_START.txt	17c0278920045393756a1dde5c37dca2a2a872961373eaf8c27085d84d25518b	167	copy of checkpoints/p05/evidence/p05-s1r2/tmp_top_snapshot_START.txt; P05-S1R2 J1-J6 text result (awaiting user review)	text
+s3r2/DRIVER_PIN.sha256	aaded4fe3c0b2d437bf2fc68e86b8fdb33d35a7b536b1b7662b0329670b0bbc9	234	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/GATE.txt	e062134dcd2d5d17f009e40d9a3ae296939f2f445f2503f51ad8832e7de5eb4d	682	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_1.sha256	24a021ec166260a0850ef715784356e360da4634a00ba245929460f4e144dc88	384	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_1.txt	ffff99bd7f3ebb4ae77562faf80ad4140b8ebcd89c9f23c6971318279c8a4f61	2757	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_1_TIMESTAMP_UTC.txt	f1219901aaf6014693426537611bba2b41acc2edfaa6166afa71a5f392030140	21	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_2.sha256	9502c44386dcf7ac883b4ec66985479164d5da245b8b99b20adf0e9398f35260	384	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_2.txt	9fc841533f2c1bc1596bb40ce8baa8ced037f6b19538a8aaf74b29a21c8b6440	2539	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_AMENDMENT_2_TIMESTAMP_UTC.txt	61b0531dcc0fc3ac407a2792d64cafcd114af88e3e843903185c9d40a5a59c80	21	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_EXPECTATIONS.sha256	cd5ae13bbed28e11c645a9ee1e2cc585c636a10972217d90c304b39bed847c05	373	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_EXPECTATIONS.txt	8d975e169ce111fd3f7e77e9d1eac686c6d3583c66cc43f263ada65b9d256145	2798	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_D138_TIMESTAMP_UTC.txt	baaed8a2fcef4b9c16ab0b8904992655fa9928f92359304804992566cb2cabbc	21	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-1_RESULT.txt	17abd689b367f7d9a3f182d3d5aeb41db72936c105e5597b141a21f05bc030cb	4136	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-2b_SEAM_RECORD.txt	3f0ebaf9b4144a618d827944ae4e0af586f6326ae16810f08e4686003b4edf86	5061	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4a_MATRIX_EXPECTATIONS.sha256	bfaafb1ff8c2f953a54331a744076957d021b4392b9fad1d7a3cadc818600e00	379	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4a_MATRIX_EXPECTATIONS.txt	eec6309ed5cd2cb145c5f317c9f84625bedba4513a46c97947e5f80d17e52c65	2269	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4a_MATRIX_TIMESTAMP_UTC.txt	c8efb4e25f7694cf1935f4ed908acc2663790eda2254923c87b522bec018ea12	21	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4a_jones_numeric.tsv	c5efaaf7f82447bf128cfc212797303579cd9d3cf3a53aa6bac34756c657758a	7766	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4a_summary.tsv	14cefaa53bd8ec2135bb508a87a6c149933c4f3508a985d29347c4f3f852c9ec	6990	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-4bc_SUMMARY.txt	d4f43f4e516d72a89cee045d3a3c5381182f68fabb2dd8299c8f571ea57857ac	1572	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/R2-5_OUT_OF_SCOPE_DRAFT.txt	3622d2b6fc9cdd508f95ed0e259fe182781d79ab578d58b0e2ae4136486a897a	4379	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/REGISTRY_S3R2_PRE.sha256	813f047dd016469fbbadcfe9e84e5517f15f8b713b89d198c49bf20a3922a325	376	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/REGISTRY_S3R2_PRE.tsv	55dd45f84ee8189b2c409529221fda9882f2ad7b89ef069635f12d108d71a0db	3775	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/REGISTRY_S3R2_PRE_TIMESTAMP_UTC.txt	bd8efdd64768fab6006a0cd70ec17d10a079e87cf7da701e386499cd25815086	21	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/strace_sample_START.txt	79f58c3f5e6f246f2daa51e7b4777191d482c5cffb7ed0726bf2c2f1ccd90867	991	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text
+s3r2/tmp_top_snapshot_START.txt	d05acf39387804cc6a27c2bfaed9c2e258bd85ee0e808176fb791b41d4bbd58f	103	copy of checkpoints/p05/evidence/p05-s3r2 (P05-S3R2 development check, awaiting user review)	text

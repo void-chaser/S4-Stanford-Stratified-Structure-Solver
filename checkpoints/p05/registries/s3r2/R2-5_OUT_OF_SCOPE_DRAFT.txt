@@ -1,0 +1,46 @@
+R2-5 范围外登记草稿（留给 P05-S5；本草稿只登记，不修复，不改 S4/）
+编制依据：HEAD ff6dd7c 的 grep 核对（见各条的核对命令）。
+
+D-R5-1  非 FMM 的 S4_malloc 调用
+  内容：S4/ 中不在 fmm/ 目录下的 S4_malloc 调用。
+  当前计数：37（核对命令：grep -rn 'S4_malloc(' S4/ --include=*.cpp --include=*.c --include=*.h | grep -v '/fmm/' | wc -l，HEAD ff6dd7c）。
+  与 S1R 的数字的关系：S1R 与 S3R 报告中写"约 43 处"。本次计数为 37。两者的差异来源未查明（可能为不同时点、不同过滤规则或包含 .p04-review 等目录）。
+  处理：不以 43 为准，以 37 为当前计数，并在 S5 复核。
+  性质：D003 的 P05 范围决策（用户已定）规定非 FMM 的 S4_malloc 不属 D003/P05，另立登记项。本条即该登记项草稿。
+
+D-R5-2  rcwa.cpp 的 SolveLayerEigensystem 自分配
+  内容：rcwa.cpp 中特征值求解函数自行分配 workspace，使用 rcwa_malloc（不是 S4_malloc）。
+  位置（按内容，HEAD）：rcwa_malloc 定义于约第 57 行；SolveLayerEigensystem_real 中约第 567 行与 650 行的分配；SolveLayerEigensystem 中约第 792 行的分配；约 86–87 行的另一组分配。
+  性质：注入器的链接期包装对象是 __wrap__Z9S4_mallocm，rcwa_malloc 不经该符号，因此 S4_malloc 注入无法覆盖这些分配。
+  处理：登记为 S5 的装置缺口。本轮不修。
+
+D-R5-3  S4.cpp 约第 1993–1994 行的 work 与 iwork 分配
+  内容：Simulation_GetSMatrix 或邻近函数中，lwork = 6*n_layers*n2*n2 的 work 分配，以及 iwork 的分配，二者都是 S4_malloc，都在 SolveAll 调用之前。
+  核对：sed -n '1990,1996p' S4/S4.cpp（HEAD ff6dd7c）。第 1993 行为 work，第 1994 行为 iwork（S1R 只提到 work，本条补充 iwork）。
+  性质：这两处分配的 NULL 检查状态未在本轮核对，需在 S5 核对。
+
+D-R5-4  SetMaterial 不校验 eps
+  内容：S4_Simulation_SetMaterial（S4.cpp 888 起）对标量与张量的 eps 分量直接复制，不检查零、非有限或正定性。
+  核对：S1R2 J2 已测（标量 eps=0 与 1e-300 可被构造；kottke 路径因此进入 NaN，见 K-1）。
+  处理：K-1 已在 kottke 的求解前加有限性检查，覆盖了 kottke 路径。SetMaterial 本身不改（D-K 裁决）。其它路径（例如 FFT 的 Epsilon2 在无 kottke 的情形）是否需要同类检查，S5 评估。
+
+D-R5-5  D-138：fmm_FFT.cpp 第 138 行的下标（按 R2-1 结论定性）
+  内容：FFT 路径中 shape_get_normal(&shapes[imat[0]], ...) 的下标与 discval 约定（shapes[imat[0]-1]）不一致。
+  R2-1 结论：B 类（无数值差异）。nvec 在 FFT 路径中不被读取；双形状实测 9 次调用的法向确实不同（最大夹角 49.6 度），但 Epsilon2、Epsilon_inv 与场逐字节相同。
+  性质定性：死计算（dead computation）的索引不一致，无数值后果。
+  处理：按用户裁决（默认不改源码，先实测），本轮不改。登记为可读性与一致性问题，S5 视情况决定是否修正。
+  注意：kottke 路径的第 148 行已是 imat[0]-1（与约定一致），不属于 D-R5-5。
+
+D-R5-6  kottke 的 K-1 之外的分支
+  内容：K-1 的有限性检查覆盖 FMMGetEpsilon_Kottke 的输出。kottke 的平均段内部的除数（abcd/abcde）未加阈值检查（D-K 明确不引入阈值）。
+  性质：非有限输出在求解前被拦截，但 kottke 内部的中间值仍可能为非有限（它们在输出中被消除或被检查捕获）。是否需要更细的检查，S5 评估。
+
+D-R5-7  VL/Jones/NV 与 S4_malloc 失败的 vfield 分支的 NULL 检查覆盖
+  内容：S1R2 J1 观测到 B 树的 VL 对 vfield 无返回值检查（37a82e8 fmm_PolBasisVL.cpp 127–131）。当前 HEAD 已补检查（静态核对见 R2-4d）。本条登记：各 PolBasis 的 NULL 检查的完整性（尤其 Jones 与 NV 的分支）未在本轮逐分支核对。
+  处理：S5 核对。
+
+D-R5-8  Python 绑定的异常文本
+  内容：main_python.c 第 137 行的码 20 文本与 142–144 行的格式化，本轮只做了源码核对，未经 Python 实测。
+  处理：S4 或 S5 以 Python 绑定实测确认 D016 与 K-1 的异常文本预期。
+
+以上条目均未在本轮修复。它们是草稿，待 P05-S5 复核与裁决。

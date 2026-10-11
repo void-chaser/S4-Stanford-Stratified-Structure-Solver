@@ -1,0 +1,35 @@
+R2-1 期望登记：D-138 几何后果（fmm_FFT.cpp 第 138 行 shapes[imat[0]] 与 shapes[imat[0]-1]）
+运行前登记。本文件写入后计算 sha256，运行前不得修改。
+
+一、对象与路径（源码，HEAD d262520）
+  - 第 138 行：shape_get_normal(&(L->pattern.shapes[imat[0]]), xvec, nvec);
+  - 对照候选：shape_get_normal(&(L->pattern.shapes[imat[0]-1]), xvec, nvec);（仅在导出副本中，不改仓库 S4/）
+  - 模式：FMM_MODE=fft（走 FMMGetEpsilon_FFT；kottke 模式走另一条路径，不在本实验范围）。
+  - 第 138 行所在分支：nnz >= 2 且 imat[0] >= 1 的像素才可能让两种下标得到不同 shape 指针。
+
+二、源码事实（[源码]，HEAD）
+  - fmm_FFT.cpp 中 nvec 只出现在第 132 行（声明）与第 138 行（输出参数）；之后没有任何读取。
+  - 第 140–171 行的面积加权块只使用 discval[i] 与材料参数，不使用 nvec。
+  - 因而按源码，第 138 行的输出对 FFT 的 Epsilon2 没有数值影响。
+
+三、期望（运行前）
+  - 期望 E1：两种下标在能被区分的像素上给出不同的 nvec（几何可区分，由 shape_get_normal 对 CIRCLE 的 x - center 决定）。
+  - 期望 E2：两种下标下，FFT 的 Epsilon2 与 Epsilon_inv 逐位相同（源码事实的推论）。
+  - 因此期望结论类别为 B（无差异），原因：nvec 在该路径未被读取（死值）。[推断，待实测]
+  - 若 E1 与 E2 都成立，结论为 B。
+  - 若 E2 不成立（出现数值差异），结论为 A，记录最大相对差。这与源码事实相矛盾，须立即标注并核对。
+  - 若构造不出 E1 所需的像素（两种下标得到相同 nvec 或不进入该分支），结论为 C（无法构造出差异）。
+
+四、判定规则（运行前固定）
+  - 差异判定：逐元素比较 Epsilon2（n2×n2 复数）与 Epsilon_inv（n×n 复数）。逐位相同 = 无差异；否则记录最大与中位相对差。
+  - 分支覆盖判定：用 gdb 在 shape_get_normal 入口计数，并记录其 shape 指针的下标（与 S3R2 之前的 J3 方法相同）。
+  - 只用场数据与 rc1 作判据，不读取 PASS/FAIL 退出码。
+
+五、对照副本的构造（运行前写明）
+  - 从 HEAD 导出到 $EV/d138/src-orig（git archive，不改仓库）。
+  - 复制为 $EV/d138/src-alt，仅在其 fmm_FFT.cpp 第 138 行把 imat[0] 改为 imat[0]-1（用 sed 替换该单一位置，并核对替换次数为 1）。
+  - 两棵树分别构建库（普通选项），再链接同一个驱动模板，分别运行。
+  - 注意：对照副本只改第 138 行一处，其余字节不变；用 diff 核对只有该行不同。
+
+六、时间戳与固定
+  - 本文件的时间戳与 sha256 在运行前写入 R2-1_D138_EXPECTATIONS.sha256。

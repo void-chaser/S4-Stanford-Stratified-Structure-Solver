@@ -1,0 +1,42 @@
+R2-4b summary (new tree, pattern stack, s polarisation; gdb return code of pattern_generate_flow_field and SolveLayerEigensystem calls)
+case	eax_at_return	solve_calls
+d016-new-jones-ng1	k=1 eax=0 	solve_calls=2
+d016-new-jones-ng5	k=1 eax=0 	solve_calls=2
+d016-new-jones-ng6	k=1 eax=0 	solve_calls=2
+d016-new-jones-ng7	k=1 eax=0 	solve_calls=2
+d016-new-jones-ng8	k=1 eax=0 	solve_calls=2
+d016-new-jones-ng9	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng1	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng5	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng6	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng7	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng8	k=1 eax=0 	solve_calls=2
+d016-new-nv-ng9	k=1 eax=0 	solve_calls=2
+d016-new-vl-ng1	k=1 eax=-10 k=2 eax=-10 	solve_calls=0
+d016-new-vl-ng5	k=1 eax=0 	solve_calls=2
+d016-new-vl-ng6	k=1 eax=0 	solve_calls=2
+d016-new-vl-ng7	k=1 eax=0 	solve_calls=2
+d016-new-vl-ng8	k=1 eax=0 	solve_calls=2
+d016-new-vl-ng9	k=1 eax=0 	solve_calls=2
+
+R2-4b baseline (pre-fix references, same probe)
+d016-s1-A-vl-ng1	k=1 eax=0 	solve_calls=4
+d016-s1-B-vl-ng1	k=1 eax=0 	solve_calls=4
+d016-start-vl-ng1	k=1 eax=0 	solve_calls=4
+d016-base-vl-ng1	k=1 eax=0 	solve_calls=4
+
+R2-4b driver level (rc) and TRACE counts
+case	rc_first	rc_retry	SolveLayerEigensystem_returned_2_exact	Pattern_GenerateFlowField_returned_-10
+vl-ng1-start	20	20	2	0
+vl-ng1-new	20	20	0	2
+
+R2-4c summary (kottke, scalar eps)
+eps	start_proc	new_proc	new_rc_first	new_rc_retry
+0	139	0	20	20
+1e-300	139	0	20	20
+1e-100	0	0	0	0
+4	0	0	0	0
+
+R2-4c full-field byte comparison (start vs new)
+eps=1e-100	IDENTICAL
+eps=4	IDENTICAL

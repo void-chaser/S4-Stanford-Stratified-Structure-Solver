@@ -1,0 +1,34 @@
+R2-4a 正常路径对照矩阵：期望登记（运行前；写入后固定 sha256；运行前不得修改）
+
+一、树与二进制（见 DRIVER_PIN.sha256，每次运行前核对）
+  base  = 37a82e8（基线）  驱动 driver-base
+  start = 35cd7b3（起点）  驱动 driver-start
+  new   = ff6dd7c（新 HEAD，含 D016、R-NV-1、K-1 三个提交）  驱动 driver-new
+  三个驱动的源码与注入器相同（testing/d003/src/*，当前版本），仅链接的库不同。运行时不注入（不设 S4FMM_INJECT）。
+
+二、矩阵
+  非 Jones 模式（要求字节一致）：fft, kottke, nv, vl, fftnv, fftvl, closed2d, experimental, tensor
+  Jones 模式（D-J 容差 <= 1e-10 逐元素相对差）：jones, fftjones
+  栈：pattern（默认驱动几何）与 flat（驱动的 flat 栈）
+  偏振：s, p, mix（S4FMM_POL）
+  NB：5 与 9（S4FMM_NG）
+  每个用例在三棵树上各运行一次。
+  用例数：(9 非 Jones + 2 Jones) x 2 栈 x 3 偏振 x 2 NB = 132 用例，每用例 3 树。
+
+三、比较对象（只用场数据与 rc，不用 PASS/FAIL）
+  第一次调用的场：S4FMM_DUMP1（E 与 H，%.17g）。
+  retry 的场：S4FMM_DUMP（E 与 H）。
+  rc：RC first 与 RC retry 行。
+
+四、期望（运行前）
+  E-A1  非 Jones 用例：base、start、new 的场文件逐字节相同（cmp）。若 start 与 base 不同（由 S2R/S3R 的既有修改引起），则判据为 new 与 start 逐字节相同，并另列 base 与 start 的差异供参考。
+  E-A2  非 Jones 用例：rc 三树相同。
+  E-A3  Jones 用例：new 与 start 的场逐元素相对差 <= 1e-10；记录最大与中位相对差。
+        （S3R 6.3 已测 start 与 df3bb02 之间的 Jones 差异为最大 1.18e-12；本轮的 Jones 比较对象是 new 与 start，二者的 Jones 代码相同，故期望差异为 0。）
+  E-A4  任一非 Jones 用例出现字节差异：立即停止（停止规则）。
+
+五、停止规则（运行前固定）
+  - 任一非 Jones 用例 new 与 start 字节不同 -> 停止，不继续后续步骤，报告。
+  - 任一用例 rc 不同（且 start 为 0 而 new 非 0）-> 停止（D016 或 R-NV-1 误拦截）。
+
+六、判定只依赖：场数据（逐字节或数值差）与 rc。不读取 PASS/FAIL 行。

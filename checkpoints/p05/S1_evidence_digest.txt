@@ -656,3 +656,25 @@ Snapshots   : /tmp top level empty at start and end (sha e3b0c442...).  One /tmp
 S2 sign-off : no S2 closed conclusion changed.  The kottke closures cover allocation and solve_info failure propagation, not divisor
               finiteness; the sign-off should state that scope.
 Not done    : P05-S1, S2, S3, S4 are NOT declared complete.  No source edits; no S3 fixes; no registry edits.  Awaiting user review.
+
+----- P05-S3R2 (supplementary sub-task of P05-S3; awaiting user review; not a new stage) -----
+Scope      : D-J, D-D, D-N, D-K, D-138 (rulings of the user); three source commits; development checks only (not verification).
+Gate       : HEAD d262520 at start; S4/ vs 35cd7b3 = 0 files; judge_d003.py sha d2d04145...; worktree clean.
+Commits    : 3e77aa9 D016 (pattern.c, +6 lines, returns -10); 44bcf1c NV checks error before normalisation (+10/-8 incl. 2 comment lines);
+             ff6dd7c kottke rejects non-finite Epsilon2 and Epsilon_inv before eigen-solve (+9).  Build warnings multiset unchanged (71 = 71, comm 0) for each.
+D-138 (R2-1): class B.  Epsilon2, Epsilon_inv and the field are byte-identical with the restricted alternative (imat[0]-1 for imat[0]>=1)
+             on a bigoverlap layout; shape_get_normal returns different normals for 9 of 20 calls (max 49.6 deg).  The FFT normal is not read.  No S4 edit.
+             Two amendments to the expectation were fixed before the run that used them (INFLUENCED, disclosed).
+R2-2b seam : not testable (not proved).  Anchors 13/14 share the same call text in the pre-fix closed-form source (2 occurrences each); the pre-fix call has no solve_info.
+R2-4a      : 132 cases x 3 trees (base, start, new).  Non-Jones 108 cases: new vs start byte-identical in both dumps.  Jones 24 cases: byte-identical (max rel 0, median 0), so D-J tolerance is not exercised.
+             18 tensor-flat cases: driver output check "successful output is finite" fails on all three trees (existing behaviour); NaN in those dumps is identical across trees.
+             Reference only (base vs start): fftnv and fftvl pattern cases differ at rounding level (max 2.3e-11); pure nv, pure vl, fft, kottke, closed2d, experimental, tensor identical.  This corrects the S3R 6.3 statement on NV and VL.
+D016 (R2-4b): VL n_G=1 returns -10 at pattern.c (twice, incl. retry), SolveLayerEigensystem calls 0; driver rc 20 unchanged; info=2 TRACE line gone (start 2, new 0, exact string).
+             Base/start and the S1R2 A/B drivers: pattern_generate_flow_field returns 0 (no check) and the eigensolver is entered 4 times (the driver then reports rc 20 from inside the solve).  NG 5..9 for VL, Jones, NV: pattern_generate_flow_field returns 0 (no false trigger).
+             The public exception text is source-mapped only (not run through Python).
+K-1 (R2-4c): scalar eps=0 and eps=1e-300: start exit 139, new rc 20 (retry 20).  eps=1e-100 and eps=4: rc 0, full field byte-identical start vs new.
+R2-4d      : the seven info=NULL sites cannot be shown red-to-green (R2-2b).  Static check on the new tree: no NULL-info LinearSolve remains; each checked site has if(0 != solve_info).
+Driver pin : sha256 of driver-base, driver-start, driver-new recorded in r4drv/DRIVER_PIN.sha256 and verified before the matrix and each later run.
+Violations : table 1 (out-of-repo write attempts, not written): two root-level placeholder paths; table 2 lists tool and script events.
+Snapshots  : /tmp top level empty at start (sha e3b0c442...).  END snapshot in the closeout.
+Not done   : P05-S1, S2, S3, S4 are NOT declared complete.  Awaiting user review.

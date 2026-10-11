@@ -1,0 +1,18 @@
+# REGISTRY_S3R2_PRE.tsv — P05-S3R2 运行前期望登记（写入后计算 sha256，运行前不得修改）
+# 列：group	id	case	expected	basis	status
+# status 取值：INFLUENCED（期望形成前已读过相关源码、运行或报告结果）；BLIND（形成前未见过该项结果）
+# 本表不含任何运行结果。事后修正必须另立文件并披露（见 R2-1_D138_AMENDMENT_*.txt）。
+group	id	case	expected	basis	status
+D016	D16-1	VL n_G=1 (NB=1..4), mode vl, tree H: pattern_generate_flow_field returns -10 at the zero-field check; the call site returns 20 through ComputeLayerModes; no Epsilon2/Epsilon_inv reaches the eigensolver	rc 20 (driver); public exception text unchanged (code 20 text); the eigensolver entry count is 0 for the probe; in a TRACE-enabled build the "info=2" line no longer appears (not observable in the default build, recorded as such)	[源码] pattern.c 2145 之前无检查；[实测] S1R2 J6_NG1 三树返回 0；D-D 裁决；S1R2 12.2(d) 推断	INFLUENCED
+D016	D16-2	VL n_G=1 (NB=1..4), trees B and A (mode vl)	same as D16-1 for each tree; B has no vfield return check (37a82e8 fmm_PolBasisVL.cpp 127-131), so B may fail elsewhere first; record the actual result for B and A	[源码] B 树 VL 无 vfield 检查；S1R2 J1 B 树 NTH5 为 -8 路径	INFLUENCED
+D016	D16-3	VL NB=5..9 normal path, trees H (and A, B), zero-field check must not fire (driver NB via S4FMM_NG=5..9)	pattern_generate_flow_field returns 0 for every NB; field dump unchanged versus the pre-fix build (byte-identical)	[实测] S1R NB5-9 max_field 非零（引用）；尚未在修后运行	BLIND
+D016	D16-4	Jones and NV at NG=1 (NB=1..4), max_field 0.0402 (non-zero)	no new error; field and rc unchanged versus pre-fix (byte-identical for NV; Jones within D-J tolerance)	[实测] S1R max_field 0.0402（引用）；D-J 裁决	INFLUENCED
+RNV	RNV-1	NV error path (pattern_generate_flow_field returns nonzero) must check error before the normalization loop	no normalization read of uninitialised vfield on the error path; normal-path output byte-identical to pre-fix NV	[源码] fmm_PolBasisNV.cpp 归一化先于 error 检查；D-N 裁决	INFLUENCED
+RNV	RNV-2	NV normal path (NB=5..9, n_G>1)	field dump byte-identical to pre-fix NV	D-N 裁决（不得改变正常路径输出）	INFLUENCED
+K1	K1-1	kottke, scalar eps=0, the mode in which Epsilon2 gets NaN before the eigensolver	rc 20 (was 139, SIGSEGV in zlaqr0_); the check is before SolveLayerEigensystem; no crash	[实测] S1R2 J2 P2-A 退出 139；D-K 裁决	INFLUENCED
+K1	K1-2	kottke, scalar eps=1e-300	rc 20 (was 139)	[实测] S1R2 J2 P2-D 退出 139	INFLUENCED
+K1	K1-3	kottke, scalar eps=1e-100 (normal)	rc 0; field byte-identical to pre-fix kottke	[实测] S1R2 J2 P2-D 退出 0；D-K 不引入阈值	INFLUENCED
+K1	K1-4	kottke, normal scalar eps=4 and tensor e11=-1 (P2-B)	rc 0; field byte-identical to pre-fix kottke	[实测] S1R2 J2 对照与 P2-B 正常返回	INFLUENCED
+D138	D138-1	fft, bigoverlap, orig vs alt (index 1 vs index 0 at line 138; alt restricted form)	fields byte-identical; Epsilon2 and Epsilon_inv byte-identical; nvec differs for some calls	R2-1_D138_EXPECTATIONS.txt E1-E3；AMENDMENT_1/2；运行后已有结果	INFLUENCED
+JONES	JON-1	Jones mode, fix commit df3bb02 info passing (accepted by D-J)	per-element relative difference <= 1e-10 against 876181c; report actual max and median relative difference	[实测] S3R 6.3：最大 1.18e-12，中位 4.3e-14；D-J 裁决容差 1e-10	INFLUENCED
+JONES	JON-2	Jones mode, normal path NB=5..9 (driver S4FMM_NG=5..9), s/p/mix polarisation (S4FMM_POL)	per-element relative difference <= 1e-10 against 876181c for every NB and polarisation; non-Jones modes byte-identical	同 JON-1；D-J；S3R 6.3 仅测 NB=9 与 s/p/mix	INFLUENCED

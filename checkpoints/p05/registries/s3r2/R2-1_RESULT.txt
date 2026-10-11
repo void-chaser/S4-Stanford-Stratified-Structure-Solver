@@ -1,0 +1,46 @@
+R2-1 结果：D-138 几何后果（fmm_FFT.cpp 第 138 行 shapes[imat[0]] 与 shapes[imat[0]-1]）
+
+结论类别：B（无数值差异）。
+原因：第 138 行计算的 nvec 在 FFT 路径中不被读取（源码），因此两种下标得到的不同法向不影响 Epsilon2、Epsilon_inv 或场（实测）。
+
+一、期望与修正的时间线（全部在运行前固定，除非注明）
+  1. R2-1_D138_EXPECTATIONS.txt：12:51:43Z，sha256 8d975e16…（未修改，已核对 OK）。
+  2. R2-1_D138_AMENDMENT_1.txt：12:52:54Z，sha256 ffff99bd…（运行前；INFLUENCED：由对 imat 赋值的源码阅读触发，发生在运行之前）。
+     修正内容：对照副本不得在 imat[0]=0 时取 shapes[-1]（越界）；改为受限形式；改用双形状探针。
+  3. 第一次 overlap 运行（运行后）：gdb 只观测到下标 0（16 次调用，1 个指针）。场相同。
+     这是运行后的观测，不是期望的修改。判定：overlap 布局未覆盖 imat[0]>=1。
+  4. R2-1_D138_AMENDMENT_2.txt：12:54:18Z，sha256 9fc84153…（运行前；INFLUENCED：由第 3 步的 gdb 计数触发）。
+     修正内容：布局改为 bigoverlap（两圆半径 0.8，中心 ±0.3）。
+  5. bigoverlap 运行与全部判据（第 6–9 步）均在修正 2 固定之后。
+  状态：本轮 R2-1 的所有结论依赖修正 1 与修正 2，二者都标注为 INFLUENCED，并已披露。原始 E1–E2 期望未被修改。
+
+二、实测（bigoverlap，fft 模式，orig 与 alt 两棵树）
+  2.1 场（R2-1_runs/compare-bigoverlap.txt）：144 个值，逐行文本相同，n_different = 0，max_rel_diff = 0，median = 0。
+  2.2 Epsilon2 与 Epsilon_inv（FFT 返回处转储，R2-1_runs/dump-{orig,alt}/）：
+      ret_E2.bin 与 ret_INV.bin 逐字节相同（cmp IDENTICAL；sha256 一致，见 R2-1_runs/dump-*/ 与本文件第四节）。
+      FFT_RET eax = 0（两棵树），dump 大小 5184 与 1296 字节（与 n=9 一致）。
+  2.3 shape_get_normal 的下标与法向（R2-1_runs/nvec-compare.txt）：
+      - 20 次调用，输入点 x 全部相同（same_x = 20）。
+      - orig 使用 2 个形状指针（下标 0 与 1），alt 使用 1 个（下标 0）。
+      - 9 次调用的返回法向不同，最大夹角 49.635°（[实测]）。其余 11 次相同（imat[0] = 0，两者都取 shapes[0]）。
+      - 例：x = (-0.5, -0.5)：orig 取 shapes[1]，nvec = (-0.8480, -0.5300)；alt 取 shapes[0]，nvec = (-0.3714, -0.9285)。
+  2.4 分支覆盖：shape_get_normal 的调用者为 FMMGetEpsilon_FFT（gdb 回溯，R2-1_runs/bt-orig-fft.txt），即 D-138 所在函数。
+  2.5 两棵源码树的差异：仅 fmm_FFT.cpp 一个文件、2 行（第 138 行），其余字节相同（diff -r，见第三节）。
+
+三、源码事实（[源码]，HEAD d262520）
+  - fmm_FFT.cpp 中 nvec 只出现在第 132 行（声明）与第 138 行（输出参数）。
+  - 第 140–171 行的面积加权块只使用 discval[i] 与材料参数，不使用 nvec。
+  - 因此 nvec 对 FFT 输出没有数值路径。实测（2.2、2.3）与此一致。
+
+四、校验用 sha256（运行后，本文件之外的数据）
+  以 R2-1_runs/dump-*/ 下的文件为准（见 S3R2 的 GATE 与报告的路径清单）。
+
+五、判定与边界
+  - 结论 B 的适用范围：FFT 路径（fft 模式）、双形状相交与大半径布局、标量材料、NB=9。
+  - 本结论不适用于 kottke 路径（其第 148 行已是 imat[0]-1，不属于 D-138）。
+  - 本结论不改变 S1R2 J3 的"下标合法、不越界"结论。它更正了 S1R2 把差一归属到 kottke 法线的表述（见 R2-6 的新旧对照）。
+  - 未测：nshapes >= 3；张量材料；其它几何。这些未验证，但 B 类的理由（死值）与几何无关，不依赖具体布局。
+
+六、不修改 S4/ 的理由
+  D-138 按用户裁决"先实测，默认不改源码"。实测结论为 B（无数值后果），因此本轮不修改 fmm_FFT.cpp 第 138 行，也不列入 R2-3 的提交。
+  在 P05-S5 登记为范围外草稿（见 R2-5），标注"无数值后果，属可读性/死计算问题"。
