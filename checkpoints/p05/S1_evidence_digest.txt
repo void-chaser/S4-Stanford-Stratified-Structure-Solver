@@ -523,3 +523,29 @@ Not closed  : public-API cache-hit path; family-B on H; B vfield split by mode (
               Jones d mechanism [推断] only; strace is two end-of-round samples; start /tmp snapshot not taken.
 Earlier claim corrected: "nv/vl cache-hit not reachable through the public API, needs a new injection point" conflicted
               with S2R2 evidence (REGISTRY_T4_NVVL.tsv, T4_NVVL_PROBE_RECORD.txt).  Route already exists; no new point added.
+
+================================================================================================================
+P05-S2R4 (convergence closeout of D003)  -  STATUS: NOT COMPLETE, awaiting user review.  No stage declared complete.
+================================================================================================================
+Scope       : supplementary sub-task of P05-S2 (not a new stage).  Report: checkpoints/p05/P05_S2R4_CLOSEOUT.md.
+              The S2 convergence table (report section 7) lists each S2 component and each known gap; S2 sign-off is the user's.
+Commits     : 06acd66 (R4-1 output-only B2 seam, linearsolve_null2buf), 0782015 (R4-4 Jones option script),
+              3367d4e (R4-5 registry reproduction package, 49 files + MANIFEST, 64955 bytes); report commit awaiting review.
+              S4/ vs 64eb0b5: 0 changes.  Scope: testing/d003/ and checkpoints/p05/ only.
+R4-1        : output-buffer equivalence on seven sites: A family B, H buf-only and H full B2 write identical 9x9 blocks
+              (gdb, read-only).  Field level: closed, NV, VL byte-identical; Jones default 144/144 differ (4.91e-12);
+              Jones option c byte-identical.  Runner: SILENT_SWALLOW for A and buf-only, REPORTED_FAILURE for full B2.
+              Expectations registered POST-HOC (not before the run: recorded as a deviation).
+R4-2        : 26 mapped rows (18 historical + 7 R2-D + 1 replacement); map POST-HOC.  Re-run on H: 18 and 7 mismatches,
+              all covered; no undeclared difference.  The "20" in the task is an estimate; the count is 25 + 1.
+R4-3        : S2R2 17 cases on A (CUR), two runs, 17/17 matched; A versus H identical per case.  Closes the S2R3 open item.
+R4-4        : Jones options e (-ffp-contract=off) and f (-mno-fma): A and H byte-identical, FMA count 0.  Default:
+              FMA A 60, H 63 (static).  Precision reference (A -O0): A_d max 1.2630e-12, H_d max 5.7826e-13.  No option chosen.
+Open (S2)   : L4 AddFieldToCache check dimension not isolated; L5 FMMGetEpsilon return-capture injection route not built
+              (line 2369 in S2R2 is an H-tree mismatch: the anchor is the fmm_ret capture at 2382-2407); L9 driver-all and
+              driver-all-t4 share a name; L10 configuration range (NB=9, fixed geometry, theta=0).
+Accepted    : public-API cache-hit path (user decision U-1, internal route only); B vfield split by mode [未验证] (U-2);
+              H has no family-B point (D-U1, structural); strace and /tmp audits are samples only.
+Violations  : one repository-external write attempt in this round, not landed (root-level redirect rejected by the file system);
+              one earlier attempt disclosed, identity undetermined (/tmp/__never_write).  Single table: report section 8.1.
+Not done    : S2 sign-off; any stage completion.  Decision for the user: whether the four open items enter S2 or a new entry.
