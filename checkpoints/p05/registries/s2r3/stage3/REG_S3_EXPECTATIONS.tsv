@@ -1,0 +1,29 @@
+# P05-S2R3 stage 3 expectations, registered BEFORE the three-column comparison runs.
+# Columns: case	tree	point	driver_route	expected_class	basis	influenced
+# Class is judged from facts (hook hit count, rc1, signal), never from the driver PASS/FAIL code.
+# "INFLUENCED" = a related result was already observed earlier in this round or in S2R2/S3R.
+S3-red-pb369	B	PolBasisJones 369 (info NULL)	jones family-B output model	SILENT_SWALLOW	[源码] committed family B hook at B line 366; check absent on B	no
+S3-red-pb369	A	PolBasisJones 369 (info NULL)	jones family-B output model	SILENT_SWALLOW	[源码] family B hook at A line 374; check absent on A	no
+S3-red-pb369	H	PolBasisJones 375 (info checked)	jones family B2	REPORTED_FAILURE	[源码] check 376 returns 1; measured in stage 2 at 375: rc1 20	INFLUENCED
+S3-red-pb260	B	PolBasisNV 260 (info NULL)	nv family-B output model	SILENT_SWALLOW	[源码] family B hook at B line 257	no
+S3-red-pb260	A	PolBasisNV 260 (info NULL)	nv family-B output model	SILENT_SWALLOW	[源码] family B hook at A line 265	no
+S3-red-pb260	H	PolBasisNV 265 (info checked)	nv family B2	REPORTED_FAILURE	[源码] check 266 returns 1; measured in stage 2 at 265: rc1 20	INFLUENCED
+S3-red-pb268	B	PolBasisVL 268 (info NULL)	vl family-B output model	SILENT_SWALLOW	[源码] family B hook at B line 265	no
+S3-red-pb268	A	PolBasisVL 268 (info NULL)	vl family-B output model	SILENT_SWALLOW	[源码] family B hook at A line 273	no
+S3-red-pb268	H	PolBasisVL 273 (info checked)	vl family B2	REPORTED_FAILURE	[源码] check 274 returns 1; measured in stage 2 at 273: rc1 20	INFLUENCED
+S3-red-cl2267	B	ComputeLayerModes 2267 malloc	family C id 21	CRASH_OR_SILENT_SWALLOW	[源码] family C id 21 replaces the malloc; NULL result is not checked on B	no
+S3-red-cl2267	H	ComputeLayerModes 2267	family C id 21	REPORTED_FAILURE	[源码] H checks the malloc and returns 20 (S3R commit 2)	no
+S3-red-cl2295	B	ComputeLayerModes 2295 q alloc	family C id 22	CRASH_OR_SILENT_SWALLOW	[源码] unchecked on B	no
+S3-red-cl2295	H	ComputeLayerModes 2301 q alloc	family C id 22	REPORTED_FAILURE	[源码] H checks and returns 20	no
+S3-red-cl2408	B	ComputeLayerModes 2402 (B line) rwork	family C id 23	CRASH_OR_SILENT_SWALLOW	[源码] unchecked on B	no
+S3-red-cl2408	H	ComputeLayerModes 2421 rwork	family C id 23	REPORTED_FAILURE	[源码] H checks and returns 20	no
+S3-red-cl2425	B	ComputeLayerModes 2419 (B line) work	family C id 24	CRASH_OR_SILENT_SWALLOW	[源码] unchecked on B	no
+S3-red-cl2425	H	ComputeLayerModes 2446 work	family C id 24	REPORTED_FAILURE	[源码] H checks and returns 20	no
+S3-red-acache3977	B	AddFieldToCache 3971 (B line) alloc	family C id 25	CRASH_OR_SILENT_SWALLOW	[源码] unchecked on B	no
+S3-red-acache3977	H	AddFieldToCache 4007 alloc	family C id 25	REPORTED_FAILURE	[源码] H checks and returns 1 (S3R commit 1)	no
+S3-exp40	H	fmm_experimental 40	experimental mode, family C? no: fmm_experimental has no seam; use alloc at its line	REPORTED_FAILURE	[源码] H checks and returns 20 (S3R commit 4); needs an injection point, see note	no
+S3-fftchain-pb	H	PolBasis after FFT (fftjones 375/fftnv 265/fftvl 273)	family B2	REPORTED_FAILURE	[源码] as stage 2 B2 rows	INFLUENCED
+S3-cache-nv	H,B,A	NV cache-hit 234 (H) / 232 (A,B)	S4FMM_TWICE=slab, internal route	INVALID_OR_HIT	[实测 INFLUENCED] third ComputeLayerModes pass reaches the line; hit requires an injection, see note	INFLUENCED
+S3-cache-vl	H,B,A	VL cache-hit 243 (H) / 241 (A,B)	S4FMM_TWICE=slab, internal route	INVALID_OR_HIT	[实测 INFLUENCED] third pass reaches the line	INFLUENCED
+S3-cache-jones	H,B,A	Jones cache-hit 344 (H,A,B lines differ)	S4FMM_TWICE=slab, internal route	INVALID_OR_HIT	[实测 INFLUENCED] third pass reaches the line	INFLUENCED
+S3-kottke85	B,A,H	kottke S4_malloc 85	kottke mode	NOT_REGISTERED_NO_INJECTION_POINT	[未验证] no injection hook defined for this site in the committed seams	no

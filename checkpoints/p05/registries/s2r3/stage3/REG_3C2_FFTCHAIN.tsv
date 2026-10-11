@@ -1,0 +1,59 @@
+# P05-S2R3 stage 3c.2: FFT -> PolBasis chains (fftjones, fftnv, fftvl), S4_malloc NTH 1..5 on B, A, H, plus the H B2 solve.
+# Every expectation below was DERIVED by judge_d003.classify() from facts recorded by probe runs in
+# stage3/build3a/fftchain*/ and build3a/fftchain2/RCS.txt, fftchain3/RCS.txt (see _c2_derived.json).
+# Therefore every row is INFLUENCED: this registry was written AFTER the observations.  It is a record of
+# observed classes under the registered judge rule, not a blind prediction.
+# Route: s4malloc NTH=k (FMM translation-unit S4_malloc call k).  Sizes come from the probe logs.
+# Tree roles: B = 37a82e8, A = 876181c (FMM checks present, S3R fixes absent), H = 64eb0b5 (all checks).
+# B vfield (NTH5) is path dependent and NOT fully explained by source reading: fftnv CRASH (no NULL check at
+#   fmm_PolBasisNV.cpp:122 before the write at 129), fftjones and fftvl SILENT_SWALLOW (rc1 0).  Marked [未验证] in basis.
+# Judge: class from facts (rc, signal, hit, rc1).  Driver PASS/FAIL line never read.
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+c2-fftjones-FFT-work-BASE	S4	BASE	s4malloc	1	pattern	fftjones	9	CRASH	[实测 INFLUENCED] fftjones NTH1 FFT-work: HIT 6144 B; rc 139, rc1 None; judge CRASH
+c2-fftjones-FFT-discval-BASE	S4	BASE	s4malloc	2	pattern	fftjones	9	CRASH	[实测 INFLUENCED] fftjones NTH2 FFT-discval: HIT 16 B; rc 139, rc1 None; judge CRASH
+c2-fftjones-PB-ivalues-BASE	S4	BASE	s4malloc	3	pattern	fftjones	9	CRASH	[实测 INFLUENCED] fftjones NTH3 PB-ivalues: HIT 192 B; rc 139, rc1 None; judge CRASH
+c2-fftjones-PB-work-BASE	S4	BASE	s4malloc	4	pattern	fftjones	9	CRASH	[实测 INFLUENCED] fftjones NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 139, rc1 None; judge CRASH
+c2-fftjones-PB-vfield-BASE	S4	BASE	s4malloc	5	pattern	fftjones	9	SILENT_SWALLOW	[实测 INFLUENCED] fftjones NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 0; judge SILENT_SWALLOW
+c2-fftjones-FFT-work-CUR	S4	CUR	s4malloc	1	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-FFT-discval-CUR	S4	CUR	s4malloc	2	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-ivalues-CUR	S4	CUR	s4malloc	3	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-work-CUR	S4	CUR	s4malloc	4	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-vfield-CUR	S4	CUR	s4malloc	5	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-FFT-work-H	S4	H	s4malloc	1	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-FFT-discval-H	S4	H	s4malloc	2	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-ivalues-H	S4	H	s4malloc	3	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-work-H	S4	H	s4malloc	4	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftjones-PB-vfield-H	S4	H	s4malloc	5	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] fftjones NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-FFT-work-BASE	S4	BASE	s4malloc	1	pattern	fftnv	9	CRASH	[实测 INFLUENCED] fftnv NTH1 FFT-work: HIT 6144 B; rc 139, rc1 None; judge CRASH
+c2-fftnv-FFT-discval-BASE	S4	BASE	s4malloc	2	pattern	fftnv	9	CRASH	[实测 INFLUENCED] fftnv NTH2 FFT-discval: HIT 16 B; rc 139, rc1 None; judge CRASH
+c2-fftnv-PB-ivalues-BASE	S4	BASE	s4malloc	3	pattern	fftnv	9	CRASH	[实测 INFLUENCED] fftnv NTH3 PB-ivalues: HIT 192 B; rc 139, rc1 None; judge CRASH
+c2-fftnv-PB-work-BASE	S4	BASE	s4malloc	4	pattern	fftnv	9	CRASH	[实测 INFLUENCED] fftnv NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 139, rc1 None; judge CRASH
+c2-fftnv-PB-vfield-BASE	S4	BASE	s4malloc	5	pattern	fftnv	9	CRASH	[实测 INFLUENCED] fftnv NTH5 PB-vfield: HIT 1024 B; rc 139, rc1 None; judge CRASH
+c2-fftnv-FFT-work-CUR	S4	CUR	s4malloc	1	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-FFT-discval-CUR	S4	CUR	s4malloc	2	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-ivalues-CUR	S4	CUR	s4malloc	3	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-work-CUR	S4	CUR	s4malloc	4	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-vfield-CUR	S4	CUR	s4malloc	5	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-FFT-work-H	S4	H	s4malloc	1	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-FFT-discval-H	S4	H	s4malloc	2	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-ivalues-H	S4	H	s4malloc	3	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-work-H	S4	H	s4malloc	4	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftnv-PB-vfield-H	S4	H	s4malloc	5	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] fftnv NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-FFT-work-BASE	S4	BASE	s4malloc	1	pattern	fftvl	9	CRASH	[实测 INFLUENCED] fftvl NTH1 FFT-work: HIT 6144 B; rc 139, rc1 None; judge CRASH
+c2-fftvl-FFT-discval-BASE	S4	BASE	s4malloc	2	pattern	fftvl	9	CRASH	[实测 INFLUENCED] fftvl NTH2 FFT-discval: HIT 16 B; rc 139, rc1 None; judge CRASH
+c2-fftvl-PB-ivalues-BASE	S4	BASE	s4malloc	3	pattern	fftvl	9	CRASH	[实测 INFLUENCED] fftvl NTH3 PB-ivalues: HIT 192 B; rc 139, rc1 None; judge CRASH
+c2-fftvl-PB-work-BASE	S4	BASE	s4malloc	4	pattern	fftvl	9	CRASH	[实测 INFLUENCED] fftvl NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 139, rc1 None; judge CRASH
+c2-fftvl-PB-vfield-BASE	S4	BASE	s4malloc	5	pattern	fftvl	9	SILENT_SWALLOW	[实测 INFLUENCED] fftvl NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 0; judge SILENT_SWALLOW [未验证 path dependence vs fftnv]
+c2-fftvl-FFT-work-CUR	S4	CUR	s4malloc	1	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-FFT-discval-CUR	S4	CUR	s4malloc	2	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-ivalues-CUR	S4	CUR	s4malloc	3	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-work-CUR	S4	CUR	s4malloc	4	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-vfield-CUR	S4	CUR	s4malloc	5	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-FFT-work-H	S4	H	s4malloc	1	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH1 FFT-work: HIT 6144 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-FFT-discval-H	S4	H	s4malloc	2	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH2 FFT-discval: HIT 16 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-ivalues-H	S4	H	s4malloc	3	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH3 PB-ivalues: HIT 192 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-work-H	S4	H	s4malloc	4	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH4 PB-work: HIT 10720 B (jones) / 11872 B (nv,vl); rc 1, rc1 20; judge REPORTED_FAILURE
+c2-fftvl-PB-vfield-H	S4	H	s4malloc	5	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] fftvl NTH5 PB-vfield: HIT 1024 B; rc 1, rc1 20; judge REPORTED_FAILURE
+c2-pbsolve-fftjones-H	B2	H	linearsolve_null2:375:1	-	pattern	fftjones	9	REPORTED_FAILURE	[实测 INFLUENCED] H fftjones B2 375: HITCOUNT 1, RC first 20 (judge REPORTED_FAILURE)
+c2-pbsolve-fftnv-H	B2	H	linearsolve_null2:265:1	-	pattern	fftnv	9	REPORTED_FAILURE	[实测 INFLUENCED] H fftnv B2 265: HITCOUNT 1, RC first 20 (judge REPORTED_FAILURE)
+c2-pbsolve-fftvl-H	B2	H	linearsolve_null2:273:1	-	pattern	fftvl	9	REPORTED_FAILURE	[实测 INFLUENCED] H fftvl B2 273: HITCOUNT 1, RC first 20 (judge REPORTED_FAILURE)

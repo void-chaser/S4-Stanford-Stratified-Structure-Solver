@@ -1,0 +1,21 @@
+# P05-S2R3 stage 3c EXECUTION map (derived; NOT a registry).
+# Source: CORR_S3_EXPECTATIONS_2.tsv sha256 c1fbf4536f3e7e674cbfc1a4fc705239ed795f9a520933935dcdb90659c21154 (read-only, registered).
+# Expected classes below are copied from that file; they are not edited here.
+# Cache-hit cases use the t4/ prefix: the runner sets S4FMM_TWICE=slab and judges rc2 (inj_call=2) only for t4/ cases.
+# Columns: case  family  tree  request  NTH  stack  mode  NG  expected_class  basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+t4/cache-jones-BASE	S4	BASE	s4malloc	7	pattern	jones	9	CRASH	3c-exec from CORR_2 S3C2-cache-jones B
+t4/cache-jones-CUR	S4	CUR	s4malloc	7	pattern	jones	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-jones A
+t4/cache-jones-H	S4	H	s4malloc	7	pattern	jones	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-jones H
+t4/cache-nv-BASE	S4	BASE	s4malloc	7	pattern	nv	9	CRASH	3c-exec from CORR_2 S3C2-cache-nv B
+t4/cache-nv-CUR	S4	CUR	s4malloc	7	pattern	nv	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-nv A
+t4/cache-nv-H	S4	H	s4malloc	7	pattern	nv	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-nv H
+t4/cache-vl-BASE	S4	BASE	s4malloc	7	pattern	vl	9	CRASH	3c-exec from CORR_2 S3C2-cache-vl B
+t4/cache-vl-CUR	S4	CUR	s4malloc	7	pattern	vl	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-vl A
+t4/cache-vl-H	S4	H	s4malloc	7	pattern	vl	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-cache-vl H
+c3/kottke-work-BASE	S4	BASE	kottke_alloc:31:1	-	pattern	kottke	9	CRASH	3c-exec from CORR_2 S3C2-kottke-work B
+c3/kottke-work-CUR	S4	CUR	kottke_alloc:31:1	-	pattern	kottke	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-kottke-work A
+c3/kottke-work-H	S4	H	kottke_alloc:31:1	-	pattern	kottke	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-kottke-work H
+c3/kottke-discval-BASE	S4	BASE	s4malloc	1	pattern	kottke	9	CRASH	3c-exec from CORR_2 S3C2-kottke-discval B
+c3/kottke-discval-CUR	S4	CUR	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-kottke-discval A
+c3/kottke-discval-H	S4	H	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	3c-exec from CORR_2 S3C2-kottke-discval H

@@ -1,0 +1,51 @@
+# P05-S2R4 R4-2 POST-FIX MAP.  ALL ROWS ARE POST-HOC.
+# This map is a DECLARATION, not a runner input: its rows have 8 fields, not the runner's 10.  The runs it is
+# compared with are the frozen MAP_3D_* registries (inputs) and their outputs; see r4-2/ for the comparison.
+# This file does NOT edit any historical registry (MAP_3D_HIST38_H.tsv, MAP_3D_R2D_H.tsv, R2D_EXPECTATIONS.tsv,
+# REGISTRY_T4*.tsv, hist38-*/index.txt are unchanged).  It declares, for each historical row that disagrees with
+# its H observation, the H expected class that the current source produces, the fix that changes it, and the
+# direction.  A row is POST-HOC because the H observations were recorded in S2R3 before this map existed; the
+# map is written AFTER them.  Rows are INFLUENCED.
+#
+# Counted set (actual count, task asked for "20" as an estimate; the count is written in the report):
+#   historical 38 cases with H != historical expectation : 18
+#   R2-D rows with H != historical expectation           : 7   (5 family-C rows, 2 structural N-* rows)
+#   N-vl-id17-k1 (historical expectation INVALID is a registration error; H match is coincidental): 1 replacement row
+#   total rows mapped: 26
+#
+# Direction: every change from the historical expectation is "toward REPORTED_FAILURE" except the three N-* rows,
+#   which are structural (H has no family-B point) and are declared as such by user decision D-U1.
+#
+# Evidence class of each fix attribution:
+#   [实测] the change B(37a82e8) -> A(876181c) of the observation, from hist38-base/index.txt vs hist38-cur/index.txt (18 rows);
+#   [推断] the commit attribution, from file/site correspondence (b00b630 touches the FMM files of these sites; de52142 is S4.cpp
+#          ComputeLayerModes epsilon, not hit by any of these cases).  Not a single-commit bisect.
+#
+# columns: case  tree  hist_expected  H_new_expected  direction  fix_commit  fix_evidence  replacement_row
+# case	tree	hist_expected	H_new_expected	direction	fix_commit	fix_evidence	replacement_row
+t5/plan1-fft-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/plan1-kottke-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/plan1-jones-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/plan1-nv-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/plan1-vl-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/exec1-fft-ng9	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/exec1-kottke-ng9	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/exec1-jones-ng9	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/exec1-nv-ng9	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/exec1-vl-ng9	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/scratch1-fft-ng1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+t5/scratch2-fft-ng1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2/s4malloc1-fft-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2/s4malloc2-fft-ng9	H	CRASH	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2b/ls-fft-info-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2b/ls-kottke-info-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2b/ls-fft-faithful-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+s2b/ls-kottke-faithful-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	b00b630	[实测 B->A obs] [推断 file site]	-
+new/C-alloc-id21-k1	H	CRASH	REPORTED_FAILURE	to_REPORTED	73e00ef	[源码 H S4.cpp:2270-2272] [实测 H id21 rc1 20]	-
+new/C-alloc-id22-k1	H	CRASH	REPORTED_FAILURE	to_REPORTED	73e00ef	[源码 H S4.cpp:2305-2310] [实测 H id22 rc1 20]	-
+new/C-alloc-id23-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	73e00ef	[源码 H S4.cpp:2422-2428] [实测 H id23 rc1 20]	-
+new/C-alloc-id24-k1	H	SILENT_SWALLOW	REPORTED_FAILURE	to_REPORTED	73e00ef	[源码 H S4.cpp:2447-2454] [实测 H id24 rc1 20]	-
+new/C-alloc-id25-k1	H	CRASH	REPORTED_FAILURE	to_REPORTED	e83255f	[源码 H S4.cpp:4010-4012] [实测 H id25 jones rc1 20]	-
+new/N-jones-id15-k1	H	SILENT_SWALLOW	INVALID	structural	none(S3R df3bb02 removes family-B point)	[实测 H family-B HITCOUNT 0; 0 refs in H lib] [D-U1]	R4-1-Hbuf375 (buf-only, SILENT) ; R4-1-H375 (full B2, REPORTED)
+new/N-nv-id16-k1	H	SILENT_SWALLOW	INVALID	structural	none(S3R df3bb02 removes family-B point)	[实测 H family-B HITCOUNT 0; 0 refs in H lib] [D-U1]	R4-1-Hbuf265 (buf-only, SILENT) ; R4-1-H265 (full B2, REPORTED)
+new/N-vl-id17-k1	H	INVALID	SILENT_SWALLOW	registration-error+structural	none(S2R D-1 registration error; H side as N-jones/nv)	[实测 CUR SILENT rc1 0 (3a regression)] [实测 H family-B HITCOUNT 0]	R4-1-A17 (CUR family B, SILENT) ; R4-1-Hbuf273 (H buf-only, SILENT)

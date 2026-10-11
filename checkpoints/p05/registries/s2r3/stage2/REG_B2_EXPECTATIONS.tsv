@@ -1,0 +1,16 @@
+# P05-S2R3 stage 2 expectations for family B2, registered BEFORE any run of the B2 family.
+# Basis of every row is a source walk [源码] of the H tree, not a result.
+# Columns: case	tree	site_id	expected_hook_effect	expected_driver_class	basis
+b2-check-all	H	all7	all seven anchors UNIQUE and ordered	check-only rc 0	[源码] anchors verified by independent count (stage 2 check)
+b2-nomacro	H	all7	patched-without-macro == pristine objects	24/24 identical	[源码] no #ifdef body compiled without the macro
+b2-changed-set	H	all7	macro on: changed objects = closed, PolBasisJones, PolBasisNV, PolBasisVL	4 FMM objects, plus dependents explained	[源码] only these four translation units contain a hook
+b2-pos-ctl	H	all7	macro on: changed objects differ from pristine	at least 4 objects differ	[源码] positive control for the identity check
+b2-family	H	all7	macro B2 does not activate family A/B/C macros	no cross activation	[源码] independent #ifdef names
+b2-closed144-H	H	144	solve_info set 1 -> check returns 1 -> ClosedForm returns 1	REPORTED_FAILURE, rc1 = 20 at driver	[实测 INFLUENCED] single-site probe in stage 2 pre-work: RC first 20
+b2-closed134-H	H	134	hook -> check at 135 returns 1	REPORTED_FAILURE	[源码] no run yet; rc1 value recorded after run, not assumed
+b2-closed138-H	H	138	hook -> check at 139 returns 1	REPORTED_FAILURE	[源码] no run yet
+b2-closed244-H	H	244	hook -> check at 245 returns 1	REPORTED_FAILURE	[源码] no run yet
+b2-pbjones-H	H	375	hook -> check at 376 returns 1	REPORTED_FAILURE	[源码] no run yet
+b2-pbnv-H	H	265	hook -> check at 266 returns 1	REPORTED_FAILURE	[源码] no run yet
+b2-pbvl-H	H	273	hook -> check at 274 returns 1	REPORTED_FAILURE	[源码] no run yet
+b2-B-A	B,A	all7	info is NULL at these sites; B2 cannot set solve_info	not applicable: family B output model used instead, labelled "模型不同"	[源码] NULL, NULL at closed 130/133/138/235 and PolBasis

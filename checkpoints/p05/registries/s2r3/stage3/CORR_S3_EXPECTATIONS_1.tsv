@@ -1,0 +1,13 @@
+# CORRECTION 1 to REG_S3_EXPECTATIONS.tsv (registered at 2026-10-11T07:14:05Z, sha256 539c6e60...).
+# The original registry is NOT edited. This file supersedes ONE row, disclosed in the report.
+# Original row: S3-exp40 H  "experimental mode, family C? no: fmm_experimental has no seam" -> REPORTED_FAILURE.
+# Problem found after registration: no committed seam family touches fmm_experimental.cpp, so that row had
+# no injection point and could not be produced as registered.
+# Corrected route: the EXISTING s4malloc FMM injection (--wrap of _Z9S4_mallocm), which covers the FMM call
+# at fmm_experimental.cpp:40. Measured BEFORE this correction was written (see stage3/exp40/):
+#   control: EXP40 reached once.   s4malloc k=1: HIT (192 B), RC first 20, HITCOUNT 1.
+# Corrected expectation: experimental mode, route s4malloc k=1, class REPORTED_FAILURE (rc1 = 20).
+# Influenced: YES (the reachability and the rc1 were observed before this correction was registered).
+# Timestamp: see CORR_S3_TIMESTAMP_UTC.txt.
+case	tree	point	driver_route	expected_class	basis	influenced
+S3-exp40-CORR1	H	fmm_experimental 40	experimental + S4FMM_INJECT=s4malloc, NTH=1	REPORTED_FAILURE	[实测 INFLUENCED] HIT 192 B, RC first 20	yes

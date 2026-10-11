@@ -1,0 +1,21 @@
+# P05-S2R3 stage 3d MAP for the S2R R2-D registry (26 rows = 13 cases x BASE/CUR) re-run on tree H (NEW file).
+# Declaration (task section 2 item 4(c)): for every case, the H expected class is the CUR expected class of the SAME case
+#   in R2D_EXPECTATIONS.tsv (CUR rows only, copied mechanically).  R2D itself is not edited.
+# The H request is the CUR request unchanged.  Where the H tree has no equivalent injection point (family B on H:
+#   the family-B hook is absent from the H library, measured: 0 references, HITCOUNT 0 for ids 11, 15, 16, 17), the
+#   H observation is expected to differ.  Such differences are annotated later with their reason, not edited here.
+# Columns: case  family  tree  request  NTH  stack  mode  NG  expected_class_from_CUR  basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+new/A-fft-info-k1	A	H	linearsolve:1:1:info	-	pattern	fft	9	REPORTED_FAILURE	H row inherits CUR expectation of same case (R2D CUR row)
+new/A-kottke-info-k1	A	H	linearsolve:2:1:info	-	pattern	kottke	9	REPORTED_FAILURE	H row inherits CUR expectation of same case (R2D CUR row)
+new/N-jones-id15-k1	B	H	linearsolve_null:15:1	-	pattern	jones	9	SILENT_SWALLOW	H row inherits CUR expectation of same case (R2D CUR row)
+new/N-nv-id16-k1	B	H	linearsolve_null:16:1	-	pattern	nv	9	SILENT_SWALLOW	H row inherits CUR expectation of same case (R2D CUR row)
+new/N-vl-id17-k1	B	H	linearsolve_null:17:1	-	pattern	vl	9	INVALID	H row inherits CUR expectation of same case (R2D CUR row)
+new/N-closed-id11-k1	B	H	linearsolve_null:11:1	-	pattern	jones	9	INVALID	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id21-k1	C	H	alloc:21:1	-	pattern	fft	9	CRASH	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id22-k1	C	H	alloc:22:1	-	pattern	fft	9	CRASH	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id23-k1	C	H	alloc:23:1	-	pattern	fft	9	SILENT_SWALLOW	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id24-k1	C	H	alloc:24:1	-	pattern	fft	9	SILENT_SWALLOW	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id25-k1	C	H	alloc:25:1	-	pattern	jones	9	CRASH	H row inherits CUR expectation of same case (R2D CUR row)
+new/C-alloc-id25-fft	C	H	alloc:25:1	-	pattern	fft	9	INVALID	H row inherits CUR expectation of same case (R2D CUR row)
+new/F-fmm-s4malloc1-fft	F	H	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	H row inherits CUR expectation of same case (R2D CUR row)

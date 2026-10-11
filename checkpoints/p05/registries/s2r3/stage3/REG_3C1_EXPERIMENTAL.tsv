@@ -1,0 +1,25 @@
+# P05-S2R3 stage 3c.1: fmm_experimental:40 three-column expectations (B, A, H), registered BEFORE formal runs.
+# This file does NOT supersede any row of REG_S3_EXPECTATIONS.tsv or CORR_S3_EXPECTATIONS_1.tsv.
+# It is the only registry for 3c.1; the original S3-exp40 H row stays as it was (superseded by CORR_1 in its own file).
+#
+# Injection route: the existing s4malloc FMM injection (--wrap of _Z9S4_mallocm), NTH=1.  This is NOT a new hook.
+# The original S3-exp40 row said "no seam touches fmm_experimental" and was corrected by CORR_1.  The FMM call at
+# fmm_experimental.cpp:40 is an FMM translation-unit S4_malloc, so the --wrap route reaches it (measured in
+# CORR_1: HIT 192 B, RC first 20).
+#
+# Columns (10, matrix_r2.py format):  case family tree request NTH stack mode NG expected_class basis
+# Tree roles: B = 37a82e8 (no checks), A = 876181c (no check at 40), H = 64eb0b5 (check at 44 returns 20).
+#
+# Expectation basis:
+#   B and A: CRASH.  [源码] ivalues from S4_malloc at line 40 is NOT checked; line 41 derives values from it and
+#     lines 57-60 write through ivalues.  A NULL ivalues therefore faults.  NOT measured before this registration.
+#   H: REPORTED_FAILURE.  [源码] line 44 returns 20.  [实测 INFLUENCED] CORR_1: HIT 192 B, RC first 20, HITCOUNT 1.
+#
+# Judge: class from facts only (rc, signal, hit, rc1).  The driver line "CHECK failed call returns the allocation code 1
+#   FAILED" in the H output is the driver's own fixed expectation (1); it is NOT used.  H rc1 is 20 by design of S3R D5.
+#
+# Timestamp: REG_3C1_TIMESTAMP_UTC.txt, written with this file.
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+3c1-exp40	S4	BASE	s4malloc	1	pattern	experimental	9	CRASH	[源码] line 40 unchecked; 57-60 write through NULL ivalues (B 37a82e8); NOT yet measured
+3c1-exp40	S4	CUR	s4malloc	1	pattern	experimental	9	CRASH	[源码] line 40 unchecked; 57-60 write through NULL ivalues (A 876181c); NOT yet measured
+3c1-exp40	S4	H	s4malloc	1	pattern	experimental	9	REPORTED_FAILURE	[源码] H line 44 returns 20; [实测 INFLUENCED] CORR_1 HIT 192 B, RC first 20

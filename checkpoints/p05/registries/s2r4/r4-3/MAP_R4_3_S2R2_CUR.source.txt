@@ -1,0 +1,2 @@
+# DERIVED runner input (not a new expectation): MAP_3D_S2R2_H.tsv (frozen, sha256 dc228a92...) with the tree field H -> CUR.
+# Expected column is therefore the S2R2 CUR expectation of each case (REGISTRY_T4 / REGISTRY_T4_NVVL / REGISTRY_T2_v2 CUR rows).

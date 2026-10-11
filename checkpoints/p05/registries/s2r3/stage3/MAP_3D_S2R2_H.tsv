@@ -1,0 +1,25 @@
+# P05-S2R3 stage 3d MAP for the S2R2 registries (T4, T4_NVVL, T2_v2): 17 distinct cases re-run on tree H (NEW file).
+# Declaration (task section 2 item 4(c)): the H expected class is the CUR expected class of the SAME case in the
+#   S2R2 registry (CUR row, copied mechanically).  The S2R2 registries are not edited.
+# Routing: cache-hit rows (t4/ prefix) use S4FMM_TWICE=slab and judge rc2 (inj_call=2), exactly as in S2R2.
+# Kottke work (t1/, family D) and the s4malloc rows use the same route as S2R2.
+# REGISTRY_T2_v2_SUPPLEMENT (2 closed-ivalues nv/vl rows, added after v2) is NOT part of the 17 and is not mapped here.
+# columns: case  family  tree  request  NTH  stack  mode  NG  expected_class  basis
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+t4/cache-hit-work-k7	S4	H	s4malloc	7	pattern	jones	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T4.tsv)
+t4/cache-hit-work-nv-k7	S4	H	s4malloc	7	pattern	nv	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T4_NVVL.tsv)
+t4/cache-hit-work-vl-k7	S4	H	s4malloc	7	pattern	vl	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T4_NVVL.tsv)
+t1/kottke-work-k1	D	H	kottke_alloc:31:1	-	pattern	kottke	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/fft-work-n1	S4	H	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/fft-discval-n2	S4	H	s4malloc	2	pattern	fft	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/kottke-discval-n1	S4	H	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/closed-ivalues-jones-n1	S4	H	s4malloc	1	pattern	jones	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/jones-ivalues-n2	S4	H	s4malloc	2	pattern	jones	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/jones-work-merge-n3	S4	H	s4malloc	3	pattern	jones	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/jones-vfield-n4	S4	H	s4malloc	4	pattern	jones	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/nv-ivalues-n2	S4	H	s4malloc	2	pattern	nv	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/nv-work-n3	S4	H	s4malloc	3	pattern	nv	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/nv-vfield-n4	S4	H	s4malloc	4	pattern	nv	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/vl-ivalues-n2	S4	H	s4malloc	2	pattern	vl	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/vl-work-n3	S4	H	s4malloc	3	pattern	vl	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)
+t2/vl-vfield-n4	S4	H	s4malloc	4	pattern	vl	9	REPORTED_FAILURE	H inherits CUR expectation of same case (REGISTRY_T2_v2.tsv)

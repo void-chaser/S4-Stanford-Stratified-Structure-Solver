@@ -1,0 +1,45 @@
+# CORRECTION 2 to REG_S3_EXPECTATIONS.tsv (P05-S2R3 stage 3c).
+# The original registry (sha256 539c6e60...) and CORRECTION 1 (sha256 23b6b994...) are NOT edited.
+# This file SUPERSEDES the following rows of REG_S3_EXPECTATIONS.tsv, and nothing else:
+#   S3-cache-nv (B, A, H);  S3-cache-vl (B, A, H);  S3-cache-jones (B, A, H);  S3-kottke85 (B, A, H).
+#
+# Why superseded (disclosed in the report, section 'deviations'):
+#   1. The original cache-hit rows said INVALID_OR_HIT and "needs an injection point".  That was WRONG.
+#      S2R2 already routed the cache-hit allocation: S4FMM_TWICE=slab with s4malloc NTH=7 (the 7th FMM
+#      S4_malloc), judged with inj_call=2 (rc2).  S2R2 REGISTRY_T4 / REGISTRY_T4_NVVL and
+#      T4_NVVL_PROBE_RECORD.txt already recorded this route.  The "no injection point" claim contradicted it.
+#   2. The original kottke row said NOT_REGISTERED_NO_INJECTION_POINT.  Two injection points exist for the
+#      kottke allocations: family D (kottke_alloc:31:1, the fft_alloc_complex work) and s4malloc NTH=1
+#      (the discval S4_malloc).  Section 2 item 2 of the task requires their FAILURE CLASS, not reachability.
+#
+# Timestamp: CORR_S3_TIMESTAMP_UTC_2.txt (written with this file, before any three-column run).
+# Influence: EVERY row is INFLUENCED.  Reachability and first-call return codes were observed BEFORE this
+#   registration (probe runs in stage3/build3a: probe-cache/, kottke/, nth-scan/).  Recorded as observation
+#   expectations, not blind predictions.
+#
+# Line numbers: from the exported trees by content (git show <commit>:S4/fmm/fmm_kottke.cpp etc.):
+#   B 37a82e8: kottke work 77, discval 85;  A 876181c: work 78, discval 87;  H 64eb0b5: work 78, discval 87.
+#   cache-hit work: B 37a82e8 (Jones 343-344 range, see file), A 876181c Jones 344 / NV 232 / VL 241;
+#   H 64eb0b5 Jones 346 / NV 234 / VL 243.
+#
+# Judge rule: class from facts only.  Cache-hit rows use judge inj_call=2 (rc2 decides).  Kottke rows use
+#   inj_call=1 (rc1 decides).  The driver PASS/FAIL line is never read.  Runs use the merged stdout+stderr
+#   (a crashing run prints its HIT line on stderr).
+#
+# Columns: case  tree  point  driver_route  nth_or_k  inj_call  expected_class  basis  influenced
+case	tree	point	driver_route	nth_or_k	inj_call	expected_class	basis	influenced
+S3C2-cache-jones	B	fmm_PolBasisJones.cpp cache-hit work, 1296 B	S4FMM_TWICE=slab, s4malloc	7	2	CRASH	[实测 INFLUENCED] HIT 1296 B then rc 139 (probe-cache/B-jones-nth7-full.err)	yes
+S3C2-cache-jones	A	fmm_PolBasisJones.cpp:344 cache-hit work, 1296 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-cache-jones	H	fmm_PolBasisJones.cpp:346 cache-hit work, 1296 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-cache-nv	B	fmm_PolBasisNV.cpp cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	CRASH	[实测 INFLUENCED] HIT 2592 B then rc 139 (probe-cache/B-nv-nth7-full.err)	yes
+S3C2-cache-nv	A	fmm_PolBasisNV.cpp:232 cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-cache-nv	H	fmm_PolBasisNV.cpp:234 cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-cache-vl	B	fmm_PolBasisVL.cpp cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	CRASH	[实测 INFLUENCED] HIT 2592 B then rc 139 (probe-cache/B-vl-nth7-full.err)	yes
+S3C2-cache-vl	A	fmm_PolBasisVL.cpp:241 cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-cache-vl	H	fmm_PolBasisVL.cpp:243 cache-hit work, 2592 B	S4FMM_TWICE=slab, s4malloc	7	2	REPORTED_FAILURE	[实测 INFLUENCED] RC first 0, RC retry 20, HITCOUNT 1	yes
+S3C2-kottke-work	B	fmm_kottke.cpp:77 fft_alloc_complex(6*ng2), n=384	kottke_alloc:31:1 (family D)	1	1	CRASH	[实测 INFLUENCED] HIT n=384 then rc 139	yes
+S3C2-kottke-work	A	fmm_kottke.cpp:78 fft_alloc_complex(6*ng2), n=384	kottke_alloc:31:1 (family D)	1	1	REPORTED_FAILURE	[实测 INFLUENCED] RC first 20, RC retry 0, HITCOUNT 1	yes
+S3C2-kottke-work	H	fmm_kottke.cpp:78 fft_alloc_complex(6*ng2), n=384	kottke_alloc:31:1 (family D)	1	1	REPORTED_FAILURE	[实测 INFLUENCED] RC first 20, RC retry 0, HITCOUNT 1	yes
+S3C2-kottke-discval	B	fmm_kottke.cpp:85 discval S4_malloc, 16 B	s4malloc	1	1	CRASH	[实测 INFLUENCED] HIT 16 B then rc 139	yes
+S3C2-kottke-discval	A	fmm_kottke.cpp:87 discval S4_malloc, 16 B	s4malloc	1	1	REPORTED_FAILURE	[实测 INFLUENCED] RC first 20, HITCOUNT 1	yes
+S3C2-kottke-discval	H	fmm_kottke.cpp:87 discval S4_malloc, 16 B	s4malloc	1	1	REPORTED_FAILURE	[实测 INFLUENCED] RC first 20, HITCOUNT 1	yes

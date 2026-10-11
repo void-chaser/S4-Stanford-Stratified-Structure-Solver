@@ -1,0 +1,17 @@
+# P05-S2R4 R4-1 expectations.  ALL ROWS ARE POST-HOC.
+# Declaration: this registry was written AFTER the observations it records (exploratory classification
+# and block/field comparisons in this round).  The task required registration BEFORE the run; that
+# requirement was NOT met for R4-1, and this file is the disclosed remedy.  No prior file was edited.
+# Influence: every row is INFLUENCED.  Observations used: stage3-style judge classification (r4-1/),
+# block dumps (r4-1/blocks/), field dumps (r4-1/fields/, r4-1/optc/).
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+# Tree roles: A = 876181c (family B = output model, info NULL); H = 64eb0b5 (buf-only = output model without
+#   the status; full B2 = output model plus *info = 1).
+# case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+R4-1-H134	B2	H	linearsolve_null2:134:1	-	pattern	closed1d	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H138	B2	H	linearsolve_null2:138:1	-	pattern	closed1d	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H144	B2	H	linearsolve_null2:144:1	-	pattern	closed2d	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H244	B2	H	linearsolve_null2:244:1	-	pattern	tensor	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H375	B2	H	linearsolve_null2:375:1	-	pattern	jones	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H265	B2	H	linearsolve_null2:265:1	-	pattern	nv	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
+R4-1-H273	B2	H	linearsolve_null2:273:1	-	pattern	vl	9	REPORTED_FAILURE	POST-HOC INFLUENCED: judge rc1 20, hit 1 (S2R3 sustained)
