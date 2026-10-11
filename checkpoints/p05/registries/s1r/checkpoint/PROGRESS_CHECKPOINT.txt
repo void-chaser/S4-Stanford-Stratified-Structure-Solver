@@ -258,3 +258,7 @@ RECONCILIATION REPORT (P05_S1R_RECONCILIATION.md) WRITTEN; corrections applied i
   - fmm_experimental:40 check line 42 -> 44
   - section 9.4 H status: superseded (H checks at S4.cpp:4007, S3R D1); open list item 6 closed
   - earlier typed counts (18/25/70; 13/31/71) recorded as wrong in the report
+CLOSING (round complete, awaiting user review):
+  commits: 3270470 (probe scripts, testing/d003/stage_s1r/), f4d6b88 (documents, registries/s1r, MANIFEST, digest).
+  worktree clean; S4 vs 64eb0b5 = 0; judge sha d2d04145e0561638; /tmp end = start (0 entries, e3b0c442).
+  NOT declared complete: P05-S1, S2, S3, S4.  Status: 未完成，等待用户审核.
