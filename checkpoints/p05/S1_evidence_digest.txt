@@ -435,3 +435,45 @@ Incidents   : first family-B run segfault (leading dimension, fixed); overwritte
               stale object census (retracted); several command-construction slips (disclosed in report section 7).
 /tmp        : top-level snapshot at start and end of round: sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, count 0.
               Sampled strace of one matrix run: 0 /tmp events, 0 write-type opens outside the repository.  Sample only, not a full audit.
+
+P05-S2R2 (P05-S2 supplementary closeout: test harness, D003) — appended
+=======================================================================
+Status      : P05-S2 NOT complete; awaiting user review. No stage (S1, S2, S3, S4) is declared complete.
+              P05-S2R2 is a closeout sub-task of the formal stage P05-S2, not a new stage.
+Report      : checkpoints/p05/P05_S2R2_HARNESS_CLOSEOUT.md
+Definition  : stage definitions from the USER'S PROMPT; no original P05 plan document in the repository.
+Start       : HEAD aa1c51d; S4/ unchanged versus 8d60dfb (git tree 85feec1151b3); baseline libS4.a
+              sha256 fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba (matches).
+Scope       : testing/d003 commit f5cae24 (5 files, +138 / -22, deletions are the plan_c -> plan_replace refactor
+              and the family list; family C output hash unchanged).  Evidence under checkpoints/p05/evidence/p05-s2r2/ (not committed).
+T1          : fmm_kottke:78 fft_alloc_complex (only the kottke site; the 24 GetFieldOnGrid calls are out of scope).
+              BASE CRASH; CUR REPORTED_FAILURE (rc1 20).  Default build 24/24 objects identical; family D positive control
+              changes fmm_kottke.o only.  Two runs agree.
+T2          : 15 reached FMM S4_malloc call rows pre-registered (REGISTRY_T2_v2 sha256 a582e149...; supplement 7d9d9aca...
+              for an omitted nv/vl closed-ivalues pair, found by a coverage check).  Registration is NOT blind: 9 rows
+              INFLUENCED (read after the S2R results were known), 23 DERIVED.  All 16 T2 rows agree across two runs and two drivers.
+              BASE (measured): CRASH 14 (incl. closed ivalues x3), SILENT_SWALLOW 2 (Jones vfield, VL vfield).  CUR (measured): REPORTED_FAILURE 16.
+T3          : driver-unreachable points (closed 130/133/138/235, experimental:40) recorded STATIC ONLY (REGISTRY_T3_static
+              sha256 f1afb718...); no run results.  INJECTION_POINTS_v2 (new file; S2R original sha256 665f3c73... unchanged)
+              gives a completion criterion for every not-handled point (13 rows, none missing).
+T4          : cache-hit work reachable by a driver route (S4FMM_TWICE=slab; internal S4_Simulation_DestroyLayerModes on layer 1).
+              jones:344 (1296 B): BASE CRASH, CUR REPORTED_FAILURE, two runs agree (REGISTRY_T4 sha256 034295df...).
+              nv:232 and vl:241 (2592 B): probe runs BASE CRASH, CUR REPORTED_FAILURE (REGISTRY_T4_NVVL sha256 839cb9fc...,
+              written after the probes; NOT yet in a two-run formal run).  Historical controls: 10/10 output bytes identical
+              (binary not identical; one added branch).  Route is an INTERNAL interface, not public-API reachable.
+Judge       : classify() gains inj_call (default 1 unchanged; 2 reads rc2 for second-call injections; other values fail-closed).
+              Existing selftests byte-identical (25/25 and 10/10).  The earlier judge read only rc1 and would have
+              misclassified cache-hit injections as silent (fixed, disclosed).
+Runner      : matrix_r2 accepts kottke_alloc: (was rejected as unparseable); t4/ cases route to S4FMM_TWICE=slab, inj_call=2.
+              S2R 26-row regression reproduces every original fact on both trees (difference 0).
+T5          : unified driver bin-t4/driver-all-t4.  17 cases x 2 trees x 2 runs: all 17/17 match on both trees, both runs
+              agree.  Historical 38-case matrix: BASE 0 mismatches, CUR 18 mismatches -- same case set and same (observed,
+              expected) as S2R (line-by-line).  Three-way consistency: handled points all green; not-handled points red on
+              CUR (S2R) and NOT covered by T5 (T5 all-green must not be read as covering them).
+Not closed  : nv/vl cache-hit two-run formal runs; closed 130/133/138/235 and experimental:40 have no run verification
+              (driver-unreachable, static only); info=NULL PolBasis 369/260/268 and ComputeLayerModes/AddFieldToCache
+              not re-run this round (red results cited from S2R); S4.cpp:2369 injection route never built;
+              T2 and T4 registrations were not blind (declared); driver-all and driver-all-t4 share a name prefix.
+Incidents   : stale driver used by runner (T4 4 INVALID, fixed); mixed baseline/current line numbers in a check (fixed);
+              wrong sidecar filename in an integrity check (rechecked, all UNCHANGED); T5 duplicate-key check misread
+              (per tree, corrected); judge read the wrong return code for second-call injections (fixed).
