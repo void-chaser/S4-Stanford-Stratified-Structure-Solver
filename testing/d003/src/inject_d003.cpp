@@ -305,6 +305,76 @@ extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER(int id, std::complex<doub
 	             id, b2b_calls[ix], model, n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * Family E (P05-S2R5, R5-1).  Test-only hooks at the FMMGetEpsilon dispatch in
+ * Simulation_ComputeLayerModes (S4.cpp).  Ten points, IDs 150..159 (one per dispatch call; see
+ * testing/d003/seam/apply_seam_r5_fmmret.py for the anchors).
+ *
+ *   fmmret:ID:K   trees A and H.  S4_TEST_FMMRET_AFTER(id, ret) returns 1 for the K-th call of
+ *                 the requested ID, otherwise returns ret unchanged.  The seam assigns the return
+ *                 value to fmm_ret, so the existing status check sees a failure.  The FMM function
+ *                 has already run; its outputs are the real ones.
+ *   fmmbuf:ID:K   tree B (no status variable exists there).  S4_TEST_FMMBUF_AFTER(id, e2, einv, n)
+ *                 writes NOTHING.  It counts the call and records a hit for the requested ID.
+ *
+ * Unrequested runs: the hook returns before any effect, so no output changes.  Unparsable or
+ * unknown requests never match (fail closed).  IDs 150..159 are not used by any other family.
+ * ------------------------------------------------------------------------ */
+static int fe_req_ok = 0, fe_req_id = 0, fe_req_k = 0, fe_req_buf = 0;
+static const int fe_ids[10] = {150, 151, 152, 153, 154, 155, 156, 157, 158, 159};
+static long fe_calls[10] = {0};
+static long fe_hits[10] = {0};
+
+static int fe_index(int id){
+	for(int i = 0; i < 10; ++i){ if(fe_ids[i] == id){ return i; } }
+	return -1;
+}
+
+static void fe_parse_request(void){
+	const char *m = mode();
+	fe_req_ok = 0;
+	fe_req_buf = 0;
+	if(0 == strncmp(m, "fmmret:", 7)){
+		fe_req_buf = 0;
+		int id = 0, k = 0;
+		if(2 != sscanf(m + 7, "%d:%d", &id, &k)){ return; }
+		if(fe_index(id) < 0 || k < 1){ return; }
+		fe_req_id = id; fe_req_k = k; fe_req_ok = 1;
+	}else if(0 == strncmp(m, "fmmbuf:", 7)){
+		fe_req_buf = 1;
+		int id = 0, k = 0;
+		if(2 != sscanf(m + 7, "%d:%d", &id, &k)){ return; }
+		if(fe_index(id) < 0 || k < 1){ return; }
+		fe_req_id = id; fe_req_k = k; fe_req_ok = 1;
+	}
+}
+
+extern "C" int S4_TEST_FMMRET_AFTER(int id, int ret){
+	fe_parse_request();
+	const int ix = fe_index(id);
+	if(ix < 0){ return ret; }
+	fe_calls[ix]++;
+	if(!fe_req_ok || fe_req_buf || id != fe_req_id){ return ret; }
+	if(fe_calls[ix] != fe_req_k){ return ret; }
+	fe_hits[ix]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT fmmret id=%d call=%ld ret=%d->1 (hit=%ld)\n", id, fe_calls[ix], ret, n_hits);
+	return 1;
+}
+
+extern "C" void S4_TEST_FMMBUF_AFTER(int id, std::complex<double> *e2, std::complex<double> *einv, int n){
+	(void)e2; (void)einv; (void)n;   /* observe only: this hook writes no output */
+	fe_parse_request();
+	const int ix = fe_index(id);
+	if(ix < 0){ return; }
+	fe_calls[ix]++;
+	if(!fe_req_ok || !fe_req_buf || id != fe_req_id){ return; }
+	if(fe_calls[ix] != fe_req_k){ return; }
+	fe_hits[ix]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT fmmbuf id=%d call=%ld (hit=%ld)\n", id, fe_calls[ix], n_hits);
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);

@@ -41,7 +41,8 @@ MODES = ("fft", "kottke", "jones", "nv", "vl",
 STACKS = ("pattern", "flat")
 # [P05-S2R3 3b] "linearsolve_null2:" is the family-B2 request (H tree), appended per user decision.
 # [P05-S2R4 R4-1] "linearsolve_null2buf:" is the output-only B2 request (H tree), appended; no other change.
-REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc", "linearsolve_null2:", "linearsolve_null2buf:")
+# [P05-S2R5 R5-1] "fmmret:" (family E, trees A and H) and "fmmbuf:" (family E, tree B) are appended; no other change.
+REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc", "linearsolve_null2:", "linearsolve_null2buf:", "fmmret:", "fmmbuf:")
 
 
 def _child_env(extra):
