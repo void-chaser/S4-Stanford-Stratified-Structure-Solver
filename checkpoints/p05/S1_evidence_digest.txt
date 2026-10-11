@@ -502,3 +502,24 @@ Not closed  : seven info=NULL sites have no injection-based red-to-green evidenc
               experimental:40 static only [未验证-仅静态]; LAPACK info semantics [未验证]; the uncommitted seam change
               (testing/d003/seam/apply_seam_r2.py) is intentionally not committed (family B still does not apply).
 Sample      : one end strace sample (267 events): 0 under /tmp; 0 write opens outside the repository.  A sample, not an audit.
+
+================================================================================================================
+P05-S2R3 continuation 2 (stages 3-5)  -  STATUS: NOT COMPLETE, awaiting user review.  No stage declared complete.
+================================================================================================================
+Scope       : supplementary sub-task of P05-S2 (not a new stage).  Report: checkpoints/p05/P05_S2R3_HARNESS_GAPS.md.
+Commits     : bdd2b56 (runner tree name H), d8b4276 (runner B2 request prefix, user-approved), 9d29877 (stage 4 scripts).
+              All awaiting user review.  S4/ vs 64eb0b5: 0 changes.  Scope: testing/d003/ and checkpoints/p05/ only.
+Stage 3     : three-column observations, two runs per tree, repeats identical.  Eight red points: red on BASE and CUR(A),
+              REPORTED_FAILURE on H (observation, not verification).  Cache-hit (jones 1296 B, nv/vl 2592 B) and kottke
+              (work n=384 via family D; discval 16 B) reached on all trees; route for cache-hit is internal
+              (S4_Simulation_DestroyLayerModes), public API path not measured.  Family B does not exist on H (structural).
+              Historical 38 cases: H equals CUR observation for all 38.  18 expectation mismatches already exist on CUR.
+              S2R2 17 cases on H: 17/17.  R2D on H: 5 allowed-direction changes, 2 structural (user decision D-U1).
+Stage 4     : Jones, option a/b/c: A and H byte-identical; option d (default): 144/144 differ, max rel 1.1829e-12,
+              median 4.3043e-14 (reproduces S3R).  NV, VL under d: byte-identical.  Table only; no option chosen.
+Violations  : 0 write attempts by self-review in this continuation (not a system audit).  Previous round: one entry
+              (git show ... > /tmp/__never_write) not verifiable in this repository.  Full table in report section 10.1.
+Not closed  : public-API cache-hit path; family-B on H; B vfield split by mode (fftnv CRASH, fftjones/fftvl SILENT) [未验证];
+              Jones d mechanism [推断] only; strace is two end-of-round samples; start /tmp snapshot not taken.
+Earlier claim corrected: "nv/vl cache-hit not reachable through the public API, needs a new injection point" conflicted
+              with S2R2 evidence (REGISTRY_T4_NVVL.tsv, T4_NVVL_PROBE_RECORD.txt).  Route already exists; no new point added.
