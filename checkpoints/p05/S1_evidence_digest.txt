@@ -396,3 +396,42 @@ Unfixed (see report s4/s9): fmm_experimental.cpp:40 S4_malloc (driver-unreachabl
 Deviation D-1: one write attempt to / (TMPDIR unset in that shell) was rejected by read-only FS; no file created.
 /tmp        : ls -A /tmp | sha256sum = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, count 0,
               at both start and end (top-level listing only).
+
+P05-S2R (P05-S2 supplementary round: test harness, D003) — appended
+====================================================================
+Status      : P05-S2 NOT complete; awaiting user review. No stage (S1, S2, S3, S4) is declared complete.
+              This round is a sub-task of the formal stage P05-S2, not a new stage.
+Report      : checkpoints/p05/P05_S2R_HARNESS_SUPPLEMENT.md
+Definition  : the P05 stage definitions are taken from the USER'S PROMPT.  No original P05 plan document exists
+              in the repository (searched; see evidence step0_search_for_original_plan.txt).  This is stated, not inferred.
+Start       : HEAD 8d60dfb9ece24994b65db0e3c7a3fdf6be286ebd (branch codex/p05-d003-fft-error-propagation);
+              37a82e8 is an ancestor.  Baseline libS4.a sha256 fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba (matches).
+              Current libS4.a sha256 865c58938e18220a3e7f02f7cb7b05cf83bce36ec28005fcf0bb4f1b4701b1da (differs, expected).
+Scope       : commit testing/d003 (judge_d003.py, src/inject_d003.cpp extended; matrix_r2.py, seam/apply_seam_r2.py new).
+              S4/ modified: 0.  Existing seam script, seam patch, driver and historical matrix: sha256 unchanged.
+Seam        : three independent families, applied only to git-archive exports.
+              A solve_info (fmm_FFT:209, fmm_kottke:284); B info=NULL (closed 130/133/138/235, PolBasis Jones 369 / NV 260 / VL 268);
+              C S4.cpp allocations (2267, 2295, 2408, 2425, 3977).  14 hook sites per tree; anchors unique on both trees (0 errors).
+              Default output (macros undefined): preprocessed FMM and S4.cpp byte-identical to pristine; 24/24 objects identical.
+              Positive controls: macros defined -> preprocessed output differs; only S4.o changes for family C alone.
+Defect found and fixed (disclosed): family B hook ignored the leading dimension (ld); first run segfaulted; fixed, recorded in
+              R2B_BUG1_leading_dimension.txt.
+Reach       : family A (fft, kottke) and family B (jones, nv, vl) HITCOUNT=1 at NB=1..8.  Family C: ids 21,22 reached on every
+              layer; 23,24 non-uniform only; 25 PolBasis cache only.  Closed ids 11..14 NOT reached by any driver mode (measured).
+              Not measured: cache-hit work (Jones:337, NV:225, VL:234) [unverified]; fft_alloc_complex (kottke:78) [unverified].
+Judge       : classes unchanged (INVALID, CRASH, SILENT_SWALLOW, REPORTED_FAILURE, CONTROL_OK).  selftest 19/19 original + 6/6 new
+              (25 total); selftest-sensitivity 7/7 original + 3/3 new (10 total).  Both rc 0.
+Registry    : R2D_EXPECTATIONS.tsv, 26 rows, sha256 ec8fafbc5ff7f54fbc6db2b4fd283467d7c05e598141bd8790bc68fe265cefb6,
+              registered 2026-10-11T04:05:33Z; file changed after registration (format and basis text only; expected classes checked
+              identical; see R2D_AUDIT_CORRECTIONS.txt; disclosed in report section 7, D-3).
+Results     : registry BASE matched 11/13, CUR matched 12/13.  Mismatches are REGISTRATION errors (A-fft BASE; N-vl-id17 INVALID vs
+              observed SILENT_SWALLOW), kept unedited and disclosed.
+              FMM S4_malloc supplement (observation, not pre-registered): 15/15 reached sites RED on BASE (13 CRASH, 2 SILENT_SWALLOW),
+              15/15 GREEN on CUR (REPORTED_FAILURE, rc1 20); reproduced across two runs (30/30 identical).
+              Historical 38-case matrix: BASE 0 expectation mismatches; CUR 18 mismatches, all REPORTED_FAILURE, all in the S3 change set.
+              Still RED on CUR: PolBasis info=NULL (Jones/NV/VL), S4.cpp ComputeLayerModes 2267/2295/2408/2425, AddFieldToCache (jones).
+Out of scope: S4.cpp allocation sites outside the D003 set: 43 (measured; 48 total S4_malloc/malloc lines minus 5 family-C sites).
+Incidents   : first family-B run segfault (leading dimension, fixed); overwritten BASE supplement logs (fixed, rerun reproduced);
+              stale object census (retracted); several command-construction slips (disclosed in report section 7).
+/tmp        : top-level snapshot at start and end of round: sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, count 0.
+              Sampled strace of one matrix run: 0 /tmp events, 0 write-type opens outside the repository.  Sample only, not a full audit.
