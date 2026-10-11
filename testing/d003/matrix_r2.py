@@ -40,7 +40,8 @@ MODES = ("fft", "kottke", "jones", "nv", "vl",
          "experimental", "closed2d", "closed1d", "tensor", "fftjones", "fftnv", "fftvl")
 STACKS = ("pattern", "flat")
 # [P05-S2R3 3b] "linearsolve_null2:" is the family-B2 request (H tree), appended per user decision.
-REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc", "linearsolve_null2:")
+# [P05-S2R4 R4-1] "linearsolve_null2buf:" is the output-only B2 request (H tree), appended; no other change.
+REQUEST_PREFIXES = ("linearsolve:", "linearsolve_null:", "alloc:", "kottke_alloc:", "s4malloc", "linearsolve_null2:", "linearsolve_null2buf:")
 
 
 def _child_env(extra):

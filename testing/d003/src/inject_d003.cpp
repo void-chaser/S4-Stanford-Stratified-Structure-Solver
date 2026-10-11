@@ -251,6 +251,60 @@ extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2_AFTER(int id, int *info, std::comp
 	             id, b2_calls[ix], model, n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * Family B2-buf (P05-S2R4, R4-1).  Independent of family B2 above: its own request prefix,
+ * its own counters, its own hook.  It writes ONLY the output buffer, with the same rule as
+ * family B (model 1 = identity RHS over the solve's real leading dimension; any other model
+ * writes nothing).  It does NOT take the solve status: no *info is written and no info
+ * argument exists, so the existing check at the call site reads whatever the real solve
+ * left in solve_info.  This isolates the output-model effect from the status effect.
+ *
+ *   S4FMM_INJECT = linearsolve_null2buf:ID:K   (ID in {134,138,144,244,375,265,273}, K >= 1)
+ *
+ * Unrequested runs: the hook returns before any write, so no output changes.  Unparsable or
+ * unknown requests are never reached (fails closed, judge INVALID).
+ * ------------------------------------------------------------------------ */
+static int b2b_req_ok = 0, b2b_req_id = 0, b2b_req_k = 0;
+static long b2b_calls[7] = {0};
+static long b2b_hits[7] = {0};
+
+static int b2b_index(int id){
+	for(int i = 0; i < 7; ++i){ if(b2_ids[i] == id){ return i; } }
+	return -1;
+}
+
+static void b2b_parse_request(void){
+	const char *m = mode();
+	b2b_req_ok = 0;
+	if(0 != strncmp(m, "linearsolve_null2buf:", 21)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 21, "%d:%d", &id, &k)){ return; }
+	if(b2b_index(id) < 0){ return; }
+	if(k < 1){ return; }
+	b2b_req_id = id; b2b_req_k = k; b2b_req_ok = 1;
+}
+
+extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER(int id, std::complex<double> *b, int n, int ld, int model){
+	b2b_parse_request();
+	const int ix = b2b_index(id);
+	if(ix < 0){ return; }
+	b2b_calls[ix]++;
+	if(!b2b_req_ok || id != b2b_req_id){ return; }
+	if(b2b_calls[ix] != b2b_req_k){ return; }
+	if(1 == model){
+		/* identity RHS with the solve's real leading dimension ld: the same write as family B */
+		for(int j = 0; j < n; ++j){
+			for(int i = 0; i < n; ++i){
+				b[i + j*ld] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+			}
+		}
+	}
+	b2b_hits[ix]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT linearsolve_null2buf id=%d call=%ld model=%d (hit=%ld)\n",
+	             id, b2b_calls[ix], model, n_hits);
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);
