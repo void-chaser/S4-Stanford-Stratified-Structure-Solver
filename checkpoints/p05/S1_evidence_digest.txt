@@ -324,3 +324,47 @@ Boundary audit (strace over the whole entry script, run-5 and run-6):
 
 Known incidents (all disclosed in the report, section 8): stray /tmp redirections (4 attempts, no files left);
   run-1 moved to run-1-before-judge-fix (internal paths keep old name); one unverified archive deleted and regenerated.
+
+P05-S2.6 (LinearSolve call-site seam, D003) — appended
+=====================================================
+Status      : P05-S2 NOT complete; awaiting user review. This is a sub-task of P05-S2, not a new stage.
+Report      : checkpoints/p05/P05_S2_TEST_HARNESS.md, appendix "附录 S2.6 收尾" (sections A-1 to A-11, deviations P-1 to P-16).
+              Section 10 numbers corrected to measured values (21 files, 4958 insertions at HEAD 7f2b78e).
+Evidence    : checkpoints/p05/evidence/p05-s2b/ (ignored; NOT committed)
+Harness     : commit 7f2b78e (testing/d003/: seam/linearsolve_seam.patch, seam/apply_seam.py, src/inject_d003.cpp,
+              matrix_d003.py, run_d003.sh). Patch sha256 d9fc25edc26fa51e1fee0996ae872a28ee94a7aa81a3943e8604b18c3a8a9739.
+              Seam applies only to OUT/seam-src (git archive copy); repository S4/ unchanged (0 changed paths).
+
+Expectations registered before any run:
+  first  registration  2026-10-11T02:06:37Z  matrix sha256 d0a538a7d8292030e83b99149f2520e77daccd9daf0b30f4b9b17251289330a8
+  second registration  2026-10-11T02:12:44Z  matrix sha256 fc080ea53eee86ef255d577827fe8a855af4776e90de953d003918da5c5e117d
+  (second registration also corrected one row label before any run: inj-sens/kottke-faithful, PREDICTION; value unchanged)
+
+Equivalence with the seam macro undefined:
+  preprocessed fmm_FFT.cpp and fmm_kottke.cpp: byte-identical to pristine (g++ -E -P)
+  libS4.a: byte-identical to baseline, sha256 fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba
+  10 control cases: byte-identical outputs (seam-off vs pristine, and vs S1B reference)
+
+Full run (run-2, SEAM=1): 16 steps, all rc=0; digests 1881/1881 OK.
+  classification: 38 cases, expectation mismatches 0 (S2.6: 13 rows, all match, see report A-3)
+  POL sensitivity: unchanged from run-1 (6 rows, 0 mismatches)
+  injection sensitivity: 3 rows, 0 mismatches
+    fft info     INSENSITIVE  0/144      fft faithful   SENSITIVE 144/144 max 1.2289 (theta=30)
+    kottke faithful SENSITIVE 144/144 max 1.1742 (theta=30; was a PREDICTION before this run)
+  classification recomputed from run-2 raw records with the committed code: byte-identical index.txt
+
+Hit-set evidence (static): the patch touches exactly two files, four hunks; object comparison with the seam ON
+  differs in exactly fmm_FFT.o and fmm_kottke.o (22 of 24 objects identical).
+Unseamed driver given a linearsolve request: HITCOUNT 0, "requested but not reached", FAIL (not PASS).
+
+Reachability tables (appendix A-4): s4malloc_reachability.tsv (52 points) and linearsolve_reachability.tsv (19 call sites).
+  measured with gdb at NB=9 only; other configurations PENDING.
+
+Archive     : checkpoints/p05/evidence/archive/evidence-p05-s2b.tar.gz  (INCREMENTAL, 245 files)
+              size=738914 bytes  sha256=38b66275a48712216274524ca9382b76cba7966c6bd517bedfe926e55fc79243
+              every listed file re-hashed after extraction: 245 compared, 0 mismatches.
+Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 1293 entries (1048 existing unchanged as an exact prefix,
+              + 244 S2.6 files + the S2.6 archive); sha256sum -c 1293/1293 OK.
+
+Known incidents (all in report appendix A-8): six /tmp write attempts in interactive shells (no files left);
+  one unverified archive deleted and regenerated (self-referencing list entry); several statistics corrected.
