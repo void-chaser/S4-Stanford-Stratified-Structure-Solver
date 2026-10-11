@@ -33,6 +33,8 @@ TIMEOUT_S = 300
 GRID = ["pattern", "both", "4", "3"]
 ENV_ALLOW = ("PATH", "LANG", "LC_ALL")
 EXPECTED_CLASSES = ("CRASH", "SILENT_SWALLOW", "REPORTED_FAILURE", "INVALID", "CONTROL_OK")
+# [P05-S2R3 3a] tree names.  BASE and CUR keep their historical meaning; H (64eb0b5) is added.
+TREES = ("BASE", "CUR", "H")
 MODES = ("fft", "kottke", "jones", "nv", "vl",
          # [P05-S2R3] new driver modes (T1/T2); appended, existing five unchanged.
          "experimental", "closed2d", "closed1d", "tensor", "fftjones", "fftnv", "fftvl")
@@ -67,7 +69,8 @@ def load_registry(path):
             if len(f) != 10:
                 raise SystemExit("registry line %d has %d fields (need 10)" % (lineno, len(f)))
             case, fam, tree, req, nth, stack, mode, ng, exp, basis = f
-            if tree not in ("BASE", "CUR"):
+            # [P05-S2R3 3a] "H" is a third tree name (the 64eb0b5 tree); BASE and CUR are unchanged.
+            if tree not in TREES:
                 raise SystemExit("registry line %d: bad tree %r" % (lineno, tree))
             if stack not in STACKS:
                 raise SystemExit("registry line %d: bad stack %r" % (lineno, stack))
@@ -221,13 +224,13 @@ def main(argv=None):
     r.add_argument("--driver", required=True)
     r.add_argument("--driver-sha256", required=True,
                    help="pinned sha256 of the driver binary; a different binary is refused (P05-S3R R3-0)")
-    r.add_argument("--tree", required=True, choices=("BASE", "CUR"))
+    r.add_argument("--tree", required=True, choices=TREES)
     r.add_argument("--runs", required=True)
     r.add_argument("--out", required=True)
     x = sub.add_parser("index")
     x.add_argument("--registry", required=True)
     x.add_argument("--runs", required=True)
-    x.add_argument("--tree", required=True, choices=("BASE", "CUR"))
+    x.add_argument("--tree", required=True, choices=TREES)
     x.add_argument("--out", required=True)
     args = p.parse_args(argv)
     if args.cmd == "run":
