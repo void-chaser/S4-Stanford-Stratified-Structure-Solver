@@ -1,0 +1,38 @@
+Breakpoint 1 at 0x36160
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+SGN k=1 shape_ptr=0x5555555f8200
+SGN k=2 shape_ptr=0x5555555f8200
+SGN k=3 shape_ptr=0x5555555f8200
+SGN k=4 shape_ptr=0x5555555f8200
+SGN k=5 shape_ptr=0x5555555f8200
+SGN k=6 shape_ptr=0x5555555f8200
+SGN k=7 shape_ptr=0x5555555f8238
+SGN k=8 shape_ptr=0x5555555f8238
+SGN k=9 shape_ptr=0x5555555f8200
+SGN k=10 shape_ptr=0x5555555f8200
+SGN k=11 shape_ptr=0x5555555f8200
+SGN k=12 shape_ptr=0x5555555f8238
+SGN k=13 shape_ptr=0x5555555f8238
+SGN k=14 shape_ptr=0x5555555f8200
+SGN k=15 shape_ptr=0x5555555f8200
+SGN k=16 shape_ptr=0x5555555f8238
+SGN k=17 shape_ptr=0x5555555f8238
+SGN k=18 shape_ptr=0x5555555f8200
+SGN k=19 shape_ptr=0x5555555f8200
+SGN k=20 shape_ptr=0x5555555f8200
+SGN k=21 shape_ptr=0x5555555f8238
+SGN k=22 shape_ptr=0x5555555f8238
+SGN k=23 shape_ptr=0x5555555f8200
+SGN k=24 shape_ptr=0x5555555f8200
+SGN k=25 shape_ptr=0x5555555f8200
+SGN k=26 shape_ptr=0x5555555f8200
+SGN k=27 shape_ptr=0x5555555f8200
+SGN k=28 shape_ptr=0x5555555f8200
+J3 LAYER slab_index=1 nshapes=2 shapes_base=0x5555555f8200
+J3 SHAPE k=0 addr=0x5555555f8200 tag=1
+J3 SHAPE k=1 addr=0x5555555f8238 tag=2
+J3 RC first 0
+J3 DONE
+[Inferior 1 (process 28) exited normally]
+END shape_get_normal_calls=28

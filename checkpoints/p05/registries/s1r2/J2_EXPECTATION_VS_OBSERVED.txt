@@ -1,0 +1,45 @@
+J2 期望与实测对照（P2-A：标量 eps=0 图案材料，kottke，NB=9，H 树）
+
+标注：本对照记录的实测结果已经影响了对期望 E5 的理解，因此本对照及其后的判定均标记为 INFLUENCED。
+期望文件 J2_EXPECTATIONS.txt 未修改（sha256 已核对为固定时的值）。
+
+一、期望与实测
+  E1  界面像素上 abcd[1][0] = 0，D2 = -1/0 产生 Inf。
+      实测：Epsilon2 前几个元素为 -nan（静止 NaN），未直接观察到 Inf 的位置。
+      结论：E1 的"产生非有限值"成立；具体是 Inf 还是 NaN 未逐元素确定。[实测部分]
+  E2  D1 = -1/1 有限。
+      实测：未读取 kottke 中间量。[未验证]
+  E3  abcde[0][0] = -Inf（fill<1）。
+      实测：未直接读取 abcde。[未验证]
+  E4  D7 反变换 abcd[1][0] = 0（有限）。
+      实测：未直接读取。[未验证]
+  E5  非有限值被 -1/x 映为 0，不进入输出（推断）。
+      实测：**不成立**。Epsilon2 的 NaN 进入 SolveLayerEigensystem 的输入（[实测]：SOLVE_ENTER，r8 指向的 Epsilon2 前 4 元素为 -nan）。
+      随后在 zlaqr0_ 中 SIGSEGV（退出码 139），驱动未输出任何 RC 行。
+  E6  kottke 无 isfinite 检查。
+      实测：ComputeLayerModes 对 kottke 的结果未检查即调用 SolveLayerEigensystem（栈追踪 [实测]）。成立。
+  E7  期望类别为 SILENT 或 NON-FINITE OUTPUT。
+      实测：**两者均不符**。实际为进程崩溃（SIGSEGV 于 zlaqr0_）。该类别未在期望中列出。
+
+二、实测的栈（[实测]，J2_P2A_solve_trace.txt）
+  Simulation_GetLayerSolution
+   -> Simulation_ComputeLayerSolution
+    -> Simulation_ComputeLayerModes
+     -> SolveLayerEigensystem（进入 2 次：第 1 次为 workspace query，第 2 次为求解）
+      -> zlaqr0_（SIGSEGV，第 2 次）
+
+三、P2-C1 因果对照（J2_P2C_EXPECTATIONS.txt 期望 X1 的实测，运行前已登记并固定哈希）
+  P2-C1：标量 eps = 1e-300（非零），其余同 P2-A。
+  期望 X1：若除数为零是根因，则入口 Epsilon2 前 8 个复数应全部有限。
+  实测（[实测]，J2_P2C1_eps1e300_trace.txt）：Epsilon2 前 8 个复数仍全部为 -nan；SIGSEGV 仍发生（zlaqr0_）。
+  判定：**期望 X1 不成立**。按 X2 规则，记为"入口非有限，不判为零除数根因"。
+  因此 P2-A 中 NaN 的根因未确定：候选为 (a) eps=0 的除零（1/0 -> Inf 再经 Inf-Inf 或 0*Inf 为 NaN）；
+  (b) 大动态范围的溢出（1/1e-300 = 1e300 经乘法溢出）。两者都在 kottke 的除法/乘法链上。
+  P2-C1 显示：即使 eps 为非零的极小值，非有限值仍进入求解器。问题范围比"零除数"更广。
+  标注：本节结论 INFLUENCED（已据 P2-A 的 SIGSEGV 修正了期望理解）。
+
+四、对 J2 结论的含义（待后续探针核实）
+  - 标量 eps=0 的图案材料在 kottke 模式下是可达的（API 允许，且界面像素进入平均段；[实测]崩溃栈证明 NaN 确实到达了求解器）。
+  - 结论类别初步为"可达且产生非有限值，未被拦截，进入特征值求解后崩溃"。这不属于"被后续检查报告"，也不属于"静默"（进程崩溃，无报告）。
+  - 按 J2 第 5 条的范围判据：kottke 在 FMM 路径内，非有限值进入求解器未被拦截 -> 列入 S3 输入。
+  - 需要后续确认：(a) Inf 与 NaN 的首次产生位置（逐元素）；(b) 是否存在不崩溃的同类材料（例如张量 D7 路径）使 NaN 以静默方式进入输出。

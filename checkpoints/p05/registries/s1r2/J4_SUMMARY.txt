@@ -1,0 +1,29 @@
+J4 结果：EVIDENCE.sha256 逐条复核（P05-S1R2）
+
+一、范围与口径
+  - S1_BASELINE_AND_ENUMERATION.md §11.2 称"19 个文件"，但 EVIDENCE.sha256 实际为 1293 条（路径互不相同）。
+    §11.2 的 19 为某一时刻的口径，未在清单中体现。本轮对清单的全部 1293 条逐个复核，不依赖"19"的口径。
+  - 清单路径相对于 checkpoints/p05/evidence/（如 ./driver.log）。校验在该目录内执行。
+
+二、结果（[实测]）
+  sha256sum -c（J4_sha256_check_raw.txt）：OK = 1293，FAILED = 0，缺失 = 0。
+  逐条表（J4_hash_table.tsv，脚本 testing/d003/stage_s1r2/j4_hash_table.py，独立计算）：OK = 1293，MISMATCH = 0，MISSING = 0。
+  两种方法结论一致。
+
+三、§11.2 的 8 个哈希与清单的比较（[实测]）
+  一致（3）：logs/20-build-driver-baseline.log、logs/21-driver-syntax-diagnostic.log、rc.txt。
+  不一致（5）：logs/60-t6-results.json、logs/60-t6-main.log、logs/61-t6-diag-layer.log、logs/62-t6-repeat.log、s1_run.sh。
+  上述 5 个 §11.2 哈希只出现在 S1_BASELINE_AND_ENUMERATION.md 的 §11.2 表中（只读检索全仓库，无其他出现）。
+  git 历史中无这些文件的任何已跟踪版本（证据目录被 .git/info/exclude 忽略，从未跟踪）。
+
+四、不匹配的原因分类
+  清单与当前文件之间：无不匹配（0 条）。无需逐条原因。
+  §11.2 与清单之间：5 条不一致。原因无法判定：
+    - 可能是 §11.2 手工抄写错误；
+    - 可能是 §11.2 记录的是较早时刻的文件内容，之后文件被重新生成，且清单随之更新；
+    - 现有证据不能区分这两种情况。
+  判定需要：用户确认 §11.2 的来源，或提供 §11.2 生成时的文件快照。本轮不改写 §11.2，不改写清单。
+
+五、对第 7 项缺口的关闭范围
+  已关闭："19 个证据文件 sha256 未复核"这一缺口：清单全部条目已逐个复核，当前内容与清单一致。
+  未关闭：清单本身是否在某时被改写、以及 §11.2 的 5 个哈希的来源。这两点不能由当前复核证明。

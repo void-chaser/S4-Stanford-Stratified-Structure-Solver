@@ -1,0 +1,8 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00005555555c53fc in zlaqr0_(bool, bool, unsigned long, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, bool) ()
+#0  0x00005555555c53fc in zlaqr0_(bool, bool, unsigned long, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, bool) ()
+Backtrace stopped: Cannot access memory at address 0xfff7fffffffffff8
+rip            0x5555555c53fc      0x5555555c53fc <zlaqr0_(bool, bool, unsigned long, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, bool)+1516>

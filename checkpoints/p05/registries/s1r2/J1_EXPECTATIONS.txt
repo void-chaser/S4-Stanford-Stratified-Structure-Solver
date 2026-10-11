@@ -1,0 +1,68 @@
+J1 期望登记（半覆盖场景：FFT 成功、PolBasis 失败时矩阵内容）
+登记时间：见 J1_EXPECTATIONS_TIMESTAMP_UTC.txt（早于任何 J1 探针运行）
+依据：本轮源码走查（B=37a82e8、A=876181c、H=64eb0b5 的 S4/ 与 fmm/），以及已入库的 REG_3C2_FFTCHAIN（registries/s2r3/stage3/）。
+状态：本文件是运行前期望。它不是探针结果。
+
+一、ComputeLayerModes 的 FMM 分支（S4/S4.cpp）
+  B(37a82e8)：FMMGetEpsilon_FFT 与 FMMGetEpsilon_PolBasis* 的返回值全部丢弃（无 fmm_ret 变量）。
+    PolBasis 无条件执行（只要 use_polarization_basis 为真，且前一步 FFT 调用已发生，不检查其结果）。
+    失败后函数继续到 SolveLayerEigensystem，返回 0（成功）。
+  A(876181c)：引入 fmm_ret，FFT 与 PolBasis 之间已串接（见更正注记 C1）：
+    fmm_ret = FMMGetEpsilon_FFT(...)；随后 if(0 == fmm_ret && use_polarization_basis) 才调用 PolBasis。
+    PolBasis 返回值写入 fmm_ret，之后 if(0 != fmm_ret) 时 DiscardLayerModes 并返回 20。
+  H(64eb0b5)：fmm_ret 串接：FFT 失败 -> PolBasis 不执行；PolBasis 失败 -> DiscardLayerModes 并返回 20。
+
+二、写入时点（矩阵何时被修改）
+  FMMGetEpsilon_FFT（三树同序）：
+    1) 先写 Epsilon2 的上半部分（由 Fto 取值），再 SetMatrix 与 LinearSolve 写 Epsilon_inv；
+    2) 之后在 w=0..3 循环中，每次 fft_plan_exec 后写 Epsilon2 的一个 n×n 块。
+    B 树：第 1 步的 LinearSolve 返回的 solve_info 被丢弃；fft_plan_exec 返回值被丢弃。
+    H 树：LinearSolve 的 solve_info 检查（不为 0 则 ret=1，goto cleanup）；fft_plan_exec 检查。
+  FMMGetEpsilon_PolBasisVL（三树同序）：
+    1) S4_malloc(ivalues)（PB-ivalues，NTH=3 的候选），B 无 NULL 检查；A、H 有 NULL 检查并返回 1。
+    2) S4_malloc(work)（PB-work，NTH=4 的候选），B 无 NULL 检查；A、H 有检查。
+    3) S4_malloc(vfield)（PB-vfield，NTH=5 的候选），B 无 NULL 检查；A、H 有检查。
+    4) 之后才调用 Simulation_AddFieldToCache（B 树无返回检查；H 树检查返回值）。
+    5) 之后才对 Epsilon2 写入：RNP::TBLAS::Axpy 与 MultMM（每个 w 块）。
+  因此，在 PolBasis 内部的 S4_malloc 失败（PB-ivalues、PB-work、PB-vfield）时，
+  PolBasis 在写 Epsilon2 之前即返回，Epsilon2 应保持 FFT 原值（未被 PolBasis 修改）。
+
+三、三树期望（以下为运行前的期望，单位：矩阵内容状态）
+  树 B（37a82e8，无检查）：
+    - PB-ivalues（NTH3）、PB-work（NTH4）、PB-vfield（NTH5）注入时，PolBasis 在写 Epsilon2 前返回或崩溃。
+      期望：Epsilon2 = FFT 原值（块 1–4 全部为 FFT 写入值），Epsilon_inv = FFT 结果。
+      但 B 树没有检查返回值：B 上 PolBasis 的失败若为 CRASH（无 NULL 检查后解引用，如 vfield 写入），
+      则矩阵状态未定义（崩溃前未必一致）。此为 REG_3C2 中 fftnv 的 CRASH 情形。
+    - 失败被丢弃：ComputeLayerModes 继续到 SolveLayerEigensystem，使用混合或原值矩阵，返回 0。
+      期望最终类别：SILENT_SWALLOW（fftjones、fftvl）与 CRASH（fftnv）。与 REG_3C2 一致。
+    - 结论期望：B 上存在"矩阵被后续求解使用、且失败被丢弃"的路径；但"混合状态（部分块已更新）"
+      在 PolBasis 前即返回的注入点上不应出现，因为 PolBasis 在写入前失败。
+      若出现混合（例如 vfield 注入后 Epsilon2 的某块已更新），则是 B 上的意外，需记录为新观察。
+  树 A（876181c，fmm_ret 存在但 FFT 与 PolBasis 未串接）：
+    - PolBasis 失败返回 1 -> fmm_ret=1 -> DiscardLayerModes -> return 20。期望最终类别：REPORTED_FAILURE。
+    - 矩阵内容：Discard 释放 pB->q 等，但 Epsilon2 与 Epsilon_inv 的 FFT 写入值保留在缓冲区中（缓冲区归调用方）。
+      由于不再使用这些值（返回 20），期望"不安装"。注意：A 的 FFT 失败不会阻止 PolBasis 执行（串接缺失），
+      但本注入不针对 FFT，因此不在本条期望内。
+    - 期望内容状态：FFT 原值（PolBasis 未写入）；不安装。
+  树 H（64eb0b5，全部检查）：
+    - PolBasis 失败返回 1 -> fmm_ret=1 -> DiscardLayerModes -> return 20。期望最终类别：REPORTED_FAILURE。
+    - 矩阵内容：FFT 原值（PolBasis 未写入）。ComputeLayerModes 返回 20，矩阵不被安装（不进入特征值求解）。
+    - 注意：S->layer[].modes 未被赋值（Discard 之后 layer_modes 为 NULL），因此不缓存。
+
+四、与 S2R 分类的关系
+  - REG_3C2 的类别（CRASH / SILENT_SWALLOW / REPORTED_FAILURE）由判定器从事实推出；本轮 J1 的内容状态是独立的第二维度。
+  - "未观察到混合状态"与"已观察到混合状态"不是同一结论；只有读到混合状态才能写"半覆盖已证实"。
+  - 期望中的"FFT 原值"是 FFT 已写入的值（非未初始化）。若读到未初始化值，需区分：是 FFT 未写入的块，还是 PolBasis 写入前的状态。
+
+五、运行前不做的事
+  - 不据此修改任何源码；不把期望写成结论。
+  - 若在 H 上发现失败后矩阵仍被安装或缓存（ComputeLayerModes 返回 0 或 layer_modes 非空），立即停下报告（S3 输入）。
+
+六、更正注记（运行前，未运行任何 J1 探针）
+  C1. 初稿第一节"A 树 FFT 与 PolBasis 之间没有串接"是错误的。
+      依据：876181c 的 S4/S4.cpp 第 2376 行为 "if(0 == fmm_ret && S->options.use_polarization_basis){"（已用 git show 核对）。
+      A 树 FFT 失败时 PolBasis 不执行；串接存在。A 与 H 在此处一致。
+      A 与 H 的差异仅在 PolBasis 内部的 S4_malloc 检查（A 已有 NULL 检查，见 fmm_PolBasisVL.cpp 第 59、118、131 行），
+      以及 AddFieldToCache 的返回值检查（H 有，A 无；A 第 230 行附近为 void 调用）。
+      正文第一节已改正，本注记保留原误述的记录。
+  C2. 初稿第三节 A 树期望"FFT 原值；不安装"仍成立，但理由需改为：FFT 与 PolBasis 已串接，PolBasis 失败后返回 20 并 Discard。

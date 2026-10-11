@@ -1,0 +1,47 @@
+Breakpoint 1 at 0x6e4a
+Breakpoint 2 at 0x18770
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+CLM_ENTER k=1
+CLM_ENTER k=2
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)
+CLM_ENTER k=3
+S4FMM WITNESS plan call=6 grid=8x8
+S4FMM WITNESS plan call=7 grid=8x8
+S4FMM WITNESS plan call=8 grid=8x8
+S4FMM WITNESS plan call=9 grid=8x8
+S4FMM WITNESS plan call=10 grid=8x8
+S4FMM WITNESS plan call=11 grid=8x8
+SOLVE_CALL k=1
+SOLVE_CALL k=2
+CLM_ENTER k=4
+S4FMM WITNESS plan call=12 grid=3x4
+S4FMM WITNESS plan call=13 grid=3x4
+S4FMM WITNESS plan call=14 grid=3x4
+S4FMM WITNESS plan call=15 grid=3x4
+S4FMM WITNESS plan call=16 grid=3x4
+S4FMM WITNESS plan call=17 grid=3x4
+S4FMM DRIVER actual mode=fftvl num_basis=9 stage=none plan_call=0 alloc=0 exec=0
+RC first 20
+RC retry 0
+S4FMM HITCOUNT 1
+CHECK failed call returns the allocation code 1 FAILED
+CHECK failed call left E untouched             ok
+CHECK failed call left H untouched             ok
+CHECK sentinels around E intact                ok
+CHECK sentinels around H intact                ok
+CHECK retry on the same object succeeds        ok
+CHECK retry wrote its outputs                  ok
+CHECK retry output is finite                   ok
+CHECK failed layer kept no partial modes       FAILED
+S4FMM WITNESS resource partial_modes=1 constructed_cache_entries=N/A(FieldCache opaque; driver copy did not check)
+RESULT injected failure observed
+S4FMM DRIVER DONE
+RESULT pattern both FAIL
+[Inferior 1 (process 28) exited with code 01]
+END clm_calls=4 solve_calls=2

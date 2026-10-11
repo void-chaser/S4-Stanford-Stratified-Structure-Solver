@@ -1,0 +1,39 @@
+J2 kottke 除数分析（草稿，记录源码事实与推导；数值探针另行记录）
+
+一、除法位置（按内容，不按行号；B 与 H 的行号不同）
+  文件：S4/fmm/fmm_kottke.cpp（H 树工作区；B 树 37a82e8 的 kottke 段与 H 相同，见 J2 的 diff 核对）
+  Kottke 平均段（tau 变换，仅在 nnz==2 且 imat 不同且 nvec 非零时执行）：
+   D1  -1./abcd[0][0]                              除数 abcd[0][0]  = 第 1 材料旋转后的 e11 = n^T M1 n
+   D2  -1./abcd[1][0]                              除数 abcd[1][0]  = 第 2 材料旋转后的 e11 = n^T M2 n
+   D3  abcd[0][1]/abcd[0][0]        （及 abcd[0][2]/abcd[0][0]）   除数 abcd[0][0]
+   D4  abcd[1][1]/abcd[1][0]        （及 abcd[1][2]/abcd[1][0]）   除数 abcd[1][0]
+   D5  abcd[0][1]*abcd[0][2]/abcd[0][0]               除数 abcd[0][0]（在 D3 之后的组合式中）
+   D6  abcd[1][1]*abcd[1][2]/abcd[1][0]               除数 abcd[1][0]
+   D7  -1./abcde[0][0]                             除数 abcde[0][0] = 平均 tau 的 e11 = fill*(-1/abcd00) + (1-fill)*(-1/abcd10)
+   D8  -abcde[0][1]/abcde[0][0], -abcde[0][2]/abcde[0][0]        除数 abcde[0][0]（同 D7）
+   D9  abcde[0][1]*abcde[0][2]/abcde[0][0]            除数 abcde[0][0]（同 D7）
+  其他除法（与材料无关，不属于 J2 范围）：
+   O1  1./(double)ng2                 ng2 为网格点数，恒为正
+   O2  ((double)ii[0]+0.5)/(double)ngrid[0]  ngrid 恒 >= 1
+  注意：D7 的除数不是材料元素，而是两个 -1/abcd 的加权和（由 fill 决定）；它为零的条件与 D1、D2 不同。
+
+二、取值范围（源码事实）
+  材料类型（S4.h 150–153）：标量实(2)、标量复(3)、张量实(4)、张量复(5)。
+  S4_Simulation_SetMaterial（S4.cpp 888–965）：
+   - 标量与张量的各分量直接复制，无零值、无非有限值、无正定性校验（[源码]）。
+   - 唯一拒绝的是 type 不在四种类型内（返回 id；M 置 NULL 不影响返回，属另一问题，记录但不属 J2）。
+  因此 API 不阻止除数为零的材料输入。
+
+  sym2x2rot（fmm_kottke.cpp 44–53）计算 R^T M R，e11 分量为 RMR[0] = nx^2 M00 + nx ny (M01 + M10) + ny^2 M11
+  （注：代码中 M 为行主序 M[0]=e11、M[1]=e12、M[2]=e21、M[3]=e22）。
+  对标量材料：abcde = (eps, 0, 0, eps, eps)，故 abcd[.][0] = eps*(nx^2+ny^2) = eps。
+  因此标量材料时 abcd[.][0] 为 0 当且仅当 eps 为 0；eps 为 0 的标量材料 API 允许（无校验）。
+
+  D1/D2 为零时的除数为 0：需要 abcd[i][0] = 0，即 n^T M_i n = 0。
+  D7 为零的条件：fill/abcd00 + (1-fill)/abcd10 = 0，即 fill*abcd10 + (1-fill)*abcd00 = 0。
+  对 fill = 0.5：abcd10 = -abcd00。这要求两材料在同一 n 方向上 e11 分量符号相反（非正定）。
+
+三、待探针确认的问题（见 J2 探针记录）
+  Q1. 标量 eps = 0 的材料（API 允许）：abcd[.][0] = 0，D1/D2 产生 Inf/NaN？是否被后续检查？
+  Q2. D7 为 0 的非正定张量材料：是否可达（需要 nvec、fill 与材料的组合）？
+  Q3. 若 Q1 或 Q2 可达：NaN/Inf 是否进入 Epsilon_inv / Epsilon2 与特征值求解，是否有非有限检查，最终类别为何。

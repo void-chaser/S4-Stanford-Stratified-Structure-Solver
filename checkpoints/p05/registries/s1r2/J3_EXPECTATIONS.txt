@@ -1,0 +1,58 @@
+J3 期望登记（shape_get_normal 下标界限）。运行前登记；不是探针结果。
+
+源码事实（[源码]，本轮读取，H 树 64eb0b5）：
+  S1  fmm_FFT.cpp：discval 长度 nshapes+1，索引 i 在 [0, nshapes]。
+  S2  fmm_FFT.cpp：imat[0] 为 i 升序遍历中第一个 |discval[i]| > 2 eps 的索引；imat[1] 为第二个。
+  S3  fmm_FFT.cpp：nnz < 2 时不调用 shape_get_normal（走单材料分支）。
+  S4  fmm_FFT.cpp：nnz >= 2 时调用 shape_get_normal(&(L->pattern.shapes[imat[0]]), xvec, nvec)。
+  S5  pattern.c pattern_discretize_cell：value[0] 为背景；形状 k（0 起算）的面积写入 value[k+1]。
+      因此 discval[i]（i >= 1）对应 shapes[i-1]。
+  S6  fmm_FFT.cpp 同文件第 112–115 行的单材料分支使用 shapes[imat[0]-1]（与 S5 一致）。
+  S7  第 138 行使用 shapes[imat[0]]（不是 shapes[imat[0]-1]）：与 S5 的约定不一致（差一）。
+
+由 S2、S3 推出的界限（[推断]，待探针核实）：
+  B1  nnz >= 2 时 imat[1] > imat[0]，且 imat[1] <= nshapes，故 imat[0] <= nshapes - 1。
+      因此 shapes[imat[0]] 的下标在 [0, nshapes-1]：不越界（合法）。
+  B2  imat[0] = 0（背景）时 shapes[0] 是形状 0，对应 discval[1]，它不是背景的几何；若 imat[1] = 1，则 shapes[0] 恰为界面形状，几何碰巧正确。
+  B3  imat[0] >= 1 时，shapes[imat[0]] 对应 discval[imat[0]+1]，即下一个形状；几何上可能错误（差一）。
+
+探针设计（驱动 pattern 栈 nshapes=1 为单形状，不足以覆盖 B3；需要至少 2 个形状的栈，由新增的最小探针程序构造，不改驱动）。
+
+期望（运行前）：
+  X1  单形状栈（nshapes=1）：shape_get_normal 的第 1 个参数为 &shapes[0]（下标 0），仅当 nnz>=2 时调用；下标恒在 [0, 0]。不越界。
+  X2  双形状栈（nshapes=2，两个不相交的圆或同心圆，形成背景、形状 1、形状 2 三段）：
+      若存在 nnz>=2 的像素且 imat[0] 为形状 2 的索引（即 discval[2] 非零且 discval[1] 为零的像素，且 discval[0] 为零），则会有 shapes[2]（越界）。
+      由 B1 推断此情形不可能：该像素的 imat[0] 为 2 时，imat[1] 必须 > 2，但 imat[1] <= nshapes = 2，矛盾。故期望：不出现 shapes[2]。
+  X3  双形状栈：存在 imat[0] = 1 的 nnz>=2 像素（背景与形状 1 的界面），此时 shape_get_normal 收到 &shapes[1]，即形状 2 的几何。期望：出现此情形（差一可观测）。
+  X4  判定：
+      - 若 X3 观测到 imat[0]=1 时收到 &shapes[1]：则 S7 的差一被实测确认（[实测]）。
+      - 若 X2 观测到下标 2：则越界成立（与 B1 矛盾，需重新核对）。
+      - 若所有调用的下标在 [0, nshapes-1] 内：不越界。
+
+判定规则（运行前固定）：
+  - 在 shape_get_normal 入口读取第 1 个参数（shape 指针）与 shapes 基址，换算下标 = (指针 - 基址)/sizeof(shape)。
+  - shapes 基址：由探针程序打印 &L->pattern.shapes[0]（通过公共 API 的层结构不可得，改用 gdb 在 S4_Simulation_SetLayer 或探针自行记录的形状地址）。
+    注：若无法可靠取得基址，记为"不可判定"，不得由推断填补。
+  - 每次调用记录：nshapes、下标。
+
+本文件写入后固定哈希，运行前不得修改。
+
+更正注记（运行前，未运行任何 J3 探针；正文不改）
+  C1. 正文中"驱动只有 1 个形状，双形状必须用内部接口构造"的前提不成立。
+      依据：S4.cpp 1158 起的 S4_Layer_SetRegionHalfwidths 每次调用执行 n = nshapes++ 并 realloc 追加形状（[源码]）。
+      因此公共 API 可通过连续两次调用构造双形状栈（nshapes=2）。驱动只调用一次，所以是单形状。
+  C2. 公共头文件 S4.h 不暴露 shape 与 pattern 结构（[源码]）。读取 shapes 基址与下标需要内部头文件 pattern.h / S4_internal.h。
+      探针程序对形状的构造只用公共 API；对 shapes 基址的读取是内部只读访问，在报告中记为"内部只读"，不是公共 API 路径。
+  C3. 判定规则中的"基址由探针程序通过公共 API 取得"不可行（公共 API 不返回 shapes 指针）；改为内部只读访问取得，见 C2。
+
+补充期望 S-OVL（运行前登记；在首轮 J3 结果之后、补跑之前写入）
+  背景：首轮两种布局（同心、两不相交圆）中，同心为包含关系（父子），两不相交圆无公共像素；二者都不构成"重叠区域"（兄弟形状的面积相交）。
+        任务要求覆盖"背景像素与重叠区域"，首轮未满足"重叠区域"，本补充补足。
+  布局 overlap：两个半径 0.15 的圆，圆心分别为 (-0.08, 0) 与 (+0.08, 0)（两圆相交，互不包含）。
+  期望：
+    O1  存在 nnz >= 2 的像素，其 imat[0] 与 imat[1] 为两个兄弟形状（discval 同时非零，且两者互不包含）。
+    O2  所有下标仍在 [0, nshapes-1] = [0, 1]（不越界）。
+    O3  imat[0] = 1 的调用（指向 shapes[1]）仍会出现（与首轮 X3 一致的差一观测）。
+  判定：O1 与 O2 同时成立 -> 重叠区域被覆盖且不越界；O2 不成立 -> 越界（需立即停下报告）。
+  注：O1 的"兄弟"判定需要 imat[1] 的值；本补充仍不直接读取 imat（栈上），因此 O1 以几何判定：两圆相交则其交集内像素必有两个非零分量。
+  本补充文件写入后固定哈希，运行前不得修改。

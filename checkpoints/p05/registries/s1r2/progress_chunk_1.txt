@@ -1,0 +1,33 @@
+[P05-S1R2 PROGRESS CHECKPOINT] 状态：未完成，等待用户审核。本文件不宣布任何阶段完成。
+开始 UTC: 2026-10-11T12:03:02Z（第 0 步 /tmp 快照与 strace 抽样）
+HEAD 起点: 812d6b7；分支 codex/p05-d003-fft-error-propagation；S4/ 相对 64eb0b5 改动 0；开工工作区干净。
+三棵树导出：B=37a82e8, A=876181c, H=64eb0b5，均 git archive 到 $EV/trees/。
+  导出时的源文件数（导出步骤统计，构建前）：B=899, A=904, H=905。
+  当前全部文件数（含构建产物 build/ 与 *.o，构建后统计）：B=924, A=929, H=930。两个口径不同，不得混用。
+普通库 sha256：B fb9ac3f5…, A 865c5893…, H f053bfea…（各不相同）。
+驱动（当前注入器）sha256：B f2261175…, A 5dd45f8b…, H 4a16453e…（见 $EV/drivers/）。
+
+J1 期望登记：J1_EXPECTATIONS.txt（时间戳 12:13:22Z，sha256 见 J1_EXPECTATIONS.sha256），早于全部 J1 探针。
+  期望更正 C1（运行前）：A 树 FFT 与 PolBasis 已串接（已据 876181c S4.cpp 2376 核对）。
+J1 结果：J1_RESULT.txt。矩阵 B/A/H × fftjones/fftnv/fftvl × none/NTH3/4/5，全矩阵逐位比较（J1_full_matrix_compare.tsv，v2 崩溃感知）。
+  半覆盖（混合状态）未观察到。A、H 失败格：矩阵为 FFT 原值，返回 20，不进入求解，不缓存（AddFieldToCache 仅在后续成功重试）。
+  B：NTH5 失败被吞（SILENT_SWALLOW，返回 -8 来自 pattern.c:2106 参数检查）；NTH3/4 与 fftnv 的 NTH5 崩溃（CRASH）。
+
+J2 期望登记：J2_EXPECTATIONS.txt（12:21:55Z）；P2-C（12:23:37Z）；P2-D（12:24:03Z）。期望与实测对照：J2_EXPECTATION_VS_OBSERVED.txt（INFLUENCED）。
+J2 结果：标量 eps=0 与 eps<=1e-300 时，kottke 的 Epsilon2 入口含 NaN（8/8），进入 SolveLayerEigensystem，zlaqr0_ SIGSEGV（退出 139）。
+  阈值在 1e-100 与 1e-300 之间；三树一致（J2_TREES）。张量 P2-B（e11=-1）正常返回（未触发，单点）。
+  期望 E5（非有限被映为 0、不进入输出）不成立；期望 Y1（除零）不成立，Y2（溢出阈值）成立。
+
+J3 期望登记：J3_EXPECTATIONS.txt（12:25:55Z）；更正注记 C1–C3（运行前，正文未改）。
+J3 结果：shape_get_normal 下标恒在 [0, nshapes-1]（三树、nshapes=1、2，两布局；J3_index_stats*.tsv）；越界不可能（源码 nnz>=2 论证 + 实测）。
+  差一（第 138 行 shapes[imat[0]] 对 discval 约定）：源码事实 + 下标 1 实测；几何后果未实测（[推断]）。
+
+J4 结果：EVIDENCE.sha256 1293 条全部 OK（sha256sum -c 与 j4_hash_table.py 一致）。§11.2 的 8 个哈希中 5 个与清单不一致，来源无法判定（J4_SUMMARY.txt）。
+
+J5：J5_RECORDED_ITEMS.txt（第 1、2、8、9 项）。
+
+J6：J6_S3_INPUT_TABLE.txt；J6C_CALLER_CONSISTENCY.txt。D016 a–f 齐备；-9 占用核对（pattern.c:1066 为 pattern_discretize_cell）；-10/-11 空闲（六文件，限于 return/赋值/调用形式）。
+  新风险 R-NV-1：NV 在 error 检查前先归一化 vfield（H 树已存在，D016 修法会经过它）。
+  J6_NG1：VL n_G=1 时 pattern_generate_flow_field 返回 0（三树，[实测]）。
+
+违规与工具事件：见 J1_RESULT 与报告（表一 1 条：J2 kottke 核对的 /tmp_placeholder 重定向，未落盘；表二 13 条）。

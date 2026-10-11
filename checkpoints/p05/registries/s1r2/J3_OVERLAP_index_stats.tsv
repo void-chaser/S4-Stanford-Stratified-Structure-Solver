@@ -1,0 +1,4 @@
+trace	nshapes	stride_bytes	shape_get_normal_calls	distinct_indices	unmapped_pointers	all_in_range
+A-overlap-n2	2	56	16	0,1	0	YES
+B-overlap-n2	2	56	16	0,1	0	YES
+H-overlap-n2	2	56	16	0,1	0	YES

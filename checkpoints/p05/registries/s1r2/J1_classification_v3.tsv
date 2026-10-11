@@ -1,0 +1,37 @@
+tree	chain	injection	matrix_state	inv	E2_blk00	E2_blk10	E2_blk01	E2_blk11	eax_at_return	signal
+A	fftjones	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftjones	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftjones	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftjones	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+A	fftnv	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftnv	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftnv	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftnv	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+A	fftvl	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftvl	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftvl	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+A	fftvl	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+B	fftjones	nth3	CRASHED	NA	NA	NA	NA	NA	1432332432	Program received signal SIGSEGV, Segmentation fault.
+B	fftjones	nth4	CRASHED	NA	NA	NA	NA	NA	0	Program received signal SIGSEGV, Segmentation fault.
+B	fftjones	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	-8	none
+B	fftjones	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+B	fftnv	nth3	CRASHED	NA	NA	NA	NA	NA	1432332432	Program received signal SIGSEGV, Segmentation fault.
+B	fftnv	nth4	CRASHED	NA	NA	NA	NA	NA	1432376000	Program received signal SIGSEGV, Segmentation fault.
+B	fftnv	nth5	CRASHED	NA	NA	NA	NA	NA	128	Program received signal SIGSEGV, Segmentation fault.
+B	fftnv	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+B	fftvl	nth3	CRASHED	NA	NA	NA	NA	NA	1432332432	Program received signal SIGSEGV, Segmentation fault.
+B	fftvl	nth4	CRASHED	NA	NA	NA	NA	NA	1432376000	Program received signal SIGSEGV, Segmentation fault.
+B	fftvl	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	-8	none
+B	fftvl	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+H	fftjones	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftjones	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftjones	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftjones	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+H	fftnv	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftnv	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftnv	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftnv	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none
+H	fftvl	nth3	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftvl	nth4	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftvl	nth5	FFT_ORIGINAL	SAME	SAME	SAME	SAME	SAME	1	none
+H	fftvl	nthnone	NEW_VALUES	SAME	NEW	NEW	NEW	NEW	0	none

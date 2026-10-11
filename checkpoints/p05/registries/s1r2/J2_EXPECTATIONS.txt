@@ -1,0 +1,31 @@
+J2 期望登记（kottke 除数安全性）。运行前登记；不是探针结果。
+
+登记依据（源码，本轮已读）：
+  - fmm_kottke.cpp 平均段（nnz==2、imat 不同、nvec 非零）：D1 除数 abcd[0][0]、D2 除数 abcd[1][0]、D7 除数 abcde[0][0]。
+  - sym2x2rot：abcd[i][0] = nx^2 M00 + nx ny (M01 + M10) + ny^2 M11（行主序 M）。
+  - 标量材料：abcde = (eps, 0, 0, eps, eps)，故 abcd[i][0] = eps (nx^2+ny^2) = eps（|n|=1）。
+  - S4_Simulation_SetMaterial（S4.cpp 888–965）：标量 eps 直接复制，不检查零或非有限。
+  - nnz 统计 |discval| > 2 eps；界面像素 nnz=2，fill = discval[更被包含的形状] ∈ (0,1)。
+
+探针 P2-A（标量 eps=0 的图案材料，背景 eps=1，kottke 模式，pattern 栈，NB=9）：
+  期望（运行前）：
+   E1  界面像素上 abcd[1][0] = eps = 0，因此 D2 = -1/0 = -Inf（IEEE 除法，C++ complex 除以零为 Inf 或 NaN）。
+   E2  D1 = -1/abcd[0][0] = -1/1 = -1（有限，背景材料）。
+   E3  D7：abcde[0][0] = fill*(-1) + (1-fill)*(-Inf) = -Inf（当 fill < 1）。
+   E4  D8/D9：abcde[0][1]/abcde[0][0] 为 0/(-Inf) = 0 或 NaN（取决于分子）。D7 的反变换 abcd[1][0] = -1/abcde[0][0] = -1/(-Inf) = 0（有限）。
+   E5  因此非有限值（Inf）首先出现在 abcde[0][0]，之后被 -1/x 映为 0，可能使非有限值不被后续输出看见。这一点不能预先确定，须实测。
+   E6  是否被检查：kottke 无 isfinite 检查（源码 grep 期望为空）；驱动的 all_finite 检查只检查输出 E/H。
+   E7  最终类别期望：若输出 E/H 为有限且 rc1=0，则类别为 SILENT（非有限中间值未进入输出）；若输出 NaN，则驱动 all_finite 报 FAILED，类别为 NON-FINITE OUTPUT。
+  注：本期望的 E5 为推导，标记为 [推断]，以实测为准。
+
+探针 P2-B（张量材料，D7 除数为零的情形）：
+  期望：需要 fill*abcd10 + (1-fill)*abcd00 = 0。对 fill=0.5 为 abcd10 = -abcd00。
+  在 nvec 方向上构造两个材料 e11 分量符号相反。可达性待实测；若 API 接受（无校验），则可达。
+  期望是否可达：未知，标记为 [未验证]。
+
+判定规则（运行前）：
+  - 可达：探针中界面像素实际进入平均段（通过驱动输出或 gdb 计数 abcde 写入确认）。
+  - 静默：输出为有限且 rc1=0 且未报告，同时中间出现 Inf/NaN。
+  - 被后续检查报告：rc1 非零或驱动报告非有限输出。
+  - 不可判定：无法确认中间值。
+  此登记在本文件写入后、探针运行前固定；其 sha256 写入 J2_EXPECTATIONS.sha256。

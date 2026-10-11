@@ -1,0 +1,4 @@
+trace	nshapes	stride_bytes	shape_get_normal_calls	distinct_indices	unmapped_pointers	all_in_range
+A-n1	1	NA	12	0	0	YES
+B-n1	1	NA	12	0	0	YES
+H-n1	1	NA	12	0	0	YES

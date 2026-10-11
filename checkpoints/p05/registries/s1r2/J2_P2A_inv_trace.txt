@@ -1,0 +1,29 @@
+Breakpoint 1 at 0x161f0
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+SOLVE_ENTER k=1 rdi_n=9 rcx_Einv=0x5555555ff770 r8_E2=0x5555555ffc80 r9_epstype=0
+SOLVE_ENTER Einv_first4
+0x5555555ff770:	2.1110919318112042	-3.354514232169269e-16
+0x5555555ff780:	0.76523883444090635	0.31697230368000262
+0x5555555ff790:	0.76523883444090635	0.31697230368000262
+0x5555555ff7a0:	0.76523883444090601	-0.31697230368000306
+SOLVE_ENTER E2_first4
+0x5555555ffc80:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffc90:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffca0:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffcb0:	-nan(0x8000000000000)	-nan(0x8000000000000)
+SOLVE_ENTER k=2 rdi_n=9 rcx_Einv=0x5555555ff770 r8_E2=0x5555555ffc80 r9_epstype=0
+SOLVE_ENTER Einv_first4
+0x5555555ff770:	2.1110919318112042	-3.354514232169269e-16
+0x5555555ff780:	0.76523883444090635	0.31697230368000262
+0x5555555ff790:	0.76523883444090635	0.31697230368000262
+0x5555555ff7a0:	0.76523883444090601	-0.31697230368000306
+SOLVE_ENTER E2_first4
+0x5555555ffc80:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffc90:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffca0:	-nan(0x8000000000000)	-nan(0x8000000000000)
+0x5555555ffcb0:	-nan(0x8000000000000)	-nan(0x8000000000000)
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00005555555c53fc in zlaqr0_(bool, bool, unsigned long, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, unsigned long, unsigned long, std::complex<double>*, unsigned long, std::complex<double>*, bool) ()
+END solve_entries=2

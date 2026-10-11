@@ -1,0 +1,50 @@
+J3 结果：shape_get_normal 下标界限（P05-S1R2）
+
+一、结论分类（按 J3 第 3 条）
+  恒在 [0, nshapes-1]：是。
+  可能越界：否。
+  不可判定：不适用（越界判定已有实测与源码两方证据）。
+
+二、证据
+  [源码] fmm_FFT.cpp（H 树 64eb0b5）：imat[0] 为 i 升序遍历中第一个 |discval[i]| > 2 eps 的索引（循环 i <= nshapes）；
+         nnz >= 2 时调用 shape_get_normal(&shapes[imat[0]], ...)。
+         因 imat[1] > imat[0] 且 imat[1] <= nshapes，故 nnz>=2 时 imat[0] <= nshapes-1，下标合法。
+  [实测] gdb（J3_RUNS 与 J3_RUNS_N1）：三树 × 三个组合（nshapes=1 同心；nshapes=2 同心；nshapes=2 两不相交圆）：
+         指针全部等于 shapes_base + k*56（k 为 0 或 1），换算下标 ∈ {0} 或 {0,1}；无映射失败；
+         nshapes=2 时从未出现下标 2（nshapes 的越界位置）。
+  [实测] 公共 API 构造多形状：S4_Layer_SetRegionHalfwidths 每次调用追加一个形状（源码 S4.cpp:1158 起，n = nshapes++），
+         探针记录 nshapes=2，两形状地址相差 56 字节（= sizeof(shape)）。
+
+三、差一（独立于越界的发现；源码事实与实测观察）
+  [源码] fmm_FFT.cpp 第 138 行为 shapes[imat[0]]；discval[i]（i>=1）对应 shapes[i-1]（pattern.c pattern_discretize_cell：
+         value[0] 为背景，形状 k 写入 value[k+1]；同文件第 112–115 行的单材料分支使用 shapes[imat[0]-1]，与此一致）。
+         两处用法不一致：第 138 行可能取到"下一个形状"。
+  [实测] 下标 1（即 imat[0]=1）确实出现（nshapes=2，同心与两圆布局）：shape_get_normal 收到 shapes[1]，
+         按约定 imat[0]=1 应对应 shapes[0]。
+  [推断] 在相邻形状界面（imat[1] = imat[0]+1）上，shapes[imat[0]] 恰为 imat[1] 的形状，几何上碰巧一致；
+         在非相邻或背景界面上可能给出错误法线。该推断未经实测（未读取 imat[1]，未比较两种下标的 nvec）。
+  [源码] shape_get_normal（pattern.c:199 起）对 CIRCLE 返回 x - center，不检查 x 是否位于该形状边界上（未归一化）。
+  [源码] fmm_kottke.cpp 中 nvec 为零时不进入平均段（!(0==nvec[0] && 0==nvec[1])），此分支不做除法。
+
+四、对 S3 的输入判断
+  - 越界：不列入 S3（不可能发生）。
+  - 差一：属于 FMM 路径内的几何语义问题，不影响失败传播链与"模式或缓存是否被安装"。
+    按范围判据它可以进入 S3 输入，但它不是失败传播缺陷。归属需用户裁决（见 J6 的待用户批准事项）。
+  - 建议的最小修复方向（不实施）：第 138 行改为与第 112–115 行一致的 shapes[imat[0]-1]，
+    但仅当 imat[0] >= 1；imat[0] = 0（背景）时需确定使用哪一个形状，这一分支本身需要先定义语义。
+    因此该修复不是单行替换，需要先由用户确认几何语义。
+
+五、未闭合
+  - 差一的几何后果未经实测（需要读取 imat[1]，或在不改源码的前提下计算两种下标的 nvec 差异）。
+  - nshapes >= 3 未测（推理为一般性，实测仅 nshapes = 1、2）。
+  - 张量材料与 kottke 的组合下 nvec 的影响未测。
+
+六、补充：重叠区域（S-OVL，补充期望已于 12:34:55Z 固定，见 J3_OVERLAP_EXPECTATIONS.sha256）
+  首轮的两种布局中，同心为父子包含，两不相交圆无公共像素；二者都不构成兄弟形状的重叠区域。
+  本补充增加 overlap 布局：两圆（半径 0.15，圆心 ±0.08）相交，互不包含。
+  [实测] J3_OVERLAP/（三树，gdb）：shape_get_normal 16 次，下标 {0, 1}，全部在 [0, 1] 内，无映射失败（J3_OVERLAP_index_stats.tsv 由统计脚本生成）。
+  判定：
+    O1 存在兄弟形状的 nnz>=2 像素：[间接] 两圆相交则交集区域内像素有两个非零分量（几何论证）；与"同时出现下标 0 与 1"相符。未直接读取 imat。
+    O2 不越界：[实测] 成立。
+    O3 差一观测（下标 1 出现）：[实测] 成立。
+  结论：重叠区域被覆盖（间接）；不越界（实测）。J3 的分类不变："恒在 [0, nshapes-1]：是"。

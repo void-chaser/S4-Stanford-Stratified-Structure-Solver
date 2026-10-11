@@ -1,0 +1,125 @@
+J6 对 S3 的输入（P05-S1R2）
+
+本表只列出准备内容与建议。不实施，不修改 S4/。每条标注证据类型。
+
+════════════════════════════════════════════════════════════════════════
+条目 D016（O-1 的最小修法）—— S3 要实施的修复，本轮只做准备
+════════════════════════════════════════════════════════════════════════
+
+（a）修改点与建议代码形状
+  位置（按内容）：S4/pattern/pattern.c 中函数 pattern_generate_flow_field，
+    在语句 "max_field = 1./max_field;" 之前（H 树约第 2145 行；B 树行号不同，按内容定位）。
+  前置事实（[源码]）：
+    - max_field 来自两分支之一的返回值：pattern_generate_flow_field_rect（约 1638 行）或 _tri（约 2086 行）。
+    - 两者的 max_field 都以 0 初始化，仅在 af > max_field 时更新（rect 1624/1633，tri 2061/2080）。
+    - 因此场为零时 max_field = 0；场元素全为 NaN 时（比较为假）也返回 0。
+    - 现在的 "1./max_field" 对 0 得到 Inf，随后 field *= Inf，产生 NaN 或 Inf 写入 vfield。
+  建议形状（伪代码，不写入 S4/）：
+      if(!(max_field > 0) || !isfinite(max_field)){   // catches 0, negative, NaN, Inf
+          return <ERRCODE>;                            // no multiply on the field
+      }
+      max_field = 1./max_field;
+      ... (existing loop unchanged) ...
+      return 0;
+    说明：!(max_field > 0) 同时覆盖 0 与 NaN（NaN > 0 为假）；isfinite 覆盖 Inf。
+    返回前不写 field（field 在 rect/tri 中已被写入；调用方在 error != 0 时释放 vfield，内容不被使用，见第 (c) 节的 NV 风险）。
+  证据类型：[源码] 前置事实；建议形状 [推断]（待 S3 实施后验证）。
+
+（b）错误码选取
+  现有码（[源码]，H 树）：pattern_generate_flow_field 的参数检查为 -1 至 -8（pattern.c 2099–2106）。
+  -9 的占用（核对命令与结果，见下方"核对记录"）：
+    - S4/pattern/pattern.c:1066 有 "return -9"，属于 pattern_discretize_cell 的 NULL == value 检查（[源码]）。
+    - pattern.h 与 fmm_PolBasisVL.cpp、fmm_PolBasisJones.cpp、fmm_PolBasisNV.cpp、S4.cpp 中无 -9 的使用（[源码] grep）。
+  结论：-9 在 pattern_generate_flow_field 的作用域内未被占用，但在 pattern.c 全文件中已被 pattern_discretize_cell 占用。
+  建议：使用 -9，理由：三个调用方与 ComputeLayerModes 只关心非零（[源码]：if(0 != error)），不区分具体负码，故码值重复不引起误判。
+  但需要注意：pattern_discretize_cell 的 -9 与新 -9 在同一文件中含义不同。若 S4 将来需要区分，应选下一个空闲值（-10，已核对 pattern.c 中 -10 未出现；见核对记录）。
+  需要用户批准：错误码取值（-9 或 -10）。
+
+（c）调用方一致性（详见 J6C_CALLER_CONSISTENCY.txt）
+  - VL、Jones：error != 0 时释放 vfield、work、ivalues（各带 NULL 检查），return error。无遗漏、无重复释放（[源码]）。
+  - NV：先归一化 vfield（对未写入的 vfield 做除法，风险 R-NV-1），后检查 error。这是不一致的顺序（[源码]）。
+  - 风险 R-NV-1 不是 D016 引入的，但 D016 修法后仍会经过它。建议 S3 把 NV 的 error 检查移到归一化之前（需用户批准，位于 FMM 路径内）。
+
+（d）修后预期（三树 B/A/H；VL NB=1–4，即 n_G=1）
+  前提（证据等级）：
+    - VL n_G=1 时 pattern_generate_flow_field 返回 0：[实测] 本轮 J6_NG1/（B、A、H 各 1 次，eax=0）。
+    - max_field = 0、vfield = NaN、1./max_field = inf：[实测] 引自 P05_S1R_O1_ATTRIBUTION.md 第 71–72 行（S1R 的 gdb 观测；本轮未重算 max_field 的数值，
+      因 _rect 无符号、field 参数布局在本轮 gdb 中未能可靠读取，见 J6_NG1/ 说明）。
+    - Jones、NV 在 NG=1 的 max_field = 0.0402（非零）：[实测] 引自同一文件第 79 行。
+  注：以下修后预期全部为 [推断]，因为修法未实施，不能在未改源码的情况下观测。
+  - 失败发生位置：pattern_generate_flow_field 的新检查（max_field 为零），经 VL 的 if(0 != error) 路径返回。
+  - 不再发生：场乘以 Inf（field 不再被写为 NaN）；NaN 不再进入 PolBasis 的 Epsilon_inv 与 Epsilon2（失败发生在 vfield 生成之后、写 Epsilon2 之前）。
+  - 驱动 rc：预期仍为 20（ComputeLayerModes 把 PolBasis 的任何非零返回映射为 20，H 树 S4.cpp 2413–2417 行）。[推断]
+  - 公共 API 异常文本：预期仍为"层特征系统无法求解"（码 20，main_python.c:137）。[推断]
+    其中 info=2 的 TRACE 文本（若在 TRACE 构建中出现）预期不再出现，因为求解不再进行。[推断]
+  - 最终错误码（驱动与公共 API 层）：预期仍为 20，不是新的码。新码只出现在 ComputeLayerModes 之前的 TRACE 中。[推断]
+  - Jones、NV 在 NG=1：max_field 非零（8×8 网格，[实测] 见 S1R 归属文件），预期行为不变。[推断]
+  - VL NB=5–9：max_field 非零，预期不变。[推断]
+
+（e）验证方法建议（留给 S3 与 S4，不在本轮实施）
+  1. VL n_G=1（NB=1–4）：用 J1 的 gdb 方法（SolveLayerEigensystem 入口读取 Epsilon2）观测，修后应不到达求解（入口计数 = 0 或仅来自其他层）。
+  2. VL NB=5–9、Jones、NV：与修前做正常路径的字节一致比对（驱动输出与 FieldPlane 结果的 sha256 逐字节一致）。
+  3. 三树（B、A、H）均测；B 树的 VL 在 NG=1 同样经过 pattern_generate_flow_field，修法须在三树都生效。
+  4. 对新检查的单元测试：构造全零场的 pattern（例如 nshapes=0 不走此路径；需要一个非零形状但场为零的几何，须先找到该几何）。[未验证：本轮未找到可复现的全零场几何以外的触发方式]
+
+（f）需要用户批准的事项
+  1. 具体改动文本（第 (a) 节的检查形状与返回位置）。
+  2. 错误码取值（-9 或 -10，见第 (b) 节）。
+  3. NV 的 error 检查顺序（风险 R-NV-1，见第 (c) 节）是否同时修改。
+  4. 修改位于 S4/（D016 为 P05-S3 的实施范围，按用户既定决定，需用户批准具体文本）。
+
+核对记录（J6(b)）：
+  命令：git show 64eb0b5:<文件> | grep 对 pattern.c、pattern.h、fmm_PolBasisVL/Jones/NV.cpp、S4.cpp 的 -9、-10、-11 搜索（返回、赋值、调用形式）。
+  -9 结果：pattern.c 1066 行（pattern_discretize_cell）；其余 0。
+  -10、-11 结果：六个文件中均为 0（[源码]）。
+  核对范围的限制：只覆盖 return、赋值、调用形式；未覆盖宏定义（#define）形式的错误码，也未覆盖其他目录下的 S4 源文件。
+  因此"-10 空闲"的结论限于上述范围；S3 实施前应再做一次全目录 grep。
+
+════════════════════════════════════════════════════════════════════════
+条目 J1-发现 ：半覆盖（FFT 成功、PolBasis 失败）
+════════════════════════════════════════════════════════════════════════
+  点位：PolBasis 内部的 S4_malloc 分配（ivalues、work、vfield；H 树 fmm_PolBasisVL.cpp 约 58、117、130 行）。
+  触发：S4FMM_INJECT=s4malloc，NTH=3/4/5（REG_3C2 的既有请求）。
+  现象：A、H：PolBasis 返回 1，ComputeLayerModes 返回 20，矩阵不进入求解；B：NTH5 失败被吞（SILENT_SWALLOW），NTH3/4 崩溃（CRASH）。
+  证据类型：[实测]（gdb 矩阵内容逐位比较；驱动 rc；CLM 返回与求解计数）。
+  是否为 S3 输入：B 树的失败被吞与崩溃属于失败传播缺陷（D003 范围），它们已由 S2 修复（A、H 的 fmm_ret 与 NULL 检查）覆盖；
+    B 树是基线，不是修复目标。本轮对 A、H 无需新增 S3 输入。
+  需要用户批准：无（不改源码）。
+  注：半覆盖在本轮未被观察到（无混合状态）。
+
+════════════════════════════════════════════════════════════════════════
+条目 J2-发现 ：kottke 除数（标量 eps 极小或为零时的非有限中间值）
+════════════════════════════════════════════════════════════════════════
+  点位：fmm_kottke.cpp 平均段：D1（-1./abcd[0][0]）、D2（-1./abcd[1][0]）、D7（-1./abcde[0][0]）及其它以 abcd/abcde 为除数的表达式（按内容，B、A、H 相同，已用 git diff 核对，除法行改动数为 0）。
+  触发：标量材料 eps = 0（P2-A），或 eps 极小至 1e-300（P2-D，阈值在 1e-100 与 1e-300 之间）。kottke 模式，界面像素。
+  现象：Epsilon2 入口含 NaN（8/8 元素）；SolveLayerEigensystem 内 zlaqr0_ 段错误（SIGSEGV，退出码 139）。无错误码，无报告。
+  覆盖：B、A、H 三树一致（J2_TREES）。
+  分类（按 J2 第 4 条）：可达，且产生非有限值，未被后续检查拦截，进入求解器后进程崩溃（最严重的一类：无报告的崩溃）。
+  证据类型：[实测]（求解器入口 NaN、栈追踪、退出码）；机理（溢出 vs 除零）[推断]，未逐元素确定。
+  范围判据：kottke 在 FMM 路径内，非有限值进入 Epsilon2 与求解器 = 影响"模式是否被安装"（它被送入求解且崩溃） → 按判据列入 S3 输入。
+  建议最小修复方向（不实施）：在 kottke 平均段入口检查 abcd/abcde 的除数（|x| 小于阈值或非有限）；拒绝（返回错误码）或退化为面积加权。
+    需先定义阈值与语义（物理上合理的材料对比范围），这是需要用户决定的事项。
+  预计涉及文件：S4/fmm/fmm_kottke.cpp；可能涉及 S4/S4.cpp（ComputeLayerModes 的非有限检查）。
+  需要用户批准：(1) 阈值与语义；(2) 是否在 ComputeLayerModes 加通用的非有限检查（影响面更大，属 S4 阶段）。
+  未验证：张量材料路径（D7 的 fill·abcd10 + (1-fill)·abcd00 = 0 条件）只测了一个非正定张量（P2-B），正常返回；可达性未证实。
+
+════════════════════════════════════════════════════════════════════════
+条目 J3-发现 ：shape_get_normal 的差一（第 138 行）
+════════════════════════════════════════════════════════════════════════
+  点位：fmm_FFT.cpp 第 138 行（H 树；按内容：shape_get_normal(&(L->pattern.shapes[imat[0]]), ...)）。
+  性质：差一（几何语义），不是越界。
+  证据：
+    - [源码] discval[i]（i>=1）对应 shapes[i-1]（pattern.c pattern_discretize_cell：value[k+1] 为形状 k）。
+    - [源码] 同文件第 112–115 行的单材料分支使用 shapes[imat[0]-1]，与此一致。
+    - [实测] nshapes=2 时，下标 1（即 imat[0]=1）确实出现，指针为 shapes[1]（三树、两布局，J3_index_stats.tsv）。
+    - [实测] 越界不发生：下标恒在 [0, nshapes-1]（J3_index_stats.tsv 与 J3_index_stats_n1.tsv）。
+  后果：[推断] 相邻形状界面上几何碰巧一致；非相邻或背景界面上可能给出错误法线。未实测。
+  范围判据：位于 FMM 路径内，但不影响失败传播链，也不影响"模式或缓存是否被安装"。按判据可进入 S3，但其归属需用户裁决。
+  建议最小修复方向（不实施）：第 138 行改为与第 112–115 行一致的 imat[0]-1，但 imat[0]=0（背景）分支需先定义语义（单行替换不足）。
+  需要用户批准：(1) 是否将此差一列入 S3（它不是失败传播缺陷）；(2) 背景界面的几何语义。
+
+════════════════════════════════════════════════════════════════════════
+本轮探针未发现问题的项
+════════════════════════════════════════════════════════════════════════
+  - J4（EVIDENCE.sha256 逐条复核）：清单 1293 条全部与当前文件一致，未发现不匹配（J4_hash_table.tsv）。
+    但 §11.2 的 5 个哈希与清单不一致，来源无法判定（见 J4_SUMMARY.txt）。这一项是文档不一致，不是探针发现。

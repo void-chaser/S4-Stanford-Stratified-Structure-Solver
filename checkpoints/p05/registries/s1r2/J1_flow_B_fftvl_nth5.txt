@@ -1,0 +1,37 @@
+Breakpoint 1 at 0x3e207
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM HIT real S4_malloc failure: FMM call 1024 B (hit=5)
+FLOW_ENTER k=1 type_ecx=0 nu_r9=8
+FLOW_STACK nv_and_field_at_rsp8_16:
+0x7fffffffda88:	0x00007fffffffdad0	0x00007fffffffdbc0
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan call=9 grid=3x4
+S4FMM WITNESS plan call=10 grid=3x4
+S4FMM WITNESS plan call=11 grid=3x4
+S4FMM WITNESS plan call=12 grid=3x4
+S4FMM WITNESS plan call=13 grid=3x4
+S4FMM WITNESS plan call=14 grid=3x4
+S4FMM WITNESS plan call=15 grid=3x4
+S4FMM WITNESS plan call=16 grid=3x4
+S4FMM WITNESS plan call=17 grid=3x4
+S4FMM DRIVER actual mode=fftvl num_basis=9 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+S4FMM HITCOUNT 1
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+CHECK injected failure was reported to caller  FAILED
+RESULT injection reached, rc1 0 (failure swallowed)
+S4FMM DRIVER DONE
+RESULT pattern both FAIL
+[Inferior 1 (process 28) exited with code 01]
+END flow_calls=1

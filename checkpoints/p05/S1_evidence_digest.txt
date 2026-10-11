@@ -627,3 +627,32 @@ Violations  : rows of this round recorded in the closeout's single table.  No wr
 Corrections : my own typed counts (18/25/70, then 13/31/71) were wrong and were replaced by the count reproduced from the table (66);
               an S2 citation (G3 cites S2 section 4.3, which is recommendations) is recorded as a citation error, substance supported by S2R4/S2R5.
 Not done    : S2 sign-off; any stage completion; registry edits (P05-S5); S4/ edits.  P05-S1, S2, S3, S4 are not declared complete.
+
+----- P05-S1R2 (supplementary sub-task of P05-S1; awaiting user review; not a new stage) -----
+Scope       : independent checks of the S1R reconciliation open items 3, 4, 5, 7 (J1-J4); items 1, 2, 8, 9 recorded (J5).  No source edits.
+Start       : HEAD 812d6b7; branch codex/p05-d003-fft-error-propagation; S4/ diff vs 64eb0b5 = 0; worktree clean.
+J1 (item 3) : half-cover.  Full-matrix (Epsilon2 324 entries, Epsilon_inv 81) comparison, entry vs return of FMMGetEpsilon_PolBasis*.
+              A and H (all injected cells): matrix = FFT original (bitwise, measured per cell); PolBasis returns 1; ComputeLayerModes returns 20;
+              no solve before the failing call (counted in all 18 cells).  Cache: the interleaved order was recorded for H-fftvl NTH3
+              (AddFieldToCache after the failing return, in the successful retry); H-fftvl cache counts only for the four cells.  B: NTH5 swallowed (SILENT_SWALLOW, return -8 from pattern.c:2106);
+              NTH3/4 and fftnv NTH5 crash (CRASH).  Mixed (partly overwritten) state NOT observed.  Half-cover NOT claimed as proven.
+              Coverage gap: PolBasis allocation after AddFieldToCache (cache-hit branch, line ~243) not injected.
+J2 (item 4) : kottke divisors (D1, D2, D7 and companions) are reachable with the public API (SetMaterial does not validate).
+              Scalar eps = 0 or eps <= 1e-300 (threshold between 1e-100 and 1e-300): NaN enters Epsilon2 at the eigensolver entry (8/8),
+              zlaqr0_ SIGSEGV, exit 139, no report.  Same on B, A, H.  Expectation E5 and Y1 not met; Y2 met; INFLUENCED.
+              Mechanism (divide-by-zero vs overflow) NOT resolved element by element.  Tensor path not proven reachable (single point).
+              Class: reachable, non-finite not intercepted, process crash.  Listed as S3 input (FMM path, model installed or not).
+J3 (item 5) : shape_get_normal index stays within [0, nshapes-1] (B, A, H; nshapes 1 and 2; concentric, disjoint, overlap layouts).
+              Not an out-of-bounds.  Off-by-one at fmm_FFT.cpp:138 (shapes[imat[0]] vs the discval convention shapes[imat[0]-1]) is a
+              source fact and observed (index 1 appears); its geometric effect not measured.  Scope ruling is the user's.
+J4 (item 7) : EVIDENCE.sha256 has 1293 entries, all OK (sha256sum -c and per-entry table agree).  Five of the eight section 11.2 hashes
+              disagree with the manifest; their origin cannot be determined from the record.  Item 7 closed for content only.
+J5 (items 1, 2, 8, 9) : recorded with what the user must supply and whether S3 is blocked (none blocks D016).
+D016 input  : flow-field 1./max_field guard; probed VL n_G=1 flow-field return code 0 on B, A, H.  Error code -9 is used once in pattern.c
+              (pattern_discretize_cell); -10 and -11 unused in the checked files.  NV normalises before checking error (new risk R-NV-1).
+Violations  : table 1 has one row (a discarded redirect to a root-level placeholder in the kottke count check; not written; errno
+              Read-only file system; test -e absent).  Table 2 lists tool and script events.  No residue outside the repository.
+Snapshots   : /tmp top level empty at start and end (sha e3b0c442...).  One /tmp directory mtime change inside the round, source unattributed.
+S2 sign-off : no S2 closed conclusion changed.  The kottke closures cover allocation and solve_info failure propagation, not divisor
+              finiteness; the sign-off should state that scope.
+Not done    : P05-S1, S2, S3, S4 are NOT declared complete.  No source edits; no S3 fixes; no registry edits.  Awaiting user review.

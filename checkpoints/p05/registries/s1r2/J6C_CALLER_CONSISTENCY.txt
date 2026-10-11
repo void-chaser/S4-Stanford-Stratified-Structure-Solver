@@ -1,0 +1,44 @@
+J6(c) 调用方一致性核对（D016 修法的三个调用方；H 树 64eb0b5，按内容定位）
+
+一、三个调用方对 Pattern_GenerateFlowField 返回值的处理（[源码]）
+
+  VL（fmm_PolBasisVL.cpp，else 分支）：
+    int error = Pattern_GenerateFlowField(..., vfield);
+    if(0 != error){ 记 TRACE; if(NULL != vfield) S4_free(vfield); if(NULL != work) S4_free(work);
+                    if(NULL != ivalues) S4_free(ivalues); return error; }
+    释放项：vfield、work、ivalues（三项，各带 NULL 检查）。无遗漏、无重复释放。
+    返回：原样返回 error（负码）。
+
+  Jones（fmm_PolBasisJones.cpp，else 分支）：
+    int error = 0; error = Pattern_GenerateFlowField(..., vfield);
+    if(0 != error){ 记 TRACE; 释放 vfield、work、ivalues（同 VL）; return error; }
+    释放项：同 VL。无遗漏、无重复释放。
+    返回：原样返回 error。
+
+  NV（fmm_PolBasisNV.cpp，else 分支）：
+    int error = 0; error = Pattern_GenerateFlowField(..., vfield);
+    **先执行**归一化循环（对 vfield 的每个元素做 hypot 与除法，a>0 时 /=a，否则置 (1,0)）；
+    **然后** if(0 != error){ 记 TRACE; 释放 vfield、work、ivalues; return error; }
+    释放项：同 VL。无遗漏、无重复释放。
+    返回：原样返回 error。
+    **与 VL、Jones 的差异**：error 检查位于归一化之后。
+
+二、NV 的顺序差异带来的风险（J6(c) 要求指出的风险点）
+  风险 R-NV-1：当 Pattern_GenerateFlowField 返回非零（参数错误 -1..-8，或 D016 新增的零场/非有限码）时，
+    若 vfield 未被写入，NV 的归一化循环会读取未初始化的 vfield，对其做 hypot 与除法（运算本身不崩溃，但结果未定义）。
+    D016 的修法若只在 pattern_generate_flow_field 中返回负码，NV 仍会先归一化（读取未写入的 vfield）后才返回。
+    这不会影响 VL、Jones 的路径（它们在检查后立即返回）。
+  判断：这是 NV 已有的顺序问题（H 树的参数错误路径同样存在），D016 修法不改变它，但不应继承它。
+  最小修复方向（不实施）：把 NV 的 if(0 != error) 检查移到归一化循环之前；或在归一化前检查 error。
+  需要用户批准：该改动位于 fmm_PolBasisNV.cpp（FMM 路径内），属于 D003 范围（FMM 失败传播链）。
+
+三、释放项核对：是否有双重释放风险？
+  - work、ivalues、vfield 在各自分配后均有 NULL 检查（H 树 VL 117–118、130–131、58–59 行）。
+  - 错误路径中，vfield 只在 Pattern_GenerateFlowField 返回后、归一化前已分配；其释放只出现一次。
+  - 结论：三个调用方的错误路径对 work、ivalues、vfield 各释放一次，无双重释放（[源码]）。
+  - 注意：work 在 VL/Jones/NV 的两个分支中分别分配（第 117 行与第 243 行附近），错误路径只释放分支内有效的 work。
+
+四、与 D016 修法的关系
+  - D016 修法只改 pattern_generate_flow_field（新增的检查返回负码）。三个调用方的 error 路径已存在，无需修改即可接收新码。
+  - 但 NV 的归一化顺序（风险 R-NV-1）需用户决定是否同时处理。若不处理，D016 修法后 NV 的 NG=1 路径仍会对未初始化 vfield 做归一化后再返回错误（结果被丢弃，无外部可见影响，但属于未定义行为）。
+  - 外部可见性判断：NV 返回的是 error（非零），调用方 ComputeLayerModes 得到 20，因此归一化结果不被使用。风险限于未定义行为本身，不影响输出。[推断]

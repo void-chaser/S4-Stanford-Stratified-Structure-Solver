@@ -1,0 +1,51 @@
+Breakpoint 1 at 0x5230
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+S4MALLOC size=6144
+#0  0x0000555555559230 in __wrap__Z9S4_mallocm ()
+#1  0x000055555557e423 in FMMGetEpsilon_FFT(S4_Simulation_ const*, S4_Layer const*, int, std::complex<double>*, std::complex<double>*) ()
+#2  0x000055555555bd27 in Simulation_ComputeLayerModes(S4_Simulation_*, S4_Layer*, LayerModes**) ()
+S4MALLOC size=16
+#0  0x0000555555559230 in __wrap__Z9S4_mallocm ()
+#1  0x000055555557e449 in FMMGetEpsilon_FFT(S4_Simulation_ const*, S4_Layer const*, int, std::complex<double>*, std::complex<double>*) ()
+#2  0x000055555555bd27 in Simulation_ComputeLayerModes(S4_Simulation_*, S4_Layer*, LayerModes**) ()
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4MALLOC size=192
+#0  0x0000555555559230 in __wrap__Z9S4_mallocm ()
+#1  0x0000555555584716 in FMMGetEpsilon_PolBasisVL(S4_Simulation_ const*, S4_Layer const*, int, std::complex<double>*, std::complex<double>*) ()
+#2  0x000055555555bd94 in Simulation_ComputeLayerModes(S4_Simulation_*, S4_Layer*, LayerModes**) ()
+S4MALLOC size=11872
+#0  0x0000555555559230 in __wrap__Z9S4_mallocm ()
+#1  0x0000555555584b16 in FMMGetEpsilon_PolBasisVL(S4_Simulation_ const*, S4_Layer const*, int, std::complex<double>*, std::complex<double>*) ()
+#2  0x000055555555bd94 in Simulation_ComputeLayerModes(S4_Simulation_*, S4_Layer*, LayerModes**) ()
+S4MALLOC size=1024
+#0  0x0000555555559230 in __wrap__Z9S4_mallocm ()
+#1  0x0000555555584b47 in FMMGetEpsilon_PolBasisVL(S4_Simulation_ const*, S4_Layer const*, int, std::complex<double>*, std::complex<double>*) ()
+#2  0x000055555555bd94 in Simulation_ComputeLayerModes(S4_Simulation_*, S4_Layer*, LayerModes**) ()
+S4FMM WITNESS plan call=6 grid=8x8
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan call=9 grid=3x4
+S4FMM WITNESS plan call=10 grid=3x4
+S4FMM WITNESS plan call=11 grid=3x4
+S4FMM WITNESS plan call=12 grid=3x4
+S4FMM WITNESS plan call=13 grid=3x4
+S4FMM WITNESS plan call=14 grid=3x4
+S4FMM WITNESS plan call=15 grid=3x4
+S4FMM WITNESS plan call=16 grid=3x4
+S4FMM WITNESS plan call=17 grid=3x4
+S4FMM WITNESS plan call=18 grid=3x4
+S4FMM DRIVER actual mode=fftvl num_basis=9 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT pattern both PASS
+[Inferior 1 (process 27) exited normally]

@@ -1,0 +1,7 @@
+trace	nshapes	stride_bytes	shape_get_normal_calls	distinct_indices	unmapped_pointers	all_in_range
+A-concentric-n2	2	56	28	0,1	0	YES
+A-two_disjoint-n2	2	56	12	0,1	0	YES
+B-concentric-n2	2	56	28	0,1	0	YES
+B-two_disjoint-n2	2	56	12	0,1	0	YES
+H-concentric-n2	2	56	28	0,1	0	YES
+H-two_disjoint-n2	2	56	12	0,1	0	YES

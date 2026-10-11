@@ -1,0 +1,69 @@
+J1 结果：半覆盖场景（FFT 成功、PolBasis 失败时的矩阵内容）—— P05-S1R2
+
+标注：本轮结果均为"装置观察"或"探针观察"，不称"验证"。
+
+一、期望（运行前登记）：J1_EXPECTATIONS.txt（sha256 见 J1_EXPECTATIONS.sha256；时间戳 J1_EXPECTATIONS_TIMESTAMP_UTC.txt）。
+二、实测矩阵：三树（B、A、H）× 三链（fftjones、fftnv、fftvl）× 注入（none、NTH3、NTH4、NTH5）。
+   每格两类观测：(1) gdb 在 PolBasis 入口与返回处读取 Epsilon2 的 324 个元素与 Epsilon_inv 的 81 个元素（逐位比较）；
+   (2) 驱动运行（不经 gdb）取 rc1、命中数、RESULT 行。
+   另：ComputeLayerModes 返回值与 SolveLayerEigensystem 调用的交错顺序（gdb，J1_CLM/）；
+       AddFieldToCache 的调用顺序（gdb，J1_CACHE/）。
+
+三、矩阵内容与最终类别（[实测]）—— 见 J1_full_matrix_compare.tsv（v2 判定，崩溃感知，见第五节）与 J1_CLM/
+
+  树  链         注入   矩阵内容(E2)     PolBasis 返回   驱动 rc1  命中  最终类别
+  B   fftjones   NTH3   CRASHED          SIGSEGV(无返回)  -         1     CRASH
+  B   fftjones   NTH4   CRASHED          SIGSEGV(无返回)  -         1     CRASH
+  B   fftjones   NTH5   FFT_ORIGINAL     eax=-8           0         1     SILENT_SWALLOW
+  B   fftnv      NTH3   CRASHED          SIGSEGV          -         1     CRASH
+  B   fftnv      NTH4   CRASHED          SIGSEGV          -         1     CRASH
+  B   fftnv      NTH5   CRASHED          SIGSEGV          -         1     CRASH
+  B   fftvl      NTH3   CRASHED          SIGSEGV          -         1     CRASH
+  B   fftvl      NTH4   CRASHED          SIGSEGV          -         1     CRASH
+  B   fftvl      NTH5   FFT_ORIGINAL     eax=-8           0         1     SILENT_SWALLOW
+  A   三链       NTH3/4/5 FFT_ORIGINAL   eax=1            20        1     REPORTED_FAILURE（全 9 格）
+  H   三链       NTH3/4/5 FFT_ORIGINAL   eax=1            20        1     REPORTED_FAILURE（全 9 格）
+
+  说明：
+  - "FFT_ORIGINAL" = Epsilon2 的 324 个元素与入口逐位相同（全矩阵比较，J1_full_matrix_compare.tsv）。Epsilon_inv 的 81 个元素也逐位相同。
+  - 所有有返回的注入格，Epsilon2 与 Epsilon_inv 均无任何元素改变：未观察到混合状态（MIXED）。
+  - "无返回"格（B 的 CRASHED）的矩阵内容为崩溃时刻的状态；gdb 停在 SIGSEGV 后，无法断言其矩阵的完整性（见第五节）。
+  - 全部格的入口状态：Q00 与 Q11 块为 FFT 写入的非零值；Q10 与 Q01 块为 0（标量材料下 FFT 的 fxy=fyx=0，源码 fmm_FFT.cpp 第 119–122 行；[源码]）。
+  - 正常路径（nthnone，PolBasis 成功）：Epsilon2 的 324 个元素全部改变（NEW_VALUES），Epsilon_inv 不变；与源码（PolBasis 写 Epsilon2、不写 Epsilon_inv）一致。
+
+四、归属与"是否继续使用"（[实测]）
+  证据等级说明：逐条交错顺序（CLM_RET 与 SOLVE_CALL 的先后）只在 H-fftvl-NTH3 上逐条记录（J1_install_H_fftvl_nth3.txt、ORDER 日志）。
+  其余格的证据是计数：每格的 CLM 返回码与 k=2 之前的 SOLVE 次数（J1_CLM/，共 24 格，逐格核对见 J1_CLM_order_check.txt）。
+  H、A（三链 × NTH3/4/5，共 18 格）：第 2 次 ComputeLayerModes 返回 20，且其之前 SolveLayerEigensystem 调用次数为 0。
+      无注入对照（nthnone）的第 2 次返回 0，且其之前已有 2 次求解。失败的矩阵未被送入求解（计数证据）。
+  B（NTH5，SILENT_SWALLOW）：PolBasis 返回 -8（[实测] FLOW_RET eax=-8，源码 pattern.c:2106 参数检查），
+      ComputeLayerModes 返回 0，随后 SOLVE 被调用 2 次。即 B 上失败被吞掉，FFT 原值矩阵被直接用于求解。
+  B（NTH3/4，CRASH）：崩溃于 PolBasis 内部，ComputeLayerModes 未返回，无 SOLVE 调用。
+
+五、对 CRASHED 格的限制（必须写明）
+  gdb 在 SIGSEGV 后执行的 finish 打印了 PB_RETURN 块，但其 eax 为垃圾值（1432332432 等），且读取的内存不是正常返回的状态。
+  因此 CRASHED 格的"矩阵内容"不能作为正常返回的结论。v1 判定把它们标为 FFT_ORIGINAL，经复核为错误，已在 v3 改为 CRASHED（见 J1_classification_v1_PRE_FIX.tsv 与 J1_full_matrix_compare_v1_PRE_CRASH_FIX.tsv）。
+
+六、与 REG_3C2 历史类别的关系
+  REG_3C2 的类别（B: CRASH / SILENT_SWALLOW；A、H: REPORTED_FAILURE）与本轮最终类别一致（逐格对照：B fftjones/fftvl NTH5 为 SILENT_SWALLOW，NTH3/4 与 fftnv 为 CRASH；A、H 为 REPORTED_FAILURE）。
+  注意 REG_3C2 中 B 的 fftnv NTH5 为 CRASH，本轮亦为 CRASH。一致。
+
+七、J1 第 4 条要求的结论格式
+  对每个（树，链）：
+  - B fftjones：NTH3/4 崩溃（矩阵内容不可断言）；NTH5 矩阵为 FFT 原值（全部 324 + 81 元素逐位不变），失败被吞。
+  - B fftnv：NTH3/4/5 全部崩溃（矩阵内容不可断言）。
+  - B fftvl：NTH3/4 崩溃（不可断言）；NTH5 矩阵为 FFT 原值，失败被吞。
+  - A、H 三链：NTH3/4/5 矩阵为 FFT 原值，PolBasis 返回 1，ComputeLayerModes 返回 20，矩阵不进入求解，不缓存（AddFieldToCache 仅在后续成功重试中调用）。
+  - "半覆盖已证实"：**不成立**。在本轮所有有返回的格中，矩阵都是完整的 FFT 原值，没有混合状态。未读到混合状态，因此不写"半覆盖已证实"。
+    理由：PolBasis 的分配失败点（ivalues、work、vfield）位于它写入 Epsilon2 之前，失败不会留下部分写入。
+    这一理由是源码（写入顺序）与实测（逐位不变）的共同结果。
+  - "未观察到混合状态"的范围：仅限 NTH3、4、5 三个分配点；PolBasis 内 AddFieldToCache 之后的分配（第 243 行 work，缓存命中分支）未注入（超出 NTH 1..5），因此该分支的矩阵状态未测。
+
+八、停止条件检查（任务第 5 条）
+  - H 上失败后矩阵是否仍被安装或缓存：否。CLM 交错显示失败的那次返回 20 先于求解；AddFieldToCache 的调用（1 次）在失败返回之后，属于重试中的成功调用（[实测] ORDER 日志）。未触发停止条件。
+  - 注意：该结论基于 NTH3 的交错日志；NTH4、NTH5 的交错顺序未单独记录，但它们的失败点同样位于 AddFieldToCache 之前（源码 H 第 117、130 行 < 第 237 行），且 CLM 返回值（J1_CLM/）与之一致。这一推断标为 [推断] 的延伸。
+
+九、未闭合（J1 范围内）
+  - PolBasis 内 AddFieldToCache 之后的分配（第 243 行 work，缓存命中分支）未注入；其矩阵状态未测。
+  - Jones 与 NV 的 CRASH 格：矩阵内容不可断言；未做进一步的崩溃后状态探测。
+  - 单一几何（pattern 圆，NB=9，4×3 采样）与单一标量材料对；未测其他几何与张量材料。
