@@ -131,10 +131,42 @@ def run_row(driver, row, runs_dir):
     return rc, log_path
 
 
+def _verify_driver(path, expected_sha256):
+    """P05-S3R R3-0: refuse to run any driver whose sha256 is not the pinned value.
+
+    The driver is identified by content, not by name, because two binaries with
+    similar names (driver-all and driver-all-t4) produced different results in S2R2.
+    Raises SystemExit before any row runs, so no raw file is written for a wrong driver.
+    """
+    if not (os.path.isfile(path) and os.access(path, os.X_OK)):
+        raise SystemExit("REFUSED: driver missing or not executable: %s" % path)
+    actual = _sha256(path)
+    if actual != expected_sha256.lower():
+        raise SystemExit("REFUSED: driver sha256 mismatch for %s\n  pinned: %s\n  actual: %s"
+                         % (path, expected_sha256.lower(), actual))
+    return actual
+
+
+def _write_manifest(out_dir, driver_path, driver_sha256, tree):
+    """Record the verified driver identity; refuse to overwrite a manifest for a different driver."""
+    manifest_path = os.path.join(out_dir, "driver_manifest.json")
+    entry = {"tree": tree, "driver": os.path.abspath(driver_path), "sha256": driver_sha256}
+    if os.path.exists(manifest_path):
+        with open(manifest_path, encoding="utf-8") as fh:
+            prev = json.load(fh)
+        if prev.get("sha256") != driver_sha256:
+            raise SystemExit("REFUSED: %s already holds a run with a different driver (%s)"
+                             % (out_dir, prev.get("sha256")))
+    with open(manifest_path, "w", encoding="utf-8") as fh:
+        json.dump(entry, fh, indent=1, sort_keys=True)
+        fh.write("\n")
+
+
 def cmd_run(args):
     rows = load_registry(args.registry)
     os.makedirs(args.out, exist_ok=True)
-    driver_ok = os.path.isfile(args.driver) and os.access(args.driver, os.X_OK)
+    driver_sha = _verify_driver(args.driver, args.driver_sha256)
+    _write_manifest(args.out, args.driver, driver_sha, args.tree)
     recs = []
     for row in rows:
         if row["tree"] != args.tree:
@@ -142,10 +174,6 @@ def cmd_run(args):
         if not request_ok(row["request"]):
             recs.append(dict(row, rc=None, facts=None, observed="INVALID",
                              reason="unparseable request %r" % row["request"], log=None))
-            continue
-        if not driver_ok:
-            recs.append(dict(row, rc=None, facts=None, observed="INVALID",
-                             reason="driver missing or not executable: %s" % args.driver, log=None))
             continue
         rc, log_path = run_row(args.driver, row, args.runs)
         with open(log_path, "rb") as fh:
@@ -189,6 +217,8 @@ def main(argv=None):
     r = sub.add_parser("run")
     r.add_argument("--registry", required=True)
     r.add_argument("--driver", required=True)
+    r.add_argument("--driver-sha256", required=True,
+                   help="pinned sha256 of the driver binary; a different binary is refused (P05-S3R R3-0)")
     r.add_argument("--tree", required=True, choices=("BASE", "CUR"))
     r.add_argument("--runs", required=True)
     r.add_argument("--out", required=True)
