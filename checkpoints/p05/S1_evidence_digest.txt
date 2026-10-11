@@ -368,3 +368,31 @@ Manifest    : checkpoints/p05/evidence/EVIDENCE.sha256 — 1293 entries (1048 ex
 
 Known incidents (all in report appendix A-8): six /tmp write attempts in interactive shells (no files left);
   one unverified archive deleted and regenerated (self-referencing list entry); several statistics corrected.
+
+P05-S3 (minimal fix, D003 error propagation) — appended
+=======================================================
+Note        : "S3" here is the FORMAL stage P05-S3 (minimal fix). It is NOT the historical S3 round
+              (T11-T15, file S3_OPEN_ITEMS_AND_SCOPE_FREEZE.md), which is a P05-S1 evidence extension.
+Status      : P05-S3 NOT complete; awaiting user review. No stage is declared complete. Verification is P05-S4, not done here.
+Report      : checkpoints/p05/P05_S3_MINIMAL_FIX.md
+Base        : 5b72793051eb705f0e9b2e5398e1a5f0484da0cb (ancestor of HEAD, checked)
+Start HEAD  : 37a82e8be894ef27ba081cada1da71df2a24f4de (clean worktree)
+Code commits:
+  b00b630  fix(fmm): propagate fft plan/exec failure and check FMM allocations   (6 files, +54/-15, S4/fmm/ only)
+  de52142  fix(s4): check FMM epsilon return in Simulation_ComputeLayerModes      (1 file, +18/-12, S4/S4.cpp only; depends on b00b630)
+Candidates  : read-only; cmp/diff/read only; not built, not run, not written. Full-file copy: none.
+              Referenced-file sha256 at start: evidence/p05-s3/candidate_sha256_start.txt
+Static walkthrough (not a test): evidence/p05-s3/B2_STATIC_WALKTHROUGH.txt
+Build (exported de52142, evidence dir only; NOT verification):
+  make build/libS4.a            rc=0  error=0  warning=71 (HEAD-existing; see D_BUILD_AND_COMPAT_CHECK.txt)
+  setup.py build_ext --inplace  rc=0  error=0  warning=3  (all in S4/main_python.c, unmodified)
+  new warnings vs 37a82e8: S4.cpp 0 (-Wall and -Wextra multisets equal); FMM 0
+Seam check (apply_seam.py, copy only, NOT verification): check-only rc=0, apply rc=0, both anchors unique;
+  g++ -E -P with macro undefined: fmm_FFT.cpp and fmm_kottke.cpp byte-identical (pristine vs seamed).
+  positive control: macro defined -> 2 hook occurrences per file.
+Unfixed (see report s4/s9): fmm_experimental.cpp:40 S4_malloc (driver-unreachable); Simulation_AddFieldToCache
+  S4_malloc at S4.cpp:3977 (needs void->int, touches fmm callers: user decision); ComputeLayerModes allocations
+  2267/2295/2402/2419; LinearSolve info=NULL x7.
+Deviation D-1: one write attempt to / (TMPDIR unset in that shell) was rejected by read-only FS; no file created.
+/tmp        : ls -A /tmp | sha256sum = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, count 0,
+              at both start and end (top-level listing only).
