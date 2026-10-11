@@ -135,6 +135,65 @@ extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<doub
 	             site, ls_calls[site], ls_req_faithful ? "faithful" : "info", n_hits);
 }
 
+/* ------------------------------------------------------------------------
+ * LinearSolve info==NULL seam, family B (P05-S2R, R2-B).  Independent of family A:
+ * its own macro (S4_TEST_LINEARSOLVE_SEAM_NULLINFO), its own hook, its own counters.
+ *
+ *   S4FMM_INJECT = linearsolve_null:ID:K      (ID 11..17, K >= 1)
+ *
+ *   ID 11 closed.cpp:130    model 2 (RHS is the computed matrix)
+ *   ID 12 closed.cpp:133    model 1 (RHS reset to identity before the solve)
+ *   ID 13 closed.cpp:138    model 1
+ *   ID 14 closed.cpp:235    model 1
+ *   ID 15 PolBasisJones:369 model 1
+ *   ID 16 PolBasisNV:260    model 1
+ *   ID 17 PolBasisVL:268    model 1
+ *
+ * On a hit (the K-th call of that ID):
+ *   model 1 : the solve's output b is overwritten with the identity.  This is the
+ *             state a zero pivot would leave, because the generic template skips the
+ *             triangular solves when iinfo != 0 and the RHS was the identity.
+ *   model 2 : b is left as computed.  The hit is still counted.  A zero pivot leaves
+ *             the computed RHS in place, so this model changes no value; its
+ *             sensitivity is expected to be INSENSITIVE, and that is a finding.
+ * The info==NULL status is discarded by the call site, so no status is ever set here.
+ * Unparsable, unknown ID, or K never reached: hits = 0, the driver reports INVALID.
+ * ------------------------------------------------------------------------ */
+static int ln_req_ok = 0, ln_req_id = 0, ln_req_k = 0;
+static long ln_calls[18] = {0};   /* calls seen per id (index 11..17) */
+static long ln_hits[18] = {0};
+
+static void ln_parse_request(void){
+	const char *m = mode();
+	ln_req_ok = 0;
+	if(0 != strncmp(m, "linearsolve_null:", 17)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 17, "%d:%d", &id, &k)){ return; }
+	if(id < 11 || id > 17){ return; }
+	if(k < 1){ return; }
+	ln_req_id = id; ln_req_k = k; ln_req_ok = 1;
+}
+
+extern "C" void S4_TEST_LINEARSOLVE_NULLINFO_AFTER(int id, std::complex<double> *b, int n, int ld, int model){
+	ln_parse_request();
+	if(id < 11 || id > 17){ return; }
+	ln_calls[id]++;
+	if(!ln_req_ok || id != ln_req_id){ return; }
+	if(ln_calls[id] != ln_req_k){ return; }
+	if(1 == model){
+		/* n x n identity with the solve's real leading dimension ld (n or n2). */
+		for(int j = 0; j < n; ++j){
+			for(int i = 0; i < n; ++i){
+				b[i + j*ld] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
+			}
+		}
+	}
+	ln_hits[id]++;
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT linearsolve_null id=%d call=%ld model=%d (hit=%ld)\n",
+	             id, ln_calls[id], model, n_hits);
+}
+
 /* S4_malloc, FMM callers only (see header comment).  The symbol is defined in
  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
 extern "C" void *__real__Z9S4_mallocm(size_t);
@@ -148,6 +207,46 @@ extern "C" void *__wrap__Z9S4_mallocm(size_t size){
 		}
 	}
 	return __real__Z9S4_mallocm(size);
+}
+
+/* ------------------------------------------------------------------------
+ * Allocation seam, family C (P05-S2R, R2-C).  Applies to S4.cpp allocation sites
+ * that --wrap cannot reach (same translation unit as S4_malloc).  The seam patch
+ * (testing/d003/seam/apply_seam_r2.py, export copy only) makes each site call
+ * s4_alloc_hook(ID, size); a non-zero return makes that allocation return NULL.
+ *
+ *   S4FMM_INJECT = alloc:ID:K        (ID 21..25, K >= 1; K is the K-th call of that ID)
+ *
+ *   ID 21 S4.cpp:2267  *layer_modes = malloc(sizeof(LayerModes))   every layer
+ *   ID 22 S4.cpp:2295  pB->q = S4_malloc(...)                     every layer
+ *   ID 23 S4.cpp:2408  rwork = S4_malloc(4*n)                     non-uniform layers only
+ *   ID 24 S4.cpp:2425  work  = S4_malloc(lwork)                   non-uniform layers only
+ *   ID 25 S4.cpp:3977  AddFieldToCache f = S4_malloc(...)         PolBasis cache install
+ *
+ * Each ID counts its own calls, so "K-th hit of site X" is well defined.  Unparsable,
+ * unknown ID, or K never reached: hits = 0, reported as not reached (judge: INVALID).
+ * ------------------------------------------------------------------------ */
+static int al_req_ok = 0, al_req_id = 0, al_req_k = 0;
+static long al_calls[26] = {0};
+static void al_parse_request(void){
+	const char *m = mode();
+	al_req_ok = 0;
+	if(0 != strncmp(m, "alloc:", 6)){ return; }
+	int id = 0, k = 0;
+	if(2 != sscanf(m + 6, "%d:%d", &id, &k)){ return; }
+	if(id < 21 || id > 25){ return; }
+	if(k < 1){ return; }
+	al_req_id = id; al_req_k = k; al_req_ok = 1;
+}
+extern "C" int S4_TEST_ALLOC_HOOK(int id, size_t size){
+	al_parse_request();
+	if(id < 21 || id > 25){ return 0; }
+	al_calls[id]++;
+	if(!al_req_ok || id != al_req_id){ return 0; }
+	if(al_calls[id] != al_req_k){ return 0; }
+	n_hits++;
+	std::fprintf(stderr, "S4FMM HIT alloc id=%d call=%ld size=%zu (hit=%ld)\n", id, al_calls[id], size, n_hits);
+	return 1;
 }
 
 extern "C" fft_plan __real__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(int*, std::complex<double>*, std::complex<double>*, int);

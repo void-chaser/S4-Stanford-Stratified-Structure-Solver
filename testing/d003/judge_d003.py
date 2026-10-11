@@ -162,6 +162,27 @@ def selftest():
     expect("parse: HIT lines counted when no HITCOUNT",
            facts_from_log(no_hitcount)["hit"], 1)
 
+    # R2 new-category fixtures (P05-S2R).  Each row is an observed fact pattern for a
+    # point category added in this round; the class is decided by the same rules as above.
+    # Crash: killed by a signal after the hook fired (no summary line is printed).
+    expect("R2 new: alloc crash (S4.cpp sites 21/22/25, reached, SIGSEGV)",
+           classify(139, None, None, 1, control=False)[0], "CRASH")
+    # Silent: a NULL workspace is accepted and the call returns 0 (S4.cpp sites 23/24).
+    expect("R2 new: alloc silent (sites 23/24, rc1 0)",
+           classify(1, 0, 0, 1, control=False)[0], "SILENT_SWALLOW")
+    # Correct failure: the reported solve_info path returns the existing code 20 (family A).
+    expect("R2 new: solve_info reported (family A, rc1 20)",
+           classify(1, 20, 0, 1, control=False)[0], "REPORTED_FAILURE")
+    # Not reached: the requested point was never hit, so the run is INVALID, never a pass.
+    expect("R2 new: unreached point (hit 0)",
+           classify(1, 0, 0, 0, control=False)[0], "INVALID")
+    # A control with the new families linked but no request must stay CONTROL_OK.
+    expect("R2 new: control with seam linked (clean)",
+           classify(0, 0, 0, 0, control=True)[0], "CONTROL_OK")
+    # Sensitivity: swapping a reported failure for a swallowed one must change the class.
+    expect("R2 new sensitivity: rc1 20 vs 0 changes class",
+           classify(1, 20, 0, 1, control=False)[0] != classify(1, 0, 0, 1, control=False)[0], True)
+
     if fails:
         print("SELFTEST FAILED: %d" % len(fails))
         return 1
@@ -274,6 +295,22 @@ def selftest_sensitivity():
         expect("parse: unknown tag rejected", "accepted", "rejected")
     except ValueError:
         expect("parse: unknown tag rejected", "rejected", "rejected")
+    # R2 new-category sensitivity (P05-S2R).  A seam whose injection changes no value must
+    # read INSENSITIVE (e.g. the RHS-computed model, id 11); an injection that changes every
+    # element must read SENSITIVE; one changed element must read MIXED.  Same mechanics as
+    # above, on the new family's dump shape (E and H, 144-element plane).
+    rbase = {("E", i): float(i) for i in range(144)}
+    rall = {k: v + 1.0 for k, v in rbase.items()}
+    expect("R2 new sensitivity: model-2 (no value change) is INSENSITIVE",
+           sensitivity(rbase, dict(rbase))[0], "INSENSITIVE")
+    expect("R2 new sensitivity: model-1 full overwrite is SENSITIVE",
+           sensitivity(rbase, rall)[0], "SENSITIVE")
+    rone_base = dict(rbase)
+    rone_base[("H", 0)] = 0.0
+    rone = dict(rbase)
+    rone[("H", 0)] = 5.0
+    expect("R2 new sensitivity: one H element moved is MIXED",
+           sensitivity(rone_base, rone)[0], "MIXED")
     if fails:
         print("SENSITIVITY SELFTEST FAILED: %d" % len(fails))
         return 1
