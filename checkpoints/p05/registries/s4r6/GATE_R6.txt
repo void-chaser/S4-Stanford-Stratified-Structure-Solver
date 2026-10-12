@@ -1,0 +1,10 @@
+# R6 gate (start) 2026-10-12T04:48Z (UTC, date -u at gate time)
+branch=codex/p05-d003-fft-error-propagation
+HEAD=108f42f0c225fd0d11577c1218ec07a99dc92ce3
+HEAD:S4=4a6f64927a30537740dd0c8f11f9a5aae5e46ba4   (= frozen tree F 1c11905; matches AGENTS.md section 6)
+judge_d003.py=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+git status --short (--untracked-files=all): (empty)
+AGENTS.md sha256=185d79022027f0fb5b51ae7177a13ac8166557d746cd9bd4d38adb9884ef2bf5
+checkpoints/p05/STATE.md sha256 (before R6 edits)=ce34c2c986ffaac23b5b3f66244ce58a2a251094178801dcdd325ad7032f40f2
+/tmp top-level snapshot (start): count=0; sha256 of sorted listing=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (sha256 of empty input)
+result: PASS (all five gate items match the task brief section 3)

@@ -1,0 +1,60 @@
+# REGISTRY_S4_PRE_R6_TWICE.tsv -- P05-S4 R6-1 pre-registration (twice NTH 12-16 under S4FMM_TWICE=slab; K=3 control).
+# Written BEFORE any R6-1 run.  Timestamp (UTC, date -u at write time): 2026-10-12T04:58:40Z.
+# Sha256 of this file is recorded in REGISTRY_S4_PRE_R6_TWICE.sha256 (written right after this file, before any run).
+#
+# Purpose (user ruling U1, ERRATA_6 E6-1): the R4 plancall twice rows for NTH 12-16 were run WITHOUT S4FMM_TWICE (R5 E5-10).
+# This pre-registration re-runs them as a NEW R6 run with S4FMM_TWICE=slab.  The R4 results are NOT overwritten.
+#
+# Point set (24 rows = 12 points x {B,F}):
+#   fft    K = 12,13,14,15,16  (5 points)   inj_call 2
+#   kottke K = 12,13,14,15,16  (5 points)   inj_call 2
+#   fft    K = 3               (control)    inj_call 1
+#   kottke K = 3               (control)    inj_call 1
+# Each point runs twice (pass 1 and pass 2).  Route: twice.  S4FMM_TWICE=slab is set by the R6 runner for every row.
+#
+# Injection request: plancall:K:1 (the R4 injector inject_r4_plan.cpp, M = 1 = the first wrapped malloc of plan call K).
+#
+# inj_call (fixed by the measured plan split, not guessed):  gdb R6-1 plan-split count (r6_plan_split.gdb, read-only, no
+#   injection, S4FMM_TWICE=slab, tree F for fft and kottke and tree B for kottke):  11 plan calls happen in the FIRST
+#   GetFieldPlane call, and 11 more (plan calls 12..22) in the SECOND.  So K <= 11 is injected on call 1; K >= 12 on call 2.
+#   Evidence: checkpoints/p05/evidence/p05-s4r6/gdb/plan_split_{F_fft,F_kottke,B_kottke}_slab.log
+#   (the first attempt, with the arguments in the wrong order, returned RC -4 and counted 0 plan calls; it is not used.)
+#
+# Expected classes:
+#   F = REPORTED_FAILURE  (basis: R5-2 Q1-Q3, the K=12 fft point under S4FMM_TWICE=slab: plan 12 returns NULL, the NULL check at
+#                          fmm_FFT.cpp:90 is executed (FFT_NULLCHK_L90 k=6), FMMGetEpsilon_FFT returns 1, ComputeLayerModes returns 20,
+#                          GetFieldPlane returns 20; and R5-3 M=2 36 points, all F REPORTED_FAILURE)
+#   B = CRASH             (basis: R5-2 Q2, the K=12 fft point under S4FMM_TWICE=slab on B: no NULL check after plan 12, then
+#                          fft_plan_exec(NULL) and SIGSEGV at fft_iface.cpp:131; and R5-3 M=2 36 points, all B CRASH)
+# Status: INFLUENCED (the basis is the R5 observation of the same kind of point; the R5 observation is not blind to these points).
+#
+# Expected-class rule (fixed here): the R6 result is judged by judge_d003.classify on facts (rc, rc1, rc2, hit) with the inj_call
+# column.  The driver PASS/FAIL line is not read.  The K=3 control expectation is the R4 expectation (B CRASH, F REPORTED_FAILURE),
+# which for the twice route also holds with inj_call 1 (the R4 K=3 twice rows: B CRASH, F REPORTED_FAILURE, hit 1).
+#
+# Columns: point_id	r1_id	tree	route	mode	nth_K	M	request	inj_call	expected_class	basis	status
+point_id	r1_id	tree	route	mode	nth_K	M	request	inj_call	expected_class	basis	status
+R6T-twice-fft-plan-12-B	-	B	twice	fft	12	1	plancall:12:1	2	CRASH	[R5-2 Q2 on B: K=12 fft under TWICE=slab, plan NULL unchecked then fft_plan_exec(NULL) SIGSEGV; R5-3 M=2 all B CRASH]	INFLUENCED
+R6T-twice-fft-plan-12-F	-	F	twice	fft	12	1	plancall:12:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 on F: K=12 fft under TWICE=slab, NULL check fmm_FFT.cpp:90 executed, rc 20 via CLM; R5-3 M=2 all F REPORTED_FAILURE]	INFLUENCED
+R6T-twice-fft-plan-13-B	-	B	twice	fft	13	1	plancall:13:1	2	CRASH	[R5-2 Q2 mechanism applied to K=13 (not directly measured under TWICE=slab); the R4 no-TWICE B value is NOT a basis, see ERRATA_6 E6-1]	INFLUENCED
+R6T-twice-fft-plan-13-F	-	F	twice	fft	13	1	plancall:13:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism for K=12 applied to K=13]	INFLUENCED
+R6T-twice-fft-plan-14-B	-	B	twice	fft	14	1	plancall:14:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-fft-plan-14-F	-	F	twice	fft	14	1	plancall:14:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-fft-plan-15-B	-	B	twice	fft	15	1	plancall:15:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-fft-plan-15-F	-	F	twice	fft	15	1	plancall:15:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-fft-plan-16-B	-	B	twice	fft	16	1	plancall:16:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-fft-plan-16-F	-	F	twice	fft	16	1	plancall:16:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-kottke-plan-12-B	-	B	twice	kottke	12	1	plancall:12:1	2	CRASH	[R5-2 Q2 mechanism (the same plan-12 point; the kottke mode uses the same FMM plan path); R4 no-TWICE B = REPORTED_FAILURE]	INFLUENCED
+R6T-twice-kottke-plan-12-F	-	F	twice	kottke	12	1	plancall:12:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-kottke-plan-13-B	-	B	twice	kottke	13	1	plancall:13:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-kottke-plan-13-F	-	F	twice	kottke	13	1	plancall:13:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-kottke-plan-14-B	-	B	twice	kottke	14	1	plancall:14:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-kottke-plan-14-F	-	F	twice	kottke	14	1	plancall:14:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-kottke-plan-15-B	-	B	twice	kottke	15	1	plancall:15:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-kottke-plan-15-F	-	F	twice	kottke	15	1	plancall:15:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-kottke-plan-16-B	-	B	twice	kottke	16	1	plancall:16:1	2	CRASH	[R5-2 Q2 mechanism; the R4 no-TWICE value is NOT a basis (ERRATA_6 E6-1)]	INFLUENCED
+R6T-twice-kottke-plan-16-F	-	F	twice	kottke	16	1	plancall:16:1	2	REPORTED_FAILURE	[R5-2 Q1-Q3 mechanism]	INFLUENCED
+R6T-twice-fft-plan-3-B	-	B	twice	fft	3	1	plancall:3:1	1	CRASH	[control: R4 twice fft K=3 B = CRASH (no TWICE); K=3 lies in plan call 1 (gdb split, plan calls 1-11 in first call)]	INFLUENCED
+R6T-twice-fft-plan-3-F	-	F	twice	fft	3	1	plancall:3:1	1	REPORTED_FAILURE	[control: R4 twice fft K=3 F = REPORTED_FAILURE, inj_call 1; K=3 in first call]	INFLUENCED
+R6T-twice-kottke-plan-3-B	-	B	twice	kottke	3	1	plancall:3:1	1	CRASH	[control: R4 twice kottke K=3 B = CRASH; K=3 in first call]	INFLUENCED
+R6T-twice-kottke-plan-3-F	-	F	twice	kottke	3	1	plancall:3:1	1	REPORTED_FAILURE	[control: R4 twice kottke K=3 F = REPORTED_FAILURE, inj_call 1; K=3 in first call]	INFLUENCED

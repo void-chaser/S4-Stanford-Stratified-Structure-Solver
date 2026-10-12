@@ -1,0 +1,95 @@
+ERRATA_6 -- P05-S4 R6 (sub-round).  Corrections and user rulings recorded at the R6 gate (R6-0).
+Numbering starts at E6-1.  Files of earlier rounds (R1-R5, including ERRATA_3 and ERRATA_5) are NOT changed.
+Written before any R6 injection run.  Scope: this file records facts and rulings only; it does not repair S4/.
+
+== E6-1 [USER RULING U1] R4 plancall twice NTH 12-16 is re-run as a NEW R6 run with S4FMM_TWICE=slab ==
+The R4 plancall twice rows for NTH 12..16 (fft and kottke, route twice; R4 registry rows with request plancall:K:1, inj_call 2)
+were run without S4FMM_TWICE (R5 E5-10).  The user ruled that they are re-run with S4FMM_TWICE=slab as an R6 run.
+- The R4 result files (checkpoints/p05/registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv and pass2, and the R4 report) are NOT
+  overwritten and NOT edited.  The R6 results are in RESULTS_R6_TWICE_pass1.tsv and RESULTS_R6_TWICE_pass2.tsv.
+- Consequence for reading R4: the R4 rows are the "no TWICE" condition; the R6 rows are the "TWICE=slab" condition.  The two are
+  different conditions, not two repeats of one condition.
+
+== E6-2 [USER RULING U3] registries/s4r3/ERRATA_3.txt hash mismatch: explained, closed by user ruling (no re-run) ==
+Facts, checked by the planner and re-checked at the R6 gate (read-only):
+1. REGISTRY_S4_PRE_R3.sha256 was written at 12:03:19 (mtime).  Its records:
+     REGISTRY_S4_PRE_R3.tsv  fc0c060b...e428
+     SITEMAP.tsv             fd91d5d4...cdcf6e
+     CALLSEQ.tsv             b017879f...50b01bc
+     ERRATA_3.txt            2fc0d702...ebe3a80addaadd8a295eb3258cea9b9a87b58eca1c32eb6a03faa0 (the value in the file)
+   Re-check: the first three records match the files (REGISTRY_S4_PRE_R3.tsv OK, SITEMAP.tsv OK, CALLSEQ.tsv OK).
+2. ERRATA_3.txt in evidence (p05-s4r3) has sha256 6b7f9dc141d436375594b5a9e1cc500a1c9d2b1b9ea3718b5e4beec89b5128bf, which is
+   NOT the recorded 2fc0d702.  Its mtime is 12:11:28.99.
+3. RESULTS_R3.tsv mtime is 12:09:08.69 (before ERRATA_3's last write).  The R3 commit 7f54997 is at 12:14:08 (after ERRATA_3's
+   last write).  So ERRATA_3's last write is after the results were written and before the R3 commit.
+4. ERRATA_3 sections f (line 101) and g (line 119) describe the R3 run results (f1-f5: plan NTH reachability; g1-g5: the four
+   MISMATCH rows).  Those results can only be written after the run.  The pre-registered expectation (REGISTRY_S4_PRE_R3.tsv,
+   whose sha256 is recorded and matches) was not changed.
+Conclusion (user ruling U3, closed): the modification of ERRATA_3.txt after the recorded hash is a deliberate append of run-time
+sections f and g.  No expectation was changed.  The registry is not re-run.  The recorded sha256 of ERRATA_3.txt is stale; this
+errata records that fact and does not rewrite the old record.  The hash of the current file is 6b7f9dc1...5128bf.
+Status: CLOSED by user ruling U3 (not a re-run, not a repair).
+
+== E6-3 [PLANNER CORRECTION U5a] R5 "failed layer kept no partial modes FAILED / partial_modes=1" is NOT defect evidence ==
+R5 (E5-15, R5 report section 7, RP-R5-3) reported that the driver check "failed layer kept no partial modes" FAILED in 132/132
+retry runs with partial_modes=1.  The planner's reading of driver_d003.cpp (checked at the R6 gate):
+- driver_d003.cpp line 220 (the retry call, rc2 = S4_Simulation_GetFieldPlane) runs FIRST.  Verified at the R6 gate with grep -n.
+- The partial_modes count (driver_d003.cpp lines 253-255: the loop over S->layer[i] that tests modes != NULL; the check is at line
+  257) runs AFTER the retry.  (The planner's first note said "lines 253-257"; the verified range is 253-257 as well, with the count
+  at 253-255 and the check at 257.  No change of meaning.)
+- A successful retry necessarily installs the modes of the layer that the retry computed.  Therefore a non-NULL layer modes pointer
+  after the retry is expected behaviour of a successful retry, not evidence of a failure-time state.
+- The check therefore cannot observe the state AT the failure.  It tests the post-retry state.  It is not a test of the
+  requirement "a failed layer installs no modes" (S3-4b).
+Consequence: RP-R5-3 is re-classified as a harness fault of the driver check (HARNESS_OR_PROCESS), not as a candidate red point.
+The S3-4b requirement stays OPEN; R6-2 tests it by observing the state at the failure instant (driver_r6_state).
+Note: the R5 line numbers quoted above are those of driver_d003.cpp (the template); the exact line numbers are verified in R6-2 by reading
+the file, and are recorded there.
+
+== E6-4 [PLANNER CORRECTION U5b] Without TWICE the 12th plan call comes from GetFieldOnGrid; RP-R5-2 is out of scope ==
+In the no-TWICE route the 12th fft_plan_dft_2d call is made by GetFieldOnGrid (rcwa.cpp), not by the FMM code (R5-2 Q1-Q5).
+rcwa.cpp is byte-identical between B (37a82e8) and F (1c11905) (git diff --stat: empty).  R3 classified GetFieldOnGrid as outside
+D003 scope.  Therefore:
+- RP-R5-2 (no-TWICE route, F conclusion undetermined) is downgraded to "out of scope, not blocking".
+- The gdb breakpoint contradiction (E5-13: the return-value chain is observed, but the line breakpoint at rcwa.cpp:2265 is hit only
+  once) is NOT pursued further in R6.  It is recorded as an open observation in the ledger (OUT_OF_SCOPE_D003).
+- The planner's reading of the GetFieldOnGrid NULL checks (rcwa.cpp:2209-2212, from the F tree): "if(NULL == plan[i]){ ret = 1;
+  goto cleanup; }" exists after each fft_plan_dft_2d call.  The check's execution in the no-TWICE route is NOT measured in R6.
+
+== E6-5 [R4 REPORT CORRECTION, to be applied through R6 results] "B has no NULL check but does not crash" ==
+The R4 report (P05_S4R4_REPORT.md, line 187) states that the B tree (fmm_FFT.cpp:85) has no NULL check after fft_plan_dft_2d and that
+the measurement shows no crash.  R5 E5-11 limited this claim to the no-TWICE condition.  In R6-1 the same B point with
+S4FMM_TWICE=slab is measured: the B tree crashes (SIGSEGV, rc 139) inside fft_plan_exec(NULL).  The R4 statement is therefore
+correct only for the no-TWICE route, and the R6 result replaces it for the TWICE=slab route.  The R4 report is not edited;
+this correction is recorded here.
+
+== E6-6 [HARNESS] Injectors and drivers for R6 are NEW files (user approval U6) ==
+New files under testing/d003/stage_s4/ only: driver_r6_state.cpp (copied from driver_d003.cpp), inject_r6.cpp (copied from
+inject_r4_plan.cpp, extended), and the R6 runners/judges.  The originals (driver_d003.cpp, inject_d003.cpp, inject_r4_plan.cpp,
+judge_d003.py) are not changed.  judge_d003.py is imported, not modified.
+
+== E6-7 [PROCESS] Write-path discipline in R6 ==
+Every command that writes is run through testing/d003/safe_run.sh with the R6 evidence directory (p05-s4r6).  New files are written
+with write/edit, not with python open(...,'w'), heredoc, or sed -i.  python is run with -I -B.  Output redirections are checked
+against the safe_run log.  See the R6 report, section 14 (violations, two tables).
+
+== E6-8 [USER RULING, contract semantics for I2; known before any R6-2 state run; status INFLUENCED] ==
+Source of the question: a read-only probe (closed1d malloc NTH 1 on tree F, route once, injection in layer 1 Slab, rc1 = 20)
+showed that at the failure instant the failed layer (layer 1, Slab, nshapes 1) has modes == NULL, while layers 0 and 2 (uniform
+layers, computed before the failing layer) already have non-NULL modes.  S4_internal.h:263 says "20 - the layer eigensystem failed;
+no layer modes or solution were installed", which read literally conflicts with the layers 0 and 2 state.
+User ruling (in conversation, R6 gate, recorded here):
+  (1) I2 uses option 1: only the failed layer must have modes == NULL (I1); the request-layer solved == 0 (I4) must hold strictly.
+      Other layers that finished before the failure may keep their modes and this is NOT a violation, provided ALL of:
+        (a) the q hash of each kept layer equals the control-group q hash at the same instant;
+        (b) the control group has the same layer installed at the same instant (no layer installed only in the failure run);
+        (c) on the retry those layers do not enter ComputeLayerModes again (checked by the I5 call counts).
+  (2) Basis: the comment at S4_internal.h:263 originates from commit 44f4a09 (P04 D001/D002).  That commit's text reads, for S4.cpp:
+      "a failed eigensolve discards the layer modes instead of installing them" (verified read-only with git log -1 44f4a09).
+      It refers to the failed layer.  It does not state the behaviour of other, successful layers.
+  (3) Recording: the wording mismatch between the comment at S4_internal.h:263 and the observed behaviour is registered in the R6
+      ledger as HARNESS_OR_PROCESS (documentation wording), with a suggested wording.  S4/ is NOT changed in R6.
+  (4) Pre-registration: REGISTRY_S4_PRE_R6_TWICE.tsv is NOT changed by this ruling (it concerns R6-1 only).  The R6-2 state
+      pre-registration, when written, must state I2 as above.  No existing pre-registration file is edited.
+Suggested wording for S4_internal.h:263 (NOT applied): "20 - the layer eigensystem failed; the failed layer's modes and solution
+were not installed (layers finished before the failure may keep their modes)."

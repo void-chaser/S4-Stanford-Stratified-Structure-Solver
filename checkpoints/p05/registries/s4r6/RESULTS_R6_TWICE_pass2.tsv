@@ -1,0 +1,26 @@
+# RESULTS_R6_TWICE_pass2.tsv -- P05-S4 R6-1 (twice NTH 12-16 and K=3 control, S4FMM_TWICE=slab).  Class from judge_d003.classify (facts only).
+point_id	tree	route	mode	nth_K	M	request	inj_call	expected	observed	match	rc	rc1	rc2	hit	reason	log_sha256
+R6T-twice-fft-plan-12-B	B	twice	fft	12	1	plancall:12:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d2d4ddfee71727d5098b8feec3ff1c1972e1aa1dffdb58cac69fb2e3d221f46f
+R6T-twice-fft-plan-12-F	F	twice	fft	12	1	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	25df8d95d4e86a48c2c5d53e2a143c6e2b746fc4c2c8dd737eded3f7aaa74fda
+R6T-twice-fft-plan-13-B	B	twice	fft	13	1	plancall:13:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	1a34bc4456e512054eb8b16ff88c958f50b0b43f024b002a0fe8127e84103d86
+R6T-twice-fft-plan-13-F	F	twice	fft	13	1	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	fcf9a9357afbcb5068de52b0ed0e531979c3d2aebbf96e2df72301c5418fd2e5
+R6T-twice-fft-plan-14-B	B	twice	fft	14	1	plancall:14:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	07068f5fec8db12a1c925a49f27831a74c8bbbee7b0905f72963e8e53fb7689c
+R6T-twice-fft-plan-14-F	F	twice	fft	14	1	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	0419c188ca40192afd83ac0498b2c6c8b18712a2d09ea960992c640636c1a032
+R6T-twice-fft-plan-15-B	B	twice	fft	15	1	plancall:15:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d4fa887e9952a6758f88afd2f9e9ae7fde62d9fdbeff99d00cb6f4286c5d3a59
+R6T-twice-fft-plan-15-F	F	twice	fft	15	1	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	9a1337ad7ea318814017cac5630dbbb8e000c1e1d2989e61fec78b82cfb516e5
+R6T-twice-fft-plan-16-B	B	twice	fft	16	1	plancall:16:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	359e406394659b500a15fa1df14e10979155facbd90a163dfaf80d913b3ec1fa
+R6T-twice-fft-plan-16-F	F	twice	fft	16	1	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	4be1c2168ceaddc063dc1f174bce210a597b3a9b54699d637b8d53c34fe444e7
+R6T-twice-kottke-plan-12-B	B	twice	kottke	12	1	plancall:12:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d2d4ddfee71727d5098b8feec3ff1c1972e1aa1dffdb58cac69fb2e3d221f46f
+R6T-twice-kottke-plan-12-F	F	twice	kottke	12	1	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	3b288d682e3f64dd905ccad1bddd5ae43ec3c03a7bcfac532981c9e949db067e
+R6T-twice-kottke-plan-13-B	B	twice	kottke	13	1	plancall:13:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	1a34bc4456e512054eb8b16ff88c958f50b0b43f024b002a0fe8127e84103d86
+R6T-twice-kottke-plan-13-F	F	twice	kottke	13	1	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	336c7d474ea95bc9534cd834a148c4692cb4e1e5f0a29660a6db9e775e5ebf49
+R6T-twice-kottke-plan-14-B	B	twice	kottke	14	1	plancall:14:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	07068f5fec8db12a1c925a49f27831a74c8bbbee7b0905f72963e8e53fb7689c
+R6T-twice-kottke-plan-14-F	F	twice	kottke	14	1	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	f9f89be5a84a8306a051fbc6fdca066fa7daa98919ba790a592b46e524cf0d7e
+R6T-twice-kottke-plan-15-B	B	twice	kottke	15	1	plancall:15:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d4fa887e9952a6758f88afd2f9e9ae7fde62d9fdbeff99d00cb6f4286c5d3a59
+R6T-twice-kottke-plan-15-F	F	twice	kottke	15	1	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	714e91b4f03d4fe6342435ec6b95e70dc99904c44e9a83561e1f2ac9395bb93e
+R6T-twice-kottke-plan-16-B	B	twice	kottke	16	1	plancall:16:1	2	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	359e406394659b500a15fa1df14e10979155facbd90a163dfaf80d913b3ec1fa
+R6T-twice-kottke-plan-16-F	F	twice	kottke	16	1	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20	de38388dccac853457209d3a035dd8fbf3df9e9855661ab92592273cb0ae77a6
+R6T-twice-fft-plan-3-B	B	twice	fft	3	1	plancall:3:1	1	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d95e772e1aedf73c5584df63c25bf9aabc8835e9b25ff8ad4abeaa4c1b49ff89
+R6T-twice-fft-plan-3-F	F	twice	fft	3	1	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	03b176a01111607996e34b8a36931e3b4de3e45305a3639bfcf7b2083caa809d
+R6T-twice-kottke-plan-3-B	B	twice	kottke	3	1	plancall:3:1	1	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	d95e772e1aedf73c5584df63c25bf9aabc8835e9b25ff8ad4abeaa4c1b49ff89
+R6T-twice-kottke-plan-3-F	F	twice	kottke	3	1	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	e5474b29242de6616ddea99cf01e81132762433b9a2afe0653cc7769a92e1022
