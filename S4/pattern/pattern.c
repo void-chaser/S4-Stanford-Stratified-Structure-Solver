@@ -1242,17 +1242,24 @@ static double dot(int n, const double *x, const double *y){
 #endif
 }
 
-static void cg(int n, const double *M, const int *Mcol, int Mnd, const double *b, double *x, double anorm){
+/* P05-S3R3 (RNV1, U30): returns 0 on success, -11 if the work allocation fails
+ * (the caller must not use x in that case). */
+static int cg(int n, const double *M, const int *Mcol, int Mnd, const double *b, double *x, double anorm){
 	const double tol = 1e-10*n;
 	const int max_iter = 2*n;
 	const double damp = DAMPING_FACTOR*anorm;
 	int i, j, iter;
 	double resid = 0, alpha = 0, beta = 0, rho = 0, rho_1 = 0, normb = 0;
 	double *work = (double*)malloc(sizeof(double) * 4*n);
-	double *p = work;
-	double *z = p + n;
-	double *q = z + n;
-	double *r = q + n;
+	double *p;
+	double *z;
+	double *q;
+	double *r;
+	if(NULL == work){ return -11; }
+	p = work;
+	z = p + n;
+	q = z + n;
+	r = q + n;
 
 	normb = norm(n, b);
 	for(i = 0; i < n; ++i){ // r += A*x
@@ -1270,7 +1277,7 @@ static void cg(int n, const double *M, const int *Mcol, int Mnd, const double *b
 		//tol = resid;
 		//max_iter = 0;
 		free(work);
-		return;
+		return 0;
 	}
 //fprintf(stderr, "resid = %e\n", resid);
 	for(iter = 0; iter < max_iter; ++iter){
@@ -1317,6 +1324,7 @@ static void cg(int n, const double *M, const int *Mcol, int Mnd, const double *b
 	}
 	//tol = resid;
 	free(work);
+	return 0;
 }
 #endif // !HAVE_LIBCHOLMOD
 
@@ -1324,7 +1332,10 @@ static void cg(int n, const double *M, const int *Mcol, int Mnd, const double *b
 #include <cholmod.h>
 #endif
 
-static void sparse_linsolve_d(int n, const double *M, const int *Mcol, int Mnd, const double *b, double *x, double anorm){
+/* P05-S3R3 (RNV1, U30): returns 0 on success, or the status of the solver (-11 = allocation failed in cg).
+ * The CHOLMOD branch has no failure return in this code (its cholmod_* return values are not checked here, as
+ * before), so it returns 0. */
+static int sparse_linsolve_d(int n, const double *M, const int *Mcol, int Mnd, const double *b, double *x, double anorm){
 #ifdef HAVE_LIBCHOLMOD
 	//const double damp = DAMPING_FACTOR*anorm;
 	int i, j, nnz;
@@ -1400,8 +1411,9 @@ static void sparse_linsolve_d(int n, const double *M, const int *Mcol, int Mnd, 
 	cholmod_free_dense(&xs, &c);
 	cholmod_free_dense(&bs, &c);
 	cholmod_finish(&c);
+	return 0;
 #else
-	cg(n, M, Mcol, Mnd, b, x, anorm);
+	return cg(n, M, Mcol, Mnd, b, x, anorm);
 #endif
 }
 
@@ -1475,11 +1487,21 @@ static double pattern_generate_flow_field_rect(
 	int i, j;
 
 	double *work = (double*)malloc(sizeof(double)*N2*(5+2));
-	double *x = work;
-	double *b = x+N2;
-	double *M = b+N2;
-	int *iwork = (int*)malloc(sizeof(int)*N2*4);
-	int *Mcol = iwork;
+	double *x;
+	double *b;
+	double *M;
+	int *iwork;
+	int *Mcol;
+	int lstatus;
+
+	/* P05-S3R3 (RNV1, U30): check both allocations before use; -1.0 = allocation failed. */
+	if(NULL == work){ return -1.0; }
+	iwork = (int*)malloc(sizeof(int)*N2*4);
+	if(NULL == iwork){ free(work); return -1.0; }
+	x = work;
+	b = x+N2;
+	M = b+N2;
+	Mcol = iwork;
 
 	// The 1-form Laplacian M has exactly 5 non-zero entries per row on a
 	// rectangular grid. The constraint matrix Z is diagonal, with one
@@ -1618,7 +1640,8 @@ static double pattern_generate_flow_field_rect(
 	*/
 
 	//fprint_spmatrix(stderr, N2, M, Mcol, 4);
-	sparse_linsolve_d(N2, M, Mcol, 4, b, x, _dxdy);
+	lstatus = sparse_linsolve_d(N2, M, Mcol, 4, b, x, _dxdy);
+	if(0 != lstatus){ free(iwork); free(work); return -1.0; }
 {
 	// === Reconstruct the vector field ===
 	double max_field = 0;
@@ -1654,11 +1677,21 @@ static double pattern_generate_flow_field_tri(
 	int i, j;
 
 	double *work = (double*)malloc(sizeof(double)*N3*(11+2));
-	double *x = work;
-	double *b = x+N3;
-	double *M = b+N3;
-	int *iwork = (int*)malloc(sizeof(int)*N3*10);
-	int *Mcol = iwork;
+	double *x;
+	double *b;
+	double *M;
+	int *iwork;
+	int *Mcol;
+	int lstatus;
+
+	/* P05-S3R3 (RNV1, U30): check both allocations before use; -1.0 = allocation failed. */
+	if(NULL == work){ return -1.0; }
+	iwork = (int*)malloc(sizeof(int)*N3*10);
+	if(NULL == iwork){ free(work); return -1.0; }
+	x = work;
+	b = x+N3;
+	M = b+N3;
+	Mcol = iwork;
 
 	// The fundamental parallelogram is like
 	//
@@ -2053,7 +2086,8 @@ static double pattern_generate_flow_field_tri(
 	for(i = 0; i < N3; ++i){ fprintf(stderr, " %f\n", b[i]); }
 	*/
 	//fprintf(stderr, "Starting CG\n");
-	sparse_linsolve_d(N3, M, Mcol, 10, b, x, M[0]);
+	lstatus = sparse_linsolve_d(N3, M, Mcol, 10, b, x, M[0]);
+	if(0 != lstatus){ free(iwork); free(work); return -1.0; }
 	//fprintf(stderr, "Ending CG\n");
 	//for(i = 0; i < N3; ++i){ x[i] = b[i]; }
 {
@@ -2141,6 +2175,11 @@ int pattern_generate_flow_field(
 			nshapes, shapes, parent,
 			type, L, nu, nv, field);
 	}
+
+	/* P05-S3R3 (RNV1, U30): a negative maximum is the allocation-failure marker of
+	 * _rect/_tri (-1.0).  -11 = internal allocation failure in the flow-field
+	 * solver.  -10 and -9 keep their existing meanings. */
+	if(max_field < 0){ return -11; }
 
 	/* P05-S3R2 D-D (D016): a zero or non-finite maximum makes 1./max_field
 	 * non-finite, and the field would be multiplied into NaN.  Report it here
