@@ -1,0 +1,4 @@
+BUILD_OPTION_DIFF_R7_M3 (cont9 section 2.1): g++ command lines, path prefixes removed; expected diff_lines=0
+G5 R5-dbg-F vs R7-F-dbg	lines_hist=12	lines_r7=12	diff_lines=0
+G6 R6c-seamF vs R7-seamF-F	lines_hist=12	lines_r7=12	diff_lines=0
+G6 R6c-fmmret-F vs R7-fmmret-F	lines_hist=12	lines_r7=12	diff_lines=0

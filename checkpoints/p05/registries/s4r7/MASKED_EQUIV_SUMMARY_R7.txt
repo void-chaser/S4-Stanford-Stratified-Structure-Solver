@@ -1,0 +1,2 @@
+masked_equiv_r7.sh (U87): pairs=3 not_equal_after_mask=0
+RESULT PASS: driver pairs equal after --strip-debug and build-id zeroing

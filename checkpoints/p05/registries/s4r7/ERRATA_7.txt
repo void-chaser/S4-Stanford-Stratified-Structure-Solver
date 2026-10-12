@@ -389,3 +389,85 @@ Output file names: the first dry-run for run7 wrote DRYRUN_R7_M2b_run7.txt (fail
 DRYRUN_R7_M2b_run7_final.txt (the name DRYRUN_R7_M2b_run7 was not reused, U17).
 Copy: copy_m2b_run7_prep_r7.py (U75c) copied ADD_v3, ADD_V3_VS_V2_DIFF.txt and DRYRUN_R7_M2b_run7_final.txt; manifest
 SHA256SUMS_M2b_run7prep.txt.
+
+== User rulings (U79-U88), cont9 (appended; also in checkpoints/p05/registries/RULINGS.tsv) ==
+U79  M2 milestone 83a7511 accepted (user). E7-36 (below) is the only item of this ruling.
+U80  M3 opens (U63). M3 = G5 (R6c 177 state points) + G6 (R6c seam 25 state points + 18 U18 controls) + U38 classification + R7 closeout.
+U81  M3 first reproduces the R6c results on the R7 tree F (baseline, run label m3f1). If the baseline differs from the historical R6c
+     judgement (HOLD/VIOLATED/N/A per point and per invariant), record ENV_DRIFT and stop; F2 (m3r1) is not run.
+U82  G5/G6 F2 expectation = the historical R6c judgement on F, copied point by point (I1-I6; I7 DEFERRED). Only exception: a point whose
+     failure path passes the RNV1 window (pattern_generate_flow_field); listed before any run with a [source] basis.
+U84  dbg library and driver hashes differ from R5 and R6c; accepted if the difference is shown to lie in debug sections only.
+     Method: check_dbg_strip_equiv_r7.sh (copies, objcopy --strip-debug, member by member for .a). Result of the first run:
+     the three libraries (24 members each, three pairs) are EQUAL_AFTER_STRIP; the three drivers (G5 r6bstate-F, G6 seamF, G6 fmmret-F)
+     are DIFFERENT_AFTER_STRIP by 20 bytes, all in .note.gnu.build-id (file offset 864-883). Per U84 this stopped the run;
+     see U87 for the boundary and the accepted method. Record: $EV/strip_cmp/STRIP_EQUIV_R7.tsv, STRIP_EQUIV_SUMMARY_R7.txt.
+U85  U82 exception count = 0 by construction, not by gdb probing (no gdb call-stack probe). Basis (also in the pre-registration header
+     and E7-38): (a) the 177 points use only the injection requests exec, plan, plancall:K:M and s4malloc (RESULTS_R6c_STATE.tsv request
+     column); (b) exec, plan, plancall act only when arm is 1 or 2 (inject_r4_plan.cpp:79-100), and arm is set only in the fft plan
+     creation or execution wrappers (:588-615); (c) s4malloc intercepts only S4_malloc (__wrap__Z9S4_mallocm, :496-501); (d) S4/pattern/pattern.c
+     contains no S4_malloc call and no fft call (counted 0). Hence none of the 177 points can reach the pattern_generate_flow_field window.
+     The 25 seam points: the seam patch does not modify pattern.c (seamdiff: pattern.c appears 0 times), so the count is 0 too.
+     F-baseline comparison (U81) and F2 point-by-point comparison remain the runtime safeguard.
+U86  U38 supplementary basis (classification is a suggestion; the ruling is the user's; see PATTERN_MALLOC_CLASS_R7.tsv):
+     415 (shape_get_intersection_area_quad, POLYGON branch) is called from pattern_discretize_cell (pattern.c:1115), which is called from
+     fmm_FFT.cpp:98 and fmm_kottke.cpp:102; so 415 lies on the FFT/Kottke failure path, only for polygon shapes. The earlier wording
+     "area integration path" was imprecise; suggested IN_D003_CANDIDATE (polygon condition).
+     528 and 1164: the caller evidence is recorded in PATTERN_MALLOC_CLASS_R7.tsv after the grep check (not written here in advance).
+     806: IN_D003_CANDIDATE as the planner's preliminary view; the classification is in PATTERN_MALLOC_CLASS_R7.tsv.
+U87  Amends U84. The .note.gnu.build-id of an executable is the linker's hash of all inputs, including debug-section build paths;
+     it changes when debug sections change and does not affect program behaviour. U84 did not state this (planner omission); the executor
+     correctly stopped. Method: (a) copies *.masked of the stripped copies; (b) mask_build_id_r7.py zeroes the 20-byte NT_GNU_BUILD_ID
+     descriptor (offset and length read from the ELF file, not assumed) in the *.masked copies only; (c) compare sha256 of the masked copies.
+     objcopy --remove-section is not used. Result (MASKED_EQUIV_R7.tsv): 3/3 driver pairs EQUAL_AFTER_MASK; the 20 differing bytes of each
+     pair lie at file offsets 864-883 (= desc of .note.gnu.build-id at section offset 848, size 36). E7-37 records the wording of U87.
+U88  Violation record (E7-39): a probe in $EV/tmp/probe_strip/ ran rm -rf, mkdir -p and ar x directly in bash, not through safe_run
+     (against cont5 section 0 A). Target inside $EV, no escape from the repository. Directory kept, not deleted. From the next command on,
+     every write goes through safe_run or edit/write.
+
+== E7-36 (cont9): standard-format checksum lists for the M2b run7 manifests ==
+  SHA256SUMS_M2b_run7.txt and SHA256SUMS_M2b_run7prep.txt have an extra "copied <timestamp>" column per line, so sha256sum -c cannot
+  check them directly. The old files are not changed (U17). Standard-format copies *_std.txt (two columns: sha256, filename) are written
+  next to them; sha256sum -c on the *_std.txt files is recorded in the M3 gate.
+
+== E7-37 (cont9): debug sections and build-id (U84, U87) ==
+  Wording (U87): three libraries are equal member by member after --strip-debug; three drivers are equal byte for byte after --strip-debug
+  and zeroing of the build-id descriptor; the differences come only from debug sections and the build-id they derive.
+  Evidence: strip_cmp/STRIP_EQUIV_R7.tsv (3 library pairs, 24 members each = 72 member pairs, all EQUAL_AFTER_STRIP; 3 driver pairs,
+  DIFFERENT_AFTER_STRIP by 20 bytes each), strip_cmp/MASKED_EQUIV_R7.tsv (3 driver pairs EQUAL_AFTER_MASK).
+  Compile command lines checked (and recorded as checked, not assumed):
+    R5 dbg F vs R7 F-dbg: the g++ -c lines of build-dbg-F.log and build-F-dbg.log are identical after removing the /srv prefix paths;
+    R6c seamF/fmmret-F vs R7 seam-F-F/fmmret-F: the g++ -c lines of the R6c and R7 build logs are identical after the same normalisation;
+    R6b driver (driver-r6b-dbgF) vs R7 link (link_drivers_s4r7.sh): the same source files and LIBFLAGS, -O0 -g.
+  Driver for G6: linked by link_r6b_seam_r7.sh (driver_r6b_state.cpp + inject_r4_plan.cpp, LIBFLAGS as r6c2_link_fmmret.sh) against
+  the R7 seam debug libraries. The seam S4/ source trees of R6c and R7 are identical (diff -r, empty), differing only in the seam macros
+  that the build options set. DWARF build paths (comp_dir) differ, which changes the library and driver bytes.
+
+== E7-38 (cont9): U82 exception count is 0 (U85) ==
+  Basis as in U85 (a)-(d); the pre-registration header of REGISTRY_S4_PRE_R7_M3.tsv repeats it. The 177 + 25 points are not expected to
+  reach the RNV1 window. This is a construction argument, not an observation; F-baseline and F2 point comparisons are the runtime check.
+
+== E7-39 (cont9): violation record (U88) ==
+  Table 2 (tool/script event): in the cont9 preparation, a probe (mkdir -p, rm -rf, ar x) was executed directly in bash, not through
+  safe_run.sh. Target: $EV/tmp/probe_strip/ (inside the evidence directory; no write outside the repository). Not saved as a file of record;
+  the directory is kept (no deletion). Table 1 (write outside the repository): none.
+
+== E7-40 (cont9): correction of U85 basis (b) ==
+  U85 (b) as first written said "exec, plan, plancall act only when arm is 1 or 2 (inject_r4_plan.cpp:79-100)". Checked against the source
+  (cont9 preparation, read-only): exec is injected at the entry of __wrap__Z13fft_plan_execP12tag_fft_plan (:602-612), returns 1 before the real
+  execution, and does not use malloc or arm. plan and plancall set arm=1 only inside __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i (:583-601)
+  and inject only in __wrap_malloc while arm==1 (:79-100). arm=2 is set only in the real fft_plan_exec (:613-615) and affects only the
+  scratch mode (:95-100), which the 177 points do not use. The corrected basis is written in the header of REGISTRY_S4_PRE_R7_M3.tsv.
+  The count 0 is unchanged: none of the four requests can reach pattern_generate_flow_field.
+
+== E7-41 (cont9): compile-option check (M3 section 2.1) ==
+  BUILD_OPTION_DIFF_R7_M3.txt (script build_option_diff_r7.sh, under safe_run): for G5 (R5 dbg F vs R7 F-dbg) and G6 (R6c seamF and
+  fmmret-F vs R7 seamF-F and fmmret-F), the g++ -c command lines of the build logs (12 per library), with absolute path prefixes removed,
+  are identical: diff_lines 0 in each of the three comparisons. Compile-option differences: 0 items (DWARF comp_dir path is not a compile option).
+
+== E7-42 (cont9): F2-tree G5/G6 drivers and historical comparison scope ==
+  F2 is not a historical tree; R5 and R6c contain no F2 driver or library. The F2 G5 driver (r6bstate-F2-dbg, linked by link_drivers_s4r7.sh,
+  listed in DRIVERS_R7.tsv) and the F2 G6
+  drivers (link_r6b_seam_r7_f2.sh, DRIVER_R6B_SEAM_R7_F2.tsv) have no historical hash to compare with. The strip/mask method (U84, U87) therefore
+  applies to F only. F2 is checked by the point-by-point comparison with the F baseline (m3f1) and with the historical expectation (U82),
+  not by a historical binary comparison.

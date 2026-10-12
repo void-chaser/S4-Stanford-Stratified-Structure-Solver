@@ -1,0 +1,30 @@
+# LINEMAP_M3_R7.tsv -- P05-S4 R7 cont9 (M3): gdb breakpoint anchors of the G5/G6 state scripts and their F -> F2 line map.
+# Written by the executor (read-only checks: grep, git grep, git show, git diff).  F = 1c11905 (S4 4a6f649...), F2 = a07b5ac (S4 e124925...).
+# F -> F2 diff of S4/: S4/S4_internal.h (1 comment line) and S4/pattern/pattern.c (12 hunks); no other file in S4/.
+#
+# Part A: every breakpoint in the G5/G6 scripts.  kind: FUNC = function-name breakpoint; FILE_LINE = file:line breakpoint.
+kind	script	breakpoint	definition	F_line	F2_line	status
+FUNC	r6c_state_gdb.py (R6BProbe, class R6BProbe)	r6_probe (noinline probe in the driver)	driver_r6b_state.cpp:73	73	73	symbol; driver source identical F and F2 (no file of the driver changed)
+FUNC	r6c_state_gdb.py (R6BClmTrace)	Simulation_ComputeLayerModes	S4/S4.cpp (declaration line 23 in both trees)	23	23	symbol; S4.cpp identical in F and F2
+FUNC	r6c_state_gdb.py (R6CReqTrace)	Simulation_GetLayerSolution	S4/S4.cpp (declaration line 32 in both trees)	32	32	symbol; S4.cpp identical in F and F2
+FUNC	r6c_seam_gdb.gdb	S4_Simulation_GetFieldPlane	S4/S4.cpp:4210 (definition in both trees)	4210	4210	symbol; S4.cpp identical in F and F2
+# FILE_LINE breakpoints in r6c_state.gdb, r6c_state_gdb.py, r6c_seam_gdb.gdb, run_r6c_seam_gdb.py, r6c2_seam_state.py: 0.
+#   (grep for "break <file>:<line>" and gdb.Breakpoint(...:<line>) finds none in these files.
+#    The only file:line breakpoints in testing/d003/stage_s4 are fmm_FFT.cpp:90 and fmm_kottke.cpp:94 in r6_plan14_caller.gdb, which G5/G6 do not use.)
+# Consequence: no anchor is in pattern.c, so the F -> F2 line change in pattern.c cannot move a G5/G6 breakpoint.
+#
+# Part B: pattern.c malloc sites (the U38 list).  F2 number = F number + sum over diff hunks that end before the line of (new count - old count).
+# Lines inside a hunk (1481, 1660) are matched by content (same statement, same variable).  Each row is checked against the content of both trees.
+F_line	F2_line	function (F2)	mapping rule	content check (F tree / F2 tree)
+415	415	shape_get_intersection_area_quad	no hunk before 415	malloc tri / malloc tri
+528	528	shape_get_intersection_area	no hunk before 528	malloc tri / malloc tri
+806	806	pattern_get_containment_tree	no hunk before 806	malloc area / malloc area
+1164	1164	fprint_double (called from fprint_spmatrix)	no hunk before 1164	malloc target / malloc target
+1251	1253	cg	hunks -1245 (+2) before it	work = malloc 4*n / work = malloc 4*n
+1477	1489	pattern_generate_flow_field_rect	hunks before 1477 (new-old): -1245 (+2), -1252 (+5), -1273 (0), -1319 (+1), -1327 (+3), -1402 (+1), -1404 (0); sum +12; 1477+12 = 1489	work = malloc N2*(5+2) / same
+1481	1499	pattern_generate_flow_field_rect	inside the hunk -1478,5 +1490,15 (the iwork declaration line is rewritten as an assignment)	iwork = malloc N2*4 / same statement, declaration moved to top
+1656	1679	pattern_generate_flow_field_tri	hunks before 1656: the 7 hunks above (sum +12), -1478,5 +1490,15 (+10), -1621 +1643,2 (+1); sum +23; 1656+23 = 1679	work = malloc N3*(11+2) / same
+1660	1689	pattern_generate_flow_field_tri	inside the hunk -1657,5 +1680,15 (iwork declaration rewritten)	iwork = malloc N3*10 / same statement
+#
+# The F2 numbers above were checked by reading both trees at those line numbers (awk NR==...).  The mapping was computed by a
+# hunk-offset script on the unified diff (U0), not by estimation.

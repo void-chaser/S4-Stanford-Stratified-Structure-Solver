@@ -1,0 +1,410 @@
+# DRYRUN_M3_R7.txt -- P05-S4 R7 cont9 M3 dry-run (environment of each run, derived independently).
+# Derived environment: from the historical rule and the request string (run_r6c_state.py / run_r6c_seam_state.py),
+# not from the M3 pre-registration row.  The check compares the derived environment with the historical table columns
+# (REGISTRY_S4_PRE_R6b_STATE_v2.tsv for G5: nth, route, twice; REGISTRY_S4_PRE_R6c_SEAM.tsv for G6: inj_call, route).
+group	tree	point_id	env_derived	check	note
+G5	F	M-once-closed1d-malloc-1	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-closed1d-malloc-1	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-closed2d-malloc-1	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-closed2d-malloc-1	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-experimental-malloc-1	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-experimental-malloc-1	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-fft-exec-1	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-fft-exec-1	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-fft-exec-2	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-fft-exec-2	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-fft-exec-3	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-fft-exec-3	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-fft-exec-4	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-fft-exec-4	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-fft-exec-5	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5	OK	M3 row matches historical row
+G5	F2	M-once-fft-exec-5	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5	OK	M3 row matches historical row
+G5	F	M-once-fft-malloc-1	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-fft-malloc-1	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-fft-malloc-2	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-fft-malloc-2	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-fft-plan-1	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-fft-plan-1	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-fft-plan-2	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-fft-plan-2	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-jones-exec-1	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-jones-exec-1	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-jones-exec-2	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-jones-exec-2	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-jones-exec-3	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-jones-exec-3	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-jones-exec-4	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-jones-exec-4	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-jones-malloc-1	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-jones-malloc-1	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-jones-malloc-2	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-jones-malloc-2	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-jones-malloc-3	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-jones-malloc-3	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-jones-malloc-4	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-jones-malloc-4	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-jones-plan-1	FMM_MODE=jones;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-jones-plan-1	FMM_MODE=jones;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-kottke-exec-1	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-kottke-exec-1	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-kottke-exec-2	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-kottke-exec-2	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-kottke-exec-3	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-kottke-exec-3	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-kottke-exec-4	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-kottke-exec-4	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-kottke-exec-5	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5	OK	M3 row matches historical row
+G5	F2	M-once-kottke-exec-5	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5	OK	M3 row matches historical row
+G5	F	M-once-kottke-malloc-1	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-kottke-malloc-1	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-kottke-plan-1	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-kottke-plan-1	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-kottke-plan-2	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-kottke-plan-2	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-nv-exec-1	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-nv-exec-1	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-nv-exec-2	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-nv-exec-2	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-nv-exec-3	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-nv-exec-3	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-nv-exec-4	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-nv-exec-4	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-nv-malloc-1	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-nv-malloc-1	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-nv-malloc-2	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-nv-malloc-2	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-nv-malloc-3	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-nv-malloc-3	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-nv-malloc-4	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-nv-malloc-4	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-nv-plan-1	FMM_MODE=nv;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-nv-plan-1	FMM_MODE=nv;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-vl-exec-1	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-vl-exec-1	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-vl-exec-2	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-vl-exec-2	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-vl-exec-3	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-vl-exec-3	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-vl-exec-4	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-vl-exec-4	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-vl-malloc-1	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-vl-malloc-1	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-once-vl-malloc-2	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F2	M-once-vl-malloc-2	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2	OK	M3 row matches historical row
+G5	F	M-once-vl-malloc-3	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F2	M-once-vl-malloc-3	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3	OK	M3 row matches historical row
+G5	F	M-once-vl-malloc-4	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F2	M-once-vl-malloc-4	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4	OK	M3 row matches historical row
+G5	F	M-once-vl-plan-1	FMM_MODE=vl;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F2	M-once-vl-plan-1	FMM_MODE=vl;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1	OK	M3 row matches historical row
+G5	F	M-twice-closed1d-malloc-1	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-closed1d-malloc-1	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-closed1d-malloc-2	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-closed1d-malloc-2	FMM_MODE=closed1d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-closed2d-malloc-1	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-closed2d-malloc-1	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-closed2d-malloc-2	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-closed2d-malloc-2	FMM_MODE=closed2d;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-experimental-malloc-1	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-experimental-malloc-1	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-experimental-malloc-2	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-experimental-malloc-2	FMM_MODE=experimental;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-1	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-1	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-12	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=12;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-12	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=12;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-13	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=13;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-13	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=13;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-14	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=14;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-14	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=14;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-15	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=15;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-15	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=15;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-16	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=16;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-16	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=16;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-2	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-2	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-3	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-3	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-4	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-4	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-exec-5	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-exec-5	FMM_MODE=fft;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-malloc-1	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-malloc-1	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-malloc-2	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-malloc-2	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-malloc-3	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-malloc-3	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-malloc-4	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-malloc-4	FMM_MODE=fft;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-1	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-1	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-2	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-2	FMM_MODE=fft;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-exec-1	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-exec-1	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-exec-2	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-exec-2	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-exec-3	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-exec-3	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-exec-4	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-exec-4	FMM_MODE=jones;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-1	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-1	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-2	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-2	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-3	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-3	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-4	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-4	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-5	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-5	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-6	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-6	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-malloc-7	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-malloc-7	FMM_MODE=jones;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-jones-plan-1	FMM_MODE=jones;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-jones-plan-1	FMM_MODE=jones;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-1	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-1	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-12	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=12;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-12	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=12;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-13	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=13;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-13	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=13;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-14	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=14;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-14	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=14;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-15	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=15;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-15	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=15;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-16	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=16;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-16	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=16;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-2	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-2	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-3	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-3	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-4	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-4	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-exec-5	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-exec-5	FMM_MODE=kottke;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-malloc-1	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-malloc-1	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-malloc-2	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-malloc-2	FMM_MODE=kottke;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-1	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-1	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-2	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-2	FMM_MODE=kottke;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-exec-1	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-exec-1	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-exec-2	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-exec-2	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-exec-3	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-exec-3	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-exec-4	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-exec-4	FMM_MODE=nv;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-1	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-1	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-2	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-2	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-3	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-3	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-4	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-4	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-5	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-5	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-6	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-6	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-malloc-7	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-malloc-7	FMM_MODE=nv;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-nv-plan-1	FMM_MODE=nv;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-nv-plan-1	FMM_MODE=nv;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-exec-1	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-exec-1	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-exec-2	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-exec-2	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-exec-3	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-exec-3	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-exec-4	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-exec-4	FMM_MODE=vl;S4FMM_INJECT=exec;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-1	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-1	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-2	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-2	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=2;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-3	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-3	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=3;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-4	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-4	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=4;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-5	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-5	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=5;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-6	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-6	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=6;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-malloc-7	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-malloc-7	FMM_MODE=vl;S4FMM_INJECT=s4malloc;S4FMM_NG=9;S4FMM_NTH=7;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-vl-plan-1	FMM_MODE=vl;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-vl-plan-1	FMM_MODE=vl;S4FMM_INJECT=plan;S4FMM_NG=9;S4FMM_NTH=1;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-once-fft-plan-3	FMM_MODE=fft;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-fft-plan-3	FMM_MODE=fft;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-once-fft-plan-4	FMM_MODE=fft;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-fft-plan-4	FMM_MODE=fft;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-once-fft-plan-5	FMM_MODE=fft;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-fft-plan-5	FMM_MODE=fft;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-once-kottke-plan-3	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-kottke-plan-3	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-once-kottke-plan-4	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-kottke-plan-4	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-once-kottke-plan-5	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M-once-kottke-plan-5	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-3	FMM_MODE=fft;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-3	FMM_MODE=fft;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-4	FMM_MODE=fft;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-4	FMM_MODE=fft;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-5	FMM_MODE=fft;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-5	FMM_MODE=fft;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-12	FMM_MODE=fft;S4FMM_INJECT=plancall:12:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-12	FMM_MODE=fft;S4FMM_INJECT=plancall:12:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-13	FMM_MODE=fft;S4FMM_INJECT=plancall:13:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-13	FMM_MODE=fft;S4FMM_INJECT=plancall:13:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-14	FMM_MODE=fft;S4FMM_INJECT=plancall:14:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-14	FMM_MODE=fft;S4FMM_INJECT=plancall:14:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-15	FMM_MODE=fft;S4FMM_INJECT=plancall:15:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-15	FMM_MODE=fft;S4FMM_INJECT=plancall:15:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-fft-plan-16	FMM_MODE=fft;S4FMM_INJECT=plancall:16:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-fft-plan-16	FMM_MODE=fft;S4FMM_INJECT=plancall:16:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-3	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-3	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-4	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-4	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-5	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-5	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-12	FMM_MODE=kottke;S4FMM_INJECT=plancall:12:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-12	FMM_MODE=kottke;S4FMM_INJECT=plancall:12:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-13	FMM_MODE=kottke;S4FMM_INJECT=plancall:13:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-13	FMM_MODE=kottke;S4FMM_INJECT=plancall:13:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-14	FMM_MODE=kottke;S4FMM_INJECT=plancall:14:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-14	FMM_MODE=kottke;S4FMM_INJECT=plancall:14:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-15	FMM_MODE=kottke;S4FMM_INJECT=plancall:15:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-15	FMM_MODE=kottke;S4FMM_INJECT=plancall:15:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M-twice-kottke-plan-16	FMM_MODE=kottke;S4FMM_INJECT=plancall:16:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M-twice-kottke-plan-16	FMM_MODE=kottke;S4FMM_INJECT=plancall:16:1;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-once-fft-plan-1-F	FMM_MODE=fft;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-fft-plan-1-F	FMM_MODE=fft;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-fft-plan-2-F	FMM_MODE=fft;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-fft-plan-2-F	FMM_MODE=fft;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-fft-plan-3-F	FMM_MODE=fft;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-fft-plan-3-F	FMM_MODE=fft;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-fft-plan-4-F	FMM_MODE=fft;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-fft-plan-4-F	FMM_MODE=fft;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-fft-plan-5-F	FMM_MODE=fft;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-fft-plan-5-F	FMM_MODE=fft;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-jones-plan-1-F	FMM_MODE=jones;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-jones-plan-1-F	FMM_MODE=jones;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-kottke-plan-1-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-kottke-plan-1-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-kottke-plan-2-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-kottke-plan-2-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-kottke-plan-3-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-kottke-plan-3-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-kottke-plan-4-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-kottke-plan-4-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-kottke-plan-5-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-kottke-plan-5-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-nv-plan-1-F	FMM_MODE=nv;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-nv-plan-1-F	FMM_MODE=nv;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-once-vl-plan-1-F	FMM_MODE=vl;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F2	M2-once-vl-plan-1-F	FMM_MODE=vl;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-1-F	FMM_MODE=fft;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-1-F	FMM_MODE=fft;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-2-F	FMM_MODE=fft;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-2-F	FMM_MODE=fft;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-3-F	FMM_MODE=fft;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-3-F	FMM_MODE=fft;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-4-F	FMM_MODE=fft;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-4-F	FMM_MODE=fft;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-5-F	FMM_MODE=fft;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-5-F	FMM_MODE=fft;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-12-F	FMM_MODE=fft;S4FMM_INJECT=plancall:12:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-12-F	FMM_MODE=fft;S4FMM_INJECT=plancall:12:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-13-F	FMM_MODE=fft;S4FMM_INJECT=plancall:13:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-13-F	FMM_MODE=fft;S4FMM_INJECT=plancall:13:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-14-F	FMM_MODE=fft;S4FMM_INJECT=plancall:14:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-14-F	FMM_MODE=fft;S4FMM_INJECT=plancall:14:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-15-F	FMM_MODE=fft;S4FMM_INJECT=plancall:15:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-15-F	FMM_MODE=fft;S4FMM_INJECT=plancall:15:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-fft-plan-16-F	FMM_MODE=fft;S4FMM_INJECT=plancall:16:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-fft-plan-16-F	FMM_MODE=fft;S4FMM_INJECT=plancall:16:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-jones-plan-1-F	FMM_MODE=jones;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-jones-plan-1-F	FMM_MODE=jones;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-1-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-1-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-2-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-2-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:2:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-3-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-3-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:3:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-4-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-4-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:4:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-5-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-5-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:5:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-12-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:12:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-12-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:12:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-13-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:13:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-13-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:13:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-14-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:14:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-14-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:14:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-15-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:15:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-15-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:15:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-kottke-plan-16-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:16:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-kottke-plan-16-F	FMM_MODE=kottke;S4FMM_INJECT=plancall:16:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-nv-plan-1-F	FMM_MODE=nv;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-nv-plan-1-F	FMM_MODE=nv;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F	M2-twice-vl-plan-1-F	FMM_MODE=vl;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G5	F2	M2-twice-vl-plan-1-F	FMM_MODE=vl;S4FMM_INJECT=plancall:1:2;S4FMM_NG=9;S4FMM_TWICE=slab	OK	M3 row matches historical row
+G6	F	R4-SI01-F	FMM_MODE=fft;S4FMM_INJECT=linearsolve:1:1:info;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-SI01-F	FMM_MODE=fft;S4FMM_INJECT=linearsolve:1:1:info;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-SI02-F	FMM_MODE=kottke;S4FMM_INJECT=linearsolve:2:1:info;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-SI02-F	FMM_MODE=kottke;S4FMM_INJECT=linearsolve:2:1:info;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-AL18-F	FMM_MODE=kottke;S4FMM_INJECT=kottke_alloc:31:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-AL18-F	FMM_MODE=kottke;S4FMM_INJECT=kottke_alloc:31:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE01-F	FMM_MODE=experimental;S4FMM_INJECT=fmmret:150:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE01-F	FMM_MODE=experimental;S4FMM_INJECT=fmmret:150:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE02-F	FMM_MODE=kottke;S4FMM_INJECT=fmmret:151:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE02-F	FMM_MODE=kottke;S4FMM_INJECT=fmmret:151:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE03-F	FMM_MODE=fft;S4FMM_INJECT=fmmret:152:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE03-F	FMM_MODE=fft;S4FMM_INJECT=fmmret:152:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE04-F	FMM_MODE=fftjones;S4FMM_INJECT=fmmret:153:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE04-F	FMM_MODE=fftjones;S4FMM_INJECT=fmmret:153:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE05-F	FMM_MODE=fftnv;S4FMM_INJECT=fmmret:154:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE05-F	FMM_MODE=fftnv;S4FMM_INJECT=fmmret:154:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE06-F	FMM_MODE=fftvl;S4FMM_INJECT=fmmret:155:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE06-F	FMM_MODE=fftvl;S4FMM_INJECT=fmmret:155:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE07-F	FMM_MODE=closed1d;S4FMM_INJECT=fmmret:159:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE07-F	FMM_MODE=closed1d;S4FMM_INJECT=fmmret:159:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE08-F	FMM_MODE=jones;S4FMM_INJECT=fmmret:156:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE08-F	FMM_MODE=jones;S4FMM_INJECT=fmmret:156:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE09-F	FMM_MODE=nv;S4FMM_INJECT=fmmret:157:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE09-F	FMM_MODE=nv;S4FMM_INJECT=fmmret:157:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-FE10-F	FMM_MODE=vl;S4FMM_INJECT=fmmret:158:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-FE10-F	FMM_MODE=vl;S4FMM_INJECT=fmmret:158:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CL01-F	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:134:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CL01-F	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:134:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CL02-F	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:138:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CL02-F	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:138:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CL03-F	FMM_MODE=closed2d;S4FMM_INJECT=linearsolve_null2:144:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CL03-F	FMM_MODE=closed2d;S4FMM_INJECT=linearsolve_null2:144:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CL04-F	FMM_MODE=tensor;S4FMM_INJECT=linearsolve_null2:244:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CL04-F	FMM_MODE=tensor;S4FMM_INJECT=linearsolve_null2:244:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-PJ01-F	FMM_MODE=jones;S4FMM_INJECT=linearsolve_null2:375:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-PJ01-F	FMM_MODE=jones;S4FMM_INJECT=linearsolve_null2:375:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-PN01-F	FMM_MODE=nv;S4FMM_INJECT=linearsolve_null2:265:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-PN01-F	FMM_MODE=nv;S4FMM_INJECT=linearsolve_null2:265:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-PV01-F	FMM_MODE=vl;S4FMM_INJECT=linearsolve_null2:273:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-PV01-F	FMM_MODE=vl;S4FMM_INJECT=linearsolve_null2:273:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CLM1-F	FMM_MODE=fft;S4FMM_INJECT=alloc:21:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CLM1-F	FMM_MODE=fft;S4FMM_INJECT=alloc:21:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CLM2-F	FMM_MODE=fft;S4FMM_INJECT=alloc:22:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CLM2-F	FMM_MODE=fft;S4FMM_INJECT=alloc:22:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CLM3-F	FMM_MODE=fft;S4FMM_INJECT=alloc:23:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CLM3-F	FMM_MODE=fft;S4FMM_INJECT=alloc:23:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-CLM4-F	FMM_MODE=fft;S4FMM_INJECT=alloc:24:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-CLM4-F	FMM_MODE=fft;S4FMM_INJECT=alloc:24:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F	R4-ACF1-F	FMM_MODE=jones;S4FMM_INJECT=alloc:25:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+G6	F2	R4-ACF1-F	FMM_MODE=jones;S4FMM_INJECT=alloc:25:1;S4FMM_NG=9	OK	M3 row matches historical seam row
+# summary: ok=404 fail=0 unparsed=0 ; per (tree,group): F/G5=177, F/G6=25, F2/G5=177, F2/G6=25
