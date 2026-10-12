@@ -1,0 +1,88 @@
+ERRATA_6b -- P05-S4 R6b (sub-round of R6).  Written at the R6b gate, BEFORE any R6b injection, gdb or judgement run.
+Numbering continues from ERRATA_6 (E6-1 .. E6-8).  ERRATA_6.txt, P05_S4R6_REPORT.md and all earlier files are NOT changed.
+Scope: records user rulings and corrections of facts only; does not repair S4/.  This round does not declare any stage complete or signed off.
+
+== U7-U12 USER RULINGS (task brief of R6b, in force for R6b) ==
+U7  R6-2 full run (all points) is completed in R6b.
+U8  I2 uses E6-8 option 1 (only the failed layer must have modes==NULL; other layers that finished earlier may keep modes, provided conditions a/b/c of E6-8 hold).
+U9  Dual-target injection (two failures in one run) and I7 (sanitizer) are DEFERRED in R6b.  Marked "DEFERRED (U9)".
+U10 R6-4 (red-point ledger) is done in R6b.  R6-3 (RNV1 injection) is OPTIONAL: started only after sections 2-5 of the brief are complete and committed; otherwise DEFERRED.
+U11 The wording of comment S4_internal.h:263 is fixed later, in the S3 closing repair round.  In R6b it is recorded only as HARNESS_OR_PROCESS (documentation wording).  S4/ is not changed.
+U12 STATE.md section 1 records "R6b opening baseline HEAD = 20b3411" and the line "closing commit = the last commit that modifies STATE.md"; the opening gate checks HEAD and STATE.md's last-modifying commit.
+
+== E6b-1 [CORRECTION of the fact premise of E6-8; this is the E6-9 record requested by U8] ==
+E6-8 states as premise: "layers 0 and 2 are installed" at the failure instant (probe closed1d malloc NTH 1, route once, tree F).
+This premise is WRONG.  The single point probe (R6 checkpoints/p05/evidence/p05-s4r6/state/probe/M-once-closed1d-malloc-1__F.out) shows:
+  layer 0 modes_null 0 (installed); layer 1 (Slab) modes_null 1; layer 2 modes_null 1.
+Only layer 0 is installed.  Layers 1 and 2 are both modes_null 1.  (R6 report 2.2 wrote "layers 0 and 2 keep their modes"; that is also wrong for layer 2.)
+Effect: the user ruling U8 (option 1) and its conditions a/b/c are NOT changed.  Only the premise is corrected.  Under option 1 the layer-2 state (modes_null 1, not installed) is simply the state of a layer that was not reached before the failure; it is not a violation.
+ERRATA_6.txt and P05_S4R6_REPORT.md are not edited; the correction is recorded here.
+The wording mismatch of S4_internal.h:263 is recorded as HARNESS_OR_PROCESS (documentation wording) in the ledger.
+
+== E6b-2 [CORRECTION of E6-6 and of the driver comment, from the R6 build record] ==
+(a) E6-6 says "inject_r6.cpp (copied from inject_r4_plan.cpp, extended)".  No file inject_r6.cpp exists.  The R6 build links inject_r4_plan.cpp, not inject_r6.cpp.
+    Evidence: checkpoints/p05/evidence/p05-s4r6/safe_run.log, entry 15 (2026-10-12T05:12:34Z): the g++ command line ends with "driver_r6_state.cpp" "inject_r4_plan.cpp" and -L .../p05-s4r5/dbg/trees/F/build -lS4.
+    The R6 build tree is the R5 debug tree (checkpoints/p05/evidence/p05-s4r5/dbg/trees/F), not a new export.  Verified in R6b by r6b_tree_verify.py: 70/70 files SAME with git ls-tree -r 1c11905 S4 (TREE_VERIFY_R6b.tsv).
+(b) Driver comment in driver_r6_state.cpp (R6) says "S0-S3".  The snapshots are k = 0..4, i.e. FIVE snapshots (0 before call1; 1 after call1; 2 after destroy; 3 after call2; 4 after call3).
+    The R6b driver (driver_r6b_state.cpp) writes this down in its header.  The R6 driver is not edited.
+(c) Injector for R6b: inject_r4_plan.cpp (unchanged, the same file as R4/R5/R6).  R6b adds no new injector for R6b-2..R6b-3.
+
+== E6b-3 [CORRECTIONS of the R6 report, recorded here only] ==
+(a) registries/s4r6 holds 9 entries (checked by ls in R6b): 8 data files (ERRATA_6.txt, GATE_R6.txt, MAP_R6_R3.tsv, REGISTRY_S4_PRE_R6_TWICE.tsv, REGISTRY_S4_PRE_R6_TWICE.sha256, REGISTRY_S4_PRE_R6_TWICE_TIMESTAMP_UTC.txt, RESULTS_R6_TWICE_pass1.tsv, RESULTS_R6_TWICE_pass2.tsv) and 1 manifest (SHA256SUMS.txt).  The R6 report's count of "11" is wrong; the correct count is 9 entries.
+(b) R6 report section 7 says "SHA256SUMS (evidence directory) ... not completed".  This is NOT true: checkpoints/p05/evidence/p05-s4r6/SHA256SUMS.txt exists (regenerated after the R6 commit, safe_run.log line 24) and registries/s4r6/SHA256SUMS.txt exists (9 lines, verified in R6b by sha256sum -c).
+(c) STATE.md section 3 item 1 says "pending user ruling" for plan twice NTH 12-16.  This is out of date: user ruling U1 was given (ERRATA_6 E6-1), and the R6-1 result is recorded in the same STATE item.  Corrected in R6b STATE.md (section 3).
+
+== E6b-4 [FIELD CACHE BLIND SPOT, from R6 brief 2.3(d)] ==
+field_cache is read or written ONLY in fmm_PolBasisJones.cpp, fmm_PolBasisVL.cpp, fmm_PolBasisNV.cpp (grep, R6b):
+  Simulation_GetCachedField  : fmm_PolBasisJones.cpp:135, fmm_PolBasisVL.cpp:91, fmm_PolBasisNV.cpp:92
+  Simulation_AddFieldToCache : fmm_PolBasisJones.cpp:340, fmm_PolBasisVL.cpp:237, fmm_PolBasisNV.cpp:230
+  Definitions (S4.cpp): GetCachedField 3991, AddFieldToCache 4005, InvalidateFieldCache 3980 (the free loop at 3982-3988).
+Consequence: the cache invariant (I3) is judged ONLY for the modes that call these functions: jones, nv, vl, fftjones, fftnv, fftvl (the PolBasis modes; the driver mode names fftjones/fftnv/fftvl do use PolBasis).
+For fft, kottke, closed1d, closed2d, experimental, tensor the cache invariant is N/A (the code path does not read or write field_cache) and is NOT counted as HOLD.
+
+== E6b-5 [SCOPE NOTE on the solved semantics, I4] ==
+S4.cpp: sol->solved is an int array indexed by layer index i (Solution_.solved, S4.cpp:195-197; allocated 1756; zeroed 1764).
+Writers of solved[] (verified by grep and by reading the lines):
+  - S4.cpp:2012  (inside the full-solve branch, after a successful SolveInterior over the whole stack): sets solved[i]=1 for ALL i = 0..n_layers-1.
+  - S4.cpp:2225  (solution_cleanup of Simulation_ComputeLayerSolution): sets solved[which_layer]=1 ONLY if error == 0.  which_layer is the index of the requested layer (see 2195-2200).
+  - Simulation_DestroyLayerSolutions (S4.cpp:2855-2868) sets solved[i]=0 for all i.  Not called by the driver.
+Simulation_DestroyLayerModes (S4_Simulation_DestroyLayerModes, S4.cpp:1364-1372) clears layer modes but does NOT touch solved[].  The twice route (S4FMM_TWICE=slab) calls it for layer 1.
+Consequence for I4: "request layer solved == 0" means solved[which_layer] == 0 at k_fail, where which_layer is the requested layer of the failing call.  The code sets it to 1 only on success (error == 0), so at a failing call it stays 0 unless an EARLIER successful solve already set it.  Therefore I4 is checked as solved[req] == 0 at k_fail; the request layer for the driver geometry is the layer containing xyz0[2] = 0.05 (found by thickness at S4.cpp:4288-4300; the driver uses layer index 1, Slab, with thickness 0.5 at S4.cpp setup; the layer index is re-read from the state probe, not assumed).
+Caveat: at k_fail an EARLIER full solve (the 2012 branch) would set solved[i]=1 for all layers.  Rule (fixed in advance, no re-definition): if at k_fail solved[req] == 1, the point is judged I4 VIOLATED and the case is reported to the user (STOP condition of the brief: "I4 semantics does not match the definition").  No point is re-classified to make I4 pass.
+
+== E6b-6 [USER RULING U13; PLANNER ERROR in brief section 4, corrected; status INFLUENCED] Snapshot indices follow inj_call, not route ==
+Planner error: brief section 4 fixes k_fail = "once 1 / twice 3" and k_retry = "once 3 / twice 4" by ROUTE.  That is wrong for the 66
+points with route twice and inj_call = 1: their failing call is call1, so the first snapshot after the failure is 1, not 3.
+Facts (from MAP_R6b_ALL.tsv, columns route and inj_call; counted in R6b): twice & inj_call=1: 66 points; once & inj_call=2: 0;
+inj_call >= 3: 0.  (The R6 probe used inj_call=1 for a once point; this agrees.)
+User ruling U13 (recorded here verbatim in substance):
+1. Snapshot indices follow inj_call, not route.  The retry call = inj_call + 1.
+     k_fail     = snapshot after the call inj_call:   inj_call=1 -> 1;  inj_call=2 -> 3
+     k_preretry = last snapshot before the retry call: inj_call=1 -> 2;  inj_call=2 -> 3
+     k_retry    = snapshot after the retry call:       inj_call=1 -> 3;  inj_call=2 -> 4
+   Any point with inj_call >= 3, or a once-route point with inj_call = 2, is a STOP (report, do not infer).
+2. Which snapshot each invariant uses:
+   I1, I2, I3, I4: k_fail.
+   I5: reference snapshot is k_preretry (not k_fail).  Within the retry interval ComputeLayerModes is entered only for layers with
+       modes == NULL at k_preretry, at most once per layer; the retry rc == 0.  For twice & inj_call=1, layers destroyed by
+       DestroyLayerModes between k_fail and k_preretry are listed separately in the note.
+   I6: the output of the retry call is compared byte-for-byte with the output of the SAME call number in a fresh no-injection control run.
+3. Driver change (replaces S4FMM_DUMP_RETRY): the driver writes the output of call1, call2, call3 to files call1.txt, call2.txt, call3.txt
+   in the directory named by S4FMM_DUMP_DIR (must be under $EV).  The judge selects the file as inj_call+1.
+   The legacy S4FMM_DUMP (call3 only) is kept unchanged.  The driver file is driver_r6b_state.cpp (to be edited accordingly; it has NOT been run for R6b judgement yet).
+4. Pre-registration: if REGISTRY_S4_PRE_R6b_STATE.tsv is written, it carries columns inj_call, k_fail, k_preretry, k_retry, retry_call.
+   If it has already been written and hashed, the original is NOT edited; a new file REGISTRY_S4_PRE_R6b_STATE_v2.tsv is written and this errata records why v1 is void.
+   (At the time of U13 no pre-registration file exists in p05-s4r6b; this is recorded to avoid doubt.)
+5. The map counts by (route, inj_call) are written in the pre-registration header and in the report.  twice & inj_call=1 must be 66; if not, STOP.  (Verified: 66.)
+Consequence for the earlier R6b texts: section 4 of the brief (k_fail/k_retry by route) is superseded by U13 for every point.  The DRIVER header (driver_r6b_state.cpp) still describes S4FMM_DUMP_RETRY and must be updated before any run (done in the same R6b step, before the pre-registration is written).
+
+== E6b-7 [SEAM 25 POINTS: UNJUDGED in R6b for now; brief section 3.4 path] ==
+R4 seam library (checkpoints/p05/evidence/p05-s4r4/seam/F-seamF/build/libS4.a and the other F seam libraries) has NO debug information:
+readelf --debug-dump=info reports 0 compilation units (R6b check, read-only).  Without debug info gdb cannot read LayerModes/FieldCache
+state for these 25 points, and their inj_call (which call of GetFieldPlane the injection lands in) is NOT in the R4 results table
+(R4 seam rows have no inj_call; the map records NA).  Brief 3.4 requires a -O0 -g rebuild (run_r6b_seam_dbg_build.sh) and an
+equivalence check (25 rc and classes equal to R4) BEFORE judgement.  That rebuild is not yet done in this round.
+Status in the pre-registration: the 25 seam points are NOT in REGISTRY_S4_PRE_R6b_STATE.tsv (177 judgeable points).  They are
+UNJUDGED for R6b, with the reason above, and are NOT counted as HOLD.  They are added by a later pre-registration (v2 or a new file,
+written before the rebuild's judgement run) after the equivalence check passes.  If the equivalence check fails, they stay UNJUDGED.
+Counts: judgeable 177 (R3 119 + R4PC 22 + R5M2 36) + UNJUDGED seam 25 = 202 (MAP_R6b_ALL.tsv).

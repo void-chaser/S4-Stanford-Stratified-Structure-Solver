@@ -1,0 +1,205 @@
+# MAP_R6b_ALL.tsv -- P05-S4 R6b-2 point map (202 points, tree F).  Sources and line numbers in columns.
+# obs_F_source / expect_F_source are the values of the SOURCE table (not a judgement of R6b).
+point_id	source	source_file	source_line	tree	route	mode	category	nth	nth_K	M	request	inj_call	twice	expect_F_source	obs_F_source	r1_id
+M-once-closed1d-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	4	F	once	closed1d	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-closed2d-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	5	F	once	closed2d	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-experimental-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	6	F	once	experimental	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	7	F	once	fft	exec	1			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	8	F	once	fft	exec	2			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	9	F	once	fft	exec	3			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	10	F	once	fft	exec	4			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-exec-5	R3	registries/s4r6/MAP_R6_R3.tsv	11	F	once	fft	exec	5			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	12	F	once	fft	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	13	F	once	fft	malloc	2			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	14	F	once	fft	plan	1			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-plan-2	R3	registries/s4r6/MAP_R6_R3.tsv	15	F	once	fft	plan	2			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	16	F	once	jones	exec	1			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	17	F	once	jones	exec	2			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	18	F	once	jones	exec	3			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	19	F	once	jones	exec	4			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	20	F	once	jones	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	21	F	once	jones	malloc	2			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	22	F	once	jones	malloc	3			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	23	F	once	jones	malloc	4			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-jones-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	24	F	once	jones	plan	1			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	25	F	once	kottke	exec	1			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	26	F	once	kottke	exec	2			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	27	F	once	kottke	exec	3			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	28	F	once	kottke	exec	4			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-exec-5	R3	registries/s4r6/MAP_R6_R3.tsv	29	F	once	kottke	exec	5			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	30	F	once	kottke	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	31	F	once	kottke	plan	1			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-plan-2	R3	registries/s4r6/MAP_R6_R3.tsv	32	F	once	kottke	plan	2			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	33	F	once	nv	exec	1			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	34	F	once	nv	exec	2			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	35	F	once	nv	exec	3			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	36	F	once	nv	exec	4			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	37	F	once	nv	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	38	F	once	nv	malloc	2			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	39	F	once	nv	malloc	3			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	40	F	once	nv	malloc	4			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-nv-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	41	F	once	nv	plan	1			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	42	F	once	vl	exec	1			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	43	F	once	vl	exec	2			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	44	F	once	vl	exec	3			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	45	F	once	vl	exec	4			exec	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	46	F	once	vl	malloc	1			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	47	F	once	vl	malloc	2			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	48	F	once	vl	malloc	3			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	49	F	once	vl	malloc	4			s4malloc	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-vl-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	50	F	once	vl	plan	1			plan	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-closed1d-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	51	F	twice	closed1d	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-closed1d-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	52	F	twice	closed1d	malloc	2			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-closed2d-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	53	F	twice	closed2d	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-closed2d-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	54	F	twice	closed2d	malloc	2			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-experimental-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	55	F	twice	experimental	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-experimental-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	56	F	twice	experimental	malloc	2			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	57	F	twice	fft	exec	1			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-12	R3	registries/s4r6/MAP_R6_R3.tsv	58	F	twice	fft	exec	12			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-13	R3	registries/s4r6/MAP_R6_R3.tsv	59	F	twice	fft	exec	13			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-14	R3	registries/s4r6/MAP_R6_R3.tsv	60	F	twice	fft	exec	14			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-15	R3	registries/s4r6/MAP_R6_R3.tsv	61	F	twice	fft	exec	15			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-16	R3	registries/s4r6/MAP_R6_R3.tsv	62	F	twice	fft	exec	16			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	63	F	twice	fft	exec	2			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	64	F	twice	fft	exec	3			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	65	F	twice	fft	exec	4			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-exec-5	R3	registries/s4r6/MAP_R6_R3.tsv	66	F	twice	fft	exec	5			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	67	F	twice	fft	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	68	F	twice	fft	malloc	2			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	69	F	twice	fft	malloc	3			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	70	F	twice	fft	malloc	4			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	71	F	twice	fft	plan	1			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-2	R3	registries/s4r6/MAP_R6_R3.tsv	72	F	twice	fft	plan	2			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	73	F	twice	jones	exec	1			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	74	F	twice	jones	exec	2			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	75	F	twice	jones	exec	3			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	76	F	twice	jones	exec	4			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	77	F	twice	jones	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	78	F	twice	jones	malloc	2			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	79	F	twice	jones	malloc	3			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	80	F	twice	jones	malloc	4			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-5	R3	registries/s4r6/MAP_R6_R3.tsv	81	F	twice	jones	malloc	5			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-6	R3	registries/s4r6/MAP_R6_R3.tsv	82	F	twice	jones	malloc	6			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-malloc-7	R3	registries/s4r6/MAP_R6_R3.tsv	83	F	twice	jones	malloc	7			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-jones-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	84	F	twice	jones	plan	1			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	85	F	twice	kottke	exec	1			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-12	R3	registries/s4r6/MAP_R6_R3.tsv	86	F	twice	kottke	exec	12			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-13	R3	registries/s4r6/MAP_R6_R3.tsv	87	F	twice	kottke	exec	13			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-14	R3	registries/s4r6/MAP_R6_R3.tsv	88	F	twice	kottke	exec	14			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-15	R3	registries/s4r6/MAP_R6_R3.tsv	89	F	twice	kottke	exec	15			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-16	R3	registries/s4r6/MAP_R6_R3.tsv	90	F	twice	kottke	exec	16			exec	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	91	F	twice	kottke	exec	2			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	92	F	twice	kottke	exec	3			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	93	F	twice	kottke	exec	4			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-exec-5	R3	registries/s4r6/MAP_R6_R3.tsv	94	F	twice	kottke	exec	5			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	95	F	twice	kottke	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	96	F	twice	kottke	malloc	2			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	97	F	twice	kottke	plan	1			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-2	R3	registries/s4r6/MAP_R6_R3.tsv	98	F	twice	kottke	plan	2			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	99	F	twice	nv	exec	1			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	100	F	twice	nv	exec	2			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	101	F	twice	nv	exec	3			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	102	F	twice	nv	exec	4			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	103	F	twice	nv	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	104	F	twice	nv	malloc	2			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	105	F	twice	nv	malloc	3			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	106	F	twice	nv	malloc	4			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-5	R3	registries/s4r6/MAP_R6_R3.tsv	107	F	twice	nv	malloc	5			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-6	R3	registries/s4r6/MAP_R6_R3.tsv	108	F	twice	nv	malloc	6			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-malloc-7	R3	registries/s4r6/MAP_R6_R3.tsv	109	F	twice	nv	malloc	7			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-nv-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	110	F	twice	nv	plan	1			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-exec-1	R3	registries/s4r6/MAP_R6_R3.tsv	111	F	twice	vl	exec	1			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-exec-2	R3	registries/s4r6/MAP_R6_R3.tsv	112	F	twice	vl	exec	2			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-exec-3	R3	registries/s4r6/MAP_R6_R3.tsv	113	F	twice	vl	exec	3			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-exec-4	R3	registries/s4r6/MAP_R6_R3.tsv	114	F	twice	vl	exec	4			exec	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-1	R3	registries/s4r6/MAP_R6_R3.tsv	115	F	twice	vl	malloc	1			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-2	R3	registries/s4r6/MAP_R6_R3.tsv	116	F	twice	vl	malloc	2			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-3	R3	registries/s4r6/MAP_R6_R3.tsv	117	F	twice	vl	malloc	3			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-4	R3	registries/s4r6/MAP_R6_R3.tsv	118	F	twice	vl	malloc	4			s4malloc	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-5	R3	registries/s4r6/MAP_R6_R3.tsv	119	F	twice	vl	malloc	5			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-6	R3	registries/s4r6/MAP_R6_R3.tsv	120	F	twice	vl	malloc	6			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-malloc-7	R3	registries/s4r6/MAP_R6_R3.tsv	121	F	twice	vl	malloc	7			s4malloc	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-vl-plan-1	R3	registries/s4r6/MAP_R6_R3.tsv	122	F	twice	vl	plan	1			plan	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-plan-3	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	4	F	once	fft	plan		3	1	plancall:3:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-plan-4	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	6	F	once	fft	plan		4	1	plancall:4:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-fft-plan-5	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	8	F	once	fft	plan		5	1	plancall:5:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-plan-3	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	10	F	once	kottke	plan		3	1	plancall:3:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-plan-4	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	12	F	once	kottke	plan		4	1	plancall:4:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-once-kottke-plan-5	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	14	F	once	kottke	plan		5	1	plancall:5:1	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-3	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	16	F	twice	fft	plan		3	1	plancall:3:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-4	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	18	F	twice	fft	plan		4	1	plancall:4:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-5	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	20	F	twice	fft	plan		5	1	plancall:5:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-12	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	22	F	twice	fft	plan		12	1	plancall:12:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-13	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	24	F	twice	fft	plan		13	1	plancall:13:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-14	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	26	F	twice	fft	plan		14	1	plancall:14:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-15	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	28	F	twice	fft	plan		15	1	plancall:15:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-fft-plan-16	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	30	F	twice	fft	plan		16	1	plancall:16:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-3	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	32	F	twice	kottke	plan		3	1	plancall:3:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-4	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	34	F	twice	kottke	plan		4	1	plancall:4:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-5	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	36	F	twice	kottke	plan		5	1	plancall:5:1	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-12	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	38	F	twice	kottke	plan		12	1	plancall:12:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-13	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	40	F	twice	kottke	plan		13	1	plancall:13:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-14	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	42	F	twice	kottke	plan		14	1	plancall:14:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-15	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	44	F	twice	kottke	plan		15	1	plancall:15:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M-twice-kottke-plan-16	R4PC	registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv	46	F	twice	kottke	plan		16	1	plancall:16:1	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-fft-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	4	F	once	fft	plan		1	2	plancall:1:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-fft-plan-2-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	6	F	once	fft	plan		2	2	plancall:2:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-fft-plan-3-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	8	F	once	fft	plan		3	2	plancall:3:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-fft-plan-4-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	10	F	once	fft	plan		4	2	plancall:4:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-fft-plan-5-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	12	F	once	fft	plan		5	2	plancall:5:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-jones-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	14	F	once	jones	plan		1	2	plancall:1:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-kottke-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	16	F	once	kottke	plan		1	2	plancall:1:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-kottke-plan-2-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	18	F	once	kottke	plan		2	2	plancall:2:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-kottke-plan-3-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	20	F	once	kottke	plan		3	2	plancall:3:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-kottke-plan-4-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	22	F	once	kottke	plan		4	2	plancall:4:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-kottke-plan-5-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	24	F	once	kottke	plan		5	2	plancall:5:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-nv-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	26	F	once	nv	plan		1	2	plancall:1:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-once-vl-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	28	F	once	vl	plan		1	2	plancall:1:2	1	-	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	30	F	twice	fft	plan		1	2	plancall:1:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-2-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	32	F	twice	fft	plan		2	2	plancall:2:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-3-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	34	F	twice	fft	plan		3	2	plancall:3:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-4-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	36	F	twice	fft	plan		4	2	plancall:4:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-5-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	38	F	twice	fft	plan		5	2	plancall:5:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-12-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	40	F	twice	fft	plan		12	2	plancall:12:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-13-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	42	F	twice	fft	plan		13	2	plancall:13:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-14-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	44	F	twice	fft	plan		14	2	plancall:14:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-15-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	46	F	twice	fft	plan		15	2	plancall:15:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-fft-plan-16-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	48	F	twice	fft	plan		16	2	plancall:16:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-jones-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	50	F	twice	jones	plan		1	2	plancall:1:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	52	F	twice	kottke	plan		1	2	plancall:1:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-2-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	54	F	twice	kottke	plan		2	2	plancall:2:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-3-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	56	F	twice	kottke	plan		3	2	plancall:3:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-4-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	58	F	twice	kottke	plan		4	2	plancall:4:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-5-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	60	F	twice	kottke	plan		5	2	plancall:5:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-12-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	62	F	twice	kottke	plan		12	2	plancall:12:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-13-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	64	F	twice	kottke	plan		13	2	plancall:13:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-14-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	66	F	twice	kottke	plan		14	2	plancall:14:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-15-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	68	F	twice	kottke	plan		15	2	plancall:15:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-kottke-plan-16-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	70	F	twice	kottke	plan		16	2	plancall:16:2	2	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-nv-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	72	F	twice	nv	plan		1	2	plancall:1:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+M2-twice-vl-plan-1-F	R5M2	registries/s4r5/RESULTS_R5_PLANM_pass1.tsv	74	F	twice	vl	plan		1	2	plancall:1:2	1	slab	REPORTED_FAILURE	REPORTED_FAILURE	
+R4-SI01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	9	F	seam	fft	A				linearsolve:1:1:info	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	SI01
+R4-SI02-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	12	F	seam	kottke	A				linearsolve:2:1:info	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	SI02
+R4-AL18-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	15	F	seam	kottke	D				kottke_alloc:31:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	AL18
+R4-FE01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	18	F	seam	experimental	E				fmmret:150:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE01
+R4-FE02-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	21	F	seam	kottke	E				fmmret:151:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE02
+R4-FE03-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	24	F	seam	fft	E				fmmret:152:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE03
+R4-FE04-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	27	F	seam	fftjones	E				fmmret:153:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE04
+R4-FE05-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	30	F	seam	fftnv	E				fmmret:154:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE05
+R4-FE06-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	33	F	seam	fftvl	E				fmmret:155:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE06
+R4-FE07-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	36	F	seam	closed1d	E				fmmret:159:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE07
+R4-FE08-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	39	F	seam	jones	E				fmmret:156:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE08
+R4-FE09-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	42	F	seam	nv	E				fmmret:157:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE09
+R4-FE10-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	45	F	seam	vl	E				fmmret:158:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	FE10
+R4-CL01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	48	F	seam	closed1d	B2				linearsolve_null2:134:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CL01
+R4-CL02-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	51	F	seam	closed1d	B2				linearsolve_null2:138:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CL02
+R4-CL03-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	54	F	seam	closed2d	B2				linearsolve_null2:144:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CL03
+R4-CL04-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	57	F	seam	tensor	B2				linearsolve_null2:244:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CL04
+R4-PJ01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	60	F	seam	jones	B2				linearsolve_null2:375:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	PJ01
+R4-PN01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	63	F	seam	nv	B2				linearsolve_null2:265:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	PN01
+R4-PV01-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	66	F	seam	vl	B2				linearsolve_null2:273:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	PV01
+R4-CLM1-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	69	F	seam	fft	C				alloc:21:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CLM1
+R4-CLM2-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	72	F	seam	fft	C				alloc:22:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CLM2
+R4-CLM3-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	75	F	seam	fft	C				alloc:23:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CLM3
+R4-CLM4-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	78	F	seam	fft	C				alloc:24:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	CLM4
+R4-ACF1-F	R4SEAM	registries/s4r4/RESULTS_R4.tsv	81	F	seam	jones	C				alloc:25:1	NA	-	REPORTED_FAILURE	REPORTED_FAILURE	ACF1

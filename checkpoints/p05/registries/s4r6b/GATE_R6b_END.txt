@@ -1,0 +1,19 @@
+# R6b gate (end) -- written by testing/d003/stage_s4/r6b_gate.py (read-only checks)
+# UTC 2026-10-12T06:18:12Z
+item	observed	expected	match
+branch	codex/p05-d003-fft-error-propagation	codex/p05-d003-fft-error-propagation	OK
+HEAD	20b3411ec52c50e40b158486778063db034f0141	20b3411ec52c50e40b158486778063db034f0141	OK
+STATE.md last commit == HEAD	20b3411ec52c50e40b158486778063db034f0141	20b3411ec52c50e40b158486778063db034f0141	OK
+HEAD:S4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	OK
+judge_d003.py sha256	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	OK
+git status --short --untracked-files=all	?? testing/d003/stage_s4/driver_r6b_state.cpp
+?? testing/d003/stage_s4/r6b_control.py
+?? testing/d003/stage_s4/r6b_gate.py
+?? testing/d003/stage_s4/r6b_map_all.py
+?? testing/d003/stage_s4/r6b_prereg.py
+?? testing/d003/stage_s4/r6b_state.gdb
+?? testing/d003/stage_s4/r6b_state_gdb.py
+?? testing/d003/stage_s4/r6b_tree_verify.py	only new r6b files under testing/d003/stage_s4/ (uncommitted) and modified STATE/report	OK
+/tmp top-level entry count	0	0 (phase start)	OK
+/tmp listing sha256	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (empty listing)	OK
+RESULT	PASS
