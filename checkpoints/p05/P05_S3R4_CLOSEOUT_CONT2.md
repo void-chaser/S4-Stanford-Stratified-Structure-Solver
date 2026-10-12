@@ -137,6 +137,8 @@ F2-dbg 库只读引用,用于 A 的 `info line` 佐证:**未运行**(A 注入未
 | CONT2 | 写脚本时 | `run_a_c2.sh`(草稿) | 文本含 `2>/dev/null`;末行 stub;**从未运行** | 是(草稿文件仍在仓库中) | 不运行;保留并披露(ES3R4-21);不删除 |
 | CONT2 | 22:34 | `set -- $COMBO` 在 shell 中的本地位置参数 | 只改本地变量,无写入 | 否 | 无 |
 | CONT2 | 22:39 | `a1map` 循环中第四次 `safe_run` 调用对已存在目录 `a1map2_F2_closed2d-ng1` 的拒绝(REFUSED,exit 2) | 执行者多跑一次同一组合(循环的重复),脚本正确拒绝覆盖;无写入 | 否(拒绝记录在 safe_run 日志) | 无数据损失;如实记录 |
+| CONT2 | 收尾 | 命令 `sha256sum -c SHA256SUMS.txt > tmp/check_final_out.txt`(只读校验,输出写入 `$EV/tmp/`) | 写输出文件的重定向未经 safe_run(目标在 `$EV/` 内,合规路径) | 是(`$EV/tmp/check_final_out.txt`) | 如实披露;违反 AGENTS §3 的"经 safe_run"要求;不掩盖 |
+| CONT2 | 收尾 | 提交前扫描发现三个脚本含 `/dev/null`(`link_c2.sh`、`link_init_c2.sh`、`run_a_c2.sh`) | 未提交(留在工作区,未跟踪);其余合规文件提交于 `33f8ea8` | 否(未入库) | 披露(ES3R4-21);等待用户裁决是否删除或修正 |
 | CONT2 | — | 写入方式 | 仓库内文本全部经 write/edit;其他写入经 safe_run 脚本;末次 git commit 与复制、校验经脚本 | 合规 | 无 |
 
 说明:表二第一行是本轮的停止事件。这是执行者的过失(文本规则未逐行检查),不是框架事件。
@@ -160,7 +162,23 @@ F2-dbg 库只读引用,用于 A 的 `info line` 佐证:**未运行**(A 注入未
 
 本轮已完成/未完成 S3R4 续2 范围,等待用户审核。P05-S3、P05-S4 未签收。
 
-提交后 `git log -3 --oneline` 与 `git status --short` 在最后一次提交后核对(见 §11 的记录)。
+提交后核对(提交 `33f8ea8` 时的真实结果):
+
+```
+33f8ea8 P05-S3R4 CONT2 partial (stopped by U106 write-rule violation): self-check C polygon passed (99/99 IDENTICAL); A1 map K unique; A pre-registered, not run; B and D not done; STATE, CONT2 report, registries s3r4c2, scripts stage_s3r4c2. awaiting user review
+d64c552 P05-S3R4 CONT2 rulings U103-U106 and errata ES3R4-15..17; CONT2 brief archived. awaiting user review
+45d17d5 P05-S3R4 CONT1 records as stopped (U104; content unchanged). awaiting user review
+```
+
+`git status --short`(提交 `33f8ea8` 之后):
+
+```
+?? testing/d003/stage_s3r4c2/link_c2.sh
+?? testing/d003/stage_s3r4c2/link_init_c2.sh
+?? testing/d003/stage_s3r4c2/run_a_c2.sh
+```
+
+上面三个文件含 `/dev/null`,按 ES3R4-21 未入库(待用户裁决)。本报告的 §10 与 §8 的最后修订在 `33f8ea8` 之后,因此本报告文件本身在该提交之后仍有未提交修改,将在最终一次提交中一并提交(见下一条)。
 
 ---
 
