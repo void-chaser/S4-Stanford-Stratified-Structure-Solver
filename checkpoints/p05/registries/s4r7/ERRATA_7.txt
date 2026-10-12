@@ -206,3 +206,42 @@ tables.  Summary: REGRESS_R7_M2a.tsv (all groups and passes: MATCH, no non-MATCH
 Honest limit: the "unequal = 0" result is the comparison of the RESULTS_R7 rows, and the RESULTS_R7 rows are the judged outputs of
 run_m2_r7.py.  The check that the base-id pairing itself is correct is the absent count (0 on every group): a wrong base id would
 have produced absent rows, which did not happen.
+
+== E7-23 cont3 violations of the section 0 rule were not stopped at (U55)
+Cont3 section 0 was violated five times (two writes to /tmp, one `sed -i` on /dev/null, several `python3 -c` read-only checks)
+and cont3 did not stop at the first violation as section 6 requires.  Results are not affected.  No retroactive action is taken
+(U55).  From cont4 on, section 0 applies: stop at the first violation.  Recorded in P05_S4R7_REPORT_M2.md table 1/2 (cont3).
+
+== E7-24 STATE.md was not updated at the M2a commit (U56)
+STATE.md's last change before cont4 is db92648 (the M2 pre-registration).  The M2a commit 6319a3c and the M2 report commit 733d588
+did not update it, which AGENTS.md section 7 requires.  Cont4 supplies the update; the earlier STATE content is superseded, not
+deleted from git history.
+
+== E7-25 prefix check for append-only files (U57)
+ERRATA_7.txt and RULINGS.tsv are append-only, so the older manifests (SHA256SUMS.txt, SHA256SUMS_M2pre.txt) cannot match them
+by full-file sha256.  The prefix check uses check_prefix_r7.py: a recorded sha256 must equal the sha256 of the first N bytes of
+the current file, where N is the length recorded when the manifest was written.  Result of the check: see the output file
+PREFIX_CHECK_R7_run5.txt (evidence).  The older manifests are not edited.
+
+== E7-26 G2a driver gap found in cont4 (a prerequisite for M2b, not a result)
+Cont4 read the R4 seam run (testing/d003/stage_s4/run_r4_seam.sh, link_driver) and run_r4_matrix.py (library_for, lines 55-70).
+R4 G2a rows use seam libraries (seamF, fmmret-F, seamAB-B, seamAB-A) with a family-specific driver chosen by library_for.
+DRIVERS_R7.tsv (R7 build) contains only d003, d003plan, r6bstate and r6dnv1 for trees F and F2; it has NO seam driver.
+link_drivers_s4r7.sh does not link any seam driver.  Therefore the G2a rows of v2/ADD cannot be run with the existing R7 drivers
+without a new, pre-registered driver list.  Status: UNRESOLVED BEFORE M2b.  The seam libraries exist (build_r7/seam_plain,
+BUILD_SEAM_PLAIN_R7_RESULT.tsv, four libraries) but are not yet linked to drivers.  G2a is NOT run in M2b until this is resolved
+by a ruling (see RULINGS U59, if issued).
+CORRECTION (cont5, U59/U61): the ruling number for the G2a driver question is U61, not U59.  The cont4 wording "RULINGS U59, if
+issued" was a forward reference that proved wrong; U59 is the cont4 brief-error ruling (E7-27).  E7-26 itself is unchanged.
+
+== E7-27 cont4 brief error: section 0 excluded commands the task itself requires (U59)
+Cont4 section 0 allowed only a short list of read-only commands and excluded git rev-parse, wc, tail and git add/commit.  The
+task itself requires git rev-parse (section 2.5 and 4), git add and commit (section 2.5 and 4), and the M2 report requires
+git status.  Cont4 therefore could not execute as written.  The first cont4 stop (P05_S4R7_REPORT_CONT4_STOP.md) recorded the
+violation of section 0 by the executor; its root cause is this brief error, which cont5 section 0 replaces.  Nothing was
+retroactively changed.
+
+== E7-28 cont4 RULINGS rows written by a shell append (U60)
+The rows U54-U58 were appended to RULINGS.tsv in cont4 by `printf ... >> RULINGS.tsv`, a shell redirection that did not go
+through safe_run (AGENTS section 3; cont4 section 0 A).  The content of the five rows was checked against the intended text
+and is accepted as written (U60).  Table 2 of P05_S4R7_REPORT_CONT4_STOP2.md records the event.  Original rows are unchanged.
