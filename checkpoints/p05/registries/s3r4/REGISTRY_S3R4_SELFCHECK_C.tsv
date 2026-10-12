@@ -1,0 +1,17 @@
+section	item	expected	basis
+C	closed2d square NG1/5/9	IDENTICAL (F2 vs F3, call1/call2/call3 byte-equal)	[源码] normal path unchanged; U97 (1); same rule as R7 4.3
+C	fft square NG1/5/9	IDENTICAL	same
+C	kottke square NG1/5/9	IDENTICAL	same (U94: only -12 path changed)
+C	experimental square NG1/5/9	IDENTICAL	same
+C	tensor square NG1/5/9	IDENTICAL	same
+C	closed1d square NG1/5/9	IDENTICAL	same
+C	jones square NG1/5/9	IDENTICAL	same
+C	nv square NG1/5/9	IDENTICAL	same
+C	vl square NG1/5/9	IDENTICAL	same
+C	fftjones square NG1/5/9	IDENTICAL	same
+C	fftnv square NG1/5/9	IDENTICAL	same
+C	fftvl square NG1/5/9	IDENTICAL	same
+C	nv tri NG9	IDENTICAL	same (tri driver; pattern.c tri branch unchanged in normal path)
+C	vl tri NG9	IDENTICAL	same
+C	jones tri NG9	IDENTICAL	same
+C	stop rule	any NOT_IDENTICAL stops the whole self-check (brief section 6)	U97 (1)
