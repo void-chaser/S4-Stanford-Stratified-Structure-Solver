@@ -1,0 +1,30 @@
+# RED_POINTS_STATUS_R7.tsv -- P05-S4 R7 red-point status (cont9 closeout).  Base: registries/s3r3/RED_POINTS_STATUS_S3R3.tsv (unchanged).
+# Columns added: R7_M1 (RNV1 regression on F2, M1), R7_M2 (M2a and M2b run7 regression, F2), R7_M3 (G5/G6 state judgement on F2, M3).
+# Wording rules: "REPORTED_FAILURE" = non-zero return code under this injection only; no "已修好" or "已验证" (AGENTS section 5).
+# RP-R6d-1 is written exactly as the user's brief requires: "F2 回归 REPORTED_FAILURE 63/63(两遍,M1)".
+#
+# R7_M1 for RP-R6d-1: 63 of 63 F2 injection points REPORTED_FAILURE, two passes (REGRESS_R7_M1.tsv: G7 F2 36 IMPROVED_AS_EXPECTED,
+#   4.2 F2 24 MATCH, G8 F2 3 MATCH).  The 18 control rows of M1 (M1-CTRL-F2-*) are MISMATCH by the column error of E7-8, not counted here
+#   (awaiting user ruling; M1 report section 6).
+# R7_M3 for the state-judgement points (G5 and G6): not RP-R6d-1 evidence; see the M3 column of the rows that they cover.
+id	main_category_before_F	aux_status	self_check_result_F2	R7_M1	R7_M2	R7_M3	note
+RP-R6d-1	F_CONFIRMED	RNV1 (U30 repaired in S3R3)	self-check passed in S3R3 (not S4 verification)	F2 regression REPORTED_FAILURE 63/63 (two passes, M1)	not in M2 scope (M2 covers G1, G2a, G2b, G2c, G3, G4, CTRL_SEAM)	not in M3 scope (M3 is G5/G6 state judgement)	"F2 回归 REPORTED_FAILURE 63/63(两遍,M1)". Not "已修好" and not "已验证". 18 control rows (E7-8) awaiting ruling.
+RP-R6d-2	HARNESS_OR_PROCESS	R5-1 / RP-R5-1	not repaired	-	-	-	no change in R7
+RP-R6d-3	OUT_OF_SCOPE_D003	RP-R5-2 / E6-4	not in scope	-	-	-	no change in R7
+RP-R6d-4	HARNESS_OR_PROCESS	RP-R5-3 / E6-3	not in scope	-	-	-	no change in R7
+RP-R6d-5	HARNESS_OR_PROCESS	RP-R5-4	not in scope	-	-	-	no change in R7
+RP-R6d-6	BASELINE_ONLY	B-SS-JV	baseline observation on B; not repair evidence	-	-	-	no change in R7 (B is not a test target of M1-M3)
+RP-R6d-7	BASELINE_ONLY	R7-D016-B	open: B-side origin of rc 20 for vl NG1 not traced	-	-	-	open (not addressed in M1-M3)
+RP-R6d-8	F_SUSPECT_SOURCE	K-1	not repaired; needs check design	-	-	-	open (R8)
+RP-R6d-9	HARNESS_OR_PROCESS	E6-8	comment wording changed (U31); behaviour unchanged	-	-	-	comment only
+RP-R6d-10	HARNESS_OR_PROCESS	E6-8-U11	U31 applied in commit a07b5ac	-	-	-	comment only
+RP-R6d-11	BASELINE_ONLY	U14-OBS	observation; no repair	-	-	M3 F and F2 reproduce the historical R6c solved/modes judgement (I4 HOLD 177/177 on F and F2)	observation; M3 gives the I4 judgement on F2
+RP-R6d-12	HARNESS_OR_PROCESS	E6c-6	ERRATA hash record; no repair	-	-	-	no change
+RP-R6d-13	HARNESS_OR_PROCESS	DUAL-I7	DEFERRED to R8 (U9); not run	-	-	not covered (I7 DEFERRED)	not covered (R8)
+RP-R6d-14	HARNESS_OR_PROCESS	OTHER-LAYER	DEFERRED to R8 (U20); not run	-	-	not covered	not covered (R8)
+RP-R6d-15	HARNESS_OR_PROCESS	R7-PY-LUA	not run	-	-	-	open (R8)
+RP-R6d-16	HARNESS_OR_PROCESS	R7-NB18	not run	-	-	-	open (R8)
+RP-R6d-17	HARNESS_OR_PROCESS	R7-CAT-C	not run	-	-	-	open (R8)
+RP-R6d-18	OUT_OF_SCOPE_D003	S5-MALLOC	out of D003 scope (S5)	-	-	-	no change
+RP-R6d-19	HARNESS_OR_PROCESS	RS-177	smoke check in S3R3; full matrix of the 177 state points is M3	-	-	G5 177 points, two passes, F and F2: HOLD 177 / VIOLATED 0 on F2 (state judgement only, INFLUENCED)	state judgement; not a rc regression of the old RS-177 smoke
+RP-R6d-20	HARNESS_OR_PROCESS	RS-SEAM	not re-run in S3R3; seam regression is R7	-	-	G6 25 seam points and 18 controls, two passes, F and F2: HOLD 25 / VIOLATED 0 on F2; controls equal to history	state judgement on F2 (INFLUENCED)

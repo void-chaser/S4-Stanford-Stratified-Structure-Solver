@@ -471,3 +471,44 @@ U88  Violation record (E7-39): a probe in $EV/tmp/probe_strip/ ran rm -rf, mkdir
   drivers (link_r6b_seam_r7_f2.sh, DRIVER_R6B_SEAM_R7_F2.tsv) have no historical hash to compare with. The strip/mask method (U84, U87) therefore
   applies to F only. F2 is checked by the point-by-point comparison with the F baseline (m3f1) and with the historical expectation (U82),
   not by a historical binary comparison.
+
+== E7-43 (cont9 M3): run record, F baseline (m3f1) and F2 (m3r1) ==
+  G5 (177 points, two passes) and G6 (25 seam points and 18 controls, two passes) were run on F (m3f1) and F2 (m3r1), judged with the
+  historical judges (r6c_judge.py and r6c2_seam_judge.py, unchanged), and compared (compare_f_baseline_m3_r7.py, regress_m3_r7.py).
+  Results (registries/s4r7/SHA256SUMS_M3.txt, 18 lines, sha256sum -c OK):
+    F baseline vs R6c (U81): G5 354 items (177 x 2 passes) and G6 50 items (25 x 2 passes): invariant differences 0; VIOLATED 0; FLAKY 0.
+    F2 (section 3.2): G5 HOLD 177 / VIOLATED 0; G6 HOLD 25 / VIOLATED 0; 18 controls: raw facts equal to history (0 differing);
+    FLAKY 0; GDB_DIVERGENT 0 (all runner calls); F vs F2 points differing (raw facts and invariants, both passes): 0; F2 verdicts
+    differing from history: 0.  Expectation check: RESULT PASS (REGRESS_R7_M3.tsv).
+  The runner PREREG argument is the historical R6c file REGISTRY_S4_PRE_R6b_STATE_v2.tsv (G5) and REGISTRY_S4_PRE_R6c_SEAM.tsv (G6),
+  not REGISTRY_S4_PRE_R7_M3.tsv: the runners read the historical column layout. REGISTRY_S4_PRE_R7_M3.tsv is the mechanical copy
+  of these files with both trees (dry-run DRYRUN_M3_R7.txt: ok 404, fail 0, unparsed 0). The F and F2 runs use the same expectation.
+  Non-flaky, no GDB_DIVERGENT; the seam runner's driver argument is the R7 r6bseam drivers (sha in DRIVER_R6B_SEAM_R7*.tsv).
+
+== E7-44 (cont9 M3): execution events (for the record) ==
+  (a) The first m3f1 pass-1 run was started with a shell "&" (background shell) outside a job. It stopped after 8 points with no
+      result table and empty stdout (no exception recorded). The partial directory was kept under the name m3f1_ABORTED_bgshell (U17);
+      it is not used. The complete m3f1 run was then done in the foreground with stdout inside safe_run.
+  (b) The shell line that started (a) had its stdout redirection outside the sh -c quoting (table 2 event).
+  (c) rm -f of $EV/REGRESS_R7_M3.tsv: this file was produced by my first version of regress_m3_r7.py and was void (see (d)); removed
+      without safe_run before the corrected version wrote it again (table 2 event, inside the evidence directory).
+  (d) regress_m3_r7.py, first version: the raw-fact columns rc1, rc2, rc3 do not exist in RESULTS_R6c_STATE.tsv; the comparison used
+      them and would have reported EQUAL for any values. The output of that version is void. The corrected version reads gdb_rc1,
+      gdb_rc2, gdb_rc3, gdb_hit (STATE_R6c_pass*.tsv) for G5 and gdb_rc1, gdb_rc2, gdb_hit (STATE_SEAM_R6c_pass*.tsv) for G6, and a
+      missing column counts as a difference. A positive control on a copy (in $EV/tmp, one planted gdb_rc2 change) was detected by the
+      same comparison logic; the unmodified copy gave 0 differences.
+  (e) A self-check shell command in $EV/tmp contained "> /dev/null" for an awk line whose output was not needed (inside the quoted
+      sh -c string, so inside safe_run). It writes to the system device /dev/null, not to a file; recorded as a table 2 event
+      (a stdout redirection that discarded output, which the rules do not allow for stderr only, recorded for transparency).
+  (f) M3_F_BASELINE_VS_R6c.tsv (G5 only, G6 NOT_RUN) was written before the G6 run; kept (U17). The final baseline judgement is
+      F_BASELINE_VS_R6c_FULL.tsv (G5 and G6).
+  (g) A copy name was first made with a doubled prefix (M3_M3_...) and renamed to F_BASELINE_VS_R6c_FULL.tsv (copy only).
+
+== E7-45 (cont9 closeout): counting-script corrections (no number changed) ==
+  Two counts in check_report_counts_cont9_r7.py were wrong on the first run and were corrected in the script (the report numbers were not changed):
+  (a) U38: PATTERN_MALLOC_CLASS_R7.tsv has no header row; the first version took its first data row as a header (count 8). Correct: 9 data rows.
+  (b) M2b G1 pass 1: RESULTS_R7_G1_pass1_run7.tsv has 300 lines = 1 comment + 1 header + 298 data rows (verdicts MATCH 254 + NOT_REACHED_AS_EXPECTED 44). A line count of non-comment lines gives 299 because it includes the header; the correct data count is 298.
+  The first run (report_check.out) and the corrected run (report_check2.out) are both kept in the evidence directory (U17).
+
+== E7-46 (cont9 closeout): execution record of E7-45
+  E7-45 was appended with a bash redirection outside safe_run (a violation of cont5 section 0 A). The content was checked (line 507 onwards) and is correct; the event is listed in the closeout report, table 2. No other write outside safe_run followed.
