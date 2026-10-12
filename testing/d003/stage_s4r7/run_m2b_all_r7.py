@@ -36,6 +36,10 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(REPO, "testing", "d003"))
 import run_m2_r7 as M  # noqa: E402  imported, not copied
 import judge_d003 as J  # noqa: E402  imported, not modified
+# cont8 (U75a, U77): M2b uses ADD_v3 (environment columns superseded).  run_m2_r7.py is not edited; its ADD constant is
+# overridden for this process only, so the M2a results (run_m2_r7 with ADD_v2) are unaffected.
+M.ADD = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r7", "REGISTRY_S4_PRE_R7_M2_ADD_v3.tsv")
+import expected_env_independent_r7 as EX  # noqa: E402  independent history rule (U75b); reads no ADD file
 import matrix_r2 as MR  # noqa: E402  imported, not modified: build_env (U71a; matrix_r2.py:98-109)
 from compare_trees_r7 import base_id  # noqa: E402  imported (U66)
 
@@ -171,7 +175,9 @@ def g_points():
         s = M.point_spec(r, a)
         nth = a["nth"] if a is not None else "-"
         p = {"point_id": r["point_id"], "group": g, "tree": r["tree"], "mode": s["mode"], "request": s["request"],
-             "inj_call": s["inj_call"], "ng": s["ng"], "twice": s["twice"], "control": s["control"],
+             "inj_call": s["inj_call"], "ng": s["ng"], "twice": s["twice"],
+             # cont8 (U75b): a control is identified by its point id (CTL-, run_r3_sweep.py:129-133), not by the ADD request
+             "control": r["point_id"].startswith("CTL-"),
              "expected": r["expected_class"], "nth": nth}
         p["row"] = build_row(g, p, nth)
         out[g].append(p)
@@ -201,11 +207,12 @@ def dry_run(ev):
             checked += 1
     pts = {"CTRL_SEAM": ctrl_seam_points(ev)}
     pts.update(g_points())
-    lines = ["# DRYRUN_R7_M2b_run5b (cont6, ADD1).  No S4 run.  Driver sha256 and library sha256 checked; modes, expectations, outputs checked."]
+    lines = ["# DRYRUN_R7_M2b_run7 (cont8, ADD1).  No S4 run.  Driver and library sha256 checked; the environment of every point is checked against the independent history expectation (expected_env_independent_r7)."]
     unparse = 0
     label_counts = {}
     nth_rows = {}
     examples = {}
+    examples_special = {}
     for g in GROUP_ORDER:
         rows = pts[g]
         ok = 0
@@ -225,23 +232,28 @@ def dry_run(ev):
                     raise ValueError("inj_call %r" % p["inj_call"])
                 if p["ng"] != "9":
                     raise ValueError("ng %r (expected 9)" % p["ng"])
-                if g != "CTRL_SEAM":
-                    # U71(a): the environment is matrix_r2.build_env(row) and must match the ADD nth and route
-                    env = point_env(p)
-                    nth = p["nth"]
-                    if nth not in ("-", "") and int(nth) > 1:
-                        nth_rows[g] = nth_rows.get(g, 0) + 1
-                        if env.get("S4FMM_NTH") != nth:
-                            raise ValueError("env S4FMM_NTH %r != ADD nth %r" % (env.get("S4FMM_NTH"), nth))
-                    if p["twice"] and env.get("S4FMM_TWICE") != "slab":
-                        raise ValueError("twice row lacks S4FMM_TWICE=slab")
-                    if not p["twice"] and "S4FMM_TWICE" in env:
-                        raise ValueError("once row carries S4FMM_TWICE")
-                    if g in ("G1", "G2c") and env.get("S4FMM_NTH") is None and nth not in ("-", ""):
-                        raise ValueError("G1/G2c row lacks S4FMM_NTH while ADD nth is %r" % nth)
-                    examples.setdefault(g, "FMM_MODE=%s S4FMM_NG=%s S4FMM_INJECT=%s S4FMM_NTH=%s S4FMM_TWICE=%s case=%s" % (
-                        env.get("FMM_MODE"), env.get("S4FMM_NG"), env.get("S4FMM_INJECT", "-"),
-                        env.get("S4FMM_NTH", "-"), env.get("S4FMM_TWICE", "-"), p["row"]["case"]))
+                # U75b: the environment that will be passed to the driver must equal the expectation derived from the
+                # history rule (expected_env_independent_r7; it reads no ADD file).  Both sides are compared key by key.
+                env = (M.clean_env({"FMM_MODE": p["mode"], "S4FMM_NG": p["ng"]}) if g == "CTRL_SEAM" else point_env(p))
+                want = EX.expected_env_from_history(g, p["point_id"], p["tree"], mode=p["mode"])
+                got = {k: env[k] for k in env if k.startswith("FMM_") or k.startswith("S4FMM_")}
+                if got != want:
+                    raise ValueError("env %r != history expectation %r" % (got, want))
+                if g in ("G1", "G2c") and p["control"] and ("S4FMM_INJECT" in got or "S4FMM_NTH" in got):
+                    raise ValueError("control row carries INJECT or NTH")
+                if g in ("G1", "G2c") and not p["control"] and int(p["nth"]) > 1:
+                    nth_rows[g] = nth_rows.get(g, 0) + 1
+                if g == "G2c" and p["twice"] and "G2c_twice" not in examples_special:
+                    examples_special["G2c_twice"] = "%s FMM_MODE=%s S4FMM_INJECT=%s S4FMM_NTH=%s S4FMM_TWICE=%s" % (
+                        p["point_id"], got.get("FMM_MODE"), got.get("S4FMM_INJECT", "-"),
+                        got.get("S4FMM_NTH", "-"), got.get("S4FMM_TWICE", "-"))
+                if g == "G1" and p["control"] and "G1_control" not in examples_special:
+                    examples_special["G1_control"] = "%s FMM_MODE=%s S4FMM_INJECT=%s S4FMM_NTH=%s S4FMM_TWICE=%s" % (
+                        p["point_id"], got.get("FMM_MODE"), got.get("S4FMM_INJECT", "-"),
+                        got.get("S4FMM_NTH", "-"), got.get("S4FMM_TWICE", "-"))
+                examples.setdefault(g, "FMM_MODE=%s S4FMM_NG=%s S4FMM_INJECT=%s S4FMM_NTH=%s S4FMM_TWICE=%s" % (
+                    got.get("FMM_MODE"), got.get("S4FMM_NG"), got.get("S4FMM_INJECT", "-"),
+                    got.get("S4FMM_NTH", "-"), got.get("S4FMM_TWICE", "-")))
                 label_counts[p["expected"]] = label_counts.get(p["expected"], 0) + 1
                 ok += 1
             except Exception as exc:  # noqa: BLE001  (reported and counted)
@@ -255,7 +267,10 @@ def dry_run(ev):
     for g in GROUP_ORDER:
         if g in examples:
             lines.append("# example environment %s: %s" % (g, examples[g]))
-    lines.append("# expected nth > 1 counts (cont7 brief, not yet verified before this run): G1 210, G2c 16")
+    for label, key in (("G2c twice point", examples_special.get("G2c_twice")),
+                       ("G1 control row", examples_special.get("G1_control"))):
+        if key is not None:
+            lines.append("# example %s: %s" % (label, key))
     lines.append("# driver/library sha256 checked: %d" % checked)
     lines.append("# total unparseable: %d" % unparse)
     return "\n".join(lines) + "\n", unparse

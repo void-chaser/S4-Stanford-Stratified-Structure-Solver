@@ -356,3 +356,36 @@ NOT_REACHED_AS_EXPECTED, both passes) are kept as supporting evidence; the forma
     The count therefore does not match cont8 2.1 literally; it is reported, and the expectation of the count is corrected here,
     not the data.  The user is asked to accept this (cont8 4: a count mismatch stops the run).
 (g) Correction of E7-34 (a): the ADD_v3 G2c rows with route twice are 15 per tree (30 rows); the "G2c route 30" count matches.
+
+== E7-35 ADD_v3 accepted; corrections to the cont8 expectation (U77, U78)
+Measured (ADD_V3_VS_V2_DIFF.txt): 92 changed environment cells, by (group, column):
+  G2c route 30; G2c twice_env 30; G1 request 16; G1 route 16; G1 nth 0.
+Accepted as the ADD_v3 environment change (U77).  Sources of each figure:
+- G2c route 30 and G2c twice_env 30: 15 twice-route points x 2 trees (F and F2) = 30 rows; each row changes route (once to twice)
+  and twice_env ("-" to slab).  The cont8 brief wrote "30 rows" for this; it is 15 points, 2 cells each (the cell count per
+  column is 30 in both columns, which is what the file records).
+- G1 request 16: the 16 control rows (CTL-*, request "none" in v2) become "-" (U73).
+- G1 route 16: the same 16 control rows; v2 gives route = the mode name (e.g. closed1d), v3 gives "control".  The cont8 expectation
+  omitted this change.
+- G1 nth 0: the control rows already have nth "-" in v2 (e.g. CTL-closed1d-F ... none - - closed1d - -); nothing changes.  The
+  cont8 expectation "G1 nth 16" was wrong.
+Key columns (point_id, tree, group, expected_class, inj_call): 0 differences (U78 applies; the run continues).  The key-column
+check is done by the new independent assertion (cont8 ADD1 step 2) and by the dry-run, not by reading the generator's output.
+
+Defects found and fixed while building the independent assertion (cont8 ADD1), recorded here, not silent:
+(i) Control identity.  run_m2_r7.point_spec decides control by "a[request] == none" (run_m2_r7.py:182).  ADD_v3 changes the
+    control request to "-" (U75a), so that test became false and 16 control points were parsed as injection points (dry-run
+    unparseable 30 in DRYRUN_R7_M2b_run7.txt, kept).  Fix in run_m2b_all_r7.py only: a control is identified by the point id prefix
+    "CTL-" (run_r3_sweep.py:129-133).  run_m2_r7.py is not edited.
+(ii) G2a request key.  RESULTS_R4 has three rows per source id (B, A, F; e.g. R4-CL01: B and A "linearsolve_null:11:1", F
+    "linearsolve_null2:134:1").  A key by source id alone took the B row (dry-run unparseable 14, DRYRUN_R7_M2b_run7b.txt, kept).
+    Fix: only tree F rows are read (U61: M2 runs F rows only); two F rows with different requests refuse.
+(iii) The dry-run label count of REPORTED_FAILURE was read as 334 from the failed run7b file; the correct value from the final
+    dry-run is 348 (CONTROL_OK 20, INVALID_NOT_REACHED 44, REPORTED_FAILURE 348, total 412 counting G2c-control separately as
+    excluded).  The 334 reading was a misreading of the failed file; no file is changed.
+(iv) Control-row example and G2c twice example were added to the dry-run report (cont8 ADD1 step 3): G2c M-twice-fft-exec-1-F has
+    S4FMM_TWICE=slab; G1 CTL-closed1d-F has no S4FMM_INJECT and no S4FMM_NTH.
+Output file names: the first dry-run for run7 wrote DRYRUN_R7_M2b_run7.txt (failed, kept); the final dry-run is
+DRYRUN_R7_M2b_run7_final.txt (the name DRYRUN_R7_M2b_run7 was not reused, U17).
+Copy: copy_m2b_run7_prep_r7.py (U75c) copied ADD_v3, ADD_V3_VS_V2_DIFF.txt and DRYRUN_R7_M2b_run7_final.txt; manifest
+SHA256SUMS_M2b_run7prep.txt.

@@ -1,0 +1,16 @@
+# DRYRUN_R7_M2b_run7 (cont8, ADD1).  No S4 run.  Driver and library sha256 checked; the environment of every point is checked against the independent history expectation (expected_env_independent_r7).
+# group=CTRL_SEAM rows=4 parseable=4
+# group=G2c rows=60 parseable=60
+# group=G1 rows=298 parseable=298
+# group=G2a rows=50 parseable=50
+# group=G2c-control rows=6 status=EXCLUDED_U65 (not counted as unparseable)
+# expected label counts: CONTROL_OK=20, INVALID_NOT_REACHED=44, REPORTED_FAILURE=348
+# rows with nth > 1 (ADD nth): G1=210, G2c=16
+# example environment CTRL_SEAM: FMM_MODE=fft S4FMM_NG=9 S4FMM_INJECT=- S4FMM_NTH=- S4FMM_TWICE=-
+# example environment G2c: FMM_MODE=fft S4FMM_NG=9 S4FMM_INJECT=exec S4FMM_NTH=1 S4FMM_TWICE=-
+# example environment G1: FMM_MODE=closed1d S4FMM_NG=9 S4FMM_INJECT=s4malloc S4FMM_NTH=1 S4FMM_TWICE=-
+# example environment G2a: FMM_MODE=fft S4FMM_NG=9 S4FMM_INJECT=linearsolve:1:1:info S4FMM_NTH=- S4FMM_TWICE=-
+# example G2c twice point: M-twice-fft-exec-1-F FMM_MODE=fft S4FMM_INJECT=exec S4FMM_NTH=1 S4FMM_TWICE=slab
+# example G1 control row: CTL-closed1d-F FMM_MODE=closed1d S4FMM_INJECT=- S4FMM_NTH=- S4FMM_TWICE=-
+# driver/library sha256 checked: 12
+# total unparseable: 0

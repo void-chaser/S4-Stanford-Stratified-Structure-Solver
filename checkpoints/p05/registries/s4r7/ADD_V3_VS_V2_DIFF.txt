@@ -1,0 +1,7 @@
+# ADD_v3 vs ADD_v2: number of changed environment cells per (group, column).  Expected (cont8 2.1):
+# G2c route 30, G2c twice_env 30 (15 twice points x 2 trees), G1 request 16, G1 nth 16, nothing else.
+G1	request	16
+G1	route	16
+G2c	route	30
+G2c	twice_env	30
+# total changed cells: 92
