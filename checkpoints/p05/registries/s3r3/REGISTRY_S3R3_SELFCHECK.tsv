@@ -1,0 +1,81 @@
+# REGISTRY_S3R3_SELFCHECK.tsv -- P05-S3R3-2 self-check registry (pre-registration).
+# Written BEFORE any S3R3 self-check run (this file is the expected-value record; it is not an S4 verification).
+# Status: INFLUENCED (the RNV1 window structure was measured in R6d and S3R3 before this file, see RNV1_SOURCE_R6d.md section 4,
+#   PRE_FIX_SOURCE_S3R3.md, and the gdb branch/malloc-line record gdb_tri_F_malloc_lines.log).
+# Expected values are NOT changed after the runs.  Any later change is a new *_ERRATA file (AGENTS.md section 5).
+#
+# Trees:  F  = HEAD:S4 = 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4 (commit 1c11905)
+#         F2 = the S3R3 tree (pattern.c with R3 repair + S4_internal.h comment); commit recorded after the fix commits.
+# Library: -O0 -g builds (build/trees/F-dbg, build/trees/F2-dbg; sha256 recorded in build_notes.txt).
+#
+# SECTION A  RNV1 injection on F2 (36 F points of REGISTRY_S4_PRE_R6d_RNV1.tsv, the same point_ids and requests; two passes).
+#   Expected class: REPORTED_FAILURE (rc non-zero, rc < 128, no signal), driver rc (RC first) non-zero, hit = 1.
+#   Expected: 36 of 36 points REPORTED_FAILURE in pass 1 and pass 2.
+#   Note on "72": the R6d F block has 36 points; two passes give 72 runs.  The brief's "72 F points" is read as 36 points x 2 passes.
+#   Basis (source, [源码]): the three window mallocs (pattern.c:1477/1481 rect, 1251 cg) and the tri pair (1656/1660) now return -1.0 or -11
+#   paths to pattern_generate_flow_field, which returns -11 (not 0 and not a NULL write).  NOT verified by run before this file.
+#   Baseline (no injection) of each (mode,NG) is unchanged from R6d: nv NG1/5/9 0; vl NG1 20, NG5/9 0; fftnv NG1/5/9 0; fftvl NG1 20, NG5/9 0.
+#   For vl NG1 and fftvl NG1 the REPORTED_FAILURE class is expected from the injection (rc1 = -11 path), not from the D016 path.
+#
+# SECTION A2  Return-code chain check (gdb, 2 points, one per injected M=1 and M=3 on F2 nv NG9):
+#   Expected: the injected malloc returns NULL; the value -11 is returned by pattern_generate_flow_field;
+#   FMMGetEpsilon_PolBasisNV returns -11 (fmm_PolBasisNV.cpp:149); ComputeLayerModes returns 20.
+#   The ComputeLayerModes step is recorded by the driver rc1 = 20 (see section A row checks) and by gdb frames.
+#
+# SECTION B  No-injection output identity, F vs F2 (dump files call1/call2/call3 via S4FMM_DUMP_DIR).
+#   nv, vl, fftnv, fftvl x NG 1, 5, 9 (24 runs per tree).  Expected: IDENTICAL for every pair (byte equal).
+#   vl NG1 and fftvl NG1: pattern returns -10 (D016) on BOTH F and F2; expected rc 20 on both; still IDENTICAL.
+#
+# SECTION C  tri branch (driver_s3r3_tri.cpp, lattice {1,0,0.5,0.866}).
+#   C1 (F, no injection): gdb must show pattern_generate_flow_field_tri entered; 3 window mallocs at pattern.c:1656, 1660, 1251 (cg).
+#      Expected rc 0.  Measured in S3R3 step 3 (gdb_tri_F_malloc_lines.log); the expectation here is the window count of 3.
+#   C2 (F and F2, injection at each of the 3 window mallocs, two passes): expected F = CRASH (rc >= 128) for all 3 points;
+#      F2 = REPORTED_FAILURE for all 3 points.  Points: TRI-F-m1, TRI-F-m2, TRI-F-m3 (and the same on F2).
+#   C3 (F vs F2, no injection, tri driver): byte-identical dump files.
+#
+# SECTION D  Smoke check (RS-177 nv/vl M-* points, one each; expected rc = R6c value).  Expected: same rc as R6c.
+#   (Recorded in the smoke result file; the point list is taken from the R6c registry, see the S3R3 report.)
+#
+point_id	section	tree	mode	NG	M	request	expected	basis	status
+RNV1-F2-nv-ng1-m1	A	F2	nv	1	1	rnv1:1	REPORTED_FAILURE	[源码] rect work 1477 -> -1.0 -> -11	INFLUENCED
+RNV1-F2-nv-ng1-m2	A	F2	nv	1	2	rnv1:2	REPORTED_FAILURE	[源码] rect iwork 1481 -> -1.0 -> -11	INFLUENCED
+RNV1-F2-nv-ng1-m3	A	F2	nv	1	3	rnv1:3	REPORTED_FAILURE	[源码] cg work 1251 -> -11 -> -1.0 -> -11	INFLUENCED
+RNV1-F2-nv-ng5-m1	A	F2	nv	5	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-nv-ng5-m2	A	F2	nv	5	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-nv-ng5-m3	A	F2	nv	5	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-nv-ng9-m1	A	F2	nv	9	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-nv-ng9-m2	A	F2	nv	9	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-nv-ng9-m3	A	F2	nv	9	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng1-m1	A	F2	vl	1	1	rnv1:1	REPORTED_FAILURE	[源码] as above; vl NG1 baseline rc 20 (D016 path) is not this path	INFLUENCED
+RNV1-F2-vl-ng1-m2	A	F2	vl	1	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng1-m3	A	F2	vl	1	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng5-m1	A	F2	vl	5	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng5-m2	A	F2	vl	5	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng5-m3	A	F2	vl	5	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng9-m1	A	F2	vl	9	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng9-m2	A	F2	vl	9	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-vl-ng9-m3	A	F2	vl	9	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng1-m1	A	F2	fftnv	1	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng1-m2	A	F2	fftnv	1	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng1-m3	A	F2	fftnv	1	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng5-m1	A	F2	fftnv	5	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng5-m2	A	F2	fftnv	5	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng5-m3	A	F2	fftnv	5	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng9-m1	A	F2	fftnv	9	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng9-m2	A	F2	fftnv	9	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftnv-ng9-m3	A	F2	fftnv	9	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng1-m1	A	F2	fftvl	1	1	rnv1:1	REPORTED_FAILURE	[源码] as above; fftvl NG1 baseline rc 20 (D016 path)	INFLUENCED
+RNV1-F2-fftvl-ng1-m2	A	F2	fftvl	1	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng1-m3	A	F2	fftvl	1	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng5-m1	A	F2	fftvl	5	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng5-m2	A	F2	fftvl	5	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng5-m3	A	F2	fftvl	5	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng9-m1	A	F2	fftvl	9	1	rnv1:1	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng9-m2	A	F2	fftvl	9	2	rnv1:2	REPORTED_FAILURE	[源码] as above	INFLUENCED
+RNV1-F2-fftvl-ng9-m3	A	F2	fftvl	9	3	rnv1:3	REPORTED_FAILURE	[源码] as above	INFLUENCED
+TRI-F-m1	C2	F	nv	9	1	rnv1:1	CRASH	[源码]+gdb C1: tri window malloc 1656 (19968 B at NG9: see log); expected to crash as R6d RNV1 (no NULL check)	INFLUENCED
+TRI-F-m2	C2	F	nv	9	2	rnv1:2	CRASH	[源码]+gdb C1: tri iwork 1660	INFLUENCED
+TRI-F-m3	C2	F	nv	9	3	rnv1:3	CRASH	[源码]+gdb C1: cg 1251 (sparse_linsolve_d from tri 2056)	INFLUENCED
+TRI-F2-m1	C2	F2	nv	9	1	rnv1:1	REPORTED_FAILURE	[源码] tri 1656 -> -1.0 -> -11	INFLUENCED
+TRI-F2-m2	C2	F2	nv	9	2	rnv1:2	REPORTED_FAILURE	[源码] tri 1660 -> -1.0 -> -11	INFLUENCED
+TRI-F2-m3	C2	F2	nv	9	3	rnv1:3	REPORTED_FAILURE	[源码] cg 1251 -> -11 -> sparse_linsolve_d -> -1.0 -> -11	INFLUENCED

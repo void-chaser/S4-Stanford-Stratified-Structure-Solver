@@ -1,0 +1,46 @@
+# RESULTS_S3R3_SELFCHECK_pass1_run1.tsv -- P05-S3R3-2 self-check, pass 1 run run1 (judge: judge_d003.classify, imported).  Written by run_s3r3_selfcheck.py.
+# driver sha256: rnv1/F2=d20649dd339eaff7076b3c2d3711e91faf084d94dde43324574307610d61e5a5; tri/F=fb2bb37cfd7b2782b2e6500a63679d911de6ec912c5b05341178ae214268e05e; tri/F2=ae86feadd2b36c3c2e81605d9e2879bdf7e6be5bc29c1b49fa72b1f7012e1cfb
+# prereg sha256: 38948f0e6855b92f942fb012aa1b6bf86e894649ce20241f4791b559adf088bf
+point_id	section	tree	mode	NG	M	request	expected	rc	rc1	rc2	hit	signal	class	verdict_vs_expected	window_mallocs_seen	windows_seen	notes
+RNV1-F2-nv-ng1-m1	A	F2	nv	1	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20; gdb log written (first point of ('rnv1', 'F2')/nv); gdb rc=1
+RNV1-F2-nv-ng1-m2	A	F2	nv	1	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-nv-ng1-m3	A	F2	nv	1	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-nv-ng5-m1	A	F2	nv	5	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-nv-ng5-m2	A	F2	nv	5	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-nv-ng5-m3	A	F2	nv	5	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-nv-ng9-m1	A	F2	nv	9	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-nv-ng9-m2	A	F2	nv	9	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-nv-ng9-m3	A	F2	nv	9	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-vl-ng1-m1	A	F2	vl	1	1	rnv1:1	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	7	3	reached, first call returned 20; gdb log written (first point of ('rnv1', 'F2')/vl); gdb rc=1
+RNV1-F2-vl-ng1-m2	A	F2	vl	1	2	rnv1:2	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	8	3	reached, first call returned 20
+RNV1-F2-vl-ng1-m3	A	F2	vl	1	3	rnv1:3	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	9	3	reached, first call returned 20
+RNV1-F2-vl-ng5-m1	A	F2	vl	5	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-vl-ng5-m2	A	F2	vl	5	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-vl-ng5-m3	A	F2	vl	5	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-vl-ng9-m1	A	F2	vl	9	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-vl-ng9-m2	A	F2	vl	9	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-vl-ng9-m3	A	F2	vl	9	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-fftnv-ng1-m1	A	F2	fftnv	1	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20; gdb log written (first point of ('rnv1', 'F2')/fftnv); gdb rc=1
+RNV1-F2-fftnv-ng1-m2	A	F2	fftnv	1	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-fftnv-ng1-m3	A	F2	fftnv	1	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-fftnv-ng5-m1	A	F2	fftnv	5	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-fftnv-ng5-m2	A	F2	fftnv	5	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-fftnv-ng5-m3	A	F2	fftnv	5	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-fftnv-ng9-m1	A	F2	fftnv	9	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-fftnv-ng9-m2	A	F2	fftnv	9	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-fftnv-ng9-m3	A	F2	fftnv	9	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-fftvl-ng1-m1	A	F2	fftvl	1	1	rnv1:1	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	7	3	reached, first call returned 20; gdb log written (first point of ('rnv1', 'F2')/fftvl); gdb rc=1
+RNV1-F2-fftvl-ng1-m2	A	F2	fftvl	1	2	rnv1:2	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	8	3	reached, first call returned 20
+RNV1-F2-fftvl-ng1-m3	A	F2	fftvl	1	3	rnv1:3	REPORTED_FAILURE	0	20	20	1		REPORTED_FAILURE	MATCH	9	3	reached, first call returned 20
+RNV1-F2-fftvl-ng5-m1	A	F2	fftvl	5	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-fftvl-ng5-m2	A	F2	fftvl	5	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-fftvl-ng5-m3	A	F2	fftvl	5	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+RNV1-F2-fftvl-ng9-m1	A	F2	fftvl	9	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20
+RNV1-F2-fftvl-ng9-m2	A	F2	fftvl	9	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+RNV1-F2-fftvl-ng9-m3	A	F2	fftvl	9	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20
+TRI-F-m1	C2	F	nv	9	1	rnv1:1	CRASH	139	None	None	1	11	CRASH	MATCH	2	1	killed by signal 11 (rc=139); gdb log written (first point of ('tri', 'F')/nv); gdb rc=0
+TRI-F-m2	C2	F	nv	9	2	rnv1:2	CRASH	139	None	None	1	11	CRASH	MATCH	2	1	killed by signal 11 (rc=139)
+TRI-F-m3	C2	F	nv	9	3	rnv1:3	CRASH	139	None	None	1	11	CRASH	MATCH	3	1	killed by signal 11 (rc=139)
+TRI-F2-m1	C2	F2	nv	9	1	rnv1:1	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	4	2	reached, first call returned 20; gdb log written (first point of ('tri', 'F2')/nv); gdb rc=1
+TRI-F2-m2	C2	F2	nv	9	2	rnv1:2	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	5	2	reached, first call returned 20
+TRI-F2-m3	C2	F2	nv	9	3	rnv1:3	REPORTED_FAILURE	0	20	0	1		REPORTED_FAILURE	MATCH	6	2	reached, first call returned 20

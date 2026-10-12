@@ -1,0 +1,53 @@
+ERRATA_S3R3.txt -- P05-S3 子轮次 S3R3 勘误(编号 ES3R3-1 起)
+=====================================================================
+
+本文件记录用户裁决(U29–U33)与规划者对 R6d 修复方案的更正(E-S3R3-A)。
+本文件只新增,不修改 R6d 及更早的任何文件。签收只由用户在对话中给出。
+
+---------------------------------------------------------------------
+用户裁决(与 checkpoints/p05/registries/RULINGS.tsv 对应行一致)
+---------------------------------------------------------------------
+
+U29  S3-4b 由用户带范围声明关闭。声明全文原样保存于 checkpoints/p05/P05_S3_4b_CLOSURE.md。
+     只关闭 S3-4b 这一项;不代表 P05-S3 或 P05-S4 签收。
+
+U30  RNV1 采用方案 R3(R1、R2 都不采用)。方案 R3 内容见任务书第 3 节第 2 条:
+     只改 S4/pattern/pattern.c 内的 static 函数与其调用者;cg 与 sparse_linsolve_d 改为返回 int;
+     _rect/_tri 检查 work/iwork 分配并在失败时返回 -1.0;pattern_generate_flow_field 在 D016 检查之前
+     加 `if(max_field < 0){ return -11; }`。-11 = 内部分配失败;-10、-9 的现有含义不变。
+
+U31  S4/S4_internal.h:263 的注释改为:
+     "// 20 - the layer eigensystem failed; the failed layer has no modes; layers computed before it may keep their modes"
+
+U32  本轮只允许修改 S4/pattern/pattern.c 与 S4/S4_internal.h 第 263 行。S4/ 下其他任何文件、
+     testing/d003/ 下的历史装置都不得修改。pattern.h 不在批准范围内。
+
+U33  F2 = 本轮最后一个修改 S4/ 的提交。收尾时在 AGENTS.md 第 6 节表格追加一行 F2,
+     并把开工门禁的树哈希由 F 改为 F2(用户批准修改 AGENTS.md 的这两处)。
+
+---------------------------------------------------------------------
+E-S3R3-A  规划者对 REPAIR_PROPOSAL_R6d.md 与 RNV1_SOURCE_R6d.md 的更正
+---------------------------------------------------------------------
+
+(a) REPAIR_PROPOSAL_R6d.md 漏了 pattern.c:1251(cg 内的 work 分配)。R6d 实测窗口内的第 3 次 malloc 就在这里
+    (RNV1_SOURCE_R6d.md 第 4 节,gdb 实测 caller = cg,pattern.c:1251)。因此 M=3 的 24 行 CRASH 不在 1477/1481。
+    cg 与 sparse_linsolve_d 都返回 void,方案 R1、R2 都覆盖不到它。方案 R3 将 cg 改为返回 int 以覆盖它。
+
+(b) REPAIR_PROPOSAL_R6d.md:60 的 "layer 0/2 installed" 与 E6b-1 矛盾,应为 "只有层 0"。
+
+(c) tri 分支(pattern.c:1656、1660,以及 2056 的 sparse_linsolve_d 求解)从未实测。
+    S3R3 的自检 (C) 专门为 tri 分支设计(driver_s3r3_tri.cpp)。在 (C) 完成之前,tri 分支的行为只是 [源码]。
+
+R6d 的文件本身不改。
+
+---------------------------------------------------------------------
+本轮执行中的补充记录
+---------------------------------------------------------------------
+
+ES3R3-1  任务书 3.2 要求 _rect/_tri 返回 -1.0 作为分配失败标记,并要求 pattern_generate_flow_field 检查
+         `max_field < 0` 返回 -11。源码核对(PRE_FIX_SOURCE_S3R3.md 第 1 节)确认:_rect/_tri 的 max_field 来自
+         hypot(...) 的最大值,非负;-1.0 与正常取值不冲突。按任务书执行,不构成更正。
+
+ES3R3-2  R6d 报告(P05_S4R6d_REPORT.md)与 checkpoints/p05/registries/s4r6d/REPAIR_PROPOSAL_R6d.md 的路径:
+         任务书写作 registries/s4r6d/...,实际位于 checkpoints/p05/registries/s4r6d/...(仓库根下无 registries/ 目录)。
+         本轮按实际路径读取,不改任何 R6d 文件。

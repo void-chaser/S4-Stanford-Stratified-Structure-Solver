@@ -1,0 +1,85 @@
+mode	NG	grid	tree	rc_first	rc_retry	file	cmp
+RUN	nv	1	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	nv	1	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+nv	1	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+nv	1	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+nv	1	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	nv	5	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	nv	5	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+nv	5	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+nv	5	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+nv	5	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	nv	9	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	nv	9	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+nv	9	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+nv	9	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+nv	9	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	vl	1	pattern-both-4-3	F	20	20	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	vl	1	pattern-both-4-3	F2	20	20	-	-
+RUN	0		pattern-both-4-3				-	-
+vl	1	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+vl	1	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+vl	1	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	vl	5	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	vl	5	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+vl	5	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+vl	5	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+vl	5	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	vl	9	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	vl	9	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+vl	9	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+vl	9	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+vl	9	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftnv	1	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftnv	1	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+fftnv	1	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftnv	1	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftnv	1	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftnv	5	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftnv	5	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+fftnv	5	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftnv	5	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftnv	5	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftnv	9	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftnv	9	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+fftnv	9	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftnv	9	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftnv	9	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftvl	1	pattern-both-4-3	F	20	20	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftvl	1	pattern-both-4-3	F2	20	20	-	-
+RUN	0		pattern-both-4-3				-	-
+fftvl	1	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftvl	1	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftvl	1	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftvl	5	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftvl	5	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+fftvl	5	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftvl	5	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftvl	5	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL
+RUN	fftvl	9	pattern-both-4-3	F	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+RUN	fftvl	9	pattern-both-4-3	F2	0	0	-	-
+RUN	0		pattern-both-4-3				-	-
+fftvl	9	pattern-both-4-3	F-vs-F2	-	-	call1.txt	IDENTICAL
+fftvl	9	pattern-both-4-3	F-vs-F2	-	-	call2.txt	IDENTICAL
+fftvl	9	pattern-both-4-3	F-vs-F2	-	-	call3.txt	IDENTICAL

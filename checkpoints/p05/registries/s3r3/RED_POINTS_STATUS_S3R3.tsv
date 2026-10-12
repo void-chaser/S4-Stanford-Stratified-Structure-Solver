@@ -1,0 +1,24 @@
+# RED_POINTS_STATUS_S3R3.tsv -- P05-S3R3 red-point status: before repair (F, R6d ledger) vs self-check (F2).
+# Self-check results are S3R3-2 self-check (INFLUENCED); they are NOT S4 verification.  R7 must regress on F2 (U25).
+# "自检通过/未通过" wording only for RNV1; no "已修好" / "已验证" is claimed.
+id	main_category_before_F	aux_status	self_check_result_F2	R7_regression_point_ids	note
+RP-R6d-1	F_CONFIRMED	RNV1 (U30 repaired in S3R3)	自检通过 (36/36 REPORTED_FAILURE x2 passes; tri 3 points REPORTED_FAILURE x2; F CRASH on the same tri points)	RNV1-F-* (36 F points, R6d prereg) mapped to RNV1-F2-* (S3R3 prereg section A); TRI-F2-m1..m3	self-check only; R7 to regress
+RP-R6d-2	HARNESS_OR_PROCESS	R5-1 / RP-R5-1	not repaired; not in S3R3 scope	-	no change
+RP-R6d-3	OUT_OF_SCOPE_D003	RP-R5-2 / E6-4	not in scope	-	no change
+RP-R6d-4	HARNESS_OR_PROCESS	RP-R5-3 / E6-3	not in scope	-	no change
+RP-R6d-5	HARNESS_OR_PROCESS	RP-R5-4	not in scope	-	no change
+RP-R6d-6	BASELINE_ONLY	B-SS-JV	baseline observation on B; not repair evidence	-	no change
+RP-R6d-7	BASELINE_ONLY	R7-D016-B	open: B-side origin of rc 20 for vl NG1 not traced; F side unchanged (vl NG1 rc 20, pattern -10 path; no-injection F vs F2 IDENTICAL)	vl/fftvl NG1 no-injection rows (noinject/)	open
+RP-R6d-8	F_SUSPECT_SOURCE	K-1	not repaired; needs check design (R8)	-	open
+RP-R6d-9	HARNESS_OR_PROCESS	E6-8	S4_internal.h:263 wording changed (U31); behaviour unchanged	none (comment only)	comment changed; not a repair of behaviour
+RP-R6d-10	HARNESS_OR_PROCESS	E6-8-U11	U31 applied in commit a07b5ac	none (comment only)	comment changed
+RP-R6d-11	BASELINE_ONLY	U14-OBS	observation; no repair	-	no change
+RP-R6d-12	HARNESS_OR_PROCESS	E6c-6	ERRATA hash record; no repair	-	no change
+RP-R6d-13	HARNESS_OR_PROCESS	DUAL-I7	DEFERRED to R8 (U9); not run	-	not covered (R8)
+RP-R6d-14	HARNESS_OR_PROCESS	OTHER-LAYER	DEFERRED to R8 (U20); not run	-	not covered (R8)
+RP-R6d-15	HARNESS_OR_PROCESS	R7-PY-LUA	not run	-	R7/R8
+RP-R6d-16	HARNESS_OR_PROCESS	R7-NB18	not run	-	R7/R8
+RP-R6d-17	HARNESS_OR_PROCESS	R7-CAT-C	not run	-	R7/R8
+RP-R6d-18	OUT_OF_SCOPE_D003	S5-MALLOC	out of D003 scope (S5)	-	no change
+RP-R6d-19	HARNESS_OR_PROCESS	RS-177	smoke check only (D): nv NG9 and vl NG9 rc 0 on F2 (no injection); full matrix is R7	RS-177 full matrix (R7)	smoke only
+RP-R6d-20	HARNESS_OR_PROCESS	RS-SEAM	not re-run in S3R3; seam 25 points regression is R7	R6c seam 25 points (R7)	R7 to regress

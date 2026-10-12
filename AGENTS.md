@@ -67,9 +67,10 @@ REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/<本轮
 | A | `876181c` | `85feec1151b36bbb7c8a7146fb6037609d9ff765` | 历史"当前"树(运行器标签 `CUR`);含 S3 提交 `b00b630`、`de52142`,不含 S3R/S3R2 |
 | H | `64eb0b5` | `cb7fc613b28929db078a3e33025feea0074e87d8` | S2 参照树(与 `35cd7b3` 的 `S4/` 相同) |
 | F | `1c11905` | `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4` | P05-S4 的冻结被测树(含 S3、S3R、S3R2 全部修复;与 `ff6dd7c` 的 `S4/` 相同) |
+| F2 | `a07b5ac` | `e124925f5b242486a913b813fa181664f665b048` | P05-S3R3 修复后的冻结被测树(RNV1 方案 R3 + 注释 U31) |
 
 - 当前分支:`codex/p05-d003-fft-error-propagation`。
-- 开工门禁:HEAD 与 `STATE.md` 记录一致;`git rev-parse HEAD:S4` 等于 F 的树哈希(除非用户已批准新的修复轮);判定器 sha256 一致;`git status --short` 为空(或仅含任务书点名的文件)。任一不符就停下报告。
+- 开工门禁:HEAD 与 `STATE.md` 记录一致;`git rev-parse HEAD:S4` 等于 F2 的树哈希(除非用户已批准新的修复轮);判定器 sha256 一致;`git status --short` 为空(或仅含任务书点名的文件)。任一不符就停下报告。
 
 ## 7. 每轮结束必须做
 

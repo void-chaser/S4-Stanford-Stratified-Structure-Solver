@@ -9,10 +9,10 @@
 | 分支 | `codex/p05-d003-fft-error-propagation` |
 | 开工基线 HEAD（R6c2） | `fa7a247ff6d6b92c824b7774d4032cdbdd814bab`（R6c 第 4 节 seam 部分；里程碑 `6bba0bd`） |
 | 收尾提交 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
-| `HEAD:S4` | `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4`（= 冻结树 F `1c11905`） |
+| `HEAD:S4`（当前冻结被测树 F2） | `e124925f5b242486a913b813fa181664f665b048`（F2 提交 `a07b5ac`；前一冻结树 F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | P05-S4 子轮次 **R6d**（R6 的最后子轮次，非新阶段）：**已完成第 3 节（U2 阶段表 202 点 CONSISTENT）、第 5 节（账本 v2、方案 v2）、RNV1 注入（R6d-2）；等待用户审核**。报告：`P05_S4R6d_REPORT.md`。R6d 未宣布任何阶段完成或签收 |
+| 当前轮次 | P05-S3 子轮次 **S3R3**（不是新阶段）：RNV1 修复（方案 R3，U30）、注释 U31、冻结 F2。**已完成修复、编译检查与自检 A–D；S3-4b 由用户关闭（U29，见 `P05_S3_4b_CLOSURE.md`）。等待用户审核；下一步 P05-S4 R7 在 F2 上回归**。报告：`P05_S3R3_CLOSEOUT.md`。S3R3 未宣布任何阶段完成或签收 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -24,16 +24,17 @@
 | R6c | 里程碑 `6bba0bd`：177 点两遍 HOLD 177 / VIOLATED 0 / FLAKY 0 / GDB_DIVERGENT 0；seam 等价 25/25、inj_call 全为 1 | `P05_S4R6c_REPORT.md`、`P05_S4R6c_REPORT_ADDENDUM_seam.md` |
 | R6c2 | E6c-6 哈希勘误（前 64 行字节一致）；U18 对照 18 行；判定器自检 11/11 + 原行 3/3；seam 25 点两遍 HOLD 25 / VIOLATED 0 / FLAKY 0 / GDB_DIVERGENT 0；红点总账；修复方案（无 F_CONFIRMED 候选） | `P05_S4R6c2_REPORT_PART2.md` |
 | R6d | U2 阶段表 202 点 CONSISTENT / 0 CONFLICT / 0 UNRESOLVED（a2 b197 c1 d2 e0；e 未覆盖，去向 R8）；RNV1 注入 F 72/72 CRASH（两遍）→ RP-R6d-1 **F_CONFIRMED**；账本 v2 20 行（R6c 22 条全部映射）；方案 v2（S4/ 未改） | `P05_S4R6d_REPORT.md` |
+| S3R3 | 修复 `a9679bc`（pattern.c，方案 R3）、注释 `a07b5ac`（U31）；冻结 F2 `e124925f…`；编译：dbg 与 plain 告警数与 F 相同（62/71），逐条无新增；自检 A：F2 RNV1 36 点两遍 REPORTED_FAILURE 36/36（自检通过，未验证为修复后 S4 结果）；自检 C：F tri 3 点 CRASH、F2 3 点 REPORTED_FAILURE；B：无注入 F vs F2 call1–3 共 36 项 IDENTICAL；D：nv/vl NG9 冒烟 rc 0 | `P05_S3R3_CLOSEOUT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 链接；细节见报告附录 A 与总账）
 
 | 项 | 状态 | 去向 |
 |---|---|---|
-| S3-4b（失败后模式/缓存不安装） | 本装置范围内 177 点 HOLD 177 / VIOLATED 0；seam 25 点 HOLD 25；自检 11/11。**未关闭**，关闭由用户决定（U21，范围声明见报告第 9 节） | 用户裁决 |
+| S3-4b（失败后模式/缓存不安装） | **由用户带范围声明关闭（U29）**，只关闭此项，不代表 P05-S3/S4 签收；范围声明见 `P05_S3_4b_CLOSURE.md`；未覆盖：阶段 e、I7、双目标注入、其他层失败变体 | 转 R8（F2 上） |
 | 双目标注入、I7 sanitizer | DEFERRED（U9） | R7 |
 | "其他层失败"变体 | DEFERRED（U20） | R7 |
-| RNV1（pattern malloc 无 NULL 检查，RP-R6d-1） | **F_CONFIRMED**（R6d 注入 F 72/72 CRASH，两遍；gdb 崩溃 `pattern.c:1498`）；U16 的 RNV1 部分被 U24 取代 | 修复位置与时机由用户决定（U4/U25）；方案 `evidence/p05-s4r6d/REPAIR_PROPOSAL_R6d.md`（选项 R1/R2，未验证，S4/ 未改） |
-| 注释措辞 `S4/S4_internal.h:263`（U11） | HARNESS_OR_PROCESS | S3 收尾修复轮（需用户批准改 S4/） |
+| RNV1（pattern malloc 无 NULL 检查，RP-R6d-1） | F 上 CRASH（R6d）；S3R3 采用方案 R3（U30，提交 `a9679bc`）；F2 自检通过（REPORTED_FAILURE），**未经 S4 验证**，R7 在 F2 上回归 | R7（F2） |
+| 注释措辞 `S4/S4_internal.h:263`（U11） | 已改为 U31 措辞（提交 `a07b5ac`） | R7 回归确认 |
 | 张量路径 K-1（RP-R6d-8） | F_SUSPECT_SOURCE（[源码]，未测） | R8 |
 | B 侧 jones/vl SILENT_SWALLOW、nv CRASH | OPEN（基线，不是修复证据） | S5 或 R7 |
 | Python/Lua 可见性、NB=1–8、类别 C、D016 B 侧 rc 20 来源 | OPEN / DEFERRED | R7 |
