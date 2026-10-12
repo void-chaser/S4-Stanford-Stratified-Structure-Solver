@@ -282,3 +282,39 @@ NOT_REACHED_AS_EXPECTED is counted separately; it is not MATCH and not REGRESSIO
 If hit == 1 for one of these points: check F with the same R7 build; only F2 at 1 is REGRESSION; F also at 1 is ENV_DRIFT (U58).
 The rule is applied in one function, verdict_of(expected, cls, rc, hit), in run_m2b_all_r7.py.  No other place decides a verdict.
 Judge unchanged (sha256 d2d04145...).
+
+== E7-32 S4FMM_NTH missing from the M2b environment; run5 G1 and G2c are HARNESS_INVALID (U69)
+What happened.  run5 (run_m2b_all_r7.py run) built the environment of each point as FMM_MODE, S4FMM_NG, S4FMM_INJECT and
+(twice) S4FMM_TWICE, but never S4FMM_NTH.  The injector then defaults to the first call (inject_d003.cpp:38).  Every point
+with nth > 1 therefore injected at the first call, not at its own nth.
+Historical environment.  matrix_r2.build_env(row) (matrix_r2.py:98-109) sets S4FMM_NTH = row["nth"] whenever nth is not "-" or
+empty, and S4FMM_TWICE = slab only when case starts with "t4/".  The historical runners set these fields as follows:
+  G1  run_r3_sweep.py:117-118   case = ("t4/" if route == "twice" else "r3/") + point_id; nth = the NTH of the point id.
+  G2c run_r4_regress.py:79-81   the same case rule (t4/ or r3/ by route); nth = str(nth) of RESULTS_R3.
+  G2a run_r4_matrix.py:101-102  nth = "-"; case = point_id; no S4FMM_NTH and no S4FMM_TWICE.  Stated, not inferred.
+Consequence (void results, not counted in M2).
+  G1 (run5): 94 MISMATCH rows (22 INVALID_NOT_REACHED points with hit 1; twice, inj_call 2 points with rc1 20 and rc2 0 judged
+  SILENT_SWALLOW), 204 MATCH rows.  G2c (run5): 60 MATCH rows.  All of these used the first-call injection and are void.
+  CTRL_SEAM (run5): 4/4 CONTROL_OK, both passes; no injection, so NTH is not relevant; kept.
+  Not affected: M1 (request rnv1:M), M2a (request plancall:K:M, its own environment), G2a (its request carries its own index).
+Classification.  Not ENV_DRIFT and not REGRESSION.  HARNESS_INVALID (U69).
+Checking gap (planner).  The dry-run and the ENV_DRIFT check compared classes only, not rc values, and did not compare the
+environment of a run against the historical runner.  U71 adds both checks.  The planner's previous dry-runs were therefore
+unable to detect this defect.
+Points of the fix (cont7).  (1) the environment is built by matrix_r2.build_env(row) for G1, G2c and G2a (imported);
+(2) the row case is "t4/" + point_id for twice and "r3/" + point_id for once (G1, G2c; the historical rule), so that build_env
+gives S4FMM_TWICE = slab exactly for the twice rows; (3) nth comes from the ADD nth column; G2a keeps nth "-".
+Scope of the fix (decided in cont7): run_m2b_all_r7.py builds the environment of G1, G2c and G2a with matrix_r2.build_env.
+run_m2_r7.py is NOT changed.  Its environment (lines 254-258) serves M2a (G2b, G3, G4, plancall requests that carry their own
+index), which was run and is valid; changing it would change a validated result.  run_m2_r7.py is still imported for its helper
+functions (join_points, point_spec, real_of, facts, run, clean_env, drivers_recorded, GRID).
+Measured in cont7 (value check, VALUES_VS_HISTORY_run5_pass1.tsv, read only, no S4 run): run5 pass 1 has 179 points compared,
+69 VALUE_DRIFT, all in G1 (rc1 20 against history 0, or hit 1 against 0, on nth > 1 or once-plan points); G2a MISSING (not run);
+G2c: NO VALUE_DRIFT.  So the G2c claim in U69 ("G2c 60 MATCH void") is NOT supported by the value check: the G2c nth > 1 points
+gave the historical rc1 and hit on run5.  U69 is not edited; the G2c status is left for run6 to decide (U71b: the run6 value
+check is the evidence).  Note the G2c nth > 1 rows are once-route points (e.g. M-twice-fft-plan-2-F has route once in the ADD
+table), which may explain why the missing NTH did not change their values.  Not verified: this explanation is not tested.
+Expected counts (the cont7 brief): nth > 1 rows: G1 210, G2c 16.  These are NOT yet verified: the planner's count from the ADD
+table was not produced by a script (a grep over ADD returned more than 250 lines and gave no count).  The dry-run assertion
+(cont7 2.2) counts them by script; if the script's count differs from 210 / 16, the difference is recorded as a finding, and
+the run does not start until the count is explained (see the cont7 report).

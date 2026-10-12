@@ -36,6 +36,7 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(REPO, "testing", "d003"))
 import run_m2_r7 as M  # noqa: E402  imported, not copied
 import judge_d003 as J  # noqa: E402  imported, not modified
+import matrix_r2 as MR  # noqa: E402  imported, not modified: build_env (U71a; matrix_r2.py:98-109)
 from compare_trees_r7 import base_id  # noqa: E402  imported (U66)
 
 GROUP_ORDER = ("CTRL_SEAM", "G2c", "G1", "G2a")
@@ -145,18 +146,42 @@ def ctrl_seam_points(ev):
     return out
 
 
+def history_case(group, point_id, twice):
+    """The case name the historical runners gave a point (U71a; E7-32).
+    G1 (run_r3_sweep.py:118) and G2c (run_r4_regress.py:79): "t4/" for the twice route, "r3/" for the once route.
+    G2a (run_r4_matrix.py:101): the point id itself, no prefix."""
+    if group == "G2a":
+        return point_id
+    return ("t4/" if twice else "r3/") + point_id
+
+
+def build_row(group, point, nth):
+    """The row that matrix_r2.build_env reads (U71a).  nth comes from the ADD table ("-" for G2a, run_r4_matrix.py:102)."""
+    return {"case": history_case(group, point["point_id"], point["twice"]), "request": point["request"], "nth": nth,
+            "mode": point["mode"], "ng": point["ng"]}
+
+
 def g_points():
-    """{group: [(point_dict)]} for the G1, G2c, G2a points of v2 joined to ADD (via run_m2_r7.join_points)."""
+    """{group: [point dict]} for G1, G2c, G2a: v2 joined to ADD.  Each point carries the ADD nth and its build_env row."""
     out = {g: [] for g in ("G2c", "G1", "G2a", NOT_RUN_GROUP)}
     for r, a in M.join_points():
         g = r["group"]
         if g not in out:
             continue
         s = M.point_spec(r, a)
-        out[g].append({"point_id": r["point_id"], "group": g, "tree": r["tree"], "mode": s["mode"], "request": s["request"],
-                       "inj_call": s["inj_call"], "ng": s["ng"], "twice": s["twice"], "control": s["control"],
-                       "expected": r["expected_class"]})
+        nth = a["nth"] if a is not None else "-"
+        p = {"point_id": r["point_id"], "group": g, "tree": r["tree"], "mode": s["mode"], "request": s["request"],
+             "inj_call": s["inj_call"], "ng": s["ng"], "twice": s["twice"], "control": s["control"],
+             "expected": r["expected_class"], "nth": nth}
+        p["row"] = build_row(g, p, nth)
+        out[g].append(p)
     return out
+
+
+def point_env(point):
+    """The environment of one point: matrix_r2.build_env(row) for G1, G2c, G2a (U71a).  CTRL_SEAM keeps its registered env
+    (no NTH needed: control, no injection)."""
+    return M.clean_env(MR.build_env(point["row"]))
 
 
 def dry_run(ev):
@@ -179,6 +204,8 @@ def dry_run(ev):
     lines = ["# DRYRUN_R7_M2b_run5b (cont6, ADD1).  No S4 run.  Driver sha256 and library sha256 checked; modes, expectations, outputs checked."]
     unparse = 0
     label_counts = {}
+    nth_rows = {}
+    examples = {}
     for g in GROUP_ORDER:
         rows = pts[g]
         ok = 0
@@ -198,6 +225,23 @@ def dry_run(ev):
                     raise ValueError("inj_call %r" % p["inj_call"])
                 if p["ng"] != "9":
                     raise ValueError("ng %r (expected 9)" % p["ng"])
+                if g != "CTRL_SEAM":
+                    # U71(a): the environment is matrix_r2.build_env(row) and must match the ADD nth and route
+                    env = point_env(p)
+                    nth = p["nth"]
+                    if nth not in ("-", "") and int(nth) > 1:
+                        nth_rows[g] = nth_rows.get(g, 0) + 1
+                        if env.get("S4FMM_NTH") != nth:
+                            raise ValueError("env S4FMM_NTH %r != ADD nth %r" % (env.get("S4FMM_NTH"), nth))
+                    if p["twice"] and env.get("S4FMM_TWICE") != "slab":
+                        raise ValueError("twice row lacks S4FMM_TWICE=slab")
+                    if not p["twice"] and "S4FMM_TWICE" in env:
+                        raise ValueError("once row carries S4FMM_TWICE")
+                    if g in ("G1", "G2c") and env.get("S4FMM_NTH") is None and nth not in ("-", ""):
+                        raise ValueError("G1/G2c row lacks S4FMM_NTH while ADD nth is %r" % nth)
+                    examples.setdefault(g, "FMM_MODE=%s S4FMM_NG=%s S4FMM_INJECT=%s S4FMM_NTH=%s S4FMM_TWICE=%s case=%s" % (
+                        env.get("FMM_MODE"), env.get("S4FMM_NG"), env.get("S4FMM_INJECT", "-"),
+                        env.get("S4FMM_NTH", "-"), env.get("S4FMM_TWICE", "-"), p["row"]["case"]))
                 label_counts[p["expected"]] = label_counts.get(p["expected"], 0) + 1
                 ok += 1
             except Exception as exc:  # noqa: BLE001  (reported and counted)
@@ -207,6 +251,11 @@ def dry_run(ev):
     lines.append("# group=%s rows=%d status=EXCLUDED_U65 (not counted as unparseable)"
                  % (NOT_RUN_GROUP, len([r for r, a in M.join_points() if r["group"] == NOT_RUN_GROUP])))
     lines.append("# expected label counts: %s" % ", ".join("%s=%d" % (k, label_counts[k]) for k in sorted(label_counts)))
+    lines.append("# rows with nth > 1 (ADD nth): %s" % (", ".join("%s=%d" % (g, nth_rows[g]) for g in sorted(nth_rows)) or "none"))
+    for g in GROUP_ORDER:
+        if g in examples:
+            lines.append("# example environment %s: %s" % (g, examples[g]))
+    lines.append("# expected nth > 1 counts (cont7 brief, not yet verified before this run): G1 210, G2c 16")
     lines.append("# driver/library sha256 checked: %d" % checked)
     lines.append("# total unparseable: %d" % unparse)
     return "\n".join(lines) + "\n", unparse
@@ -223,12 +272,12 @@ def run_group(ev, group, tag, rec, seam, pts):
         for p in pts:
             drv, drv_sha = driver_for(group, p["request"], p["tree"], rec, seam)
             check_driver(drv, drv_sha)
-            env = {"FMM_MODE": p["mode"], "S4FMM_NG": p["ng"]}
-            if p["request"] != "none":
-                env["S4FMM_INJECT"] = p["request"]
-            if p["twice"]:
-                env["S4FMM_TWICE"] = "slab"
-            rc, txt = M.run([drv] + M.GRID, M.clean_env(env))
+            if group == "CTRL_SEAM":
+                # registered control environment (no injection, so no NTH): FMM_MODE and NG only
+                env = M.clean_env({"FMM_MODE": p["mode"], "S4FMM_NG": p["ng"]})
+            else:
+                env = point_env(p)  # matrix_r2.build_env(row) (U71a)
+            rc, txt = M.run([drv] + M.GRID, env)
             f = M.facts(txt)
             if p["control"]:
                 cls, _label, reason = J.classify(rc, f["rc1"], f["rc2"], f["hit"], control=True, real=True, inj_call=1)

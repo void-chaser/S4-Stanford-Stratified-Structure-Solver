@@ -59,9 +59,9 @@ def historical_f(group):
 
 
 def main(argv):
-    if len(argv) != 3:
-        raise SystemExit("usage: check_env_drift_m2b_r7.py EVDIR OUT.tsv")
-    ev, out = argv[1], argv[2]
+    if len(argv) != 4:
+        raise SystemExit("usage: check_env_drift_m2b_r7.py EVDIR RUNTAG OUT.tsv")
+    ev, tag, out = argv[1], argv[2], argv[3]
     if not os.path.isabs(out):
         raise SystemExit("REFUSED: OUT must be an absolute path under the evidence directory")
     if os.path.exists(out):
@@ -69,17 +69,25 @@ def main(argv):
     lines = ["# ENV_DRIFT check, M2b (G2c, G1, G2a): R7 F class (pass 1 and pass 2) vs historical F class, per (base id, group).",
              "group\tbase_id\thistorical_F_pass1\thistorical_F_pass2\tR7_F_pass1\tR7_F_pass2\tenv_drift"]
     points = drift = absent = 0
+    missing_groups = []
     for g in ("G2c", "G1", "G2a"):
         hist = historical_f(g)
         cur = {"1": {}, "2": {}}
+        group_missing = False
         for p in ("1", "2"):
-            path = os.path.join(ev, "RESULTS_R7_%s_pass%s_run5.tsv" % (g, p))
+            path = os.path.join(ev, "RESULTS_R7_%s_pass%s_%s.tsv" % (g, p, tag))
             if not os.path.isfile(path):
-                raise SystemExit("REFUSED: missing %s (run M2b first)" % path)
+                group_missing = True  # U72: report this group as MISSING, keep checking the others
+                continue
             for d in table(path):
                 if d["tree"] != "F":
                     continue
                 cur[p][(base_id(d["point_id"], "F"), g)] = d["class"]
+        if group_missing:
+            # U72: the group has no result file for this tag; reported as MISSING, not as absent points
+            missing_groups.append(g)
+            lines.append("%s\tMISSING_GROUP\t-\t-\t-\t-\tMISSING" % g)
+            continue
         # historical keys are the source point ids; the R7 base ids must match them
         for pid, (h1, h2) in sorted(hist.items()):
             points += 1
@@ -89,17 +97,21 @@ def main(argv):
                 absent += 1
                 lines.append("\t".join([g, pid, h1, h2 or "-", c1 or "ABSENT", c2 or "ABSENT", "ABSENT"]))
                 continue
+            # U68 / ADD1 3: a historical INVALID and an R7 verdict NOT_REACHED_AS_EXPECTED are the same class (INVALID),
+            # so a class-string comparison is the rule here; the verdict is not re-decided in this script.
             ok1 = (c1 == h1)
             ok2 = (c2 == h2) if h2 is not None else True
             flag = "-" if (ok1 and ok2) else "DRIFT"
             if flag == "DRIFT":
                 drift += 1
             lines.append("\t".join([g, pid, h1, h2 or "-", c1, c2, flag]))
-    lines.append("# points=%d env_drift=%d absent=%d" % (points, drift, absent))
+    lines.append("# points=%d env_drift=%d absent=%d missing_groups=%s"
+                 % (points, drift, absent, ",".join(missing_groups) or "none"))
     with open(out, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
-    print("points=%d env_drift=%d absent=%d -> %s" % (points, drift, absent, out))
-    return 0 if (absent == 0 and drift == 0 and points > 0) else 1
+    print("points=%d env_drift=%d absent=%d missing_groups=%s -> %s"
+          % (points, drift, absent, ",".join(missing_groups) or "none", out))
+    return 0 if (absent == 0 and drift == 0 and not missing_groups and points > 0) else 1
 
 
 if __name__ == "__main__":
