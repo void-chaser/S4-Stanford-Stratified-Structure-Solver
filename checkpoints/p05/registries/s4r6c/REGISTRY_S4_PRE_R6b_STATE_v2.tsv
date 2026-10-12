@@ -1,0 +1,198 @@
+# REGISTRY_S4_PRE_R6b_STATE_v2.tsv -- P05-S4 R6c-2 pre-registration v2 (S3-4b state judgement, 177 judgeable points, tree F).
+# v1 (REGISTRY_S4_PRE_R6b_STATE.tsv, sha256 f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358) is VOID ONLY for I4.
+# v1 is void only in its I4 definition and in having no k_before column.  Its other columns, expected values and status are UNCHANGED
+# in v2.  Reason: ERRATA_6c U14 (user ruling; planner error in the R6b brief).  Record: ERRATA_6c, section 'U14'.
+# Written BEFORE any R6c state run.  Map: MAP_R6b_ALL.tsv (202 points; 25 seam points UNJUDGED, ERRATA_6b E6b-7; not in this table).
+# Snapshot indices by inj_call (U13, unchanged): inj_call 1 -> k_fail 1, k_preretry 2, k_retry 3, retry_call 2;
+#                                                inj_call 2 -> k_fail 3, k_preretry 3, k_retry 4, retry_call 3.
+# k_before (new, U14): the snapshot before the injected call:  inj_call 1 -> 0;  inj_call 2 -> 2.
+# Invariants (v2):
+#   I1: failed layer modes==NULL at k_fail (unchanged from v1)
+#   I2: other layers at k_fail: q hash, control installed, not re-entered (E6-8 option 1; unchanged from v1)
+#   I3: field_cache subset of control at k_fail (PolBasis modes only; else N/A; unchanged from v1)
+#   I4': (a) solved[req]@k_fail == solved[req]@k_before, i.e. the failing call does NOT change solved[req] from 0 to 1;
+#        (b) if solved[req]@k_fail == 1 then at k_fail modes==NULL for the request layer (if L->copy>=0: modes of the copied layer),
+#            so that S4.cpp:1805 forces recomputation.  req is read by gdb (R6CREQ lines), not assumed.  (U14; ERRATA_6c)
+#   I5: retry enters ComputeLayerModes only for modes==NULL layers at k_pre; each at most once; retry rc==0 (unchanged from v1)
+#   I6: retry output byte-identical to control call of the same number (unchanged from v1)
+#   I7: DEFERRED (U9).
+# Expected (status INFLUENCED): every applicable invariant HOLD (unchanged from v1).  Status is NOT BLIND.
+# UTC written: 2026-10-12T06:33:36Z
+point_id	source	tree	route	mode	stack	request	NTH_or_K	M	inj_call	twice	k_fail	k_preretry	k_retry	retry_call	k_before	applicable_invariants	expected	status
+M-once-closed1d-malloc-1	R3	F	once	closed1d	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-closed2d-malloc-1	R3	F	once	closed2d	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-experimental-malloc-1	R3	F	once	experimental	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-exec-1	R3	F	once	fft	pattern both 4 3	exec	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-exec-2	R3	F	once	fft	pattern both 4 3	exec	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-exec-3	R3	F	once	fft	pattern both 4 3	exec	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-exec-4	R3	F	once	fft	pattern both 4 3	exec	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-exec-5	R3	F	once	fft	pattern both 4 3	exec	NTH=5	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-malloc-1	R3	F	once	fft	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-malloc-2	R3	F	once	fft	pattern both 4 3	s4malloc	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-plan-1	R3	F	once	fft	pattern both 4 3	plan	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-plan-2	R3	F	once	fft	pattern both 4 3	plan	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-exec-1	R3	F	once	jones	pattern both 4 3	exec	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-exec-2	R3	F	once	jones	pattern both 4 3	exec	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-exec-3	R3	F	once	jones	pattern both 4 3	exec	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-exec-4	R3	F	once	jones	pattern both 4 3	exec	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-malloc-1	R3	F	once	jones	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-malloc-2	R3	F	once	jones	pattern both 4 3	s4malloc	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-malloc-3	R3	F	once	jones	pattern both 4 3	s4malloc	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-malloc-4	R3	F	once	jones	pattern both 4 3	s4malloc	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-jones-plan-1	R3	F	once	jones	pattern both 4 3	plan	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-exec-1	R3	F	once	kottke	pattern both 4 3	exec	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-exec-2	R3	F	once	kottke	pattern both 4 3	exec	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-exec-3	R3	F	once	kottke	pattern both 4 3	exec	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-exec-4	R3	F	once	kottke	pattern both 4 3	exec	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-exec-5	R3	F	once	kottke	pattern both 4 3	exec	NTH=5	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-malloc-1	R3	F	once	kottke	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-plan-1	R3	F	once	kottke	pattern both 4 3	plan	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-plan-2	R3	F	once	kottke	pattern both 4 3	plan	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-exec-1	R3	F	once	nv	pattern both 4 3	exec	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-exec-2	R3	F	once	nv	pattern both 4 3	exec	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-exec-3	R3	F	once	nv	pattern both 4 3	exec	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-exec-4	R3	F	once	nv	pattern both 4 3	exec	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-malloc-1	R3	F	once	nv	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-malloc-2	R3	F	once	nv	pattern both 4 3	s4malloc	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-malloc-3	R3	F	once	nv	pattern both 4 3	s4malloc	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-malloc-4	R3	F	once	nv	pattern both 4 3	s4malloc	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-nv-plan-1	R3	F	once	nv	pattern both 4 3	plan	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-exec-1	R3	F	once	vl	pattern both 4 3	exec	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-exec-2	R3	F	once	vl	pattern both 4 3	exec	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-exec-3	R3	F	once	vl	pattern both 4 3	exec	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-exec-4	R3	F	once	vl	pattern both 4 3	exec	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-malloc-1	R3	F	once	vl	pattern both 4 3	s4malloc	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-malloc-2	R3	F	once	vl	pattern both 4 3	s4malloc	NTH=2	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-malloc-3	R3	F	once	vl	pattern both 4 3	s4malloc	NTH=3	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-malloc-4	R3	F	once	vl	pattern both 4 3	s4malloc	NTH=4	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-vl-plan-1	R3	F	once	vl	pattern both 4 3	plan	NTH=1	-	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-closed1d-malloc-1	R3	F	twice	closed1d	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-closed1d-malloc-2	R3	F	twice	closed1d	pattern both 4 3	s4malloc	NTH=2	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-closed2d-malloc-1	R3	F	twice	closed2d	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-closed2d-malloc-2	R3	F	twice	closed2d	pattern both 4 3	s4malloc	NTH=2	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-experimental-malloc-1	R3	F	twice	experimental	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-experimental-malloc-2	R3	F	twice	experimental	pattern both 4 3	s4malloc	NTH=2	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-1	R3	F	twice	fft	pattern both 4 3	exec	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-12	R3	F	twice	fft	pattern both 4 3	exec	NTH=12	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-13	R3	F	twice	fft	pattern both 4 3	exec	NTH=13	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-14	R3	F	twice	fft	pattern both 4 3	exec	NTH=14	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-15	R3	F	twice	fft	pattern both 4 3	exec	NTH=15	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-16	R3	F	twice	fft	pattern both 4 3	exec	NTH=16	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-2	R3	F	twice	fft	pattern both 4 3	exec	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-3	R3	F	twice	fft	pattern both 4 3	exec	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-4	R3	F	twice	fft	pattern both 4 3	exec	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-exec-5	R3	F	twice	fft	pattern both 4 3	exec	NTH=5	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-malloc-1	R3	F	twice	fft	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-malloc-2	R3	F	twice	fft	pattern both 4 3	s4malloc	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-malloc-3	R3	F	twice	fft	pattern both 4 3	s4malloc	NTH=3	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-malloc-4	R3	F	twice	fft	pattern both 4 3	s4malloc	NTH=4	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-1	R3	F	twice	fft	pattern both 4 3	plan	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-2	R3	F	twice	fft	pattern both 4 3	plan	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-exec-1	R3	F	twice	jones	pattern both 4 3	exec	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-exec-2	R3	F	twice	jones	pattern both 4 3	exec	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-exec-3	R3	F	twice	jones	pattern both 4 3	exec	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-exec-4	R3	F	twice	jones	pattern both 4 3	exec	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-1	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-2	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-3	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-4	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-5	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=5	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-6	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=6	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-malloc-7	R3	F	twice	jones	pattern both 4 3	s4malloc	NTH=7	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-jones-plan-1	R3	F	twice	jones	pattern both 4 3	plan	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-1	R3	F	twice	kottke	pattern both 4 3	exec	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-12	R3	F	twice	kottke	pattern both 4 3	exec	NTH=12	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-13	R3	F	twice	kottke	pattern both 4 3	exec	NTH=13	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-14	R3	F	twice	kottke	pattern both 4 3	exec	NTH=14	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-15	R3	F	twice	kottke	pattern both 4 3	exec	NTH=15	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-16	R3	F	twice	kottke	pattern both 4 3	exec	NTH=16	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-2	R3	F	twice	kottke	pattern both 4 3	exec	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-3	R3	F	twice	kottke	pattern both 4 3	exec	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-4	R3	F	twice	kottke	pattern both 4 3	exec	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-exec-5	R3	F	twice	kottke	pattern both 4 3	exec	NTH=5	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-malloc-1	R3	F	twice	kottke	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-malloc-2	R3	F	twice	kottke	pattern both 4 3	s4malloc	NTH=2	-	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-1	R3	F	twice	kottke	pattern both 4 3	plan	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-2	R3	F	twice	kottke	pattern both 4 3	plan	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-exec-1	R3	F	twice	nv	pattern both 4 3	exec	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-exec-2	R3	F	twice	nv	pattern both 4 3	exec	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-exec-3	R3	F	twice	nv	pattern both 4 3	exec	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-exec-4	R3	F	twice	nv	pattern both 4 3	exec	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-1	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-2	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-3	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-4	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-5	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=5	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-6	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=6	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-malloc-7	R3	F	twice	nv	pattern both 4 3	s4malloc	NTH=7	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-nv-plan-1	R3	F	twice	nv	pattern both 4 3	plan	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-exec-1	R3	F	twice	vl	pattern both 4 3	exec	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-exec-2	R3	F	twice	vl	pattern both 4 3	exec	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-exec-3	R3	F	twice	vl	pattern both 4 3	exec	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-exec-4	R3	F	twice	vl	pattern both 4 3	exec	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-1	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-2	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=2	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-3	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=3	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-4	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=4	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-5	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=5	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-6	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=6	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-malloc-7	R3	F	twice	vl	pattern both 4 3	s4malloc	NTH=7	-	2	slab	3	3	4	3	2	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-vl-plan-1	R3	F	twice	vl	pattern both 4 3	plan	NTH=1	-	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-plan-3	R4PC	F	once	fft	pattern both 4 3	plancall:3:1	K=3	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-plan-4	R4PC	F	once	fft	pattern both 4 3	plancall:4:1	K=4	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-fft-plan-5	R4PC	F	once	fft	pattern both 4 3	plancall:5:1	K=5	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-plan-3	R4PC	F	once	kottke	pattern both 4 3	plancall:3:1	K=3	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-plan-4	R4PC	F	once	kottke	pattern both 4 3	plancall:4:1	K=4	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-once-kottke-plan-5	R4PC	F	once	kottke	pattern both 4 3	plancall:5:1	K=5	M=1	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-3	R4PC	F	twice	fft	pattern both 4 3	plancall:3:1	K=3	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-4	R4PC	F	twice	fft	pattern both 4 3	plancall:4:1	K=4	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-5	R4PC	F	twice	fft	pattern both 4 3	plancall:5:1	K=5	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-12	R4PC	F	twice	fft	pattern both 4 3	plancall:12:1	K=12	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-13	R4PC	F	twice	fft	pattern both 4 3	plancall:13:1	K=13	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-14	R4PC	F	twice	fft	pattern both 4 3	plancall:14:1	K=14	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-15	R4PC	F	twice	fft	pattern both 4 3	plancall:15:1	K=15	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-fft-plan-16	R4PC	F	twice	fft	pattern both 4 3	plancall:16:1	K=16	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-3	R4PC	F	twice	kottke	pattern both 4 3	plancall:3:1	K=3	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-4	R4PC	F	twice	kottke	pattern both 4 3	plancall:4:1	K=4	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-5	R4PC	F	twice	kottke	pattern both 4 3	plancall:5:1	K=5	M=1	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-12	R4PC	F	twice	kottke	pattern both 4 3	plancall:12:1	K=12	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-13	R4PC	F	twice	kottke	pattern both 4 3	plancall:13:1	K=13	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-14	R4PC	F	twice	kottke	pattern both 4 3	plancall:14:1	K=14	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-15	R4PC	F	twice	kottke	pattern both 4 3	plancall:15:1	K=15	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M-twice-kottke-plan-16	R4PC	F	twice	kottke	pattern both 4 3	plancall:16:1	K=16	M=1	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-fft-plan-1-F	R5M2	F	once	fft	pattern both 4 3	plancall:1:2	K=1	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-fft-plan-2-F	R5M2	F	once	fft	pattern both 4 3	plancall:2:2	K=2	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-fft-plan-3-F	R5M2	F	once	fft	pattern both 4 3	plancall:3:2	K=3	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-fft-plan-4-F	R5M2	F	once	fft	pattern both 4 3	plancall:4:2	K=4	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-fft-plan-5-F	R5M2	F	once	fft	pattern both 4 3	plancall:5:2	K=5	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-jones-plan-1-F	R5M2	F	once	jones	pattern both 4 3	plancall:1:2	K=1	M=2	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-kottke-plan-1-F	R5M2	F	once	kottke	pattern both 4 3	plancall:1:2	K=1	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-kottke-plan-2-F	R5M2	F	once	kottke	pattern both 4 3	plancall:2:2	K=2	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-kottke-plan-3-F	R5M2	F	once	kottke	pattern both 4 3	plancall:3:2	K=3	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-kottke-plan-4-F	R5M2	F	once	kottke	pattern both 4 3	plancall:4:2	K=4	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-kottke-plan-5-F	R5M2	F	once	kottke	pattern both 4 3	plancall:5:2	K=5	M=2	1	-	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-nv-plan-1-F	R5M2	F	once	nv	pattern both 4 3	plancall:1:2	K=1	M=2	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-once-vl-plan-1-F	R5M2	F	once	vl	pattern both 4 3	plancall:1:2	K=1	M=2	1	-	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-1-F	R5M2	F	twice	fft	pattern both 4 3	plancall:1:2	K=1	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-2-F	R5M2	F	twice	fft	pattern both 4 3	plancall:2:2	K=2	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-3-F	R5M2	F	twice	fft	pattern both 4 3	plancall:3:2	K=3	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-4-F	R5M2	F	twice	fft	pattern both 4 3	plancall:4:2	K=4	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-5-F	R5M2	F	twice	fft	pattern both 4 3	plancall:5:2	K=5	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-12-F	R5M2	F	twice	fft	pattern both 4 3	plancall:12:2	K=12	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-13-F	R5M2	F	twice	fft	pattern both 4 3	plancall:13:2	K=13	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-14-F	R5M2	F	twice	fft	pattern both 4 3	plancall:14:2	K=14	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-15-F	R5M2	F	twice	fft	pattern both 4 3	plancall:15:2	K=15	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-fft-plan-16-F	R5M2	F	twice	fft	pattern both 4 3	plancall:16:2	K=16	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-jones-plan-1-F	R5M2	F	twice	jones	pattern both 4 3	plancall:1:2	K=1	M=2	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-1-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:1:2	K=1	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-2-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:2:2	K=2	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-3-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:3:2	K=3	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-4-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:4:2	K=4	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-5-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:5:2	K=5	M=2	1	slab	1	2	3	2	0	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-12-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:12:2	K=12	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-13-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:13:2	K=13	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-14-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:14:2	K=14	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-15-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:15:2	K=15	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-kottke-plan-16-F	R5M2	F	twice	kottke	pattern both 4 3	plancall:16:2	K=16	M=2	2	slab	3	3	4	3	2	I1,I2,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-nv-plan-1-F	R5M2	F	twice	nv	pattern both 4 3	plancall:1:2	K=1	M=2	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED
+M2-twice-vl-plan-1-F	R5M2	F	twice	vl	pattern both 4 3	plancall:1:2	K=1	M=2	1	slab	1	2	3	2	0	I1,I2,I3,I4,I5,I6	HOLD(all applicable)	INFLUENCED

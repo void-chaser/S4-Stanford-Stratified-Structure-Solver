@@ -1,0 +1,64 @@
+ERRATA_6c -- P05-S4 R6c (sub-round of R6).  Written at the R6c gate, BEFORE the v2 pre-registration, any R6c injection, gdb or judgement run.
+Numbering continues from ERRATA_6b (E6b-1 .. E6b-7).  ERRATA_6.txt, ERRATA_6b.txt, the R6/R6b reports and all earlier files are NOT changed.
+Scope: records user rulings and corrections of facts only; does not repair S4/ and does not declare any stage complete or signed off.
+Opening baseline: HEAD b9fbe00f577e64a92c57522369ba7a0ab6ece316 (R6b partial); HEAD:S4 = 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4 (tree F).
+
+== U14 (USER RULING, the definition of I4 is corrected; the planner's error in R6b brief section 4) ==
+Status: INFLUENCED.  Given before any R6c state run.
+
+Fact basis (read-only source reading and the R6b trial log; re-checked in R6c gate):
+  S4.cpp:2012          in the full-solve branch (after a successful SolveInterior over the whole stack) sets solved[i] = 1 for ALL i = 0..n_layers-1.
+  S4.cpp:1339-1348     Simulation_DestroyLayerModes(S4_Layer*) frees q and the LayerModes struct and sets modes = NULL; it does NOT touch solved[].
+  S4.cpp:1364-1372     S4_Simulation_DestroyLayerModes(S, id) calls the layer version; it does NOT clear solved[].
+  S4.cpp:1805          Simulation_GetLayerSolution recomputes when modes == NULL, OR (copy >= 0 and the copied layer's modes == NULL), OR !solved[i].
+  R6b trial log state/trial/clean_closed1d_F.gdb.log: at k=1 (after call1, no injection) solved is 0=1 1=1 2=1.
+  Therefore, for a point with twice route and inj_call=2, at k_fail=3 solved[req] holds the value left by call1 (1), not a value written by the failing call.
+  The R6b definition "solved[req]==0 at k_fail" is therefore wrong for those points and is replaced by I4' below.
+
+New definition I4' (replaces I4 of the R6b pre-registration for the judgement of R6c):
+  (a) the failing call does NOT change solved[req] from 0 to 1:
+        solved[req]@k_fail == solved[req]@k_before,
+      where k_before is the snapshot before the injected call: inj_call=1 -> k_before = 0; inj_call=2 -> k_before = 2
+      (snapshot 2 is the state after the destroy of layer 1 and before call2, in the twice route; see driver_r6b_state.cpp).
+  (b) if solved[req]@k_fail == 1, then at k_fail the request layer has modes == NULL (if L->copy >= 0, the modes of the copied layer are used),
+      so that S4.cpp:1805 forces a recomputation.  This is the condition under which an old value of 1 does not hide a failure.
+  The request layer req is NOT assumed.  It is read at each Simulation_GetLayerSolution entry with gdb (layer parameter address minus
+  S->layer[0] address, divided by the struct size) and written as one line per call:  R6CREQ <call> <layer_idx>.
+  The observation "solved holds the old value 1 while modes == NULL" is recorded in the ledger as OBSERVATION [source] (it is not a red point).
+
+Consequence for the R6b pre-registration (REGISTRY_S4_PRE_R6b_STATE.tsv, sha256 f2523d14...c358):
+  Its I4 ("solved[req]==0 at k_fail") is superseded by I4' for the judgement of R6c.  The v1 file is NOT edited.  The v2 file records the change (see below).
+
+== Other R6c decisions taken by the planner (under the brief; no user ruling needed) ==
+E6c-A  The brief's section 2.1 requires the v2 file to carry every R6b column with only I4 replaced and k_before added.  Done by r6c_prereg_v2.py.
+E6c-B  The rulings of the R6b errata (U7-U13, E6b-1..7) remain in force, except: U9 (I7 and dual-target DEFERRED) and U10 (R6-3 RNV1 OPTIONAL, now deferred to R7 by U16).
+E6c-C  The request layer for I4' and I1 is read by gdb (R6CREQ lines) for every call, not taken from the map.
+
+== U15 .. U17 (USER RULINGS of the R6c brief, in force for R6c) ==
+U15  The must-milestone of R6c = section 3 (177-point full run and judgement) with one milestone commit.  Sections 4-5 (seam, ledger) start only after that commit.
+U16  RNV1 is formally DEFERRED to R7.  The report must say "延后(U16)" (deferred under U16).  The seam 25 points and the red-point ledger are done after the milestone.
+U17  Gate files, pre-registration files and result files are NEVER overwritten.  $EV/SHA256SUMS.txt does NOT list safe_run.log; the last step writes $EV/SAFE_RUN_LOG_FINAL.txt (line count, REFUSED count, sha256).
+
+== E6c-1 (RESERVED; written only if a correction of a fact is needed later in R6c) ==
+
+== E6c-2 (judge rules for the state invariants, fixed BEFORE the full run; recorded because they refine the R6b wording) ==
+Timeline (all before the full two-pass run): smoke try 1 (SMOKE_JUDGE_R6c_pass1.txt, kept) exposed three defects in the
+judge logic of this round; the judge was corrected (r6c_judge.py) and smoke try 2 and try 3 were written as NEW files
+(SMOKE_JUDGE_R6c_pass1_try2.txt, SMOKE_JUDGE_R6c_pass1_try3.txt, kept).  The full run then used the try-3 rules unchanged.
+(a) I2 "kept layer" (U8 option 1, E6-8 conditions a/b/c): the kept layers are the NON-FAILING layers whose modes are installed
+    (modes_null 0) at k_fail.  For each kept layer: its q hash equals the control's q hash at k_fail (a), and the control has
+    the layer installed at k_fail (b).  Layers with modes NULL at k_fail are not kept and are reported, not judged.
+    (Try 1 used "layers that finished before the failure in the injected call"; that set was empty for twice/inj2 and
+    did not match the U8 wording "layers that finished before the failure may keep their modes" when the layer finished
+    in call 1.  Try 3 uses the k_fail state, which is what U8 (a)/(b) test.)
+    Condition (c) (no re-entry on retry) is part of I5.
+(b) I4(b) copy field: the driver's R6STATE lines print copy for every layer (copy -1 = not a copy layer).  The judge reads it
+    from those lines.  For copy >= 0 the source is the copied layer (S4.cpp:1805).  In the full run every request layer had
+    copy -1 (checked in RESULTS, the sources are the request layer itself).
+(c) solution NULL at a snapshot means no layer solved yet: solved[i] = 0 for all i (S4.cpp:1756 allocates, 1764 zeroes; the
+    array exists only after the first solve).  Used for k_before = 0 of inj_call 1.
+(d) Priority of verdicts: a VIOLATED is never overwritten by UNJUDGED.
+(e) I3 (field_cache) note wording only ("nodes with no equal control node: n").  Verdict rule unchanged: HOLD iff every point
+    cache node at k_fail has an equal node in the control at k_fail.  Note: for jones/nv/vl most points have an EMPTY cache at
+    k_fail (0 nodes); their HOLD is the trivial "no node to compare" case.  9 points (3 per mode) have 1 node.  Reported as is.
+(f) The judge refuses to overwrite any result file (U17); earlier smoke outputs are kept.

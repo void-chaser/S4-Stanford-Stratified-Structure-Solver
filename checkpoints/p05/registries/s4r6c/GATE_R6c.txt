@@ -1,0 +1,15 @@
+# R6c gate (start) -- written by testing/d003/stage_s4/r6c_gate.py (read-only checks)
+# UTC 2026-10-12T06:32:12Z
+# Exception recorded: testing/d003/stage_s4/r6c_gate.py is untracked at the start gate (this round's own gate script).
+item	observed	expected	match
+branch	codex/p05-d003-fft-error-propagation	codex/p05-d003-fft-error-propagation	OK
+HEAD	b9fbe00f577e64a92c57522369ba7a0ab6ece316	b9fbe00f577e64a92c57522369ba7a0ab6ece316	OK
+STATE.md last commit == HEAD	b9fbe00f577e64a92c57522369ba7a0ab6ece316	b9fbe00f577e64a92c57522369ba7a0ab6ece316	OK
+HEAD:S4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	OK
+judge_d003.py sha256	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	OK
+registries/s4r6b SHA256SUMS entries OK	9 OK; bad=none	all entries OK	OK
+REGISTRY_S4_PRE_R6b_STATE.tsv (v1) sha256	f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358	f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358	OK
+git status --short --untracked-files=all	?? testing/d003/stage_s4/r6c_gate.py	(empty) or only: ?? testing/d003/stage_s4/r6c_gate.py (this round's gate script; the one allowed exception)	OK
+/tmp top-level entry count (start snapshot)	0	recorded	OK
+/tmp listing sha256 (start snapshot)	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	recorded	OK
+RESULT	PASS

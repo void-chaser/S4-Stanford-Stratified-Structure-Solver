@@ -1,0 +1,10 @@
+# PREREG_V1_V2_DIFF -- written by r6c_prereg_v2.py (line-by-line check, computed by the script)
+# v1 sha256 (checked before reading): f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358
+# v2 sha256 (of the written file): 4208b5411fb4d24294792e72075d8b0dbdfccad70a3d7c1de601c781b3855fac ; UTC 2026-10-12T06:33:36Z
+v1 rows: 177 ; v2 rows: 177
+point-id set equal (order preserved): OK
+v2 header == v1 header + k_before after retry_call: OK
+cells compared (v1 columns, all rows): 3186 ; unexpected differences: 0
+k_before column checked for all rows: 177
+RESULT: PASS (mismatches=0)
+Expected differences only: header comment (I4 definition), new column k_before.  Data rows: every v1 cell identical.
