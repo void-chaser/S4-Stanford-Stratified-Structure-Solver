@@ -121,3 +121,37 @@ ES3R4-14  CLOSEOUT §12 写"git status 为空",但 §12 本身未提交(记录�
     工作区因此不为空(M P05_S3R4_CLOSEOUT.md)。
   · 已在续1 的第一个提交 0b1b4a3(commit pending §12 of S3R4 closeout,内容未改)中补交。
   · 续1 开工门禁(GATE_CONT1.txt)记录的 git status 为 M P05_S3R4_CLOSEOUT.md 与 ?? 任务书,与此一致。
+
+================================================================
+S3R4 续2(CONT2)追加。用户裁决(U103–U106,同时追加到 RULINGS.tsv)
+================================================================
+
+U103  续1 的写入违规(safe_run 的 sh -c 内含 2>/dev/null,创建了仓库内空目录 testing/d003/stage_s3r4c1/)
+      接受为已披露;续1 停止执行是正确的;续1 的开工门禁、记录修正与库哈希核对仍然有效,不作废。
+U104  续1 未提交的记录(RULINGS.tsv 追加 U96–U102、ERRATA ES3R4-10…14、续1 任务书存档、续1 报告)原样提交(提交 45d17d5),
+      不改内容;其中两处错误用 ES3R4-15、ES3R4-16 追加更正。
+U105  空目录 testing/d003/stage_s3r4c1/ 用 rmdir 删除(经 safe_run 脚本);目录非空时 rmdir 会失败并停下报告。
+      续2 使用 testing/d003/stage_s3r4c2/ 与 checkpoints/p05/evidence/p05-s3r4c2/。
+U106  续2 起,除 git commit 外,所有经 safe_run 的写入都由先用 write 写好的脚本文件执行;命令与脚本文本中不得出现 /dev/null。
+      违反一次就停下。续1 任务书 §1 的 U98–U102 继续有效。
+
+ES3R4-15  更正 ES3R4-13(记录更正,原文不改)
+  · ES3R4-13 原文写"safe_run.log 在 08:44:41 被最后一次 git 提交命令追加了一行"。实际是:清单(21:43:48Z 写入)之后,
+    safe_run.log 追加了**两行**:
+      第 61 行(21:43:50Z,sha256sum -c 的 safe_run 记录);
+      第 62 行(21:44:41Z,提交命令 git add … && git commit …)。
+  · 核对(续2 脚本 check_sha_s3r4_c2.sh,只读,结果见 $EV/SHA256SUMS_CHECK_p05-s3r4.txt):
+    safe_run.log 共 62 行;`head -n 60` 的 sha256 = 8e0844d0…2aec,与原清单第 23 行记录一致;
+    sha256sum -c 只有 ./safe_run.log 一项 FAILED(其余 OK),原因即上述两行追加。
+  · ES3R4-13 中"核对记录写在 $EV/SHA256SUMS_CHECK_p05-s3r4.txt"一句:该文件在续1 中没有写入(续1 在 §2 后停止);
+    续2 已写入(见上)。原清单不改。
+
+ES3R4-16  更正 ES3R4-11 的最后一句(记录更正,原文不改)
+  · ES3R4-11 写"多边形部分由续1 §5 补做(结果见 CLOSEOUT_CONT1)"。续1 没有执行这一项(续1 在 §2 后停止,见
+    P05_S3R4_CLOSEOUT_CONT1.md §0、§3、§5);这是未来式承诺,不是完成事实。
+  · 多边形部分改由续2 补做,结果见 P05_S3R4_CLOSEOUT_CONT2.md。
+
+ES3R4-17  续1 的停止与 U103–U106(说明)
+  · 续1 在 §2 记录修正之后、§3 自检 A 开始之前,因 safe_run 的 sh -c 内含 2>/dev/null 而停止(违反写入规则一次;U103 接受为已披露)。
+    依据:续1 报告 §0、§5。续1 的 A、B、C 多边形部分与 D 均未运行。
+  · 续2 按 U104–U106 执行:记录提交、rmdir 删除空目录、新的 stage_s3r4c2/ 与 p05-s3r4c2/,并把 U106 的脚本化写入规则作为续2 的硬约束。
