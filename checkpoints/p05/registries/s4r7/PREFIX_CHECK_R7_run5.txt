@@ -1,0 +1,7 @@
+# prefix check for append-only files (U57, E7-25).  sha256(first N bytes of current file) must equal the reference sha256.
+file	N_bytes	reference_sha256	current_prefix_sha256	result
+# checkpoints/p05/registries/s4r7/ERRATA_7.txt current_size=26392
+# checkpoints/p05/registries/RULINGS.tsv current_size=21539
+RULINGS	16066	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	OK
+ERRATA_7	19434	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	OK
+# all_ok=YES

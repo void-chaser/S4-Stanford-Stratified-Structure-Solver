@@ -245,3 +245,40 @@ retroactively changed.
 The rows U54-U58 were appended to RULINGS.tsv in cont4 by `printf ... >> RULINGS.tsv`, a shell redirection that did not go
 through safe_run (AGENTS section 3; cont4 section 0 A).  The content of the five rows was checked against the intended text
 and is accepted as written (U60).  Table 2 of P05_S4R7_REPORT_CONT4_STOP2.md records the event.  Original rows are unchanged.
+
+== E7-29 correction of the library-hash comparison in cont5 (U64, U66)
+P05_S4R7_REPORT_CONT5_PART1.md (section 2) and check_drivers_vs_r4_r7.py (cont5 version) say the R4 library hash is
+"NOT_IN_REGISTRY".  That was wrong: the R4 library hashes are in checkpoints/p05/registries/s4r4/LIBS_R4.tsv (committed).
+The check is changed to read that file (U64).  Recorded values: seamF library 8066a098e6f07ecf74533fb874847880ce7daaff21c7e9ded9a91bcaaca9832f
+and fmmret-F library fda3d99a5e804d087662727b79394de80198fe3e333c9d0b7a5f2153467dfbbf (R4 and R7 equal; R7 values from
+BUILD_SEAM_PLAIN_R7_RESULT.tsv).  The R7 driver sha256 values of seamF-F and fmmret-F equal R4 (SAME).  F2 drivers have no
+historical control (U64).  The point-by-point F versus F2 comparison in M2b is the coverage for them.
+Also in cont5 (not in U64): the cont5 comparison script was not run against LIBS_R4.tsv; its result is therefore not in any
+file yet.  The cont6 run of check_drivers_vs_r4_r7.py replaces it.
+
+== E7-30 G2c-control registration error (U65)
+v2 rows G2c-control (6 rows: addf-F-ctrl-F, addf-F-ctrl-F2, b2buf-F-ctrl-F, b2buf-F-ctrl-F2, fmmret-F-ctrl-F, fmmret-F-ctrl-F2)
+carry mode = addf, b2buf, fmmret.  These are library names, not FMM modes.  The driver accepts only FMM modes, so FMM_MODE=addf
+exits with rc 2 (per the driver's usage).  The R4 controls of these libraries were run with mode fft
+(p05-s4r4 control_runs/*.log: "DRIVER actual mode=fft").  R7 does not build the addf or b2buf libraries.
+Consequence: the six G2c-control rows cannot be run as registered.  Ruling U65:
+(a) they are recorded NOT_RUN_REGISTRY_ERROR (not MISMATCH); v2 is not edited.
+(b) a new control registry REGISTRY_S4_PRE_R7_M2_CTRL_SEAM.tsv (4 rows) covers the seam controls that R7 can run:
+    seamF-F, seamF-F2, fmmret-F, fmmret-F2; mode fft; NG 9; no injection; expected CONTROL_OK
+    (the R4 CONTROL_R4 rows for seamF and fmmret-F are CONTROL_OK).  It is registered (sha256, UTC) before its run.
+(c) the 16 G1 CTL-* controls run as registered.
+Note on (b): the new registry is INFLUENCED, like v2, because the expected values come from the R4 control results.
+
+== E7-31 INVALID_NOT_REACHED is judged by the E7-4 rule, not by string equality (U68, ADD1)
+Root cause: v2 writes the G1 expectation of the 22 not-reached points as INVALID_NOT_REACHED (44 rows = 22 points x F, F2).
+judge_d003.CLASSES is ("INVALID", "CRASH", "SILENT_SWALLOW", "REPORTED_FAILURE", "CONTROL_OK"); it has no INVALID_NOT_REACHED.
+A string comparison cls == expected_class therefore reports MISMATCH for all 44 rows.  The planner missed this in the
+continuation 6 dry-run, which did not check the expectation labels (planner omission; the dry-run check is added by ADD1).
+Rule (U68, the explanation of the already-registered expectation; v2 is not edited and the expectation is not changed):
+  verdict NOT_REACHED_AS_EXPECTED  iff  judge_d003.classify returns "INVALID"  and  hit == 0  and  rc is not None
+                                         (cause: injection never reached, as E7-4 defines it);
+  any other case                    -> MISMATCH.
+NOT_REACHED_AS_EXPECTED is counted separately; it is not MATCH and not REGRESSION (E7-4).
+If hit == 1 for one of these points: check F with the same R7 build; only F2 at 1 is REGRESSION; F also at 1 is ENV_DRIFT (U58).
+The rule is applied in one function, verdict_of(expected, cls, rc, hit), in run_m2b_all_r7.py.  No other place decides a verdict.
+Judge unchanged (sha256 d2d04145...).

@@ -1,0 +1,6 @@
+# prefix references for append-only files (U57, E7-25).  Each row: name, N bytes at the commit, sha256 of those bytes.
+# source commit and path are listed in the comment column.
+# RULINGS source=db92648:checkpoints/p05/registries/RULINGS.tsv
+RULINGS	16066	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98
+# ERRATA_7 source=6319a3c:checkpoints/p05/registries/s4r7/ERRATA_7.txt
+ERRATA_7	19434	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1

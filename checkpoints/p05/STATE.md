@@ -12,7 +12,7 @@
 | `HEAD:S4`（当前冻结被测树 F2） | `e124925f5b242486a913b813fa181664f665b048`（F2 提交 `a07b5ac`；前一冻结树 F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | P05-S4 子轮次 **R7**（F2 回归，非新阶段）：M1 已提交；M1a 已完成（PolBasisJones 三点 −11，对照 POSTHOC）；**M2 预注册已提交（v2 + ADD，dry-parse 0 无法解析）；M2 未运行**；M3 未开始。报告：`P05_S4R7_REPORT_PART1.md`、`P05_S4R7_REPORT_M1.md`、`P05_S4R7_REPORT_M2_PART.md`。S3R3 报告 `P05_S3R3_CLOSEOUT.md`；S3-4b 由用户关闭（U29）。R7 未宣布任何阶段完成或签收 |
+| 当前轮次 | P05-S4 子轮次 **R7**（F2 回归，非新阶段）：M1 已完成；M2a 已完成并提交（`6319a3c`，G2b/G3/G4 两遍全部 MATCH）；M2 报告 `733d588`；续 4 收尾 `2044778`；**续 6 准备进行中：M2b 未运行**（G2c-control 不运行，U65；CTRL_SEAM 4 行预注册，U65b；判定 U68；dry-run `DRYRUN_R7_M2b_run5b` 通过）；M3 未开始。报告：`P05_S4R7_REPORT_PART1.md`、`P05_S4R7_REPORT_M1.md`、`P05_S4R7_REPORT_M2.md`、`P05_S4R7_REPORT_CONT5_PART1.md`、`P05_S4R7_REPORT_CONT4_STOP2.md`。S3R3 报告 `P05_S3R3_CLOSEOUT.md`；S3-4b 由用户关闭（U29）。P05-S3、S4 未签收；R7 未宣布任何阶段完成或签收 |
 
 ## 2. 关键数字（每轮一行）
 

@@ -1,0 +1,9 @@
+# DRYRUN_R7_M2b_run5b (cont6, ADD1).  No S4 run.  Driver sha256 and library sha256 checked; modes, expectations, outputs checked.
+# group=CTRL_SEAM rows=4 parseable=4
+# group=G2c rows=60 parseable=60
+# group=G1 rows=298 parseable=298
+# group=G2a rows=50 parseable=50
+# group=G2c-control rows=6 status=EXCLUDED_U65 (not counted as unparseable)
+# expected label counts: CONTROL_OK=20, INVALID_NOT_REACHED=44, REPORTED_FAILURE=348
+# driver/library sha256 checked: 12
+# total unparseable: 0
