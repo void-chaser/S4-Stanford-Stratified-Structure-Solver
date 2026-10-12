@@ -1,0 +1,29 @@
+# RULINGS.tsv -- P05 ruling register (U23, written in R6c2).  Covers U1-U23.  Later rounds append rows; no row is rewritten.
+# Columns: id	given_in_round	summary	record_file_and_entry	status
+# Status: 生效 (in force) / 被取代 (superseded; the superseding ruling is named) / 补录 (recorded later from a source; the
+# original text is not in the repository).  "原文缺失,待用户补录" = the original text is missing and must be supplied by the user;
+# nothing is reconstructed.  Where the repository holds only a planner's correction that cites the ruling, this is stated.
+id	given_in_round	summary	record_file_and_entry	status
+U1	R5 (given at R6 gate)	R4 plancall twice NTH 12-16 is re-run as a new R6 run with S4FMM_TWICE=slab; R4 files are not overwritten	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-1	生效
+U2	-	原文缺失,待用户补录 (no ERRATA, report or registry in the repository records U2; the R6 task brief was not stored)	none in repository	原文缺失,待用户补录
+U3	R5 review	registries/s4r3/ERRATA_3.txt hash mismatch: explained by a deliberate run-time append; closed without re-run	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-2	生效
+U4	-	原文缺失,待用户补录 (no ERRATA, report or registry in the repository records U4)	none in repository	原文缺失,待用户补录
+U5	R6 gate	planner corrections E6-3 (partial_modes=1 is not defect evidence) and E6-4 (no-TWICE route is out of scope) cite U5; the text of U5 itself is not stored, only the two corrections	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-3, E6-4 (cites U5a / U5b)	生效 (as cited by E6-3/E6-4; the U5 text itself 原文缺失,待用户补录)
+U6	R6 gate	injectors and drivers for R6 are new files (user approval U6)	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-6	生效
+U7	R6b brief	R6b: the full run over all points is completed in R6b (the R6b full run was NOT done; the full run was executed in R6c as the milestone of U15)	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U7; P05_S4R6c_REPORT.md section 3	生效 (execution moved to R6c by U15; no explicit supersession text)
+U8	R6b brief	I2 uses E6-8 option 1: only the failed layer must have modes NULL; other finished layers may keep modes under conditions a/b/c	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U8; checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-8	生效
+U9	R6b brief	dual-target injection and I7 (sanitizer) are DEFERRED	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U9; ERRATA_6c E6c-B	生效 (DEFERRED)
+U10	R6b brief	R6-4 red-point ledger done in R6b; R6-3 RNV1 injection OPTIONAL (started only after sections 2-5 are complete; otherwise DEFERRED)	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U10; ERRATA_6c E6c-B	生效 for the optional status of RNV1 (RNV1 then DEFERRED to R7 by U16); the ledger was NOT done in R6b (done in R6c2, see RED_POINTS_LEDGER_R6c.tsv)
+U11	R6b brief	comment wording S4_internal.h:263 is fixed later in the S3 closing repair round; recorded as HARNESS_OR_PROCESS only; S4/ not changed	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U11	生效
+U12	R6b brief	STATE.md records the opening baseline HEAD and the closing commit rule; the opening gate checks HEAD and STATE.md's last-modifying commit	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt header U12; AGENTS.md section 6	生效
+U13	R6b brief	snapshot indices follow inj_call, not route (k_before, k_fail, k_pre, k_retry, retry_call)	checkpoints/p05/registries/s4r6b/ERRATA_6b.txt E6b-6 (U13)	生效
+U14	R6c brief	definition of I4 corrected to I4' (solved[req] unchanged across the failing call; if solved=1 then request layer modes NULL)	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U14	生效 (supersedes I4 of R6b pre-registration v1 for judgement)
+U15	R6c brief	milestone of R6c = section 3 (177 points) with one milestone commit; sections 4-5 after it	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U15	生效
+U16	R6c brief	RNV1 formally DEFERRED to R7 ("延后(U16)")	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U16	生效 (DEFERRED)
+U17	R6c brief	gate, pre-registration and result files are never overwritten; SAFE_RUN_LOG_FINAL.txt last step	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U17	生效
+U18	R6c2 brief	(a): register 18 seam no-injection controls before the seam state run (new file REGISTRY_S4_PRE_R6c_SEAM_CONTROL.tsv); link driver-r6b-fmmret-F; then two passes and judgement	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U18; checkpoints/p05/evidence/p05-s4r6c/REGISTRY_S4_PRE_R6c_SEAM_CONTROL.tsv	生效
+U19	R6c2 brief	judge self-test (offline unit test; not a run of S4; not a sandbox probe)	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U19; checkpoints/p05/evidence/p05-s4r6c/SELFTEST_R6c2_v2.tsv	生效
+U20	R6c2 brief	"other-layer failure" variants are not done in R6; recorded as R7 candidates	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U20; checkpoints/p05/evidence/p05-s4r6c/REPAIR_PROPOSAL_R6c.md section E	生效 (DEFERRED to R7)
+U21	R6c2 brief	conditions under which S3-4b may be closed by the user with a scope statement (three conditions)	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U21; checkpoints/p05/P05_S4R6c2_REPORT_PART2.md section "U21 条件核对"	生效 (closure is the user's decision; the executor does not close)
+U22	R6c2 brief	repair proposal items carry file:line, minimal change, changed lines, regression point_id, expected category; S4/ not changed in R6c2	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U22; checkpoints/p05/evidence/p05-s4r6c/REPAIR_PROPOSAL_R6c.md	生效
+U23	R6c2 brief	ruling register RULINGS.tsv (this file); U2 and U4 recorded as 原文缺失,待用户补录; later rounds append	checkpoints/p05/registries/RULINGS.tsv (this file); checkpoints/p05/registries/s4r6c/ERRATA_6c.txt U23	生效

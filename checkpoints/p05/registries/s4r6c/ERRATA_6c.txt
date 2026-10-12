@@ -94,3 +94,51 @@ directory and the -O3 object files (*.o, *.a) with their timestamps; make could 
 happen.  The draft was replaced BEFORE it was run: the copy now excludes ./build, *.o and *.a (tar pipe).  The run used the
 replaced script only.  Evidence: seam_dbg/build-seamF.log and build-fmmret-F.log contain 24 "-O0" flags and 0 "-O3" flags (checked).
 The R4 seam trees and their R4 libraries are not modified.
+
+== E6c-6 [FACT CORRECTION, recorded in R6c2; supersedes the claim in the R6c supplement section 1 "SHA256SUMS all OK" as far as ERRATA_6c.txt is concerned; the supplement itself is NOT edited] ==
+The milestone commit 6bba0bd recorded the ERRATA_6c.txt sha256 as 7875959f...  (64-line version) in registries/s4r6c/SHA256SUMS.txt.
+After commit fa7a247 the file was APPENDED (E6c-3..5, 96 lines now) and its sha256 is 33495a7f...; so `sha256sum -c SHA256SUMS.txt`
+reports FAILED for that single entry.  The first 64 lines are unchanged and no expectation or judgement rule was changed by the append.
+Check (r6c2_gate.py, written to GATE_R6c2.txt; prefix check also written to ERRATA_6c_PREFIX_CHECK.txt by r6c2_errata_prefix_check.py):
+  git show 6bba0bd:checkpoints/p05/registries/s4r6c/ERRATA_6c.txt  ->  64 lines, sha256 7875959f...  (matches the manifest)
+  first 64 lines of the current file  ->  byte-identical to the 64-line version.
+Correction of the supplement: its section 1 says "SHA256SUMS all OK".  That is incomplete: the other entries are OK, but this one entry is
+not OK against the current file.  The supplement text is left as it was (no edits to recorded reports).
+The new sha256 of the current ERRATA_6c.txt is recorded in SHA256SUMS_closeout.txt (R6c2 closeout), not in the old manifest.
+Status: FACT CORRECTION (no change to any result).
+
+== U18 [USER RULING (a)] Seam control groups ==
+Status: INFLUENCED.  Given before any seam state run.
+(a) BEFORE any seam state run, a NEW file REGISTRY_S4_PRE_R6c_SEAM_CONTROL.tsv is written: one NO-INJECTION control for each of the
+    18 (library, mode) combinations of the 25 seam points.  Each record: driver, driver sha256, environment, route once, the seam points it serves,
+    and a sha256 and UTC timestamp of the file (REGISTRY_S4_PRE_R6c_SEAM_CONTROL.sha256, _TIMESTAMP_UTC.txt).
+    The points served sum to 25 (checked by r6c2_seam_control.py).
+    The seam pre-registration REGISTRY_S4_PRE_R6c_SEAM.tsv (sha256 093c68a8...d576c) is NOT edited.  Its expected values and the I2/I3/I6
+    control source are read from REGISTRY_S4_PRE_R6c_SEAM_CONTROL.tsv (this ERRATA is the statement of that source).
+Driver: driver-r6b-fmmret-F is linked (r6c2_link_fmmret.sh, same construction as driver-r6b-seamF, E6c-3).  Its sha256 is recorded.
+Note (planner, recorded for transparency): the control drivers are the STATE drivers driver-r6b-seamF / driver-r6b-fmmret-F.  The
+DRIVERS_DBG_SEAM.tsv records (plain driver-d003) are NOT used for the controls.
+
+== U19 [USER RULING] Judge self-test (offline unit test of the judge; NOT a run of S4; NOT a sandbox probe) ==
+Status: INFLUENCED.  Given before the seam judgement.  Procedure and expected results: r6c2_judge_selftest.py (R6c2-1, section 3 of the R6c2 brief).
+
+== U20 [USER RULING] The "other-layer failure" variants (two layers with a pattern, or the pattern layer not at position 1) are NOT done in R6.
+They are recorded as R7 candidates.  Not run in R6c2.
+
+== U21 [USER RULING, conditions for closing S3-4b] ==
+S3-4b may be closed by the user with a scope statement if and only if ALL of the following hold:
+  (1) in the judge self-test, every deliberately corrupted example maps to its invariant VIOLATED, and the unmodified original row is HOLD;
+  (2) over the 202 points (177 + seam 25): VIOLATED = 0, FLAKY = 0, GDB_DIVERGENT = 0; UNJUDGED = 0, or each UNJUDGED has an explained reason;
+  (3) the scope statement says: only the layer-1 failure is covered; the number of points where I3 made an actual comparison; that the
+      two-target injection, I7 and the "other-layer failure" are referred to R7.
+The executor reports only whether each of the three conditions holds.  The executor does not write "S3-4b closed".  The closure is the user's decision.
+The PART2 report carries a section "U21 条件核对" with the facts and evidence paths for each condition.
+
+== U22 [USER RULING] Repair proposal for the later S3 closing repair round ==
+The file REPAIR_PROPOSAL_R6c.md (evidence directory) is the input of that round.  For every item it states: file:line ([source]), the minimal change,
+the estimated number of changed lines, the regression point_id(s), and the expected category after the repair.  S4/ is NOT changed in R6c2.
+
+== U23 [USER RULING] Ruling register ==
+checkpoints/p05/registries/RULINGS.tsv lists U1 to U23 (number, round given, summary, record file and entry, status).
+U2 and U4 are not recorded in any ERRATA file.  Their original texts are NOT in the repository; they are recorded as "original text missing, awaiting user
+supply" and NOT reconstructed.  Each later round appends its rulings to RULINGS.tsv.

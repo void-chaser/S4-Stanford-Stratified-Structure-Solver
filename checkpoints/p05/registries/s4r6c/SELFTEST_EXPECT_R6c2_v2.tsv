@@ -1,0 +1,18 @@
+# SELFTEST_EXPECT_R6c2_v2.tsv -- expected judge results, written BEFORE judgement (U19, R6c2-1).
+# Each corrupted example: the named invariant must be VIOLATED and the point verdict VIOLATED.
+# Each original row: point verdict HOLD (I3 N/A/HOLD allowed; I7 DEFERRED).
+example	point_id	corruption	must_violate	expect_point_verdict
+I1-a	M-once-closed1d-malloc-1	k_fail(1) layer 1 modes_null 1 -> 0	I1	VIOLATED
+I2-a	M-once-closed1d-malloc-1	k_fail kept layer 0 q hash changed (differs from control)	I2	VIOLATED
+I2-b	M-once-closed1d-malloc-1	control layer 0 not installed at k_fail (condition b)	I2	VIOLATED
+I3-a	M-once-jones-exec-1	k_fail extra cache node not in control	I3	VIOLATED
+I3-b	M-once-jones-exec-1	k_fail cache node P hash differs from control	I3	VIOLATED
+I4-a	M-once-closed1d-malloc-1	solved[req] 0 at k_before, 1 at k_fail (I4' (a))	I4	VIOLATED
+I4-b	M-twice-closed1d-malloc-2	solved@k_fail=1 and request layer modes_null 1 -> 0 at k_fail	I4	VIOLATED
+I5-a	M-once-closed1d-malloc-1	layer 2 enters ComputeLayerModes twice in the retry interval	I5	VIOLATED
+I5-b	M-once-closed1d-malloc-1	retry enters layer 0 that was installed at k_pre	I5	VIOLATED
+I5-c	M-once-closed1d-malloc-1	retry rc 1 instead of 0	I5	VIOLATED
+I6-a	M-once-closed1d-malloc-1	retry output (call 2) changed by one byte	I6	VIOLATED
+ORIG	M-once-closed1d-malloc-1	unmodified original row	-	HOLD
+ORIG	M-once-jones-exec-1	unmodified original row	-	HOLD
+ORIG	M-twice-closed1d-malloc-2	unmodified original row	-	HOLD

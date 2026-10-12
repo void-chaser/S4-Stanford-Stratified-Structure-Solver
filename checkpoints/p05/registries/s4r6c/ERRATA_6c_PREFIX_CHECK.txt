@@ -1,0 +1,9 @@
+# ERRATA_6c_PREFIX_CHECK.txt -- E6c-6 check (r6c2_errata_prefix_check.py)
+file	checkpoints/p05/registries/s4r6c/ERRATA_6c.txt
+commit	6bba0bd
+committed_lines	64
+committed_sha256	7875959ffc5bc791b17cd958bcc65309ef24a01a59fdd61f1b6327236424ffa5
+current_lines	144
+current_sha256	212475556aad35dbcea5b804aa56e53be78bbb4cf3f9f44f174282081e3f466f
+first_64_lines_byte_identical	YES
+RESULT	PASS

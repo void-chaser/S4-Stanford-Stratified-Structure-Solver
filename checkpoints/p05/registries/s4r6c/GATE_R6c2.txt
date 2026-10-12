@@ -1,0 +1,23 @@
+# R6c2 gate (start) -- written by testing/d003/stage_s4/r6c2_gate.py (read-only checks)
+# UTC 2026-10-12T07:07:33Z
+# Exception recorded: testing/d003/stage_s4/r6c2_gate.py is untracked at the start gate (this round's own gate script).
+item	observed	expected	match
+branch	codex/p05-d003-fft-error-propagation	codex/p05-d003-fft-error-propagation	OK
+HEAD	fa7a247ff6d6b92c824b7774d4032cdbdd814bab	fa7a247ff6d6b92c824b7774d4032cdbdd814bab	OK
+STATE.md last commit == HEAD	fa7a247ff6d6b92c824b7774d4032cdbdd814bab	fa7a247ff6d6b92c824b7774d4032cdbdd814bab	OK
+HEAD:S4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	OK
+judge_d003.py sha256	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	OK
+registries/s4r6b SHA256SUMS entries OK	9 OK; bad=none	all entries OK	OK
+REGISTRY_S4_PRE_R6b_STATE.tsv (v1) sha256	f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358	f2523d146e7e5adbf80cf99fdc35ba7b64b0e22ac5e4cc1409e97203cba0c358	OK
+registries/s4r6c SHA256SUMS_seam.txt entries OK	8 OK; bad=none	all entries OK	OK
+registries/s4r6c SHA256SUMS.txt entries OK except ERRATA_6c.txt	9 OK; bad=none; skipped=['ERRATA_6c.txt']	all entries OK except ERRATA_6c.txt (E6c-6)	OK
+E6c-6: ERRATA_6c.txt manifest sha256 (SHA256SUMS.txt)	7875959ffc5bc791b17cd958bcc65309ef24a01a59fdd61f1b6327236424ffa5	starts with 7875959f (64-line version, E6c-6)	OK
+E6c-6: ERRATA_6c.txt at 6bba0bd: git show exit code and line count	rc=0 lines=64	rc=0 lines=64	OK
+E6c-6: sha256 of the 64-line version at 6bba0bd	7875959ffc5bc791b17cd958bcc65309ef24a01a59fdd61f1b6327236424ffa5	equals manifest value (prefix 7875959f)	OK
+E6c-6: current ERRATA_6c.txt first 64 lines byte-identical to 6bba0bd version	lines_now=96 prefix_identical=True	prefix_identical=True	OK
+E6c-6: current ERRATA_6c.txt sha256 (for the record; expected to differ, E6c-6)	33495a7fa24efc1c275989f82d894ae4493b19ca63313bc5f871fd493d60cb3c	differs from manifest value (E6c-6)	OK
+REGISTRY_S4_PRE_R6c_SEAM.tsv sha256 prefix/suffix	093c68a8c179131742be30ba2ddcd616c52126353b175547ff7d5ca10c1d576c	093c68a8...d576c	OK
+git status --short --untracked-files=all	?? testing/d003/stage_s4/r6c2_gate.py	(empty) or only: ?? testing/d003/stage_s4/r6c2_gate.py (this round's gate script; the one allowed exception)	OK
+/tmp top-level entry count (start snapshot)	0	recorded	OK
+/tmp listing sha256 (start snapshot)	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	recorded	OK
+RESULT	PASS
