@@ -260,7 +260,7 @@ int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n
 // 13 - excitation layer name not found
 // 14 - no layers
 // 15 - material not found
-// 20 - the layer eigensystem failed; no layer modes or solution were installed
+// 20 - the layer eigensystem failed; the failed layer has no modes; layers computed before it may keep their modes
 
 
 // Sets up S->solution; if one already exists, destroys it and allocates a new one
