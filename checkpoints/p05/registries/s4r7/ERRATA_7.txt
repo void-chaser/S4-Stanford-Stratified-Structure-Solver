@@ -90,3 +90,32 @@ LINEMAP_F_F2_R7.tsv (measured with grep -n on git show of each commit).  The gdb
 line numbers; the only line numbers are in comments, so no runner was edited for the line shift (RUNNER_DIFF_R7: no behavioural lines).
 The jones/fftjones window map (RNV1_JONES_MAP_R7.tsv) was measured by gdb on F dbg for all six NG x mode points: 806 (outside the
 window), then 1477, 1481, 1251 inside it.  Byte sizes were NOT measured per point and are not claimed.
+
+== E7-12 registry SHA256SUMS does not cover ERRATA_7 (M2 pre-check)
+registries/s4r7/SHA256SUMS.txt (written in part 1) lists ERRATA_7.txt with the hash of its earlier version.  ERRATA_7 was then
+extended by E7-8..E7-11 (M1).  SHA256SUMS_M1.txt does not list ERRATA_7.  The older list is NOT edited; SHA256SUMS_M2.txt
+(M2) lists ERRATA_7 and STATE.md at their current versions.
+
+== E7-13 wording in P05_S4R7_REPORT_M1.md section 5 (U48)
+The M1 report (section 1, "M1 的判定结果") and section 8 used "F2 上 RNV1 相关点 90/90 MATCH" and "F2 回归 REPORTED_FAILURE 63/63".
+The correct statements are: F2 injected points REPORTED_FAILURE 63/63 (both passes; G7 36, 4.2 F2 24, G8 F2 3); F injected points
+CRASH 27/27 (both passes).  The 90 is the total MATCH count, which also includes the F-side CRASH rows (24 + 3) and the 18
+registry-column rows are not MATCH.  The M1 report is NOT edited (committed); this entry is the correction.
+
+== E7-14 control counts in REGRESS_R4 / CONTROL_R4 (M2 pre-registration)
+The brief (CONT2 section 4, G2c) says "R4 regress 30 个 F 点 + 7 个对照".  Measured: REGRESS_R4.tsv has 30 F rows (all
+REPORTED_FAILURE, SAME) and 30 B rows.  CONTROL_R4.tsv has 8 data lines, of which 3 are F-tree controls
+(addf-F, b2buf-F, fmmret-F).  The other 5 are A, B or seamAB controls (not run in M2, U46).  M2 uses the 3 F-tree controls.
+Recorded as a count difference, not forced to 7.
+
+== E7-15 G2a seam count (M2 pre-registration)
+RESULTS_R4.tsv has 25 F rows (family A 2, B2 7, C 5, D 1, E 10), all REPORTED_FAILURE, MATCH.  The brief's "seamF 15 + fmmret-F 10"
+is the sum over families, consistent with 25.  Family E (10) is the fmmret family; the B2 family (7) is the seam family
+linearsolve_null2 used with seamF; A (2) and C (5) are the linearsolve and alloc families of seamF; D (1) is kottke_alloc.
+M2 carries the 25 F points as measured (no reinterpretation of family names).
+
+== E7-16 G2b plancall and G3, G4 counts (measured)
+G2b: RESULTS_R4_PLANCALL_pass{1,2}.tsv each have 22 F rows, all REPORTED_FAILURE, MATCH; pass1 equals pass2 on the F class.
+G3: RESULTS_R5_PLANM_pass{1,2}.tsv each have 36 F rows, all REPORTED_FAILURE, MATCH.
+G4: RESULTS_R6_TWICE_pass{1,2}.tsv each have 12 F rows, all REPORTED_FAILURE, MATCH.
+All counts were measured in both passes before the pre-registration (correcting an earlier draft of this entry).
