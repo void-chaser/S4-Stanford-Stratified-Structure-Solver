@@ -193,3 +193,16 @@ values; the earlier ADD file (REGISTRY_S4_PRE_R7_M2_ADD.tsv, G2a inj_call "-") i
     (the R4 regress F points also appear in R3).  The 44 G1/G2b pairs are the R3 points re-run as plancall in R4 (E7-4 and
     run_r4_plancall).  (2) "dry-parse 0 unparseable" was reached only after the rules above were corrected; the first dry-parse
     runs were refused or unparseable, and their output is kept.
+
+== E7-22 M2a tree comparison: pairing error and its correction (found while running M2a; state of M2a)
+The M2a results tables (RESULTS_R7_<G>_pass<P>_run4.tsv) write the tree into point_id: F rows are "<src>-F-F" and F2 rows are
+"<src>-F-F2" (e.g. R6T-twice-fft-plan-12-F-F and R6T-twice-fft-plan-12-F-F2).  My first tree comparison keyed rows on
+(point_id, tree), so no F row matched an F2 row.  Its output (TREES_R7_M2a_<G>_pass1.tsv, reporting absent=44/72/24 and
+unequal=0) is NOT a result: it compared nothing.  It is kept as written (U17).  Corrected comparison: compare_trees_r7.py now keys
+on (base id, tree), with base id = point_id without its own trailing "-<tree>" suffix; the corrected outputs are the *_v2.tsv
+files.  In the corrected outputs every base id is present on both trees (absent 0) and all fields are equal (unequal 0), for
+G2b (22 points), G3 (36) and G4 (12), both passes.  The G2b/G3/G4 F-tree counts 22/36/12 match the F-row counts of the source
+tables.  Summary: REGRESS_R7_M2a.tsv (all groups and passes: MATCH, no non-MATCH, no unequal field, no absent point).
+Honest limit: the "unequal = 0" result is the comparison of the RESULTS_R7 rows, and the RESULTS_R7 rows are the judged outputs of
+run_m2_r7.py.  The check that the base-id pairing itself is correct is the absent count (0 on every group): a wrong base id would
+have produced absent rows, which did not happen.

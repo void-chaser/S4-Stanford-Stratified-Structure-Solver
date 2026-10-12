@@ -1,0 +1,26 @@
+# RESULTS_R7_G4_pass2_run4.tsv -- P05-S4 R7 M2 G4 pass 2 run run4.  Judge: judge_d003.classify (imported).
+point_id	group	tree	mode	request	inj_call	expected_class	class	verdict	rc	rc1	rc2	hit	reason
+R6T-twice-fft-plan-12-F-F	G4	F	fft	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-12-F-F2	G4	F2	fft	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-13-F-F	G4	F	fft	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-13-F-F2	G4	F2	fft	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-14-F-F	G4	F	fft	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-14-F-F2	G4	F2	fft	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-15-F-F	G4	F	fft	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-15-F-F2	G4	F2	fft	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-16-F-F	G4	F	fft	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-16-F-F2	G4	F2	fft	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-fft-plan-3-F-F	G4	F	fft	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+R6T-twice-fft-plan-3-F-F2	G4	F2	fft	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+R6T-twice-kottke-plan-12-F-F	G4	F	kottke	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-12-F-F2	G4	F2	kottke	plancall:12:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-13-F-F	G4	F	kottke	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-13-F-F2	G4	F2	kottke	plancall:13:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-14-F-F	G4	F	kottke	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-14-F-F2	G4	F2	kottke	plancall:14:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-15-F-F	G4	F	kottke	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-15-F-F2	G4	F2	kottke	plancall:15:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-16-F-F	G4	F	kottke	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-16-F-F2	G4	F2	kottke	plancall:16:1	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+R6T-twice-kottke-plan-3-F-F	G4	F	kottke	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+R6T-twice-kottke-plan-3-F-F2	G4	F2	kottke	plancall:3:1	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20

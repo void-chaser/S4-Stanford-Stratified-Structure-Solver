@@ -1,0 +1,10 @@
+# REGRESS_R7_M2a.tsv -- P05-S4 R7 M2a summary (G2b, G3, G4; run4).  Read-only summary of existing outputs.
+# verdict counts are over all F and F2 rows of each pass; tree comparison from TREES_R7_M2a_<G>_pass<P>_v2.tsv.
+group	pass	rows	MATCH	non_MATCH	F_points_EQUAL_F2	F_points_UNEQUAL_F2	absent
+G2b	1	44	44	0	22	0	0
+G2b	2	44	44	0	22	0	0
+G3	1	72	72	0	36	0	0
+G3	2	72	72	0	36	0	0
+G4	1	24	24	0	12	0	0
+G4	2	24	24	0	12	0	0
+# all groups both passes: no non-MATCH, no unequal tree field, no absent point: YES
