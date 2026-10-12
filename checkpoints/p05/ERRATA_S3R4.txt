@@ -77,3 +77,47 @@ ES3R4-9  新增 −12 的依据(修复前已核对):
     是不同函数,但为避免混淆选 −12(未占用)。
 
 (后续条目 ES3R4-10 起,按发生顺序追加。本文件不改写已写入的条目。)
+
+================================================================
+S3R4 续1(CONT1)追加。用户裁决(U98–U102,同时追加到 RULINGS.tsv)
+================================================================
+
+U98   S3R4 的自检 A、B、D,以及 C 的多边形部分,在 S3R4 续1 中完成,不并入 R8。顺序:续1 → 用户审核 → P05-S4 R8(F3 上)。
+U99   ES3R4-5(a)(b) 同意交 P05-S5 登记,不在 P05-S3/S4 修复。S5 登记补充说明:pattern.c:798 的内层循环
+      `for(j = i+1; i < nshapes; ++i)` 会把外层 i 推到 nshapes,所以 nshapes > 1 时只有第 0 个形状做了 shape_valid 检查;
+      修好它会改变正常路径(现有输入可能新报错),因此不属于 D003。
+U100  FFT/Kottke 忽略 Pattern_DiscretizeCell 的 −1…−9,同意交 P05-S5。续1 写一段 [源码] 说明(逐个返回码的公共 API 可达性,文件:行号),不运行。
+U101  S3R4 表二的"外层重定向未经 safe_run"(目标都在 $EV/ 内)接受为已披露;S3R4 当时违规后没有停下,登记为过程偏离。续1 严格按"违反一次就停"执行。
+U102  RULINGS.tsv 补登 U96、U97 两行(status 写 生效-补录(据报告转述)),并追加 U98–U102;不改已有行。
+
+----------------------------------------------------------------
+
+ES3R4-10  A1_MAP_STATUS_F2.txt 计数有误(记录更正,原文件不改)
+  · A1_MAP_STATUS_F2.txt 写 "WIN_OPEN count=2"。
+  · 复核 evidence/p05-s3r4/map_F2_A1/stderr.txt(111 行):S3R4_WIN_OPEN 实际出现 3 次(第 7、10、14 行),
+    对应三个层各调用一次 Pattern_GetContainmentTree;其中第 1 次与第 3 次 WIN_CLOSE 的 malloc_in_window=0
+    (nshapes=0 的层),第 2 次 malloc_in_window=1(k=1, n=8)。
+  · 窗口内 malloc 总数仍为 1,与 CLOSEOUT §5(A) 的结论不冲突;只更正 WIN_OPEN 计数。原文件不改。
+
+ES3R4-11  CLOSEOUT §5(C) 的"通过"表述不完整(记录更正)
+  · CLOSEOUT §5(C) 写"通过",但任务书 §4(C) 要求的"(B) 的多边形驱动"没有运行。
+  · 已运行的是三角晶格驱动 driver_s3r3_tri(三角晶格,不是多边形形状)。
+  · 正确的写法是:"(C) 部分完成:圆形与三角晶格 117/117 IDENTICAL;多边形部分未做"。
+  · 多边形部分由续1 §5 补做(结果见 CLOSEOUT_CONT1)。
+
+ES3R4-12  RULINGS.tsv 缺 U96、U97(记录更正)
+  · CLOSEOUT 第 5 行写"U89–U97",但 RULINGS.tsv 中 U96、U97 缺失,此表述不实。
+  · 已按 U102 补登(status 生效-补录(据报告转述))。
+
+ES3R4-13  evidence/p05-s3r4/SHA256SUMS.txt 中 safe_run.log 校验 FAILED(核实结果)
+  · 核对:sha256sum -c SHA256SUMS.txt 只有一项失败,即 ./safe_run.log(其余 22 项 OK)。
+  · 原因:清单写于 2026-10-13 08:43:48(+1100);safe_run.log 在 08:44:41 被最后一次 git 提交命令追加了一行
+    (cmd=git add ... && git commit ... ,见 COMMIT_MSG_CLOSEOUT.txt 的提交),之后日志变长,哈希不再与清单一致。
+  · 不重写原清单。核对记录写在续1 证据目录 $EV/SHA256SUMS_CHECK_p05-s3r4.txt(只记录,不改原文件)。
+  · 之后对 safe_run.log 的追加属于"清单后追加",不参与原清单校验。
+
+ES3R4-14  CLOSEOUT §12 写"git status 为空",但 §12 本身未提交(记录更正)
+  · 2fc6a55 提交的 §12 内容为"(收尾提交后补充...)"占位文字,§12 的真实内容留在工作区未提交;
+    工作区因此不为空(M P05_S3R4_CLOSEOUT.md)。
+  · 已在续1 的第一个提交 0b1b4a3(commit pending §12 of S3R4 closeout,内容未改)中补交。
+  · 续1 开工门禁(GATE_CONT1.txt)记录的 git status 为 M P05_S3R4_CLOSEOUT.md 与 ?? 任务书,与此一致。
