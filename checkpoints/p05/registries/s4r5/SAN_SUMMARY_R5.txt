@@ -1,0 +1,37 @@
+SAN_SUMMARY_R5 -- P05-S4 R5-5 (V4): AddressSanitizer + UBSan on tree F (1c11905) and its seam variants.
+Run: testing/d003/stage_s4/run_r5_san_build.sh (build), run_r5_san_inject.py (224 injection runs).  Table: san/SAN_R5.tsv.
+Flags: -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer; ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:log_path=...;
+       UBSAN_OPTIONS=print_stacktrace=1.  Libraries and drivers are exported copies under $EV/san (not committed).
+
+1. Build and instrumentation check
+   - libS4.a (san-plain-F): 332 __asan_* symbols, 146 __ubsan* symbols; S4.o contains __asan_report_load4/load16 checks.
+   - All five F builds built (rc 0): san-plain-F, seamF, fmmret-F, addf-F, b2buf-F.  sha256 in san/LIBS_SAN.tsv and DRIVERS_SAN.tsv.
+   - Positive control of the environment (san/posctl/posctl.c, same flags): clean -> no report (rc 0);
+     overflow -> heap-buffer-overflow (rc 1); leak -> LeakSanitizer detected memory leaks (rc 0, log written as asan-leak.<pid>).
+
+2. Control runs (no injection, FMM_MODE=fft, NG=9, pattern both 4 3), before any injection run
+   - san-plain-F, seamF, fmmret-F, addf-F, b2buf-F: rc 0 each; no ASan/LSan/UBSan report file; no report text in stdout.
+   - Hard-stop rule (control with a sanitizer report) NOT triggered.
+
+3. Injection runs on the sanitizer builds: 224 runs, every F injection point
+   - R3 in-scope points (F rows): 141   (driver san-plain-F)
+   - R4 main matrix (F rows): 25        (drivers seamF 15, fmmret-F 10, by run_r4_matrix.library_for)
+   - R4 plancall (R3 INVALID plan points, F rows): 22   (driver san-plain-F)
+   - R5-3 M=2 plan points (F rows): 36  (driver san-plain-F)
+
+4. Layer 1: class (judge_d003.classify; compared with the non-sanitizer run of the same point in its own round)
+   - SAME: 224 of 224.  DIFF: 0.
+   - class_san distribution: REPORTED_FAILURE 202 (R3 119, R4M 25, R4PC 22, M2 36); INVALID 22 (R3, hit 0 as in R3).
+   - The 22 R3 INVALID points are the same 22 that R4 re-ran with plancall (R4PC); they are not reached by the R3 injector.
+
+5. Layer 2: sanitizer findings
+   - heap-use-after-free: 0.  heap-buffer-overflow: 0.  double-free: 0.  leak (LeakSanitizer): 0 (no bytes, no stack).  UBSan: 0.
+   - Rows with any finding: 0 of 224.  Report files in san/logs/: 0.  Driver stdout with 'Sanitizer' or 'runtime error': 0.
+   - Leak attribution (D003_SCOPE / OUT_OF_SCOPE): not needed (0 leaks).
+
+6. Limits of this result (stated, not interpreted as a verdict)
+   - Injections are controlled malloc failures; the correct outcome is an early return. Zero reports is the expected clean
+     result, and it is what was observed.  It does not test every allocation path (non-FMM S4_malloc sites are out of
+     scope of D003, see S3 handoff table).
+   - The 22 R3 INVALID points were not injected in the R3 round; their sanitizer run (in the 224) is also INVALID.
+   - The non-sanitizer comparison for R3 uses RESULTS_R3.tsv observed_class; for R4PC and M2 it uses the pass1 observed class.

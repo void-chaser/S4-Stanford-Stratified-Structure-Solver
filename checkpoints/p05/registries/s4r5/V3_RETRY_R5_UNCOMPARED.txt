@@ -1,0 +1,13 @@
+V3_RETRY_R5_UNCOMPARED.txt -- P05-S4 R5-6: points NOT compared against the plain baseline, and why.
+
+A. rc2-only failures (rc1 = 0, the second field call fails), 45 points.  Task rule 5: listed, not compared.
+   set  count  class_san  rc1 rc2
+   M2 count=10 class=REPORTED_FAILURE
+   R3 count=25 class=REPORTED_FAILURE
+   R4PC count=10 class=REPORTED_FAILURE
+
+B. R4 main-matrix points (set R4M), 25 points.  Library = seam build (seamF 15, fmmret-F 10).
+   Not compared: the plain baseline is not the same build (seam macros change the code path at the injection site).
+   These 25 points are covered by the sanitizer run (V4) and the R4 matrix; their V3 retry is not measured in R5.
+
+C. Points compared: 132 (R3 94, R4PC 12, M2 26).

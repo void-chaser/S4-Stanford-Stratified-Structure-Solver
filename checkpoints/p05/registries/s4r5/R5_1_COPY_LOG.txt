@@ -1,0 +1,88 @@
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4/GATE.txt
+COPIED	s4r1	p05-s4/GATE.txt	->	GATE.txt	size=1104	sha256=ae8034c34b3b8bf4984d01cc77356902f9d8ffb41f66e5fcaff73bd78129db52
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4/REGISTRY_S4_PRE.tsv
+COPIED	s4r1	p05-s4/REGISTRY_S4_PRE.tsv	->	REGISTRY_S4_PRE.tsv	size=10074	sha256=295b05dcd5360737948b12441c4bbcaf70c1390be4f445364ea888d100e2abf4
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4/PRE_REGISTRY_ERRATA_1.txt
+COPIED	s4r1	p05-s4/PRE_REGISTRY_ERRATA_1.txt	->	PRE_REGISTRY_ERRATA_1.txt	size=3655	sha256=eaf2eabcefcfe8cefd58e86c2ebce7d61573e4e9531e9225ac193f315c77ccde
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4/write_guard.log
+COPIED	s4r1	p05-s4/write_guard.log	->	write_guard.log	size=1938	sha256=0d7b9e153546b5887a0a564bf77dc101a644e855bdc19cd260bcc1d990e7a8df
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/ERRATA_2.txt
+COPIED	s4r2	p05-s4r2/ERRATA_2.txt	->	ERRATA_2.txt	size=6558	sha256=e32158f46ba4ce60136491dd586a8754e72ad48e4791b488f2b80cd32110fc02
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/TREES.tsv
+COPIED	s4r2	p05-s4r2/TREES.tsv	->	TREES.tsv	size=1081	sha256=9556e2c92742bc31899287d1a31920ac7f17e32c6448fb54c07d08d3c9a18910
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/REGISTRY_S4_PRE_R2_v2.tsv
+COPIED	s4r2	p05-s4r2/REGISTRY_S4_PRE_R2_v2.tsv	->	REGISTRY_S4_PRE_R2_v2.tsv	size=8617	sha256=add404d72fb8d9ffebeb92bec9cb481efc26684ca4cd95714f95c68466bc9cac
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/REGISTRY_S4_PRE_R2_v2.sha256
+COPIED	s4r2	p05-s4r2/REGISTRY_S4_PRE_R2_v2.sha256	->	REGISTRY_S4_PRE_R2_v2.sha256	size=185	sha256=aae7a2e7c7e5ed11c5b64e9612972e3092a63f8e2f3a1621997286262c1d0eb6
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/REGISTRY_S4_PRE_R2_DRAFT_INVALID.tsv
+COPIED	s4r2	p05-s4r2/REGISTRY_S4_PRE_R2_DRAFT_INVALID.tsv	->	REGISTRY_S4_PRE_R2_DRAFT_INVALID.tsv	size=12469	sha256=3bbaea9c1015f4b522c9ce918b68167100f4527ca58ded9a498f94b8228cd52d
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/RESULTS_R2.tsv
+COPIED	s4r2	p05-s4r2/RESULTS_R2.tsv	->	RESULTS_R2.tsv	size=3668	sha256=eb6af969227e9c215f948f3f3b2ec2b656253992b8ffbd289e6356fb3ef4156e
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r2/run3/raw_R2.tsv
+COPIED	s4r2	p05-s4r2/run3/raw_R2.tsv	->	raw_R2.tsv	size=7551	sha256=e0ccf8c60e23fdbca9e21be56984cbd8a3216d7919715a012e3d8508e7d705b7
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/GATE_R3.txt
+COPIED	s4r3	p05-s4r3/GATE_R3.txt	->	GATE_R3.txt	size=412	sha256=af4aae85d8d41da812b81461a845f76764509123ce6c4dc73aff46228fae6b37
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/ERRATA_3.txt
+COPIED	s4r3	p05-s4r3/ERRATA_3.txt	->	ERRATA_3.txt	size=13279	sha256=6b7f9dc141d436375594b5a9e1cc500a1c9d2b1b9ea3718b5e4beec89b5128bf
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/CALLSEQ.tsv
+COPIED	s4r3	p05-s4r3/CALLSEQ.tsv	->	CALLSEQ.tsv	size=127993	sha256=b017879f91972ef24ccce7a4f287e54a26fe909e4ed3692c3078b61c050b01bc
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/SITEMAP.tsv
+COPIED	s4r3	p05-s4r3/SITEMAP.tsv	->	SITEMAP.tsv	size=78234	sha256=fd91d5d427c886065722ecd8798d31855fc1da0ea1cbd226c8046e3cebcdcf6e
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/FIELDCALL_MAP.tsv
+COPIED	s4r3	p05-s4r3/FIELDCALL_MAP.tsv	->	FIELDCALL_MAP.tsv	size=11561	sha256=72a4feae12d69338108d90b154073f12b81c3777bb298006f7d19dfefd340d7a
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/REGISTRY_S4_PRE_R3.tsv
+COPIED	s4r3	p05-s4r3/REGISTRY_S4_PRE_R3.tsv	->	REGISTRY_S4_PRE_R3.tsv	size=57622	sha256=fc0c060b44200ee57059c3a0db8c5dae2af11efc6d2e02618731959e7841e428
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/REGISTRY_S4_PRE_R3.sha256
+COPIED	s4r3	p05-s4r3/REGISTRY_S4_PRE_R3.sha256	->	REGISTRY_S4_PRE_R3.sha256	size=696	sha256=fec2258e29f3db930c107a76fffe566ff475601806cbcbed195c6103e8fbdc5c
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/RESULTS_R3.tsv
+COPIED	s4r3	p05-s4r3/RESULTS_R3.tsv	->	RESULTS_R3.tsv	size=24400	sha256=107e79b7183f32262627196491d9969a5ff036a52405c43408e1bd794aafcd58
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/COVERAGE_R3.tsv
+COPIED	s4r3	p05-s4r3/COVERAGE_R3.tsv	->	COVERAGE_R3.tsv	size=7746	sha256=c6af011d34e9308d0f2f4387d182f9f4c8e542f06c04034b79a328072f9ec6fa
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/RED_POINTS_R3.tsv
+COPIED	s4r3	p05-s4r3/RED_POINTS_R3.tsv	->	RED_POINTS_R3.tsv	size=3986	sha256=4173ab09f630e8cb22c75b1f8ff920c09a3526513561ce903c84603afcf05917
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r3/OUTSCOPE_COUNT_R3.tsv
+COPIED	s4r3	p05-s4r3/OUTSCOPE_COUNT_R3.tsv	->	OUTSCOPE_COUNT_R3.tsv	size=423	sha256=962526c0f049039e822272cf35c93bdd3469c1c513b988a7eb47d8df10966099
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/GATE_R4_pregate.txt
+COPIED	s4r4	p05-s4r4/GATE_R4_pregate.txt	->	GATE_R4_pregate.txt	size=185	sha256=db5e7aafc7d659492492f6f87be7a8400f8d03b84e21f22be125c971f4b52c6e
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/GATE_R4.txt
+COPIED	s4r4	p05-s4r4/GATE_R4.txt	->	GATE_R4.txt	size=657	sha256=88087dea9f4b62a088f12ca37af2ab7cbbfe5bcfd895ba7e0f9ad9204b1f77b1
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/ERRATA_4.txt
+COPIED	s4r4	p05-s4r4/ERRATA_4.txt	->	ERRATA_4.txt	size=10552	sha256=6f8e41fc9cc178f150a8eb836ea8ace4c66afeebcad76d56d17e04e93f8de6ce
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/SEAMDIFF_R4.txt
+COPIED	s4r4	p05-s4r4/SEAMDIFF_R4.txt	->	SEAMDIFF_R4.txt	size=3387	sha256=d6c1853adf0a9c7aede52c44163884ccfd16d1477169358a57c759e2dcda136f
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/SEAMDIFF_R4.tsv
+COPIED	s4r4	p05-s4r4/SEAMDIFF_R4.tsv	->	SEAMDIFF_R4.tsv	size=2598	sha256=f2efe23e8a1f183c529c1349a273dc7a6552ac0f8cb9b8257f4dfd1fe94e1e9e
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4.tsv
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4.tsv	->	REGISTRY_S4_PRE_R4.tsv	size=14710	sha256=1243e5f66937a0215661719d1e77e3527b7e9ef2bd546fc755fb5b4737a80a3d
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4.sha256
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4.sha256	->	REGISTRY_S4_PRE_R4.sha256	size=182	sha256=6736114654edc08ceb299fa479ee1b652e3705cccdd00e0aa74e0c77520267e0
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4_TIMESTAMP_UTC.txt
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4_TIMESTAMP_UTC.txt	->	REGISTRY_S4_PRE_R4_TIMESTAMP_UTC.txt	size=21	sha256=0dd6699be0e60cdb0a3efa192a80460f519b07b6d90b6563f0d6b83ac616f22e
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4_B.tsv
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4_B.tsv	->	REGISTRY_S4_PRE_R4_B.tsv	size=7315	sha256=320bf67137896c89ce804c5d5006337457fff572cf57e92ed7b3c210118bf65f
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4_B.sha256
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4_B.sha256	->	REGISTRY_S4_PRE_R4_B.sha256	size=184	sha256=037432407f24591ba403e21c765315917ee8a20e4f4c5276eaa6d071655e86bb
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/REGISTRY_S4_PRE_R4_B_TIMESTAMP_UTC.txt
+COPIED	s4r4	p05-s4r4/REGISTRY_S4_PRE_R4_B_TIMESTAMP_UTC.txt	->	REGISTRY_S4_PRE_R4_B_TIMESTAMP_UTC.txt	size=21	sha256=3e270450bcec3e1627e47594a37cdbac073f3c049f78b865e65458bcd8198ba4
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/RESULTS_R4.tsv
+COPIED	s4r4	p05-s4r4/RESULTS_R4.tsv	->	RESULTS_R4.tsv	size=11212	sha256=bfa83eb8d0f82ab6f67ad2ae0a6db1eacec058d2488d3bf2a460901a7bd6f11f
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/matrix_r4/CONTROL_R4.tsv
+COPIED	s4r4	p05-s4r4/matrix_r4/CONTROL_R4.tsv	->	CONTROL_R4.tsv	size=552	sha256=41fed8b0bfbf4f9fb9ee253a52bcdb5caeadc86c5297e0c0bc9bd8c31932689c
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/plancall/RESULTS_R4_PLANCALL_pass1.tsv
+COPIED	s4r4	p05-s4r4/plancall/RESULTS_R4_PLANCALL_pass1.tsv	->	RESULTS_R4_PLANCALL_pass1.tsv	size=8648	sha256=c64fa1ad5875476c2d99c0ef817484027f27b074641926b72e169dd94eefef9a
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/plancall/RESULTS_R4_PLANCALL_pass2.tsv
+COPIED	s4r4	p05-s4r4/plancall/RESULTS_R4_PLANCALL_pass2.tsv	->	RESULTS_R4_PLANCALL_pass2.tsv	size=8648	sha256=099e5f3862dd8baad705ab72b063904336a18e79a9466e3053e1e8ff15137ab2
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/regress/REGRESS_R4.tsv
+COPIED	s4r4	p05-s4r4/regress/REGRESS_R4.tsv	->	REGRESS_R4.tsv	size=4892	sha256=c731e2b94c39fe6eb371d96e8db55ac81d88af0b0d012522f811afa347cb6714
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/COVERAGE_R4_MERGED.tsv
+COPIED	s4r4	p05-s4r4/COVERAGE_R4_MERGED.tsv	->	COVERAGE_R4_MERGED.tsv	size=12067	sha256=554d3c41b3c85499173fff450c270920176ec21098ccf9bf18b70b79cb2cd5c6
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/RED_POINTS_R4_MERGED.tsv
+COPIED	s4r4	p05-s4r4/RED_POINTS_R4_MERGED.tsv	->	RED_POINTS_R4_MERGED.tsv	size=4064	sha256=28961bb78823823db96c4e27efc2b80312544a8c4ff3d89c0b12d5c391ae3042
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/S4_MALLOC_STATIC_R4.txt
+COPIED	s4r4	p05-s4r4/S4_MALLOC_STATIC_R4.txt	->	S4_MALLOC_STATIC_R4.txt	size=3232	sha256=db57e0b959a6efcc9faff093ca6ff35ef48f499fc013b42c49ae65756f8d3eeb
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/PLANINJ_DIFF_R4.txt
+COPIED	s4r4	p05-s4r4/PLANINJ_DIFF_R4.txt	->	PLANINJ_DIFF_R4.txt	size=1570	sha256=517f27faeba884590adc0eb8f94c29f80af161c8ccc65daae40ffd7aa8b8c62c
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/seam/LIBS_R4.tsv
+COPIED	s4r4	p05-s4r4/seam/LIBS_R4.tsv	->	LIBS_R4.tsv	size=1879	sha256=0af42e47eebcf48eea666ed8412da57085b7e6d721e402c4be566ec8395e4338
+/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r4/drivers/DRIVERS.tsv
+COPIED	s4r4	p05-s4r4/drivers/DRIVERS.tsv	->	DRIVERS.tsv	size=1556	sha256=925b397307321144831817ae6e78b73d7f4d1c9eccaa8e1504d1172e395cf0c2

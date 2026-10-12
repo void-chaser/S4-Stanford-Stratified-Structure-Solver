@@ -1,0 +1,12 @@
+# RESULTS_R5_K1.tsv -- P05-S4 R5-4 K1A/K1B results.  Probe: kottke_probe_dump.cpp (unmodified), plain library of each tree.
+# rc_probe = the "KPD RC first" value printed by the probe; rc_proc = the process exit code (139 = SIGSEGV, no RC line).
+# expected from REGISTRY_S4_PRE_R5_K1.tsv (sha256 recorded before the run).  match: MATCH | MISMATCH | NO_EXPECTATION.
+case	tree	eps	exp_rc_first	obs_rc_first	obs_rc_retry	rc_proc	match	field_vs_S3R2_new	note
+K1-eps0-F	F	0	20	20	20	0	MATCH	-	first 20, retry 20
+K1-eps1e-300-F	F	1e-300	20	20	20	0	MATCH	-	first 20, retry 20
+K1-eps1e-100-F	F	1e-100	0	0	0	0	MATCH	BYTE-IDENTICAL	field dump equal to S3R2 R2-4c new
+K1-eps4-F	F	4	0	0	0	0	MATCH	BYTE-IDENTICAL	field dump equal to S3R2 R2-4c new
+K1-eps0-B	B	0	UNKNOWN	NONE	NONE	139	NO_EXPECTATION	-	SIGSEGV before any RC line (B has no non-finite check)
+K1-eps1e-300-B	B	1e-300	UNKNOWN	NONE	NONE	139	NO_EXPECTATION	-	SIGSEGV before any RC line
+K1-eps1e-100-B	B	1e-100	UNKNOWN	0	0	0	NO_EXPECTATION	BYTE-IDENTICAL to F	normal eps: B equals F
+K1-eps4-B	B	4	UNKNOWN	0	0	0	NO_EXPECTATION	BYTE-IDENTICAL to F	normal eps: B equals F

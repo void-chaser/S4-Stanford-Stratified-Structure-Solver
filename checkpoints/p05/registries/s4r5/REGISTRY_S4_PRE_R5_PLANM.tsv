@@ -1,0 +1,76 @@
+# REGISTRY_S4_PRE_R5_PLANM.tsv -- P05-S4 R5-3 pre-registration (M>=2 plan points, M=2).
+# Written BEFORE any R5-3 injection run.  36 in-scope plan points x {B,F} = 72 rows.
+# Request form plancall:K:M (the R4 injector inject_r4_plan.cpp).  Expected class: F REPORTED_FAILURE, B UNKNOWN.
+point_id	r1_id	tree	route	mode	nth_K	M	request	inj_call	expected_class	basis	status
+M2-once-fft-plan-1-B	-	B	once	fft	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-fft-plan-1-F	-	F	once	fft	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-fft-plan-2-B	-	B	once	fft	2	2	plancall:2:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-fft-plan-2-F	-	F	once	fft	2	2	plancall:2:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-fft-plan-3-B	-	B	once	fft	3	2	plancall:3:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-fft-plan-3-F	-	F	once	fft	3	2	plancall:3:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-fft-plan-4-B	-	B	once	fft	4	2	plancall:4:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-fft-plan-4-F	-	F	once	fft	4	2	plancall:4:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-fft-plan-5-B	-	B	once	fft	5	2	plancall:5:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-fft-plan-5-F	-	F	once	fft	5	2	plancall:5:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-jones-plan-1-B	-	B	once	jones	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-jones-plan-1-F	-	F	once	jones	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-kottke-plan-1-B	-	B	once	kottke	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-kottke-plan-1-F	-	F	once	kottke	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-kottke-plan-2-B	-	B	once	kottke	2	2	plancall:2:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-kottke-plan-2-F	-	F	once	kottke	2	2	plancall:2:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-kottke-plan-3-B	-	B	once	kottke	3	2	plancall:3:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-kottke-plan-3-F	-	F	once	kottke	3	2	plancall:3:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-kottke-plan-4-B	-	B	once	kottke	4	2	plancall:4:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-kottke-plan-4-F	-	F	once	kottke	4	2	plancall:4:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-kottke-plan-5-B	-	B	once	kottke	5	2	plancall:5:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-kottke-plan-5-F	-	F	once	kottke	5	2	plancall:5:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-nv-plan-1-B	-	B	once	nv	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-nv-plan-1-F	-	F	once	nv	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-once-vl-plan-1-B	-	B	once	vl	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-once-vl-plan-1-F	-	F	once	vl	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-1-B	-	B	twice	fft	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-1-F	-	F	twice	fft	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-2-B	-	B	twice	fft	2	2	plancall:2:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-2-F	-	F	twice	fft	2	2	plancall:2:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-3-B	-	B	twice	fft	3	2	plancall:3:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-3-F	-	F	twice	fft	3	2	plancall:3:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-4-B	-	B	twice	fft	4	2	plancall:4:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-4-F	-	F	twice	fft	4	2	plancall:4:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-5-B	-	B	twice	fft	5	2	plancall:5:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-5-F	-	F	twice	fft	5	2	plancall:5:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-12-B	-	B	twice	fft	12	2	plancall:12:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-12-F	-	F	twice	fft	12	2	plancall:12:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-13-B	-	B	twice	fft	13	2	plancall:13:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-13-F	-	F	twice	fft	13	2	plancall:13:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-14-B	-	B	twice	fft	14	2	plancall:14:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-14-F	-	F	twice	fft	14	2	plancall:14:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-15-B	-	B	twice	fft	15	2	plancall:15:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-15-F	-	F	twice	fft	15	2	plancall:15:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-fft-plan-16-B	-	B	twice	fft	16	2	plancall:16:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-fft-plan-16-F	-	F	twice	fft	16	2	plancall:16:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-jones-plan-1-B	-	B	twice	jones	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-jones-plan-1-F	-	F	twice	jones	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-1-B	-	B	twice	kottke	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-1-F	-	F	twice	kottke	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-2-B	-	B	twice	kottke	2	2	plancall:2:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-2-F	-	F	twice	kottke	2	2	plancall:2:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-3-B	-	B	twice	kottke	3	2	plancall:3:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-3-F	-	F	twice	kottke	3	2	plancall:3:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-4-B	-	B	twice	kottke	4	2	plancall:4:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-4-F	-	F	twice	kottke	4	2	plancall:4:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-5-B	-	B	twice	kottke	5	2	plancall:5:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-5-F	-	F	twice	kottke	5	2	plancall:5:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-12-B	-	B	twice	kottke	12	2	plancall:12:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-12-F	-	F	twice	kottke	12	2	plancall:12:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-13-B	-	B	twice	kottke	13	2	plancall:13:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-13-F	-	F	twice	kottke	13	2	plancall:13:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-14-B	-	B	twice	kottke	14	2	plancall:14:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-14-F	-	F	twice	kottke	14	2	plancall:14:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-15-B	-	B	twice	kottke	15	2	plancall:15:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-15-F	-	F	twice	kottke	15	2	plancall:15:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-kottke-plan-16-B	-	B	twice	kottke	16	2	plancall:16:2	2	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-kottke-plan-16-F	-	F	twice	kottke	16	2	plancall:16:2	2	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-nv-plan-1-B	-	B	twice	nv	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-nv-plan-1-F	-	F	twice	nv	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED
+M2-twice-vl-plan-1-B	-	B	twice	vl	1	2	plancall:1:2	1	UNKNOWN	[no observation of B for M=2; R5-2 explains only K=12 M=1 (plan NULL, no check)]	INFLUENCED
+M2-twice-vl-plan-1-F	-	F	twice	vl	1	2	plancall:1:2	1	REPORTED_FAILURE	[F: rule] M=2 plan point, must report non-zero	INFLUENCED

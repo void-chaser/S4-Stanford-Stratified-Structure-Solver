@@ -1,0 +1,12 @@
+# REGISTRY_S4_PRE_R5_D016.tsv -- P05-S4 R5-4 pre-registration for D016 (VL, NG=1: pattern_generate_flow_field returns -10).
+# Written BEFORE any R5 run of D016.  Method: testing/d003/stage_s3r2/gdb_d016_ret.gdb (return-address breakpoint on
+# pattern_generate_flow_field at RET_OFF=422, read eax) on the plain driver of each tree, driver pattern both 4 3,
+# FMM_MODE=vl, S4FMM_NG=1, S4FMM_POL=s.  Drivers: $EV/d016/driver-{B,F} (plain libraries of k1/trees, inject_d003.cpp).
+# Expectations: copied from the S3R2 R2-4b observations (registries/s3r2/R2-4bc_SUMMARY.txt):
+#   new (ff6dd7c, S4/ hash = F 1c11905): d016-new-vl-ng1 -> eax -10 at the first return; solve_calls 0; driver rc_first 20.
+#   base (37a82e8 = B, S4/ hash 1d738e64): d016-base-vl-ng1 -> eax 0; solve_calls 4; no -10.
+# Status column: INFLUENCED (the S3R2 observations were made before this registration).
+# Columns: case  tree  exp_eax_first_return  exp_solve_calls  exp_rc_first  basis  status
+case	tree	exp_eax_first_return	exp_solve_calls	exp_rc_first	basis	status
+D016-vl-ng1-F	F	-10	0	20	[S3R2 R2-4b d016-new-vl-ng1; driver rc_first 20 in R2-4b driver-level table]	INFLUENCED
+D016-vl-ng1-B	B	0	4	NO_EXPECTATION	[S3R2 R2-4b d016-base-vl-ng1, base=37a82e8]	INFLUENCED

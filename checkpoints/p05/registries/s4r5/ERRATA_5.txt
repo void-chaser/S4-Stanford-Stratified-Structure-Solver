@@ -1,0 +1,101 @@
+ERRATA_5 -- P05-S4 R5 (sub-round) findings from reading AGENTS.md and STATE.md against git and evidence.
+Fact parts of AGENTS.md and STATE.md are NOT edited in this round. Items below are reported for user decision.
+
+E5-1  Frozen tree hashes (AGENTS.md section 6) -- VERIFIED, no error.
+      B 37a82e8 S4 = 1d738e64f9864a475fdb3de34cd3601605df2c64 (match)
+      A 876181c S4 = 85feec1151b36bbb7c8a7146fb6037609d9ff765 (match)
+      H 64eb0b5 S4 = cb7fc613b28929db078a3e33025feea0074e87d8 (match)
+      F 1c11905 S4 = 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4 (match); ff6dd7c S4 = same as F (match)
+      judge_d003.py sha256 = d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb (match)
+
+E5-2  STATE.md section 2 counts -- VERIFIED against result tables.
+      R2: 45 rows, 34 MATCH, 11 MISMATCH (match)
+      R3: B 123 MATCH / 4 MISMATCH / 22 INVALID; F 127 MATCH / 22 INVALID (match); F in-scope points 141 (COVERAGE_R3 header) (match)
+      R4 main matrix: 75 rows; match column B MATCH 12, B INVALID 10, B NO_EXPECTATION 3, A MATCH 22, A NO_EXPECTATION 3, F MATCH 25 (match in substance:
+        STATE says "59 MATCH、0 MISMATCH、10 INVALID、6 NO_EXPECTATION" -- the 59 = 12 B + 22 A + 25 F = 59 (match)).
+      plancall: B 12 MATCH / 10 MISMATCH; F 22 MATCH (match)
+
+E5-3  R3 checksum file is inconsistent with its own ERRATA_3.txt -- NEW, requires user decision.
+      REGISTRY_S4_PRE_R3.sha256 (written 12:03:19) does not verify ERRATA_3.txt:
+        recorded  2fc0d70207ebe3a80addaadd8a295eb3258cea9b9a87b58eca1c32eb6a03faa0
+        computed  6b7f9dc141d436375594b5a9e1cc500a1c9d2b1b9ea3718b5e4beec89b5128bf
+      ERRATA_3.txt mtime 12:11:28, mode 600, i.e. modified 8 minutes after the checksum was written.
+      The other three entries (REGISTRY_S4_PRE_R3.tsv, SITEMAP.tsv, CALLSEQ.tsv) verify OK.
+      REGISTRY_S4_PRE_R3.sha256 lists ERRATA_3.txt among its entries, so the entry is covered by the checksum
+      file; the checksum was NOT updated after ERRATA_3.txt changed. Whether the later edit to ERRATA_3.txt is an
+      intended correction (which would need a new *_ERRATA file per AGENTS.md section 5) is for the user to decide.
+      Not repaired in this round (original not modified). The copy in registries/s4r3 is taken from the modified
+      original, so its sha256 matches the original, not the recorded value.
+
+E5-4  STATE.md section 3 item 3 / R4 report 6.6 -- K1A/K1B "evidence path not confirmed" -- CORRECTED by the
+      registry, not by editing STATE. Evidence exists in checkpoints/p05/registries/s3r2/R2-4bc_SUMMARY.txt (R2-4c
+      table: eps 0 and 1e-300 start 139 -> new rc 20; eps 1e-100 and 4 -> 0) and in evidence/p05-s3r2/R2-4c_runs/.
+      The R4 report statement "not found" is wrong. Recorded here for the report; not edited.
+
+E5-5  AL02 vs EXP40 -- CONFIRMED same site. REGISTRY_S4_PRE.tsv lines 40 (AL02) and 71 (EXP40) both name
+      S4/fmm/fmm_experimental.cpp:40 ivalues S4_malloc. R1 registered it twice. AL02 is withdrawn as a duplicate;
+      it is counted under EXP40 (COVERAGE_R4_MERGED.tsv already says so). Note: R3 ERRATA_3 line 24 says AL02 is the
+      fft discval allocation in R2 numbering. Two different R1/R2 meanings exist for the id AL02; the R1 meaning
+      (experimental.cpp:40) is the one used by the pre-registration. Recorded for user review.
+
+E5-6  R4 report section 6.6 says RNV1 probe path "not confirmed". Evidence: S3R2 report section 3.3 (R-NV-1)
+      states the error path was NOT triggered and gives only a source-based conclusion; no probe result file is
+      referenced. Stated as unverified; no change.
+
+E5-7  STATE.md section 2 R1 row says "62 个编号". COVERAGE_R4_MERGED.tsv lists 30 + 5 UNMAPPED etc.; consistent with 62.
+      No change.
+
+E5-8  R5-1 copy: 44 files copied (see R5_1_COPY_LOG.txt). All copies verified by sha256 against originals.
+      No original is missing and no file exceeds 1 MB. The "missing list" is therefore empty.
+      Note: the R5_1_COPY_LOG records the ls -d output as an extra line for each original; this is cosmetic.
+
+E5-9  AGENTS.md 4(3) / the R5 brief lists "git status --short 只含两个未跟踪文件" -- VERIFIED (only AGENTS.md
+      and checkpoints/p05/STATE.md).
+
+--- Findings added during the R5 run (E5-10 onward).  Earlier items are unchanged. ---
+
+E5-10  [PREMISE] R4 plancall "twice" rows were run WITHOUT S4FMM_TWICE=slab.
+       run_r4_plancall.py builds case names "R4B-..."; matrix_r2.build_env sets S4FMM_TWICE only for case names starting
+       with "t4/".  The R4 twice NTH 12-16 rows (rc 1/0/1) therefore measure a DIFFERENT plan call: without TWICE the
+       injected plan 12 is made by GetFieldOnGrid (rcwa.cpp:2209), not by FMMGetEpsilon_FFT.  With TWICE=slab the same
+       point gives F 1/0/20 and B SIGSEGV (R5-2, gdb_F_twice12_slab.log, gdb_B_twice12_slab.log).
+       The task brief's background ("with S4FMM_TWICE=slab, B and F are 1/0/1") is NOT reproduced.  Reported for user decision.
+
+E5-11  [CORRECTION OF R4 REPORT] "B has no NULL check but does not crash" (R4 report, twice NTH 12-16) holds only for
+       the no-TWICE route.  B's rcwa.cpp:2210 NULL check is identical to F's (git diff empty).  The crash is on the TWICE=slab route.
+
+E5-12  [CALLSEQ] R3 CALLSEQ attributes plan calls NTH 1-5 to FMMGetEpsilon_* and NTH >= 6 to GetFieldOnGrid (for the
+       once routes and the nth >= 11 of closed/jones/nv/vl).  For fft/kottke twice NTH 12-16 CALLSEQ says FMMGetEpsilon_*
+       (correct for TWICE=slab).  Consistent with E5-10.
+
+E5-13  [GDB OBSERVATION LIMIT] No-TWICE F, second GetFieldOnGrid: the return value 1 is observed (FinishBreakpoint) but the
+       cleanup address breakpoint (rcwa.cpp:2265 = GetFieldOnGrid+3730, the only exit) is hit only once in the whole run
+       (gdb_hitcount.log: "breakpoint already hit 1 time").  The two observations disagree.  Q5 for that condition is
+       recorded as UNDETERMINED (R5_GDB_PLAN_TWICE.md section 2.1).  Not resolved in R5.
+
+E5-14  [DRIVER CHECK EXPECTATION] driver_d003.cpp checks "failed call returns the allocation code 1" (expects rc1 == 1).
+       The S4 public path returns 20 (fmm_ret -> ComputeLayerModes 20).  The check FAILS by design of the driver expectation,
+       not by the S4 result.  Driver PASS/FAIL lines are not used for any verdict (AGENTS.md section 5).
+
+E5-15  [DRIVER WITNESS] "failed layer kept no partial modes" FAILS in 132/132 retry runs of V3 with partial_modes=1
+       (driver_d003.cpp:253-258: counts layers with nshapes != 0 and modes != NULL).  Meaning NOT established: the layer
+       modes pointer may be set by a previous successful call.  This touches S3-4b ("failed -> mode not installed") and is
+       recorded as an open question, not as a verdict.
+
+E5-16  [OWN ERRORS, R5] (a) First debug build linked src/inject_d003.cpp (no plancall:K:M); all 24 equivalence rows DIFF.
+       Fixed to stage_s4/inject_r4_plan.cpp; re-run 24/24 SAME.  (b) run_r5_equiv.py used rc_p1 column names; fixed to rc,
+       rc1, rc2, hit.  (c) plan 12 backtrace: an earlier "finish in commands" gdb script did not run to completion;
+       replaced by gdb.FinishBreakpoint.  (d) "r5_plan_twice_B.gdb" first version kept an fmm_ret breakpoint on B lines
+       (B has no fmm_ret check); removed.  (e) run_r5_san_inject.py read input paths relative to the round directory; fixed
+       to the evidence root (no run had started).  (f) run_r5_v3.py: dict keyed by point_id would take B rows over F rows;
+       fixed with a tree == F filter.  (g) run_r5_planm: R4 plancall runner not reused (E5-10).
+
+E5-17  [HISTORICAL VIOLATION, R4] R4 GATE_R4.txt records one bare command writing to /tmp_none (read-only FS, no file
+       created).  Listed in the report, table one (border attempt), historical round R4.
+
+E5-18  [FILE INTEGRITY] registries/s4r3/ERRATA_3.txt copy carries the modified sha256 (6b7f9dc1...), not the recorded one
+       (2fc0d702...).  See E5-3.  No repair in R5.
+
+E5-19  [K-1 TENSOR PATH] Not run in R5 (brief: "本轮不做").  Open.
+E5-20  [NB 1-8] Not run in R5 (brief: "留给 R6").  Open.
+E5-21  [CATEGORY C, PYTHON/LUA VISIBILITY, D3 LEVEL B SCRATCH1] Not run in R5 (brief).  Open.

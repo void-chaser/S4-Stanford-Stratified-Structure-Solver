@@ -1,0 +1,26 @@
+# EQUIV_R5_DBG_vs_R4.tsv -- R5-2 step 2: debug (-O0 -g) builds vs R4 plancall pass1 (rc,rc1,rc2,hit).
+point_id	tree	mode	nth_K	M	request	R4_rc_rc1_rc2_hit	DBG_rc_rc1_rc2_hit	same	log_sha256
+M-once-fft-plan-3	B	fft	3	1	plancall:3:1	139,None,None,1	139,None,None,1	SAME	d95e772e1aedf73c5584df63c25bf9aabc8835e9b25ff8ad4abeaa4c1b49ff89
+M-once-fft-plan-3	F	fft	3	1	plancall:3:1	1,20,0,1	1,20,0,1	SAME	03b176a01111607996e34b8a36931e3b4de3e45305a3639bfcf7b2083caa809d
+M-once-kottke-plan-3	B	kottke	3	1	plancall:3:1	139,None,None,1	139,None,None,1	SAME	d95e772e1aedf73c5584df63c25bf9aabc8835e9b25ff8ad4abeaa4c1b49ff89
+M-once-kottke-plan-3	F	kottke	3	1	plancall:3:1	1,20,0,1	1,20,0,1	SAME	e5474b29242de6616ddea99cf01e81132762433b9a2afe0653cc7769a92e1022
+M-twice-fft-plan-12	B	fft	12	1	plancall:12:1	1,0,1,1	1,0,1,1	SAME	77c38db06c1e41e1015b6a15dd852621db9193a0db16b65854138ca2284edf87
+M-twice-fft-plan-12	F	fft	12	1	plancall:12:1	1,0,1,1	1,0,1,1	SAME	77c38db06c1e41e1015b6a15dd852621db9193a0db16b65854138ca2284edf87
+M-twice-fft-plan-13	B	fft	13	1	plancall:13:1	1,0,1,1	1,0,1,1	SAME	3b38894a993521963eadff03a5b75601d7e8d0cdf97d365425e0aded9b15d9d0
+M-twice-fft-plan-13	F	fft	13	1	plancall:13:1	1,0,1,1	1,0,1,1	SAME	3b38894a993521963eadff03a5b75601d7e8d0cdf97d365425e0aded9b15d9d0
+M-twice-fft-plan-14	B	fft	14	1	plancall:14:1	1,0,1,1	1,0,1,1	SAME	254cfb033356e1e471d62eb14d98abc799c553ac70124385921718e2d31ee530
+M-twice-fft-plan-14	F	fft	14	1	plancall:14:1	1,0,1,1	1,0,1,1	SAME	254cfb033356e1e471d62eb14d98abc799c553ac70124385921718e2d31ee530
+M-twice-fft-plan-15	B	fft	15	1	plancall:15:1	1,0,1,1	1,0,1,1	SAME	47c6f8fc8aa4a4a68c76539eee05b77c57ac75ca6ca1b05cb9fc8b592c37fb0f
+M-twice-fft-plan-15	F	fft	15	1	plancall:15:1	1,0,1,1	1,0,1,1	SAME	47c6f8fc8aa4a4a68c76539eee05b77c57ac75ca6ca1b05cb9fc8b592c37fb0f
+M-twice-fft-plan-16	B	fft	16	1	plancall:16:1	1,0,1,1	1,0,1,1	SAME	9307b552de1df9bba43ab085c9c65ce7e9b9b42a7d2ce0d138f18a0eaed78591
+M-twice-fft-plan-16	F	fft	16	1	plancall:16:1	1,0,1,1	1,0,1,1	SAME	9307b552de1df9bba43ab085c9c65ce7e9b9b42a7d2ce0d138f18a0eaed78591
+M-twice-kottke-plan-12	B	kottke	12	1	plancall:12:1	1,0,1,1	1,0,1,1	SAME	4c693b9ae3997ec96b7e2b68c1fdb3f420075f886b65a8946ee1936c560fe44b
+M-twice-kottke-plan-12	F	kottke	12	1	plancall:12:1	1,0,1,1	1,0,1,1	SAME	4c693b9ae3997ec96b7e2b68c1fdb3f420075f886b65a8946ee1936c560fe44b
+M-twice-kottke-plan-13	B	kottke	13	1	plancall:13:1	1,0,1,1	1,0,1,1	SAME	b5bbba4f60cae5977943675ac5a6e325fa35a662613bf846ccba787dee18160f
+M-twice-kottke-plan-13	F	kottke	13	1	plancall:13:1	1,0,1,1	1,0,1,1	SAME	b5bbba4f60cae5977943675ac5a6e325fa35a662613bf846ccba787dee18160f
+M-twice-kottke-plan-14	B	kottke	14	1	plancall:14:1	1,0,1,1	1,0,1,1	SAME	9b7b67241ad87423303ff617f7f6d0c5e7f974fe39f092c169ff551202c31be9
+M-twice-kottke-plan-14	F	kottke	14	1	plancall:14:1	1,0,1,1	1,0,1,1	SAME	9b7b67241ad87423303ff617f7f6d0c5e7f974fe39f092c169ff551202c31be9
+M-twice-kottke-plan-15	B	kottke	15	1	plancall:15:1	1,0,1,1	1,0,1,1	SAME	5897b9a1089f160d094eba05c900ee014b2759e9ddd09489d9b37c7950092760
+M-twice-kottke-plan-15	F	kottke	15	1	plancall:15:1	1,0,1,1	1,0,1,1	SAME	5897b9a1089f160d094eba05c900ee014b2759e9ddd09489d9b37c7950092760
+M-twice-kottke-plan-16	B	kottke	16	1	plancall:16:1	1,0,1,1	1,0,1,1	SAME	a55268366d89f821fa76abeaa37e53b8974d32db673783c89d0225f5777129d1
+M-twice-kottke-plan-16	F	kottke	16	1	plancall:16:1	1,0,1,1	1,0,1,1	SAME	a55268366d89f821fa76abeaa37e53b8974d32db673783c89d0225f5777129d1
