@@ -187,3 +187,38 @@ ES3R4-21  续2 的写入规则违规与停止(U106 违反一次;依据任务书 
     它是未完成的草稿,按规则已停止使用,保留在仓库中并在此披露(不删除)。
   · 停止:按 U106 与任务书 §5,违规一次即整轮停止。A 的注入运行、B 与 D 均未运行。C 多边形与 A1 映射已完成并保留。
   · 对 A、B、D 的状态:未完成(原因:写入规则违规后停止,不是不可行)。
+
+================================================================
+S3R4 续3(CONT3)追加。用户裁决(U107–U110,同时追加到 RULINGS.tsv)
+================================================================
+
+U107  续2 的写入违规(link_c2.sh、link_init_c2.sh 含 2>/dev/null,各运行两次)接受为已披露;续2 停止是正确的。
+      续2 的门禁、记录提交、U105、C 多边形(99/99 IDENTICAL)、A1 映射(K 唯一)与 A 的预注册仍然有效,不作废。
+      根因之一:任务书要求"复制历史脚本只改路径",没有提示历史脚本首行含 2>/dev/null(规划者疏漏);续3 起按 brief §0.2 处理。
+U108  三个未跟踪脚本原样提交存档,不修改,不再运行(见 ES3R4-24)。把存档提交不算违反 U106。
+      用户补充(对话中):U108 已覆盖"提交含 2>/dev/null 的历史文件"的疑问;续3 的运行前 grep 只限 testing/d003/stage_s3r4c3/,
+      不要求 testing/d003/stage_s3r4c2/ 或其他历史目录无命中。续3 不再因同类疑问停下,只有裁决未覆盖的新冲突才停下询问。
+U109  A 复用续2 已链接的 init 驱动(sha256 见 brief §0.1),不重新链接;REGISTRY_S3R4C2_A.tsv 原样作为 A 的预注册。
+U110  A-U96 的 init:K0 按映射定义(closed2d NG1 K0=6;fft、kottke NG5 K0=7),确认 ES3R4-20。
+
+ES3R4-22  续2 报告 §10 结尾的表述更正(记录更正,原文不改)
+  · P05_S3R4_CLOSEOUT_CONT2.md §10 结尾写"本轮已完成/未完成 S3R4 续2 范围,等待用户审核"。该句应读作
+    "本轮未完成 S3R4 续2 范围,等待用户审核":续2 在 A 注入、B、D 处停止,范围未完成。原文不改。
+
+ES3R4-23  evidence/p05-s3r4c2/SHA256SUMS.txt 的"improperly formatted"警告(核实结果;原清单不改)
+  · 只读核实(续3 开工时执行):sha256sum -c SHA256SUMS.txt 输出 "WARNING: 1 line is improperly formatted",
+    其余 94 行全部 OK。去掉清单第 96 行后警告消失,其余 94 行 OK。
+  · 出问题的行是第 96 行:`appended_after_manifest<TAB>safe_run.log<TAB>lines=30`。它不是哈希行,而是清单之后追加的说明行
+    (第 95 行 `#` 开头为注释,sha256sum 忽略)。这是为了记录 safe_run.log 单列为"清单后追加,不参与校验"而写的,
+    不是哈希错误。清单中 safe_run.log 因此不参与校验,与 AGENTS §7 与续2 报告 §11 的说明一致。
+  · 结论:清单的 94 个哈希行全部通过;警告来自一条非哈希说明行,不表示文件被改动。原清单不改。
+
+ES3R4-24  续2 三个未跟踪脚本的存档说明(DO NOT RUN;U108)
+  · 以下三个文件按 U108 原样提交存档,内容未修改,**DO NOT RUN**:
+      testing/d003/stage_s3r4c2/link_c2.sh        sha256 adfb861c6eb2a8d104b79fe35b952d2596eae76c891f27e148d8ce4a2ddbc783
+      testing/d003/stage_s3r4c2/link_init_c2.sh   sha256 d53333262bf628ebf2f28d416fe40a124b105981cc8efab94d603bedb1ba134f
+      testing/d003/stage_s3r4c2/run_a_c2.sh       sha256 ec3a44374aaa4f49c374476ccc66971cf3fcbba2900b621e3e6ba741db80ab40
+  · 用途说明:link_c2.sh 与 link_init_c2.sh 是续2 多边形驱动与 init 驱动的来源记录(它们含 2>/dev/null,违反 U106,
+    运行两次已披露于 ES3R4-21);run_a_c2.sh 是从未运行的草稿(末行 stub)。
+  · 续3 的 A 由新脚本 testing/d003/stage_s3r4c3/run_a_c3.* 执行;续3 不运行上述三个文件。
+  · 三个文件的存档不算违反 U106(U106 约束本轮编写与执行的脚本和命令)。
