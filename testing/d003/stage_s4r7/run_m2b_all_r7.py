@@ -355,7 +355,7 @@ def summarize(ev, tag, per_group, regress_out, summary_out, stopped):
     for row in nonmatch[:NONMATCH_LIST_MAX]:
         sum_lines.append("MISMATCH\t" + "\t".join(row))
     if len(nonmatch) > NONMATCH_LIST_MAX:
-        over = under_ev(ev, os.path.join(ev, "NONMATCH_OVERFLOW_R7_M2b.tsv"))
+        over = under_ev(ev, os.path.join(ev, "NONMATCH_OVERFLOW_R7_M2b_%s.tsv" % tag))
         if os.path.exists(over):
             raise SystemExit("REFUSED: exists (U17): %s" % over)
         with open(over, "w", encoding="utf-8") as fh:
@@ -370,8 +370,9 @@ def summarize(ev, tag, per_group, regress_out, summary_out, stopped):
 def run_all(ev, tag):
     if not tag.startswith("run") or not tag[3:].isdigit():
         raise SystemExit("REFUSED: run label must be run<N>")
-    regress_out = under_ev(ev, os.path.join(ev, "REGRESS_R7_M2b.tsv"))
-    summary_out = under_ev(ev, os.path.join(ev, "M2B_SUMMARY_R7.txt"))
+    # the summary files carry the run label (cont7): run5 files (void, HARNESS_INVALID) are kept and never overwritten (U17)
+    regress_out = under_ev(ev, os.path.join(ev, "REGRESS_R7_M2b_%s.tsv" % tag))
+    summary_out = under_ev(ev, os.path.join(ev, "M2B_SUMMARY_R7_%s.txt" % tag))
     for p in (regress_out, summary_out):
         if os.path.exists(p):
             raise SystemExit("REFUSED: exists, never overwritten (U17): %s" % p)
