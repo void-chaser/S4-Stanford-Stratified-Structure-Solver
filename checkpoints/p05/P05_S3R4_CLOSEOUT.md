@@ -225,4 +225,14 @@ R7 的 M1、M2、M3 全部在 F3 上重跑,加上 S3R4 新增的点:
 
 ## 12. 提交后核对
 
-(收尾提交后补充 `git log -3` 与 `git status --short`。)
+`git log -3 --oneline`(收尾提交时):
+
+```
+2fc6a55 P05-S3R4 closeout: report (partial; self-check C passed; A, B, D not completed), STATE and AGENTS F3 row/gate, registries s3r4 with SHA256SUMS, stage_s3r4 scripts. No S4 change in this commit. awaiting user review
+031d645 P05-S3R4 records (U89-U97) and F3 candidate 8d8202a; self-check not run yet. awaiting user review
+8d8202a P05-S3R4 repair (U38/U90/U93/U94/U95/U96): 806, 415 chain, RP-S3R4-1 (1729); freeze F3 candidate. Only U91 files. Normal path unchanged (see self-check C). Self-check is not S4 verification (P05-S4 R8 on F3). awaiting user review
+```
+
+`git status --short`(收尾提交后):空(工作区干净)。
+
+本报告未包含的收尾提交:本节补充本身(仅为核对信息,不改变结论)。
