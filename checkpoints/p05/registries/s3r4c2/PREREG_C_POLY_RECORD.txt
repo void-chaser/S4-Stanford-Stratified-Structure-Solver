@@ -1,0 +1,4 @@
+written_utc	2026-10-12T22:35:29Z
+registry	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c2/REGISTRY_S3R4C2_C_POLY.tsv
+registry_sha256	4513c8cdfaa7cb732f0e72306321d2ec87f689400e2c4d658cca100fe97cca2e
+rows	33

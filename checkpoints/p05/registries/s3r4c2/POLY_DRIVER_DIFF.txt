@@ -1,0 +1,21 @@
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/driver_r6b_state.cpp	2026-10-12 17:16:45.889595678 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4c2/driver_s3r4c2_poly.cpp	2026-10-13 09:34:56.284247708 +1100
+@@ -106,8 +106,16 @@
+ 		const int is1d = (NULL != mode && 0 == strcmp(mode, "closed1d"));
+ 		const int rtype = is1d ? S4_REGION_TYPE_INTERVAL : S4_REGION_TYPE_CIRCLE;
+ 		S4_real ival[2] = {0.25, 0.0};
+-		if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype,
+-		                                     is1d ? ival : radius, center, &angle_frac)){
++		/* POLYGON (S3R4 CONT2 self-check B/C only): regular pentagon, radius 0.25, counter-clockwise, centre (0,0). */
++		static const S4_real pent[10] = {
++			 0.25,        0.0,
++			 0.0772542,   0.2377641,
++			-0.2022542,   0.1469463,
++			-0.2022542,  -0.1469463,
++			 0.0772542,  -0.2377641
++		};
++		if(0 != S4_Layer_SetRegionVertices(S, slab, mGlass, S4_REGION_TYPE_POLYGON, 5, pent,
++		                                   center, &angle_frac)){
+ 			S4_Simulation_Destroy(S);
+ 			return NULL;
+ 		}

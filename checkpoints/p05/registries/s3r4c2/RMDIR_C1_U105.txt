@@ -1,0 +1,9 @@
+utc_before	2026-10-12T22:34:10Z
+ls_d_before:
+testing/d003/stage_s3r4c1
+entries_before	0
+rmdir_rc	0
+utc_after	2026-10-12T22:34:10Z
+ls_d_after:
+ls: cannot access 'testing/d003/stage_s3r4c1': No such file or directory
+ls_d_after_rc	2

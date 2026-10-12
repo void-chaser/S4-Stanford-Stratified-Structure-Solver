@@ -1,0 +1,7 @@
+tree	combo	base	gdb_rc	win_open	win_malloc_in_window	outside_malloc_count	K_init(n=4,nshapes=1 layer)	K0(n=0,nshapes=0 layer)	caller_function_of_K	status	source_dir
+F2	closed2d-ng1	0x555555554000	0	3	1	104	7	6	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F2_closed2d-ng1/
+F2	fft-ng5	0x555555554000	0	3	1	116	8	7	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F2_fft-ng5/
+F2	kottke-ng5	0x555555554000	0	3	1	116	8	7	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F2_kottke-ng5/
+F3	closed2d-ng1	0x555555554000	0	3	1	104	7	6	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F3_closed2d-ng1/
+F3	fft-ng5	0x555555554000	0	3	1	116	8	7	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F3_fft-ng5/
+F3	kottke-ng5	0x555555554000	0	3	1	116	8	7	Simulation_InitSolution	UNIQUE	checkpoints/p05/evidence/p05-s3r4c2/a1map2_F3_kottke-ng5/

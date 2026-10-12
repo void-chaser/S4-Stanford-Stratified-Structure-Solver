@@ -155,3 +155,35 @@ ES3R4-17  续1 的停止与 U103–U106(说明)
   · 续1 在 §2 记录修正之后、§3 自检 A 开始之前,因 safe_run 的 sh -c 内含 2>/dev/null 而停止(违反写入规则一次;U103 接受为已披露)。
     依据:续1 报告 §0、§5。续1 的 A、B、C 多边形部分与 D 均未运行。
   · 续2 按 U104–U106 执行:记录提交、rmdir 删除空目录、新的 stage_s3r4c2/ 与 p05-s3r4c2/,并把 U106 的脚本化写入规则作为续2 的硬约束。
+
+ES3R4-18  续2 的 C 多边形第一次运行的结果表格式缺陷(记录更正;数据未改)
+  · run_c_poly_c2.sh 的 one() 中 printf 格式有 7 个转换说明符,实际传入 8 个参数。printf 把多余参数循环套用格式串,
+    每次调用多写一行伪记录("0-ng<TAB><TAB><TAB>F_<TAB>…"),并使 run_rc 列丢失。66 行异常、66 次驱动运行。
+  · rc_first、rc_retry(第 5、6 个参数)在该表中正确;dump 文件(call1–3)不受影响。
+  · 处理:保留 RESULTS_S3R4C2_C_POLY.tsv(第一次运行,带缺陷)原样不改;改用 run_c_poly_c2_run2.sh(仅修正 printf:8 说明符、8 参数)
+    在 c_poly_run2/ 与 RESULTS_S3R4C2_C_POLY_run2.tsv 中重跑 33 个组合;预注册 REGISTRY_S3R4C2_C_POLY.tsv 不改。
+  · 诊断:diag_one_c2.sh 只对 closed2d NG1 F2 重跑,确认 RC first/retry 与 sed 提取正确(见 diag_one/report.txt)。
+
+ES3R4-19  A1 映射第一版的错误与修正(记录更正;原数据保留)
+  · 第一版 a1map_c2.sh 把"计数运行"(ASLR 开启)与"取基址的 gdb 运行"(ASLR 关闭)分开:stderr 中的 caller 地址
+    (0x5d72…)与 gdb 基址(0x5555…)不在同一地址空间,offset 无效。目录 a1map_F2_closed2d-ng1/ 作废,保留,不用于任何判定。
+  · 修正:a1map_c2_v2.sh + a1map_c2.gdb 在同一个 gdb 会话(ASLR off)中完成计数运行与基址读取;结果目录 a1map2_<tree>_<combo>/。
+  · v2 结果:6 个映射(F2、F3 × closed2d NG1、fft NG5、kottke NG5)的基址 0x555555554000,gdb rc 0,
+    窗口外分配 104/116 次,窗口内 1 次(n=8),WIN_OPEN 3 次,与第一版计数一致。
+
+ES3R4-20  续2 的 A 自检:预注册写定,注入运行未开始(记录)
+  · REGISTRY_S3R4C2_A.tsv(18 行,sha256 见 PREREG_A_RECORD.txt)在 A1 映射之后、任何 A 注入运行之前写定。
+  · K(唯一确定,F2 与 F3 相同):closed2d NG1 K_init=7、K0=6;fft NG5 K_init=8、K0=7;kottke NG5 K_init=8、K0=7。
+    任务书预计"K=7、K0=6 或 8"中,fft/kottke 的 K0=7 与 K_init=8 与预计有出入;以映射为准,不改期望。
+  · 续2 的 A 注入运行未执行(见 ES3R4-21 的停止)。
+
+ES3R4-21  续2 的写入规则违规与停止(U106 违反一次;依据任务书 §0.2、§5)
+  · 违规 1(脚本文本):testing/d003/stage_s3r4c2/link_c2.sh 与 link_init_c2.sh 第 13/14 行的
+    `REPO=$(git rev-parse --show-toplevel 2>/dev/null)` 含 2>/dev/null,违反 U106。两脚本分别运行两次
+    (safe_run.log 22:35:18Z、22:37:35Z–22:37:36Z),链接成功;stderr 丢弃,目标在仓库内,无仓库外写入。
+    这是文本违规,与续1 的 U103 同类。该行是从历史脚本 stage_s3r4 的 link 脚本带入的,我在 link_init_c2.sh 注释中称"逐字重写",
+    没有逐行检查禁止项,属于执行者的过失。
+  · 违规 2(脚本草稿):testing/d003/stage_s3r4c2/run_a_c2.sh 含 `2>/dev/null`(末行 stub),从未运行(safe_run.log 无记录,无产物)。
+    它是未完成的草稿,按规则已停止使用,保留在仓库中并在此披露(不删除)。
+  · 停止:按 U106 与任务书 §5,违规一次即整轮停止。A 的注入运行、B 与 D 均未运行。C 多边形与 A1 映射已完成并保留。
+  · 对 A、B、D 的状态:未完成(原因:写入规则违规后停止,不是不可行)。

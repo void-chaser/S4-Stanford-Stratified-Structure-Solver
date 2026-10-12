@@ -1,0 +1,36 @@
+check_utc	2026-10-12T22:34:02Z
+source_manifest	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/SHA256SUMS.txt
+manifest_line_safe_run_log:
+8e0844d0989ca9ece6dceae78ac9ff608ba737be20379ab0456a357aedc2ee86  ./safe_run.log
+safe_run_log_lines	62
+safe_run_log_sha256_full	c5f322e729730ffde31c0c3750c9832dc1c768b5abe468e890dfe7438bcafac0
+safe_run_log_head60_sha256	8e0844d0989ca9ece6dceae78ac9ff608ba737be20379ab0456a357aedc2ee86
+safe_run_log_line61:
+2026-10-12T21:43:50Z	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	out=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4	cmd=sh -c cd "$1" && ls *.md *.tsv *.txt 2>/dev/null | grep -v SHA256SUMS.txt | sort | xargs sha256sum > SHA256SUMS.txt && sha256sum -c SHA256SUMS.txt 2>&1 | tail -6 sh checkpoints/p05/registries/s3r4 
+safe_run_log_line62:
+2026-10-12T21:44:41Z	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	out=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4	cmd=sh -c git add -- AGENTS.md checkpoints/p05/STATE.md checkpoints/p05/P05_S3R4_CLOSEOUT.md checkpoints/p05/registries/s3r4 testing/d003/stage_s3r4 && git commit -q -F "$1" sh checkpoints/p05/evidence/p05-s3r4/COMMIT_MSG_CLOSEOUT.txt 
+manifest_sha256_check_read_only:
+./A1_MAP_STATUS_F2.txt: OK
+./build_f3_stdout.txt: OK
+./build_s3r4_stdout2.txt: OK
+./build_s3r4_stdout3.txt: OK
+./build_s3r4_stdout.txt: OK
+./commit_F3_stdout.txt: OK
+./COMMIT_MSG_F3.txt: OK
+./COMMIT_MSG_RECORDS.txt: OK
+./commit_records_stdout.txt: OK
+./GATE_PRE.txt: OK
+./link_init_F2_stdout2.txt: OK
+./link_init_F2_stdout.txt: OK
+./link_state_F2_stdout.txt: OK
+./link_state_F3_stdout.txt: OK
+./link_tri_F2_stdout.txt: OK
+./link_tri_F3_stdout.txt: OK
+./PRE_FIX_SOURCE_S3R4.md: OK
+./PREREG_C_RECORD.txt: OK
+./RED_POINTS_STATUS_S3R4.tsv: OK
+./REGISTRY_S3R4_SELFCHECK_C.tsv: OK
+./RESULTS_S3R4_NOINJECT_run1.tsv: OK
+./run_noinject_C_stdout.txt: OK
+./safe_run.log: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match

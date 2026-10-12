@@ -1,0 +1,21 @@
+phase	START
+utc	2026-10-12T22:33:19Z
+HEAD	0b1b4a307f9a8cfaba06ba892a91182e59d8e48e
+HEAD:S4	6cff923a02baf19e01966b2339755cbf3a5deeef
+judge_d003_sha256	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+tmp_top_entries	0
+tmp_top_listing_sha256	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+stage_s3r4c1_ls_d:
+testing/d003/stage_s3r4c1
+stage_s3r4c1_entries	0
+git_status_short:
+ M checkpoints/p05/ERRATA_S3R4.txt
+ M checkpoints/p05/registries/RULINGS.tsv
+?? checkpoints/p05/P05_S3R4_CLOSEOUT_CONT1.md
+?? checkpoints/p05/briefs/P05_S3R4_CONT1_BRIEF.md
+?? checkpoints/p05/briefs/P05_S3R4_CONT2_BRIEF.md
+?? testing/d003/stage_s3r4c2/
+git_log_3:
+0b1b4a3 commit pending §12 of S3R4 closeout (content unchanged; CONT1 record correction). awaiting user review
+2fc6a55 P05-S3R4 closeout: report (partial; self-check C passed; A, B, D not completed), STATE and AGENTS F3 row/gate, registries s3r4 with SHA256SUMS, stage_s3r4 scripts. No S4 change in this commit. awaiting user review
+031d645 P05-S3R4 records (U89-U97) and F3 candidate 8d8202a; self-check not run yet. awaiting user review
