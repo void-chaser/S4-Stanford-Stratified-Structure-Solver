@@ -1,0 +1,4 @@
+# value check of tree-F rows against the historical tables (U71b).  run run7.  Differences in rc, rc1, rc2 or hit are VALUE_DRIFT, even when the class is the same.
+group	pass	point_id	field	result	history	status
+# groups: G1 pass1 checked; G1 pass2 checked; G2c pass1 checked; G2c pass2 checked; G2a pass1 checked; G2a pass2 checked
+# points_compared=408 value_drift=0 missing_groups=0

@@ -1,0 +1,11 @@
+# REGRESS_R7_M2b.tsv -- P05-S4 R7 M2b summary (run run7).  Counts only.  verdict via verdict_of (U68).
+group	pass	rows	MATCH	NOT_REACHED_AS_EXPECTED	MISMATCH	FLAKY_points	F_vs_F2_unequal_points	status
+CTRL_SEAM	1	4	4	0	0	0	0	OK
+CTRL_SEAM	2	4	4	0	0	0	0	OK
+G2c	1	60	60	0	0	0	0	OK
+G2c	2	60	60	0	0	0	0	OK
+G1	1	298	254	44	0	0	0	OK
+G1	2	298	254	44	0	0	0	OK
+G2a	1	50	50	0	0	0	0	OK
+G2a	2	50	50	0	0	0	0	OK
+# verdicts: MATCH and NOT_REACHED_AS_EXPECTED are both not-stop; MISMATCH and FLAKY stop the run (U67, U68).

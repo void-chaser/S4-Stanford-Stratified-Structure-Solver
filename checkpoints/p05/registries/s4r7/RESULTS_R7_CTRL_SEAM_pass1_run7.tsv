@@ -1,0 +1,6 @@
+# RESULTS_R7_CTRL_SEAM_pass1_run7.tsv -- P05-S4 R7 M2b CTRL_SEAM pass 1 run7.  Judge: judge_d003.classify (imported); verdict: verdict_of (U68).
+point_id	group	tree	mode	request	inj_call	expected_class	class	verdict	rc	rc1	rc2	hit	reason
+CTRL-SEAM-seamF-F	CTRL_SEAM	F	fft	none	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTRL-SEAM-seamF-F2	CTRL_SEAM	F2	fft	none	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTRL-SEAM-fmmret-F	CTRL_SEAM	F	fft	none	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTRL-SEAM-fmmret-F2	CTRL_SEAM	F2	fft	none	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control

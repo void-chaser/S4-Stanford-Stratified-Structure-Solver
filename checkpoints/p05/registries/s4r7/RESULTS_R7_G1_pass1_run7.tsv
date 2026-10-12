@@ -1,0 +1,300 @@
+# RESULTS_R7_G1_pass1_run7.tsv -- P05-S4 R7 M2b G1 pass 1 run7.  Judge: judge_d003.classify (imported); verdict: verdict_of (U68).
+point_id	group	tree	mode	request	inj_call	expected_class	class	verdict	rc	rc1	rc2	hit	reason
+M-once-closed1d-malloc-1-F	G1	F	closed1d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-closed1d-malloc-1-F2	G1	F2	closed1d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-closed2d-malloc-1-F	G1	F	closed2d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-closed2d-malloc-1-F2	G1	F2	closed2d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-experimental-malloc-1-F	G1	F	experimental	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-experimental-malloc-1-F2	G1	F2	experimental	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-1-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-1-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-2-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-2-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-3-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-3-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-4-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-4-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-5-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-exec-5-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-malloc-1-F	G1	F	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-malloc-1-F2	G1	F2	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-malloc-2-F	G1	F	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-malloc-2-F2	G1	F2	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-plan-1-F	G1	F	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-plan-1-F2	G1	F2	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-plan-2-F	G1	F	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-plan-2-F2	G1	F2	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-fft-plan-3-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-fft-plan-3-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-fft-plan-4-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-fft-plan-4-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-fft-plan-5-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-fft-plan-5-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-jones-exec-1-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-1-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-2-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-2-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-3-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-3-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-4-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-exec-4-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-1-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-1-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-2-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-2-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-3-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-3-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-4-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-malloc-4-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-plan-1-F	G1	F	jones	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-jones-plan-1-F2	G1	F2	jones	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-1-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-1-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-2-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-2-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-3-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-3-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-4-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-4-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-5-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-exec-5-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-malloc-1-F	G1	F	kottke	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-malloc-1-F2	G1	F2	kottke	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-plan-1-F	G1	F	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-plan-1-F2	G1	F2	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-plan-2-F	G1	F	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-plan-2-F2	G1	F2	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-kottke-plan-3-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-kottke-plan-3-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-kottke-plan-4-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-kottke-plan-4-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-kottke-plan-5-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-kottke-plan-5-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-once-nv-exec-1-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-1-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-2-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-2-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-3-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-3-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-4-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-exec-4-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-1-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-1-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-2-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-2-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-3-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-3-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-4-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-malloc-4-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-plan-1-F	G1	F	nv	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-nv-plan-1-F2	G1	F2	nv	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-1-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-1-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-2-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-2-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-3-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-3-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-4-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-exec-4-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-1-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-1-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-2-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-2-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-3-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-3-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-4-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-malloc-4-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-plan-1-F	G1	F	vl	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-once-vl-plan-1-F2	G1	F2	vl	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-closed1d-malloc-1-F	G1	F	closed1d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-closed1d-malloc-1-F2	G1	F2	closed1d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-closed1d-malloc-2-F	G1	F	closed1d	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-closed1d-malloc-2-F2	G1	F2	closed1d	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-closed2d-malloc-1-F	G1	F	closed2d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-closed2d-malloc-1-F2	G1	F2	closed2d	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-closed2d-malloc-2-F	G1	F	closed2d	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-closed2d-malloc-2-F2	G1	F2	closed2d	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-experimental-malloc-1-F	G1	F	experimental	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-experimental-malloc-1-F2	G1	F2	experimental	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-experimental-malloc-2-F	G1	F	experimental	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-experimental-malloc-2-F2	G1	F2	experimental	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-1-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-1-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-12-F	G1	F	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-12-F2	G1	F2	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-13-F	G1	F	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-13-F2	G1	F2	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-14-F	G1	F	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-14-F2	G1	F2	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-15-F	G1	F	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-15-F2	G1	F2	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-16-F	G1	F	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-16-F2	G1	F2	fft	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-exec-2-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-2-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-3-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-3-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-4-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-4-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-5-F	G1	F	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-exec-5-F2	G1	F2	fft	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-malloc-1-F	G1	F	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-malloc-1-F2	G1	F2	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-malloc-2-F	G1	F	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-malloc-2-F2	G1	F2	fft	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-malloc-3-F	G1	F	fft	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-malloc-3-F2	G1	F2	fft	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-malloc-4-F	G1	F	fft	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-malloc-4-F2	G1	F2	fft	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-fft-plan-1-F	G1	F	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-plan-1-F2	G1	F2	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-plan-12-F	G1	F	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-12-F2	G1	F2	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-13-F	G1	F	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-13-F2	G1	F2	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-14-F	G1	F	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-14-F2	G1	F2	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-15-F	G1	F	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-15-F2	G1	F2	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-16-F	G1	F	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-16-F2	G1	F2	fft	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-2-F	G1	F	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-plan-2-F2	G1	F2	fft	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-fft-plan-3-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-3-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-4-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-4-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-5-F	G1	F	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-fft-plan-5-F2	G1	F2	fft	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-jones-exec-1-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-1-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-2-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-2-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-3-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-3-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-4-F	G1	F	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-exec-4-F2	G1	F2	jones	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-1-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-1-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-2-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-2-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-3-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-3-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-4-F	G1	F	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-4-F2	G1	F2	jones	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-malloc-5-F	G1	F	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-malloc-5-F2	G1	F2	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-malloc-6-F	G1	F	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-malloc-6-F2	G1	F2	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-malloc-7-F	G1	F	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-malloc-7-F2	G1	F2	jones	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-jones-plan-1-F	G1	F	jones	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-jones-plan-1-F2	G1	F2	jones	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-1-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-1-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-12-F	G1	F	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-12-F2	G1	F2	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-13-F	G1	F	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-13-F2	G1	F2	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-14-F	G1	F	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-14-F2	G1	F2	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-15-F	G1	F	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-15-F2	G1	F2	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-16-F	G1	F	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-16-F2	G1	F2	kottke	exec	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-exec-2-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-2-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-3-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-3-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-4-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-4-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-5-F	G1	F	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-exec-5-F2	G1	F2	kottke	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-malloc-1-F	G1	F	kottke	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-malloc-1-F2	G1	F2	kottke	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-malloc-2-F	G1	F	kottke	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-malloc-2-F2	G1	F2	kottke	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-kottke-plan-1-F	G1	F	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-plan-1-F2	G1	F2	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-plan-12-F	G1	F	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-12-F2	G1	F2	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-13-F	G1	F	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-13-F2	G1	F2	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-14-F	G1	F	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-14-F2	G1	F2	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-15-F	G1	F	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-15-F2	G1	F2	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-16-F	G1	F	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-16-F2	G1	F2	kottke	plan	2	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-2-F	G1	F	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-plan-2-F2	G1	F2	kottke	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-kottke-plan-3-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-3-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-4-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-4-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-5-F	G1	F	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-kottke-plan-5-F2	G1	F2	kottke	plan	1	INVALID_NOT_REACHED	INVALID	NOT_REACHED_AS_EXPECTED	1	0	0	0	injection never reached (hit=0)
+M-twice-nv-exec-1-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-1-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-2-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-2-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-3-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-3-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-4-F	G1	F	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-exec-4-F2	G1	F2	nv	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-1-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-1-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-2-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-2-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-3-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-3-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-4-F	G1	F	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-4-F2	G1	F2	nv	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-malloc-5-F	G1	F	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-malloc-5-F2	G1	F2	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-malloc-6-F	G1	F	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-malloc-6-F2	G1	F2	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-malloc-7-F	G1	F	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-malloc-7-F2	G1	F2	nv	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-nv-plan-1-F	G1	F	nv	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-nv-plan-1-F2	G1	F2	nv	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-1-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-1-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-2-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-2-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-3-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-3-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-4-F	G1	F	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-exec-4-F2	G1	F2	vl	exec	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-1-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-1-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-2-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-2-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-3-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-3-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-4-F	G1	F	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-4-F2	G1	F2	vl	s4malloc	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-malloc-5-F	G1	F	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-malloc-5-F2	G1	F2	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-malloc-6-F	G1	F	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-malloc-6-F2	G1	F2	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-malloc-7-F	G1	F	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-malloc-7-F2	G1	F2	vl	s4malloc	2	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	0	20	1	reached, first call returned 20
+M-twice-vl-plan-1-F	G1	F	vl	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+M-twice-vl-plan-1-F2	G1	F2	vl	plan	1	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20
+CTL-closed1d-F	G1	F	closed1d	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-closed1d-F2	G1	F2	closed1d	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-closed2d-F	G1	F	closed2d	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-closed2d-F2	G1	F2	closed2d	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-experimental-F	G1	F	experimental	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-experimental-F2	G1	F2	experimental	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-fft-F	G1	F	fft	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-fft-F2	G1	F2	fft	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-jones-F	G1	F	jones	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-jones-F2	G1	F2	jones	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-kottke-F	G1	F	kottke	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-kottke-F2	G1	F2	kottke	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-nv-F	G1	F	nv	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-nv-F2	G1	F2	nv	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-vl-F	G1	F	vl	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control
+CTL-vl-F2	G1	F2	vl	-	-	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control

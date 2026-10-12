@@ -1,0 +1,22 @@
+# report count check (cont8).  Quoted counts in the report are compared with counts recomputed from the run7 files.
+OK	CTRL_SEAM_MATCH_pass1	quoted=4	computed=4
+OK	CTRL_SEAM_MATCH_pass2	quoted=4	computed=4
+OK	ENV_DRIFT_total	quoted=0	computed=0
+OK	ENV_absent_total	quoted=0	computed=0
+NOT_QUOTED	ENV_points	204
+OK	FLAKY_total	quoted=0	computed=0
+OK	G1_MATCH_pass1	quoted=254	computed=254
+OK	G1_MATCH_pass2	quoted=254	computed=254
+OK	G1_MISMATCH_pass1	quoted=0	computed=0
+OK	G1_MISMATCH_pass2	quoted=0	computed=0
+OK	G1_NOT_REACHED_pass1	quoted=44	computed=44
+OK	G1_NOT_REACHED_pass2	quoted=44	computed=44
+OK	G2a_MATCH_pass1	quoted=50	computed=50
+OK	G2a_MATCH_pass2	quoted=50	computed=50
+OK	G2c_MATCH_pass1	quoted=60	computed=60
+OK	G2c_MATCH_pass2	quoted=60	computed=60
+OK	INVALID_hit_nonzero	quoted=0	computed=0
+OK	MISMATCH_total	quoted=0	computed=0
+OK	VALUE_DRIFT_total	quoted=0	computed=0
+OK	points_value_compared	quoted=408	computed=408
+# checks_failed=0
