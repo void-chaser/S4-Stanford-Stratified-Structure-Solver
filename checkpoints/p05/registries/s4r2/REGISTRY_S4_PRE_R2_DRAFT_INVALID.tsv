@@ -1,0 +1,107 @@
+# REGISTRY_S4_PRE_R2.tsv -- P05-S4 R2 pre-registration. Written BEFORE any R2 matrix run.
+# Scope: allocation sites with the s4malloc route (AL01-AL17), fft_plan_dft_2d call index 1..5 (P01-P05),
+#   fft_plan_exec call index 1..10 (EX01-EX10), on the three trees B, A and F; the plain driver of each tree.
+# Columns (10, matrix_r2.py format): case family tree request NTH stack mode NG expected_class basis
+#   tree: BASE = tree B (37a82e8), CUR = tree A (876181c), F = frozen tree (1c11905).  The tree is the column.
+#   basis: the source line (git show) for the expectation, then the derivation.  The DIFF_VS_R1 note is inside basis.
+#
+# Judge: testing/d003/judge_d003.py classify() from rc, rc1, rc2, hit.  The driver PASS/FAIL line is never read.
+# Status of every row: INFLUENCED.  The historical records (S2R3, S2R5, S2R6, S3R, S3R2 and the R1 registry
+#   REGISTRY_S4_PRE.tsv) were read before this file was written, so no row is a blind prediction.
+# Deferred to R3 and NOT in this file (not run): AL18 fft_alloc_complex (kottke:78, needs kottke_alloc family);
+#   SI01-SI02 solve_info (needs the linearsolve family; the seam anchors on F do not match, see ERRATA_2);
+#   FE01-FE10 (fmmret seam not built on F); info=NULL seven sites (U2 seam, not built); CLM1-4, ACF1, EXP40.
+#
+# Limit L-PLAN: the injector counts calls of fft_plan_dft_2d (nth = call index), not FMM source lines.
+#   P01-P05 are the five FMM plan sites by source; a request can only name the call index, so one row per index.
+# Limit L-EXEC: mode=exec is a BOUNDARY SIMULATION: the wrapper returns 1 and never runs the plan.  The judge marks
+#   such rows "(boundary simulation)"; they are not evidence of a real execution failure.
+# Limit L-SCRATCH: the AL rows use the s4malloc route, which counts S4_malloc calls per translation unit by NTH.
+#   NTH is the call index of that routing, taken from the source order of the file (verified in this round).
+#
+# Source lines read in this round: git show 37a82e8 (B), 876181c (A), 1c11905 (F).  Line numbers differ between trees.
+case	family	tree	request	NTH	stack	mode	NG	expected_class	basis
+AL01-B	S4	BASE	s4malloc	1	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:74-75@37a82e8] S4_malloc(work 6*ng2) unchecked, deref at use; [推断] CRASH. INFLUENCED
+AL01-A	S4	CUR	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:76@1c11905 (from b00b630)] NULL check returns 1; A (876181c) carries b00b630. INFLUENCED
+AL01-F	S4	F	s4malloc	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:76@1c11905] same check as A. DIFF_VS_R1: R1 AL03 said H-based evidence; the source is b00b630. INFLUENCED
+AL02-B	S4	BASE	s4malloc	2	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:81-82@37a82e8] discval unchecked. INFLUENCED
+AL02-A	S4	CUR	s4malloc	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:84@1c11905 (b00b630)] discval NULL check. INFLUENCED
+AL02-F	S4	F	s4malloc	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:84@1c11905] same as A. INFLUENCED
+AL03-B	S4	BASE	s4malloc	1	pattern	jones	9	CRASH	[源码 S4/fmm/fmm_PolBasisJones.cpp:107@37a82e8] ivalues unchecked; first S4_malloc in Jones basis. INFLUENCED
+AL03-A	S4	CUR	s4malloc	1	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:109@1c11905 (b00b630)] ivalues NULL check. INFLUENCED
+AL03-F	S4	F	s4malloc	1	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:109@1c11905] same as A. INFLUENCED
+AL04-B	S4	BASE	s4malloc	2	pattern	jones	9	CRASH	[源码 S4/fmm/fmm_PolBasisJones.cpp:153@37a82e8] work (Jones FMM-cache branch) unchecked. INFLUENCED
+AL04-A	S4	CUR	s4malloc	2	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:158@1c11905 (b00b630)]. INFLUENCED
+AL04-F	S4	F	s4malloc	2	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:158@1c11905]. INFLUENCED
+AL05-B	S4	BASE	s4malloc	3	pattern	jones	9	CRASH	[源码 S4/fmm/fmm_PolBasisJones.cpp:167@37a82e8] vfield unchecked. INFLUENCED
+AL05-A	S4	CUR	s4malloc	3	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:171@1c11905 (b00b630)]. INFLUENCED
+AL05-F	S4	F	s4malloc	3	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:171@1c11905]. INFLUENCED
+AL06-B	S4	BASE	s4malloc	1	pattern	nv	9	CRASH	[源码 S4/fmm/fmm_PolBasisNV.cpp:58@37a82e8] ivalues unchecked. INFLUENCED
+AL06-A	S4	CUR	s4malloc	1	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:60@1c11905 (b00b630)]. INFLUENCED
+AL06-F	S4	F	s4malloc	1	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:60@1c11905]. INFLUENCED
+AL07-B	S4	BASE	s4malloc	2	pattern	nv	9	CRASH	[源码 S4/fmm/fmm_PolBasisNV.cpp:110@37a82e8] work unchecked. INFLUENCED
+AL07-A	S4	CUR	s4malloc	2	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:113@1c11905 (b00b630)]. INFLUENCED
+AL07-F	S4	F	s4malloc	2	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:113@1c11905]. INFLUENCED
+AL08-B	S4	BASE	s4malloc	3	pattern	nv	9	CRASH	[源码 S4/fmm/fmm_PolBasisNV.cpp:122@37a82e8] vfield unchecked (historical fftnv CRASH). INFLUENCED
+AL08-A	S4	CUR	s4malloc	3	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:126@1c11905 (b00b630)]. INFLUENCED
+AL08-F	S4	F	s4malloc	3	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:126@1c11905]. INFLUENCED
+AL09-B	S4	BASE	s4malloc	1	pattern	vl	9	CRASH	[源码 S4/fmm/fmm_PolBasisVL.cpp:57@37a82e8] ivalues unchecked. INFLUENCED
+AL09-A	S4	CUR	s4malloc	1	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:59@1c11905 (b00b630)]. INFLUENCED
+AL09-F	S4	F	s4malloc	1	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:59@1c11905]. INFLUENCED
+AL10-B	S4	BASE	s4malloc	2	pattern	vl	9	CRASH	[源码 S4/fmm/fmm_PolBasisVL.cpp:115@37a82e8] work unchecked. INFLUENCED
+AL10-A	S4	CUR	s4malloc	2	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:118@1c11905 (b00b630)]. INFLUENCED
+AL10-F	S4	F	s4malloc	2	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:118@1c11905]. INFLUENCED
+AL11-B	S4	BASE	s4malloc	3	pattern	vl	9	CRASH	[源码 S4/fmm/fmm_PolBasisVL.cpp:127@37a82e8] vfield unchecked. INFLUENCED
+AL11-A	S4	CUR	s4malloc	3	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:131@1c11905 (b00b630)]. INFLUENCED
+AL11-F	S4	F	s4malloc	3	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:131@1c11905]. INFLUENCED
+AL12-B	S4	BASE	s4malloc	1	pattern	closed	9	CRASH	[源码 S4/fmm/fmm_closed.cpp:40@37a82e8] ivalues unchecked. INFLUENCED
+AL12-A	S4	CUR	s4malloc	1	pattern	closed	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:41@1c11905 (b00b630)]. INFLUENCED
+AL12-F	S4	F	s4malloc	1	pattern	closed	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:41@1c11905]. INFLUENCED
+AL13-B	S4	BASE	s4malloc	1	pattern	kottke	9	CRASH	[源码 S4/fmm/fmm_kottke.cpp:85@37a82e8] discval unchecked (kottke first S4_malloc). INFLUENCED
+AL13-A	S4	CUR	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:88@1c11905 (b00b630)] discval NULL check. INFLUENCED
+AL13-F	S4	F	s4malloc	1	pattern	kottke	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:88@1c11905]. INFLUENCED
+P01-B	S4	BASE	plan	1	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:85@37a82e8] plans[i] unchecked; fft_plan_exec(NULL) follows. INFLUENCED
+P01-A	S4	CUR	plan	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:86@1c11905 (b00b630)] NULL check. INFLUENCED
+P01-F	S4	F	plan	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905] same check; line 90 in F. DIFF_VS_R1: R1 P01 basis cited S3R2. INFLUENCED
+P02-B	S4	BASE	plan	2	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:85@37a82e8] second plan call of the same loop. INFLUENCED
+P02-A	S4	CUR	plan	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905 (b00b630)]. INFLUENCED
+P02-F	S4	F	plan	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P03-B	S4	BASE	plan	3	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:85@37a82e8] third call. INFLUENCED
+P03-A	S4	CUR	plan	3	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P03-F	S4	F	plan	3	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P04-B	S4	BASE	plan	4	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:85@37a82e8] fourth call. INFLUENCED
+P04-A	S4	CUR	plan	4	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P04-F	S4	F	plan	4	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P05-B	S4	BASE	plan	5	pattern	fft	9	CRASH	[源码 S4/fmm/fmm_FFT.cpp:85@37a82e8] fifth call. INFLUENCED
+P05-A	S4	CUR	plan	5	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+P05-F	S4	F	plan	5	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:90@1c11905]. INFLUENCED
+EX01-B	S4	BASE	exec	1	pattern	fft	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_FFT.cpp:183@37a82e8] fft_plan_exec return discarded; boundary simulation (L-EXEC). INFLUENCED
+EX01-A	S4	CUR	exec	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:188@1c11905 (b00b630)] check present; boundary simulation. INFLUENCED
+EX01-F	S4	F	exec	1	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:188@1c11905] boundary simulation. INFLUENCED
+EX02-B	S4	BASE	exec	2	pattern	fft	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_FFT.cpp:218@37a82e8 (plans[w] loop)] discarded. INFLUENCED
+EX02-A	S4	CUR	exec	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:218@1c11905] boundary. INFLUENCED
+EX02-F	S4	F	exec	2	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:218@1c11905] boundary. INFLUENCED
+EX03-B	S4	BASE	exec	3	pattern	fft	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_FFT.cpp:218@37a82e8] plans[w] loop, call 3. INFLUENCED
+EX03-A	S4	CUR	exec	3	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:218@1c11905]. INFLUENCED
+EX03-F	S4	F	exec	3	pattern	fft	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:218@1c11905]. INFLUENCED
+EX04-B	S4	BASE	exec	4	pattern	jones	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisJones.cpp:258@37a82e8] first exec of the Jones basis. INFLUENCED
+EX04-A	S4	CUR	exec	4	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:263@1c11905 (b00b630)]. INFLUENCED
+EX04-F	S4	F	exec	4	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:263@1c11905]. INFLUENCED
+EX05-B	S4	BASE	exec	5	pattern	jones	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisJones.cpp:277@37a82e8]. INFLUENCED
+EX05-A	S4	CUR	exec	5	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:282@1c11905 (b00b630)]. INFLUENCED
+EX05-F	S4	F	exec	5	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:282@1c11905]. INFLUENCED
+EX06-B	S4	BASE	exec	6	pattern	jones	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisJones.cpp:296@37a82e8]. INFLUENCED
+EX06-A	S4	CUR	exec	6	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:301@1c11905 (b00b630)]. INFLUENCED
+EX06-F	S4	F	exec	6	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:301@1c11905]. INFLUENCED
+EX07-B	S4	BASE	exec	7	pattern	jones	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisJones.cpp:315@37a82e8]. INFLUENCED
+EX07-A	S4	CUR	exec	7	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:320@1c11905 (b00b630)]. INFLUENCED
+EX07-F	S4	F	exec	7	pattern	jones	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:320@1c11905]. INFLUENCED
+EX08-B	S4	BASE	exec	8	pattern	vl	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisVL.cpp:215@37a82e8] first exec of the VL basis. INFLUENCED
+EX08-A	S4	CUR	exec	8	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:220@1c11905 (b00b630)]. INFLUENCED
+EX08-F	S4	F	exec	8	pattern	vl	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:220@1c11905]. INFLUENCED
+EX09-B	S4	BASE	exec	9	pattern	nv	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_PolBasisNV.cpp:206@37a82e8] first exec of the NV basis. INFLUENCED
+EX09-A	S4	CUR	exec	9	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:213@1c11905 (b00b630)]. INFLUENCED
+EX09-F	S4	F	exec	9	pattern	nv	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:213@1c11905]. INFLUENCED
+EX10-B	S4	BASE	exec	10	pattern	kottke	9	SILENT_SWALLOW	[源码 S4/fmm/fmm_kottke.cpp:263@37a82e8] kottke plan exec 1 of 2. INFLUENCED
+EX10-A	S4	CUR	exec	10	pattern	kottke	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:268@1c11905 (b00b630)]. INFLUENCED
+EX10-F	S4	F	exec	10	pattern	kottke	9	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:268@1c11905]. INFLUENCED

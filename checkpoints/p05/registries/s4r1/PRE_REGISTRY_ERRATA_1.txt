@@ -1,0 +1,46 @@
+PRE_REGISTRY_ERRATA_1 -- P05-S4 R1, written after REGISTRY_S4_PRE.tsv and before any build or run of this round.
+This file corrects the basis column of REGISTRY_S4_PRE.tsv. It does not change that file.
+
+1. Source of the frozen-tree FMM checks [源码, git show/diff].
+   The FMM-side plan, exec, solve_info and allocation checks in tree F (1c11905) come from commit
+   b00b630 ("fix(fmm): propagate fft plan/exec failure and check FMM allocations"), not from S3R2.
+   The caller check in S4.cpp (Simulation_ComputeLayerModes, FMMGetEpsilon return) comes from
+   de52142.  Both are P05-S3 commits recorded in checkpoints/p05/P05_S3_MINIMAL_FIX.md section 2.
+   Tree A (876181c) contains b00b630 and de52142; tree B (37a82e8) contains neither.
+   The S3R commits e83255f, 73e00ef, df3bb02, 35cd7b3 and the S3R2 commits 3e77aa9, 44bcf1c, ff6dd7c
+   are NOT in tree A.  Consequence: the rows of REGISTRY_S4_PRE.tsv whose basis says "S3R2" or
+   "S3R 本轮" for an FMM-side point must read "b00b630 / de52142 (S3)" where the point is FMM-side.
+
+2. Frozen-tree fmm_FFT.cpp [源码, git diff 37a82e8 1c11905 -- S4/fmm/fmm_FFT.cpp]
+   Changed lines (verified by diff in this round): NULL check of fft_plan_dft_2d at 85-86 (F);
+   NULL check of the work and discval allocations at 75-76 and 82-84 (F); fft_plan_exec checks at
+   188 and 218 (F); solve_info check at 210 (F); cleanup label and return ret.  Baseline 183, 212
+   were bare calls.  This is the change of b00b630.
+
+3. Tree F compared with tree B for every S4/ file [实测 diff -rq]
+   Ten files differ: fmm_closed.cpp, fmm_experimental.cpp, fmm_FFT.cpp, fmm_kottke.cpp,
+   fmm_PolBasisJones.cpp, fmm_PolBasisNV.cpp, fmm_PolBasisVL.cpp, pattern/pattern.c, S4.cpp,
+   S4_internal.h.  The rows of REGISTRY_S4_PRE.tsv for these points carry the expected F class;
+   the expected classes are not changed by this erratum.
+
+4. Counts of the point enumeration (S1 section 2 versus the source grep of this round).
+   fft_plan_dft_2d without a check in FMM files: 5 (fmm_FFT:85, kottke:89, Jones:245, NV:190, VL:200).
+   fft_plan_exec in FMM files: 10 (FFT 183, 212; kottke 263, 287; Jones 258, 277, 296, 315; VL 215; NV 206).
+     S1 section 2.2 says "12 FMM-side call sites"; the grep of this round gives 10.  The difference
+     is a counting error in S1 and is recorded here, not corrected in S1.
+   FMMGetEpsilon call sites in S4.cpp: 10 (2368, 2372, 2374, 2377, 2379, 2381, 2386, 2389, 2391, 2393).
+   S4_malloc in fmm/*.cpp (non-comment): 17.  The task text says "16+1"; the grep of this round gives
+     17 call sites.  All 17 are listed in the registry (AL01-AL17); the "+1" is not a separate site.
+   solve_info sites: 2 (fmm_FFT:204, fmm_kottke:279) as the task states.
+   fft_alloc_complex: 1 (fmm_kottke:77) as the task states.
+   Total of the enumerated sites (plan 5 + exec 10 + FMMGetEpsilon 10 + S4_malloc 17 + solve_info 2
+     + fft_alloc_complex 1) = 45.  The task states 44.  The difference is the S4_malloc count
+     (17 by grep, 16+1 by the task).  Recorded as a difference; the registry keeps all 17.
+
+5. Judge categories used.  Only CRASH, SILENT_SWALLOW, REPORTED_FAILURE, INVALID, CONTROL_OK
+   (testing/d003/judge_d003.py).  The category NOT_REACHABLE_BASE used in the info=NULL rows and
+   INFLUENCED_NO_CHECK / NOT_TRIGGERED in the D016 and R-NV-1 rows are NOT judge classes; they are
+   labels for "no solve_info variable on tree B" and "no check on tree B" and must be read as such.
+
+Status of this erratum: written before the first build of this round (see GATE.txt and the build
+records to follow).  No run result is used in it other than the source reading recorded above.

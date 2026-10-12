@@ -1,0 +1,7 @@
+# TREES.tsv -- P05-S4 R2-1 tree name table. Every cell from git (rev-parse, merge-base --is-ancestor, ls-tree).
+# Columns: tag, runner_label, commit, S4_tree_hash, role, contains_b00b630, contains_de52142, S3R_commits_present, S3R2_commits_present, historical_names
+tag	runner_label	commit	S4_tree_hash	role	contains_b00b630	contains_de52142	S3R_present	S3R2_present	historical_names
+B	BASE	37a82e8	1d738e64f9864a475fdb3de34cd3601605df2c64	baseline (no S2/S3 fixes)	no	no	[]	[]	historical name B (task); BASE (runner)
+A	CUR	876181c	85feec1151b36bbb7c8a7146fb6037609d9ff765	S2 fixes (b00b630, de52142) only	yes	yes	[]	[]	historical name A (task); CUR (runner)
+H	H	64eb0b5	cb7fc613b28929db078a3e33025feea0074e87d8	all S3R fixes up to the S3R stop point (S4 tree equals S; H = 64eb0b5 in run_all.sh)	yes	yes	[e83255f 73e00ef df3bb02 35cd7b3]	[]	historical name H (task); H (runner)
+F	F	1c11905	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	frozen tree of S4 R1/R2: S3 + S3R + S3R2 source commits	yes	yes	[e83255f 73e00ef df3bb02 35cd7b3]	[3e77aa9 44bcf1c ff6dd7c]	UNKNOWN (new name in S4)

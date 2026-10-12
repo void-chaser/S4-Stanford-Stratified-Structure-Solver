@@ -1,0 +1,25 @@
+# RED_POINTS_R3.tsv -- P05-S4 R3-5 red points on tree F (in scope).  Recorded only; not fixed in R3.
+# Red point = observed CRASH or SILENT_SWALLOW on F, or not reached (hit 0) on F.
+point_id	mode	category	NTH	caller_function	rc	rc1	signal	hit	observed_class	cause
+M-once-fft-plan-3	fft	plan	3	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-once-fft-plan-4	fft	plan	4	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-once-fft-plan-5	fft	plan	5	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-once-kottke-plan-3	kottke	plan	3	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-once-kottke-plan-4	kottke	plan	4	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-once-kottke-plan-5	kottke	plan	5	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-12	fft	plan	12	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-13	fft	plan	13	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-14	fft	plan	14	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-15	fft	plan	15	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-16	fft	plan	16	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-3	fft	plan	3	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-4	fft	plan	4	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-fft-plan-5	fft	plan	5	FMMGetEpsilon_FFT	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-12	kottke	plan	12	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-13	kottke	plan	13	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-14	kottke	plan	14	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-15	kottke	plan	15	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-16	kottke	plan	16	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-3	kottke	plan	3	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-4	kottke	plan	4	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code
+M-twice-kottke-plan-5	kottke	plan	5	FMMGetEpsilon_Kottke	1	0	-	0	INVALID	not reached (hit 0): injector cannot select this call (see ERRATA_3 f); not evidence about the code

@@ -1,0 +1,11 @@
+2026-10-11T23:53:44Z	ALLOW	mode=text	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	scan passed: text printf 'guard-positive-check\n' > "$EV/tmp/guard_pos.txt"
+2026-10-11T23:55:55Z	ALLOW	mode=text	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	scan passed: text printf 'guard-positive-2\n' > "$EV/tmp/guard_pos2.txt"
+2026-10-11T23:56:02Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	target outside the allowed prefixes (role git): list
+2026-10-11T23:56:51Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	target outside the allowed prefixes (role redirect): $G
+2026-10-11T23:56:57Z	ALLOW	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	scan passed: file /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_v0.sh
+2026-10-11T23:57:38Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	empty target (role redirect)
+2026-10-11T23:58:05Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	target outside the allowed prefixes (role redirect):  
+2026-10-11T23:58:20Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	target outside the allowed prefixes (role redirect):  
+2026-10-11T23:58:34Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	redirection target is not written with an allowed prefix: ' 'int main(void){ printf("probe-ok\n"); return 0; }' > "$EV/tmp/asan_probe_run.c"
+2026-10-11T23:58:41Z	REFUSED	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	line continuation backslash is not allowed in a scanned script
+2026-10-11T23:58:48Z	ALLOW	mode=file	cwd=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver	scan passed: file /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/asan_probe.sh

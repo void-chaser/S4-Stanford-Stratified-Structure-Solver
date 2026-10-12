@@ -1,0 +1,47 @@
+# raw_R2.tsv -- P05-S4 R2 run facts.  Columns: case tree request nth mode expected observed match rc rc1 rc2 hit reason log_sha256
+case	tree	request	nth	mode	expected	observed	match	rc	rc1	rc2	hit	reason	log_sha256
+C0-B	BASE	-	-	fft	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control	bd3dedf34f95df6b481d6ec577b296e58e85400f268e4de7b3f2376417bc29bf
+C0-A	CUR	-	-	fft	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control	bd3dedf34f95df6b481d6ec577b296e58e85400f268e4de7b3f2376417bc29bf
+C0-F	F	-	-	fft	CONTROL_OK	CONTROL_OK	MATCH	0	0	0	0	clean control	bd3dedf34f95df6b481d6ec577b296e58e85400f268e4de7b3f2376417bc29bf
+AL01-B	BASE	s4malloc	1	fft	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	fa5d2c223aa27e6abc9d51c35c969e569a6573871736d59b69d775f68c287ae4
+AL01-A	CUR	s4malloc	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	ed827e32c76dda5de086b40396bfc44b0247ceed1800cd97ddae5095e2efe027
+AL01-F	F	s4malloc	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	ed827e32c76dda5de086b40396bfc44b0247ceed1800cd97ddae5095e2efe027
+AL02-B	BASE	s4malloc	2	fft	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	1d19aacaa92edd1a617bb23ad896a110430e182f81bd9425844a3c841110b7e1
+AL02-A	CUR	s4malloc	2	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	95c6b426c55dcabac6e0a3cb54f8e00aa9931ae83f60d11ae14ea8930a8d7c84
+AL02-F	F	s4malloc	2	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	95c6b426c55dcabac6e0a3cb54f8e00aa9931ae83f60d11ae14ea8930a8d7c84
+AL03-B	BASE	s4malloc	3	jones	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	02910e7f2c70852ba5c8ee01fa8fab530c9487560b8ada2ec583bacbbaf6ce89
+AL03-A	CUR	s4malloc	3	jones	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	d63589ba97f45a709c40469255f8a27c57ae481ecb07bc180e9c5232dc0afaee
+AL03-F	F	s4malloc	3	jones	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	d63589ba97f45a709c40469255f8a27c57ae481ecb07bc180e9c5232dc0afaee
+AL04-B	BASE	s4malloc	4	jones	CRASH	SILENT_SWALLOW	MISMATCH	1	0	0	1	reached, first call returned 0 (rc=1)	3a285901935b645a5d0f9d8e038a2d20bb67b793dad93f8e393627ee0be134a3
+AL04-A	CUR	s4malloc	4	jones	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	8c46fc9ef8ef991cb5869abf67c778f269e2376a4d957c506174153aa19178b5
+AL04-F	F	s4malloc	4	jones	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	8c46fc9ef8ef991cb5869abf67c778f269e2376a4d957c506174153aa19178b5
+AL05-B	BASE	s4malloc	5	jones	CRASH	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	fd34a37e7e845d227adcc80a1c1fa70f35aeffccc9fe52990e6bbf4a0012d9eb
+AL05-A	CUR	s4malloc	5	jones	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	fd34a37e7e845d227adcc80a1c1fa70f35aeffccc9fe52990e6bbf4a0012d9eb
+AL05-F	F	s4malloc	5	jones	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	fd34a37e7e845d227adcc80a1c1fa70f35aeffccc9fe52990e6bbf4a0012d9eb
+AL06-B	BASE	s4malloc	3	nv	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	110e00a403decdbcac0e618f6828e1cdbd333f2316f8c8110e602fc31f099093
+AL06-A	CUR	s4malloc	3	nv	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	d84c8deab26eaaefd0f2c373e45d828d962908501329dc43998600182ddc9048
+AL06-F	F	s4malloc	3	nv	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	d84c8deab26eaaefd0f2c373e45d828d962908501329dc43998600182ddc9048
+AL07-B	BASE	s4malloc	4	nv	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	72233f50df7cf2acf8ee06546d87fa08876cf95a8e1f821eaf5d0d591a365d3e
+AL07-A	CUR	s4malloc	4	nv	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	247c4e4de4ba4a901c850a3a9a58b476241fdb47ca03c21c534e1afcbb1ce035
+AL07-F	F	s4malloc	4	nv	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	247c4e4de4ba4a901c850a3a9a58b476241fdb47ca03c21c534e1afcbb1ce035
+AL08-B	BASE	s4malloc	5	nv	CRASH	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	e7c44f3a0d06ccf3c45a6519c8a6e804c683f585de389fbe97330a592353194b
+AL08-A	CUR	s4malloc	5	nv	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	e7c44f3a0d06ccf3c45a6519c8a6e804c683f585de389fbe97330a592353194b
+AL08-F	F	s4malloc	5	nv	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	e7c44f3a0d06ccf3c45a6519c8a6e804c683f585de389fbe97330a592353194b
+AL09-B	BASE	s4malloc	3	vl	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	110e00a403decdbcac0e618f6828e1cdbd333f2316f8c8110e602fc31f099093
+AL09-A	CUR	s4malloc	3	vl	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	cf1ef21dd880f48b89fda88fdbcc3c209eb3cd12661a1e9d4d91e31cb3632be2
+AL09-F	F	s4malloc	3	vl	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	cf1ef21dd880f48b89fda88fdbcc3c209eb3cd12661a1e9d4d91e31cb3632be2
+AL10-B	BASE	s4malloc	4	vl	CRASH	SILENT_SWALLOW	MISMATCH	1	0	0	1	reached, first call returned 0 (rc=1)	487ebe67810e0b9fac4e28cffb1f3dc9ca4a13bfc90877d139fb9c2db3172e9f
+AL10-A	CUR	s4malloc	4	vl	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	34036e31885edd1733d7a51dc8a2836b33681f32f8644e2ae9e9065e5f701810
+AL10-F	F	s4malloc	4	vl	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	34036e31885edd1733d7a51dc8a2836b33681f32f8644e2ae9e9065e5f701810
+AL11-B	BASE	s4malloc	5	vl	CRASH	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	0b87e24f02c4029587cc9d5c20df7648b56c9fcf1742260c92373edba9d11a02
+AL11-A	CUR	s4malloc	5	vl	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	0b87e24f02c4029587cc9d5c20df7648b56c9fcf1742260c92373edba9d11a02
+AL11-F	F	s4malloc	5	vl	REPORTED_FAILURE	INVALID	MISMATCH	1	0	0	0	injection never reached (hit=0)	0b87e24f02c4029587cc9d5c20df7648b56c9fcf1742260c92373edba9d11a02
+P01-B	BASE	plan	1	fft	CRASH	CRASH	MATCH	139	None	None	1	killed by signal 11 (rc=139)	699b1835618c28733862e9d9b31e44b5bca9dd7bae4c515ae9e1bc0040517d97
+P01-A	CUR	plan	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	170ddc460e874413cb34c6417a8c18613d156e8fa4ac966be048f1fd5bebca67
+P01-F	F	plan	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	170ddc460e874413cb34c6417a8c18613d156e8fa4ac966be048f1fd5bebca67
+EX01-B	BASE	exec	1	fft	SILENT_SWALLOW	SILENT_SWALLOW	MATCH	1	0	0	1	reached, first call returned 0 (rc=1)	68a0781d939a7bfb9ad2f177dbf5d30973678ed4b92a094103266c281146d39d
+EX01-A	CUR	exec	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	1ad071a092f2256f5d0ad52af976e4ef8781b958ddb80aa560ab3eeb483bfe29
+EX01-F	F	exec	1	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	1ad071a092f2256f5d0ad52af976e4ef8781b958ddb80aa560ab3eeb483bfe29
+EX02-B	BASE	exec	2	fft	SILENT_SWALLOW	SILENT_SWALLOW	MATCH	1	0	0	1	reached, first call returned 0 (rc=1)	175636c228bc17dfe015e93ea0fd5ab0452414f903c59163e1c8a23d283fa3f0
+EX02-A	CUR	exec	2	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	0328c2ef4cd22f3cdd7cf87e61ca1586212bb2a0c34fbf8a282191aa57193721
+EX02-F	F	exec	2	fft	REPORTED_FAILURE	REPORTED_FAILURE	MATCH	1	20	0	1	reached, first call returned 20	0328c2ef4cd22f3cdd7cf87e61ca1586212bb2a0c34fbf8a282191aa57193721

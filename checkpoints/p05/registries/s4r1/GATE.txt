@@ -1,0 +1,27 @@
+P05-S4 V0 gate record
+generated_utc=2026-10-11T23:56:57Z
+repo=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver
+branch=codex/p05-d003-fft-error-propagation
+head_at_start=1c11905a0c5f499060176702821b119c95ec89bb
+head_short=1c11905
+expected_head=1c11905
+S4_tree_at_HEAD=4a6f64927a30537740dd0c8f11f9a5aae5e46ba4
+S4_tree_expected_at_baseline=1d738e64f9864a475fdb3de34cd3601605df2c64
+S4_tree_37a82e8=1d738e64f9864a475fdb3de34cd3601605df2c64
+S4_tree_5b72793=1d738e64f9864a475fdb3de34cd3601605df2c64
+judge_d003_sha256=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+judge_expected_sha256=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+tmp_top_level_sha256_at_start=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+tmp_top_level_entries_at_start=0
+--- git status --short (must be empty at start) ---
+?? testing/d003/stage_s4/
+--- git status --short line count ---
+1
+--- stash list ---
+0
+--- toolchain ---
+g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+gdb: GNU gdb (Ubuntu 17.1-2ubuntu1) 17.1
+python3: Python 3.14.4
+nproc=16

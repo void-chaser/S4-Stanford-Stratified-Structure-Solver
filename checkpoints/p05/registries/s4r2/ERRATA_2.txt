@@ -1,0 +1,80 @@
+ERRATA_2 -- P05-S4 R2.  Corrections of R1 and of the R2 pre-registration.  R1 files are NOT changed.
+
+== 1. Corrections of R1 (verified in R2 with read-only commands) ==
+
+1.1 apply_seam_r2.py "去向未查明" (R1 V0) -- ERROR in R1.
+    Verified: testing/d003/seam/apply_seam_r2.py exists in the worktree (18772 bytes), is tracked by git
+    (git ls-files --error-unmatch), its worktree content equals HEAD (git diff --quiet HEAD), its last commit
+    is f5cae24, and testing/d003/run_all.sh calls it (lines 179-200).  The R1 statement "去向未查明" is wrong.
+    The R1 search (git log --all -- path, stash list, dangling blobs) did not look at the tracked file; the
+    cause is in the R1 method, not established further.  No conclusion is drawn about the cause beyond this.
+
+1.2 Source of the frozen-tree FMM checks (R1 section 1) -- CONFIRMED.
+    git log: b00b630 "fix(fmm): propagate fft plan/exec failure and check FMM allocations";
+    de52142 "fix(s4): check FMM epsilon return in Simulation_ComputeLayerModes".
+    git merge-base --is-ancestor: both are ancestors of 876181c (A), 35cd7b3, 64eb0b5, 1c11905 (F); neither of
+    37a82e8 (B).  Consistent with R1.
+
+1.3 S4 tree hashes (R1 section 2) -- CONFIRMED.
+    37a82e8 1d738e64f9864a475fdb3de34cd3601605df2c64 ; 876181c 85feec1151b36bbb7c8a7146fb6037609d9ff765 ;
+    35cd7b3 cb7fc613b28929db078a3e33025feea0074e87d8 ; 64eb0b5 cb7fc613b28929db078a3e33025feea0074e87d8 (equal to 35cd7b3) ;
+    1c11905 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4.  Consistent with R1.
+
+1.4 fft_plan_exec FMM-side count: S1 says 12, R1 said 10 -- CONFIRMED 10.
+    git grep fft_plan_exec( 37a82e8 -- S4/fmm/*.cpp, excluding fft_iface: 10 lines (FFT 183, 212; kottke 263, 287;
+    Jones 258, 277, 296, 315; VL 215; NV 206).  S1 section 2.2 is the counting error.
+
+1.5 Point count 45 versus 44 -- CONFIRMED as a difference.
+    S4_malloc in S4/fmm/*.cpp (non-comment): 17 by git grep (S1 and R1 agree).  The task text's "16+1" does not
+    match a site list.  No change to the registry result; the 45 vs 44 remains a stated difference.
+
+1.6 Note: git grep "FMMGetEpsilon_" in S4.cpp gives 10 in tree B; consistent.
+
+== 2. Tree F source check against the R1 registry (R2-0 item 4) ==
+Tree B (37a82e8) and tree A (876181c) differ in S4/ by 7 files (git diff --stat 37a82e8 876181c -- S4: 7 files
+changed, 72 insertions, 27 deletions).  Tree F differs from B in 10 files (R1 erratum 3).
+
+== 3. R1 registry rows whose basis is not consistent with the source ==
+Rows in REGISTRY_S4_PRE.tsv (R1) whose basis names S3R2 or "S3R 本轮" for an FMM-side point:
+  line 14  P01  basis "F: 见 S3R2 本轮 fft 计划" -> FMM-side plan check is from b00b630 (fmm_FFT.cpp:90@1c11905).
+  line 50  AL12 basis "(S3R2 历史 fftnv CRASH)" -> the vfield point is at fmm_PolBasisNV.cpp:122 at B; the F check
+           at :126 is from b00b630.  The reference to S3R2 is historical (a B run), not the F source.
+  Other R1 rows citing S3R (line 41 AL03, "实测 S2R2 H") are historical observations, not S3R2 source.
+Lines 74 (D016) and 75 (RNV1) cite S3R2 correctly (3e77aa9, ff6dd7c); they are not affected.
+
+== 4. Corrections of the R2 pre-registration (made BEFORE the R2 matrix run) ==
+The R2 registry went through three versions before the run.  All three were written before any R2 matrix run.
+  (a) REGISTRY_S4_PRE_R2.tsv, first draft (partial, rows AL01/AL02/P01/EX01 only): refused as incomplete.
+  (b) REGISTRY_S4_PRE_R2.tsv, second draft (AL 13 sites, not per source), then renamed to
+      REGISTRY_S4_PRE_R2_DRAFT_INVALID.tsv (kept for audit).  Reason: the s4malloc NTH is a call index of
+      the whole run, not a source site; the draft could not state the NTH per site without inference.
+  (c) A write of REGISTRY_S4_PRE_R2.tsv after the rename was refused by the file-version guard ("file no longer
+      exists"); the registry was written under the name REGISTRY_S4_PRE_R2_v2.tsv.  The v2 file is the registry of
+      record (sha256 add404d72fb8d9ffebeb92bec9cb481efc26684ca4cd95714f95c68466bc9cac, 45 data rows, written before the run).
+  (d) Two mistakes of the R2 registry v2 were found AFTER the run and are NOT corrected in v2 (see section 5).
+
+== 5. Post-run findings: registry NTH mapping errors (DISCLOSED, not corrected by changing expectations) ==
+The R2 registry v2 took the NTH to size mapping from P05_S2R3_HARNESS_GAPS.md lines 131-132 (FFT 1/2;
+PolBasis ivalues/work/vfield = 3/4/5 for all three PolBasis modes).  The run shows the mapping is NOT the same
+for the three PolBasis modes.  Observed in the R2 run (run3/runs/*.log, "S4FMM HIT ... FMM call N B"):
+  mode fft   : NTH1 6144 B, NTH2 16 B, P1 plan 1864 B                       (matches v2)
+  mode jones : NTH3 10720 B, NTH4 1024 B, NTH5 not reached (HITCOUNT 0)     (v2 said 192/work/1024)
+  mode nv    : NTH3 11872 B, NTH4 1024 B, NTH5 not reached (HITCOUNT 0)     (v2 said ivalues/work/vfield)
+  mode vl    : NTH3 11872 B, NTH4 1024 B, NTH5 not reached (HITCOUNT 0)     (v2 said ivalues/work/vfield)
+The NTH5 misses (AL05, AL08, AL11; all three trees) are INVALID with hit 0.  They are a registry mapping error, not
+a tree behaviour: the same NTH5 is unreached on B, A and F alike.  They are NOT counted as red points.
+The NTH4 rows on tree B for jones and vl (AL04-B, AL10-B) are SILENT_SWALLOW at 1024 B; v2 expected CRASH at a work
+allocation.  The observed class is the judge class of a real injected 1024 B failure (rc 1, rc1 0).  The expectation
+is not changed here; the mismatch is listed as MISMATCH with this explanation.
+Consequence for the registry: the labels "work" and "vfield" for NTH3-5 in the PolBasis rows of v2 are NOT verified
+by the run.  The observed allocation sizes are the only verified identity (table above).
+Source line for the 1024 B site (not verified by R2): fmm_PolBasisJones.cpp:167 vfield (B) = 1024 B is
+2*ng2*sizeof(double) with ng2=64 (8x8 grid) -> 1024 B; that is consistent with vfield at NTH4, not NTH5.  This
+reading is [推断] (the NTH4 call is the vfield allocation, the NTH5 call is not in the Jones NG9 path); it is not
+confirmed by a run.
+
+== 6. Scope of what R2 ran ==
+Rows of the 45 with hit >= 1: 33.  Rows with hit = 0: 12 (3 control rows C0 and 9 NTH5 rows AL05, AL08, AL11).
+The 33 reached rows are the injection rows other than NTH5 (AL01-AL04, AL06, AL07, AL09, AL10, P01, EX01, EX02) on B, A and F.
+The R2 run did not cover: AL18, SI01-SI02, FE01-FE10, info=NULL, CLM1-4, ACF1, EXP40, V3 retry, V4 sanitizer,
+V5 residual items, the R2 tree H column (H was built; not run in the matrix).

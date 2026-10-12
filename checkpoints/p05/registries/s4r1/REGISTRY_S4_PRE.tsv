@@ -1,0 +1,75 @@
+# REGISTRY_S4_PRE.tsv -- P05-S4 R1 pre-registration (written BEFORE any build or run of this round)
+# Columns: point	file_anchor	category	expected_baseline_B	expected_frozen_F	basis	status
+# Trees: B = 37a82e8 (baseline, Master-equivalent S4 tree 1d738e64); F = 1c11905 (frozen, S4 tree 4a6f6492).
+# Judge (testing/d003/judge_d003.py, sha256 d2d04145...): rc >= 128 -> CRASH; injection reached and
+#   rc1 == 0 without signal -> SILENT_SWALLOW; reached and rc1 != 0 -> REPORTED_FAILURE;
+#   not reached -> INVALID; clean control -> CONTROL_OK.  The driver PASS/FAIL line is never read.
+# basis: [源码] = read from the source of that tree; [推断] = inferred from source plus the judge rule.
+# status: BLIND = expectation formed from the source only, before any observation of this point;
+#         INFLUENCED = the expectation was formed after the earlier observations listed in its basis
+#         (S2R3/S2R5/S2R6/S3R/S3R2 records were read in this session before this file was written).
+#         Every row below is INFLUENCED except where stated.  No row is a blind prediction.
+# This file contains no run result.  Any later correction must be a new file and must be disclosed.
+point	file_anchor	category	expected_baseline_B	expected_frozen_F	basis	status
+P01	S4/fmm/fmm_FFT.cpp:85 plans[i]=fft_plan_dft_2d (FFT)	plan	CRASH	REPORTED_FAILURE	[源码] B:85 无 NULL 检查，fft_plan_exec(NULL) 解引用; F: 见 S3R2 本轮 fft 计划 (注: F 上 FMM 侧 plan 检查为 S3R 未覆盖点)	INFLUENCED
+P02	S4/fmm/fmm_kottke.cpp:89 plans[i]=fft_plan_dft_2d (kottke)	plan	CRASH	REPORTED_FAILURE	[源码] 同 P01 结构; S2R2 kottke 分配点为 REPORTED_FAILURE (A,H)	INFLUENCED
+P03	S4/fmm/fmm_PolBasisJones.cpp:245 fft_plan_dft_2d	plan	CRASH	REPORTED_FAILURE	[源码] B:245 无检查	INFLUENCED
+P04	S4/fmm/fmm_PolBasisNV.cpp:190 fft_plan_dft_2d	plan	CRASH	REPORTED_FAILURE	[源码] B:190 无检查	INFLUENCED
+P05	S4/fmm/fmm_PolBasisVL.cpp:200 fft_plan_dft_2d	plan	CRASH	REPORTED_FAILURE	[源码] B:200 无检查	INFLUENCED
+EX01	S4/fmm/fmm_FFT.cpp:183 fft_plan_exec(plans[4])	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:183 返回值丢弃, 调用后继续; F: 检查待 V1 核对 (S3 结论 B 类)	INFLUENCED
+EX02	S4/fmm/fmm_FFT.cpp:212 fft_plan_exec(plans[w])	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:212 同 EX01	INFLUENCED
+EX03	S4/fmm/fmm_kottke.cpp:263 fft_plan_exec(plans[4])	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:263 同 EX01	INFLUENCED
+EX04	S4/fmm/fmm_kottke.cpp:287 fft_plan_exec(plans[w])	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:287 同 EX01	INFLUENCED
+EX05	S4/fmm/fmm_PolBasisJones.cpp:258 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:258 同 EX01	INFLUENCED
+EX06	S4/fmm/fmm_PolBasisJones.cpp:277 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:277 同 EX01	INFLUENCED
+EX07	S4/fmm/fmm_PolBasisJones.cpp:296 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:296 同 EX01	INFLUENCED
+EX08	S4/fmm/fmm_PolBasisJones.cpp:315 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:315 同 EX01	INFLUENCED
+EX09	S4/fmm/fmm_PolBasisVL.cpp:215 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:215 同 EX01	INFLUENCED
+EX10	S4/fmm/fmm_PolBasisNV.cpp:206 fft_plan_exec(plan)	exec	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:206 同 EX01	INFLUENCED
+FE01	S4/S4.cpp:2368 FMMGetEpsilon_Experimental (fmm_ret status)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B:2368 返回值丢弃; F: fmm_ret 接收 (S4.cpp 2373 起)	INFLUENCED
+FE02	S4/S4.cpp:2372 FMMGetEpsilon_Kottke	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE03	S4/S4.cpp:2374 FMMGetEpsilon_FFT	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE04	S4/S4.cpp:2377 FMMGetEpsilon_PolBasisJones (basis 1)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE05	S4/S4.cpp:2379 FMMGetEpsilon_PolBasisNV (basis 1)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE06	S4/S4.cpp:2381 FMMGetEpsilon_PolBasisVL (basis 1)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE07	S4/S4.cpp:2386 FMMGetEpsilon_ClosedForm	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE08	S4/S4.cpp:2389 FMMGetEpsilon_PolBasisJones (basis 2)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE09	S4/S4.cpp:2391 FMMGetEpsilon_PolBasisNV (basis 2)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+FE10	S4/S4.cpp:2393 FMMGetEpsilon_PolBasisVL (basis 2)	FMMGetEpsilon_ret	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 FE01	INFLUENCED
+AL01	S4/fmm/fmm_closed.cpp:40 ivalues S4_malloc	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查; F 为 S4_malloc 点, 检查状态待 V2 核对	INFLUENCED
+AL02	S4/fmm/fmm_experimental.cpp:40 ivalues S4_malloc	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查; S3R 提交 4 (35cd7b3) 增加 return 20	INFLUENCED
+AL03	S4/fmm/fmm_FFT.cpp:74 work S4_malloc	alloc	CRASH	REPORTED_FAILURE	[实测 S2R2 H] 同类点在 H 为 REPORTED_FAILURE	INFLUENCED
+AL04	S4/fmm/fmm_FFT.cpp:81 discval S4_malloc	alloc	CRASH	REPORTED_FAILURE	[实测 S2R2 H] 同类点	INFLUENCED
+AL05	S4/fmm/fmm_kottke.cpp:85 discval S4_malloc	alloc	CRASH	REPORTED_FAILURE	[实测 S2R6 errata] A,H=REPORTED_FAILURE; B=CRASH; 勘误 56cccf1 为已修好	INFLUENCED
+AL06	S4/fmm/fmm_PolBasisJones.cpp:107 ivalues	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL07	S4/fmm/fmm_PolBasisJones.cpp:153 work	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL08	S4/fmm/fmm_PolBasisJones.cpp:167 vfield	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL09	S4/fmm/fmm_PolBasisJones.cpp:337 work (cache-hit)	alloc	CRASH	REPORTED_FAILURE	[实测 S2R2] H 为 REPORTED_FAILURE (route S4FMM_TWICE=slab NTH7)	INFLUENCED
+AL10	S4/fmm/fmm_PolBasisNV.cpp:58 ivalues	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL11	S4/fmm/fmm_PolBasisNV.cpp:110 work	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL12	S4/fmm/fmm_PolBasisNV.cpp:122 vfield	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查 (S3R2 历史 fftnv CRASH)	INFLUENCED
+AL13	S4/fmm/fmm_PolBasisNV.cpp:225 work (cache-hit)	alloc	CRASH	REPORTED_FAILURE	[实测 S2R2] 同 AL09 结构	INFLUENCED
+AL14	S4/fmm/fmm_PolBasisVL.cpp:57 ivalues	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL15	S4/fmm/fmm_PolBasisVL.cpp:115 work	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL16	S4/fmm/fmm_PolBasisVL.cpp:127 vfield	alloc	CRASH	REPORTED_FAILURE	[源码] B 无检查	INFLUENCED
+AL17	S4/fmm/fmm_PolBasisVL.cpp:234 work (cache-hit)	alloc	CRASH	REPORTED_FAILURE	[实测 S2R2] 同 AL09 结构	INFLUENCED
+AL18	fmm_kottke.cpp:77 fft_alloc_complex(6*ng2) work	alloc	CRASH	REPORTED_FAILURE	[实测 S2R6 errata] A,H=REPORTED_FAILURE; B=CRASH	INFLUENCED
+SI01	S4/fmm/fmm_FFT.cpp:204 solve_info LinearSolve	solve_info	SILENT_SWALLOW	REPORTED_FAILURE	[源码] B/A: solve_info 写入后不读取; F: 检查 fmm_FFT.cpp:210 (S3 B 类结论)	INFLUENCED
+SI02	S4/fmm/fmm_kottke.cpp:279 solve_info LinearSolve	solve_info	SILENT_SWALLOW	REPORTED_FAILURE	[源码] 同 SI01	INFLUENCED
+CL01	S4/fmm/fmm_closed.cpp:129 LinearSolve info=NULL (seam site 1)	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] B 无 solve_info 变量; F 为 &solve_info (134); seam 在 F 上 (U2)	INFLUENCED
+CL02	S4/fmm/fmm_closed.cpp:132 LinearSolve info=NULL (seam site 2)	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] 同 CL01 (F 138)	INFLUENCED
+CL03	S4/fmm/fmm_closed.cpp:137 LinearSolve info=NULL (seam site 3)	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] 同 CL01 (F 144)	INFLUENCED
+CL04	S4/fmm/fmm_closed.cpp:234 LinearSolve info=NULL (seam site 4)	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] 同 CL01 (F 244)	INFLUENCED
+PJ01	S4/fmm/fmm_PolBasisJones.cpp:361 LinearSolve info=NULL	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] B 无 solve_info; F 为 375	INFLUENCED
+PN01	S4/fmm/fmm_PolBasisNV.cpp:252 LinearSolve info=NULL	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] B 无 solve_info; F 为 267	INFLUENCED
+PV01	S4/fmm/fmm_PolBasisVL.cpp:260 LinearSolve info=NULL	info=NULL	NOT_REACHABLE_BASE	REPORTED_FAILURE	[源码] B 无 solve_info; F 为 273	INFLUENCED
+CLM1	S4/S4.cpp:2267 *layer_modes = malloc (ComputeLayerModes)	ComputeLayerModes	CRASH	REPORTED_FAILURE	[实测 S3R 3.3] B CRASH; F 检查为 S3R 提交 73e00ef (R1)	INFLUENCED
+CLM2	S4/S4.cpp:2295 pB->q = S4_malloc (ComputeLayerModes)	ComputeLayerModes	CRASH	REPORTED_FAILURE	[实测 S3R 3.3] B CRASH; F 为 R2	INFLUENCED
+CLM3	S4/S4.cpp:2408 rwork/work (ComputeLayerModes, SolveLayerEigensystem NULL)	ComputeLayerModes	SILENT_SWALLOW	REPORTED_FAILURE	[实测 S3R 3.3] B SILENT_SWALLOW; F 为 R3	INFLUENCED
+CLM4	S4/S4.cpp:2425 work (ComputeLayerModes)	ComputeLayerModes	SILENT_SWALLOW	REPORTED_FAILURE	[实测 S3R 3.3] B SILENT_SWALLOW; F 为 R4	INFLUENCED
+ACF1	S4/S4.cpp:3977 AddFieldToCache S4_malloc (jones)	AddFieldToCache	CRASH	REPORTED_FAILURE	[实测 S3R 3.3] B CRASH; F: AddFieldToCache 返回 1 (e83255f)	INFLUENCED
+EXP40	S4/fmm/fmm_experimental.cpp:40 S4_malloc (experimental)	experimental	CRASH	REPORTED_FAILURE	[实测 S2R3] 驱动 experimental 模式可达; F 有 return 20 (35cd7b3)	INFLUENCED
+K1A	fmm_kottke.cpp NaN Epsilon2 eps=0 (K-1 scalar, D-K)	pattern/kottke	CRASH	REPORTED_FAILURE	[实测 S3R 3.4] B rc 139; F rc 20	INFLUENCED
+K1B	fmm_kottke.cpp NaN Epsilon2 eps=1e-300 (K-1)	pattern/kottke	CRASH	REPORTED_FAILURE	[实测 S3R 3.4] B rc 139; F rc 20	INFLUENCED
+D016	pattern.c max_field zero-field check (VL NG=1 zero field)	pattern	INFLUENCED_NO_CHECK	REPORTED_FAILURE	[源码] pattern.c 2145 之前无检查 (B); F return -10 (3e77aa9); S3R2 [实测] F rc 20	INFLUENCED
+RNV1	fmm_PolBasisNV.cpp error path before normalization (R-NV-1)	pattern	NOT_TRIGGERED	NOT_TRIGGERED	[实测 S3R2 3.3] NV NG=1 max_field 非零, error 路径未运行; 尝试见 V5c	INFLUENCED

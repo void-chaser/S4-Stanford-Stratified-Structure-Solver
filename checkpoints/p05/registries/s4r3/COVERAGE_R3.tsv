@@ -1,0 +1,64 @@
+# COVERAGE_R3.tsv -- P05-S4 R3-5 coverage of the R1 registry (62 ids).  Built by r3_coverage.py.
+# status: REACHED(n/m) = n of the m R3 points mapped to this R1 id were reached on B and F (hit>=1);
+#   UNMAPPED = no in-scope R3 point; the reason column gives the cause (or 'unconfirmed').
+# In-scope R3 points: 141; reached on both trees: 119; not reached (INVALID): 22.
+r1_id	status	R3_point_ids	B_observed	F_observed	note_or_reason
+P01	REACHED(4/15)	M-once-fft-plan-1,M-once-fft-plan-2,M-once-fft-plan-3,M-once-fft-plan-4 ...	B=CRASH|INVALID	F=INVALID|REPORTED_FAILURE	some points not reached (INVALID): see RESULTS_R3
+P02	REACHED(4/15)	M-once-kottke-plan-1,M-once-kottke-plan-2,M-once-kottke-plan-3,M-once-kottke-plan-4 ...	B=CRASH|INVALID	F=INVALID|REPORTED_FAILURE	some points not reached (INVALID): see RESULTS_R3
+P03	REACHED(2/2)	M-once-jones-plan-1,M-twice-jones-plan-1	B=CRASH	F=REPORTED_FAILURE	
+P04	REACHED(2/2)	M-once-nv-plan-1,M-twice-nv-plan-1	B=CRASH	F=REPORTED_FAILURE	
+P05	REACHED(2/2)	M-once-vl-plan-1,M-twice-vl-plan-1	B=CRASH	F=REPORTED_FAILURE	
+EX01	REACHED(2/2)	M-once-fft-exec-1,M-twice-fft-exec-1	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX02	REACHED(13/13)	M-once-fft-exec-2,M-once-fft-exec-3,M-once-fft-exec-4,M-once-fft-exec-5 ...	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX03	REACHED(2/2)	M-once-kottke-exec-1,M-twice-kottke-exec-1	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX04	REACHED(13/13)	M-once-kottke-exec-2,M-once-kottke-exec-3,M-once-kottke-exec-4,M-once-kottke-exec-5 ...	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX05-EX08 (set)	REACHED(8/8)	M-once-jones-exec-1,M-once-jones-exec-2,M-once-jones-exec-3,M-once-jones-exec-4 ...	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX09	REACHED(8/8)	M-once-vl-exec-1,M-once-vl-exec-2,M-once-vl-exec-3,M-once-vl-exec-4 ...	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+EX10	REACHED(8/8)	M-once-nv-exec-1,M-once-nv-exec-2,M-once-nv-exec-3,M-once-nv-exec-4 ...	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+FE01	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_Experimental (S4.cpp dispatch); needs the fmmret seam (apply_seam_r5_fmmret.py), absent in the plain R2 build
+FE02	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_Kottke; needs the fmmret seam, absent in the plain build
+FE03	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_FFT; needs the fmmret seam, absent in the plain build
+FE04	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisJones (basis 1); needs the fmmret seam, absent in the plain build
+FE05	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisNV (basis 1); needs the fmmret seam, absent in the plain build
+FE06	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisVL (basis 1); needs the fmmret seam, absent in the plain build
+FE07	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_ClosedForm; needs the fmmret seam, absent in the plain build
+FE08	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisJones (basis 2); needs the fmmret seam, absent in the plain build
+FE09	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisNV (basis 2); needs the fmmret seam, absent in the plain build
+FE10	UNMAPPED	-	-	-	fmm_ret status of FMMGetEpsilon_PolBasisVL (basis 2); needs the fmmret seam, absent in the plain build
+AL01	REACHED(15/15)	M-once-closed1d-malloc-1,M-once-closed2d-malloc-1,M-once-jones-malloc-1,M-once-nv-malloc-1 ...	B=CRASH	F=REPORTED_FAILURE	
+AL02	UNMAPPED	-	-	-	same source site as EXP40 (experimental.cpp:40 ivalues); R1 registered it twice; counted under EXP40
+AL03	REACHED(3/3)	M-once-fft-malloc-1,M-twice-fft-malloc-1,M-twice-fft-malloc-3	B=CRASH	F=REPORTED_FAILURE	
+AL04	REACHED(3/3)	M-once-fft-malloc-2,M-twice-fft-malloc-2,M-twice-fft-malloc-4	B=CRASH	F=REPORTED_FAILURE	
+AL05	REACHED(3/3)	M-once-kottke-malloc-1,M-twice-kottke-malloc-1,M-twice-kottke-malloc-2	B=CRASH	F=REPORTED_FAILURE	
+AL06	REACHED(3/3)	M-once-jones-malloc-2,M-twice-jones-malloc-2,M-twice-jones-malloc-6	B=CRASH	F=REPORTED_FAILURE	
+AL07	REACHED(2/2)	M-once-jones-malloc-3,M-twice-jones-malloc-3	B=CRASH	F=REPORTED_FAILURE	
+AL08	REACHED(2/2)	M-once-jones-malloc-4,M-twice-jones-malloc-4	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+AL09	REACHED(1/1)	M-twice-jones-malloc-7	B=CRASH	F=REPORTED_FAILURE	
+AL10	REACHED(3/3)	M-once-nv-malloc-2,M-twice-nv-malloc-2,M-twice-nv-malloc-6	B=CRASH	F=REPORTED_FAILURE	
+AL11	REACHED(2/2)	M-once-nv-malloc-3,M-twice-nv-malloc-3	B=CRASH	F=REPORTED_FAILURE	
+AL12	REACHED(2/2)	M-once-nv-malloc-4,M-twice-nv-malloc-4	B=CRASH	F=REPORTED_FAILURE	
+AL13	REACHED(1/1)	M-twice-nv-malloc-7	B=CRASH	F=REPORTED_FAILURE	
+AL14	REACHED(3/3)	M-once-vl-malloc-2,M-twice-vl-malloc-2,M-twice-vl-malloc-6	B=CRASH	F=REPORTED_FAILURE	
+AL15	REACHED(2/2)	M-once-vl-malloc-3,M-twice-vl-malloc-3	B=CRASH	F=REPORTED_FAILURE	
+AL16	REACHED(2/2)	M-once-vl-malloc-4,M-twice-vl-malloc-4	B=SILENT_SWALLOW	F=REPORTED_FAILURE	
+AL17	REACHED(1/1)	M-twice-vl-malloc-7	B=CRASH	F=REPORTED_FAILURE	
+AL18	UNMAPPED	-	-	-	fmm_kottke.cpp:78 uses fft_alloc_complex, not S4_malloc; the --wrap of S4_malloc cannot reach it; needs the kottke_alloc hook (R2 family D), not used in the R3 sweep
+SI01	UNMAPPED	-	-	-	solve_info of LinearSolve at fmm_FFT.cpp:204; needs the linearsolve seam (family A), absent in the plain build
+SI02	UNMAPPED	-	-	-	solve_info of LinearSolve at fmm_kottke.cpp:279; needs the linearsolve seam, absent in the plain build
+CL01	UNMAPPED	-	-	-	LinearSolve info=NULL seam site, closed.cpp:129; needs the linearsolve_null seam (family B), absent in the plain build; F-only seam (R1 U2)
+CL02	UNMAPPED	-	-	-	LinearSolve info=NULL seam site, closed.cpp:132; needs the linearsolve_null seam, absent in the plain build
+CL03	UNMAPPED	-	-	-	LinearSolve info=NULL seam site, closed.cpp:137; needs the linearsolve_null seam, absent in the plain build
+CL04	UNMAPPED	-	-	-	LinearSolve info=NULL seam site, closed.cpp:234; needs the linearsolve_null seam, absent in the plain build
+PJ01	UNMAPPED	-	-	-	LinearSolve info=NULL, PolBasisJones.cpp:361; needs the linearsolve_null seam, absent in the plain build
+PN01	UNMAPPED	-	-	-	LinearSolve info=NULL, PolBasisNV.cpp:252; needs the linearsolve_null seam, absent in the plain build
+PV01	UNMAPPED	-	-	-	LinearSolve info=NULL, PolBasisVL.cpp:260; needs the linearsolve_null seam, absent in the plain build
+CLM1	UNMAPPED	-	-	-	libc malloc at S4.cpp:2267 (ComputeLayerModes); not an S4_malloc call; the R3 discovery and injector attach only to the S4_malloc, fft_plan and fft_plan_exec wrappers, so this libc call is neither observed nor selectable by the s4malloc request
+CLM2	UNMAPPED	-	-	-	S4_malloc inside S4.o (same translation unit as S4_malloc); --wrap cannot intercept it (P05_S2_TEST_HARNESS.md lines 115 and 488); needs the R2 allocation seam
+CLM3	UNMAPPED	-	-	-	S4_malloc inside S4.o (ComputeLayerModes non-uniform path); --wrap cannot intercept it; needs the allocation seam
+CLM4	UNMAPPED	-	-	-	S4_malloc inside S4.o (ComputeLayerModes non-uniform path); --wrap cannot intercept it; needs the allocation seam
+ACF1	UNMAPPED	-	-	-	S4_malloc inside S4.o (AddFieldToCache); --wrap cannot intercept it; needs the R5 addfield seam (apply_seam_r5_addfield.py), absent in the plain build
+EXP40	REACHED(3/3)	M-once-experimental-malloc-1,M-twice-experimental-malloc-1,M-twice-experimental-malloc-2	B=CRASH	F=REPORTED_FAILURE	
+K1A	UNMAPPED	-	-	-	numerical NaN Epsilon2 case (kottke), not an allocation/plan/exec point; covered by the S3R probe, not by the R3 sweep
+K1B	UNMAPPED	-	-	-	numerical NaN Epsilon2 case (kottke), not an allocation/plan/exec point; covered by the S3R probe, not by the R3 sweep
+D016	UNMAPPED	-	-	-	pattern zero-field check (VL, NG 1), not an allocation/plan/exec point; covered by S3R2, not by the R3 sweep
+RNV1	UNMAPPED	-	-	-	NV error path before normalization, not an allocation/plan/exec point; NOT_TRIGGERED in S3R2; not by the R3 sweep

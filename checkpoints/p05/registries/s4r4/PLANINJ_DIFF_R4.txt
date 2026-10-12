@@ -1,0 +1,40 @@
+42a43,61
+> /* [P05-S4 R4-4] plancall:K:M -- two independent counters for plan injection.
+>  *   K = the K-th fft_plan_dft_2d call of the process (1-based).
+>  *   M = the M-th wrapped malloc INSIDE that call (1-based); the count is reset when call K starts.
+>  * The original mode "plan" (one NTH used for both counts) is kept unchanged. */
+> static int pc_ok = 0;
+> static long pc_k = 0, pc_m = 0, pc_alloc = 0;
+> static void pc_parse(void){
+> 	const char *m = mode();
+> 	long k = 0, mm = 0;
+> 	int used = 0;
+> 	pc_ok = 0;
+> 	if(0 != strncmp(m, "plancall:", 9)){ return; }
+> 	/* "%ld:%ld%n": %n records how many characters were consumed; anything after them is refused */
+> 	if(2 != sscanf(m + 9, "%ld:%ld%n", &k, &mm, &used)){ return; }
+> 	if('\0' != m[9 + used]){ return; }   /* trailing text after M: refuse (fail closed) */
+> 	if(k < 1 || mm < 1){ return; }
+> 	pc_k = k; pc_m = mm; pc_ok = 1;
+> }
+> 
+67a87,95
+> 	/* [P05-S4 R4-4] plancall: the M-th wrapped malloc inside the selected plan call (arm == 1 only). */
+> 	if(1 == arm && pc_ok){
+> 		pc_alloc++;
+> 		if(pc_alloc == pc_m){
+> 			n_hits++;
+> 			std::fprintf(stderr, "S4FMM HIT real malloc failure: plan call %ld malloc %ld, %zu B (hit=%ld)\n", pc_k, pc_alloc, n, n_hits);
+> 			return NULL;
+> 		}
+> 	}
+559a588,596
+> 		arm = 1;
+> 		fft_plan p = __real__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(n, a, b, s);
+> 		arm = 0;
+> 		return p;
+> 	}
+> 	/* [P05-S4 R4-4] plancall:K:M -- arm only for plan call K, and restart the malloc count M there. */
+> 	pc_parse();
+> 	if(pc_ok && n_plan_calls == pc_k){
+> 		pc_alloc = 0;

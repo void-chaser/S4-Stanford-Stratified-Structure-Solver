@@ -1,0 +1,42 @@
+SEAMDIFF R4 (P05-S4 R4-1). Each seam export compared with its clean git-archive export. Added/removed lines counted with difflib (unified, n=0).
+Column default_equal=True: the file with every #ifdef S4_TEST_* block removed (the #else branch kept as default text) equals the clean file byte-for-byte (CRLF normalised for comparison only).
+Removed lines = 0 in every library: the seam is additive.
+Method limit: this is a structural check of the #ifdef blocks, not a compile-semantic check; the compile result is the make rc and the libS4 sha256 in LIBS_R4.tsv.
+
+=== Summary (library, base tree, files changed, lines added, lines removed) ===
+seamF	files=7	added=78	removed=0	base=trees/F
+fmmret-F	files=1	added=33	removed=0	base=trees/F
+addf-F	files=3	added=21	removed=0	base=trees/F
+b2buf-F	files=4	added=33	removed=0	base=trees/F
+seamAB-B	files=7	added=78	removed=0	base=trees/B
+fmmbuf-B	files=1	added=33	removed=0	base=trees/B
+fmmret-A	files=1	added=33	removed=0	base=trees/A
+
+=== Per-file rows ===
+seamF	S4.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_FFT.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_closed.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_PolBasisJones.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_PolBasisVL.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_kottke.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamF	fmm/fmm_PolBasisNV.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+fmmret-F	S4.cpp	default_equal=True	files_changed=1	lines_added=33	lines_removed=0
+addf-F	fmm/fmm_PolBasisJones.cpp	default_equal=True	files_changed=3	lines_added=21	lines_removed=0
+addf-F	fmm/fmm_PolBasisVL.cpp	default_equal=True	files_changed=3	lines_added=21	lines_removed=0
+addf-F	fmm/fmm_PolBasisNV.cpp	default_equal=True	files_changed=3	lines_added=21	lines_removed=0
+b2buf-F	fmm/fmm_closed.cpp	default_equal=True	files_changed=4	lines_added=33	lines_removed=0
+b2buf-F	fmm/fmm_PolBasisJones.cpp	default_equal=True	files_changed=4	lines_added=33	lines_removed=0
+b2buf-F	fmm/fmm_PolBasisVL.cpp	default_equal=True	files_changed=4	lines_added=33	lines_removed=0
+b2buf-F	fmm/fmm_PolBasisNV.cpp	default_equal=True	files_changed=4	lines_added=33	lines_removed=0
+seamAB-B	S4.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_FFT.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_closed.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_PolBasisJones.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_PolBasisVL.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_kottke.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+seamAB-B	fmm/fmm_PolBasisNV.cpp	default_equal=True	files_changed=7	lines_added=78	lines_removed=0
+fmmbuf-B	S4.cpp	default_equal=True	files_changed=1	lines_added=33	lines_removed=0
+fmmret-A	S4.cpp	default_equal=True	files_changed=1	lines_added=33	lines_removed=0
+
+=== Added after R4-1 (supplement, see ERRATA_4 e): seamAB-A ===
+seamAB-A	files=7	added=78	removed=0	base=trees/A	(family A,B,C,D; default_equal=True for all 7 files)

@@ -1,0 +1,107 @@
+ERRATA_4 -- P05-S4 R4 (sub-round).  Written after the R4-0 gate and BEFORE any R4 build, pre-registration or injection run.
+R1, R2 and R3 files are NOT changed.  This file is new; later corrections go into *_R4_ERRATA*.txt files.
+
+== a. Re-check of the R3 conclusion on seam anchors on tree F (R4-0 step 2, read-only checks on a fresh git-archive export) ==
+Export: $EV/trees/F = git archive 1c11905 (new, this round).  Each command ran through testing/d003/safe_run.sh.
+--check-only writes nothing into the export root.  --report writes into $EV/recheck/ (repository evidence only).
+
+  combination                                              rc   first error (stderr)
+  apply_seam_r2.py --families A  (fresh F export)          0    (none)
+  apply_seam_r2.py --families B  (fresh F export)          1    ANCHOR ERROR S4/fmm/fmm_PolBasisJones.cpp call(15): "\tRNP::LinearSolve<'N'>(n,n, Eta,n, &Epsilon2[n+n*n2],n2, NULL, NULL);" matched 0 time(s)
+  apply_seam_r2.py --families C  (fresh F export)          0    (none)
+  apply_seam_r2.py --families D  (fresh F export)          0    (none)
+  apply_seam_r2.py --families B  (tree B 37a82e8 export)   0    (none; control: family B anchors match on B)
+  apply_seam_b2.py               (fresh F export)          0    (none; 7 sites match the FIXED form on F, see below)
+  apply_seam_r4_buf.py           (fresh F export)          0    (none)
+  apply_seam_r5_addfield.py      (fresh F export)          0    (none)
+  apply_seam_r5_fmmret.py --tree A (fresh F export)        0    (none; 10 points)
+  apply_seam_r5_fmmret.py --tree H (fresh F export)        0    (none; 10 points)
+
+Facts from the source (read-only, git grep):
+  B (37a82e8): "LinearSolve<'N'>(n,n, ..., NULL, NULL);" occurs 7 times: fmm_PolBasisJones.cpp 1, fmm_PolBasisNV.cpp 1,
+               fmm_PolBasisVL.cpp 1, fmm_closed.cpp 4.
+  F (1c11905): the same pattern occurs 0 times.  The seven sites now pass &solve_info, and each is followed by an
+               "if(0 != solve_info)" check (closed.cpp:134/138/144/244, PolBasisJones.cpp:375, PolBasisNV.cpp:267,
+               PolBasisVL.cpp:273 at 1c11905; the NV and VL line numbers shift by the export, see the report).
+  F (1c11905): solve_info sites still exist: fmm_FFT.cpp:209 and fmm_kottke.cpp:284.
+
+Consequence (what the check does and does not show):
+  - The family-B ANCHOR ERROR on F is EXPECTED.  It comes from the family-B anchors (info == NULL), which no longer
+    exist on F because F already fixed those seven sites.  The error is not a general seam problem on F.
+  - The check-only success of apply_seam_b2.py on F is ALSO expected: it matches the FIXED form of the same seven
+    sites (with &solve_info and the check).  It does NOT mean the NULL form is injectable on F.  It is the reason family
+    B2 is the right seam for the F information-check tests, and the reason family B is the right seam for B and A.
+  - Result: on F, only family B fails.  The other combinations (families A, C, D; B2; buf; addfield; fmmret A and H)
+    pass check-only.  The R3 report (section 11, item 1) said "apply_seam_r2.py --check-only reports ANCHOR ERROR on F, and
+    the anchors need to be relocated".  That sentence is CORRECTED to: "the family-B anchors (info == NULL, seven sites)
+    do not exist on F; this failure is expected because F fixed those sites.  Other families pass check-only on F."
+  - The check above does NOT establish that the seam builds, that the injection is reached, or that any result is
+    correct.  Those are measured in R4-1 to R4-3.
+  - Status of this point: re-check AGREES with the conclusion that the family-B ANCHOR ERROR on F is specific to family B.
+    The R3 wording "relocate the anchors" is wrong for F and is corrected by this entry.  Relocating is NOT done in R4.
+
+== b. R3 ERRATA_3 f: how the plan NTH is read from source (reading of testing/d003/src/inject_d003.cpp, not a measurement) ==
+  L39-40  static int arm; static long n_plan_alloc, n_plan_calls, ...     (process-wide counters, initialised 0)
+  L559    if(0 == strcmp(mode(), "plan") && n_plan_calls == nth()){       selects the NTH-th plan call
+  L560    arm = 1;                                                        arm is set only inside that call
+  L561    __real_fft_plan_dft_2d(...)                                     the plan is created with arm == 1
+  L562    arm = 0;
+  L60     if(1 == arm && 0 == strcmp(mode(), "plan")){                    the malloc wrapper counts only while arm == 1
+  L61     n_plan_alloc++;
+  L62     if(n_plan_alloc == nth()){  ... return NULL;                    fails the NTH-th malloc while arm == 1
+  Grep result: n_plan_alloc is initialised at L40 and is never assigned again (only ++ at L61).  So it is a process-wide
+  counter that is incremented only while arm == 1.  arm == 1 holds only during the single plan call selected at L559
+  (n_plan_calls == nth()).  Consequence: n_plan_alloc counts the wrapped mallocs of the selected plan call, starting from 1
+  at its first wrapped malloc, because no other plan call increments it.  The test at L62 therefore asks: "does the selected
+  plan call make at least NTH wrapped mallocs?"  If yes, the NTH-th one fails.  If no, nothing is injected (hit 0).
+  My reading: the one value NTH is used for two different things, "which plan call" (L559) and "which malloc inside that
+  call" (L62).  A plan call with fewer than NTH wrapped mallocs can never be hit at NTH.  This matches the measured reachability
+  (NTH 1 and 2 reached, NTH 3 and above not), but the number of wrapped mallocs per plan call was NOT counted in R3, so this
+  is an inference (ERRATA_3 f4).  R4 measures it (section R4-4, gdb breakpoint counts or the call sequence).
+  Open point (not claimed): the R3 data show NTH 1 and 2 reached for fft and kottke at once and twice; whether NTH 2 is reached
+  by a second wrapped malloc of the first plan call or of another call is NOT established by the source reading alone.
+
+== c. "About 43 non-FMM S4_malloc" (the user's estimate) ==
+  The static count in R3 was 36 (S4/S4.cpp, HEAD, non-comment).  R4 does not chase the difference of 7 (R4-5 item 4 only
+  lists the static sites).  The figure 43 is NOT re-derived here.
+
+== d. Other corrections in R4-0 ==
+  d1. The R3 report (section 3, path table) and ERRATA_3 d1 are consistent with the R2 layout (p05-s4r2/run2/...).  Not changed.
+  d2. The R3 report section 2 says "HEAD 33b8bf8".  The R4 gate read HEAD = 7f54997 (branch codex/p05-d003-fft-error-propagation),
+      which is the value required by this round.  The R3 value is recorded as it was written (historical); it is not used
+      as a gate in R4.  Disclosed.
+
+== e. Supplement made before any R4 run: seamAB-A library, and the B column of the FE points (R4-1 / R4-2 scope notes) ==
+e1. R4-1 as first run built seamAB-B but NOT seamAB-A.  run_all.sh builds seamAB for BOTH trees B and A (run_all.sh line 178,
+    "B|A)").  The A column of the in-scope families A, B, C and D (SI, info=NULL, CLM, ACF, AL18) needs a seamAB-A library.
+    Built now by the same method: fresh git archive of 876181c into seam/A-AB; apply_seam_r2.py --families A,B,C,D; make with
+    the seamAB macros (-DS4_TEST_LINEARSOLVE_SEAM -DS4_TEST_LINEARSOLVE_SEAM_NULLINFO -DS4_TEST_ALLOC_SEAM -DS4_TEST_KOTTKE_SEAM);
+    link of the committed driver.  make rc=0.  libS4 sha256 0b78df5c58ecd7173ad3663b60f4009060c419b67dc2e30aa8d6aa40c4be1714.
+    driver sha256 d3211e8a862da0b8479cf2d6428074ac99913c3e338826788ff16798b90ffbcf.  SEAMDIFF row appended (7 files, +78, -0).
+    This supplements R4-1; it does not change the pre-registration (REGISTRY_S4_PRE_R4.tsv, hash-locked) or any expectation.
+e2. Tree B has NO fmm_ret status (apply_seam_r5_fmmret.py line 18: "Tree B has NO fmm_ret variable and no status check").  The
+    fmmret family has no library on B.  The B column of the ten FE points (FE01-FE10) therefore cannot be injected through the
+    fmm_ret hook.  The pre-registered B expectation is UNKNOWN (no class assertion).  Consequence: a B run of an fmmret request
+    has no hook to hit (hit 0 = INVALID) for a structural reason, not a measured one.  This is recorded here, before the run.
+    The B row is run as registered; its result is reported as observed, with this reason.
+e3. Driver mapping used in R4-3 (chosen per family and per tree from the R4-1 libraries):
+      SI, AL18, CL, PJ, PN, PV (family A, D, B, B2) : B -> seamAB-B ; A -> seamAB-A ; F -> seamF
+      CLM1-CLM4, ACF1 (family C)                      : B -> seamAB-B ; A -> seamAB-A ; F -> seamF
+      FE01-FE10 (family E, fmmret)                    : A -> fmmret-A ; F -> fmmret-F ; B -> (no fmm_ret library, see e2)
+
+== f. Correction of ERRATA_3 f4 by the R4-4 measurement (new injector plancall:K:M) ==
+f1. ERRATA_3 f4 said: "NTH >= 3 is not reached because a plan call makes at most two wrapped mallocs (inferred, not measured)."
+    R4-4 measures the opposite for the plan calls that R3 could not reach.  With the new injector (plancall:K:1: K = the plan
+    call index, M = 1 = the first malloc inside call K), all 22 R3 INVALID plan points are reached (hit 1) on B and on F,
+    in both passes (44 pairs, 0 INVALID; pass 1 and pass 2 give the same class and the same rc, rc1, rc2, hit).
+    So: the first wrapped malloc exists inside plan calls K = 3, 4, 5, 12, 13, 14, 15 and 16 (fft and kottke).
+    The cause of the R3 INVALID was the single NTH used for two counts (ERRATA_4 b), not a shortage of mallocs in the call.
+    f4 is WITHDRAWN.  This is a measured result for M = 1 only.  M >= 2 is not measured here.
+f2. The original "plan" mode is unchanged in inject_r4_plan.cpp; its behaviour is checked by a regression (REGRESS_R4.tsv: 60 rows,
+    same observed class, same rc, rc1, hit as RESULTS_R3.tsv).  The regression covers a subset (30 points x B,F), not all of R3.
+f3. NOT_INJECTABLE: none.  Every one of the 22 points was reached with M = 1.  No gdb count was needed for this decision.
+f4. Observed difference from the pre-registration (recorded, not changed): on B, twice-route plan NTH 12 to 16 (fft and kottke,
+    10 pairs) give REPORTED_FAILURE (rc2 = 1, rc1 = 0), while the appendix expectation was CRASH.  Both passes agree.
+    The B source at fmm_FFT.cpp:85 has no NULL check after fft_plan_dft_2d, and plans[] is used at fmm_FFT.cpp:183 without a check
+    [源码 S4/fmm/fmm_FFT.cpp:85,183 @37a82e8].  That reading predicts CRASH and the measurement does not show it.  The cause is
+    NOT verified in R4.  The 10 rows stay MISMATCH.  This is recorded as an open item for R5.

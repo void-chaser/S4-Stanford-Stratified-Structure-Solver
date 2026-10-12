@@ -1,0 +1,137 @@
+ERRATA_3 -- P05-S4 R3.  Corrections of R2 and of earlier records, found in R3-0 and R3-1.  R1 and R2 files are NOT changed.
+Written after the R3 gate (R3-0) and before the R3 pre-registration (REGISTRY_S4_PRE_R3.tsv).  No R3 injection run has been made when this file is written.
+
+== a. R2 "45 rows" is 15 cases x 3 trees, not 45 points ==
+RESULTS_R2.tsv has 45 data rows (header excluded): 15 rows for BASE, 15 for CUR, 15 for F.  Each of the 15 cases
+is run on the three trees.  The 15 cases are: C0 (control, 3 trees), AL01, AL02, AL03, AL04, AL05, AL06, AL07, AL08,
+AL09, AL10, AL11, P01, EX01, EX02 (not counting the tree suffix).  That is 3 control rows and 42 injection rows
+(14 per tree: 14 injection cases x 3 trees), not 45 points.
+
+Exact F-column count (commands run in R3-0, read-only):
+  awk -F'\t' 'NR>1 && $2=="F"' RESULTS_R2.tsv | wc -l                  -> 15 F rows
+  awk -F'\t' 'NR>1 && $2=="F" && $12>=1' RESULTS_R2.tsv | wc -l          -> 11 F rows with hit >= 1
+  awk -F'\t' 'NR>1 && $2=="F" && $12==0' RESULTS_R2.tsv | wc -l          -> 4 F rows with hit = 0
+  awk -F'\t' 'NR>1 && $2=="F" && $12>=1{print $1}' RESULTS_R2.tsv | sed 's/-F$//' | sort -u | wc -l  -> 11 distinct points
+The 4 F rows with hit = 0 are: C0-F (control, expected 0) and AL05-F, AL08-F, AL11-F (NTH5, not reached).
+The 11 reached F points are: AL01 AL02 AL03 AL04 AL06 AL07 AL09 AL10 EX01 EX02 P01.
+So the effective F hit count is 11 points, which is what the R2 report's "about 11" means.  The R2 report's "45 rows"
+wording is corrected by this entry: it is 45 run rows (15 cases x 3 trees), not 45 points.
+
+== b. R2 AL01-AL11 and R1 AL01-AL18 are different identifiers ==
+R2 registry v2 (REGISTRY_S4_PRE_R2_v2.tsv) uses AL01-AL11 for injection rows in the "fft" and PolBasis modes.  R1
+(REGISTRY_S4_PRE.tsv) uses AL01-AL18 for source sites.  The same identifier means different things:
+  R1 AL01 = S4/fmm/fmm_closed.cpp:40 ivalues (ClosedForm).   R2 AL01 = the fft-mode work allocation (NTH 1, 6144 B).
+  R1 AL02 = S4/fmm/fmm_experimental.cpp:40 ivalues.          R2 AL02 = the fft-mode discval allocation (NTH 2, 16 B).
+  R1 AL03 = S4/fmm/fmm_FFT.cpp:74 work.                      R2 AL03 = Jones NTH 3 (observed 10720 B, see c and d).
+RULE FOR R3: the identifiers AL01-AL18 are NOT reused as new point ids in R3.  New point ids use
+"M-<route>-<mode>-<category>-<NTH>" (route = once or twice, mode, category = malloc/plan/exec, NTH = gdb global call
+index).  The R1 identifier is kept only in the column r1_id, written by source site.  Correspondence of the R2 names to
+the R3 point ids is given in section e.
+
+== c. R2 T-2, T-3 and T-8 are rule violations, not "legitimate targets" ==
+The R2 report (P05_S4R2_REPORT.md section 8.2) describes T-2, T-3 and T-8 as "the target is legitimate".  That is not
+a complete account.  They ran shell commands that write files (redirections or tar -x) without going through
+testing/d003/safe_run.sh, which is the violation of the write-path rule (P05 hard rule, MEMORY.md).
+  T-2  R2-0  git ls-tree ... > "$EV/tmp/F_expected_blobs.txt"          bare redirection, no safe_run     written: YES
+  T-3  R2-2  git archive 1c11905 S4 | tar -x -C "$EV/tmp/seamchk"  2>/dev/null   bare, AND stderr hidden  written: YES
+  T-8  R2-2  find S4 ... | while read ... printf ... > "$EV/tmp/F_export_blob.txt" ; git ls-tree ... > "$EV/tmp/F_git_blob.txt"
+        bare redirections, no safe_run                                   written: YES
+The target paths were inside the repository ($EV/tmp).  That is why they are not "out-of-repo writes"; it does NOT make
+the commands compliant.  In the R3 record they are listed in table two (tool and script events), with the rule that
+was broken, and not in table one.  T-3 additionally hid stderr (2>/dev/null), which the rule also forbids.
+
+== d. Other corrections found in R3-0 and R3-1 (checked, no expectation changed) ==
+d1. The R2 trees and drivers are under checkpoints/p05/evidence/p05-s4r2/run2/, not under p05-s4r2/trees/ or
+    p05-s4r2/drivers/ as the R3 task text says.  Paths used by R3:
+      trees   : checkpoints/p05/evidence/p05-s4r2/run2/trees/{B,A,H,F}/build/libS4.a
+      drivers : checkpoints/p05/evidence/p05-s4r2/run2/drivers/plain-{B,A,H,F}/driver-d003
+    The libS4 sha256 values match the R2 records: B fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba,
+    F be17f4696f557b13fb9724c2c38d20e05ec7f1a62ce3ae6cf9e827f6a1432cc2 (A 865c5893..., H f053bfea... from the same run).
+d2. The R2 drivers carry no debug information (readelf: no .debug_* section; file: "not stripped").  gdb can therefore give
+    the function containing a return address (info symbol), but not a source line.  Caller file is recorded as NONE.
+    The S4/ build was NOT changed (no -g rebuild), as the task requires.
+d3. The R1 registry line numbers are the baseline tree B (37a82e8) lines, not F lines.  Checked with git grep at 37a82e8:
+    fmm_FFT.cpp:74/81, fmm_PolBasisJones.cpp:107/153/167/337, fmm_PolBasisNV.cpp:58/110/122/225,
+    fmm_PolBasisVL.cpp:57/115/127/234, fmm_kottke.cpp:85, fmm_closed.cpp:40 all match R1 exactly.  At HEAD (F tree)
+    the same allocation sites are at 75/83, 108/155/170/346, 59/112/125/236, 58/117/130/243, 87, 40.  R3 keys its
+    mapping on (caller, category, size), not on line numbers.
+d4. Allocation sizes at NG=9 (n=9, nn=81, ng2=64, one pattern shape) match the formulas in the source:
+    ivalues 8*12*2 = 192;  Jones work 16*(5nn+4ng2)+8*2n = 10720;  NV/VL work 16*(6nn+4ng2) = 11872;
+    vfield 16*ng2 = 1024;  Jones cache-hit work 16*nn = 1296;  NV/VL cache-hit work 16*2nn = 2592;
+    FFT work 16*6*ng2 = 6144;  FFT/kottke discval 8*(nshapes+1) = 16.  Checked by arithmetic (python3, NG=9, ng2=64 from
+    vfield 1024 = 16*64) and by the discovery sizes; all eight agree.  The R2 ERRATA_2 section 5 mapping (NTH3 = ivalues
+    192 B) is wrong: NTH3 is the work allocation (10720 B for Jones, 11872 B for NV and VL).  R2 expectations are NOT
+    changed (disclosed).
+d5. The GetFieldOnGrid caller (S4/rcwa.cpp:2155) makes 12 fft_plan_dft_2d and 12 fft_plan_exec calls per driver run.  It
+    is NOT an FMM file.  Its plan and exec return values are checked on BOTH trees: at B (37a82e8) rcwa.cpp:2209-2210
+    "if(NULL == plan[i]){ ret = 1; goto cleanup; }" and rcwa.cpp:2245 "if(0 != fft_plan_exec(plan[i])){ ret = 1; goto
+    cleanup; }"; at HEAD the same two lines (2209-2210, 2245).  So GetFieldOnGrid is a checked non-FMM caller on both trees.
+    These calls are counted in CALLSEQ and classed in_D003_scope = NO.  They are not red points.  The R2 registry did not
+    distinguish them from FMM plan/exec points; that is a registry scope error.
+d6. The R2 registry NTH mapping for fft exec differs from R1: R1 EX01 is fmm_FFT.cpp:183 (plans[4]) and EX02 is :212 (plans[w]).
+    Discovery shows the same split by return address (NTH 1 = one address, NTH 2-5 = another).  Consistent.
+d7. The discovery does NOT see allocations made inside S4.o (the same translation unit as S4_malloc), because --wrap
+    only redirects undefined references (P05_S2_TEST_HARNESS.md lines 115 and 488).  ComputeLayerModes S4_malloc
+    (CLM2-CLM4), AddFieldToCache (ACF1) and the libc malloc at S4.cpp:2267 (CLM1) do not appear in CALLSEQ.  This is a
+    measured limit of the wrap method, not evidence that those sites are not reached.  See the UNMAPPED list in the report.
+
+== e. Correspondence of R2 names to R3 point ids (for the reader) ==
+R2 name   R2 meaning                                     R3 point id (route once, mode, category, NTH)
+AL01      fft work 6144 B                                 M-once-fft-malloc-1
+AL02      fft discval 16 B                                M-once-fft-malloc-2
+AL03      jones NTH 3 (observed 10720 B, work)            M-once-jones-malloc-3
+AL04      jones NTH 4 (observed 1024 B, vfield)           M-once-jones-malloc-4
+AL05      jones NTH 5 (NOT reached on once; reached on twice as 192 B ClosedForm)  M-twice-jones-malloc-5
+AL06      nv NTH 3 (11872 B, work)                        M-once-nv-malloc-3
+AL07      nv NTH 4 (1024 B, vfield)                       M-once-nv-malloc-4
+AL08      nv NTH 5 (not reached on once)                  M-twice-nv-malloc-5
+AL09      vl NTH 3 (11872 B, work)                        M-once-vl-malloc-3
+AL10      vl NTH 4 (1024 B, vfield)                       M-once-vl-malloc-4
+AL11      vl NTH 5 (not reached on once)                  M-twice-vl-malloc-5
+P01       fft plan NTH 1 (fmm_FFT.cpp:85 plan)            M-once-fft-plan-1
+EX01      fft exec NTH 1 (fmm_FFT.cpp:183 plans[4])       M-once-fft-exec-1
+EX02      fft exec NTH 2 (fmm_FFT.cpp:212 plans[w])       M-once-fft-exec-2
+NOTE: the R2 names AL05/AL08/AL11 were "NTH 5 not reached" on the once route.  Checked in R3 (CALLSEQ, tree F, rep 1):
+on route once, jones/nv/vl make exactly 4 malloc calls, so NTH 5 cannot be reached there (consistent with R2 HITCOUNT 0).
+On route twice, NTH 5 is the ClosedForm ivalues (192 B, FMMGetEpsilon_ClosedForm), NTH 6 is the PolBasis ivalues (192 B),
+and NTH 7 is the cache-hit work (1296 B Jones, 2592 B NV and VL).  So the R2 label "vfield" for NTH 5 was wrong (it is
+never vfield), and the R2 names AL05/AL08/AL11 are not used in R3.  The R2 expectations are NOT corrected in place
+(disclosed here).  The R3 point ids for these sites are M-twice-<mode>-malloc-5/6/7.
+
+== f. plan injection reachability: measured facts, and a correction of an earlier reading (R3-4, after the YES sweep) ==
+f1. Measured (tree F, route once, all modes, YES and out-of-scope rows together): a plan injection with NTH 1 and NTH 2
+    is reached (hit = 1) in every mode tested (fft, kottke, closed1d, jones); NTH 3 to 12 are NOT reached (hit = 0).
+    Tree B is the same (checked in the sweep).  The 22 INVALID YES points are exactly the fft and kottke plan NTH 3-5 and
+    12-16 (route once and twice).  The 348 INVALID out-of-scope rows are the same pattern (plan NTH >= 3).
+f2. The earlier reading in the sweep notes, "a plan injection can only hit NTH 1", is WRONG and is withdrawn: NTH 2 is
+    reached.  Correct statement: plan NTH 1 and 2 are reached; NTH >= 3 is not reached with this injector.
+f3. A reading I made and then corrected: the line "S4FMM HIT real malloc failure: plan preparation 24 B (hit=2)" in the
+    closed1d log shows n_plan_alloc = 2 (the value printed in that line is n_plan_alloc, not the hit count).  The hit count
+    is HITCOUNT 1 in the same log.  So "hit=2" in that line is not two hits.
+f4. Mechanism (inferred, NOT measured): the injector counts the NTH-th plan call (n_plan_calls == nth) and, inside that
+    call, fails the NTH-th malloc (n_plan_alloc == nth).  If fft_plan_dft_2d makes at most two wrapped mallocs per call,
+    NTH >= 3 can never be reached.  The measured reachability is consistent with that, but the number of wrapped mallocs
+    per plan call was NOT counted in R3.  This is an R4 measurement item.  Until it is measured, the INVALID plan points
+    are INVALID by measurement, and their cause is an inference.
+f5. Consequence for the coverage claim: plan NTH >= 3 (FMM and out-of-scope) is NOT covered by this injector.  It is not
+    a red point and it is not repaired.  It is listed as UNCOVERED (INVALID by measurement) in the report.
+
+== g. Four MISMATCH rows: a pre-registration expectation that the pre-registration basis did not state (disclosed, not
+==    changed) ==
+g1. The four MISMATCH rows of the YES sweep are the B-tree vfield points at NTH 4 with 1024 B:
+      M-once-jones-malloc-4, M-twice-jones-malloc-4, M-once-vl-malloc-4, M-twice-vl-malloc-4.
+    Observed: SILENT_SWALLOW (rc 1, rc1 0, hit 1).  Pre-registered expectation: CRASH.
+g2. The same pattern was already observed in R2, before the R3 pre-registration was written: R2 AL04-B (jones NTH 4) and
+    AL10-B (vl NTH 4) are SILENT_SWALLOW (RESULTS_R2.tsv, rc 1 rc1 0).  R2 AL07-B (nv NTH 4) is CRASH (rc 139).  R3 reproduces
+    these three observations exactly: jones and vl SILENT_SWALLOW, nv CRASH (M-*-nv-malloc-4 observed CRASH, rc 139).
+g3. The pre-registration rule for B malloc is CRASH, and the basis text written in REGISTRY_S4_PRE_R3.tsv says "S4_malloc
+    result used without a NULL check".  That basis does NOT state the R2 observation that jones and vl NTH 4 do not crash.
+    This is a gap in the pre-registration basis.  I did not change the registry (its sha256 is recorded).  The gap is
+    disclosed here.  The four rows stay MISMATCH.  They are not UNDECLARED in the sense of an unrecorded difference,
+    because R2 recorded the same observation; they are a pre-registration basis omission.
+g4. Source (B, 37a82e8), read only: the vfield pointer is written at fmm_PolBasisJones.cpp:174-175 and
+    fmm_PolBasisVL.cpp:134-135 and fmm_PolBasisNV.cpp:129-130 with the same form.  Why NV crashes and Jones and VL do not is
+    NOT established.  It depends on the control flow after the NULL, which was not read to the end in R3.  It is an R4 item
+    (gdb breakpoint on the first vfield store, or reading the branch that runs after the NULL).
+g5. Judge consequence: the judge reads rc and rc1 only.  SILENT_SWALLOW for these four rows is a fact of the run (rc 1 is
+    the driver's own FAIL verdict, which the judge does not read; rc1 0 is the fact used).

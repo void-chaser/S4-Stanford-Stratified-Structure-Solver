@@ -1,0 +1,59 @@
+# REGISTRY_S4_PRE_R4_B.tsv -- P05-S4 R4-4 pre-registration (appendix B to v4).  Written BEFORE any run of the R4-4 plan points.
+# This file does NOT change REGISTRY_S4_PRE_R4.tsv (v4, hash-locked).  Any later correction is a new *_R4_ERRATA file.
+# Purpose: the 22 R3 points that were INVALID (hit 0) with the old plan injector (R3 ERRATA_3 f), re-run with the new
+#   injector inject_r4_plan.cpp, in which the call index K and the malloc index M are two independent counters.
+# Request form: plancall:K:M with M = 1 (the first wrapped malloc inside plan call K), K = the R3 plan NTH of the point.
+# Expectations: copied from the R3 pre-registration (REGISTRY_S4_PRE_R3.tsv, sha256 fc0c060b44200ee57059c3a0db8c5dae2af11efc6d2e02618731959e7841e428),
+#   where B = CRASH and F = REPORTED_FAILURE for every plan point.  They were not changed.
+#   Basis for the registration of these 22 points: R3 observed hit 0 for every one of them (RESULTS_R3.tsv, INVALID),
+#   so the R3 expectation was never tested.  R4 tests it with the new counters.
+# Expected class rule (fixed here): B = CRASH, F = REPORTED_FAILURE.  The result is judged by judge_d003.classify on facts.
+# inj_call: 1 for once-route points, 2 for twice-route points (from FIELDCALL_MAP.tsv of R3, read by column name).
+# UNREACHABLE_EXPECTED: a point whose plan call K has fewer than M = 1 wrapped malloc would give hit 0 (NOT_INJECTABLE).
+#   Not expected a priori for M = 1 (every plan call makes at least one malloc, to be confirmed by the run or by gdb).
+# status: INFLUENCED for every row (the R3 result was read before this file was written).
+point_id	r1_id	tree	route	mode	nth_K	M	request	inj_call	expected_class	basis	status
+M-once-fft-plan-3	-	B	once	fft	3	1	plancall:3:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-fft-plan-3	-	F	once	fft	3	1	plancall:3:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-once-fft-plan-4	-	B	once	fft	4	1	plancall:4:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-fft-plan-4	-	F	once	fft	4	1	plancall:4:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-once-fft-plan-5	-	B	once	fft	5	1	plancall:5:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-fft-plan-5	-	F	once	fft	5	1	plancall:5:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-3	-	B	once	kottke	3	1	plancall:3:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-3	-	F	once	kottke	3	1	plancall:3:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-4	-	B	once	kottke	4	1	plancall:4:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-4	-	F	once	kottke	4	1	plancall:4:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-5	-	B	once	kottke	5	1	plancall:5:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-once-kottke-plan-5	-	F	once	kottke	5	1	plancall:5:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-3	-	B	twice	fft	3	1	plancall:3:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-3	-	F	twice	fft	3	1	plancall:3:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-4	-	B	twice	fft	4	1	plancall:4:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-4	-	F	twice	fft	4	1	plancall:4:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-5	-	B	twice	fft	5	1	plancall:5:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-5	-	F	twice	fft	5	1	plancall:5:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-12	-	B	twice	fft	12	1	plancall:12:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-12	-	F	twice	fft	12	1	plancall:12:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-13	-	B	twice	fft	13	1	plancall:13:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-13	-	F	twice	fft	13	1	plancall:13:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-14	-	B	twice	fft	14	1	plancall:14:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-14	-	F	twice	fft	14	1	plancall:14:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-15	-	B	twice	fft	15	1	plancall:15:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-15	-	F	twice	fft	15	1	plancall:15:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-16	-	B	twice	fft	16	1	plancall:16:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-fft-plan-16	-	F	twice	fft	16	1	plancall:16:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-3	-	B	twice	kottke	3	1	plancall:3:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-3	-	F	twice	kottke	3	1	plancall:3:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-4	-	B	twice	kottke	4	1	plancall:4:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-4	-	F	twice	kottke	4	1	plancall:4:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-5	-	B	twice	kottke	5	1	plancall:5:1	1	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-5	-	F	twice	kottke	5	1	plancall:5:1	1	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-12	-	B	twice	kottke	12	1	plancall:12:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-12	-	F	twice	kottke	12	1	plancall:12:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-13	-	B	twice	kottke	13	1	plancall:13:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-13	-	F	twice	kottke	13	1	plancall:13:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-14	-	B	twice	kottke	14	1	plancall:14:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-14	-	F	twice	kottke	14	1	plancall:14:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-15	-	B	twice	kottke	15	1	plancall:15:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-15	-	F	twice	kottke	15	1	plancall:15:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-16	-	B	twice	kottke	16	1	plancall:16:1	2	CRASH	[历史 REGISTRY_S4_PRE_R3 CRASH; R3 hit 0]	INFLUENCED
+M-twice-kottke-plan-16	-	F	twice	kottke	16	1	plancall:16:1	2	REPORTED_FAILURE	[历史 REGISTRY_S4_PRE_R3 REPORTED_FAILURE; R3 hit 0]	INFLUENCED

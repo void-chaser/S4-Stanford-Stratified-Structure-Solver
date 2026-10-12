@@ -1,0 +1,9 @@
+# control runs: one clean run (no injection) per library; expected CONTROL_OK
+addf-F	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+b2buf-F	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+fmmbuf-B	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+fmmret-A	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+fmmret-F	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+seamAB-A	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+seamAB-B	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control
+seamF	rc=0	rc1=0	hit=0	observed=CONTROL_OK	clean control

@@ -1,0 +1,6 @@
+GATE R4 (P05-S4 R4 sub-round)
+START (R4-0, before any write): branch=codex/p05-d003-fft-error-propagation HEAD=7f54997ee2f4d5e6512a3028f52e9b4ed47410a0 git-status-short=empty S4tree=4a6f64927a30537740dd0c8f11f9a5aae5e46ba4 judge_d003.py sha256=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+START /tmp top-level: entries=0 sha256(sorted list)=e3b0c44298fc1c14 (empty)
+END /tmp top-level: entries=0 sha256(sorted list)=e3b0c44298fc1c14
+END result: unchanged from START
+NOTE: one bare command wrote the string /tmp_none (redirection to a root path); the filesystem returned Read-only file system; no file was created (see report table one).

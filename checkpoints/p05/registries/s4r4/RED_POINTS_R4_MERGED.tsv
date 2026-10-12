@@ -1,0 +1,28 @@
+# RED_POINTS_R4_MERGED.tsv -- P05-S4 R4-5.  Red point (tree F, in scope) = observed CRASH or SILENT_SWALLOW, or hit 0.
+# Section A: the 22 R3 red points (all INVALID in R3) and their state after R4-4 (plancall re-run, two passes).
+# Section B: red points of the R4-3 main matrix (tree F, 25 pre-registered points).  Recorded only; not fixed.
+# Note: an R4-4 state of REPORTED_FAILURE means rc1 or rc2 != 0 under the injection.  It is NOT a repair or a verification.
+section	point_id	mode	family_or_category	request_or_NTH	caller_function	rc	rc1	rc2	signal	hit	observed_now	state
+A	M-once-fft-plan-3	fft	plan	NTH 3	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-once-fft-plan-4	fft	plan	NTH 4	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-once-fft-plan-5	fft	plan	NTH 5	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-once-kottke-plan-3	kottke	plan	NTH 3	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-once-kottke-plan-4	kottke	plan	NTH 4	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-once-kottke-plan-5	kottke	plan	NTH 5	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-12	fft	plan	NTH 12	FMMGetEpsilon_FFT	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-13	fft	plan	NTH 13	FMMGetEpsilon_FFT	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-14	fft	plan	NTH 14	FMMGetEpsilon_FFT	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-15	fft	plan	NTH 15	FMMGetEpsilon_FFT	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-16	fft	plan	NTH 16	FMMGetEpsilon_FFT	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-3	fft	plan	NTH 3	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-4	fft	plan	NTH 4	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-fft-plan-5	fft	plan	NTH 5	FMMGetEpsilon_FFT	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-12	kottke	plan	NTH 12	FMMGetEpsilon_Kottke	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-13	kottke	plan	NTH 13	FMMGetEpsilon_Kottke	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-14	kottke	plan	NTH 14	FMMGetEpsilon_Kottke	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-15	kottke	plan	NTH 15	FMMGetEpsilon_Kottke	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-16	kottke	plan	NTH 16	FMMGetEpsilon_Kottke	1	0	1	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-3	kottke	plan	NTH 3	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-4	kottke	plan	NTH 4	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+A	M-twice-kottke-plan-5	kottke	plan	NTH 5	FMMGetEpsilon_Kottke	1	20	0	-	1	REPORTED_FAILURE	was INVALID in R3; hit>=1 in R4-4 (REPORTED_FAILURE); not a repair
+B	(none)	-	-	-	-	-	-	-	-	-	R4-3 main matrix: 0 red points on F (25 F rows, all REPORTED_FAILURE, hit 1)

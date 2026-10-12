@@ -1,0 +1,9 @@
+# OUTSCOPE_COUNT_R3.tsv -- P05-S4 R3-5 out-of-scope (in_D003_scope=NO) counts.  Counted only; not red points.
+# Section A: observed NO plan/exec points (GetFieldOnGrid, rcwa.cpp).  Section B: non-FMM S4_malloc (static).
+section	category	tree	observed_class	count
+A	exec	B	REPORTED_FAILURE	192
+A	exec	F	REPORTED_FAILURE	192
+A	plan	B	INVALID	174
+A	plan	B	REPORTED_FAILURE	18
+A	plan	F	INVALID	174
+A	plan	F	REPORTED_FAILURE	18

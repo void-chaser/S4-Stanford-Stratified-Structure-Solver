@@ -1,0 +1,112 @@
+# REGISTRY_S4_PRE_R4.tsv -- P05-S4 R4-2 pre-registration v4.  Written BEFORE any R4 matrix run, injection or plan test.
+# Columns: point_id	r1_id	tree	family	request	mode	expected_class	basis	status
+# point_id: a new id "R4-<r1_id>-<tree>" (the R1 id is kept in column r1_id; R1 ids are not reused as new point ids).
+# Trees: B = 37a82e8 (baseline, not a fix), A = 876181c, F = 1c11905 (frozen; the fixed tree).
+# Scope (R3 UNMAPPED): SI01-SI02, AL18, FE01-FE10, CL01-CL04, PJ01, PN01, PV01, CLM1-CLM4, ACF1.  25 points x 3 trees = 75 rows.
+#
+# REQUEST STRINGS: taken from the frozen registries (see the basis column for the file and line).  Not written from memory.
+#   SI  : linearsolve:1:1:info (fft), linearsolve:2:1:info (kottke)           [历史 checkpoints/p05/registries/s2r5 ...; s2r6/frozen]
+#   CL  : linearsolve_null:11..14:1 (B, A)  ;  linearsolve_null2:134|138|144|244:1 (F)
+#   PJ/PN/PV: linearsolve_null:15|16|17:1 (B, A) ; linearsolve_null2:375|265|273:1 (F)
+#   FE  : fmmret:150..159:1 (A, F); fmmbuf:150..159:1 is a DIFFERENT family and is not used for FE on B
+#   CLM : alloc:21..24:1 (family C)
+#   ACF1: alloc:25:1 (family C; F site S4.cpp:4007 = FieldCache malloc inside Simulation_AddFieldToCache)
+#   AL18: kottke_alloc:31:1 (family D)
+# K = 1 for every row (the registered K of each row in the frozen registries).
+#
+# DRIVER MODE: taken from the frozen registry row for the same request.  Where one request has several modes in the
+#   registries, the mode is the one of the driver path that calls the site (see basis).
+#
+# EXPECTATION RULE (fixed here, before any run):
+#   F column: REPORTED_FAILURE for every point, because F has an explicit check at each of these sites (basis lists the
+#             file:line and the check).  A point whose F check is not in the source would get a different expectation and
+#             the basis would say so.  None needed one (see the check list in ERRATA_4 section a and in the report).
+#   B column: the historical observation of this point on B, from the frozen registries, if one exists (judge class
+#             written in the registry; not a guess).  If no historical observation exists, the cell is UNKNOWN.
+#   A column: the same rule on the A tree (CUR rows of the frozen registries); UNKNOWN if none.
+#   info=NULL: B and A use family B (linearsolve_null), F uses family B2 (linearsolve_null2).  The two fault models are
+#             different (B and A discard info; F checks info).  The B/F classes are therefore NOT required to match.
+#   FE on B: B has no fm_ret status (the return value of FMMGetEpsilon_* is discarded on B; R5 SITE_FACTS).  The B cell
+#             for FE is UNKNOWN; the fmmbuf observations of the frozen registry are a different family and are not used.
+# basis tags: [源码 file:line@commit] [历史 registry-file:line] [推断].  No BLIND status anywhere.
+# status: INFLUENCED for every row (the registries and ERRATA were read before this file was written).
+#
+# UNREACHABLE_EXPECTED: rows whose seam is expected to have hit 0 BEFORE the run.  Listed here, with the reason, and checked
+#   after the run.  None are listed now.  (The injection points are reached through the driver paths listed in the basis.)
+# ---------------------------------------------------------------------------------------------------------------------------
+point_id	r1_id	tree	family	request	mode	expected_class	basis	status
+R4-SI01-B	SI01	B	A	linearsolve:1:1:info	fft	UNKNOWN	[历史 无 B 树 SI01 行，见 s2r5/s2r6 登记；B 的 fft 路径的 solve_info 站点 37a82e8:S4/fmm/fmm_FFT.cpp:204 存在] 无历史观察	INFLUENCED
+R4-SI01-A	SI01	A	A	linearsolve:1:1:info	fft	UNKNOWN	[历史 无 CUR 树 SI01 行] 站点 876181c:S4/fmm/fmm_FFT.cpp:209 存在	INFLUENCED
+R4-SI01-F	SI01	F	A	linearsolve:1:1:info	fft	REPORTED_FAILURE	[源码 S4/fmm/fmm_FFT.cpp:210 1c11905: if(0 != solve_info){ ret = 1; goto cleanup; }] [历史 registry new/A-fft-info-k1 H 行 REPORTED_FAILURE 继承 CUR] 	INFLUENCED
+R4-SI02-B	SI02	B	A	linearsolve:2:1:info	kottke	UNKNOWN	[历史 无 B 树 SI02 行] 站点 37a82e8:S4/fmm/fmm_kottke.cpp:279 存在	INFLUENCED
+R4-SI02-A	SI02	A	A	linearsolve:2:1:info	kottke	UNKNOWN	[历史 无 CUR 树 SI02 行] 站点 876181c:S4/fmm/fmm_kottke.cpp:284 存在	INFLUENCED
+R4-SI02-F	SI02	F	A	linearsolve:2:1:info	kottke	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:285 1c11905: if(0 != solve_info){ ret = 1; goto cleanup; }] [历史 registry new/A-kottke-info-k1 H 行继承 CUR]	INFLUENCED
+R4-AL18-B	AL18	B	D	kottke_alloc:31:1	kottke	UNKNOWN	[历史 无 B 树 AL18 行的 kottke_alloc 登记] 站点 37a82e8:S4/fmm/fmm_kottke.cpp:78 fft_alloc_complex 存在；B 上无 NULL 检查（R1 basis）	INFLUENCED
+R4-AL18-A	AL18	A	D	kottke_alloc:31:1	kottke	UNKNOWN	[历史 无 CUR 树 AL18 行的 kottke_alloc 登记]	INFLUENCED
+R4-AL18-F	AL18	F	D	kottke_alloc:31:1	kottke	REPORTED_FAILURE	[源码 S4/fmm/fmm_kottke.cpp:79 1c11905: if(NULL == work){ return 1; }] [历史 registry t1/kottke-work-k1 H 行 REPORTED_FAILURE 继承 CUR]	INFLUENCED
+R4-FE01-B	FE01	B	E	fmmret:150:1	experimental	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2368 返回值被丢弃] B 无 fm_ret 状态（SITE_FACTS）	INFLUENCED
+R4-FE01-A	FE01	A	E	fmmret:150:1	experimental	REPORTED_FAILURE	[历史 registry R5-1-A150-exp CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE01-F	FE01	F	E	fmmret:150:1	experimental	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905: if(0 != fmm_ret){ return 20; }] [历史 registry R5-1-H150-exp REPORTED_FAILURE]	INFLUENCED
+R4-FE02-B	FE02	B	E	fmmret:151:1	kottke	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2372 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE02-A	FE02	A	E	fmmret:151:1	kottke	REPORTED_FAILURE	[历史 registry R5-1-A151-kot CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE02-F	FE02	F	E	fmmret:151:1	kottke	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905] [历史 registry R5-1-H151-kot REPORTED_FAILURE]	INFLUENCED
+R4-FE03-B	FE03	B	E	fmmret:152:1	fft	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2374 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE03-A	FE03	A	E	fmmret:152:1	fft	REPORTED_FAILURE	[历史 registry R5-1-A152-fft CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE03-F	FE03	F	E	fmmret:152:1	fft	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905] [历史 registry R5-1-H152-fft REPORTED_FAILURE]	INFLUENCED
+R4-FE04-B	FE04	B	E	fmmret:153:1	fftjones	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2377 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE04-A	FE04	A	E	fmmret:153:1	fftjones	REPORTED_FAILURE	[历史 registry R5-1-A153-fftjones CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE04-F	FE04	F	E	fmmret:153:1	fftjones	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 153 为 2391 basis-1 Jones] [历史 registry R5-1-H152-fftjones REPORTED_FAILURE]	INFLUENCED
+R4-FE05-B	FE05	B	E	fmmret:154:1	fftnv	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2379 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE05-A	FE05	A	E	fmmret:154:1	fftnv	REPORTED_FAILURE	[历史 registry R5-1-A154-fftnv CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE05-F	FE05	F	E	fmmret:154:1	fftnv	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 154 为 2393 basis-1 NV] [历史 registry R5-1-H154-fftnv]	INFLUENCED
+R4-FE06-B	FE06	B	E	fmmret:155:1	fftvl	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2381 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE06-A	FE06	A	E	fmmret:155:1	fftvl	REPORTED_FAILURE	[历史 registry R5-1-A155-fftvl CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE06-F	FE06	F	E	fmmret:155:1	fftvl	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 155 为 2395 basis-1 VL] [历史 registry R5-1-H155-fftvl]	INFLUENCED
+R4-FE07-B	FE07	B	E	fmmret:159:1	closed1d	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2386 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE07-A	FE07	A	E	fmmret:159:1	closed1d	REPORTED_FAILURE	[历史 registry R5-1-A159-closed1d CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE07-F	FE07	F	E	fmmret:159:1	closed1d	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 159 为 2400 ClosedForm] [历史 registry R5-1-H159-closed1d]	INFLUENCED
+R4-FE08-B	FE08	B	E	fmmret:156:1	jones	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2389 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE08-A	FE08	A	E	fmmret:156:1	jones	REPORTED_FAILURE	[历史 registry R5-1-A156-jones CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE08-F	FE08	F	E	fmmret:156:1	jones	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 156 为 2403 basis-2 Jones] [历史 registry R5-1-H156-jones]	INFLUENCED
+R4-FE09-B	FE09	B	E	fmmret:157:1	nv	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2391 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE09-A	FE09	A	E	fmmret:157:1	nv	REPORTED_FAILURE	[历史 registry R5-1-A157-nv CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE09-F	FE09	F	E	fmmret:157:1	nv	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 157 为 2405 basis-2 NV] [历史 registry R5-1-H157-nv]	INFLUENCED
+R4-FE10-B	FE10	B	E	fmmret:158:1	vl	UNKNOWN	[源码 37a82e8:S4/S4.cpp:2393 返回值被丢弃] B 无 fm_ret 状态	INFLUENCED
+R4-FE10-A	FE10	A	E	fmmret:158:1	vl	REPORTED_FAILURE	[历史 registry R5-1-A158-vl CUR REPORTED_FAILURE]	INFLUENCED
+R4-FE10-F	FE10	F	E	fmmret:158:1	vl	REPORTED_FAILURE	[源码 S4/S4.cpp:2413 1c11905; 158 为 2407 basis-2 VL] [历史 registry R5-1-H158-vl]	INFLUENCED
+R4-CL01-B	CL01	B	B	linearsolve_null:11:1	closed1d	SILENT_SWALLOW	[历史 registry 3c3-closed130-BASE SILENT_SWALLOW（实测 INFLUENCED）] 站点 37a82e8:S4/fmm/fmm_closed.cpp:129	INFLUENCED
+R4-CL01-A	CL01	A	B	linearsolve_null:11:1	closed1d	SILENT_SWALLOW	[历史 registry 3c3-closed130-CUR SILENT_SWALLOW; R4-1-A11]	INFLUENCED
+R4-CL01-F	CL01	F	B2	linearsolve_null2:134:1	closed1d	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:135 1c11905: if(0 != solve_info){ S4_free(ivalues); return 1; }] [历史 registry 3c3-closed130 H 树继承]	INFLUENCED
+R4-CL02-B	CL02	B	B	linearsolve_null:12:1	closed1d	SILENT_SWALLOW	[历史 registry 3c3-closed133-BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_closed.cpp:132	INFLUENCED
+R4-CL02-A	CL02	A	B	linearsolve_null:12:1	closed1d	SILENT_SWALLOW	[历史 registry 3c3-closed133-CUR SILENT_SWALLOW; R4-1-A12]	INFLUENCED
+R4-CL02-F	CL02	F	B2	linearsolve_null2:138:1	closed1d	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:139 1c11905: if(0 != solve_info){ S4_free(ivalues); return 1; }]	INFLUENCED
+R4-CL03-B	CL03	B	B	linearsolve_null:13:1	closed2d	SILENT_SWALLOW	[历史 registry 3c3-closed138-BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_closed.cpp:137	INFLUENCED
+R4-CL03-A	CL03	A	B	linearsolve_null:13:1	closed2d	SILENT_SWALLOW	[历史 registry 3c3-closed138-CUR SILENT_SWALLOW; R4-1-A13]	INFLUENCED
+R4-CL03-F	CL03	F	B2	linearsolve_null2:144:1	closed2d	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:145 1c11905: if(0 != solve_info){ S4_free(ivalues); return 1; }]	INFLUENCED
+R4-CL04-B	CL04	B	B	linearsolve_null:14:1	tensor	SILENT_SWALLOW	[历史 registry 3c3-closed235-BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_closed.cpp:234	INFLUENCED
+R4-CL04-A	CL04	A	B	linearsolve_null:14:1	tensor	SILENT_SWALLOW	[历史 registry 3c3-closed235-CUR SILENT_SWALLOW; R4-1-A14]	INFLUENCED
+R4-CL04-F	CL04	F	B2	linearsolve_null2:244:1	tensor	REPORTED_FAILURE	[源码 S4/fmm/fmm_closed.cpp:245 1c11905: if(0 != solve_info){ S4_free(ivalues); return 1; }]	INFLUENCED
+R4-PJ01-B	PJ01	B	B	linearsolve_null:15:1	jones	SILENT_SWALLOW	[历史 registry 3b-pb369-jones BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_PolBasisJones.cpp:361	INFLUENCED
+R4-PJ01-A	PJ01	A	B	linearsolve_null:15:1	jones	SILENT_SWALLOW	[历史 registry 3b-pb369-jones CUR SILENT_SWALLOW; R4-1-A15]	INFLUENCED
+R4-PJ01-F	PJ01	F	B2	linearsolve_null2:375:1	jones	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisJones.cpp:376 1c11905: if(0 != solve_info){]	INFLUENCED
+R4-PN01-B	PN01	B	B	linearsolve_null:16:1	nv	SILENT_SWALLOW	[历史 registry 3b-pb260-nv BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_PolBasisNV.cpp:252	INFLUENCED
+R4-PN01-A	PN01	A	B	linearsolve_null:16:1	nv	SILENT_SWALLOW	[历史 registry 3b-pb260-nv CUR SILENT_SWALLOW; R4-1-A16]	INFLUENCED
+R4-PN01-F	PN01	F	B2	linearsolve_null2:265:1	nv	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisNV.cpp:268 1c11905: if(0 != solve_info){]	INFLUENCED
+R4-PV01-B	PV01	B	B	linearsolve_null:17:1	vl	SILENT_SWALLOW	[历史 registry 3b-pb268-vl BASE SILENT_SWALLOW] 站点 37a82e8:S4/fmm/fmm_PolBasisVL.cpp:260	INFLUENCED
+R4-PV01-A	PV01	A	B	linearsolve_null:17:1	vl	SILENT_SWALLOW	[历史 registry 3b-pb268-vl CUR SILENT_SWALLOW; R4-1-A17]	INFLUENCED
+R4-PV01-F	PV01	F	B2	linearsolve_null2:273:1	vl	REPORTED_FAILURE	[源码 S4/fmm/fmm_PolBasisVL.cpp:274 1c11905: if(0 != solve_info){]	INFLUENCED
+R4-CLM1-B	CLM1	B	C	alloc:21:1	fft	CRASH	[历史 registry 3b-cl2267 BASE CRASH; 实测 INFLUENCED] family C id 21 replaces malloc, unchecked on B	INFLUENCED
+R4-CLM1-A	CLM1	A	C	alloc:21:1	fft	CRASH	[历史 registry 3b-cl2267 CUR CRASH; 实测 INFLUENCED] A line 2267 unchecked (pre-S3R)	INFLUENCED
+R4-CLM1-F	CLM1	F	C	alloc:21:1	fft	REPORTED_FAILURE	[源码 S4/S4.cpp:2270 1c11905: if(NULL == *layer_modes){ return 20; }] [历史 registry 3b-cl2267 H REPORTED_FAILURE]	INFLUENCED
+R4-CLM2-B	CLM2	B	C	alloc:22:1	fft	CRASH	[历史 registry 3b-cl2295 BASE CRASH] 站点 B 树 S4.cpp:2295 (F 上 2301)	INFLUENCED
+R4-CLM2-A	CLM2	A	C	alloc:22:1	fft	CRASH	[历史 registry 3b-cl2295 CUR CRASH]	INFLUENCED
+R4-CLM2-F	CLM2	F	C	alloc:22:1	fft	REPORTED_FAILURE	[源码 S4/S4.cpp:2307 1c11905: if(NULL == pB->q){ ... } (P05-S3R R2)] [历史 registry 3b-cl2295 H REPORTED_FAILURE]	INFLUENCED
+R4-CLM3-B	CLM3	B	C	alloc:23:1	fft	SILENT_SWALLOW	[历史 registry 3b-cl2408 BASE SILENT_SWALLOW] rwork unchecked on B	INFLUENCED
+R4-CLM3-A	CLM3	A	C	alloc:23:1	fft	SILENT_SWALLOW	[历史 registry 3b-cl2408 CUR SILENT_SWALLOW]	INFLUENCED
+R4-CLM3-F	CLM3	F	C	alloc:23:1	fft	REPORTED_FAILURE	[源码 S4/S4.cpp:2425 1c11905: if(NULL == rwork){ ... } (P05-S3R R3)] [历史 registry 3b-cl2408 H REPORTED_FAILURE]	INFLUENCED
+R4-CLM4-B	CLM4	B	C	alloc:24:1	fft	SILENT_SWALLOW	[历史 registry 3b-cl2425 BASE SILENT_SWALLOW] work unchecked on B	INFLUENCED
+R4-CLM4-A	CLM4	A	C	alloc:24:1	fft	SILENT_SWALLOW	[历史 registry 3b-cl2425 CUR SILENT_SWALLOW]	INFLUENCED
+R4-CLM4-F	CLM4	F	C	alloc:24:1	fft	REPORTED_FAILURE	[源码 S4/S4.cpp:2450 1c11905: if(NULL == work){ ... } (P05-S3R R4); the allocation is at 2446] [历史 registry 3b-cl2425 H REPORTED_FAILURE]	INFLUENCED
+R4-ACF1-B	ACF1	B	C	alloc:25:1	jones	CRASH	[历史 registry 3b-acache3977 BASE CRASH; 实测 INFLUENCED] FieldCache alloc unchecked on B	INFLUENCED
+R4-ACF1-A	ACF1	A	C	alloc:25:1	jones	CRASH	[历史 registry 3b-acache3977 CUR CRASH] AddFieldToCache unchecked on A (pre-S3R)	INFLUENCED
+R4-ACF1-F	ACF1	F	C	alloc:25:1	jones	REPORTED_FAILURE	[源码 S4/S4.cpp:4010 1c11905: if(NULL == f){ ... return 1; } (P05-S3R D1); the allocation is at 4007] [历史 registry 3b-acache3977 H REPORTED_FAILURE]	INFLUENCED
