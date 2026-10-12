@@ -1,0 +1,5 @@
+# R6d gate (end) -- /tmp top level snapshot
+# UTC 2026-10-12T10:15:50Z
+item	observed
+entries	0
+listing_sha256	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

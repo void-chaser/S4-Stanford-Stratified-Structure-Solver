@@ -1,0 +1,93 @@
+# REGISTRY_S4_PRE_R6d_RNV1.tsv -- P05-S4 R6d-2 pre-registration of the RNV1 injection (U24).
+# Written BEFORE any RNV1 injection run (the window counts of section 4.3 were facts from non-injected runs and are recorded in the report).
+# Status: INFLUENCED (the window structure, the malloc sizes and callers were measured before this file, see RNV1_SOURCE_R6d.md section 4 and the count files).
+# UTC written: 2026-10-12T09:54:16Z (sha256 and timestamp in REGISTRY_S4_PRE_R6d_RNV1.sha256 and _TIMESTAMP_UTC.txt)
+#
+# Injection (inject_r6d_rnv1.cpp): S4FMM_INJECT=rnv1:M ; the M-th malloc inside the window of Pattern_GenerateFlowField
+#   (per window, count reset at window open) returns NULL; fires at most once per process.
+# Trees: F (driver-r6d-rnv1, sha256 2349fa05...963d) and B (driver-r6d-rnv1-B, sha256 93743e5e...32d4).
+# Expected class: CRASH for every injected point of F and B (killed by a signal, rc >= 128).
+#   Basis: [源码] the four/three native mallocs inside the window (pattern.c:1477, 1481, 1251 measured; 1656, 1660 for tri) are used
+#   at once without a NULL check (RNV1_SOURCE_R6d.md sections 3-5).  NOT verified by run before this file.
+# Baseline rows (no injection) are NOT in this table; their rc is recorded by the runner as "baseline_rc" for each (mode, NG).
+#   Known baselines from non-injected runs (R6d count runs): nv NG1/5/9 rc 0; fftnv NG1/5/9 rc 0; vl NG5/9 rc 0; fftvl NG5/9 rc 0;
+#   vl NG1 and fftvl NG1 rc 20 on F (pattern returns -10 three times: D016 path) and rc 20 on B (pattern returns 0; origin not traced).
+#   For vl NG1 and fftvl NG1 an injected result of rc 20 (not CRASH) is a MISMATCH and is reported as such, not reinterpreted.
+#
+# Basis column: the position names (1477, 1481, 1251) are MEASURED for nv NG9 (gdb, section 4 of RNV1_SOURCE_R6d.md: window malloc k=1 7168 B at 1477, k=2 2048 B at 1481, k=3 4096 B at 1251).
+#   For the other modes and NG values the position of M is an [源码] inference from the same code path; it is NOT measured point by point
+#   (the window sizes differ for NG1 and vl: 112, 32, 64 B).  This is stated so that the judgement does not treat the inferred position as measured.
+# Columns: point_id	tree	mode	NG	M	request	expected	baseline_rc	basis	status
+point_id	tree	mode	NG	M	request	expected	baseline_rc	basis	status
+RNV1-F-nv-ng1-m1	F	nv	1	1	rnv1:1	CRASH	0	[源码] pattern.c:1477 rect work, used at 1478	INFLUENCED
+RNV1-F-nv-ng1-m2	F	nv	1	2	rnv1:2	CRASH	0	[源码] pattern.c:1481 rect iwork, used at 1482	INFLUENCED
+RNV1-F-nv-ng1-m3	F	nv	1	3	rnv1:3	CRASH	0	[源码] pattern.c:1251 cg work, used at 1252	INFLUENCED
+RNV1-F-nv-ng5-m1	F	nv	5	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-nv-ng5-m2	F	nv	5	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-nv-ng5-m3	F	nv	5	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-nv-ng9-m1	F	nv	9	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-nv-ng9-m2	F	nv	9	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-nv-ng9-m3	F	nv	9	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-vl-ng1-m1	F	vl	1	1	rnv1:1	CRASH	20	[源码] pattern.c:1477 (vl NG1 window has 3 mallocs per window, 9 in three windows); baseline 20 (D016)	INFLUENCED
+RNV1-F-vl-ng1-m2	F	vl	1	2	rnv1:2	CRASH	20	[源码] pattern.c:1481; baseline 20 (D016)	INFLUENCED
+RNV1-F-vl-ng1-m3	F	vl	1	3	rnv1:3	CRASH	20	[源码] pattern.c:1251; baseline 20 (D016)	INFLUENCED
+RNV1-F-vl-ng5-m1	F	vl	5	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-vl-ng5-m2	F	vl	5	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-vl-ng5-m3	F	vl	5	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-vl-ng9-m1	F	vl	9	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-vl-ng9-m2	F	vl	9	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-vl-ng9-m3	F	vl	9	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-fftnv-ng1-m1	F	fftnv	1	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-fftnv-ng1-m2	F	fftnv	1	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-fftnv-ng1-m3	F	fftnv	1	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-fftnv-ng5-m1	F	fftnv	5	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-fftnv-ng5-m2	F	fftnv	5	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-fftnv-ng5-m3	F	fftnv	5	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-fftnv-ng9-m1	F	fftnv	9	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-fftnv-ng9-m2	F	fftnv	9	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-fftnv-ng9-m3	F	fftnv	9	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-fftvl-ng1-m1	F	fftvl	1	1	rnv1:1	CRASH	20	[源码] pattern.c:1477; baseline 20 (D016)	INFLUENCED
+RNV1-F-fftvl-ng1-m2	F	fftvl	1	2	rnv1:2	CRASH	20	[源码] pattern.c:1481; baseline 20 (D016)	INFLUENCED
+RNV1-F-fftvl-ng1-m3	F	fftvl	1	3	rnv1:3	CRASH	20	[源码] pattern.c:1251; baseline 20 (D016)	INFLUENCED
+RNV1-F-fftvl-ng5-m1	F	fftvl	5	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-fftvl-ng5-m2	F	fftvl	5	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-fftvl-ng5-m3	F	fftvl	5	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-F-fftvl-ng9-m1	F	fftvl	9	1	rnv1:1	CRASH	0	[源码] pattern.c:1477	INFLUENCED
+RNV1-F-fftvl-ng9-m2	F	fftvl	9	2	rnv1:2	CRASH	0	[源码] pattern.c:1481	INFLUENCED
+RNV1-F-fftvl-ng9-m3	F	fftvl	9	3	rnv1:3	CRASH	0	[源码] pattern.c:1251	INFLUENCED
+RNV1-B-nv-ng1-m1	B	nv	1	1	rnv1:1	CRASH	0	[源码] same sites as F (B pattern.c = 37a82e8; checked) ; B baseline rc from R6d B run to be recorded	INFLUENCED
+RNV1-B-nv-ng1-m2	B	nv	1	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng1-m3	B	nv	1	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng5-m1	B	nv	5	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng5-m2	B	nv	5	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng5-m3	B	nv	5	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng9-m1	B	nv	9	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng9-m2	B	nv	9	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-nv-ng9-m3	B	nv	9	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng1-m1	B	vl	1	1	rnv1:1	CRASH	20	[源码] same sites as F; B baseline rc 20 (origin not traced; R7-D016-B)	INFLUENCED
+RNV1-B-vl-ng1-m2	B	vl	1	2	rnv1:2	CRASH	20	[源码] same sites as F; B baseline 20	INFLUENCED
+RNV1-B-vl-ng1-m3	B	vl	1	3	rnv1:3	CRASH	20	[源码] same sites as F; B baseline 20	INFLUENCED
+RNV1-B-vl-ng5-m1	B	vl	5	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng5-m2	B	vl	5	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng5-m3	B	vl	5	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng9-m1	B	vl	9	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng9-m2	B	vl	9	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-vl-ng9-m3	B	vl	9	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng1-m1	B	fftnv	1	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng1-m2	B	fftnv	1	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng1-m3	B	fftnv	1	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng5-m1	B	fftnv	5	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng5-m2	B	fftnv	5	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng5-m3	B	fftnv	5	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng9-m1	B	fftnv	9	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng9-m2	B	fftnv	9	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftnv-ng9-m3	B	fftnv	9	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng1-m1	B	fftvl	1	1	rnv1:1	CRASH	20	[源码] same sites as F; B baseline 20	INFLUENCED
+RNV1-B-fftvl-ng1-m2	B	fftvl	1	2	rnv1:2	CRASH	20	[源码] same sites as F; B baseline 20	INFLUENCED
+RNV1-B-fftvl-ng1-m3	B	fftvl	1	3	rnv1:3	CRASH	20	[源码] same sites as F; B baseline 20	INFLUENCED
+RNV1-B-fftvl-ng5-m1	B	fftvl	5	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng5-m2	B	fftvl	5	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng5-m3	B	fftvl	5	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng9-m1	B	fftvl	9	1	rnv1:1	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng9-m2	B	fftvl	9	2	rnv1:2	CRASH	0	[源码] same sites as F	INFLUENCED
+RNV1-B-fftvl-ng9-m3	B	fftvl	9	3	rnv1:3	CRASH	0	[源码] same sites as F	INFLUENCED

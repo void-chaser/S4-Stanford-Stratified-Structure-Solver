@@ -1,0 +1,7 @@
+# U2_COVERAGE_R6d_by_stage.tsv -- coverage by stage (U2 point count per stage).  Stage e: 0 -> not covered, destination R8.
+stage	n_points	status	destination
+a	2	COVERED	-
+b	197	COVERED	-
+c	1	COVERED	-
+d	2	COVERED	-
+e	0	NOT_COVERED	R8 (stage e special rule of I1 is not tested in R6d)

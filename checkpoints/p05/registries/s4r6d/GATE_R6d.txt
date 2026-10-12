@@ -1,0 +1,15 @@
+# R6d gate (start) -- written by testing/d003/stage_s4/r6d_gate.py (read-only checks)
+# UTC 2026-10-12T09:47:48Z
+item	observed	expected	match
+branch	codex/p05-d003-fft-error-propagation	codex/p05-d003-fft-error-propagation	OK
+HEAD	053f1c30eece85781dc6aadc12f4580d5c0f3d28	053f1c30eece85781dc6aadc12f4580d5c0f3d28	OK
+STATE.md last commit	43ef3a8e4bd8fbc173b9e9c4144aba16996cec76	43ef3a8e4bd8fbc173b9e9c4144aba16996cec76	OK
+HEAD:S4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	4a6f64927a30537740dd0c8f11f9a5aae5e46ba4	OK
+judge_d003.py sha256	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	OK
+registries/s4r6c SHA256SUMS_closeout.txt entries OK	16 OK; bad=none	all entries OK	OK
+registries/s4r6c SHA256SUMS_seam.txt entries OK	8 OK; bad=none	all entries OK	OK
+E6c-6 ERRATA_6c.txt first 64 lines identical to 6bba0bd	lines_now=144 prefix_identical=True	prefix_identical=True	OK
+git status --short --untracked-files=all	?? testing/d003/stage_s4/r6d_gate.py	(empty) or only: ?? testing/d003/stage_s4/r6d_gate.py (this round's gate script; the one allowed exception)	OK
+/tmp top-level entry count (start snapshot)	0	recorded	OK
+/tmp listing sha256 (start snapshot)	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	recorded	OK
+RESULT	PASS

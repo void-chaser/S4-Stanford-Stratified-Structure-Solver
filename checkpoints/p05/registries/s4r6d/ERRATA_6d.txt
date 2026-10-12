@@ -1,0 +1,136 @@
+ERRATA_6d -- P05-S4 R6d (the last sub-round of R6).  Written at the R6d gate, BEFORE the U2 coverage run, the RNV1 injection and any R6d judgement.
+Numbering starts at E6d-1.  ERRATA_6c.txt, ERRATA_6b.txt, ERRATA_6.txt, the R6/R6b/R6c/R6c2 reports, the registries of earlier rounds and RED_POINTS_LEDGER_R6c.tsv / REPAIR_PROPOSAL_R6c.md are NOT changed.
+Opening baseline: HEAD 053f1c30eece85781dc6aadc12f4580d5c0f3d28; STATE.md last commit 43ef3a8e4bd8fbc173b9e9c4144aba16996cec76; HEAD:S4 = 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4 (tree F).
+Scope: this file records user rulings and corrections of facts.  It does NOT repair S4/ and does NOT declare any stage complete or signed off.
+
+== U24 [USER RULING] RNV1 injection is done in R6d (supersedes U16 for RNV1) ==
+Status: 生效.  U16 (RNV1 DEFERRED to R7) is superseded for RNV1 only; the rest of U16 is unchanged.  The reason given by the user: RNV1 is an input of the S3 closing repair round.
+The injection is run in R6d under the method of brief section 4 (new injector testing/d003/stage_s4/inject_r6d_rnv1.cpp; new runner; pre-registration REGISTRY_S4_PRE_R6d_RNV1.tsv written before any run).
+
+== U25 [USER RULING] Order of the remaining rounds (note only; old files are not changed) ==
+Status: 生效.  The order after R6d is:
+  R6d -> user decides whether S3-4b is closed and fixes the scope of the repair -> P05-S3 sub-round S3R3 repair (S4/ changed only with user approval)
+  -> freeze a new tree F2 -> P05-S4 R7 on F2: regression of the full matrices R3, R4, R5 (M=2), R6-1, R6c (177 points), R6c seam (25 points), R6d RNV1
+  -> P05-S4 R8 on F2: supplementary tests (Python/Lua visibility, NB=1-8, category C, K-1 tensor path, dual-target injection and I7, other-layer failure variants, B-side explanation, D016 B-side origin).
+From now on, the supplementary items listed in R8 above are R8 items.  Earlier files that call them "R7" (for example the R6c2 ledger and proposal, section E) are NOT edited; the mapping is: "R7" in those files for the supplementary items = R8 here; the F2 regression of the existing matrices is R7 here (it had no earlier name).
+
+== U26 [USER RULING] Accepted N/A cases of the seam judgement ==
+Status: 生效.  The seam I2 N/A (2 points: R4-CLM1-F and R4-CLM2-F, alloc:21:1 and alloc:22:1; the failing layer is layer 0 and no layer before it can keep modes) and the seam I3 N/A (15 points, modes that do not read or write field_cache) are accepted as N/A by the rule.  Recorded in RULINGS.tsv.
+
+== U27 [USER RULING] Basis of the red-point ledger and repair proposal ==
+Status: 生效.  The ledger and proposal follow the R6 task brief section 7 (U4 original text, supplied by the user, see U4 below).
+  Main category: only F_CONFIRMED / F_SUSPECT_SOURCE / BASELINE_ONLY / HARNESS_OR_PROCESS / OUT_OF_SCOPE_D003.
+  Earlier categories CLOSED_BY_RULING / OBSERVATION / OPEN / DEFERRED become the auxiliary status column.
+  The old ledger RED_POINTS_LEDGER_R6c.tsv is NOT changed; the new ledger RED_POINTS_LEDGER_R6d.tsv carries a one-to-one mapping table of all old items.
+
+== U28 [USER RULING] U2 coverage check ==
+Status: 生效.  Closing S3-4b, beyond the three conditions of U21, needs a table "U2 original text, item-by-item coverage" (file U2_COVERAGE_R6d.tsv in the R6d evidence directory, copied to registries/s4r6d/).  Each item is marked: covered (evidence path and number) / changed by ruling (ruling number) / not covered (reason and destination R7 or R8).
+
+== U2 supplement (text supplied by the user in the R6 task brief section 1; recorded in RULINGS.tsv as 补录) ==
+  U2: "S3-4b (failed-state: modes, cache and solution are not installed) must be tested completely; this is a mandatory item of R6.  The method is in R6-2."
+  Execution status: 部分落实; the deviations and coverage are in U28 and U2_COVERAGE_R6d.tsv.
+
+== U4 supplement (text supplied by the user; RULINGS.tsv 补录) ==
+  U4: "Detected red points must be fixed, but the location and timing of the fixes are open.  This round produces the red-point ledger and the repair proposal (R6-4) and hands them to the user for decision."
+  Execution status: 总账与方案见 R6d (RED_POINTS_LEDGER_R6d.tsv, REPAIR_PROPOSAL_R6d.md).
+
+== U5 supplement (text supplied by the user; RULINGS.tsv 补录) ==
+  U5: "The planner corrects two points of R5 in ERRATA_6:  a) partial_modes=1 is not defect evidence (the retry is counted before the check);
+       b) without TWICE the 12th plan call comes from GetFieldOnGrid; RP-R5-2 is downgraded to out of scope and does not block."
+  Note: this supplement agrees with E6-3 and E6-4 of ERRATA_6 (the planner's corrections that cite U5).
+
+== E6d-1 [FACT CORRECTION, found while preparing R6d] R6c2 report counted 17 entries in SHA256SUMS_closeout.txt ===
+The R6c2 report section 8.1 says 17 files.  The manifest registries/s4r6c/SHA256SUMS_closeout.txt has 16 entries (checked by grep -vc and by sha256sum -c in R6d gate).  The count in the report is wrong; the manifest is correct.  The R6c2 report is NOT edited; the correction is recorded here and in the R6d report.
+
+== E6d-2 [CORRECTION of the R6c2 ledger category for RNV1; recorded before the RNV1 run] ==
+RED_POINTS_LEDGER_R6c.tsv lists RNV1 as DEFERRED.  Under U24 RNV1 is run in R6d; the R6c ledger is NOT changed.  The result is recorded in RED_POINTS_LEDGER_R6d.tsv.
+
+== E6d-3 [PLANNER INSTRUCTION, stage classification of U2 coverage; status INFLUENCED; effective BEFORE U2_STAGE_R6d.tsv is generated] ==
+Source of the instruction: planner (R6d-1 correction).  Recorded here before any stage table is written.
+1. The primary basis of a stage is the injection REQUEST mapped to a SOURCE location (file:line [源码]), not the gdb log.
+   The sources, per point:
+   - R3 (119 points): registries/s4r3/SITEMAP.tsv, column caller_function, matched by point_id.  caller FMMGetEpsilon_* -> stage b; the basis is "SITEMAP line + caller".
+   - R4PC (22 points) and R5M2 (36 points): the caller of the plan call, from registries/s4r3/CALLSEQ.tsv (by mode, route, K) and the R6-1 gdb check (K=14, r6_plan14_caller).
+     caller FMMGetEpsilon_* -> stage b.
+   - seam (25 points, R4SEAM): the request numbers are mapped to file:line by reading the anchors of testing/d003/seam/apply_seam_*.py (read only).
+     Each point is then assigned to a-d by the definitions:
+       a = inside ComputeLayerModes, before the FMM epsilon call;
+       b = inside FMMGetEpsilon_* (including the place where FMM returns the error to the caller, i.e. fmmret);
+       c = AddFieldToCache;
+       d = after the FMM return, before ComputeLayerModes returns.
+     The table is written as SEAM_SITE_STAGE_R6d.tsv, one row per point, with the source line text of each anchor.
+2. The gdb log is a cross-check only:
+   - for stages a-d: the HIT must lie between the ENTER and RETURN of the failing layer, inside the injected call interval;
+   - stage c may occur only in PolBasis modes (AddFieldToCache is called from PolBasis* only);
+   - for stage e: the HIT must lie outside all ENTER/RETURN pairs.
+   A point whose source basis and log basis disagree is recorded as STAGE_CONFLICT, and the work stops for the user.
+   STAGE_UNRESOLVED only if neither basis gives a conclusion.  More than 20 STAGE_UNRESOLVED points: stop as in the brief.
+   Check: R6c2 measured that CLM1/2 (alloc:21, alloc:22) fail in layer 0; this must agree with "alloc:21/22 are stage a".  A disagreement is a STAGE_CONFLICT.
+3. New column inj_kind (not a stage; it does not remove points from any count):
+   REAL_ALLOC (a real allocation returns NULL), BOUNDARY_SIM (e.g. exec mode returns 1 directly, inject_r4_plan.cpp:607-612),
+   SEAM_RET (fmmret rewrites a return value), SEAM_INFO_NULL (linearsolve_null2), SEAM_INFO (linearsolve:*:info).
+   The count table is given by stage x inj_kind x mode.
+   The exec points are boundary simulations since R3; this is not a new finding of R6d.
+4. If there are no stage-e points, U2_COVERAGE_R6d.tsv records "not covered, destination R8", and states that the stage-e special rule of I1 is therefore not tested.
+   Stage-d points (only a few in the seam) are counted and reported as they are.
+5. RNV1 is recorded in the R6d ledger as F_CONFIRMED (RP-R6d-1), with the crash position (pattern.c line that uses NULL): see RED_POINTS_LEDGER_R6d.tsv.
+   vl/fftvl with NG=1 and no injection: baseline_rc 20 with pattern returning -10 three times.  This is an OBSERVATION of normal input, not an injection effect;
+   it is NOT counted in the RNV1 result; whether it is the same path as D016 (R5-4) is checked and reported.
+
+== E6d-4 [DISCLOSURE for the report, planner instruction item 6] ==
+(a) RESULTS_R6d_RNV1_pass1.tsv (run1) is VOID: all 72 rows INVALID (injection protocol: the injector did not print an "S4FMM HIT" line, so the judge read hit=0; and the gdb comparison compared the raw gdb exit status).  It is kept unchanged.  run2 (RESULTS_R6d_RNV1_pass{1,2}_run2.tsv) is the run used.
+(b) Link versions: v1 = no forwarders for FFT/S4_malloc (link error, undefined __wrap_...); v2 = forwarders added, window wrap on pattern_generate_flow_field (window count 0: intra-object call, not intercepted); v3 = window wrap on Pattern_GenerateFlowField, once-per-process hit, relinked; v4 = HIT protocol line added, relinked (the driver used in run2).  Driver hashes: v4 F e73ec071..., B ecf00fa6....
+(c) The intermediate files RULINGS_before_move.tsv, RULINGS_moved.tmp, RULINGS_reinserted.tmp (in the R6d evidence directory) hold the backup and the moves of RULINGS.tsv; they are not needed after the check.  RULINGS.tsv itself: only added rows, no existing row changed (git diff: 0 deleted lines).
+
+== E6d-5 [PLANNER ITEM 1(a)/(b)/(c) APPLIED; source of the seam stages; recorded after the U2 stage run, BEFORE any judgement of R6d] ==
+Source of the stages (not copied from the planner's wording; each anchor was read in tree F, HEAD:S4 = 4a6f649...):
+  alloc:21 (S4.cpp:2267)  stage a: LayerModes malloc at the start of Simulation_ComputeLayerModes, before any FMM call.
+  alloc:22 (S4.cpp:2301)  stage a: pB->q malloc, before the FMM epsilon calls (2382-2407) and the return check (2413).
+                          Consistency check with R6c2 (planner E6d-3 item 2): R6c2 measured CLM1 and CLM2 with failing_layer = 0
+                          (RESULTS_R6c_SEAM.tsv); the gdb log (state/seam_pass1/R4-CLM1-F, R4-CLM2-F) has the HIT inside the layer-0
+                          window (idx 0, rc 20).  CONSISTENT.  req_layer = 1 is the requested layer, not the failing one.
+  alloc:23 (S4.cpp:2421)  stage d: rwork malloc after the FMM return check (2413-2417) and after the eigensystem stage starts (2418).
+  alloc:24 (S4.cpp:2446)  stage d: work malloc after the workspace query (2432-2445).  Both are the seam stage d (planner: "stage-d points
+                          are counted and reported as they are").  Stage d = 2 points.
+  alloc:25 (S4.cpp:4007)  stage c: FieldCache malloc inside Simulation_AddFieldToCache (S4.cpp:4005).  PolBasis (jones) only; log check
+                          CONSISTENT (HIT inside the layer-1 window, rc 20).  Stage c = 1 point.
+  kottke_alloc:31 (fmm_kottke.cpp:78)  stage b: allocation inside FMMGetEpsilon_Kottke, before its NULL check (79).
+  linearsolve:1:1:info (fmm_FFT.cpp:209), linearsolve:2:1:info (fmm_kottke.cpp:284)  stage b, inj_kind SEAM_INFO_FORCED_A.
+  linearsolve_null2:* (fmm_closed.cpp 134/138/144/244, fmm_PolBasisNV.cpp:267, fmm_PolBasisVL.cpp:273, fmm_PolBasisJones.cpp:375)
+                          stage b, inj_kind SEAM_INFO_FORCED_B2.  The H-tree anchor of PN01 was line 265 (apply_seam_b2.py); tree F has
+                          the same statement at 267.  The F line is the one quoted in the table; the H line is recorded here.
+  fmmret:150..159 (S4.cpp:2382, 2386, 2388, 2391, 2393, 2395, 2400, 2403, 2405, 2407)  stage b, the status is rewritten after the real
+                          FMM call (apply_seam_r5_fmmret.py:7-9).  Shown as its own kind in the count table (planner E6d-3 item 1(c)).
+  Recorded line-number staleness: the comment block of inject_r4_plan.cpp:517-520 gives S4.cpp 2295/2408/2425/3977 for IDs 22/23/24/25;
+  tree F has 2301/2421/2446/4007.  The comment is NOT changed (it is a historical file); the table uses the tree F lines.
+
+== E6d-6 [KIND NAMING; planner E6d-3 item 3; applied in the table before the judgement] ==
+The planner's kind list names SEAM_RET for "fmmret rewrites a return value".  The alloc hooks of the seam (alloc:21..25, kottke_alloc:31) replace
+a returned pointer with NULL (S4_TEST_ALLOC_HOOK(...) ? NULL : malloc(...)); they are not REAL_ALLOC (no real allocation failure is produced by
+the hook).  They are therefore counted under SEAM_RET as well, so that the seam kinds stay in the planner's list.  The per-row basis text says
+which hook it is.  Counts: SEAM_RET = 16 = fmmret 10 + alloc 5 (alloc:21..25) + kottke_alloc:31 1.
+The first run of the script used SEAM_RET_ALLOC and SEAM_RET_FMMRET; both were merged into SEAM_RET before the table of record was written.  The
+tables in the evidence directory are the ones of the second and later runs (the earlier tables were deleted; no table was judged on the first run).
+SEAM_INFO_FORCED_A = 2 (linearsolve:1:1:info, linearsolve:2:1:info); SEAM_INFO_FORCED_B2 = 7.  Total seam = 25.  REAL_ALLOC = 123 (177-point
+s4malloc and plan rows: 51 s4malloc? see U2_STAGE_COUNT_R6d.tsv for the exact split); BOUNDARY_SIM = 54 (exec).
+
+== E6d-7 [BASIS STRENGTH LIMIT; disclosed in the report] ==
+The stage-b source basis of the 177 FMM points is the SITEMAP caller (FMMGetEpsilon_*, asserted: 177 matched, 0 NOMATCH).  The gdb logs have no
+function boundaries for FMMGetEpsilon_*; the log check (HIT inside the failing-layer ENTER/RETURN of the injected call) therefore shows that the
+hit lies in the failing layer, not that it lies inside the FMM function.  Stage b is thus CONSISTENT with the SOURCE and with the layer log, and
+it is NOT an independent measurement of the FMM-function boundary.  Stage a/d/c for the seam points are read from the tree F lines; their log
+check is the same kind of check (layer window).  Nothing in R6d is a new measurement of stage boundaries.
+Result: 202 rows CONSISTENT; 0 STAGE_CONFLICT; 0 STAGE_UNRESOLVED (script exit 0; no stop rule of planner item 3 was reached).
+
+== E6d-8 [STAGE e; planner E6d-3 item 4] ==
+Stage e = 0 among the 202 U2 points.  U2_COVERAGE_R6d.tsv (U28 item U2-9) records "not covered, destination R8"; the stage-e special rule of I1
+(HIT outside all ENTER/RETURN) is therefore not tested in R6d.  No point of the 202-point set was an e point; none was forced into e.
+
+== E6d-9 [CORRECTION of the REAL_ALLOC figure in E6d-6; measured, not estimated] ==
+E6d-6 contains an unverified parenthesis about the REAL_ALLOC split ("51 s4malloc? see ...").  The measured split of the 202 points is:
+  REAL_ALLOC 123 = s4malloc 51 + plan 14 + plancall 58   (plancall = R4PC and R5M2 plan calls with the M-th malloc of the K-th plan call)
+  BOUNDARY_SIM 54 = exec 54
+  SEAM_RET 16 = fmmret 10 + alloc 5 (alloc:21..25) + kottke_alloc:31 1
+  SEAM_INFO_FORCED_A 2 (linearsolve:1:1:info, linearsolve:2:1:info); SEAM_INFO_FORCED_B2 7
+  Total 123 + 54 + 16 + 2 + 7 = 202.
+E6d-6 is not edited; this entry is the correction.

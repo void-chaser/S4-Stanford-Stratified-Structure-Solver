@@ -12,7 +12,7 @@
 | `HEAD:S4` | `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4`（= 冻结树 F `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | P05-S4 子轮次 **R6c2**（R6c 续，非新阶段）：**已完成 R6c 范围第 0–6 节，等待用户审核**。报告：`P05_S4R6c2_REPORT_PART2.md` |
+| 当前轮次 | P05-S4 子轮次 **R6d**（R6 的最后子轮次，非新阶段）：**已完成第 3 节（U2 阶段表 202 点 CONSISTENT）、第 5 节（账本 v2、方案 v2）、RNV1 注入（R6d-2）；等待用户审核**。报告：`P05_S4R6d_REPORT.md`。R6d 未宣布任何阶段完成或签收 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -23,6 +23,7 @@
 | R6b | 映射 202 点；预注册 177 点（INFLUENCED）；对照 16 组合；单点 gdb 与无 gdb rc 一致 | `P05_S4R6b_REPORT.md` |
 | R6c | 里程碑 `6bba0bd`：177 点两遍 HOLD 177 / VIOLATED 0 / FLAKY 0 / GDB_DIVERGENT 0；seam 等价 25/25、inj_call 全为 1 | `P05_S4R6c_REPORT.md`、`P05_S4R6c_REPORT_ADDENDUM_seam.md` |
 | R6c2 | E6c-6 哈希勘误（前 64 行字节一致）；U18 对照 18 行；判定器自检 11/11 + 原行 3/3；seam 25 点两遍 HOLD 25 / VIOLATED 0 / FLAKY 0 / GDB_DIVERGENT 0；红点总账；修复方案（无 F_CONFIRMED 候选） | `P05_S4R6c2_REPORT_PART2.md` |
+| R6d | U2 阶段表 202 点 CONSISTENT / 0 CONFLICT / 0 UNRESOLVED（a2 b197 c1 d2 e0；e 未覆盖，去向 R8）；RNV1 注入 F 72/72 CRASH（两遍）→ RP-R6d-1 **F_CONFIRMED**；账本 v2 20 行（R6c 22 条全部映射）；方案 v2（S4/ 未改） | `P05_S4R6d_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 链接；细节见报告附录 A 与总账）
 
@@ -31,17 +32,20 @@
 | S3-4b（失败后模式/缓存不安装） | 本装置范围内 177 点 HOLD 177 / VIOLATED 0；seam 25 点 HOLD 25；自检 11/11。**未关闭**，关闭由用户决定（U21，范围声明见报告第 9 节） | 用户裁决 |
 | 双目标注入、I7 sanitizer | DEFERRED（U9） | R7 |
 | "其他层失败"变体 | DEFERRED（U20） | R7 |
-| RNV1（pattern malloc 无 NULL 检查） | DEFERRED（U16）；源码 [源码] `S4/pattern/pattern.c:1477,1481,1656,1660` | R7；修复方案见 `evidence/p05-s4r6c/REPAIR_PROPOSAL_R6c.md` |
+| RNV1（pattern malloc 无 NULL 检查，RP-R6d-1） | **F_CONFIRMED**（R6d 注入 F 72/72 CRASH，两遍；gdb 崩溃 `pattern.c:1498`）；U16 的 RNV1 部分被 U24 取代 | 修复位置与时机由用户决定（U4/U25）；方案 `evidence/p05-s4r6d/REPAIR_PROPOSAL_R6d.md`（选项 R1/R2，未验证，S4/ 未改） |
 | 注释措辞 `S4/S4_internal.h:263`（U11） | HARNESS_OR_PROCESS | S3 收尾修复轮（需用户批准改 S4/） |
-| 张量路径 K-1 | OPEN | R7 |
+| 张量路径 K-1（RP-R6d-8） | F_SUSPECT_SOURCE（[源码]，未测） | R8 |
 | B 侧 jones/vl SILENT_SWALLOW、nv CRASH | OPEN（基线，不是修复证据） | S5 或 R7 |
 | Python/Lua 可见性、NB=1–8、类别 C、D016 B 侧 rc 20 来源 | OPEN / DEFERRED | R7 |
 | 非 FMM `S4_malloc`（约 35–43 处） | OUT_OF_SCOPE_D003 | S5 |
-| U2、U4 原文 | 仓库中不存在 | 待用户补录（`registries/RULINGS.tsv`） |
+| U2、U4、U5 原文 | 用户在 R6d 对话中补录（`registries/RULINGS.tsv` 的 `-补录` 行）；U2 部分落实（U28） | U2 逐条覆盖见 `evidence/p05-s4r6d/U2_COVERAGE_R6d.tsv`；S3-4b 关闭由用户决定 |
+| U2 中 stage e（I1 特殊规则） | 0 点，**未覆盖** | R8 |
+| 阶段 b 依据强度（E6d-7） | 源码依据为 SITEMAP caller；日志只证明 HIT 在失败层窗口内，不是 FMM 函数边界 | 披露（不改判定） |
+| B 侧 vl NG=1 rc 20 与 D016 B 侧来源 | F 侧同一路径（pattern −10）；B 侧未解释 | R7（RP-R6d-7，BASELINE_ONLY） |
 | ERRATA_6c 哈希（E6c-6） | HARNESS_OR_PROCESS；前 64 行已核对 | 已记入 `SHA256SUMS_closeout.txt` |
 
 完整台账：`evidence/p05-s4r6c/RED_POINTS_LEDGER_R6c.tsv`；裁决总表：`registries/RULINGS.tsv`。
 
 ## 4. 证据位置
 
-证据目录 `checkpoints/p05/evidence/<轮次>/`（不提交）；小型结果表与清单 `checkpoints/p05/registries/<轮次>/`（提交）。R6c2 的证据目录为 `evidence/p05-s4r6c/`，清单为 `registries/s4r6c/SHA256SUMS_closeout.txt`。各轮清单见各目录的 `SHA256SUMS*.txt`。
+证据目录 `checkpoints/p05/evidence/<轮次>/`（不提交）；小型结果表与清单 `checkpoints/p05/registries/<轮次>/`（提交）。R6c2 的证据目录为 `evidence/p05-s4r6c/`，清单为 `registries/s4r6c/SHA256SUMS_closeout.txt`。R6d 的证据目录为 `evidence/p05-s4r6d/`，小型表与清单为 `registries/s4r6d/`。各轮清单见各目录的 `SHA256SUMS*.txt`。
