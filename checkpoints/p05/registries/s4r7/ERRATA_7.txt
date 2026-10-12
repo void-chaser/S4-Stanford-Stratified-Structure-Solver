@@ -318,3 +318,41 @@ Expected counts (the cont7 brief): nth > 1 rows: G1 210, G2c 16.  These are NOT 
 table was not produced by a script (a grep over ADD returned more than 250 lines and gave no count).  The dry-run assertion
 (cont7 2.2) counts them by script; if the script's count differs from 210 / 16, the difference is recorded as a finding, and
 the run does not start until the count is explained (see the cont7 report).
+
+== E7-33 run6 G1 CTL-* MISMATCH: HARNESS_INVALID (U73)
+run6 (run_m2b_all_r7.py run run6) gave 16 MISMATCH rows, all G1 control rows CTL-<mode>-F and CTL-<mode>-F2 (8 modes x 2 trees),
+observed rc=1, rc1=0, hit=0, judged INVALID ("control run not clean (rc=1 rc1=0)"), expected CONTROL_OK.
+Cause (checked): the v2 control rows carry request "none" (REGISTRY_S4_PRE_R7_M2.tsv, e.g. CTL-closed1d-F ... none).
+matrix_r2.build_env (matrix_r2.py:99-101) sets S4FMM_INJECT whenever request is not "-" or empty, so the control row gets
+S4FMM_INJECT=none.  The historical control rows (run_r3_sweep.py:129-133) have request "-" and no injection variable.  The driver
+accepts only scratch, plan, exec, s4malloc (inject_d003.cpp:13) and returns rc=1 for "none".
+Classification: HARNESS_INVALID (U73).  Not a driver fault and not an expectation fault.  run5 CTL rows (not built by build_env)
+were 16/16 CONTROL_OK on both passes, so the error appears only in run6.  The run6 G1 injection rows (238 MATCH, 44
+NOT_REACHED_AS_EXPECTED, both passes) are kept as supporting evidence; the formal M2 result is run7.
+
+== E7-34 G2c route registration error; correction of E7-32 (U74, U75)
+(a) The ADD table gives all 60 G2c rows route "once" and twice_env "-".  REGRESS_R4.tsv has 30 F points of which 15 are M-twice-*.
+    The historical runner run_r4_regress.py:76-79 uses route = R3.route_of(pid), case "t4/" + pid for the twice route, and
+    build_env then sets S4FMM_TWICE=slab.  The generator make_prereg_m2_add_r7.py:17 says "REGRESS_R4 rows are once-route points",
+    which is wrong.  The cause is in the registration, not in the driver.
+(b) Consequence for run5 and run6: the G2c twice points ran without S4FMM_TWICE.  Planner check (read only): run6 G2c F rows
+    rc, rc1, rc2, hit equal REGRESS_R4 on 30/30 points.  inj_call is 1 for those rows, and TWICE affects only the interval between
+    the two field calls, so the values happen to agree.  Because the environment differed from history, this is not evidence of
+    the correct environment and is not used as such.
+(c) U71a did not catch (a) because its expectation was read from ADD.  The environment assertion must derive the expected case,
+    S4FMM_TWICE, S4FMM_NTH and S4FMM_INJECT from the historical rule and the source tables, not from ADD (U75b).
+(d) Correction of E7-32.  The sentence "the G2c nth > 1 rows are once-route points (e.g. M-twice-fft-plan-2-F has route once in
+    the ADD table)" is WRONG: it was read from the ADD table that (a) shows to be in error.  E7-32 is not edited; this entry corrects it.
+(e) Fix (U75a): new REGISTRY_S4_PRE_R7_M2_ADD_v3.tsv.  G1 and G2c route from R3.route_of(point_id); twice_env from route;
+    G1 control rows request "-" and nth "-".  point_id, tree, group, expected_class and inj_call are identical to v2 and ADD_v2.
+    ADD_v2 is kept and superseded for the environment columns only.  v2 is not edited; no expectation is changed.
+(f) Measured in cont8 (ADD_V3_VS_V2_DIFF.txt, read only): 92 changed environment cells: G2c route 30, G2c twice_env 30,
+    G1 request 16, G1 route 16.  The expected table in cont8 2.1 listed "G1 nth 16" and did not list "G1 route 16"; both
+    differences are explained, neither is a data error:
+    - G1 nth: 0 changed.  The 16 control rows already carry nth "-" in ADD_v2 (e.g. CTL-closed1d-F ... none - - closed1d - -).
+      The expectation of "G1 nth 16" was wrong.
+    - G1 route: 16 changed.  ADD_v2 gives the control rows route = the mode name (closed1d), not once or twice, so the field
+      was filled with a mode, not a route.  U75a sets it to "control".  The expectation of "G1 route 16" was missing.
+    The count therefore does not match cont8 2.1 literally; it is reported, and the expectation of the count is corrected here,
+    not the data.  The user is asked to accept this (cont8 4: a count mismatch stops the run).
+(g) Correction of E7-34 (a): the ADD_v3 G2c rows with route twice are 15 per tree (30 rows); the "G2c route 30" count matches.

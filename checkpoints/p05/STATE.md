@@ -12,7 +12,7 @@
 | `HEAD:S4`（当前冻结被测树 F2） | `e124925f5b242486a913b813fa181664f665b048`（F2 提交 `a07b5ac`；前一冻结树 F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | P05-S4 子轮次 **R7**（F2 回归，非新阶段）：M1 已完成；M2a 已完成并提交（`6319a3c`，G2b/G3/G4 两遍全部 MATCH）；M2 报告 `733d588`；续 4 收尾 `2044778`；M2b run5 **判为 HARNESS_INVALID**（U69，E7-32：编排脚本未传 S4FMM_NTH；G1 的 MISMATCH 94 行与 G1 MATCH 204 行作废）；续 7 修复（环境经 matrix_r2.build_env，U71）后 **run6 待运行**，准备提交进行中（G2c-control 不运行，U65；CTRL_SEAM 预注册，U65b；判定 U68）；M3 未开始。报告：`P05_S4R7_REPORT_PART1.md`、`P05_S4R7_REPORT_M1.md`、`P05_S4R7_REPORT_M2.md`、`P05_S4R7_REPORT_CONT5_PART1.md`、`P05_S4R7_REPORT_M2_STOP_G1.md`、`P05_S4R7_REPORT_CONT4_STOP2.md`。S3R3 报告 `P05_S3R3_CLOSEOUT.md`；S3-4b 由用户关闭（U29）。P05-S3、S4 未签收；R7 未宣布任何阶段完成或签收 |
+| 当前轮次 | P05-S4 子轮次 **R7**（F2 回归，非新阶段）：M1 已完成；M2a 已完成并提交（`6319a3c`，G2b/G3/G4 两遍全部 MATCH）；M2 报告 `733d588`；续 4 收尾 `2044778`；M2b run5 **判为 HARNESS_INVALID**（U69，E7-32：编排脚本未传 S4FMM_NTH）；run6 在 G1 停止：16 行 G1 对照 CTL-* 判为 HARNESS_INVALID（U73，E7-33：对照 request "none" 经 build_env 变成 S4FMM_INJECT=none）；G2c 路线登记错误（U74，E7-34：ADD 把 15 个 twice 点写成 once）。续 8：ADD_v3 已生成，差异计数（92 格）与第 2.1 条字面期望不一致，**等待用户裁决**（E7-34(f)），run7 未运行；G2c-control 不运行（U65）；M3 未开始。报告：`P05_S4R7_REPORT_PART1.md`、`P05_S4R7_REPORT_M1.md`、`P05_S4R7_REPORT_M2.md`、`P05_S4R7_REPORT_CONT5_PART1.md`、`P05_S4R7_REPORT_M2_STOP_G1.md`、`P05_S4R7_REPORT_CONT4_STOP2.md`。S3R3 报告 `P05_S3R3_CLOSEOUT.md`；S3-4b 由用户关闭（U29）。P05-S3、S4 未签收；R7 未宣布任何阶段完成或签收 |
 
 ## 2. 关键数字（每轮一行）
 
