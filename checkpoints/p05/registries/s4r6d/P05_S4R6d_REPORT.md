@@ -229,3 +229,16 @@ U2 原文（用户补录）："S3-4b（失败后模式/缓存/求解状态不安
 提交信息末尾写 `awaiting user review`。
 
 （`git log -1` 与 `git status --short` 附于提交后，见第 11 节。）
+
+---
+
+## 11. 提交后核对（AGENTS.md 第 7 节第 4 条）
+
+`git log -1 --format='%H %s'`（记录的是本报告修订前的提交；修订后的提交哈希由 `git log -1` 取得，不写入本文件以免自引用）：
+```
+8fb8707ad07f3d22cc49e9680cd1eb22ef3ce0e6 P05-S4 R6d (last sub-round of R6): U2 stage table 202 points CONSISTENT ... awaiting user review
+```
+
+`git status --short`：空（提交前已核对；提交后工作区干净）。
+
+本报告的副本位于 `checkpoints/p05/registries/s4r6d/P05_S4R6d_REPORT.md`（sha256 一致）。
