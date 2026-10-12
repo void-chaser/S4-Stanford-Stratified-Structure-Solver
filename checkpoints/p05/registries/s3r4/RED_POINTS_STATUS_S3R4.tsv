@@ -1,0 +1,6 @@
+point	tag	status	note
+806	pattern_get_containment_tree area malloc	修复已提交(8d8202a),自检未运行	-4 + S4.cpp 映射 1;自检 A 未运行,不写 已修好/已验证
+415	shape_get_intersection_area_quad POLYGON tri malloc	修复已提交(8d8202a),自检未运行	_st + status + -12 + fmm 中 -12 检查;自检 B 未运行,不写 已修好/已验证
+RP-S3R4-1	S4.cpp:1729 L->pattern.parent malloc 无 NULL 检查	修复已提交(8d8202a),自检未运行	nshapes>0 时检查,返回 1;自检 A 未运行,不写 已修好/已验证
+528	shape_get_intersection_area	OUT_OF_SCOPE_D003 → S5	无调用者(死代码,grep 核对)
+1164	fprint_double	OUT_OF_SCOPE_D003 → S5	唯一调用点已注释(U90)

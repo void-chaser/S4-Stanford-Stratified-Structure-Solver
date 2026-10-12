@@ -1,0 +1,79 @@
+ERRATA_S3R4.txt -- P05-S3 R4 (sub-round of S3, not a new stage)
+==============================================================
+
+用户裁决(写在本文件开头,并追加到 checkpoints/p05/registries/RULINGS.tsv 的 U89–U94):
+
+U89  R7 完成(cc49c6b)。M3 经规划者独立 diff 核对(R6c 对 F 基线 354/0,对 F2 354/0,seam 50/0)。
+     E7-8 的 18 行对照按 U52 的 POSTHOC 结论关闭;原 MISMATCH 行保留。R7 中披露的违规接受为已披露。
+U90  U38 分类:
+     806(pattern_get_containment_tree 的 area):IN_D003,本轮修复;
+     415(shape_get_intersection_area_quad 的 POLYGON tri):IN_D003,本轮修复(连同上游返回值的传播);
+     528(shape_get_intersection_area):OUT_OF_SCOPE_D003(无调用者,死代码),交 P05-S5 登记;
+     1164(fprint_double):OUT_OF_SCOPE_D003(唯一调用点已被注释),交 P05-S5 登记;
+     新增 RP-S3R4-1:S4.cpp:1729 L->pattern.parent = malloc(...) 没有检查 NULL。本轮一并修复。
+U91  本轮只允许修改 S4/pattern/pattern.c、S4/fmm/fmm_FFT.cpp、S4/fmm/fmm_kottke.cpp、S4/S4.cpp(只改 1729 附近)。
+     S4/ 下其他任何文件、pattern.h 与历史装置都不得修改。
+U92  顺序:S3R4(修复并冻结 F3)→ P05-S4 R8(在 F3 上)。原 "R8(F2 上)" 一律改为 "R8(F3 上)"。
+U93  415 的失败标记:不用负值,不用 NaN(用户裁决,见 RULINGS.tsv)。做法:保留 shape_get_intersection_area_quad
+     的签名与行为;新增 static 函数 shape_get_intersection_area_quad_st(..., int *status);原函数改为薄包装;
+     pattern_discretize_cell 使用 _st,status 非零时返回一个新的错误码(不与 −1…−9 冲突)。
+U94  fmm_FFT.cpp:98 与 fmm_kottke.cpp:102 检查 Pattern_DiscretizeCell 返回值,非零时 ret = 1 并 goto cleanup
+     (现有 cleanup 段统一释放 plans、discval、work)。不得新增带初始化的变量;告警零新增;正常路径不变。
+
+----------------------------------------------------------------
+
+ES3R4-1  任务书前提错误(规划者错误,已由 U93 处理)
+  任务书第 2 节写 "返回 double,所以需要一个失败标记(例如负值,面积正常时不会是负数,要写出 [源码] 依据)"。
+  源码否定了该前提:
+  · pattern.c:1104  inv_pixel_area = 1./(duv[0]*duv[3]-duv[1]*duv[2]);行列式为负时 inv_pixel_area 为负;
+  · pattern.c:1115  a = shape_get_intersection_area_quad(...) * inv_pixel_area;
+  · intersection.c:30–36 polygon_area 是带符号的鞋带公式(0.5*Σ(x_p y_q − x_q y_p)),绕向决定符号;
+  · pattern.c:1116  if(a > 0) 把负值静默过滤掉。
+  因此 "负值 = 失败" 会把正常的负面积误判为失败,违反 "正常路径数值不变"。改用输出参数 int *status(U93)。
+  NaN 同样不采用:它会把真正的数值异常(现在被 a > 0 静默过滤)与分配失败混在一起。
+
+ES3R4-2  任务书 2 节写 "pattern.c:1115 处检测失败标记"。实际检测点在 _st 调用之后,status 非零时返回新码(U93)。
+         行号以修复后文件为准,修复前行号见 PRE_FIX_SOURCE_S3R4.md。
+
+ES3R4-3  任务书第 2 节要求 "poly 分支的 malloc 之外的分配释放"。POLYGON 分支中 tri 为唯一分配(pattern.c:415),
+         其释放在 pattern.c:445(成功路径)。tri 为 NULL 时不释放(free(NULL) 安全,但本修复不调用 free)。
+
+----------------------------------------------------------------
+
+ES3R4-4  806 返回码的语义冲突(规划者在修复前源码确认中发现;用户裁决 U95)
+  · 任务书要求 "area 为 NULL 时返回一个新的、不与现有返回码冲突的值"。新码选 −4(函数内唯一未用)。
+  · 但 Simulation_InitSolution 把非零直接向上返回(S4.cpp:1730–1734),而 S4_internal.h:252–262 的约定为
+    "−n = n-th argument invalid; 1 = allocation error"。若 −4 直接上报,会被解释为 "第 4 个参数无效"。
+  · U95 裁决:pattern_get_containment_tree 返回 −4;S4.cpp 在 1726–1734 段内把 −4 映射为 1(分配失败)。
+    其他非零值原样返回。S4.cpp 的批准范围因此扩大为 1726–1734 段(S4.cpp 其他行不改)。
+  · 注意:−4 在 pattern.c 中 861/907/1061/2136 已用于其他函数的参数错误码;它只在 pattern_get_containment_tree 内
+    有 "分配失败" 含义,这一点在函数注释中写明。
+
+ES3R4-5  超出本轮范围、交 P05-S5 登记的既有问题(U95 裁决,不修复):
+  (a) pattern_get_containment_tree 第一个形状无效时返回 i+1 = 1,被 InitSolution 原样上报,用户会看到 "内存分配失败"
+      (修复前即存在的返回码冲突,不是本轮引入)。
+  (b) pattern.c:798 的内层循环 `for(j = i+1; i < nshapes; ++i)` 使用 i 而不是 j 做条件与自增,形状相交检查失效
+      (独立的逻辑缺陷)。
+
+ES3R4-6  ES3R4-3 的修正:tri 为 NULL 时的失败路径不调用 free(tri)、也不继续执行 polygon_triangulate;
+         原文 "free(NULL) 安全" 的说法与本修复无关,予以删去。
+
+ES3R4-7  提交拆分偏离任务书 §3(用户裁决 U96)
+  · 任务书要求 "806 与 1729 一个提交;415 链路一个提交"。806 与 415 都在 pattern.c 同一文件中,
+    拆分需要补丁分段并验证两个中间状态,风险大于收益。用户裁决 U96:单个 F3 提交。
+  · F3 提交 = 8d8202a(只含 U91 的四个 S4/ 文件)。HEAD:S4 树哈希 = 6cff923a…(见 CLOSEOUT)。
+
+ES3R4-8  U96 追加的两处修改(提交前完成)
+  · S4.cpp:1729 检查改为 `if(NULL == L->pattern.parent && L->pattern.nshapes > 0)`:
+    nshapes==0 时 malloc(0) 可合法返回 NULL,不能当作分配失败;nshapes==0 时 Pattern_GetContainmentTree
+    在 790 行返回 0,不访问 parent,因此 NULL 的 parent 安全。
+  · fmm_FFT.cpp:98 与 fmm_kottke.cpp:102 只在 Pattern_DiscretizeCell 返回 −12 时设 ret = 1 并 goto cleanup;
+    −1..−9 保持原有行为(忽略),不在本轮改变。该遗留登记为 OUT_OF_SCOPE_D003,交 P05-S5:
+    "Pattern_DiscretizeCell 的参数错误返回值在 FFT/Kottke 中被忽略"。
+
+ES3R4-9  新增 −12 的依据(修复前已核对):
+  · 全库 `\-12` 检索:S4/ 中无 pattern 返回码用到 −12(只有 convert.c 的 1e-12,无关)。
+  · pattern_discretize_cell 现有返回码 −1…−9、0;−10、−11 属于 pattern_generate_flow_field(pattern.c:2182–2188),
+    是不同函数,但为避免混淆选 −12(未占用)。
+
+(后续条目 ES3R4-10 起,按发生顺序追加。本文件不改写已写入的条目。)
