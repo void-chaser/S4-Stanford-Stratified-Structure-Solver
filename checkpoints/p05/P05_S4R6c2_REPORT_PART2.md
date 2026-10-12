@@ -316,3 +316,13 @@ R5 之后的状态。"关闭"指有运行证据；"部分"指只关闭了其中�
 | R4 | `evidence/p05-s4r4/` | `registries/s4r4/`（R4 结果、预注册 v4 与 B 版、plancall、regress、seam、drivers） | `registries/s4r4/SHA256SUMS.txt`（R5 已生成）；证据目录 `evidence/p05-s4r4/SHA256SUMS.txt` |
 
 S3R2 的结果表已在 `registries/s3r2/`（提交 `1c11905`）。
+
+---
+
+## 14. 提交与 git 状态
+
+- 收尾提交：`43ef3a8e4bd8fbc173b9e9c4144aba16996cec76`（27 个文件，提交信息末尾 `awaiting user review`）。
+- 提交后核对：`HEAD:S4` = `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4`（冻结树 F 未改）；`git log -1 -- checkpoints/p05/STATE.md` = HEAD；判定器 sha256 `d2d04145…209eb`。
+- 提交后 `git status --short`：空（工作区干净）。
+
+**本轮已完成 R6c 范围（第 0–6 节）。本轮未完成 R6c 范围以外的任何项；未宣布任何阶段完成或签收。等待用户审核。**
