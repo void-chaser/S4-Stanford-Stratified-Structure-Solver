@@ -1,0 +1,41 @@
+# RESULTS_R7_M1_CTRL_REJUDGE_POSTHOC.tsv -- P05-S4 R7 M1a (U44): POSTHOC re-judgement of the 18 control rows.
+# Read only: stored nogdb.out and the stored process rc of RESULTS_R7_M1_pass{N}_run2.tsv.  No driver run.
+# Rule: ERRATA CTRL item 3.  Original RESULTS and REGRESS rows stay MISMATCH (U44).  Status POSTHOC.
+point_id	mode	NG	registered_string	pass	obs_rc_first	obs_rc_retry	obs_run_rc	hit	label	match_to_registry
+M1-CTRL-F2-fftjones-ng1	fftjones	1	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftjones-ng5	fftjones	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftjones-ng9	fftjones	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng1	fftnv	1	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng5	fftnv	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng9	fftnv	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftvl-ng1	fftvl	1	rc_first=20,rc_retry=20,run_rc=0	1	20	20	0	0	BASELINE_RC_EQUAL	YES
+M1-CTRL-F2-fftvl-ng5	fftvl	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftvl-ng9	fftvl	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng1	jones	1	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng5	jones	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng9	jones	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng1	nv	1	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng5	nv	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng9	nv	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-vl-ng1	vl	1	rc_first=20,rc_retry=20,run_rc=0	1	20	20	0	0	BASELINE_RC_EQUAL	YES
+M1-CTRL-F2-vl-ng5	vl	5	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-vl-ng9	vl	9	rc_first=0,rc_retry=0,run_rc=0	1	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftjones-ng1	fftjones	1	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftjones-ng5	fftjones	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftjones-ng9	fftjones	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng1	fftnv	1	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng5	fftnv	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftnv-ng9	fftnv	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftvl-ng1	fftvl	1	rc_first=20,rc_retry=20,run_rc=0	2	20	20	0	0	BASELINE_RC_EQUAL	YES
+M1-CTRL-F2-fftvl-ng5	fftvl	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-fftvl-ng9	fftvl	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng1	jones	1	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng5	jones	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-jones-ng9	jones	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng1	nv	1	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng5	nv	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-nv-ng9	nv	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-vl-ng1	vl	1	rc_first=20,rc_retry=20,run_rc=0	2	20	20	0	0	BASELINE_RC_EQUAL	YES
+M1-CTRL-F2-vl-ng5	vl	5	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+M1-CTRL-F2-vl-ng9	vl	9	rc_first=0,rc_retry=0,run_rc=0	2	0	0	0	0	CONTROL_OK	YES
+# counts: pass1 BASELINE_RC_EQUAL=2, pass1 CONTROL_OK=16, pass2 BASELINE_RC_EQUAL=2, pass2 CONTROL_OK=16

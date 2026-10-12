@@ -1,0 +1,3 @@
+# dry-parse of the M2 registration (no S4 run).  Joins v2 and ADD on (point_id, tree, group); checks request, inj_call, ng and the real rule per group.
+# joined points by group: G1=298, G2a=50, G2b=44, G2c=60, G2c-control=6, G3=72, G4=24
+# total joined: 554; unparseable: 0

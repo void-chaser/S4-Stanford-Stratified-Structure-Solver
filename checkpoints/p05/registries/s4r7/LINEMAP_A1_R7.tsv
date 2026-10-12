@@ -1,0 +1,7 @@
+# LINEMAP_A1_R7.tsv -- P05-S4 R7 M1a (U45) line probes.  Read-only: git show <commit>:<file> | sed -n / grep -n.
+# Trees: F2 = a07b5ac (S4 tree e124925f5b242486a913b813fa181664f665b048).  F lines are given for reference only.
+# The planner read 192 and 2413; both are confirmed in F2 by grep -n (this file) and by gdb 'info line' on F2 dbg (gdb_lineprobe_r7.out).
+file	line_F2	line_F	source_text	role
+S4/fmm/fmm_PolBasisJones.cpp	192	192	return error;	failure branch after Pattern_GenerateFlowField; 'error' holds the window return value
+S4/fmm/fmm_PolBasisJones.cpp	185	185	error = Pattern_GenerateFlowField(...);	the call (for context)
+S4/S4.cpp	2413	2413	if(0 != fmm_ret){	FMM epsilon status check in Simulation_ComputeLayerModes; 'fmm_ret' holds the epsilon routine return value

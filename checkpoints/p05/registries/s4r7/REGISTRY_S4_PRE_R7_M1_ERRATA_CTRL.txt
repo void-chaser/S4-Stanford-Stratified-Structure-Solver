@@ -1,0 +1,45 @@
+REGISTRY_S4_PRE_R7_M1_ERRATA_CTRL.txt -- P05-S4 R7 M1, errata of the 18 control rows (U44, E7-8).  Written after both M1 passes.
+This file does NOT change REGISTRY_S4_PRE_R7_M1.tsv or RESULTS_R7_M1_pass{1,2}_run2.tsv.  Those keep MISMATCH (U44).
+
+1. The defect (generator and runner, both wrong in half):
+   make_prereg_m1_r7.py writes the label CONTROL_OK into column first_expected_class and the rc string
+   "rc_first=..,rc_retry=..,run_rc=.." into column expected_class (the header order is point_id ... first_expected_class,
+   expected_class, expected_win1_rc, basis, status; the row values are shifted relative to the intended columns).
+   run_m1_r7.py reads the rc string from column expected_win1_rc (which holds "-" for controls), and it requires
+   expected_class == CONTROL_OK.  So every control is scored MISMATCH by the runner while the observed values are correct.
+   (An earlier version of this errata said the rc string was in first_expected_class; that was wrong, and is corrected here.
+   The registry file itself is not edited.)
+
+2. The registered rc strings, quoted UNCHANGED from REGISTRY_S4_PRE_R7_M1.tsv (column expected_class):
+   M1-CTRL-F2-vl-ng1      rc_first=20,rc_retry=20,run_rc=0
+   M1-CTRL-F2-vl-ng5      rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-vl-ng9      rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftvl-ng1   rc_first=20,rc_retry=20,run_rc=0
+   M1-CTRL-F2-fftvl-ng5   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftvl-ng9   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-nv-ng1      rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-nv-ng5      rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-nv-ng9      rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftnv-ng1   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftnv-ng5   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftnv-ng9   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-jones-ng1   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-jones-ng5   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-jones-ng9   rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftjones-ng1 rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftjones-ng5 rc_first=0,rc_retry=0,run_rc=0
+   M1-CTRL-F2-fftjones-ng9 rc_first=0,rc_retry=0,run_rc=0
+
+3. The rule for the POSTHOC re-judgement (new; applied to the stored nogdb.out, no re-run):
+   a. The row is MATCH-TO-REGISTRY when observed rc_first (RC first), rc_retry (RC retry) and run_rc equal the registered
+      string AND hit = 0 (no injection reached).
+   b. The label is CONTROL_OK when, in addition, rc_first = rc_retry = run_rc = 0 (the judge's clean-control rule,
+      judge_d003.classify, control=True).
+   c. The label is BASELINE_RC_EQUAL when (a) holds but rc_first = 20 (vl and fftvl NG1: the D016 -10 path).  classify()
+      does NOT define rc 20 as CONTROL_OK (it returns INVALID "control run not clean"), so these two modes are not CONTROL_OK.
+   d. Otherwise the row is NOT_EQUAL.
+
+4. Registration error, recorded: the registered expected_class for the two modes vl and fftvl NG1 is CONTROL_OK.  Under the
+   judge's definition they are not CONTROL_OK (item 3c).  So the registration was wrong for those two rows as well (U44).
+
+5. Scope: this rule re-judges the 18 control rows only.  It does not touch any injected point.  Result is POSTHOC.

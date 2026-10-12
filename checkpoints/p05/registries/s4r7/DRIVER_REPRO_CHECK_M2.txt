@@ -1,0 +1,37 @@
+DRIVER_REPRO_CHECK_M2.txt -- P05-S4 R7 M2 section 3.2 check: does the R7 plancall driver (d003plan, F plain) reproduce the
+historical R4 plancall classes?  Read only with respect to the registries; S4 runs here are probes, not judged results.
+
+Historical reference (registries/s4r4/RESULTS_R4_PLANCALL_pass1.tsv, F rows, both passes identical):
+  M-once-fft-plan-3   request plancall:3:1   expected REPORTED_FAILURE   hit 1   rc1 20   rc 1
+  M-twice-fft-plan-3  request plancall:3:1   expected REPORTED_FAILURE   hit 1   rc1 20   rc 1
+Setup of the historical plancall runs (run_r4_plancall.py, lines 83-84): NG 9, stack pattern, mode from the row.
+
+Probe with the R7 driver (drivers_r7/d003plan-F-plain/driver, F plain, linked from driver_d003.cpp + inject_r4_plan.cpp):
+  attempt A  FMM_MODE=fft S4FMM_NG=1  S4FMM_INJECT=plancall:1:2  -> rc1 20, hit 0
+  attempt A  FMM_MODE=fft S4FMM_NG=1  S4FMM_INJECT=plancall:12:1 -> rc1 0,  hit 0
+  attempt A  FMM_MODE=fft S4FMM_NG=1  S4FMM_INJECT=plancall:3:1  -> rc1 20, hit 0
+  attempt B  FMM_MODE=fft S4FMM_NG=9  S4FMM_INJECT=plancall:1:2  -> rc1 20, hit 0
+  attempt B  FMM_MODE=fft S4FMM_NG=9  S4FMM_INJECT=plancall:12:1 -> rc1 0,  hit 0
+  attempt B  FMM_MODE=fft S4FMM_NG=9  S4FMM_INJECT=plancall:3:1  -> rc1 20, hit 0
+
+CORRECTED RESULT (this file was first written with a wrong conclusion; the correction is the result):
+The injector DOES fire.  The HIT line is printed on STDERR ("S4FMM HIT real malloc failure: plan call K malloc 1, ...") and
+HITCOUNT 1 is on stdout.  My first probe counted HIT lines on stdout only, which gave hit 0: a parsing error in the probe.
+Recounted from stderr and HITCOUNT, all six probes fire (hit 1):
+  NG9  plancall:1:2   rc1 20   HITCOUNT 1  HIT(stderr) 1
+  NG9  plancall:12:1  rc1 0    HITCOUNT 1  HIT(stderr) 1   retry rc2 1
+  NG9  plancall:3:1   rc1 20   HITCOUNT 1  HIT(stderr) 1
+(NG1 probes were also run; they are recorded in probe_m2/ and are not used.)
+
+The driver therefore REPRODUCES the injection.  The remaining disagreement is the judged route:
+  - plancall:12:1 is a TWICE point in the historical record (M-twice-fft-plan-12): inj_call = 2 (column 8 of
+    RESULTS_R4_PLANCALL_pass1.tsv), rc1 0, rc2 1, class REPORTED_FAILURE.  Judged with inj_call 2, classify() gives
+    REPORTED_FAILURE (verified in this part).  Judged with inj_call 1 (the default), the same numbers give SILENT_SWALLOW.
+  - So the historical class depends on inj_call per route.  The M2 pre-registration generator wrote NO inj_call column,
+    so its TWICE rows would be judged with inj_call 1 and disagree with history.  This is a defect of the M2 registration
+    (the same class of error as E7-8), and the registration must be regenerated before any M2 run (not yet hashed in a run).
+
+Status of M2 after this check: the driver check PASSES (the injection and the historical classes are reproduced when the
+right inj_call is used).  The M2 registration NEEDS an inj_call column (ONCE rows 1, TWICE rows 2, taken from the source row's
+inj_call column) and must be regenerated and re-dry-parsed.  Not run.  G1 remains not run (no request in source, E7-17).
+G2a (seam) remains not run (separate injector family; not attempted).

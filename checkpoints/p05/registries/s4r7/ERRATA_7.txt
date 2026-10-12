@@ -119,3 +119,77 @@ G2b: RESULTS_R4_PLANCALL_pass{1,2}.tsv each have 22 F rows, all REPORTED_FAILURE
 G3: RESULTS_R5_PLANM_pass{1,2}.tsv each have 36 F rows, all REPORTED_FAILURE, MATCH.
 G4: RESULTS_R6_TWICE_pass{1,2}.tsv each have 12 F rows, all REPORTED_FAILURE, MATCH.
 All counts were measured in both passes before the pre-registration (correcting an earlier draft of this entry).
+
+== E7-15 correction (cont3): family-to-request mapping in RESULTS_R4 (the E7-15 text above is kept unchanged)
+Measured in cont3 (RESULTS_R4.tsv, F rows): A = linearsolve:1:1:info, linearsolve:2:1:info (2 rows);
+B2 = linearsolve_null2:<site>:1 (7 rows); C = alloc:21..25:1 (5 rows); D = kottke_alloc:31:1 (1 row);
+E = fmmret:150..159:1 (10 rows).  E7-15 said "A (2) and C (5) are the linearsolve and alloc families of seamF"; the
+correct reading is A = linearsolve (info), C = alloc.  Family E = fmmret (as E7-15 said).  No count is changed.
+
+== E7-17 G1 injection request (cont3; original reference restored)
+E7-17 was cited in DRIVER_REPRO_CHECK_M2.txt (line 36: "G1 remains not run (no request in source, E7-17)") but was NEVER
+written into this file.  Its content, as used in that evidence file: "G1 is not run either: its 298 rows carry no injection
+request in the source (RESULTS_R3.tsv has no request column)."  This is the original claim.  It is withdrawn by U50 (below).
+The claim "no request in the source" is literally true (RESULTS_R3 has no request column), but the request is determined by
+run_r3_sweep.py:32 and :111-120 (see U50).  E7-17 is therefore superseded.
+
+== U50 withdrawal of E7-17 (cont3)
+G1 IS run in M2b.  The injection request is reconstructed deterministically by the R3 sweep rule, not read from RESULTS_R3:
+  request = {malloc: s4malloc, plan: plan, exec: exec}[category]      (run_r3_sweep.py:32)
+  NTH     = the NTH field of the point id (also the nth column)
+  NG      = 9; stack = pattern                                       (run_r3_sweep.py:118-120)
+  inj_call = registries/s4r3/FIELDCALL_MAP.tsv[(route, mode, category, nth)]   (run_r3_sweep.py:110-112)
+  twice route: S4FMM_TWICE=slab (case prefix t4/)                    (run_r3_sweep.py:118)
+Verified in cont3 by testing/d003/stage_s4r7/check_fieldcall_r7.py -> CHECK_FIELDCALL_R7.tsv:
+  141 F injection rows checked; missing from the map 0; map value differs from RESULTS_R3 inj_call 0.
+Caveat (stated, not hidden): this confirms the map is consistent with the R3 record.  It does not re-verify that the R3 inj_call
+values were correct when recorded.  That is R3's own record, used here as the basis, as U50 requires.
+
+== E7-18 cont3 rulings were missing from RULINGS.tsv (U49)
+The rows U44-U48 (from CONT2) were not appended to RULINGS.tsv: grep "^U4[4-8]" returned 0 before cont3.  This is the same kind
+of omission as E7-7 (U34-U39).  Rows U44-U53 are appended in cont3.  Earlier statements that U44-U48 were in RULINGS are corrected here;
+the CONT2 report is not edited.
+
+== E7-19 violation classification correction (U53)
+(a) The directory fft/probe_m2 (repo root, moved to the evidence directory as probe_m2_misplaced_fft) is a table-2 event
+    (path construction error inside the repo), not a table-1 event.  Its root cause: a `set --` inside the sh -c string
+    overwrote $1 (the evidence directory), so the output path was built from $2 (mode) and $3 (request).
+    CONT2 reported it in table 1; that classification is corrected here.  The CONT2 report is not edited.
+(b) The `python3 -I -B -c` read-only checks in CONT2 (awk/python one-liners) violated CONT3's section 0 rule (no python -c,
+    even for read-only checks).  They are listed in table 2.  They were read-only and wrote nothing.
+
+== E7-20 G2a inj_call and ng (cont3; the rule behind the "E7-20" reference in ADD)
+The ADD table first wrote the G2a inj_call as "-" with the note "not re-derived".  That did not meet cont3 section 2.2 (G2a inj_call
+must come from the run_r4_matrix.py rule).  The rule is matrix_r2.inj_call_of(row) = 2 if the case starts with "t4/", else 1
+(matrix_r2.py:112-114; called at run_r4_matrix.py:141).  The 25 F seam ids (R4-A*, R4-C*, R4-F*, R4-P*, R4-S* families) carry no
+t4/ prefix (checked: 0 of 25 contain "t4/"), so inj_call = 1 for all G2a rows.  ng = 9: run_r4_matrix.py:102 writes "ng": "9"
+for matrix rows, and matrix_r2.build_env passes it as S4FMM_NG.  The ADD v2 (REGISTRY_S4_PRE_R7_M2_ADD_v2.tsv) carries these
+values; the earlier ADD file (REGISTRY_S4_PRE_R7_M2_ADD.tsv, G2a inj_call "-") is superseded before any M2 run (kept, not deleted).
+
+== E7-21 join key, shared point ids, and the dry-parse corrections (cont3)
+(a) v2 and ADD are joined on (point_id, tree, group), not (point_id, tree).  The same point id is in two groups: 104 point-id/tree
+    pairs occur in two groups (e.g. M-once-fft-plan-3-F is in G1 as INVALID_NOT_REACHED and in G2b as REPORTED_FAILURE, the
+    R3 point re-run as plancall in R4).  No pair occurs twice inside one group.  Measured by list_v2_add_mismatch_r7.py
+    (414 joined pairs, expected_class differences 0 after the group key).
+(b) The first dry-parse refused on "expected_class differs" for M-once-fft-plan-3-F: caused by the (point_id, tree) join, which
+    matched the G2b row against the G1 ADD row.  Corrected by the group key.  Refusal output kept (DRYPARSE_R7_M2_run4.txt).
+(c) Category tokens (-malloc-, -plan-, -exec-) exist only for the G1, G2b, G3, G4 ids; seam (R4-*) and control (CTL-*, addf-F-ctrl-*)
+    ids carry none.  The real flag is therefore taken per group (real_of), not from the id for every row.  real changes only the
+    label string (judge_d003.py:66), never the class.
+(d) The real rule per group follows the historical runners: G1, G2c: real = category != exec (run_r3_sweep.py:87; run_r4_regress);
+    G2a, G2b: real = True (run_r4_matrix.py:140); G3: True (run_r5_planm.py); G4: True (run_r6_twice_slab.py:117).
+(e) Control rows are judged by judge_d003.classify(control=True), not by a copied rule in the runner.  A copy would have missed the
+    hit != 0 check (judge_d003.py control branch).  inj_call is a placeholder 1 for control rows, because classify() rejects any
+    inj_call outside {1, 2} on every call (judge_d003.py:64); the control branch does not use it.
+(f) NG: v2 carries "-" for every group.  NG 9 is taken from the historical settings (run_r4_plancall.py:84; run_r5_san_inject.py:177),
+    not from v2.  R6 TWICE has no separate NG line; NG 9 for G4 is taken from the same pattern-stack setting and is stated here as
+    an inference from the R4/R5 settings, not as a direct reading of an R6 line.
+(g) dry-parse result: 554 joined points, unparseable 0 (DRYPARSE_R7_M2_run4_e.txt).  The dry-parse checks fields, the category and
+    real rules, inj_call in {1, 2} for injection rows, and ng = 9.  It does not run any driver and does not verify that a driver
+    reproduces its class; that is M2a's work.
+(h) Corrections to my earlier summary, recorded here.  MEASURED in cont3 by grouping the (point_id, tree) pairs that occur twice:
+    44 pairs are in G1 and G2b; 60 pairs are in G1 and G2c; total 104.  G3 and G4 share NO pair with G1.  So the earlier text
+    "the other shared pairs are those points also present in G2b, G3 and G4" was WRONG: G2c, not G3 or G4, shares the 60 pairs
+    (the R4 regress F points also appear in R3).  The 44 G1/G2b pairs are the R3 points re-run as plancall in R4 (E7-4 and
+    run_r4_plancall).  (2) "dry-parse 0 unparseable" was reached only after the rules above were corrected; the first dry-parse
+    runs were refused or unparseable, and their output is kept.

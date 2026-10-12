@@ -1,0 +1,7 @@
+# GDB_CHAIN_SUMMARY_R7_A1.tsv -- P05-S4 R7 M1a: PolBasis layer read by LINE breakpoints (U45), F2 dbg, NG9.
+# pattern_generate_flow_field return: from the M1 finish log (run2), as before.  error/fmm_ret: from the line-breakpoint log (run3), read by value.
+# 未读到 = the line breakpoint was not hit.  Expected (INFLUENCED, [源码]): error -11, fmm_ret -11 on the first call, RC first 20.
+mode	M	line_log	finish_log_for_pattern_ret	pattern_generate_flow_field_ret	PolBasisJones_error(fmm_PolBasisJones.cpp:192)	fmm_ret_first(S4.cpp:2413)	fmm_ret_second	RC_first	win_k1_rc	matches_expectation
+jones	1	gdb_line_jones_F2_ng9_m1_run3_seq1.log	gdb_chain_jones_finish_F2_ng9_m1_run2_seq3.log	-11	-11	-11	0	20	-11	YES
+jones	3	gdb_line_jones_F2_ng9_m3_run3_seq2.log	gdb_chain_jones_finish_F2_ng9_m3_run2_seq5.log	-11	-11	-11	0	20	-11	YES
+fftjones	1	gdb_line_fftjones_F2_ng9_m1_run3_seq3.log	gdb_chain_fftjones_finish_F2_ng9_m1_run2_seq7.log	-11	-11	-11	0	20	-11	YES

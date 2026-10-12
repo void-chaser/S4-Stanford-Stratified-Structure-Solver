@@ -1,0 +1,6 @@
+# BUILD_SEAM_PLAIN_R7.tsv -- R4 seam plain-build options, read from registries/s4r4/LIBS_R4.tsv and checkpoints/p05/evidence/p05-s4r4/seam/build-seamF.log (warnings 71).
+# CFLAGS and CXXFLAGS in R4: -O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC (the Makefile default; run_r4_seam.sh sets only CPPFLAGS).
+# CPPFLAGS in R4: <seam macros> -IS4 -IS4/RNP -IS4/kiss_fft
+tag	macros	CFLAGS_CXXFLAGS	R4_warnings
+seamF	-DS4_TEST_LINEARSOLVE_SEAM -DS4_TEST_LINEARSOLVE_SEAM_NULLINFO2 -DS4_TEST_ALLOC_SEAM -DS4_TEST_KOTTKE_SEAM	-O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC	71
+fmmret-F	-DS4_TEST_FMMRET_SEAM	-O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC	71
