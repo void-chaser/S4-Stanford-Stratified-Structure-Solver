@@ -1,0 +1,27 @@
+# SEAM_R6c_pass2.tsv -- raw facts of the 25 seam points, pass 2 (no judgement).
+point_id	library	mode	request	env_as_run	rc	rc1	rc2	hit	class_facts	reason
+R4-SI01-F	seamF	fft	linearsolve:1:1:info	FMM_MODE=fft;S4FMM_INJECT=linearsolve:1:1:info;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-SI02-F	seamF	kottke	linearsolve:2:1:info	FMM_MODE=kottke;S4FMM_INJECT=linearsolve:2:1:info;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-AL18-F	seamF	kottke	kottke_alloc:31:1	FMM_MODE=kottke;S4FMM_INJECT=kottke_alloc:31:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE01-F	fmmret-F	experimental	fmmret:150:1	FMM_MODE=experimental;S4FMM_INJECT=fmmret:150:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE02-F	fmmret-F	kottke	fmmret:151:1	FMM_MODE=kottke;S4FMM_INJECT=fmmret:151:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE03-F	fmmret-F	fft	fmmret:152:1	FMM_MODE=fft;S4FMM_INJECT=fmmret:152:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE04-F	fmmret-F	fftjones	fmmret:153:1	FMM_MODE=fftjones;S4FMM_INJECT=fmmret:153:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE05-F	fmmret-F	fftnv	fmmret:154:1	FMM_MODE=fftnv;S4FMM_INJECT=fmmret:154:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE06-F	fmmret-F	fftvl	fmmret:155:1	FMM_MODE=fftvl;S4FMM_INJECT=fmmret:155:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE07-F	fmmret-F	closed1d	fmmret:159:1	FMM_MODE=closed1d;S4FMM_INJECT=fmmret:159:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE08-F	fmmret-F	jones	fmmret:156:1	FMM_MODE=jones;S4FMM_INJECT=fmmret:156:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE09-F	fmmret-F	nv	fmmret:157:1	FMM_MODE=nv;S4FMM_INJECT=fmmret:157:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-FE10-F	fmmret-F	vl	fmmret:158:1	FMM_MODE=vl;S4FMM_INJECT=fmmret:158:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CL01-F	seamF	closed1d	linearsolve_null2:134:1	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:134:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CL02-F	seamF	closed1d	linearsolve_null2:138:1	FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:138:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CL03-F	seamF	closed2d	linearsolve_null2:144:1	FMM_MODE=closed2d;S4FMM_INJECT=linearsolve_null2:144:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CL04-F	seamF	tensor	linearsolve_null2:244:1	FMM_MODE=tensor;S4FMM_INJECT=linearsolve_null2:244:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-PJ01-F	seamF	jones	linearsolve_null2:375:1	FMM_MODE=jones;S4FMM_INJECT=linearsolve_null2:375:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-PN01-F	seamF	nv	linearsolve_null2:265:1	FMM_MODE=nv;S4FMM_INJECT=linearsolve_null2:265:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-PV01-F	seamF	vl	linearsolve_null2:273:1	FMM_MODE=vl;S4FMM_INJECT=linearsolve_null2:273:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CLM1-F	seamF	fft	alloc:21:1	FMM_MODE=fft;S4FMM_INJECT=alloc:21:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CLM2-F	seamF	fft	alloc:22:1	FMM_MODE=fft;S4FMM_INJECT=alloc:22:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CLM3-F	seamF	fft	alloc:23:1	FMM_MODE=fft;S4FMM_INJECT=alloc:23:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-CLM4-F	seamF	fft	alloc:24:1	FMM_MODE=fft;S4FMM_INJECT=alloc:24:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20
+R4-ACF1-F	seamF	jones	alloc:25:1	FMM_MODE=jones;S4FMM_INJECT=alloc:25:1;S4FMM_NG=9	1	20	0	1	REPORTED_FAILURE	reached, first call returned 20

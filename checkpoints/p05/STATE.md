@@ -7,12 +7,12 @@
 | 项 | 值 |
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
-| 本轮开工基线 HEAD(R6b) | `20b3411ec52c50e40b158486778063db034f0141`(R6 收尾提交;R6 开工时为 `108f42f`) |
+| 本轮开工基线 HEAD(R6c) | `b9fbe00f577e64a92c57522369ba7a0ab6ece316`(R6b 部分收尾提交;R6b 开工为 `20b3411`) |
 | 收尾提交 | 修改本文件的最后一次提交(`git log -1 --format=%H -- checkpoints/p05/STATE.md`) |
 | `HEAD:S4` | `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4`(= 冻结树 F `1c11905`) |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收(带范围声明,见 `P05_S1_S2_SIGNOFF.md`);S3、S4、S5 未签收 |
-| 当前阶段 | P05-S4(验证)子轮次 R6b:**部分完成**。门禁、树核对、ERRATA_6b、202 点映射、177 点预注册(已锁定)、16 个对照组登记已完成;**两遍全量 gdb 运行、判定器、VIOLATED 复跑、红点总账、修复方案未完成**;RNV1 未开始。S3-4b **未判定**(无 HOLD/VIOLATED 计数,不是通过)。等待用户审核(见 `P05_S4R6b_REPORT.md`) |
+| 当前阶段 | P05-S4 子轮次 **R6c**(非新阶段):里程碑 `6bba0bd` 已提交(177 点全量与判定,U15);**第 4 节 seam 部分完成,状态运行待用户裁决 U18;第 5、6 节未做**。RNV1 延后(U16 → R7)。等待用户审核(报告:`P05_S4R6c_REPORT.md`、`P05_S4R6c_REPORT_ADDENDUM_seam.md`) |
 
 ## 2. 各轮关键数字(P05-S4,冻结树 F)
 
@@ -26,6 +26,7 @@
 | R6 | 子轮次:twice NTH 12–16 在 TWICE=slab 下重跑(R6-1);S3-4b 状态测试(R6-2);RNV1(R6-3);红点总账(R6-4) | R6-1:24 行 × 2 遍 = 48 次,全部 MATCH(F 为 REPORTED_FAILURE,B 为 CRASH);gdb K=14(fft、kottke)确认调用者 FMMGetEpsilon_* 且 NULL 检查执行;R6-2:驱动编译通过,映射表 119 行,单点快照实测 I1 成立;**I1–I7 判定未完成**;R6-3、R6-4 未完成 | `P05_S4R6_REPORT.md` |
 
 | R6b | 子轮次(部分):S3-4b 装置与预注册;U7–U13 裁决入 ERRATA_6b | 树核对 70/70 SAME;映射 202 点(R3 119 + R4PC 22 + R5M2 36 + R4SEAM 25);预注册 177 点(INFLUENCED,已锁定 sha `f2523d14…`);对照组 16 组合登记;单点 closed1d malloc NTH1 once 的 gdb 与无 gdb rc 一致(20/0/0);seam 25 点 UNJUDGED(无调试信息);**全量运行与判定未做**;R6-3 RNV1、R6-4 账本未开始 | `P05_S4R6b_REPORT.md` |
+| R6c | 子轮次:里程碑 `6bba0bd`(U14–U17;v2 预注册;177 点两遍全量与判定);第 4 节 seam 部分(重建、等价性、inj_call、预注册);**seam 状态运行与第 5、6 节未做** | 177 点:两遍 GDB_DIVERGENT 0;HOLD 177 / VIOLATED 0 / UNJUDGED 0 / FLAKY 0(I3 HOLD 69 / N/A 108;装置只覆盖层 1 失败);seam 等价性 25/25 EQUAL;inj_call 全为 1;seam 判定 UNJUDGED 25(待 U18) | `P05_S4R6c_REPORT.md`、`P05_S4R6c_REPORT_ADDENDUM_seam.md` |
 
 R1 覆盖表(62 个编号,R4 合并后):57 REACHED,5 UNMAPPED。R5 之后:AL02 注销为 EXP40 重复;K1A、K1B、D016 已测;RNV1 部分(见第 3 节)。
 
@@ -41,7 +42,7 @@ R5 之后的状态。"关闭"指有运行证据;"部分"指只关闭了其中一
    - D016 — **关闭**(R5-4):F 的 `pattern_generate_flow_field` 返回 −10(两次),驱动 rc 20;B 返回 0,与 S3R2 一致;
    - RNV1 — **部分,仍开放**(R6-3 未完成:注入器未写、未运行;见报告):pattern 内 malloc 确认存在(每次 nv 运行 3 次,F 与 B 相同);注入未做(需新注入器,不改 S4/);pattern 的 work malloc 无 NULL 检查(源码),注入预计先段错误,不会到达 −10 路径。列入 R6。
 4. **S3 移交清单(D4 第四节)** — 逐条见 `evidence/p05-s4r5/S3_HANDOFF_COVERAGE_R5.tsv`:
-   - 失败后模式/缓存不安装(S3-4b)— **仍开放;R6 判定未完成,HOLD/VIOLATED 计数未定(0 HOLD、0 VIOLATED 为未判定,不是通过)**。R6-2 仅有单点实测(closed1d malloc NTH 1):失败层 modes==NULL(I1 成立),层 0/2 已保留模式,按用户裁决 I2 选项 1 处理(E6-8)。`partial_modes=1` 不是缺陷证据(E6-3,驱动检查在重试之后计数,HARNESS_OR_PROCESS);
+   - 失败后模式/缓存不安装(S3-4b)— **R6c 里程碑后:177 点 HOLD 177 / VIOLATED 0 / UNJUDGED 0(两遍一致)。仍开放:装置只覆盖层 1 失败;I7 与双目标 DEFERRED(U9);seam 25 点未判定(U18)。是否关闭由用户决定,不是"已修好"。**(R6 时的旧表述已过时。)R6-2 仅有单点实测(closed1d malloc NTH 1):失败层 modes==NULL(I1 成立),层 0/2 已保留模式,按用户裁决 I2 选项 1 处理(E6-8)。`partial_modes=1` 不是缺陷证据(E6-3,驱动检查在重试之后计数,HARNESS_OR_PROCESS);
    - 失败后不缓存部分 P — **仍开放**(无直接缓存探针);
    - Python/Lua 可见失败 — **仍开放**(R6,R5 未跑);
    - 恢复后重试正确(V3) — **部分关闭**:132 点重试场与同模式同路由基准逐字节相同;单列 70 点(rc2-only 45、R4 seam 25)未比较;

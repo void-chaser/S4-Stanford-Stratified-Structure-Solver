@@ -62,3 +62,35 @@ judge logic of this round; the judge was corrected (r6c_judge.py) and smoke try 
     cache node at k_fail has an equal node in the control at k_fail.  Note: for jones/nv/vl most points have an EMPTY cache at
     k_fail (0 nodes); their HOLD is the trivial "no node to compare" case.  9 points (3 per mode) have 1 node.  Reported as is.
 (f) The judge refuses to overwrite any result file (U17); earlier smoke outputs are kept.
+
+== E6c-3 (CORRECTION of a planner inference made while preparing section 4; recorded after the milestone commit) ==
+While preparing section 4 I first inferred that driver_r6b_state.cpp could not inject the seam requests (linearsolve:, alloc:,
+fmmret:, kottke_alloc:) because its own source does not contain them.  That inference was WRONG.  Read-only grep (this round):
+  inject_r4_plan.cpp contains linearsolve (12), alloc: (5), fmmret (4), kottke_alloc (4);  inject_d003.cpp contains the same.
+  driver_r6b_state.cpp and driver_d003.cpp contain none of them: the injector, not the driver, interprets S4FMM_INJECT.
+The R6c-2 build therefore links driver_r6b_state.cpp with inject_r4_plan.cpp against the -O0 -g seam library:
+  checkpoints/p05/evidence/p05-s4r6c/seam_dbg/drivers/r6b-seamF/driver-r6b-seamF   (link rc 0; build.stdout empty)
+One-point trial (R4-SI01-F, linearsolve:1:1:info, fft, once; NOT a judgement, kept as state/trial evidence):
+  S4FMM HIT linearsolve site=1 call=1 (HITCOUNT 1); RC first 20; RC retry 0; R6BCLM RETURN idx 1 Slab rc 20; R6CREQ 1 1, 2 1, 3 1;
+  R6BSTATE 30 lines (r6_probe snapshots readable).  Consistent with R4 (rc1 20, rc2 0).
+Consequence: the seam state run uses driver-r6b-seamF for the 15 seamF points.  The 10 fmmret-F points need a second driver
+(r6b-fmmret-F, same construction on the fmmret-F library); it is NOT yet built.
+
+== E6c-4 (the seam pre-registration was written WITHOUT its control groups; recorded before any seam state run) ==
+REGISTRY_S4_PRE_R6c_SEAM.tsv (sha256 093c68a8...d576c, UTC 2026-10-12T06:47:07Z, status INFLUENCED) states expected HOLD for
+every applicable invariant, and I2, I3 and I6 need a no-injection control.  No seam control group was registered at that time.
+The 177-point controls (REGISTRY_S4_PRE_R6b_CONTROL.tsv) are built from a different library (F with R5 debug build), so they are
+not controls for the seam libraries.  Facts of the seam points: 18 distinct (mode, library) combinations (fmmret-F: 10 points over 9
+modes; seamF: 15 points over 10 modes incl. tensor, fftjones, fftnv, fftvl are absent from the 177-point controls).
+Status: NOT resolved in this round.  No seam state run has been made (pass1/pass2 absent).  Options for the user (U18 needed):
+  (a) register 18 seam controls (one per (mode, library)) as an addition to the seam pre-registration BEFORE the seam state run,
+      with a new file name; then run the 25 points two passes; or
+  (b) run the seam points with I2/I3/I6 marked UNJUDGED (no control), and judge only I1, I4 and I5.
+The planner does not choose between (a) and (b) without the user.
+
+== E6c-5 (BUILD METHOD of the seam debug rebuild; recorded before any seam state run) ==
+The first draft of run_r6c_seam_dbg_build.sh copied the R4 seam trees with "cp -a".  That copy would carry the R4 build/
+directory and the -O3 object files (*.o, *.a) with their timestamps; make could then reuse them and the -O0 -g build would not
+happen.  The draft was replaced BEFORE it was run: the copy now excludes ./build, *.o and *.a (tar pipe).  The run used the
+replaced script only.  Evidence: seam_dbg/build-seamF.log and build-fmmret-F.log contain 24 "-O0" flags and 0 "-O3" flags (checked).
+The R4 seam trees and their R4 libraries are not modified.

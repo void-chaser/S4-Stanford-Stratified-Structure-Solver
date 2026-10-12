@@ -1,0 +1,29 @@
+# SEAM_INJCALL_R6c.tsv -- inj_call of the 25 seam points measured under gdb (R6c-2 brief 4.3).
+# inj_call = R6SEAMCALL number of the GetFieldPlane call that contains the first injection HIT line.
+point_id	library	mode	request	gdb_rc	hit_lines	inj_call	rc1_gdb	rc2_gdb	gdb_log
+R4-SI01-F	seamF	fft	linearsolve:1:1:info	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-SI01-F.gdb.log
+R4-SI02-F	seamF	kottke	linearsolve:2:1:info	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-SI02-F.gdb.log
+R4-AL18-F	seamF	kottke	kottke_alloc:31:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-AL18-F.gdb.log
+R4-FE01-F	fmmret-F	experimental	fmmret:150:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE01-F.gdb.log
+R4-FE02-F	fmmret-F	kottke	fmmret:151:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE02-F.gdb.log
+R4-FE03-F	fmmret-F	fft	fmmret:152:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE03-F.gdb.log
+R4-FE04-F	fmmret-F	fftjones	fmmret:153:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE04-F.gdb.log
+R4-FE05-F	fmmret-F	fftnv	fmmret:154:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE05-F.gdb.log
+R4-FE06-F	fmmret-F	fftvl	fmmret:155:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE06-F.gdb.log
+R4-FE07-F	fmmret-F	closed1d	fmmret:159:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE07-F.gdb.log
+R4-FE08-F	fmmret-F	jones	fmmret:156:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE08-F.gdb.log
+R4-FE09-F	fmmret-F	nv	fmmret:157:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE09-F.gdb.log
+R4-FE10-F	fmmret-F	vl	fmmret:158:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-FE10-F.gdb.log
+R4-CL01-F	seamF	closed1d	linearsolve_null2:134:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CL01-F.gdb.log
+R4-CL02-F	seamF	closed1d	linearsolve_null2:138:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CL02-F.gdb.log
+R4-CL03-F	seamF	closed2d	linearsolve_null2:144:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CL03-F.gdb.log
+R4-CL04-F	seamF	tensor	linearsolve_null2:244:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CL04-F.gdb.log
+R4-PJ01-F	seamF	jones	linearsolve_null2:375:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-PJ01-F.gdb.log
+R4-PN01-F	seamF	nv	linearsolve_null2:265:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-PN01-F.gdb.log
+R4-PV01-F	seamF	vl	linearsolve_null2:273:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-PV01-F.gdb.log
+R4-CLM1-F	seamF	fft	alloc:21:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CLM1-F.gdb.log
+R4-CLM2-F	seamF	fft	alloc:22:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CLM2-F.gdb.log
+R4-CLM3-F	seamF	fft	alloc:23:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CLM3-F.gdb.log
+R4-CLM4-F	seamF	fft	alloc:24:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-CLM4-F.gdb.log
+R4-ACF1-F	seamF	jones	alloc:25:1	0	1	1	20	0	checkpoints/p05/evidence/p05-s4r6c/seam_dbg/injcall/R4-ACF1-F.gdb.log
+# summary: points 25 ; GDB_DIVERGENT 0
