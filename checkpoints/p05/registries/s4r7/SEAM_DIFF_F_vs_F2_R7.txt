@@ -1,0 +1,15 @@
+SEAM_DIFF_F_vs_F2_R7 (P05-S4 R7 step 3). Method: git archive of 1c11905 (F) and a07b5ac (F2) into fresh trees; seam families applied by the R4/R5 historical scripts (apply_seam_r2.py --families A,C,D; apply_seam_b2.py; apply_seam_r5_fmmret.py --tree A) to copies; diff -ru of each seamed tree against its own clean tree; diff header lines (diff -ru, +++, ---: they carry absolute paths and timestamps) stripped; the remaining content lines compared with cmp.
+--- seamF: F-seamF content diff vs F2-seamF content diff:
+IDENTICAL
+lines_F_seamF=237 lines_F2_seamF=237
+--- fmmret:
+IDENTICAL
+lines_F_fmmret=72 lines_F2_fmmret=72
+--- files touched by seam (F):
+S4/fmm/fmm_closed.cpp
+S4/fmm/fmm_FFT.cpp
+S4/fmm/fmm_kottke.cpp
+S4/fmm/fmm_PolBasisJones.cpp
+S4/fmm/fmm_PolBasisNV.cpp
+S4/fmm/fmm_PolBasisVL.cpp
+S4/S4.cpp

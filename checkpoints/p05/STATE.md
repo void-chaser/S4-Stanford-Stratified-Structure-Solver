@@ -7,12 +7,12 @@
 | 项 | 值 |
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
-| 开工基线 HEAD（R6c2） | `fa7a247ff6d6b92c824b7774d4032cdbdd814bab`（R6c 第 4 节 seam 部分；里程碑 `6bba0bd`） |
+| 开工基线 HEAD（R7，E7-2） | `8e13729635c20dc658abc2a35e8195b26e3b9bec`（S3R3 报告状态提交；R7 开工时的 HEAD） |
 | 收尾提交 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
 | `HEAD:S4`（当前冻结被测树 F2） | `e124925f5b242486a913b813fa181664f665b048`（F2 提交 `a07b5ac`；前一冻结树 F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | P05-S3 子轮次 **S3R3**（不是新阶段）：RNV1 修复（方案 R3，U30）、注释 U31、冻结 F2。**已完成修复、编译检查与自检 A–D；S3-4b 由用户关闭（U29，见 `P05_S3_4b_CLOSURE.md`）。等待用户审核；下一步 P05-S4 R7 在 F2 上回归**。报告：`P05_S3R3_CLOSEOUT.md`。S3R3 未宣布任何阶段完成或签收 |
+| 当前轮次 | P05-S4 子轮次 **R7**（F2 回归，非新阶段）：门禁、构建、seam diff、无注入等价已完成；注入矩阵未运行；下一步 M1（RNV1 回归）。第一段见 `P05_S4R7_REPORT_PART1.md`。S3R3 报告 `P05_S3R3_CLOSEOUT.md`；S3-4b 由用户关闭（U29）。R7 未宣布任何阶段完成或签收 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -31,13 +31,14 @@
 | 项 | 状态 | 去向 |
 |---|---|---|
 | S3-4b（失败后模式/缓存不安装） | **由用户带范围声明关闭（U29）**，只关闭此项，不代表 P05-S3/S4 签收；范围声明见 `P05_S3_4b_CLOSURE.md`；未覆盖：阶段 e、I7、双目标注入、其他层失败变体 | 转 R8（F2 上） |
-| 双目标注入、I7 sanitizer | DEFERRED（U9） | R7 |
-| "其他层失败"变体 | DEFERRED（U20） | R7 |
+| 双目标注入、I7 sanitizer | DEFERRED（U9） | R8（U25，E7-1） |
+| "其他层失败"变体 | DEFERRED（U20） | R8（U25，E7-1） |
 | RNV1（pattern malloc 无 NULL 检查，RP-R6d-1） | F 上 CRASH（R6d）；S3R3 采用方案 R3（U30，提交 `a9679bc`）；F2 自检通过（REPORTED_FAILURE），**未经 S4 验证**，R7 在 F2 上回归 | R7（F2） |
 | 注释措辞 `S4/S4_internal.h:263`（U11） | 已改为 U31 措辞（提交 `a07b5ac`） | R7 回归确认 |
 | 张量路径 K-1（RP-R6d-8） | F_SUSPECT_SOURCE（[源码]，未测） | R8 |
 | B 侧 jones/vl SILENT_SWALLOW、nv CRASH | OPEN（基线，不是修复证据） | S5 或 R7 |
-| Python/Lua 可见性、NB=1–8、类别 C、D016 B 侧 rc 20 来源 | OPEN / DEFERRED | R7 |
+| Python/Lua 可见性、NB=1–8、类别 C | OPEN / DEFERRED | R8（U34，E7-1） |
+| D016 B 侧 rc 20 来源 | OPEN | R7（F2 回归观察；RP-R6d-7） |
 | 非 FMM `S4_malloc`（约 35–43 处） | OUT_OF_SCOPE_D003 | S5 |
 | U2、U4、U5 原文 | 用户在 R6d 对话中补录（`registries/RULINGS.tsv` 的 `-补录` 行）；U2 部分落实（U28） | U2 逐条覆盖见 `evidence/p05-s4r6d/U2_COVERAGE_R6d.tsv`；S3-4b 关闭由用户决定 |
 | U2 中 stage e（I1 特殊规则） | 0 点，**未覆盖** | R8 |

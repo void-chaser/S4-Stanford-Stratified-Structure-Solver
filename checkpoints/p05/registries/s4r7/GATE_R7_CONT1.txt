@@ -1,0 +1,19 @@
+REPO /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver
+HEAD 8e13729635c20dc658abc2a35e8195b26e3b9bec
+HEAD:S4 e124925f5b242486a913b813fa181664f665b048
+a07b5ac:S4 e124925f5b242486a913b813fa181664f665b048
+judge_d003.py sha256 d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+git status --short (count) 9
+  STATUS ?? checkpoints/p05/briefs/P05_S4R7_BRIEF.md
+  STATUS ?? checkpoints/p05/briefs/P05_S4R7_BRIEF_CONT1.md
+  STATUS ?? checkpoints/p05/registries/s4r7/ERRATA_7.txt
+  STATUS ?? testing/d003/stage_s4r7/build_s4r7.sh
+  STATUS ?? testing/d003/stage_s4r7/build_seam_s4r7.sh
+  STATUS ?? testing/d003/stage_s4r7/link_drivers_s4r7.sh
+  STATUS ?? testing/d003/stage_s4r7/r7_gate.py
+  STATUS ?? testing/d003/stage_s4r7/r7_gate_cont1.py
+  STATUS ?? testing/d003/stage_s4r7/run_noinject_equiv_r7.sh
+RULINGS rows U34-U43 before this part (informational) 0
+/tmp top-level entries 0
+/tmp top-level listing sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+GATE RESULT: PASS

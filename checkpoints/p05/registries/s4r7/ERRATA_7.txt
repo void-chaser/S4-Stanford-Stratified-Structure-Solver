@@ -1,0 +1,61 @@
+ERRATA_7.txt -- P05-S4 R7 errata and user rulings (E7-1 onward).  This file only adds; it does not change R3-R6d or S3R3 files.
+==========================================================================================================================
+
+== User rulings (U34-U39), also appended to checkpoints/p05/registries/RULINGS.tsv ==
+U34  R7 runs on F2 (a07b5ac, S4 tree e124925f5b242486a913b813fa181664f665b048).  R7 is regression only.  Items assigned to R8
+     by U25/U29 are not done here: stage e, I7 sanitizer, dual-target injection, other-layer failure variants, K-1,
+     Python/Lua, NB=1-8, category C.
+U35  P05-S3 is not signed off.  After the R7 milestone results are given to the user, the user decides on a signature with scope.
+U36  The S3R3 self-check A rc 20 of vl/fftvl NG1 is not split further by a new path test; it is tabulated offline (VL_NG1_SPLIT_R7).
+U37  RNV1 points are added for jones and fftjones (F and F2); tri-lattice points are added for vl and jones.
+U38  Unclassified mallocs in pattern.c (415, 528, 806, 1164 on the F2 line numbers) get a [source] classification only.
+     No test, no repair; the ruling is the user's.
+U39  STATE.md items marked "去向 R7" that are really supplementary tests are re-pointed to R8 (E7-1 below).
+     STATE.md line 10 ("开工基线 HEAD（R6c2）") is changed to the R7 opening HEAD.
+
+== E7-1  STATE.md destinations (U39)
+Items in checkpoints/p05/STATE.md whose destination is "R7" but whose content is a supplementary test (not the F2 regression) are
+re-pointed to R8 (U25): "双目标注入、I7 sanitizer" and "'其他层失败'变体" (U9, U20), "Python/Lua 可见性、NB=1–8、类别 C" (R8 scope),
+"B 侧 vl NG=1 rc 20 与 D016 B 侧来源" stays R7 only as the F2 regression observation.  The historical round reports are not edited (U39).
+
+== E7-2  STATE.md opening HEAD (U39)
+STATE.md line 10 "开工基线 HEAD（R6c2）" is changed to the R7 opening HEAD 8e13729635c20dc658abc2a35e8195b26e3b9bec.
+
+== E7-3  closed mode name in the no-injection equivalence (step 4.3)
+The first run of run_noinject_equiv_r7.sh (RESULTS_R7_NOINJECT_run1.tsv) used the mode name "closed".  driver_r6b_state
+accepts "closed2d" and "closed1d" only; "closed" makes the driver exit with rc 2 ("S4FMM ARGERROR invalid or missing FMM_MODE=closed")
+on BOTH F and F2, before any field is computed.  This produced 9 NOT_IDENTICAL_OR_MISSING rows (closed x NG 1/5/9 x call1-3).
+These rows are a mode-name input error on the executor's side, NOT a difference between F and F2 output.
+The file run1 is kept unchanged (U17).  The correction is a labelled follow-up run "run1b" with mode closed2d on F and F2:
+all 9 dump comparisons (NG 1/5/9 x call1-3) are IDENTICAL, rc 0 on both trees.  The 108 other run1 rows are IDENTICAL.
+Consequence for the gate of step 4.3: the only non-IDENTICAL rows are explained as input error, and the corrected mode is IDENTICAL.
+No injection was run before this explanation.
+
+== E7-4  R3 "141 points" versus the 149 F rows (pre-registration of G1)
+RESULTS_R3.tsv has 149 distinct F point_ids: 8 CONTROL_OK controls and 141 injection points (expected REPORTED_FAILURE).
+The scope statement "R3 范围内 141 点" refers to the 141 injection points.  Of those, 22 plan points are INVALID on F in R3
+(not reached: COVERAGE_R3.tsv "not reached (INVALID): 22").  For G1 the F2 expectation of these 22 is "INVALID (not reached on F)",
+copied from F; it is not a class, and it is not counted as MATCH or REGRESSION.  The 8 controls are carried as CONTROL_OK.
+
+== E7-5  seam diff method (step 3.3)
+The seam diff comparison compares the content lines of "diff -ru" between each seamed tree and its own clean tree, after removing the
+header lines (diff -ru, +++, ---), because those lines carry absolute paths and timestamps.  Result: seamF and fmmret content diffs
+are IDENTICAL between F and F2 (237 and 72 lines).  Recorded in SEAM_DIFF_F_vs_F2_R7.txt.  The brief asked for "diff identical";
+the header stripping is the only change of method and is stated here.
+
+== E7-6  library hashes (step 2.2)
+Plain libraries of F and F2 match the S3R3 builds byte for byte (F plain be17f469..., F2 plain c63d180a...).  Debug libraries
+differ from S3R3's debug libraries (F dbg bcf2c2aa... vs S3R3 d355468f...; F2 dbg 185f060f... vs S3R3 5b1e8d3f...), because the
+build directory differs.  Per the brief these are recorded and results are compared, not bytes.  Warnings are 62 (dbg) and 71 (plain)
+for both trees, as required.
+
+== E7-3 addendum (U40, R7 continuation part 1)
+Root cause: the R7 brief (P05_S4R7_BRIEF.md, section 4.3) named the mode "closed".  The driver accepts closed2d and closed1d only.
+The root cause is the brief (planner error), not the executor's run.  The 4.3 gate counts as passed after run1b, which is the
+closed2d follow-up: RESULTS_R7_NOINJECT_run1b.tsv, 9/9 IDENTICAL, rc 0/0 on both trees (read-only summary by
+summarize_noinject_run1b_r7.py over the existing outputs; no driver was re-run).
+
+== E7-7 RULINGS inconsistency (U43)
+The first version of this file said that U34-U39 were appended to checkpoints/p05/registries/RULINGS.tsv.  They were not:
+grep "^U3[4-9]" on RULINGS.tsv returned 0 rows before the continuation part 1.  The rows U34-U43 are appended in this part.
+The inconsistency is recorded here and is not otherwise repaired (the earlier statement is not edited).

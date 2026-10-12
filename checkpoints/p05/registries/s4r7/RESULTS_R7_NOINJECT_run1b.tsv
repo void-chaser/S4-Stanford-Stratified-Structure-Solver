@@ -1,0 +1,12 @@
+# RESULTS_R7_NOINJECT_run1b -- closed2d follow-up of run1 (E7-3, U40).  Read-only summary of existing outputs.
+mode	NG	lattice	file	F_rc_first	F_rc_retry	F2_rc_first	F2_rc_retry	cmp
+closed2d	1	square	call1.txt	0	0	0	0	IDENTICAL
+closed2d	1	square	call2.txt	0	0	0	0	IDENTICAL
+closed2d	1	square	call3.txt	0	0	0	0	IDENTICAL
+closed2d	5	square	call1.txt	0	0	0	0	IDENTICAL
+closed2d	5	square	call2.txt	0	0	0	0	IDENTICAL
+closed2d	5	square	call3.txt	0	0	0	0	IDENTICAL
+closed2d	9	square	call1.txt	0	0	0	0	IDENTICAL
+closed2d	9	square	call2.txt	0	0	0	0	IDENTICAL
+closed2d	9	square	call3.txt	0	0	0	0	IDENTICAL
+# summary: IDENTICAL=9 NOT_IDENTICAL_OR_MISSING=0

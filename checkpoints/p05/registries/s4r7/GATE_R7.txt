@@ -1,0 +1,15 @@
+REPO /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver
+HEAD 8e13729635c20dc658abc2a35e8195b26e3b9bec
+HEAD:S4 e124925f5b242486a913b813fa181664f665b048
+a07b5ac:S4 e124925f5b242486a913b813fa181664f665b048
+1c11905:S4 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4
+F->F2 S4 names ['S4/S4_internal.h', 'S4/pattern/pattern.c']
+judge_d003.py sha256 d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+SHA256SUMS checkpoints/p05/registries/s3r3/SHA256SUMS.txt OK 8 BAD 0
+SHA256SUMS checkpoints/p05/registries/s4r6d/SHA256SUMS.txt OK 19 BAD 0
+git status --short (count) 2
+  STATUS ?? checkpoints/p05/briefs/P05_S4R7_BRIEF.md
+  STATUS ?? testing/d003/stage_s4r7/r7_gate.py
+/tmp top-level entries 0
+/tmp top-level listing sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+GATE RESULT: PASS

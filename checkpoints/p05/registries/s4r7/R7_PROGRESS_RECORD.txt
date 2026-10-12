@@ -1,0 +1,10 @@
+R7 progress record (not the end gate): 2026-10-12T10:53:44Z
+HEAD 8e13729635c20dc658abc2a35e8195b26e3b9bec
+F2 S4 tree e124925f5b242486a913b813fa181664f665b048
+F S4 tree 4a6f64927a30537740dd0c8f11f9a5aae5e46ba4
+build_r7 BUILD_R7.tsv: see build_r7/BUILD_R7.tsv
+seam: SEAM_DIFF_F_vs_F2_R7.txt (normalized content IDENTICAL)
+no-injection: RESULTS_R7_NOINJECT_run1.tsv (108 IDENTICAL, 9 E7-3 input-error rows); run1b closed2d 9/9 IDENTICAL
+injection matrices G1-G8 and 4.2: NOT RUN in this session
+tmp top-level entries 0
+tmp listing sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
