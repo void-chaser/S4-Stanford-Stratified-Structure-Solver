@@ -1,0 +1,4 @@
+# DRIVERS_R7_cont1.tsv -- tri dbg drivers (M1 prep, section 3.2).  Not part of DRIVERS_R7.tsv.
+tree	mode	lib_sha256	driver_sha256	driver_path
+F	tri	bcf2c2aafc89e8783013ae74f2e6d1ec931be29775419c6f84ba3af838ec43d8	8de96a66e21e02a3588f5d938d7616b2f0a7b8efd2dcb4e7339260d2b54db05e	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r7/drivers_r7/tri-F-dbg/driver
+F2	tri	185f060f0e01dc7d12791d5dae0e6465a44e18343072d1c0accd6bb2012cb86b	b049ed64ede835eab8cfd492408a812c9e5ed61ffb1e49b4a354af9b1c05fedf	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r7/drivers_r7/tri-F2-dbg/driver

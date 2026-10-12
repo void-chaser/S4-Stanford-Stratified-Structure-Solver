@@ -1,0 +1,23 @@
+# LINEMAP_F_F2_R7.tsv -- P05-S4 R7 M1 preparation: line numbers of the sites used by the R7 scripts, F (1c11905) vs F2 (a07b5ac).
+# Basis: git show <commit>:S4/pattern/pattern.c | grep -n (read only).  The only S4 files that differ between F and F2 are
+# S4/pattern/pattern.c and S4/S4_internal.h (git diff --stat 1c11905 a07b5ac -- S4/).  S4.cpp and fmm/*.cpp have the SAME line
+# numbers in F and F2 (no change), so their references need no mapping.
+# A "-" in the F or F2 column means the site does not exist in that tree under that exact text.
+# Scripts that cite these lines: testing/d003/stage_s4/r5_rnv1_malloc_count.gdb (comment, F lines 1477 1481 1656 1660);
+# testing/d003/stage_s3r3/s3r3_branch_gdb.gdb (comment, tri = F 1643).  Behaviour of those scripts uses FUNCTION names
+# (pattern_generate_flow_field, __wrap_malloc, cg, pattern_generate_flow_field_tri) and backtraces, not line numbers, so
+# the shift does not change what they do.  Their references are recorded here; no script is edited for line shift.
+site	function	F_line	F2_line	basis	role_in_R7
+malloc_cg_work	cg	1251	1253	malloc(sizeof(double) * 4*n)	RNV1 window malloc (3rd of rect/nv, M=3)
+solve_rect	pattern_generate_flow_field_rect	1621	1643	sparse_linsolve_d(N2, ...)	rect solver call (F: sparse_linsolve_d; F2: lstatus = ...)
+malloc_rect_work	pattern_generate_flow_field_rect	1477	1489	malloc(sizeof(double)*N2*(5+2))	RNV1 window malloc (M=1, rect)
+malloc_rect_iwork	pattern_generate_flow_field_rect	1481	1499	malloc(sizeof(int)*N2*4)	RNV1 window malloc (M=2, rect)
+solve_tri	pattern_generate_flow_field_tri	2056	2089	sparse_linsolve_d(N3, ...)	tri solver call
+malloc_tri_work	pattern_generate_flow_field_tri	1656	1679	malloc(sizeof(double)*N3*(11+2))	RNV1 window malloc (M=1, tri)
+malloc_tri_iwork	pattern_generate_flow_field_tri	1660	1689	malloc(sizeof(int)*N3*10)	RNV1 window malloc (M=2, tri)
+fn_cg	cg	1245	1247	static definition line	gdb break target (function name, no line used)
+fn_sparse_linsolve_d	sparse_linsolve_d	1327	1338	static definition line	not a break target
+fn_rect	pattern_generate_flow_field_rect	1464	1476	static definition line	gdb break target (function name)
+fn_tri	pattern_generate_flow_field_tri	1643	1666	static definition line	gdb break target (function name)
+fn_pattern_generate_flow_field	pattern_generate_flow_field	2089	2123	public definition line	gdb break target (function name)
+note_cg_call_in_sparse	cg (call inside sparse_linsolve_d)	1404	1416	cg(...) / return cg(...)	cg call site inside the non-CHOLMOD branch

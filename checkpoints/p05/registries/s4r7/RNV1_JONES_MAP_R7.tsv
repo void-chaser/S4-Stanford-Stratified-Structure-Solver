@@ -1,0 +1,29 @@
+# RNV1_JONES_MAP_R7.tsv -- P05-S4 R7 M1 (section 3.3): window malloc map of jones and fftjones on F (dbg, no injection).
+# Method: r6dnv1 driver (driver_r6b_state.cpp + inject_r6d_rnv1.cpp) linked against F dbg (drivers_r7/r6dnv1-F-dbg), NO S4FMM_INJECT
+# (counting only); each run under gdb with __wrap_malloc breakpoint printing "bt 2" (gdb_malloc_lines_r7.gdb).  Logs:
+# gdb_map_F_<mode>_ng<NG>_run2.log.  Positions are MEASURED by gdb backtrace (frame #1 = caller line), not inferred.
+# The window (Pattern_GenerateFlowField) opens once per run; its mallocs are the four lines below after the 806 call, which
+# is outside the window (pattern_get_containment_tree, before pattern_generate_flow_field) and is listed for completeness.
+# All six runs: rc 0 without injection (probe in probe_map/).  Positions are identical in all six runs.
+mode	NG	k_in_window	M_for_injection	malloc_line_F	caller_function	in_window
+jones	1	1	1	1477	pattern_generate_flow_field_rect	yes
+jones	1	2	2	1481	pattern_generate_flow_field_rect	yes
+jones	1	3	3	1251	cg (from sparse_linsolve_d, pattern.c:1404)	yes
+jones	5	1	1	1477	pattern_generate_flow_field_rect	yes
+jones	5	2	2	1481	pattern_generate_flow_field_rect	yes
+jones	5	3	3	1251	cg	yes
+jones	9	1	1	1477	pattern_generate_flow_field_rect	yes
+jones	9	2	2	1481	pattern_generate_flow_field_rect	yes
+jones	9	3	3	1251	cg	yes
+fftjones	1	1	1	1477	pattern_generate_flow_field_rect	yes
+fftjones	1	2	2	1481	pattern_generate_flow_field_rect	yes
+fftjones	1	3	3	1251	cg	yes
+fftjones	5	1	1	1477	pattern_generate_flow_field_rect	yes
+fftjones	5	2	2	1481	pattern_generate_flow_field_rect	yes
+fftjones	5	3	3	1251	cg	yes
+fftjones	9	1	1	1477	pattern_generate_flow_field_rect	yes
+fftjones	9	2	2	1481	pattern_generate_flow_field_rect	yes
+fftjones	9	3	3	1251	cg	yes
+# outside the window (listed for completeness, all six runs): malloc at pattern.c:806 in pattern_get_containment_tree.
+# Byte sizes are NOT recorded in this map: the gdb breakpoint prints the caller only (bt 2), so the size argument was not measured
+# for jones/fftjones here.  Sizes measured in earlier rounds (nv NG9: 7168, 2048, 4096 B) are not transferred to these points.

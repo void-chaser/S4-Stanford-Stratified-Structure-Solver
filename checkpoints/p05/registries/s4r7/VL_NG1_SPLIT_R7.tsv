@@ -1,0 +1,15 @@
+# VL_NG1_SPLIT_R7.tsv -- U36 offline table (read-only; no new runs).  Source: M1 G7 nogdb.out for vl and fftvl NG1, pass1 and pass2 (run2),
+# and S3R3 selfcheck section A logs (run1) for the same points where present.  Expected (INFLUENCED): win k=1 -11, k=2,3 -10, RC first 20.
+point_id	pass	mode	M	win_k1_rc	win_k2_rc	win_k3_rc	RC_first	RC_retry	matches_expectation
+M1-G7-F2-vl-ng1-m1	1	vl	1	-11	-10	-10	20	20	YES
+M1-G7-F2-vl-ng1-m1	2	vl	1	-11	-10	-10	20	20	YES
+M1-G7-F2-vl-ng1-m2	1	vl	2	-11	-10	-10	20	20	YES
+M1-G7-F2-vl-ng1-m2	2	vl	2	-11	-10	-10	20	20	YES
+M1-G7-F2-vl-ng1-m3	1	vl	3	-11	-10	-10	20	20	YES
+M1-G7-F2-vl-ng1-m3	2	vl	3	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m1	1	fftvl	1	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m1	2	fftvl	1	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m2	1	fftvl	2	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m2	2	fftvl	2	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m3	1	fftvl	3	-11	-10	-10	20	20	YES
+M1-G7-F2-fftvl-ng1-m3	2	fftvl	3	-11	-10	-10	20	20	YES

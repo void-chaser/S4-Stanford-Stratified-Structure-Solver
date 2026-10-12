@@ -1,0 +1,7 @@
+# GDB_CHAIN_SUMMARY_R7.tsv -- P05-S4 R7 M1 section 5 gdb chain (F2 dbg, NG9; jones and fftjones points; window = Pattern_GenerateFlowField).
+# entry run = continue-only breakpoints (judged-type run, reaches the injection); finish run = return values (finish stops the program).
+# 未读到 = the layer was not reached by the finish breakpoint; not inferred from source.
+mode	M	entry_log	finish_log	pattern_generate_flow_field_ret	FMMGetEpsilon_PolBasis_ret	ComputeLayerModes_rc(RC first)	win_k1_rc
+jones	1	gdb_chain_jones_entry_F2_ng9_m1_run2_seq2.log	gdb_chain_jones_finish_F2_ng9_m1_run2_seq3.log	-11	未读到	20	-11
+jones	3	gdb_chain_jones_entry_F2_ng9_m3_run2_seq4.log	gdb_chain_jones_finish_F2_ng9_m3_run2_seq5.log	-11	未读到	20	-11
+fftjones	1	gdb_chain_fftjones_entry_F2_ng9_m1_run2_seq6.log	gdb_chain_fftjones_finish_F2_ng9_m1_run2_seq7.log	-11	未读到	20	-11
