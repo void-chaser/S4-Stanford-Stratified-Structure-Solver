@@ -95,7 +95,10 @@ int FMMGetEpsilon_FFT(const S4_Simulation *S, const S4_Layer *L, const int n, st
 		const int si0 = ii[0] >= ngrid[0]/2 ? ii[0]-ngrid[0]/2 : ii[0]+ngrid[0]/2;
 		for(ii[1] = 0; ii[1] < ngrid[1]; ++ii[1]){
 			const int si1 = ii[1] >= ngrid[1]/2 ? ii[1]-ngrid[1]/2 : ii[1]+ngrid[1]/2;
-			Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval);
+			/* P05-S3R4 (U38/U94, 415; U96): only -12 (allocation failure in the polygon triangle index) is reported
+			 * as allocation error 1; cleanup frees plans, discval and work.  Other non-zero returns keep the
+			 * existing behaviour (ignored here; OUT_OF_SCOPE_D003 -> P05-S5). */
+			if(-12 == Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval)){ ret = 1; goto cleanup; }
 			int nnz = 0;
 			int imat[2] = {-1,-1};
 			for(int i = 0; i <= L->pattern.nshapes; ++i){

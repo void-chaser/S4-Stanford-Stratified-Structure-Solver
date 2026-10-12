@@ -1727,8 +1727,17 @@ int Simulation_InitSolution(S4_Simulation *S){
 			free(L->pattern.parent);
 		}
 		L->pattern.parent = (int*)malloc(sizeof(int)*L->pattern.nshapes);
+		/* P05-S3R4 (RP-S3R4-1, U95): on allocation failure return 1 (allocation error,
+		 * S4_internal.h). L->pattern.parent stays NULL so that the next call does not free a dangling pointer. */
+		/* nshapes == 0: malloc(0) may legitimately return NULL, which is not a failure (U96). */
+		if(NULL == L->pattern.parent && L->pattern.nshapes > 0){
+			S4_TRACE("< Simulation_InitSolution (failed; allocation of pattern parent for layer %s) [omega=%f]\n", L->name, S->omega[0]);
+			return 1;
+		}
 		int error = Pattern_GetContainmentTree(&L->pattern);
 		if(0 != error){
+			/* P05-S3R4 (U38, 806; U95): -4 from the containment tree is its area allocation failure, reported as 1. */
+			if(-4 == error){ error = 1; }
 			S4_TRACE("< Simulation_InitSolution (failed; Pattern_GetContainmentTree returned %d for layer %s) [omega=%f]\n", error, L->name, S->omega[0]);
 			return error;
 		}

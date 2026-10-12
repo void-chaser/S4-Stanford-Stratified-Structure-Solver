@@ -295,13 +295,16 @@ int shape_get_normal(const shape *s, const double x[2], double n[2]){
 
 #include "intersection.h"
 
-/* Returns intersection area between shape s and the rectangle with
- * bottom left corner p0 and dimensions dp.
+/* P05-S3R4 (U38/U93, 415): status-reporting version of shape_get_intersection_area_quad.
+ * *status = 0 on success; *status = 1 if the polygon triangle index allocation failed
+ * (the returned area is then 0 and is not meaningful).  A negative area is normal
+ * (signed polygon_area; inv_pixel_area can be negative), so the failure is not a sign.
  */
-double shape_get_intersection_area_quad(const shape *s, const double *p0, const double *duv){
+static double shape_get_intersection_area_quad_st(const shape *s, const double *p0, const double *duv, int *status){
 	/* We will use the strategy of decomposing polygonal shapes into triangles.
 	 * For the ellipse, we will apply a coordinate transformation to make it a circle.
 	 */
+	*status = 0;
 
 	double p0p[2] = {p0[0] - s->center[0], p0[1] - s->center[1]};
 	double upv[2] = {duv[0]+duv[2], duv[1]+duv[3]};
@@ -413,6 +416,11 @@ double shape_get_intersection_area_quad(const shape *s, const double *p0, const 
 			double P[8], Q[6], Pi[14], u[2], v[2];
 			int i, j, nPi;
 			int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));
+			/* P05-S3R4 (U38/U93, 415): allocation failure is reported through *status, not through the area. */
+			if(NULL == tri){
+				*status = 1;
+				return 0;
+			}
 
 			P[2*0+0] = p0p[0]*ca + p0p[1]*sa;
 			P[2*0+1] = p0p[0]*-sa + p0p[1]*ca;
@@ -449,6 +457,15 @@ double shape_get_intersection_area_quad(const shape *s, const double *p0, const 
 		break;
 	}
 	return 0;
+}
+
+/* Returns intersection area between shape s and the rectangle with
+ * bottom left corner p0 and dimensions dp.  Unchanged behaviour: the status of
+ * shape_get_intersection_area_quad_st is ignored here (P05-S3R4, U93).
+ */
+double shape_get_intersection_area_quad(const shape *s, const double *p0, const double *duv){
+	int status;
+	return shape_get_intersection_area_quad_st(s, p0, duv, &status);
 }
 
 /* Returns intersection area between shape s and the rectangle with
@@ -803,7 +820,10 @@ int pattern_get_containment_tree(
 		}
 	}
 
+	/* P05-S3R4 (U38/U95, 806): -4 = internal allocation failure for area.
+	 * -4 is not returned elsewhere by this function; InitSolution maps it to 1. */
 	area = (double*)malloc(sizeof(double)*nshapes);
+	if(NULL == area){ return -4; }
 	for(i = 0; i < nshapes; ++i){
 		parent[i] = -1;
 		area[i] = shape_area(&shapes[i]);
@@ -1112,7 +1132,13 @@ int pattern_discretize_cell(
 		};
 
 		for(k = 0; k < nshapes; ++k){
-			double a = shape_get_intersection_area_quad(&shapes[k], p0, duv) * inv_pixel_area;
+			/* P05-S3R4 (U38/U93, 415): a failed triangle allocation in the polygon branch is reported as -12.
+			 * -12 = internal allocation failure; -1..-9 and 0 keep their meanings.  A negative area is normal
+			 * and is not a failure. */
+			int status = 0;
+			double a = shape_get_intersection_area_quad_st(&shapes[k], p0, duv, &status);
+			if(0 != status){ return -12; }
+			a = a * inv_pixel_area;
 			if(a > 0){
 				value[k+1] += a;
 				value[parent[k]+1] -= a;
