@@ -217,4 +217,4 @@ a9679bc P05-S3R3 RNV1 repair (U30, scheme R3): pattern.c cg/sparse_linsolve_d re
 cadf258 P05-S4 R6d report section 11 (post-commit check) and registry sync; no change to stage status. awaiting user review
 ```
 
-本报告与其余 S3R3 文件在以下提交中收尾（见下方 `git status --short` 说明）。
+收尾提交：`0647e58`（本报告与其余 S3R3 文件）。提交后 `git status --short` 为空（工作区干净）。
