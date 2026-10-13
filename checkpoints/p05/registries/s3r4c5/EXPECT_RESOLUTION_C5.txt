@@ -1,0 +1,9 @@
+# EXPECT_RESOLUTION_C5 -- written BEFORE the resolver runs (CONT5 section 3.2).  Expected, not observed.
+# seamF rows (CTRL-SEAM-seamF-F, CTRL-SEAM-seamF-F2): registered driver seamF-<tree>, resolved seamF-<tree>, AGREE.
+# fmmret rows (CTRL-SEAM-fmmret-F, CTRL-SEAM-fmmret-F2): registered driver fmmret-<tree>, resolved seamF-<tree>, DISAGREE.
+# Reason: request none -> driver_for returns seamF-<tree> (run_m2b_all_r7.py:124-131); the driver column is not read.
+expect	CTRL-SEAM-seamF-F	AGREE
+expect	CTRL-SEAM-seamF-F2	AGREE
+expect	CTRL-SEAM-fmmret-F	DISAGREE	resolved=seamF-F
+expect	CTRL-SEAM-fmmret-F2	DISAGREE	resolved=seamF-F2
+# registered_utc=2026-10-13T02:32:55Z

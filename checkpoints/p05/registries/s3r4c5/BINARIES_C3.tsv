@@ -1,0 +1,8 @@
+name	path	sha256	compare	expected_prefix
+F2-plain-lib	checkpoints/p05/evidence/p05-s3r4/build/F2-plain/build/libS4.a	c63d180aff6c5b5e443faefeb6de44abce430dafbb846db434ac15da85fbc185	SAME	c63d180a
+F3-plain-lib	checkpoints/p05/evidence/p05-s3r4/build_f3/plain/build/libS4.a	abbc01c78f0a422f3494556bb43e212e397fbbf49d03370132ae45e2c268e5de	SAME	abbc01c7
+F3-dbg-lib	checkpoints/p05/evidence/p05-s3r4/build_f3/dbg/build/libS4.a	10ea03b37ccdb6f256bd65904763520e6570e297ba2060416f28253e1f065afa	FIRST_RECORD	-
+init-F2-driver	checkpoints/p05/evidence/p05-s3r4c2/drivers/init-F2/driver	29bb377c4eb5e1d393d2916d2ad9a05d9ecf781fc4cc709dd87332f8904d1158	SAME	29bb377c
+init-F3-driver	checkpoints/p05/evidence/p05-s3r4c2/drivers/init-F3/driver	ff66cfc1bf87b6c22d13e32dc6adf3c5e6b090fdcad745bf5248f74dd9510b68	SAME	ff66cfc1
+polyinj-F2-driver	checkpoints/p05/evidence/p05-s3r4c3/drivers/polyinj-F2/driver	237bbefc169524db939a64dce091207495f5d844c4e5e5b68d730299a80f7559	FIRST_RECORD	-
+polyinj-F3-driver	checkpoints/p05/evidence/p05-s3r4c3/drivers/polyinj-F3/driver	419cfb727932cc8d9417fd3a873c578f2f1f597f57e501041d9dd3b221ad30a9	FIRST_RECORD	-

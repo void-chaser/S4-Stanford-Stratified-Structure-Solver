@@ -1,0 +1,5 @@
+# excluded from SHA256SUMS_P05-S3R4C3.txt (CONT5 section 3.1)
+safe_run.log (appended log; recorded as excluded)
+tmp/ (scratch directory)
+f3_export/ (copy of the F3 export; reproduced from the git tree, not hashed here)
+drivers/*/driver (binaries; hashes recorded in BINARIES_C3.tsv)

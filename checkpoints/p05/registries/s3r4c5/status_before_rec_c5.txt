@@ -1,0 +1,9 @@
+ M checkpoints/p05/ERRATA_S3R4.txt
+ M checkpoints/p05/registries/RULINGS.tsv
+?? checkpoints/p05/P05_S3R4_CLOSEOUT_CONT3.md
+?? checkpoints/p05/P05_S3R4_CLOSEOUT_CONT4.md
+?? checkpoints/p05/briefs/P05_S3R4_CONT4_BRIEF.md
+?? checkpoints/p05/briefs/P05_S3R4_CONT5_BRIEF.md
+?? checkpoints/p05/registries/s3r4c3/
+?? testing/d003/stage_s3r4c3/
+?? testing/d003/stage_s3r4c5/

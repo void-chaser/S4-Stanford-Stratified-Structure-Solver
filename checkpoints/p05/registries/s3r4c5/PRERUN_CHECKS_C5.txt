@@ -1,0 +1,6 @@
+2026-10-13T02:25:06Z	gate_c5.sh	UTC prerun grep 0 hits (gate_c5.sh, prerun_log_c5.sh)
+2026-10-13T02:32:05Z	supp_c5.sh	UTC prerun grep 0 hits (supp_c5.sh after rewrite)
+2026-10-13T02:32:52Z	resolve_ctrl_seam_c5.sh	UTC prerun grep 0 hits (resolve_ctrl_seam_c5.sh, resolve_ctrl_seam_c5.py)
+2026-10-13T02:33:23Z	commit_rec_c5.sh	UTC prerun grep 0 hits (commit_rec_c5.sh)
+2026-10-13T02:33:43Z	copy_registries_c5.sh	UTC prerun grep 0 hits (copy_registries_c5.sh)
+2026-10-13T02:34:07Z	cleanup_reg_c5.sh	UTC prerun grep 0 hits (cleanup_reg_c5.sh)

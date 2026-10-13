@@ -1,0 +1,7 @@
+# PREREG_D_RECORD_C3 -- read-only record of REGISTRY_S3R4C3_D.tsv (CONT5 section 3.1).
+# Note: the modification time below is the file's mtime, NOT a registration record; CONT3 did not write a registration record.
+file	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c3/REGISTRY_S3R4C3_D.tsv
+sha256	a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
+rows_total_lines	9
+mtime_utc	2026-10-13 11:03:03.570553363 +1100
+repo_copy_sha256	a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
