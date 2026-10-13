@@ -1,0 +1,69 @@
+# ERRATA_8.txt -- P05-S4 R8 勘误与裁决记录(P05-S4 的子轮次 R8,M0)
+# 只追加。编号从 E8-1 起。原任务书、RESTART、RESTART2 与首次开工记录均不改。
+
+== 用户裁决(本文件开头;原文记录在 registries/RULINGS.tsv)
+
+U121–U127(原任务书 §1,R8 M0 首次开工):
+  U121 接受续5 结果;copy_registries_c5.sh 留下的半个目录经 cleanup_reg_c5.sh 清理,接受为已披露。续5 的补齐与解析脚本
+       在记录提交之前运行,结果有效。以上记为 ES3R4-31。今后复制脚本必须先确认全部输入存在再建目录。
+  U122 S3R4 的执行范围到续5 为止。P05-S3 未签收;806、415、RP-S3R4-1 的修复后验证在 R8 中完成。
+  U123 R8 在 F3(8d8202a,S4 树 6cff923a…)上运行,分四个里程碑 M0–M3,每个里程碑结束后停下,等用户审核。
+  U124 D 的驱动规则(补充 U119):每点登记驱动族;实际驱动为该族的 F3 plain 驱动;运行器对每点断言族与树一致。
+  U125 D 的期望 = REGISTRY_S3R4C3_D.tsv 的 expected_class 与 expected_rc1,原样使用,状态 INFLUENCED,跑两遍。
+  U126 F2↔F3 等价对照的 F2 侧复用 R7 已链接的 F2 plain 驱动(运行前核对 sha256),不重新链接;F3 侧从本轮 F3 库重新链接。
+  U127 R8 的写入方式与停止条件沿用续5 §0.2、§0.3,另加复制品规则与"先确认输入再建目录"规则。
+
+U128–U129(R8 M0 重启任务书 §1):
+  U128 原任务书 §0.1 中"registries/s4r7/SHA256SUMS*.txt 全部 sha256sum -c OK"一条是规划者错误,没有考虑 R7 已披露的
+       E7-12、E7-25、E7-36。该条改为 RESTART §2.2 的分类核对。R7 的原件一律不改,也不新建更正清单。
+  U129 首次开工(2026-10-13T03:00:33Z)按原 §0.1 停止,做法正确,不算执行者违规。首次开工报告的两处更正:
+       (a) SHA256SUMS_M2a.txt、SHA256SUMS_M2pre.txt 格式没有损坏(两列标准格式);不通过的只有 ERRATA_7、
+           ../RULINGS.tsv、../../STATE.md 三行(写清单时的历史快照,E7-25);只有 SHA256SUMS_M2b_run7.txt、
+           SHA256SUMS_M2b_run7prep.txt 有多余的 copied 列(E7-36)。
+       (b) S4_DIFF 失败的原因是 sort 受 locale 影响,改动集合本身正确;新门禁用 LC_ALL=C sort。
+       首次开工的 gate_r8.sh 与 GATE_R8_M0.txt 作为停止记录保留。
+
+U130–U132(R8 M0 第 3 次开工任务书 §1 = 本轮):
+  U130 第 2 次开工 2026-10-13T03:37:20Z 的命令接受为已披露违规(表一,未落盘;见 E8-3)。
+  U131 以下只读内联命令含 /dev/null,违反原任务书 §0.2;记入表二,不停止(见 E8-4)。
+  U132 方法收紧:门禁与清单核对只能经脚本、经 safe_run 运行;check_s4r7_manifests_r8.py 不写临时文件,
+       从 stdin 校验;内联 bash 只允许白名单形式;想丢弃输出时什么都不做;每条内联 bash 运行前逐字检查。
+
+== E8-1  首次开工停止与更正(依据 U129)
+
+  · 首次开工记录:evidence/p05-s4r8/GATE_R8_M0.txt,sha256 1c8ecdd6e8d1301fa986fa0025008a22f8a23c2c71c29068f2bf772f6e6d9725,
+    UTC 2026-10-13T03:00:33Z,FAILS=6(见 safe_run.log 行 1 预检、行 3 门禁运行)。
+  · 6 项 FAIL 中:S4_DIFF_a07b5ac_8d8202a 是 sort 的 locale 问题(改动集合正确,见 U129(b));
+    其余 5 项(S4R7_SHA256SUMS.txt、_M2a、_M2b_run7、_M2b_run7prep、_M2pre)是 E7-12/E7-25/E7-36 披露的历史情形
+    (见 U128、U129(a))。
+  · 更正:SHA256SUMS_M2a.txt、SHA256SUMS_M2pre.txt 不是格式损坏;它们的不通过行是历史快照行。SHA256SUMS_M2b_run7.txt、
+    SHA256SUMS_M2b_run7prep.txt 的格式问题是多余的 copied 列。
+  · 首次开工的停止做法正确(原 §0.1 要求)。
+
+== E8-2  观察(不改原件)
+
+  · E7-12(ERRATA_7.txt :94–97)写"SHA256SUMS_M2.txt (M2) lists ERRATA_7 and STATE.md"。registries/s4r7/ 中没有
+    SHA256SUMS_M2.txt;实际起这个作用的是 SHA256SUMS_M2pre.txt 与 SHA256SUMS_M2a.txt。原文不改,只记录。
+
+== E8-3  越界写入尝试(表一;U130)
+
+  · 时间:2026-10-13T03:37:20Z(第 2 次开工,RESTART 之后的核对阶段)。
+  · 命令(原文):grep -v 'ERRATA_7.txt' SHA256SUMS.txt > "$PWD/../../../../../$(echo x)" 2>/dev/null; echo skip
+  · 性质:命令自身的写入目标解析到仓库外的 /srv/nvme/projects/x。被 Read-only file system 拒绝。
+  · 是否落盘:否。以 test -e /srv/nvme/projects/x 核实不存在(第 2 次开工记录)。
+  · 同一条命令的其他违规:含 /dev/null;没有经 safe_run。该命令丢弃输出后打印 skip,未执行任何核对。
+  · 处置:执行者按规则停止,做法正确(原 §0.3 ①)。已披露,不作废任何已有结果。
+
+== E8-4  只读内联命令含 /dev/null 或 2>/dev/null(表二;U131)
+
+  · 以下命令只读,未写入仓库外路径,不停止。
+    首次开工(UTC):
+      02:53:52  wc -l … 2>/dev/null
+      02:56:24  cat …DRIVERS_R7_SEAM.tsv 2>/dev/null
+      02:56:24  ls testing/d003/stage_s4r7/ >/dev/null
+      02:58:12  sed -n 1,25p …run_noinject_equiv_r7.sh >/dev/null
+      03:01:22  git status --short --ignored … 2>/dev/null
+    第 2 次开工:
+      03:37:20  上一条命令中的 2>/dev/null(见 E8-3)。
+  · 首次开工报告中"违规:无(表一、表二均为空)"的说法由此更正。
+  · 注:上述命令本身未经 safe_run,其 UTC 与原文来自裁决 U131 的记录;safe_run.log 不记录内联命令。
