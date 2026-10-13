@@ -1,0 +1,165 @@
+seam anchor check (check-only) utc=2026-10-13T00:04:09Z root=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c3/f3_export
+--- apply_seam_r5_fmmret.py --tree A --check-only
+apply_seam_r5_fmmret: tree=A CHECK ONLY
+file: S4/S4.cpp  macro: S4_TEST_FMMRET_SEAM  hook: S4_TEST_FMMRET_AFTER
+  declaration after line 48
+  point id=150  FMMGetEpsilon_Experimental  tabs=3  anchor line=2391
+  point id=151  FMMGetEpsilon_Kottke  tabs=5  anchor line=2395
+  point id=152  FMMGetEpsilon_FFT  tabs=5  anchor line=2397
+  point id=153  FMMGetEpsilon_PolBasisJones  tabs=7  anchor line=2400
+  point id=154  FMMGetEpsilon_PolBasisNV  tabs=7  anchor line=2402
+  point id=155  FMMGetEpsilon_PolBasisVL  tabs=7  anchor line=2404
+  point id=156  FMMGetEpsilon_PolBasisJones  tabs=6  anchor line=2412
+  point id=157  FMMGetEpsilon_PolBasisNV  tabs=6  anchor line=2414
+  point id=158  FMMGetEpsilon_PolBasisVL  tabs=6  anchor line=2416
+  point id=159  FMMGetEpsilon_ClosedForm  tabs=4  anchor line=2409
+--- a/S4/S4.cpp
++++ b/S4/S4.cpp
+@@ -48,2 +48,5 @@
+ #include <numalloc.h>
++#ifdef S4_TEST_FMMRET_SEAM
++extern "C" int S4_TEST_FMMRET_AFTER(int id, int ret);
++#endif
+ 
+@@ -2391,2 +2394,5 @@
+ 			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++			fmm_ret = S4_TEST_FMMRET_AFTER(150, fmm_ret);
++#endif
+ 		}else{
+@@ -2395,4 +2401,10 @@
+ 					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++					fmm_ret = S4_TEST_FMMRET_AFTER(151, fmm_ret);
++#endif
+ 				}else{ // not using subpixel smoothing
+ 					fmm_ret = FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++					fmm_ret = S4_TEST_FMMRET_AFTER(152, fmm_ret);
++#endif
+ 					if(0 == fmm_ret && S->options.use_polarization_basis){
+@@ -2400,6 +2412,15 @@
+ 							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++							fmm_ret = S4_TEST_FMMRET_AFTER(153, fmm_ret);
++#endif
+ 						}else if(S->options.use_normal_vector_basis){
+ 							fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++							fmm_ret = S4_TEST_FMMRET_AFTER(154, fmm_ret);
++#endif
+ 						}else{
+ 							fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++							fmm_ret = S4_TEST_FMMRET_AFTER(155, fmm_ret);
++#endif
+ 						}
+@@ -2409,2 +2430,5 @@
+ 				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++				fmm_ret = S4_TEST_FMMRET_AFTER(159, fmm_ret);
++#endif
+ 				if(0 == fmm_ret && S->options.use_polarization_basis){
+@@ -2412,6 +2436,15 @@
+ 						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++						fmm_ret = S4_TEST_FMMRET_AFTER(156, fmm_ret);
++#endif
+ 					}else if(S->options.use_normal_vector_basis){
+ 						fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++						fmm_ret = S4_TEST_FMMRET_AFTER(157, fmm_ret);
++#endif
+ 					}else{
+ 						fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
++#ifdef S4_TEST_FMMRET_SEAM
++						fmm_ret = S4_TEST_FMMRET_AFTER(158, fmm_ret);
++#endif
+ 					}
+rc=0
+--- apply_seam_r2.py --families A,C,D --check-only
+apply_seam_r2: CHECK ONLY (no write)  families=A,C,D
+file: S4/S4.cpp
+  family C id 21: lines 2276..2276 replaced under S4_TEST_ALLOC_SEAM
+  family C id 22: lines 2310..2313 replaced under S4_TEST_ALLOC_SEAM
+  family C id 23: lines 2430..2430 replaced under S4_TEST_ALLOC_SEAM
+  family C id 24: lines 2455..2455 replaced under S4_TEST_ALLOC_SEAM
+  family C id 25: lines 4016..4016 replaced under S4_TEST_ALLOC_SEAM
+  family C declaration after line 48
+--- a/S4/S4.cpp
++++ b/S4/S4.cpp
+@@ -48,0 +49,3 @@
++#ifdef S4_TEST_ALLOC_SEAM
++extern "C" int S4_TEST_ALLOC_HOOK(int id, size_t size);
++#endif
+@@ -2275,0 +2279,3 @@
++#ifdef S4_TEST_ALLOC_SEAM
++	*layer_modes = (LayerModes*)(S4_TEST_ALLOC_HOOK(21, sizeof(LayerModes)) ? NULL : malloc(sizeof(LayerModes)));
++#else
+@@ -2276,0 +2283 @@
++#endif
+@@ -2309,0 +2317,6 @@
++#ifdef S4_TEST_ALLOC_SEAM
++	pB->q = (std::complex<double>*)(S4_TEST_ALLOC_HOOK(22, sizeof(std::complex<double>)*(2*n + kp_size + phi_size + Epsilon_inv_size + Epsilon2_size)) ? NULL : S4_malloc(sizeof(std::complex<double>)*(
++		2*n + // for q
++		kp_size + phi_size + Epsilon_inv_size + Epsilon2_size
++		)));
++#else
+@@ -2313,0 +2327 @@
++#endif
+@@ -2429,0 +2444,3 @@
++#ifdef S4_TEST_ALLOC_SEAM
++			double *rwork = (double*)(S4_TEST_ALLOC_HOOK(23, sizeof(double) * 4*n) ? NULL : S4_malloc(sizeof(double) * 4*n));
++#else
+@@ -2430,0 +2448 @@
++#endif
+@@ -2454,0 +2473,3 @@
++#ifdef S4_TEST_ALLOC_SEAM
++			work = (std::complex<double>*)(S4_TEST_ALLOC_HOOK(24, sizeof(std::complex<double>) * lwork) ? NULL : S4_malloc(sizeof(std::complex<double>) * lwork));
++#else
+@@ -2455,0 +2477 @@
++#endif
+@@ -4015,0 +4038,3 @@
++#ifdef S4_TEST_ALLOC_SEAM
++	FieldCache *f = (FieldCache*)(S4_TEST_ALLOC_HOOK(25, sizeof(FieldCache)+sizeof(std::complex<double>)*Plen) ? NULL : S4_malloc(sizeof(FieldCache)+sizeof(std::complex<double>)*Plen));
++#else
+@@ -4016,0 +4042 @@
++#endif
+file: S4/fmm/fmm_FFT.cpp
+  family A site 1: call at line 212, hook after it
+  family A declaration after line 37
+--- a/S4/fmm/fmm_FFT.cpp
++++ b/S4/fmm/fmm_FFT.cpp
+@@ -37,0 +38,3 @@
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<double> *b, int n);
++#endif
+@@ -212,0 +216,3 @@
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++S4_TEST_LINEARSOLVE_AFTER(1, &solve_info, Epsilon_inv, n);
++#endif
+file: S4/fmm/fmm_kottke.cpp
+  family A site 2: call at line 287, hook after it
+  family A declaration after line 40
+  family D id 31: lines 81..81 replaced under S4_TEST_KOTTKE_SEAM
+  family D declaration after line 40
+--- a/S4/fmm/fmm_kottke.cpp
++++ b/S4/fmm/fmm_kottke.cpp
+@@ -40,0 +41,6 @@
++#ifdef S4_TEST_KOTTKE_SEAM
++extern "C" int S4_TEST_KOTTKE_HOOK(int id, size_t n);
++#endif
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++extern "C" void S4_TEST_LINEARSOLVE_AFTER(int site, int *info, std::complex<double> *b, int n);
++#endif
+@@ -77,0 +84,3 @@
++#ifdef S4_TEST_KOTTKE_SEAM
++	std::complex<double> *work = (S4_TEST_KOTTKE_HOOK(31, 6*ng2) ? NULL : fft_alloc_complex(6*ng2));
++#else
+@@ -78,0 +88 @@
++#endif
+@@ -287,0 +298,3 @@
++#ifdef S4_TEST_LINEARSOLVE_SEAM
++S4_TEST_LINEARSOLVE_AFTER(2, &solve_info, Epsilon_inv, n);
++#endif
+rc=0

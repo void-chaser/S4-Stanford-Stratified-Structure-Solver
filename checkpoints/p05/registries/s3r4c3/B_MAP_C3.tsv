@@ -1,0 +1,13 @@
+tree	combo	Mtot	Mfirst	n_values	window_caller	polygon_breakpoint_hits	pattern_breakpoint_note	gdb_rc	RC_first	RC_retry	inject_hits	source
+F2	fft-ng1	1	1	36	0x55555558b909	1	no -g debug info; POLYGON entry inferred from window malloc n=36 and fixed caller	0	0	0	0	counts from b_map_c3/F2-fft-ng1/gdb.txt
+F2	fft-ng5	64	64	36	0x55555558b909	64	same	0	0	0	0	b_map_c3/F2-fft-ng5/gdb.txt
+F2	fft-ng9	64	64	36	0x55555558b909	64	same	0	0	0	0	b_map_c3/F2-fft-ng9/gdb.txt
+F2	kottke-ng1	64	64	36	0x55555558b909	64	same	0	0	0	0	b_map_c3/F2-kottke-ng1/gdb.txt
+F2	kottke-ng5	64	64	36	0x55555558b909	64	same	0	0	0	0	b_map_c3/F2-kottke-ng5/gdb.txt
+F2	kottke-ng9	64	64	36	0x55555558b909	64	same	0	0	0	0	b_map_c3/F2-kottke-ng9/gdb.txt
+F3	fft-ng1	1	1	36	0x55555558b105	1	no -g debug info; POLYGON entry inferred from window malloc n=36 and fixed caller	0	0	0	0	counts from b_map_c3/F3-fft-ng1/gdb.txt
+F3	fft-ng5	64	64	36	0x55555558b105	64	same	0	0	0	0	b_map_c3/F3-fft-ng5/gdb.txt
+F3	fft-ng9	64	64	36	0x55555558b105	64	same	0	0	0	0	b_map_c3/F3-fft-ng9/gdb.txt
+F3	kottke-ng1	64	64	36	0x55555558b105	64	same	0	0	0	0	b_map_c3/F3-kottke-ng1/gdb.txt
+F3	kottke-ng5	64	64	36	0x55555558b105	64	same	0	0	0	0	b_map_c3/F3-kottke-ng5/gdb.txt
+F3	kottke-ng9	64	64	36	0x55555558b105	64	same	0	0	0	0	b_map_c3/F3-kottke-ng9/gdb.txt

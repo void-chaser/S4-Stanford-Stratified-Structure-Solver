@@ -1,0 +1,13 @@
+combo	mode	NG	tree	pass	rc	rc1	rc2	hit	class	reason	verdict
+fft-ng1	fft	1	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+fft-ng1	fft	1	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+fft-ng5	fft	5	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+fft-ng5	fft	5	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+fft-ng9	fft	9	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+fft-ng9	fft	9	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng1	kottke	1	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng1	kottke	1	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng5	kottke	5	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng5	kottke	5	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng9	kottke	9	F2	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK
+kottke-ng9	kottke	9	F3	1	0	0	0	0	CONTROL_OK	clean control	CONTROL_OK

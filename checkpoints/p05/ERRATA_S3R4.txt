@@ -222,3 +222,71 @@ ES3R4-24  续2 三个未跟踪脚本的存档说明(DO NOT RUN;U108)
     运行两次已披露于 ES3R4-21);run_a_c2.sh 是从未运行的草稿(末行 stub)。
   · 续3 的 A 由新脚本 testing/d003/stage_s3r4c3/run_a_c3.* 执行;续3 不运行上述三个文件。
   · 三个文件的存档不算违反 U106(U106 约束本轮编写与执行的脚本和命令)。
+
+================================================================
+S3R4 续4(CONT4)追加。用户裁决 U111–U115(同时追加到 RULINGS.tsv,原文见 brief CONT4 §1)
+================================================================
+
+U111–U115 的内容见 registries/RULINGS.tsv 对应行(原文照录)。要点:U111 接受续3 的 2>/dev/null 与占位路径为已披露;
+U112 接受 n=36(ES3R4-25);U113 D 转入 R8 第 0 步;U114 续3 文件原样提交;U115 续3 缺的交付物由续4 只读补齐。
+
+ES3R4-25  续3 任务书 §3.2 的 n = 12 是算术错误,正确值为 36(记录更正;原文不改)
+  · 续3 任务书(CONT3 brief)与续3 报告 §3.2 写 "n=12,依据 3×(5−2)×sizeof(int)"。源码为
+    malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2))(S4/pattern/pattern.c:418;同一表达式也出现在 :545)。
+    n_vertices = 5 时,(n_vertices−2) = 3,于是 n = sizeof(int)·3·3。在 sizeof(int) = 4 的平台上 n = 36(单位:字节)。
+    续3 任务书的 "3×(5−2)×sizeof(int)" 按其自身的表达式即得 36;写成 12 是算术错误。
+    (本条只陈述算式与数值的核对结果,不推断写错的具体心理过程。)
+  · 实测:B_MAP_C3.tsv 中窗口 malloc 的 n 取值集合 = {36}(F2、F3 × fft/kottke × NG1/5/9 共 12 组合;CONT3 报告 §3.2)。
+  · 结论:预注册以 36 为准(U112);续3 的注入结果不因此改变。
+
+ES3R4-26  更正 D_STATUS_C3.txt 与续3 报告 §3.3 对 D 的说明(记录更正;原文件不改)
+  · (a) CTRL_SEAM 的库与驱动:R7 CTRL_SEAM 用的是 plain seam 库与 seam 驱动。库由 build_seam_plain_s4r7.sh:19 的
+    CF="-O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC" 构建;驱动由 link_seam_drivers_r7.sh:11–12、:40
+    链接(driver_d003.cpp + inject_d003.cpp,-O1)。续3 报告引用的 build_seam_s4r7.sh:27–28 与 link_r6b_seam_r7.sh:31(-O0 -g)
+    属于 G6 用的 dbg seam,不是 CTRL_SEAM 的构建。驱动选取见 run_m2b_all_r7.py 的 driver_for(:124–138)与 seam_driver_name(:112–116);
+    参见 ES3R4-29。
+  · (b) seamF 树与 B2:R7 的 seamF 树 = apply_seam_r2.py --families A,C,D 加上 apply_seam_b2.py
+    (evidence/p05-s4r7/SEAM_DIFF_F_vs_F2_R7.txt 第 1 行;seam_r7/apply-F-seamF-B2.txt、apply-F2-seamF-B2.txt 存在)。
+    草稿 testing/d003/stage_s3r4c3/apply_seam_f3_c3.sh 第 4 行注释写 "family B2 not included in R7's ACD apply record" 与此矛盾,
+    且该草稿漏了 B2 步骤 → 标 DO NOT RUN(U114)。
+  · (c) D 的 8 点构成:普通驱动 4 点(G1 的 CTL-closed1d-F、M-twice-vl-plan-1-F2 用 d003-plain;G2c 的 M-once-fft-exec-1-F、
+    M-twice-vl-plan-1-F2 用 d003plan-plain)+ seam 驱动 4 点(CTRL_SEAM 的 CTRL-SEAM-fmmret-F、CTRL-SEAM-seamF-F2;
+    G2a 的 R4-ACF1-F-F、R4-SI02-F-F2 用 seamF 驱动)。注意:CTRL_SEAM 两点与 G2a 两点都走 seam 驱动路径,
+    G1、G2c 走 plain 驱动路径(run_m2b_all_r7.py:132–138)。
+  · (d) G1、G2c 的 plain 驱动与环境:驱动为 DRIVERS_R7.tsv 中 d003-F-plain / d003plan-F-plain 等记录(非 dbg);
+    环境由 matrix_r2.build_env(row) 构造(matrix_r2.py:98–109;设 FMM_MODE、S4FMM_NG、S4FMM_INJECT、S4FMM_NTH,
+    case 以 t4/ 开头时另加 S4FMM_TWICE=slab);CTRL_SEAM 只设 FMM_MODE 与 S4FMM_NG。
+  · 结论句:以上供 R8 第 0 步使用;续3 没有运行 D,这些更正不影响任何已有结果。
+
+ES3R4-27  B_MAP_C3.tsv 的 polygon_breakpoint_hits 列实为窗口 malloc 次数(记录更正;原表不改)
+  · 该列的值(F2 fft-ng1 = 1,其余 = 64;F3 同)来自窗口 malloc 计数,不是 tri 行断点。pattern_breakpoint_note 写明
+    "no -g debug info"(无 -g 调试信息,没有 tri 行断点)。
+  · 因此只能读作"窗口 malloc 次数(替代)",不是断点证据。CONT3 报告 §3.2 的"替代,不是断点证据"说明与此一致。
+
+ES3R4-28  续3 报告的两处说明(记录更正;原文不改)
+  · 续3 报告 §10 的"本报告未提交":由 U114 处理(CONT3 报告与 stage_s3r4c3/、registries/s3r4c3/ 原样提交)。
+  · 续3 报告 §3.3 关于 D 未完成的原因:由 ES3R4-26 更正(原因不是"历史脚本以外的改动不允许",而是 CTRL_SEAM 驱动
+    选取与登记需要核对,且 R8 第 0 步按 U113 执行)。原文不改。
+
+ES3R4-29  CTRL_SEAM fmmret 驱动选取与登记不符(记录;U118、U119)
+  · 登记表:registries/s4r7/REGISTRY_S4_PRE_R7_M2_CTRL_SEAM.tsv 第 7、8 行(CTRL-SEAM-fmmret-F、CTRL-SEAM-fmmret-F2)的
+    driver 列写 fmmret-F、fmmret-F2。该文件由 29bc792(R7 cont6 prep)首次且唯一提交(用 git log --oneline -- <文件> 核对;
+    任务书 §2 写的"自 359bf65 起未改"有误,更正为"自 29bc792 起未改")。
+  · 实际行为:run_m2b_all_r7.py 的 seam_driver_name(:112–116) 只在 request 以 fmmret: 开头时返回 fmmret 驱动;
+    CTRL_SEAM 四行的 request 都是 none,因此 driver_for(:124–131) 对四行都返回 seamF-<tree>。ctrl_seam_points(:141–150)
+    读取 driver 列但 driver_for 未使用它。
+  · 核对:seam_driver_name 与 driver_for 的函数体在 29bc792、0432234、9c47d00、359bf65 与工作区中哈希相同(本轮只读核对),
+    即 run5–run7 之间驱动选取逻辑未变。
+  · 影响(U118):R7 M2b run5–run7 的 CTRL-SEAM-fmmret-F、CTRL-SEAM-fmmret-F2 记为"驱动选取与登记不符:实际为 seamF-<tree>
+    ([源码],run_m2b_all_r7.py:124–131)"。原结果表与原报告不改;结果表不记录驱动路径,从结果表无法区分。
+    这两行不作为 fmmret plain 库的控制证据。R7 中 fmmret 库的干净对照以 M3 G6 的 SC01–SC10(r6bseam-fmmret-F/F2,dbg)为准;
+    G2a 中 request 以 fmmret: 开头的注入行走 fmmret 驱动,不受影响。
+  · 离线解析:本轮在 CONT5 §3.2 对四行做了离线解析(不运行驱动;结果见 CONT5 报告与 CTRL_SEAM_DRIVER_RESOLUTION_C5.tsv)。
+  · D 点 source 列的更正(U119):REGISTRY_S3R4C3_D.tsv 的 CTRL-SEAM-fmmret-F 行 source 列写 "RESULTS_R7_CTRL_SEAM_pass1_run7.tsv",
+    该行的依据应改为 R4 CONTROL_R4 与 R7 M3 SC03-fmmret-F-fft(M3_F_RESULTS_R6c_SEAM.tsv 等)。登记表本身不改(U119)。
+
+ES3R4-30  续4 的停止记录(U116;记录)
+  · 续4 因两条只读内联命令含 2>&1 而停止(CONT4 报告 §6 表二)。两条命令未落盘,无仓库外写入。续4 未建任何目录
+    (p05-s3r4c4/、stage_s3r4c4/、registries/s3r4c4/ 均不存在;本轮只读核对)。
+  · 续4 的只读核对结论(ES3R4-25、26、27)仍有效,已纳入本条裁决与续5 的记录提交。
+  · 续4 报告与任务书未修改,按 U117 原样提交。

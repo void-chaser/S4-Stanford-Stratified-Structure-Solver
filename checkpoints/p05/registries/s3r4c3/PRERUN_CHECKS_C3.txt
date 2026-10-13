@@ -1,0 +1,12 @@
+2026-10-12T23:57:08Z	commit_rec_c3.sh	grep forbidden set: 0 hits (standard first line only: $EV/tmp matched by pattern, expected)
+2026-10-12T23:58:07Z	run_a_c3.sh	grep hits: standard first line ($EV/tmp) x4 and python '1 << 20' (left shift, not heredoc); no forbidden command. Allowed
+2026-10-12T23:58:07Z	run_a_c3.py	grep hits: '1 << 20' (left shift) and b"" literal only; no forbidden command. Allowed
+2026-10-12T23:59:13Z	link_poly_inj_c3.sh	grep hits: standard first line only ($EV/tmp); no forbidden command. Allowed
+2026-10-12T23:59:33Z	nm_check_poly_c3.sh	grep hits: standard first line and $EV/tmp paths only; 2>&1 to EV tmp; no forbidden command. Allowed
+2026-10-13T00:00:14Z	b_map_run_c3.sh	grep hits: standard first line only; no forbidden command. Allowed
+2026-10-13T00:01:40Z	prereg_b_c3.sh	grep hits: standard first line only; no forbidden command. Allowed
+2026-10-13T00:02:12Z	run_b_c3.py	grep hits: '1 << 20' and b"" only; standard first line of run_b_c3.sh; no forbidden command. Allowed
+2026-10-13T00:02:56Z	select_d_c3.py	grep hits: '1 << 20' absent; standard first line not applicable (python); no forbidden command. Allowed
+2026-10-13T00:03:51Z	export_f3_c3.sh	grep hits: standard first line; git archive 8d8202a to EV; tar -x into EV only; no forbidden command. Allowed
+2026-10-13T00:04:09Z	check_seam_anchor_c3.sh	grep hits: standard first line; apply check-only read-only; output to EV; no forbidden command. Allowed
+2026-10-13T00:06:33Z	copy_registries_c3.sh	grep hits: standard first line and $EV/tmp check output only; no forbidden command (an earlier draft with 2>/dev/null was corrected before any run; not executed). Allowed

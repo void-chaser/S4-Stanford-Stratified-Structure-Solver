@@ -1,0 +1,45 @@
+combo	mode	NG	tree	point_id	inj_spec	pass	rc	rc1	rc2	hit	class	reason	expected_rc1	expected_class	verdict	side_rc2_match
+fft-ng1	fft	1	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng1	fft	1	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng1	fft	1	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng1	fft	1	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng5	fft	5	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng5	fft	5	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng5	fft	5	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng5	fft	5	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng5	fft	5	F2	B-415-winMfirst	win:64	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng5	fft	5	F2	B-415-winMfirst	win:64	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng5	fft	5	F3	B-415-winMfirst	win:64	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng5	fft	5	F3	B-415-winMfirst	win:64	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng9	fft	9	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng9	fft	9	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng9	fft	9	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng9	fft	9	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng9	fft	9	F2	B-415-winMfirst	win:64	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng9	fft	9	F2	B-415-winMfirst	win:64	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+fft-ng9	fft	9	F3	B-415-winMfirst	win:64	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+fft-ng9	fft	9	F3	B-415-winMfirst	win:64	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng1	kottke	1	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng1	kottke	1	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng1	kottke	1	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng1	kottke	1	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng1	kottke	1	F2	B-415-winMfirst	win:64	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng1	kottke	1	F2	B-415-winMfirst	win:64	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng1	kottke	1	F3	B-415-winMfirst	win:64	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng1	kottke	1	F3	B-415-winMfirst	win:64	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng5	kottke	5	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng5	kottke	5	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng5	kottke	5	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng5	kottke	5	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng5	kottke	5	F2	B-415-winMfirst	win:64	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng5	kottke	5	F2	B-415-winMfirst	win:64	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng5	kottke	5	F3	B-415-winMfirst	win:64	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng5	kottke	5	F3	B-415-winMfirst	win:64	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng9	kottke	9	F2	B-415-win1	win:1	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng9	kottke	9	F2	B-415-win1	win:1	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng9	kottke	9	F3	B-415-win1	win:1	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng9	kottke	9	F3	B-415-win1	win:1	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng9	kottke	9	F2	B-415-winMfirst	win:64	1	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng9	kottke	9	F2	B-415-winMfirst	win:64	2	139			1	CRASH	killed by signal 11 (rc=139)	-	CRASH	MATCH	-
+kottke-ng9	kottke	9	F3	B-415-winMfirst	win:64	1	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH
+kottke-ng9	kottke	9	F3	B-415-winMfirst	win:64	2	0	20	0	1	REPORTED_FAILURE	reached, first call returned 20	20	REPORTED_FAILURE	MATCH	MATCH

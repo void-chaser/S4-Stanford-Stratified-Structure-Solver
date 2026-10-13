@@ -1,0 +1,21 @@
+gate_mode=start utc=2026-10-12T23:56:48Z
+HEAD=f826694900c8f381b9dece79401db4b2b7849101
+HEAD:S4=6cff923a02baf19e01966b2339755cbf3a5deeef
+d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/judge_d003.py
+--- git status --short
+ M checkpoints/p05/ERRATA_S3R4.txt
+ M checkpoints/p05/registries/RULINGS.tsv
+?? checkpoints/p05/briefs/P05_S3R4_CONT3_BRIEF.md
+?? testing/d003/stage_s3r4c2/link_c2.sh
+?? testing/d003/stage_s3r4c2/link_init_c2.sh
+?? testing/d003/stage_s3r4c2/run_a_c2.sh
+?? testing/d003/stage_s3r4c3/
+--- evidence libs and drivers
+c63d180aff6c5b5e443faefeb6de44abce430dafbb846db434ac15da85fbc185  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build/F2-plain/build/libS4.a
+abbc01c78f0a422f3494556bb43e212e397fbbf49d03370132ae45e2c268e5de  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build_f3/plain/build/libS4.a
+29bb377c4eb5e1d393d2916d2ad9a05d9ecf781fc4cc709dd87332f8904d1158  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c2/drivers/init-F2/driver
+ff66cfc1bf87b6c22d13e32dc6adf3c5e6b090fdcad745bf5248f74dd9510b68  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c2/drivers/init-F3/driver
+3f08fd8b86d2a5164b272cf3881729b3fbda04dca52e7b8d96dd64c586e5845d  /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c2/REGISTRY_S3R4C2_A.tsv
+--- system temporary area top-level snapshot (read only)
+entries=0
+listing_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

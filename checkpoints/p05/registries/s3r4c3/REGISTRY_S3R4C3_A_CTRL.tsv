@@ -1,0 +1,7 @@
+combo	mode	NG	tree	point_id	inj_spec	expected_class	expected_rc1	status
+closed2d-ng1	closed2d	1	F2	CTRL	-	CONTROL_OK	0	INFLUENCED
+fft-ng5	fft	5	F2	CTRL	-	CONTROL_OK	0	INFLUENCED
+kottke-ng5	kottke	5	F2	CTRL	-	CONTROL_OK	0	INFLUENCED
+closed2d-ng1	closed2d	1	F3	CTRL	-	CONTROL_OK	0	INFLUENCED
+fft-ng5	fft	5	F3	CTRL	-	CONTROL_OK	0	INFLUENCED
+kottke-ng5	kottke	5	F3	CTRL	-	CONTROL_OK	0	INFLUENCED

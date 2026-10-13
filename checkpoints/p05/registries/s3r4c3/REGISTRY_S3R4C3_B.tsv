@@ -1,0 +1,25 @@
+combo	mode	NG	tree	point_id	inj_spec	mfirst	mtot	n_expected	expected_rc1	expected_class	expected_side_rc2	note	status
+fft-ng1	fft	1	F2	B-415-win1	win:1	1	1	36	-	CRASH	-	win:Mfirst=win:1 (same point)	INFLUENCED
+fft-ng1	fft	1	F3	B-415-win1	win:1	1	1	36	20	REPORTED_FAILURE	0	win:Mfirst=win:1 (same point)	INFLUENCED
+fft-ng1	fft	1	F2	B-415-winMfirst	win:1	1	1	36	-	DUPLICATE_OF_win1	-	not run: same point as B-415-win1	INFLUENCED
+fft-ng1	fft	1	F3	B-415-winMfirst	win:1	1	1	36	20	DUPLICATE_OF_win1	0	not run: same point as B-415-win1	INFLUENCED
+fft-ng5	fft	5	F2	B-415-win1	win:1	64	64	36	-	CRASH	-	-	INFLUENCED
+fft-ng5	fft	5	F3	B-415-win1	win:1	64	64	36	20	REPORTED_FAILURE	0	-	INFLUENCED
+fft-ng5	fft	5	F2	B-415-winMfirst	win:64	64	64	36	-	CRASH	-	win:Mfirst=64	INFLUENCED
+fft-ng5	fft	5	F3	B-415-winMfirst	win:64	64	64	36	20	REPORTED_FAILURE	0	win:Mfirst=64	INFLUENCED
+fft-ng9	fft	9	F2	B-415-win1	win:1	64	64	36	-	CRASH	-	-	INFLUENCED
+fft-ng9	fft	9	F3	B-415-win1	win:1	64	64	36	20	REPORTED_FAILURE	0	-	INFLUENCED
+fft-ng9	fft	9	F2	B-415-winMfirst	win:64	64	64	36	-	CRASH	-	win:Mfirst=64	INFLUENCED
+fft-ng9	fft	9	F3	B-415-winMfirst	win:64	64	64	36	20	REPORTED_FAILURE	0	win:Mfirst=64	INFLUENCED
+kottke-ng1	kottke	1	F2	B-415-win1	win:1	64	64	36	-	CRASH	-	-	INFLUENCED
+kottke-ng1	kottke	1	F3	B-415-win1	win:1	64	64	36	20	REPORTED_FAILURE	0	-	INFLUENCED
+kottke-ng1	kottke	1	F2	B-415-winMfirst	win:64	64	64	36	-	CRASH	-	win:Mfirst=64	INFLUENCED
+kottke-ng1	kottke	1	F3	B-415-winMfirst	win:64	64	64	36	20	REPORTED_FAILURE	0	win:Mfirst=64	INFLUENCED
+kottke-ng5	kottke	5	F2	B-415-win1	win:1	64	64	36	-	CRASH	-	-	INFLUENCED
+kottke-ng5	kottke	5	F3	B-415-win1	win:1	64	64	36	20	REPORTED_FAILURE	0	-	INFLUENCED
+kottke-ng5	kottke	5	F2	B-415-winMfirst	win:64	64	64	36	-	CRASH	-	win:Mfirst=64	INFLUENCED
+kottke-ng5	kottke	5	F3	B-415-winMfirst	win:64	64	64	36	20	REPORTED_FAILURE	0	win:Mfirst=64	INFLUENCED
+kottke-ng9	kottke	9	F2	B-415-win1	win:1	64	64	36	-	CRASH	-	-	INFLUENCED
+kottke-ng9	kottke	9	F3	B-415-win1	win:1	64	64	36	20	REPORTED_FAILURE	0	-	INFLUENCED
+kottke-ng9	kottke	9	F2	B-415-winMfirst	win:64	64	64	36	-	CRASH	-	win:Mfirst=64	INFLUENCED
+kottke-ng9	kottke	9	F3	B-415-winMfirst	win:64	64	64	36	20	REPORTED_FAILURE	0	win:Mfirst=64	INFLUENCED

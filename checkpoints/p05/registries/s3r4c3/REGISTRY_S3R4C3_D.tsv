@@ -1,0 +1,9 @@
+group	point_id	tree	mode	request	inj_call	expected_class	expected_rc1	source	status
+CTRL_SEAM	CTRL-SEAM-fmmret-F	F	fft	none	-	CONTROL_OK	0	RESULTS_R7_CTRL_SEAM_pass1_run7.tsv	INFLUENCED
+CTRL_SEAM	CTRL-SEAM-seamF-F2	F2	fft	none	-	CONTROL_OK	0	RESULTS_R7_CTRL_SEAM_pass1_run7.tsv	INFLUENCED
+G2c	M-once-fft-exec-1-F	F	fft	exec	1	REPORTED_FAILURE	20	RESULTS_R7_G2c_pass1_run7.tsv	INFLUENCED
+G2c	M-twice-vl-plan-1-F2	F2	vl	plan	1	REPORTED_FAILURE	20	RESULTS_R7_G2c_pass1_run7.tsv	INFLUENCED
+G1	CTL-closed1d-F	F	closed1d	-	-	CONTROL_OK	0	RESULTS_R7_G1_pass1_run7.tsv	INFLUENCED
+G1	M-twice-vl-plan-1-F2	F2	vl	plan	1	REPORTED_FAILURE	20	RESULTS_R7_G1_pass1_run7.tsv	INFLUENCED
+G2a	R4-ACF1-F-F	F	jones	alloc:25:1	1	REPORTED_FAILURE	20	RESULTS_R7_G2a_pass1_run7.tsv	INFLUENCED
+G2a	R4-SI02-F-F2	F2	kottke	linearsolve:2:1:info	1	REPORTED_FAILURE	20	RESULTS_R7_G2a_pass1_run7.tsv	INFLUENCED

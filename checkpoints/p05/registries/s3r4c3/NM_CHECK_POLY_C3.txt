@@ -1,0 +1,22 @@
+nm check utc=2026-10-12T23:59:33Z
+=== tree F2 driver /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c3/drivers/polyinj-F2/driver
+000000000003cd60 T Pattern_DiscretizeCell
+0000000000003db0 T __wrap_Pattern_DiscretizeCell
+=== tree F3 driver /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4c3/drivers/polyinj-F3/driver
+000000000003cd20 T Pattern_DiscretizeCell
+0000000000003db0 T __wrap_Pattern_DiscretizeCell
+=== library symbol side (lib refers to Pattern_DiscretizeCell)
+--- F2
+fmm_FFT.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build/F2-plain/build/libS4.a:fmm_FFT.o:                 U Pattern_DiscretizeCell
+
+fmm_kottke.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build/F2-plain/build/libS4.a:fmm_kottke.o:                 U Pattern_DiscretizeCell
+
+pattern.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build/F2-plain/build/libS4.a:pattern.o:00000000000060e0 T Pattern_DiscretizeCell
+
+--- F3
+fmm_FFT.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build_f3/plain/build/libS4.a:fmm_FFT.o:                 U Pattern_DiscretizeCell
+
+fmm_kottke.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build_f3/plain/build/libS4.a:fmm_kottke.o:                 U Pattern_DiscretizeCell
+
+pattern.o: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r4/build_f3/plain/build/libS4.a:pattern.o:0000000000006160 T Pattern_DiscretizeCell
+

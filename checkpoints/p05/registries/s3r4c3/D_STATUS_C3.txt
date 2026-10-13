@@ -1,0 +1,23 @@
+D (smoke) status, P05-S3R4 CONT3 -- 未完成(原因如下;不是"不可行")
+
+预注册:REGISTRY_S3R4C3_D.tsv(8 行,由 select_d_c3.py 按 R7 run7 pass1 的 point_id 字典序首尾选取)已写定,未运行。
+  注意:R7 期望来自 F/F2 树;D 按任务书 3.3 要在 F3 上冒烟,预注册中的 tree 列是 R7 树标签。
+
+CTRL_SEAM(2 点:CTRL-SEAM-fmmret-F、CTRL-SEAM-seamF-F2)
+  状态:未完成
+  已完成:只读锚点核对(SEAM_ANCHOR_CHECK_F3_C3.txt):apply_seam_r5_fmmret.py --tree A --check-only 10 个锚点唯一匹配,rc 0;
+          apply_seam_r2.py --families A,C,D --check-only 锚点匹配,rc 0。
+  未完成原因:按 R7 原方式生成 seam 树、以 -O0 -g 构建 seam 库、链接 seam 驱动,需要 F3 版的 build 与 link 脚本
+          (R7 的 build_seam_s4r7.sh、link_r6b_seam_r7.sh 的 F3 版本),这是历史脚本以外的改动,任务书 3.3 不允许在本轮做。
+  未运行。apply_seam_f3_c3.sh 为草稿,已写入仓库,未执行,不得使用。
+
+普通驱动 6 点(G1 CTL-closed1d-F、M-twice-vl-plan-1-F2(G1);M-once-fft-exec-1-F、M-twice-vl-plan-1-F2(G2c);R4-ACF1-F-F、R4-SI02-F-F2(G2a))
+  状态:未完成
+  未完成原因:需要 F3 plain 库上的 driver_d003(d003)、driver_d003plan 与 driver_r6b_state(r6bstate)链接,
+          即 link_drivers_s4r7.sh 的 F3 版本(只改库路径与输出目录的复制品),以及按 R7 run_m2_r7.py 的
+          request→S4FMM_INJECT / S4FMM_TWICE 映射生成的运行规格。映射已核实(run_m2_r7.py 第 255–258 行:
+          S4FMM_INJECT = request;twice 时 S4FMM_TWICE = slab),但本轮未完成链接脚本与运行规格。未运行任何一点。
+  说明:F3 plain 库存在(build_f3/plain/build/libS4.a,sha 与门禁一致);F3 dbg 库也存在(build_f3/dbg/build/libS4.a,
+        已用 find 核实,未计算 sha)。R7 的普通驱动用的是 -O0 -g dbg 库;若 D 完成,应按 R7 用 dbg 库链接。
+
+结论:D 整组未完成;不得写"冒烟通过";本轮 D 没有任何运行结果。
