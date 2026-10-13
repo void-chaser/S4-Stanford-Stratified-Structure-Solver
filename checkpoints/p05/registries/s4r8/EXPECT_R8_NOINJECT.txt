@@ -1,0 +1,47 @@
+# EXPECT_R8_NOINJECT.txt -- P05-S4 R8 M0 step 5 (F2 against F3, no injection).  Status INFLUENCED.
+# Expectation: every call1/call2/call3 comparison IDENTICAL (byte equal); rc1 and rc2 equal on the two trees;
+# rc 20 for vl NG1 and fftvl NG1 on both trees (rc1 = rc2 = 20, as R7 run1).  Basis [source]: F2 to F3 changes only
+# failure paths (git diff a07b5ac 8d8202a -- S4/), normal return values unchanged.
+# Substitution: closed -> closed2d (ERRATA_8 E8-5; E7-3 and addendum U40).
+# R7 record read for this file: RESULTS_R7_NOINJECT_run1.tsv (sha256 of this record is not checked here).
+mode	NG	lattice	expected_rc1	expected_rc2	expected_call_compare	basis
+closed2d	1	square	0	0	IDENTICAL	R7 run1b (closed2d, E7-3)
+closed2d	5	square	0	0	IDENTICAL	R7 run1b (closed2d, E7-3)
+closed2d	9	square	0	0	IDENTICAL	R7 run1b (closed2d, E7-3)
+fft	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fft	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fft	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+kottke	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+kottke	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+kottke	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+experimental	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+experimental	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+experimental	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+tensor	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+tensor	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+tensor	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+closed1d	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+closed1d	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+closed1d	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+jones	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+jones	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+jones	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+nv	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+nv	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+nv	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+vl	1	square	20	20	IDENTICAL	R7 run1 (rc 20 both trees)
+vl	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+vl	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftjones	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftjones	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftjones	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftnv	1	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftnv	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftnv	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftvl	1	square	20	20	IDENTICAL	R7 run1 (rc 20 both trees)
+fftvl	5	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+fftvl	9	square	0	0	IDENTICAL	R7 run1 / run1b (rc 0 both trees)
+nv	9	tri	0	0	IDENTICAL	R7 run1 tri rows (rc 0 both trees)
+vl	9	tri	0	0	IDENTICAL	R7 run1 tri rows (rc 0 both trees)
+jones	9	tri	0	0	IDENTICAL	R7 run1 tri rows (rc 0 both trees)
+# total comparison rows: 36 square x 3 calls + 3 tri x 3 calls

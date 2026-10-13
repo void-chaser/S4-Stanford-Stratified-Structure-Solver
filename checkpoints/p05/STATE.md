@@ -7,12 +7,12 @@
 | 项 | 值 |
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
-| 开工基线 HEAD（S3R4 续5 开工） | `bee9420c23d6d65d2b6ad4b5dbef83c342f5acfe` |
+| 开工基线 HEAD（P05-S4 R8 M0 开工） | `3ab56801e697910bdff9fbe6056807c2e41841b5`（S3R4 续5 收尾；R8 M0 记录提交 `2875c55`） |
 | 收尾提交 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
 | `HEAD:S4`（当前冻结被测树 F3） | `6cff923a02baf19e01966b2339755cbf3a5deeef`（F3 提交 `8d8202a`，P05-S3R4 修复候选；前一冻结树 F2 `e124925f…` = `a07b5ac`；F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S3 子轮次 S3R4 续5（收尾）**（非新阶段）：A 36/36 MATCH（对照 6/6）；B 44/44 MATCH（对照 12/12；F3 REPORTED_FAILURE rc1=20）；D 按 U113 转入 R8 第 0 步；ES3R4-29：R7 CTRL_SEAM fmmret 两行实为 seamF 驱动（U118，离线解析 DISAGREE）；续4 因只读 `2>&1` 停止（U116 接受，ES3R4-30）。下一步：P05-S4 R8 在 F3 上。报告：`P05_S3R4_CLOSEOUT_CONT5.md`。开工基线 HEAD `bee9420`。 |
+| 当前轮次 | **P05-S4 子轮次 R8 M0（F3，第 3 次开工）**（非新阶段）：D 冒烟 8 点两遍 MATCH 8/8、FLAKY 0（U113、U119、U124、U125）；F2↔F3 无注入等价 117/117 IDENTICAL（39 组合，0 NOT_IDENTICAL；closed→closed2d 依据 E7-3/U40）；F3 构建 dbg 62 / plain 71 告警；seam 差异 IDENTICAL（seamF 237 行、fmmret 72 行）。门禁历史：首次 FAILS=6（U128/U129）、第 2 次越界停止（U130）、收尾 R2_END FAILS=1（U133 规则疏漏）、收尾 R3_END FAILS=0。下一步：R8 M1（含 dbg 库 strip 等价，U136；待用户审核）。报告：`P05_S4R8_REPORT_M0.md`。 |
 | 历史 | S3R4 首轮：修复 806、415 链路、RP-S3R4-1 冻结 F3 `8d8202a`（U91 四个文件，U96 单提交）；编译告警零新增。P05-S4 R7 完成 M1–M3（F2 回归；M3 收尾 `cc49c6b`，建议待裁决）。未签收。 |
 
 ## 2. 关键数字（每轮一行）
@@ -28,15 +28,17 @@
 | S3R3 | 修复 `a9679bc`（pattern.c，方案 R3）、注释 `a07b5ac`（U31）；冻结 F2 `e124925f…`；编译告警 62/71 零新增；自检 A：F2 RNV1 36 点 REPORTED_FAILURE 36/36（未经 S4 验证）；自检 C：F tri 3 点 CRASH、F2 3 点 REPORTED_FAILURE；B 无注入 36 项 IDENTICAL；D：nv/vl NG9 冒烟 rc 0 | `P05_S3R3_CLOSEOUT.md` |
 | S3R4 | 修复 806、415、RP-S3R4-1，冻结 F3 `8d8202a`（编译告警 62/71 零新增）；自检 C 圆形/三角 117/117 IDENTICAL（首轮）；续1 停止（U103）；续2：C 多边形 99/99 IDENTICAL、驱动 rc 66/66 为 0；A1 映射 K 唯一（closed2d NG1 K=7、fft/kottke NG5 K=8，K0=6/7）；A 预注册 18 行；续3：**A 36/36 MATCH、对照 6/6**；**B 44/44 MATCH、对照 12/12**（F3 REPORTED_FAILURE rc1=20，F2 CRASH）；Mfirst（fft NG1 = 1，其余 = 64）；窗口 malloc n = 36；续4 停止（U116）；续5：CONT3 交付物补齐（只读），**D 转入 R8 第 0 步**（U113） | `P05_S3R4_CLOSEOUT.md`、`_CONT1`、`_CONT2`、`_CONT3`、`_CONT4`、`_CONT5.md` |
 | S4R7 | M1、M2（run7：CTRL_SEAM 4/4、G2c 60、G1 254 MATCH + 44 NOT_REACHED、G2a 50，MISMATCH 0、FLAKY 0）、M3（G5 177、G6 25，VIOLATED 0） | `P05_S4R7_REPORT_FINAL.md`、`P05_S4R7_REPORT_M2_FINAL.md` |
+| S4R8 M0（F3） | F3 构建 dbg 62 / plain 71 告警（plain 库与 S3R4 SAME，dbg DIFFERENT 已记录）；seam 差异 IDENTICAL；D 冒烟两遍 MATCH 8/8、FLAKY 0；F2↔F3 无注入等价 117 IDENTICAL、0 NOT_IDENTICAL（39 组合）；门禁首次 FAILS=6、重启 FAILS=0 | `P05_S4R8_REPORT_M0.md` |
 
 ## 3. 开放问题（状态 · 去向 · 链接；细节见报告附录 A 与总账）
 
 | 项 | 状态 | 去向 |
 |---|---|---|
 | S3-4b（失败后模式/缓存不安装） | **由用户带范围声明关闭（U29）**，只关闭此项，不代表 P05-S3/S4 签收；范围声明见 `P05_S3_4b_CLOSURE.md`；未覆盖：阶段 e、I7、双目标注入、其他层失败变体 | 转 R8（F3 上） |
-| D 冒烟 8 点 | 未运行（U113）；登记 `REGISTRY_S3R4C3_D.tsv` 原样保留；更正见 ES3R4-26；驱动规则见 U119 | R8 第 0 步（F3 上） |
+| D 冒烟 8 点 | 已运行（R8 M0，两遍）：MATCH 8/8、FLAKY 0（`D_SUMMARY_R8.txt`）；登记 `REGISTRY_S3R4C3_D.tsv` 原样保留；驱动规则 U124；范围：冒烟，不是修复验证 | 完成（M0）；M1 起的回归见 R8 计划 |
+| F3-dbg 库 sha256 与 S3R4 首次记录不同（E8-9，M0 记录 DIFFERENT，不查） | 记录；原因查明待做 | R8 M1 第 0 步（U136；strip 等价方法沿用 U84/U87） |
 | 806、415、RP-S3R4-1 | 注入自检通过（F3，A 36/36、B 44/44）；修复后验证未做 | R8（F3 上，修复后验证） |
-| R7 M2b CTRL_SEAM fmmret 两行驱动与登记不符（ES3R4-29） | 记录更正（U118）；离线解析 seamF 驱动、AGREE/DISAGREE 如期望（`CTRL_SEAM_DRIVER_RESOLUTION_C5.tsv`） | R8 补 fmmret plain 干净对照（以 M3 G6 为准） |
+| R7 M2b CTRL_SEAM fmmret 两行驱动与登记不符（ES3R4-29） | 记录更正（U118）；离线解析 seamF 驱动、AGREE/DISAGREE 如期望（`CTRL_SEAM_DRIVER_RESOLUTION_C5.tsv`）；R8 M0 中 D 的 `CTRL-SEAM-fmmret-F` 在 F3 plain 上用 fmmret 族驱动 `seam-fmmret-F3` 运行，CONTROL_OK、MATCH 两遍（干净对照的一项）；fmmret plain 干净对照的完整补测仍在 M2 | R8 M2（完整补测；以 M3 G6 为准） |
 | RNV1（pattern malloc 无 NULL 检查，RP-R6d-1） | F 上 CRASH（R6d）；S3R3 采用方案 R3（U30，提交 `a9679bc`）；F2 自检通过，未经 S4 验证；S3R4 修复后 F3 | R8（F3 上，U92） |
 | 双目标注入、I7 sanitizer | DEFERRED（U9） | R8（U25，E7-1） |
 | "其他层失败"变体 | DEFERRED（U20） | R8（U25，E7-1） |
@@ -56,4 +58,4 @@
 
 ## 4. 证据位置
 
-证据目录 `checkpoints/p05/evidence/<轮次>/`（不提交）；小型结果表与清单 `checkpoints/p05/registries/<轮次>/`（提交）。S3R4 续5：证据 `evidence/p05-s3r4c5/`（清单 `SHA256SUMS.txt`），小表与清单 `registries/s3r4c5/`。S3R4 续3：证据 `evidence/p05-s3r4c3/`，小表与清单 `registries/s3r4c3/`（续5 只读补齐的交付物在 `p05-s3r4c5/`）。S3R4 续2：证据 `evidence/p05-s3r4c2/`，小表与清单 `registries/s3r4c2/`。S3R4 续1：证据 `evidence/p05-s3r4c1/`（仅门禁与 safe_run 日志）。R6c2：`evidence/p05-s4r6c/`，清单 `registries/s4r6c/SHA256SUMS_closeout.txt`。R6d：`evidence/p05-s4r6d/`，小表与清单 `registries/s4r6d/`。各轮清单见各目录的 `SHA256SUMS*.txt`。
+证据目录 `checkpoints/p05/evidence/<轮次>/`（不提交）；小型结果表与清单 `checkpoints/p05/registries/<轮次>/`（提交）。S4 R8 M0：证据 `evidence/p05-s4r8/`（清单 `SHA256SUMS.txt`，不提交），小表与清单 `registries/s4r8/SHA256SUMS.txt`（提交）；门禁 `GATE_R8_M0.txt`（首次，停止）、`GATE_R8_M0_R2.txt`、`GATE_R8_M0_R2_END.txt`（收尾停止）、`GATE_R8_M0_R3_END.txt`（收尾，FAILS=0）。S3R4 续5：证据 `evidence/p05-s3r4c5/`（清单 `SHA256SUMS.txt`），小表与清单 `registries/s3r4c5/`。S3R4 续3：证据 `evidence/p05-s3r4c3/`，小表与清单 `registries/s3r4c3/`（续5 只读补齐的交付物在 `p05-s3r4c5/`）。S3R4 续2：证据 `evidence/p05-s3r4c2/`，小表与清单 `registries/s3r4c2/`。S3R4 续1：证据 `evidence/p05-s3r4c1/`（仅门禁与 safe_run 日志）。R6c2：`evidence/p05-s4r6c/`，清单 `registries/s4r6c/SHA256SUMS_closeout.txt`。R6d：`evidence/p05-s4r6d/`，小表与清单 `registries/s4r6d/`。各轮清单见各目录的 `SHA256SUMS*.txt`。

@@ -1,0 +1,10 @@
+# EXPECT_R8_D.txt -- U125 expected classes, copied from REGISTRY_S3R4C3_D.tsv (sha256 a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5), written 2026-10-13T04:33:37Z. Status INFLUENCED.
+point_id	group	expected_class	expected_rc1	tree	mode	request	inj_call
+CTRL-SEAM-fmmret-F	CTRL_SEAM	CONTROL_OK	0	F	fft	none	-
+CTRL-SEAM-seamF-F2	CTRL_SEAM	CONTROL_OK	0	F2	fft	none	-
+M-once-fft-exec-1-F	G2c	REPORTED_FAILURE	20	F	fft	exec	1
+M-twice-vl-plan-1-F2	G2c	REPORTED_FAILURE	20	F2	vl	plan	1
+CTL-closed1d-F	G1	CONTROL_OK	0	F	closed1d	-	-
+M-twice-vl-plan-1-F2	G1	REPORTED_FAILURE	20	F2	vl	plan	1
+R4-ACF1-F-F	G2a	REPORTED_FAILURE	20	F	jones	alloc:25:1	1
+R4-SI02-F-F2	G2a	REPORTED_FAILURE	20	F2	kottke	linearsolve:2:1:info	1

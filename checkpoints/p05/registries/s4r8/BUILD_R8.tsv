@@ -1,0 +1,5 @@
+# BUILD_R8.tsv -- P05-S4 R8 M0 F3 library comparison (brief 3.2).  Known values: registries/s3r4c5/BINARIES_C3.tsv (not changed).
+# columns: tree, mode, warnings, make_rc, lib_sha256, cholmod_mentions, known_sha256, compare, expected_warnings
+F3	plain	71	0	abbc01c78f0a422f3494556bb43e212e397fbbf49d03370132ae45e2c268e5de	0	abbc01c78f0a422f3494556bb43e212e397fbbf49d03370132ae45e2c268e5de	SAME	71
+F3	dbg	62	0	56f72c5882d4293bbb2d45a272d7c7727e401085b900854b1f49b851effd897a	0	10ea03b37ccdb6f256bd65904763520e6570e297ba2060416f28253e1f065afa	DIFFERENT	62
+# F3-dbg-lib in BINARIES_C3.tsv has compare FIRST_RECORD (no second observation); DIFFERENT here is recorded, not a stop (brief 3.2, section 7).

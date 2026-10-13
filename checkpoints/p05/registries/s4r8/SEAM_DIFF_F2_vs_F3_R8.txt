@@ -1,0 +1,9 @@
+# SEAM_DIFF_F2_vs_F3_R8 -- P05-S4 R8 M0 seam difference check (brief 3.3).
+# Method: diff -ru of each F3 seam tree against the clean F3 tree; diff header lines removed; @@ headers reduced to @@;
+# compared with the same normalisation of p05-s4r7/seam_r7/seamdiff_F2_{seamF,fmmret}.diff (R7, F2).
+# Raw F3 diffs: evidence/p05-s4r8/seam_r8/diff_F3_{seamF,fmmret}.raw; normalised: the TMPDIR of the round (evidence/p05-s4r8, tmp subdirectory).
+# verdict per variant (only IDENTICAL or DIFFERS; DIFFERS also lists the first 40 lines of the normalised F3 content).
+variant seamF:
+seamF: IDENTICAL (normalised content; 237 lines)
+variant fmmret:
+fmmret: IDENTICAL (normalised content; 72 lines)

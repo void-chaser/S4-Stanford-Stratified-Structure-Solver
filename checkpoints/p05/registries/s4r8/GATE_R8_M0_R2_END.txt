@@ -1,0 +1,17 @@
+# P05-S4 R8 M0 gate2 (end) -> GATE_R8_M0_R2_END.txt, utc=2026-10-13T04:42:01Z
+PASS	HEAD_PARENT	expected=3ab56801e697910bdff9fbe6056807c2e41841b5	actual=3ab56801e697910bdff9fbe6056807c2e41841b5
+PASS	HEAD_SUBJECT	expected=P05-S4 R8 M0 records (restart 2): rulings U121-U132, errata ES3R4-31 and ERRATA_8 (E8-1..E8-4); gate per U128/U132; briefs archived. awaiting user review	actual=P05-S4 R8 M0 records (restart 2): rulings U121-U132, errata ES3R4-31 and ERRATA_8 (E8-1..E8-4); gate per U128/U132; briefs archived. awaiting user review
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	S4_DIFF_a07b5ac_8d8202a	expected=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 	actual=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	REGISTRY_S3R4C3_D_SHA256	expected=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5	actual=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
+PASS	S3R4C5_SHA256SUMS_OK_LINES_EQ_TOTAL	expected=14	actual=14
+PASS	S4R7_MANIFESTS	expected=fails=0	actual=fails=0
+RECORD	S4R7_MANIFEST_FILE	value=checkpoints/p05/evidence/p05-s4r8/S4R7_MANIFEST_CHECK_R8_R2_END.tsv
+FAIL	GIT_STATUS_END_SCOPE	expected=	actual=MODIFIED  M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+RECORD	GIT_STATUS_END	value= M checkpoints/p05/STATE.md; M checkpoints/p05/registries/s4r8/ERRATA_8.txt;?? testing/d003/stage_s4r8/build_s4r8.sh;?? testing/d003/stage_s4r8/build_seam_plain_r8.sh;?? testing/d003/stage_s4r8/compare_build_r8.sh;?? testing/d003/stage_s4r8/compare_seam_r8.sh;?? testing/d003/stage_s4r8/expect_noinject_r8.py;?? testing/d003/stage_s4r8/export_r8.sh;?? testing/d003/stage_s4r8/link_drivers_r8.sh;?? testing/d003/stage_s4r8/manifest_r8.sh;?? testing/d003/stage_s4r8/normalise_diff_r8.awk;?? testing/d003/stage_s4r8/prepare_d_r8.py;?? testing/d003/stage_s4r8/reuse_f2_drivers_r8.sh;?? testing/d003/stage_s4r8/run_d_r8.py;?? testing/d003/stage_s4r8/run_noinject_equiv_r8.sh;?? testing/d003/stage_s4r8/runner_diff_r8.sh;?? testing/d003/stage_s4r8/seam_r8.sh;?? testing/d003/stage_s4r8/summarize_d_r8.py
+PASS	TMP_COUNT_END_EQ_START	expected=0	actual=0
+PASS	TMP_SHA256_END_EQ_START	expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	actual=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=1

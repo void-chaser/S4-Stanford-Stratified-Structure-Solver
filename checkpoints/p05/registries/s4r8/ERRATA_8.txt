@@ -67,3 +67,107 @@ U130–U132(R8 M0 第 3 次开工任务书 §1 = 本轮):
       03:37:20  上一条命令中的 2>/dev/null(见 E8-3)。
   · 首次开工报告中"违规:无(表一、表二均为空)"的说法由此更正。
   · 注:上述命令本身未经 safe_run,其 UTC 与原文来自裁决 U131 的记录;safe_run.log 不记录内联命令。
+
+== E8-5  无注入等价的组合:closed 改为 closed2d(依据 E7-3、U40)
+
+  · 原任务书 §5 与 R7 的 run_noinject_equiv_r7.sh 使用模式名 closed。驱动只接受 closed2d 与 closed1d(E7-3)。
+    R7 的 run1 中 closed 在 F 与 F2 上都以 rc 2 失败,产生 9 行 NOT_IDENTICAL_OR_MISSING(输入错误,不是树之间的差异)。
+  · 本轮按 R7 的修正(run1b,closed2d,9/9 IDENTICAL,rc 0/0)使用 closed2d。这是替换已披露的输入错误,不是用改期望来消除不符。
+    其余模式、NG 与 tri 组合与 R7 相同。原 run1 结果表不改。
+  · 期望文件 EXPECT_R8_NOINJECT.txt 由 expect_noinject_r8.py 在运行前写入(sha256 adee357ad3c9c197cbc2b82dfa8aab0a7b6b37332311f305d6dd1779551ac219)。
+    脚本在写入前核对了 R7 run1 中每个非 closed2d 组合的 rc1、rc2 与期望一致(不一致则拒绝写入)。
+  · 期望依据的精确范围(E8-8):basis 列中 "R7 run1 / run1b" 的写法是笼统的。实际来源:closed2d 行来自 run1b;其余方格行与
+    tri 行来自 run1(run1b 只含 closed2d)。该文件已写入,不改;此条为勘误。
+
+== E8-6  link_drivers_r8.sh 未链接 r6dnv1 驱动
+
+  · R7 的 link_drivers_s4r7.sh 还链接 r6dnv1(RNV1 窗口与 tri 的 r6dnv1 驱动)。原任务书 §3.4 只列出
+    d003-F3-plain、d003plan-F3-plain、r6bstate-F3-plain、seam-seamF-F3、seam-fmmret-F3 与 tri-F3-plain。
+    本轮按 §3.4 的列表链接,不链接 r6dnv1。这是任务书范围内的省略,不是错误;RNV1 的 F3 修复后验证属于 M1(U123)。
+
+== E8-7  复制品中的禁止项替换与等价性
+
+  · 历史脚本中的 `tail -1`、`head -1` 改为 `tail -n 1`、`head -n 1`(语义相同,用于统一写法)。
+  · 历史脚本中的 `sha256sum ... 2>/dev/null` 改为 `2>&1`。两者的差异只在错误路径:若文件不存在,`2>&1` 的输出
+    会被 `cut -d' ' -f1` 取为错误信息的第一个字段,而 `2>/dev/null` 时为空。本轮所有被哈希的文件在哈希前已验证存在
+    (库与驱动在链接/构建后立即哈希,且其存在由 test -f 或 test -x 保证),因此在本轮的正常路径上两者结果相同。
+  · 历史脚本中 `rm -rf` 改为 `test ! -e`(U17)。R7 的目录均不被覆盖。
+  · 历史脚本中的 `$OUT_ARG`(R7 的 p05-s4r7 参数)改为固定的 p05-s4r8 首参数检查。
+
+== E8-8  seam 与 normalisation 中的计数说明
+
+  · BUILD_R8.tsv 末尾的注释行含 DIFFERENT 字样,因此 grep -c DIFFERENT 的计数(2)虚高;数据行只有 1 行 DIFFERENT(dbg)。
+  · SEAM_DIFF_F2_vs_F3_R8.txt 第 5 行的说明含 DIFFERS 字样,因此计数 differs_lines=1 虚高;两个变体的判定为 IDENTICAL。
+  · 以上两处只影响 grep 计数,不影响表内判定。原文件不改。
+
+== E8-9  F3-dbg 库 sha256 与 S3R4 记录不同(记为 DIFFERENT,不停止)
+
+  · F3 dbg 库 sha256 56f72c58…(本轮)与 registries/s3r4c5/BINARIES_C3.tsv 的 10ea03b3…(S3R4 首次记录,compare=FIRST_RECORD)不同。
+    源码(8d8202a)、标志(-O0 -g)与告警数(62)相同。原因未查明(可能是构建目录路径、时间戳或调试信息中的绝对路径);
+    按 brief 3.2 与 section 7 记录为 DIFFERENT,不停止。F3 plain 库与 S3R4 记录一致(abbc01c7…05de,SAME)。
+
+== E8-10  M-twice-vl-plan-1-F2 在 G1 与 G2c 中的 twice 设定(观察,未作结论)
+
+  · ADD_v2 中,同一 point_id(M-twice-vl-plan-1-F2)在 G1 行的 twice 列为 slab,在 G2c 行的 twice 列为 once。
+  · 运行器的环境来自 matrix_r2.build_env 与 expected_env_from_history 的规则(由 point_id 决定 route),两者给出 S4FMM_TWICE=slab。
+    两组的运行环境都与独立规则一致(D_PREPARE_CHECK_R8.tsv 的 environment 行全部 PASS)。
+  · 这一 ADD 列与 point_id 规则之间的差异是 R7 已有的登记事项(E7-34 与 U74 的记录范围)。本轮不作结论,留待规划者处理。
+
+== E8-11  D 冒烟与无注入等价的范围说明
+
+  · D 冒烟两遍 MATCH 8/8、FLAKY 0(D_SUMMARY_R8.txt)。REPORTED_FAILURE 只表示"在该注入下返回码非零",不表示修复
+    (AGENTS §5)。本结果不是 806、415、RP-S3R4-1 的修复后验证,那些在 M1–M2 中完成。
+  · 无注入等价 117 行 IDENTICAL、0 行 NOT_IDENTICAL(RESULTS_R8_NOINJECT_run1.tsv)。vl NG1 与 fftvl NG1 两树 rc 20(期望一致)。
+    这只说明 F2 与 F3 在无注入时的正常路径输出相同,不说明 F3 的失败路径。
+
+== E8-12  违规记录(本轮)
+
+  · 表一(越界写入尝试):本轮无。
+  · 表二(工具/脚本事件,内联命令含 2>&1、2>/dev/null 或 /dev/null 等,未写仓库外):
+    本轮内联命令中含 2>&1 的只读核对若干条,逐条列在报告 §内联命令自查。它们未写仓库外路径,按 RESTART2 §2 记入表二、继续执行。
+  · 框架事件:一条宽范围 grep 的结果超过 250 条,结果由框架落盘到 /tmp/dsh-spill-*(框架行为,单列,不算执行者违规,AGENTS §3)。
+  · 草稿中出现但未运行、已改正的项(按 brief §0.2 不算违规):
+    - reuse_f2_drivers_r8.sh 初稿含 `cat … > /dev/null 2>&1`(已删除);
+    - build_s4r8.sh 注释中含字面量 rm -rf(已改写);
+    - compare_build_r8.sh 注释中含 /tmp 字面量(已改写);
+    - compare_seam_r8.sh 注释中含 /tmp 字面量(已改写);
+    - prepare_d_r8.py 草稿中含假断言与未用变量(已在运行前删除,见 E8-13);
+    - run_d_r8.py 草稿中含错误的 actual_tree 列引用与未用变量(已在运行前修正,见 E8-13)。
+
+== E8-13  运行前草稿复核的修正(未运行即修正,不算违规)
+
+  · prepare_d_r8.py:删除恒真断言(or True)、同义反复断言(fam, fam)、未用变量(rec_r7、v2_expected、ctrl_pts)。
+    修正后预检 82 条断言全部 PASS(D_PREPARE_CHECK_R8.tsv)。
+  · run_d_r8.py:修正 actual_tree 引用(DRIVER_MAP 无该列,改由 DRIVERS_R8.tsv 取)、排序键、死代码 inj、冗余内部断言。
+  · expect_noinject_r8.py:把未核对的 r7 字典改为真实核对(rc 不一致则拒绝写入)。
+  · run_noinject_equiv_r8.sh:修正 F2 驱动路径(初稿指向 p05-s4r8/drivers_r7,已改为 R7 证据目录的只读复用路径,U126)。
+
+== 收尾裁决(R8 M0 收尾任务书 §1,U133–U136;追加,未改已有条目)
+
+U133  RESTART2 §2.1 end(2)的规则"已跟踪且被修改的文件只能是 STATE.md"是规划者错误。ERRATA_8.txt 已在记录提交 2875c55 中提交,
+      收尾追加 E8-5 起是合法的。更正:收尾时已跟踪且被修改(M)的文件只能是 checkpoints/p05/STATE.md、
+      checkpoints/p05/registries/s4r8/ERRATA_8.txt、checkpoints/p05/registries/RULINGS.tsv;未跟踪项(??)只能位于
+      checkpoints/p05/ 或 testing/d003/stage_s4r8/ 下。
+      GATE_R8_M0_R2_END.txt(sha256 a10e081742bb4df95cb4c31b31706fe992fc427be1db4e1642f81232ee2494c9)作为停止记录保留,不删、不改。
+      gate2_r8.sh 已提交,不修改;收尾门禁由新脚本 gate3_r8.sh 执行(E8-14)。
+U134  表二补漏(E8-15):第 3 次开工还有以下只读内联命令未列入报告 §13.2(均不写入,不停止):
+      04:23:21Z  grep -n … checkpoints/p05/evidence/p05-s3r4c5/safe_run.log | cut -c1-160 | head -12; … wc -l …
+      04:28:39Z  wc -l …/tmp/norm_*.txt; echo ---; head -n 6 … | cut -c1-150
+      04:29:33Z  ls … ; ls checkpoints/p05/evidence/p05-s4r7/build_r7/seam_plain/ 2>&1; sed -n 1p … 2>&1 | head -n 1
+      报告 §13.2 第 1、2 条的 UTC 为 04:24:41Z 与 04:23:48Z;第 3、4 条为 04:26:53Z 与 04:38:49Z(由规划者对照会话记录核对)。
+U135  E8-10 关闭(E8-16):E8-10 已由 E7-34、U74、U75 覆盖。ADD 表 G2c 行的 route 登记错误;运行器按历史规则得到
+      S4FMM_TWICE=slab,环境断言全部 PASS(D_PREPARE_CHECK_R8.tsv)。不另立事项。
+U136  E8-9 的原因查明移到 R8 M1 第 0 步(E8-17):M1 的 gdb 链路要用 dbg 库。方法沿用 R7 的 U84/U87
+      (testing/d003/stage_s4r7/check_dbg_strip_equiv_r7.sh、mask_build_id_r7.py,只读引用;M1 中复制为 _r8 版本)。
+      M0 只记录,不查。
+
+== E8-14  收尾门禁规则更正(U133)
+  · RESTART2 §2.1 end(2) 的字面规则过严(见 U133)。GATE_R8_M0_R2_END.txt 的 FAIL 是该规则造成的,记为停止记录。
+  · 收尾门禁改由 gate3_r8.sh 执行(复制自 gate2_r8.sh 的 end 模式,只改 U133 的 status 规则、HEAD 与 HEAD^ 的值,
+    并增加对 GATE_R8_M0_R2_END.txt 的 sha256 检查)。
+
+== E8-15  表二补漏(U134):见上 U134 条目。
+
+== E8-16  E8-10 关闭(U135):见上 U135 条目。
+
+== E8-17  E8-9 的查明移入 M1(U136):见上 U136 条目。

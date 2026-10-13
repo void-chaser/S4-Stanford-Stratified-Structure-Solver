@@ -1,0 +1,82 @@
+# D_PREPARE_CHECK_R8.tsv -- prepare_d_r8.py at 2026-10-13T04:33:37Z; FAILS=0; no driver run.
+point	check	expected	actual	result
+CTRL_SEAM/CTRL-SEAM-fmmret-F	present in CTRL_SEAM registration	present	present	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	registered driver column (CTRL_SEAM) is a family name	True	True	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	registered tree of CTRL_SEAM row = D registration	F	F	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	registered expected class = D registration	CONTROL_OK	CONTROL_OK	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	environment = history expectation (FMM_MODE, S4FMM_NG only)	{'FMM_MODE': 'fft', 'S4FMM_NG': '9'}	{'FMM_MODE': 'fft', 'S4FMM_NG': '9'}	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	control: no injection variables	False	False	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	actual mode of the driver is a plain build	True	True	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/fmmret-F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/fmmret-F3-plain/build/libS4.a	PASS
+CTRL_SEAM/CTRL-SEAM-fmmret-F	driver sha256 = recorded (DRIVERS_R8.tsv)	f7d445cc2a48ef9d7fae2118c3cd3c715bffaff2de89ab795dd74613f2ea585c	f7d445cc2a48ef9d7fae2118c3cd3c715bffaff2de89ab795dd74613f2ea585c	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	present in CTRL_SEAM registration	present	present	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	registered driver column (CTRL_SEAM) is a family name	True	True	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	registered tree of CTRL_SEAM row = D registration	F2	F2	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	registered expected class = D registration	CONTROL_OK	CONTROL_OK	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	environment = history expectation (FMM_MODE, S4FMM_NG only)	{'FMM_MODE': 'fft', 'S4FMM_NG': '9'}	{'FMM_MODE': 'fft', 'S4FMM_NG': '9'}	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	control: no injection variables	False	False	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	actual mode of the driver is a plain build	True	True	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	PASS
+CTRL_SEAM/CTRL-SEAM-seamF-F2	driver sha256 = recorded (DRIVERS_R8.tsv)	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	PASS
+G2c/M-once-fft-exec-1-F	present in v2 joined to ADD	present	present	PASS
+G2c/M-once-fft-exec-1-F	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	REPORTED_FAILURE	REPORTED_FAILURE	PASS
+G2c/M-once-fft-exec-1-F	request in D registration = joined request	exec	exec	PASS
+G2c/M-once-fft-exec-1-F	inj_call in D registration = joined inj_call	1	1	PASS
+G2c/M-once-fft-exec-1-F	tree in D registration = joined tree	F	F	PASS
+G2c/M-once-fft-exec-1-F	environment = history expectation (independent rule)	{'FMM_MODE': 'fft', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'exec', 'S4FMM_NTH': '1'}	{'FMM_MODE': 'fft', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'exec', 'S4FMM_NTH': '1'}	PASS
+G2c/M-once-fft-exec-1-F	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G2c/M-once-fft-exec-1-F	actual mode of the driver is a plain build	True	True	PASS
+G2c/M-once-fft-exec-1-F	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	PASS
+G2c/M-once-fft-exec-1-F	driver sha256 = recorded (DRIVERS_R8.tsv)	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf	PASS
+G2c/M-twice-vl-plan-1-F2	present in v2 joined to ADD	present	present	PASS
+G2c/M-twice-vl-plan-1-F2	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	REPORTED_FAILURE	REPORTED_FAILURE	PASS
+G2c/M-twice-vl-plan-1-F2	request in D registration = joined request	plan	plan	PASS
+G2c/M-twice-vl-plan-1-F2	inj_call in D registration = joined inj_call	1	1	PASS
+G2c/M-twice-vl-plan-1-F2	tree in D registration = joined tree	F2	F2	PASS
+G2c/M-twice-vl-plan-1-F2	environment = history expectation (independent rule)	{'FMM_MODE': 'vl', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'plan', 'S4FMM_NTH': '1', 'S4FMM_TWICE': 'slab'}	{'FMM_MODE': 'vl', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'plan', 'S4FMM_NTH': '1', 'S4FMM_TWICE': 'slab'}	PASS
+G2c/M-twice-vl-plan-1-F2	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G2c/M-twice-vl-plan-1-F2	actual mode of the driver is a plain build	True	True	PASS
+G2c/M-twice-vl-plan-1-F2	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	PASS
+G2c/M-twice-vl-plan-1-F2	driver sha256 = recorded (DRIVERS_R8.tsv)	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf	PASS
+G1/CTL-closed1d-F	present in v2 joined to ADD	present	present	PASS
+G1/CTL-closed1d-F	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	CONTROL_OK	CONTROL_OK	PASS
+G1/CTL-closed1d-F	request in D registration = joined request	-	-	PASS
+G1/CTL-closed1d-F	inj_call in D registration = joined inj_call	-	-	PASS
+G1/CTL-closed1d-F	tree in D registration = joined tree	F	F	PASS
+G1/CTL-closed1d-F	environment = history expectation (independent rule)	{'FMM_MODE': 'closed1d', 'S4FMM_NG': '9'}	{'FMM_MODE': 'closed1d', 'S4FMM_NG': '9'}	PASS
+G1/CTL-closed1d-F	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G1/CTL-closed1d-F	actual mode of the driver is a plain build	True	True	PASS
+G1/CTL-closed1d-F	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	PASS
+G1/CTL-closed1d-F	driver sha256 = recorded (DRIVERS_R8.tsv)	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c	PASS
+G1/M-twice-vl-plan-1-F2	present in v2 joined to ADD	present	present	PASS
+G1/M-twice-vl-plan-1-F2	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	REPORTED_FAILURE	REPORTED_FAILURE	PASS
+G1/M-twice-vl-plan-1-F2	request in D registration = joined request	plan	plan	PASS
+G1/M-twice-vl-plan-1-F2	inj_call in D registration = joined inj_call	1	1	PASS
+G1/M-twice-vl-plan-1-F2	tree in D registration = joined tree	F2	F2	PASS
+G1/M-twice-vl-plan-1-F2	environment = history expectation (independent rule)	{'FMM_MODE': 'vl', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'plan', 'S4FMM_NTH': '1', 'S4FMM_TWICE': 'slab'}	{'FMM_MODE': 'vl', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'plan', 'S4FMM_NTH': '1', 'S4FMM_TWICE': 'slab'}	PASS
+G1/M-twice-vl-plan-1-F2	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G1/M-twice-vl-plan-1-F2	actual mode of the driver is a plain build	True	True	PASS
+G1/M-twice-vl-plan-1-F2	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/F3-plain/build/libS4.a	PASS
+G1/M-twice-vl-plan-1-F2	driver sha256 = recorded (DRIVERS_R8.tsv)	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c	PASS
+G2a/R4-ACF1-F-F	present in v2 joined to ADD	present	present	PASS
+G2a/R4-ACF1-F-F	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	REPORTED_FAILURE	REPORTED_FAILURE	PASS
+G2a/R4-ACF1-F-F	request in D registration = joined request	alloc:25:1	alloc:25:1	PASS
+G2a/R4-ACF1-F-F	inj_call in D registration = joined inj_call	1	1	PASS
+G2a/R4-ACF1-F-F	tree in D registration = joined tree	F	F	PASS
+G2a/R4-ACF1-F-F	environment = history expectation (independent rule)	{'FMM_MODE': 'jones', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'alloc:25:1'}	{'FMM_MODE': 'jones', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'alloc:25:1'}	PASS
+G2a/R4-ACF1-F-F	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G2a/R4-ACF1-F-F	actual mode of the driver is a plain build	True	True	PASS
+G2a/R4-ACF1-F-F	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	PASS
+G2a/R4-ACF1-F-F	driver sha256 = recorded (DRIVERS_R8.tsv)	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	PASS
+G2a/R4-SI02-F-F2	present in v2 joined to ADD	present	present	PASS
+G2a/R4-SI02-F-F2	expected class: v2 (joined) = REGISTRY_S3R4C3_D.tsv	REPORTED_FAILURE	REPORTED_FAILURE	PASS
+G2a/R4-SI02-F-F2	request in D registration = joined request	linearsolve:2:1:info	linearsolve:2:1:info	PASS
+G2a/R4-SI02-F-F2	inj_call in D registration = joined inj_call	1	1	PASS
+G2a/R4-SI02-F-F2	tree in D registration = joined tree	F2	F2	PASS
+G2a/R4-SI02-F-F2	environment = history expectation (independent rule)	{'FMM_MODE': 'kottke', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'linearsolve:2:1:info'}	{'FMM_MODE': 'kottke', 'S4FMM_NG': '9', 'S4FMM_INJECT': 'linearsolve:2:1:info'}	PASS
+G2a/R4-SI02-F-F2	actual tree of the driver = F3 (DRIVERS_R8.tsv)	F3	F3	PASS
+G2a/R4-SI02-F-F2	actual mode of the driver is a plain build	True	True	PASS
+G2a/R4-SI02-F-F2	driver library path = the F3 plain library of its family (DRIVERS_R8.tsv)	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/build_r8/seam_plain/seamF-F3-plain/build/libS4.a	PASS
+G2a/R4-SI02-F-F2	driver sha256 = recorded (DRIVERS_R8.tsv)	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6	PASS

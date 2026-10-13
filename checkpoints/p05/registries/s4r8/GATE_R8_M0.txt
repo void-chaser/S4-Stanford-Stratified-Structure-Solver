@@ -1,0 +1,25 @@
+# P05-S4 R8 gate (start), utc=2026-10-13T03:00:33Z
+PASS	HEAD	expected=3ab56801e697910bdff9fbe6056807c2e41841b5	actual=3ab56801e697910bdff9fbe6056807c2e41841b5
+PASS	S4_TREE_HEAD	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	S4_TREE_8d8202a	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	S4_TREE_a07b5ac	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+FAIL	S4_DIFF_a07b5ac_8d8202a	expected=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 	actual=S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c S4/S4.cpp 
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	REGISTRY_S3R4C3_D_SHA256	expected=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5	actual=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
+PASS	GIT_STATUS_EXCEPT_R8_SCRIPTS	expected=?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M0.md	actual=?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M0.md
+PASS	S3R4C5_SHA256SUMS_non_OK	expected=0	actual=0
+FAIL	S4R7_SHA256SUMS.txt	expected=0	actual=2
+PASS	S4R7_SHA256SUMS_M1.txt	expected=0	actual=0
+FAIL	S4R7_SHA256SUMS_M2a.txt	expected=0	actual=4
+PASS	S4R7_SHA256SUMS_M2b_run6prep.txt	expected=0	actual=0
+FAIL	S4R7_SHA256SUMS_M2b_run7.txt	expected=0	actual=27
+PASS	S4R7_SHA256SUMS_M2b_run7_std.txt	expected=0	actual=0
+FAIL	S4R7_SHA256SUMS_M2b_run7prep.txt	expected=0	actual=7
+PASS	S4R7_SHA256SUMS_M2b_run7prep_std.txt	expected=0	actual=0
+PASS	S4R7_SHA256SUMS_M2bprep.txt	expected=0	actual=0
+FAIL	S4R7_SHA256SUMS_M2pre.txt	expected=0	actual=4
+PASS	S4R7_SHA256SUMS_M3.txt	expected=0	actual=0
+PASS	S4R7_SHA256SUMS_M3_closeout.txt	expected=0	actual=0
+PASS	S4R7_SHA256SUMS_M3_prep.txt	expected=0	actual=0
+tmp_count=0	tmp_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=6

@@ -1,0 +1,351 @@
+# RUNNER_DIFF_R8_M0.txt -- diff -u of each R8 copy against its R7 original (brief section 0.2; ERRATA_8 E8-5).
+# Paths in the headers are repository paths; the R7 and R8 files are compared as they are in the repository.
+# ===== build_s4r8.sh vs build_s4r7.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r7/build_s4r7.sh	2026-10-12 21:50:56.605839847 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r8/build_s4r8.sh	2026-10-13 15:25:34.994600787 +1100
+@@ -1,26 +1,21 @@
+ #!/bin/sh
+-# build_s4r7.sh -- P05-S4 R7-1 builds (new file; command layout copied from testing/d003/stage_s3r3/build_s3r3.sh).
+-#
+-#   sh testing/d003/safe_run.sh p05-s4r7 -- sh testing/d003/stage_s4r7/build_s4r7.sh p05-s4r7
+-#
+-# Source: the exported trees $EV/trees/F (1c11905) and $EV/trees/F2 (a07b5ac), made by git archive (never from the
+-# working tree).  Each tree is copied to a private build directory per mode, so the objdir of one build cannot be
+-# reused by another.  Two modes per tree:
+-#   dbg   : -O0 -g                 (as run_r5_dbg_build.sh and run_s3r3 build_s3r3.sh)
+-#   plain : -O3 -march=native      (the Makefile default, as in R4 build-plain-*.log)
+-# No -DHAVE_LIBCHOLMOD is passed (the build config does not define it; see PRE_FIX_SOURCE_S3R3.md section 2).
+-# Output: $EV/build_r7/<TAG>-<MODE>/  (library, build log), $EV/build_r7/BUILD_R7.tsv (tree, mode, warnings, make rc, sha256)
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# build_s4r8.sh -- P05-S4 R8 M0 step 3.2: F3 libraries, dbg and plain (copied from build_s4r7.sh; new file).
++#   sh testing/d003/safe_run.sh p05-s4r8 -- sh testing/d003/stage_s4r8/build_s4r8.sh p05-s4r8
++# Changes against build_s4r7.sh (RUNNER_DIFF_R8_M0.txt): the first line is the standard header (U-brief section 0.2);
++# only the tree F3 is built; the forced removal of a build directory is replaced by test ! -e (U17); the tree label, the output
++# directory and the expected warning counts (dbg 62, plain 71) are the R8 values.  Compile flags are unchanged.
++# Source: $EV/trees/F3 (git archive of 8d8202a, exported by export_r8.sh).  No -DHAVE_LIBCHOLMOD is passed.
++# Output: $EV/build_r8/F3-<MODE>/ (library, build log), $EV/build_r8/BUILD_R8.tsv (tree, mode, warnings, make rc, lib sha256, cholmod mentions).
+ set -u
+-REPO=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "build_s4r7: not in a git work tree" >&2; exit 2; }
+-OUT_ARG=${1:?"usage: build_s4r7.sh p05-s4r7"}
+-EV="$REPO/checkpoints/p05/evidence/$OUT_ARG"
+-OUT="$EV/build_r7"
+-TMPDIR="$EV/tmp"
+-export TMPDIR
++[ "${1:-}" = p05-s4r8 ] || { echo "build_s4r8: first argument must be p05-s4r8" >&2; exit 2; }
++OUT="$EV/build_r8"
+ JOBS=${JOBS:-$(nproc)}
+ SAFE="$REPO/testing/d003/safe_run.sh"
+-
+-sh "$SAFE" "$OUT_ARG" -- sh -c 'mkdir -p "$1" && : > "$1/BUILD_R7.tsv"' sh "$OUT" || exit 2
++test -d "$EV/trees/F3" || { echo "build_s4r8: REFUSED: source tree missing: $EV/trees/F3" >&2; exit 2; }
++test ! -e "$OUT" || { echo "build_s4r8: REFUSED exists: $OUT" >&2; exit 2; }
++mkdir -p "$OUT" || exit 2
++: > "$OUT/BUILD_R8.tsv"
+ 
+ build_one() {
+     TAG=$1; MODE=$2
+@@ -33,20 +28,17 @@
+     fi
+     WD="$OUT/$TAG-$MODE"
+     LOG="$OUT/build-$TAG-$MODE.log"
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'rm -rf "$1" && mkdir -p "$1" && cp -r "$2/." "$1/"' sh "$WD" "$EV/trees/$TAG" || return 1
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'cd "$1" && make objdir > "$2" 2>&1 && make -j"$3" CPPFLAGS="-IS4 -IS4/RNP -IS4/kiss_fft" CFLAGS="$4" CXXFLAGS="$5" build/libS4.a >> "$2" 2>&1; echo "make rc=$?" >> "$2"' sh "$WD" "$LOG" "$JOBS" "$CF" "$CXF"
++    sh "$SAFE" p05-s4r8 -- sh -c 'test ! -e "$1" && mkdir -p "$1" && cp -r "$2/." "$1/"' sh "$WD" "$EV/trees/$TAG" || return 1
++    sh "$SAFE" p05-s4r8 -- sh -c 'cd "$1" && make objdir > "$2" 2>&1 && make -j"$3" CPPFLAGS="-IS4 -IS4/RNP -IS4/kiss_fft" CFLAGS="$4" CXXFLAGS="$5" build/libS4.a >> "$2" 2>&1; echo "make rc=$?" >> "$2"' sh "$WD" "$LOG" "$JOBS" "$CF" "$CXF"
+     W=$(grep -c 'warning:' "$LOG")
+-    RC=$(sed -n 's/^make rc=//p' "$LOG" | tail -1)
+-    SHA=$(sha256sum "$WD/build/libS4.a" 2>/dev/null | cut -d' ' -f1)
++    RC=$(sed -n 's/^make rc=//p' "$LOG" | tail -n 1)
++    SHA=$(sha256sum "$WD/build/libS4.a" 2>&1 | cut -d' ' -f1)
+     CHOL=$(grep -c 'HAVE_LIBCHOLMOD' "$LOG")
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" "$5" "$6" >> "$7/BUILD_R7.tsv"' sh "$TAG" "$MODE" "$W" "$RC" "$SHA" "$CHOL" "$OUT" || return 1
++    sh "$SAFE" p05-s4r8 -- sh -c 'printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" "$5" "$6" >> "$7/BUILD_R8.tsv"' sh "$TAG" "$MODE" "$W" "$RC" "$SHA" "$CHOL" "$OUT" || return 1
+     echo "$TAG $MODE warnings=$W make_rc=$RC cholmod_mentions=$CHOL lib_sha256=$SHA"
+ }
+ 
+-for T in F F2; do
+-    for M in dbg plain; do
+-        build_one "$T" "$M"
+-    done
+-done
+-echo "build_s4r7: done"
++build_one F3 dbg
++build_one F3 plain
++echo "build_s4r8: done"
+ exit 0
+# ===== build_seam_plain_r8.sh vs build_seam_plain_s4r7.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r7/build_seam_plain_s4r7.sh	2026-10-12 22:18:06.931513875 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r8/build_seam_plain_r8.sh	2026-10-13 15:28:50.173354267 +1100
+@@ -1,41 +1,38 @@
+ #!/bin/sh
+-# build_seam_plain_s4r7.sh -- P05-S4 R7 M2 section 3.1: PLAIN seam libraries for F and F2 (new file).
+-#
+-#   sh testing/d003/safe_run.sh p05-s4r7 -- sh testing/d003/stage_s4r7/build_seam_plain_s4r7.sh p05-s4r7
+-#
+-# Options read from registries/s4r4 (BUILD_SEAM_PLAIN_R7.tsv): CFLAGS/CXXFLAGS -O3 -Wall -march=native -fcx-limited-range
+-# -fno-exceptions -fPIC; macros per library.  Sources: the seam trees already applied in $EV/seam_r7/ (F-seamF, F2-seamF,
+-# F-fmmret, F2-fmmret).  Each is copied without build/, *.o, *.a into a private directory before the build.
+-# Output: $EV/build_r7/seam_plain/<TAG>/ and $EV/build_r7/seam_plain/BUILD_SEAM_PLAIN_R7_RESULT.tsv
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# build_seam_plain_r8.sh -- P05-S4 R8 M0 step 3.3: PLAIN seam libraries for F3 (copied from build_seam_plain_s4r7.sh; new file).
++#   sh testing/d003/safe_run.sh p05-s4r8 -- sh testing/d003/stage_s4r8/build_seam_plain_r8.sh p05-s4r8
++# Only seamF-F3-plain and fmmret-F3-plain are built (brief 3.3).  Macros and flags are those of R7 (BUILD_SEAM_PLAIN_R7.tsv):
++#   CFLAGS = CXXFLAGS = -O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC
++# Sources: $EV/seam_r8/F3-seamF and $EV/seam_r8/F3-fmmret (exported and patched by seam_r8.sh).  Each is copied without
++# build/, *.o, *.a into a new private directory before the build.
++# Changes against build_seam_plain_s4r7.sh (RUNNER_DIFF_R8_M0.txt): standard first line; the R7 tags F and F2 become F3 only;
++# forced removal replaced by test ! -e (U17); output directory $EV/build_r8/seam_plain.
+ set -u
+-REPO=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "build_seam_plain: not in a git work tree" >&2; exit 2; }
+-OUT_ARG=${1:?"usage: build_seam_plain_s4r7.sh p05-s4r7"}
+-EV="$REPO/checkpoints/p05/evidence/$OUT_ARG"
+-OUT="$EV/build_r7/seam_plain"
+-TMPDIR="$EV/tmp"
+-export TMPDIR
+-JOBS=${JOBS:-$(nproc)}
++[ "${1:-}" = p05-s4r8 ] || { echo "build_seam_plain_r8: first argument must be p05-s4r8" >&2; exit 2; }
+ SAFE="$REPO/testing/d003/safe_run.sh"
++JOBS=${JOBS:-$(nproc)}
+ CF="-O3 -Wall -march=native -fcx-limited-range -fno-exceptions -fPIC"
+-
+-sh "$SAFE" "$OUT_ARG" -- sh -c 'mkdir -p "$1" && : > "$1/BUILD_SEAM_PLAIN_R7_RESULT.tsv"' sh "$OUT" || exit 2
++OUT="$EV/build_r8/seam_plain"
++test -d "$EV/seam_r8/F3-seamF" && test -d "$EV/seam_r8/F3-fmmret" || { echo "build_seam_plain_r8: REFUSED: seam sources missing" >&2; exit 2; }
++test ! -e "$OUT" || { echo "build_seam_plain_r8: REFUSED exists: $OUT" >&2; exit 2; }
++mkdir -p "$OUT" || exit 2
++: > "$OUT/BUILD_SEAM_PLAIN_R8_RESULT.tsv"
+ 
+ build_seam() {
+     TAG=$1; SRC=$2; MACROS=$3
+     WD="$OUT/$TAG"
+     LOG="$OUT/build-$TAG.log"
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'rm -rf "$1" && mkdir -p "$1" && tar -C "$2" --exclude=./build --exclude="*.o" --exclude="*.a" -cf - . | tar -C "$1" -xf -' sh "$WD" "$SRC" || return 1
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'cd "$1" && make objdir > "$2" 2>&1 && make -j"$3" CPPFLAGS="$6 -IS4 -IS4/RNP -IS4/kiss_fft" CFLAGS="$4" CXXFLAGS="$5" build/libS4.a >> "$2" 2>&1; echo "make rc=$?" >> "$2"' sh "$WD" "$LOG" "$JOBS" "$CF" "$CF" "$MACROS"
++    sh "$SAFE" p05-s4r8 -- sh -c 'test ! -e "$1" && mkdir -p "$1" && tar -C "$2" --exclude=./build --exclude="*.o" --exclude="*.a" -cf - . | tar -C "$1" -xf -' sh "$WD" "$SRC" || return 1
++    sh "$SAFE" p05-s4r8 -- sh -c 'cd "$1" && make objdir > "$2" 2>&1 && make -j"$3" CPPFLAGS="$6 -IS4 -IS4/RNP -IS4/kiss_fft" CFLAGS="$4" CXXFLAGS="$5" build/libS4.a >> "$2" 2>&1; echo "make rc=$?" >> "$2"' sh "$WD" "$LOG" "$JOBS" "$CF" "$CF" "$MACROS" || return 1
+     W=$(grep -c 'warning:' "$LOG")
+-    RC=$(sed -n 's/^make rc=//p' "$LOG" | tail -1)
+-    SHA=$(sha256sum "$WD/build/libS4.a" 2>/dev/null | cut -d' ' -f1)
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'printf "%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" >> "$5/BUILD_SEAM_PLAIN_R7_RESULT.tsv"' sh "$TAG" "$W" "$RC" "$SHA" "$OUT" || return 1
++    RC=$(sed -n 's/^make rc=//p' "$LOG" | tail -n 1)
++    SHA=$(sha256sum "$WD/build/libS4.a" 2>&1 | cut -d' ' -f1)
++    sh "$SAFE" p05-s4r8 -- sh -c 'printf "%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" >> "$5/BUILD_SEAM_PLAIN_R8_RESULT.tsv"' sh "$TAG" "$W" "$RC" "$SHA" "$OUT" || return 1
+     echo "$TAG warnings=$W make_rc=$RC lib_sha256=$SHA"
+ }
+ 
+-build_seam seamF-F-plain  "$EV/seam_r7/F-seamF"  "-DS4_TEST_LINEARSOLVE_SEAM -DS4_TEST_LINEARSOLVE_SEAM_NULLINFO2 -DS4_TEST_ALLOC_SEAM -DS4_TEST_KOTTKE_SEAM"
+-build_seam seamF-F2-plain "$EV/seam_r7/F2-seamF" "-DS4_TEST_LINEARSOLVE_SEAM -DS4_TEST_LINEARSOLVE_SEAM_NULLINFO2 -DS4_TEST_ALLOC_SEAM -DS4_TEST_KOTTKE_SEAM"
+-build_seam fmmret-F-plain  "$EV/seam_r7/F-fmmret"  "-DS4_TEST_FMMRET_SEAM"
+-build_seam fmmret-F2-plain "$EV/seam_r7/F2-fmmret" "-DS4_TEST_FMMRET_SEAM"
+-echo "build_seam_plain_s4r7: done"
++build_seam seamF-F3-plain  "$EV/seam_r8/F3-seamF"  "-DS4_TEST_LINEARSOLVE_SEAM -DS4_TEST_LINEARSOLVE_SEAM_NULLINFO2 -DS4_TEST_ALLOC_SEAM -DS4_TEST_KOTTKE_SEAM"
++build_seam fmmret-F3-plain "$EV/seam_r8/F3-fmmret" "-DS4_TEST_FMMRET_SEAM"
++echo "build_seam_plain_r8: done"
+ exit 0
+# ===== link_drivers_r8.sh vs link_drivers_s4r7.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r7/link_drivers_s4r7.sh	2026-10-12 21:52:04.673120675 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r8/link_drivers_r8.sh	2026-10-13 15:29:48.574375033 +1100
+@@ -1,62 +1,55 @@
+ #!/bin/sh
+-# link_drivers_s4r7.sh -- P05-S4 R7-1 step 4: drivers for the R7 regression, linked against the R7 libraries (new file).
+-#
+-#   sh testing/d003/safe_run.sh p05-s4r7 -- sh testing/d003/stage_s4r7/link_drivers_s4r7.sh p05-s4r7
+-#
+-# Driver/injector pairs follow the history of each matrix (ERRATA_4/5/6/6c; no historical file is changed):
+-#   d003      : driver_d003.cpp + inject_d003.cpp       (R3 matrix, G1)
+-#   d003plan  : driver_d003.cpp + inject_r4_plan.cpp     (R4 plancall, R5 plan/M=2, R6-1 twice; G2, G3, G4)
+-#   r6bstate  : driver_r6b_state.cpp + inject_r4_plan.cpp (R6c state 177 points; G5)
+-#   r6dnv1    : driver_r6b_state.cpp + inject_r6d_rnv1.cpp (RNV1 window and tri; G7, G8, 4.2)
+-# Libraries: $EV/build_r7/{F,F2}-{dbg,plain}/build/libS4.a (built by build_s4r7.sh).
+-# Link flags: plain libraries with -O1, dbg libraries with -O0 -g (as the historical drivers).
+-# Output: $EV/drivers_r7/<DRV>-<TREE>-<MODE>/driver ; $EV/DRIVERS_R7.tsv (driver, tree, mode, lib sha256, driver sha256, script).
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# link_drivers_r8.sh -- P05-S4 R8 M0 step 3.4: F3 drivers, linked against the R8 F3 libraries (new file).
++#   sh testing/d003/safe_run.sh p05-s4r8 -- sh testing/d003/stage_s4r8/link_drivers_r8.sh p05-s4r8
++# Copied from link_drivers_s4r7.sh (drivers d003, d003plan, r6bstate; plain only) and link_seam_drivers_r7.sh (seam
++# drivers seamF-F3, fmmret-F3), and from the tri link command of p05-s4r7/safe_run.log (line 122, tree F2, plain),
++# applied to F3.  Changes (RUNNER_DIFF_R8_M0.txt): standard first line; tree F3 only; libraries from build_r8;
++# the seam libraries from build_r8/seam_plain; output directory drivers_r8; existence checks before creation (U17).
++# The compile and link flags are those of the R7 scripts.  Outputs (new): $EV/drivers_r8/<NAME>/driver,
++# $EV/DRIVERS_R8.tsv (driver, tree, mode, library sha256, driver sha256, library path).  Nothing is overwritten.
+ set -u
+-REPO=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "link_drivers_s4r7: not in a git work tree" >&2; exit 2; }
+-OUT_ARG=${1:?"usage: link_drivers_s4r7.sh p05-s4r7"}
+-EV="$REPO/checkpoints/p05/evidence/$OUT_ARG"
+-TMPDIR="$EV/tmp"
+-export TMPDIR
++[ "${1:-}" = p05-s4r8 ] || { echo "link_drivers_r8: first argument must be p05-s4r8" >&2; exit 2; }
+ SAFE="$REPO/testing/d003/safe_run.sh"
+-LIBFLAGS="-llapack -lblas -Wl,--wrap=malloc -Wl,--wrap=_Z13fft_plan_execP12tag_fft_plan -Wl,--wrap=_Z15fft_plan_dft_2dPiPSt7complexIdES2_i -Wl,--wrap=_Z9S4_mallocm"
+-LIBFLAGS_RNV1="$LIBFLAGS -Wl,--wrap=Pattern_GenerateFlowField"
+ SRC="$REPO/testing/d003/src"
+ ST4="$REPO/testing/d003/stage_s4"
+ ST3R3="$REPO/testing/d003/stage_s3r3"
++LIBFLAGS="-llapack -lblas -Wl,--wrap=malloc -Wl,--wrap=_Z13fft_plan_execP12tag_fft_plan -Wl,--wrap=_Z15fft_plan_dft_2dPiPSt7complexIdES2_i -Wl,--wrap=_Z9S4_mallocm"
++LIBFLAGS_RNV1="$LIBFLAGS -Wl,--wrap=Pattern_GenerateFlowField"
++OUTD="$EV/drivers_r8"
++F3_PLAIN_LIB="$EV/build_r8/F3-plain/build/libS4.a"
++SEAMF_LIB="$EV/build_r8/seam_plain/seamF-F3-plain/build/libS4.a"
++FMMRET_LIB="$EV/build_r8/seam_plain/fmmret-F3-plain/build/libS4.a"
++# inputs first (brief section 0.2: confirm every input before a directory is created)
++for f in "$SRC/driver_d003.cpp" "$SRC/inject_d003.cpp" "$ST4/driver_r6b_state.cpp" "$ST4/inject_r4_plan.cpp" "$ST3R3/driver_s3r3_tri.cpp" "$ST4/inject_r6d_rnv1.cpp" "$F3_PLAIN_LIB" "$SEAMF_LIB" "$FMMRET_LIB"; do
++    test -f "$f" || { echo "link_drivers_r8: REFUSED: input missing: $f" >&2; exit 2; }
++done
++test ! -e "$OUTD" || { echo "link_drivers_r8: REFUSED exists: $OUTD" >&2; exit 2; }
++test ! -e "$EV/DRIVERS_R8.tsv" || { echo "link_drivers_r8: REFUSED exists: DRIVERS_R8.tsv" >&2; exit 2; }
++mkdir -p "$OUTD" || exit 2
++printf 'driver\ttree\tmode\tlib_sha256\tdriver_sha256\tlib_path\tdriver_path\n' > "$EV/DRIVERS_R8.tsv"
+ 
+-sh "$SAFE" "$OUT_ARG" -- sh -c 'mkdir -p "$1/drivers_r7" && : > "$1/DRIVERS_R7.tsv"' sh "$EV" || exit 2
+-
+-# link DRV TREE MODE : DRV selects the sources and the wraps; TREE is F or F2; MODE is dbg or plain
++# link NAME TREE MODE LIB DRIVER_SRC INJECT_SRC LIBFLAGS OPT : one driver, one link command, one record line
+ link() {
+-    D=$1; T=$2; M=$3
+-    LIB="$EV/build_r7/$T-$M/build/libS4.a"
+-    SRCTREE="$EV/build_r7/$T-$M"
+-    OUTDIR="$EV/drivers_r7/$D-$T-$M"
+-    test -f "$LIB" || { echo "missing library $LIB" >&2; return 1; }
+-    case "$D" in
+-        d003)     DSRC="$SRC/driver_d003.cpp";            ISRC="$SRC/inject_d003.cpp";        LF="$LIBFLAGS" ;;
+-        d003plan) DSRC="$SRC/driver_d003.cpp";            ISRC="$ST4/inject_r4_plan.cpp";     LF="$LIBFLAGS" ;;
+-        r6bstate) DSRC="$ST4/driver_r6b_state.cpp";       ISRC="$ST4/inject_r4_plan.cpp";     LF="$LIBFLAGS" ;;
+-        r6dnv1)   DSRC="$ST4/driver_r6b_state.cpp";       ISRC="$ST4/inject_r6d_rnv1.cpp";    LF="$LIBFLAGS_RNV1" ;;
+-        *) echo "unknown driver $D" >&2; return 1 ;;
+-    esac
+-    if [ "$M" = dbg ]; then OPT="-O0 -g"; else OPT="-O1"; fi
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'mkdir -p "$1" && g++ $2 -Wall -Wextra -Wno-unused-parameter -I "$3/S4" -I "$3/S4/fmm" "$4" "$5" -o "$1/driver" -L "$3/build" -lS4 $6 > "$1/build.stdout" 2>&1' \
+-        sh "$OUTDIR" "$OPT" "$SRCTREE" "$DSRC" "$ISRC" "$LF" || { echo "link FAILED $D $T $M (see $OUTDIR/build.stdout)" >&2; return 1; }
+-    test -x "$OUTDIR/driver" || return 1
+-    LSHA=$(sha256sum "$LIB" | cut -d' ' -f1)
+-    DSHA=$(sha256sum "$OUTDIR/driver" | cut -d' ' -f1)
+-    sh "$SAFE" "$OUT_ARG" -- sh -c 'printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" "$5" "$6" >> "$7/DRIVERS_R7.tsv"' sh "$D" "$T" "$M" "$LSHA" "$DSHA" "$OUTDIR/driver" "$EV" || return 1
+-    echo "$D $T $M driver_sha256=$DSHA lib_sha256=$LSHA"
++    N=$1; T=$2; M=$3; LIB=$4; DSRC=$5; ISRC=$6; LF=$7; OPT=$8
++    OD="$OUTD/$N"
++    sh "$SAFE" p05-s4r8 -- sh -c 'test ! -e "$1" && mkdir -p "$1" && g++ $2 -Wall -Wextra -Wno-unused-parameter -I "$3/S4" -I "$3/S4/fmm" "$4" "$5" -o "$1/driver" -L "$3/build" -lS4 $6 > "$1/build.stdout" 2>&1' \
++        sh "$OD" "$OPT" "$(dirname "$(dirname "$LIB")")" "$DSRC" "$ISRC" "$LF" || { echo "link FAILED $N (see $OD/build.stdout)" >&2; return 1; }
++    test -x "$OD/driver" || { echo "link: no driver produced for $N" >&2; return 1; }
++    LSHA=$(sha256sum "$LIB" 2>&1 | cut -d' ' -f1)
++    DSHA=$(sha256sum "$OD/driver" 2>&1 | cut -d' ' -f1)
++    sh "$SAFE" p05-s4r8 -- sh -c 'printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\n" "$1" "$2" "$3" "$4" "$5" "$6" "$7" >> "$8/DRIVERS_R8.tsv"' sh "$N" "$T" "$M" "$LSHA" "$DSHA" "$LIB" "$OD/driver" "$EV" || return 1
++    echo "$N tree=$T mode=$M lib_sha256=$LSHA driver_sha256=$DSHA"
+ }
+ 
+-for T in F F2; do
+-    for M in dbg plain; do
+-        link d003     "$T" "$M" || exit 1
+-        link d003plan "$T" "$M" || exit 1
+-        link r6bstate "$T" "$M" || exit 1
+-        link r6dnv1   "$T" "$M" || exit 1
+-    done
+-done
+-echo "link_drivers_s4r7: done"
++# plain drivers on the F3 plain library (-O1, as the R7 plain drivers)
++link d003-F3-plain     F3 plain "$F3_PLAIN_LIB" "$SRC/driver_d003.cpp"     "$SRC/inject_d003.cpp"     "$LIBFLAGS" "-O1" || exit 1
++link d003plan-F3-plain F3 plain "$F3_PLAIN_LIB" "$SRC/driver_d003.cpp"     "$ST4/inject_r4_plan.cpp"   "$LIBFLAGS" "-O1" || exit 1
++link r6bstate-F3-plain F3 plain "$F3_PLAIN_LIB" "$ST4/driver_r6b_state.cpp" "$ST4/inject_r4_plan.cpp"  "$LIBFLAGS" "-O1" || exit 1
++# tri (R7 safe_run.log line 122, F2 plain -> F3 plain): driver_s3r3_tri.cpp + inject_r6d_rnv1.cpp with the RNV1 wrap
++link tri-F3-plain     F3 plain "$F3_PLAIN_LIB" "$ST3R3/driver_s3r3_tri.cpp" "$ST4/inject_r6d_rnv1.cpp" "$LIBFLAGS_RNV1" "-O1" || exit 1
++# seam drivers (R7 link_seam_drivers_r7.sh: driver_d003.cpp + inject_d003.cpp, -O1, LIBFLAGS)
++link seam-seamF-F3  F3 seamF-plain  "$SEAMF_LIB"  "$SRC/driver_d003.cpp" "$SRC/inject_d003.cpp" "$LIBFLAGS" "-O1" || exit 1
++link seam-fmmret-F3 F3 fmmret-plain "$FMMRET_LIB" "$SRC/driver_d003.cpp" "$SRC/inject_d003.cpp" "$LIBFLAGS" "-O1" || exit 1
++echo "link_drivers_r8: done"
+ exit 0
+# ===== run_noinject_equiv_r8.sh vs run_noinject_equiv_r7.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r7/run_noinject_equiv_r7.sh	2026-10-12 21:52:45.173477789 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r8/run_noinject_equiv_r8.sh	2026-10-13 15:37:18.204932855 +1100
+@@ -1,28 +1,31 @@
+ #!/bin/sh
+-# run_noinject_equiv_r7.sh -- P05-S4 R7-3 step 4.3: no-injection equivalence F vs F2 (new file; revised).
+-#
+-#   sh testing/d003/safe_run.sh p05-s4r7 -- sh testing/d003/stage_s4r7/run_noinject_equiv_r7.sh p05-s4r7 run1
+-#
+-# Driver: driver_r6b_state (plain, F and F2), which writes call1/call2/call3.txt through S4FMM_DUMP_DIR (as in S3R3 B).
+-# Modes: closed, fft, kottke, experimental, tensor, closed1d, jones, nv, vl, fftjones, fftnv, fftvl; NG 1, 5, 9 (lattice square).
+-# Tri lattice: driver_s3r3_tri (plain, F and F2) for nv, vl, jones at NG 9 (lattice {1,0,0.5,0.866}).
+-# Output: $EV/noinject_r7/<run>/<tree>/<mode>-ng<NG>[-tri]/ and $EV/RESULTS_R7_NOINJECT_<run>.tsv.
+-# Nothing is overwritten (U17): the run label and every directory are new.
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# run_noinject_equiv_r8.sh -- P05-S4 R8 M0 step 5: no-injection equivalence F2 against F3 (new file; copied from
++# run_noinject_equiv_r7.sh).
++#   sh testing/d003/safe_run.sh p05-s4r8 -- sh testing/d003/stage_s4r8/run_noinject_equiv_r8.sh p05-s4r8 run1
++# Changes against run_noinject_equiv_r7.sh (RUNNER_DIFF_R8_M0.txt; ERRATA_8 E8-5):
++#   - the first line is the standard header; the output directories are created only if they do not exist (U17);
++#   - the tree labels are F2 (first) and F3 (second) instead of F and F2;
++#   - the drivers are r6bstate-F2-plain (reused from R7, U126) and r6bstate-F3-plain (linked in this round); tri likewise;
++#   - the mode closed of the R7 matrix is replaced by closed2d (E7-3, U40): the driver accepts closed2d and closed1d only.
++# Matrix otherwise unchanged: closed2d, fft, kottke, experimental, tensor, closed1d, jones, nv, vl, fftjones, fftnv, fftvl x NG 1/5/9;
++# tri nv, vl, jones at NG 9.  The expectation is EXPECT_R8_NOINJECT.txt (written before this run).
++# Output: $EV/noinject_r8/<RUN>/<tree>/<mode>-ng<NG>[-tri]/ and $EV/RESULTS_R8_NOINJECT_<RUN>.tsv (new, refused if it exists).
+ set -u
+-REPO=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "noinject_r7: not in a git work tree" >&2; exit 2; }
+-OUT_ARG=${1:?"usage: run_noinject_equiv_r7.sh p05-s4r7 run1"}
++[ "${1:-}" = p05-s4r8 ] || { echo "run_noinject_equiv_r8: first argument must be p05-s4r8" >&2; exit 2; }
+ RUN=${2:?"run label"}
+-EV="$REPO/checkpoints/p05/evidence/$OUT_ARG"
+-DRV_F="$EV/drivers_r7/r6bstate-F-plain/driver"
+-DRV_F2="$EV/drivers_r7/r6bstate-F2-plain/driver"
+-DRVT_F="$EV/drivers_r7/tri-F-plain/driver"
+-DRVT_F2="$EV/drivers_r7/tri-F2-plain/driver"
+-RES="$EV/RESULTS_R7_NOINJECT_$RUN.tsv"
+-test -x "$DRV_F" && test -x "$DRV_F2" || { echo "state drivers missing" >&2; exit 2; }
++R7EV="$REPO/checkpoints/p05/evidence/p05-s4r7"
++DRV_F2="$R7EV/drivers_r7/r6bstate-F2-plain/driver"
++DRV_F3="$EV/drivers_r8/r6bstate-F3-plain/driver"
++DRVT_F2="$R7EV/drivers_r7/tri-F2-plain/driver"
++DRVT_F3="$EV/drivers_r8/tri-F3-plain/driver"
++RES="$EV/RESULTS_R8_NOINJECT_$RUN.tsv"
++test -x "$DRV_F2" && test -x "$DRV_F3" && test -x "$DRVT_F2" && test -x "$DRVT_F3" || { echo "state or tri drivers missing" >&2; exit 2; }
++test -f "$EV/EXPECT_R8_NOINJECT.txt" || { echo "expectation file missing" >&2; exit 2; }
+ if [ -e "$RES" ]; then echo "REFUSED: exists (U17): $RES" >&2; exit 2; fi
+-ROOT="$EV/noinject_r7/$RUN"
++ROOT="$EV/noinject_r8/$RUN"
+ if [ -e "$ROOT" ]; then echo "REFUSED: exists (U17): $ROOT" >&2; exit 2; fi
+-mkdir -p "$ROOT/F" "$ROOT/F2" || exit 2
++mkdir -p "$ROOT/F2" "$ROOT/F3" || exit 2
+ printf 'mode\tNG\tlattice\ttree\trc_first\trc_retry\tfile\tcmp\n' > "$RES"
+ 
+ # one MODE NG LATTICE TREE DRIVER : run once, record rc lines and the dump directory name
+@@ -31,32 +34,32 @@
+     mkdir -p "$D" || return 1
+     env -i PATH="$PATH" FMM_MODE="$1" S4FMM_NG="$2" S4FMM_DUMP_DIR="$D" "$5" pattern both 4 3 > "$D/stdout.txt" 2> "$D/stderr.txt"
+     RC=$?
+-    RF=$(sed -n 's/^RC first \(-*[0-9][0-9]*\)[[:space:]]*$/\1/p' "$D/stdout.txt" | head -1)
+-    RR=$(sed -n 's/^RC retry \(-*[0-9][0-9]*\)[[:space:]]*$/\1/p' "$D/stdout.txt" | head -1)
++    RF=$(sed -n 's/^RC first \(-*[0-9][0-9]*\)[[:space:]]*$/\1/p' "$D/stdout.txt" | head -n 1)
++    RR=$(sed -n 's/^RC retry \(-*[0-9][0-9]*\)[[:space:]]*$/\1/p' "$D/stdout.txt" | head -n 1)
+     printf '%s\t%s\t%s\t%s\t%s\t%s\trun_rc=%s\t-\n' "$1" "$2" "$3" "$4" "$RF" "$RR" "$RC" >> "$RES"
+ }
+ 
+-# cmpdir MODE NG LATTICE : compare the three dump files of F and F2
++# cmpdir MODE NG LATTICE : compare the three dump files of F2 and F3
+ cmpdir() {
+     for F in call1.txt call2.txt call3.txt; do
+-        A="$ROOT/F/$1-ng$2-$3/$F"; B="$ROOT/F2/$1-ng$2-$3/$F"
++        A="$ROOT/F2/$1-ng$2-$3/$F"; B="$ROOT/F3/$1-ng$2-$3/$F"
+         if [ -f "$A" ] && [ -f "$B" ] && cmp -s "$A" "$B"; then CMP=IDENTICAL; else CMP=NOT_IDENTICAL_OR_MISSING; fi
+-        printf '%s\t%s\t%s\tF-vs-F2\t-\t-\t%s\t%s\n' "$1" "$2" "$3" "$F" "$CMP" >> "$RES"
++        printf '%s\t%s\t%s\tF2-vs-F3\t-\t-\t%s\t%s\n' "$1" "$2" "$3" "$F" "$CMP" >> "$RES"
+     done
+ }
+ 
+-for MODE in closed fft kottke experimental tensor closed1d jones nv vl fftjones fftnv fftvl; do
++for MODE in closed2d fft kottke experimental tensor closed1d jones nv vl fftjones fftnv fftvl; do
+     for NG in 1 5 9; do
+-        one "$MODE" "$NG" square F  "$DRV_F"
+         one "$MODE" "$NG" square F2 "$DRV_F2"
++        one "$MODE" "$NG" square F3 "$DRV_F3"
+         cmpdir "$MODE" "$NG" square
+     done
+ done
+ 
+ for MODE in nv vl jones; do
+-    one "$MODE" 9 tri F  "$DRVT_F"
+     one "$MODE" 9 tri F2 "$DRVT_F2"
++    one "$MODE" 9 tri F3 "$DRVT_F3"
+     cmpdir "$MODE" 9 tri
+ done
+-echo "run_noinject_equiv_r7: done -> $RES"
++echo "run_noinject_equiv_r8: done -> $RES"
+ exit 0

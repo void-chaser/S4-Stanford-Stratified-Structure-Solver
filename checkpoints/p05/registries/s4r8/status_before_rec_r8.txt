@@ -1,0 +1,7 @@
+ M checkpoints/p05/ERRATA_S3R4.txt
+ M checkpoints/p05/registries/RULINGS.tsv
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M0.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M0_RESTART.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M0_RESTART2.md
+?? checkpoints/p05/registries/s4r8/
+?? testing/d003/stage_s4r8/

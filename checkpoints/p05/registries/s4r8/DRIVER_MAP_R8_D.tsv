@@ -1,0 +1,10 @@
+# DRIVER_MAP_R8_D.tsv -- U124 driver map for the D smoke test, written 2026-10-13T04:33:37Z.  Actual tree F3 for every point.
+point_id	group	registered_tree	registered_driver_family	actual_driver	actual_driver_path	driver_sha256
+CTRL-SEAM-fmmret-F	CTRL_SEAM	F	fmmret	seam-fmmret-F3	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/seam-fmmret-F3/driver	f7d445cc2a48ef9d7fae2118c3cd3c715bffaff2de89ab795dd74613f2ea585c
+CTRL-SEAM-seamF-F2	CTRL_SEAM	F2	seamF	seam-seamF-F3	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/seam-seamF-F3/driver	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6
+M-once-fft-exec-1-F	G2c	F	d003plan	d003plan-F3-plain	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf
+M-twice-vl-plan-1-F2	G2c	F2	d003plan	d003plan-F3-plain	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver	be478d9063e5c49a6d703110bd89875499287f8a5d1a2de97def2ec3df5f2faf
+CTL-closed1d-F	G1	F	d003	d003-F3-plain	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003-F3-plain/driver	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c
+M-twice-vl-plan-1-F2	G1	F2	d003	d003-F3-plain	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003-F3-plain/driver	afd4adb303acf06ddb0d34ed5e8a8de211f54d81a2c649ce946bba5c4ff7cb5c
+R4-ACF1-F-F	G2a	F	seamF	seam-seamF-F3	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/seam-seamF-F3/driver	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6
+R4-SI02-F-F2	G2a	F2	seamF	seam-seamF-F3	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/seam-seamF-F3/driver	c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6
