@@ -1,0 +1,38 @@
+# P05-S4 R8 M1b3 gate_r8m1b3 (start) -> GATE_R8_M1b3_START.txt, utc=2026-10-14T13:34:08Z
+PASS	BRANCH	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_IS_BASE	expected=a26b43dd2a77c62b9aec2e937bc7adad14996ef3	actual=a26b43dd2a77c62b9aec2e937bc7adad14996ef3
+RECORD	HEAD	value=a26b43dd2a77c62b9aec2e937bc7adad14996ef3
+RECORD	START_MODE	value=start
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+RECORD	ALLOW_START_SHA256	value=80a278df7340551fb8be94ed159b5ce71e16e2ef3d06efc4c51a190c98e0177f
+RECORD	ALLOW_END_SHA256	value=a796f9969fc857b333d96a7e1778c63c684bc873b9fe1881b6a4e66a9c671d1d
+PASS	ALLOW_START_LINES	expected=4	actual=4
+PASS	TRACKED_TESTING_D003_WORKTREE_NONE	expected=	actual=
+PASS	STATUS_START_EQ_ALLOW_START	expected=?? testing/d003/stage_s4/gate_allow_r8m1b3_end.txt;?? testing/d003/stage_s4/gate_allow_r8m1b3_start.txt;?? testing/d003/stage_s4/gate_check_r8m1b3.py;?? testing/d003/stage_s4/gate_r8m1b3.sh	actual=?? testing/d003/stage_s4/gate_allow_r8m1b3_end.txt;?? testing/d003/stage_s4/gate_allow_r8m1b3_start.txt;?? testing/d003/stage_s4/gate_check_r8m1b3.py;?? testing/d003/stage_s4/gate_r8m1b3.sh
+RECORD	STATUS_START	value=?? testing/d003/stage_s4/gate_allow_r8m1b3_end.txt
+RECORD	STATUS_START	value=?? testing/d003/stage_s4/gate_allow_r8m1b3_start.txt
+RECORD	STATUS_START	value=?? testing/d003/stage_s4/gate_check_r8m1b3.py
+RECORD	STATUS_START	value=?? testing/d003/stage_s4/gate_r8m1b3.sh
+PASS	HEAD_IS_BASE	expected=a26b43dd2a77c62b9aec2e937bc7adad14996ef3	actual=a26b43dd2a77c62b9aec2e937bc7adad14996ef3
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	R8M1B1_SUMS_ALL_OK	expected=all 9 OK	actual=all 9 OK
+PASS	R8M1B2_SUMS_ALL_OK	expected=all 6 OK	actual=all 6 OK
+PASS	RULINGS_BASE_PREFIX_UNCHANGED	expected=True	actual=True
+PASS	RULINGS_LINES_5_FIELDS	expected=True	actual=True
+PASS	ERRATA_8_BASE_PREFIX_UNCHANGED	expected=True	actual=True
+PASS	STATE_BYTES_LE_8192	expected=<= 8192	actual=7765
+PASS	TRACKED_TESTING_D003_NO_MOD_DEL	expected=no modified or deleted	actual=clean
+PYTHON_CHECKS_FAILS=0
+RECORD	RULINGS_BYTES	value=78480
+RECORD	RULINGS_SHA256	value=66fefc4a15f94b1d8b9f4d2981c82a8c6016557478e98e0ff39f1c442ec92cc2
+RECORD	ERRATA_8_BYTES	value=61322
+RECORD	ERRATA_8_SHA256	value=c0158e09065dd721ee2b5e1c76b78c09ff538cdcd20e8c260994294f645a4fa2
+RECORD	TMP_COUNT_START	value=0
+RECORD	TMP_SHA256_START	value=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=0
