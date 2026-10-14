@@ -1,0 +1,10 @@
+section	combo	verdict	detail	extra
+A	closed2d-ng1	MISMATCH	K0:obs=-!=exp=6;caller_function_of_K:NO_EXPECTATION;status:obs=NOT_UNIQUE!=exp=UNIQUE;CANDIDATES:K_init=1,K0=2	-
+A	fft-ng5	MISMATCH	K0:obs=-!=exp=7;caller_function_of_K:NO_EXPECTATION;status:obs=NOT_UNIQUE!=exp=UNIQUE;CANDIDATES:K_init=1,K0=2	-
+A	kottke-ng5	MISMATCH	K0:obs=-!=exp=7;caller_function_of_K:NO_EXPECTATION;status:obs=NOT_UNIQUE!=exp=UNIQUE;CANDIDATES:K_init=1,K0=2	-
+B	fft-ng1	MATCH	all_7_fields_equal_expectation	Mtot=1,n_values=36
+B	fft-ng5	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	fft-ng9	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng1	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng5	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng9	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36

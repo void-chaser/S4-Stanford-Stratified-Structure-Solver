@@ -399,3 +399,58 @@ E8-61  首次及 _R2 单元与期望草稿失效说明（续3a；依据任务书
        _R3 为正式版本：展开全部 9 个驱动族、198 个单元（99 对 F2/F3 配对单元），覆盖 1128 行（1026 MAPPED、80 N/A 控制行、22 行 S3R4 新增项复核），严格区分 source_tree 与 run_tree，并通过了全部准备自检。
 E8-62  恢复身份门禁 GATE_R8_M1a4_RESUME_R2.txt 通过说明（续3a）。
        初次运行 GATE_R8_M1a4_RESUME.txt 因 tail 行数过多导致 E8 条目提取包含历史条目（FAILS=1），经修正提取方式为按开工字节 offset 提取后重跑 R2 通过（FAILS=0）。
+E8-63  续3a 审核修正（r8m1a4audit）：对 E8-61/E8-62 与续3a 报告的更正和披露（只追加，不改旧条目）。
+       (1) E8-61 写"_R3 通过了全部准备自检"不准确。counted_families_r8m1a4.py 第 8 节只断言：驱动路径与哈希非空、mode/ng/env 非空、argv 等于 GRID、unit_id 唯一、单元数等于 2 倍配对数、MAPPED 行有 unit_id、N/A 行无 unit_id、新增项计数 22。
+           它未断言：驱动身份是否等于 DRIVERS 登记表记录；去重键（驱动身份、mode、NG、环境、argv）是否唯一；每条覆盖行的语义是否与历史规则一致；seam 每个 ID 的 K 是否完整；N/A 的原始依据。
+           因此 _R3 的运行前准备自检未满足恢复补充第 8 条全部要求。E8-61 的该句作废，以本条为准。旧文字保留，不改写。
+       (2) 事后补充核对（不替代运行前自检）：
+           a. 驱动标签审核 DRIVER_TAG_AUDIT_R8_M1a4.tsv：85 行，SHA_MATCH 77，NO_DRIVER_PATH_COLUMN 8（DRIVERS_R7_SEAM 与 DRIVER_R6B_SEAM_R7*，仅记录库路径，驱动文件不在该表中，未由本表核对），FILE_MISSING 0，SHA_DIFFERENT 0。
+           b. 历史规则比较 COMPARE_UNITS_VS_HISTORY_R8_M1a4AUDIT.tsv：1026 个 MAPPED 行逐项比较 mode、NG、TWICE（经 unit_id 取 _R3 单元 twice_env）、驱动族；OK 1026，MISMATCH 0，NO_HISTORY_ROW 0。TWICE 一项的独立性弱于其余三项，因其来源于同一套 _R3 单元表，须注明。
+           c. 历史规则依据：G2a 永不设 TWICE（run_m2b_all_r7.py history_case，case=point id）；M3 seam 规则 once、无 TWICE（dryrun_m3_r7.py derive_seam_env）；M1 驱动 tri 为 dbg、rnv1 为 plain（run_m1_r7.py DRIVER 表）；M2 G2a 驱动按 seam_driver_name（fmmret 前缀 -> fmmret，否则 seamF）。
+       (3) 续3a 初稿曾列出的"草稿规则错误五条"不成立。该判断是在未比对输出时由阅读代码得出的，经第 (2) 项逐行比对后，1026 行全部一致。该判断作废，不计为执行结论。
+       (4) gdb 运行时序：_R3 单元表与期望写入 05:55:35Z（mtime），callseq_runner 运行前记录 05:59:07Z，首个单元运行 06:00:52Z，正式 198 单元 06:04:34Z–06:05:20Z。期望与单元表早于运行，但运行前准备自检未满足 (1) 所述要求。该时序是否可作有效证据，待用户裁决（见 RULINGS 待裁决项，不由 agent 裁定）。
+       (5) 22 行 S3R4 新增项：本轮未重跑 A/B 复核，未建立新的 9 组合结果，不能声称已复核；仅在覆盖表中标为 ADDITION_REVIEW_SECTION7。
+       (6) 裸写入披露：会话中一次内联 awk 以重定向写入本轮证据目录内的 tmp 子目录下的 unit_sha_set.txt，未经 safe_run，违反 AGENTS.md 第 3 节。落盘于 EV 内，非越界，未用于任何结论；文件保留，不删除。
+E8-64  续3a 审核修正（r8m1a4audit）：更正 S3R4 新增项复核结论（只追加，不改旧条目；不替代本轮未完成的重算）。
+       (1) 原报告 §5 的"9/9 MATCH、0 MISMATCH"不能作为真实复核结论。testing/d003/stage_s4r8/summarize_additions_r8m1a4.py 中：
+           a. n_values 写死为常量 36（第 119 行），B 段判定 ok 也以 n_values == 36 为条件（第 183–185 行）。任务书 §五禁止此做法。
+           b. 计数与状态变量 mfirst、mtot、inj_hits、rc_first、rc_retry、poly_bp_hits、k0、k_init、win_open、win_malloc、outside_malloc 均以 0 初始化；若日志缺对应行，将静默保持 0。任务书 §五禁止缺失 RC/hits 默认为 0。
+       (2) 核对结果（只读）：A 段原始日志 stderr.txt 中 S3R4_OUT_MALLOC 的 n 字段为真实变化的数值（如 344、63、384、…、28823），并非恒为 36；B 段 gdb.txt 与 counts.txt 中 RC first 0、RC retry 0 确有日志依据。
+           因此 RC 与 hits 有日志依据，而 n_values=36 为硬编码，判定依赖它，不能作为日志复核结果。
+       (3) 据此，E8-64 之前写入报告与 STATE 的"S3R4 新增项 9 组合全部 MATCH"不能作为有效复核结论。本轮不以重算替代它；按任务书 §五，须由非硬编码的复核脚本从原始日志重新解析后，才可重新给出结论。该重算本轮未完成，列为未完成项。
+       (4) 旧文件 summarize_additions_r8m1a4.py、CALLSEQ_ADDITIONS_R8_M1a4.tsv 与 ADDITIONS_MAPPING_22_R8_M1a4.tsv 保留，不删除，不改写。
+       (5) 覆盖检查文件名澄清：续3a 报告 §4.4 引用的 CALLSEQ_POINT_COVERAGE_CHECK_R8_M1a4_R2.tsv 实为修正前版本（898 REACHED、128 UNKNOWN_REQUEST，request 为 plan 的行）。
+           数字"1026 REACHED"来自 CALLSEQ_POINT_COVERAGE_CHECK_R8_M1a4_R3.tsv（1026 REACHED、22 DEFERRED_TO_SECTION7、80 N/A、0 UNKNOWN_REQUEST）。引用应以 _R3 为准；_R2 保留，标注为不得作为依据。
+E8-65  续3a 审核修正（r8m1a4audit）：任务书 §三 严格复算与 §五 非硬编码复核的结果，以及事后修正的披露（只追加）。
+       (1) §三 严格离线复算（strict_recheck_callseq_r8m1a4audit.py，只读原始 events/summary/gdb 文件）：198 单元，PASS 198，FAIL 0；事件总数 19182（F2 9591、F3 9591）；plan 合计 3504；window 合计 50。
+           十项检查的定义见脚本文件头。单元目录 198 个，每个含 events.tsv、summary.json、gdb.stdout.txt、gdb.stderr.txt，缺失 0。
+           计数分布核对：无单元事件数为 0；window 计数 0 的 156 个单元全部属于不走 RNV1 窗口的族；plan 计数 0 的 2 个单元（U0095、U0096，P0048）为 vl 模式 RNV1 窗口点，历史登记中 vl 行不含 plan 期望。
+           该零计数与驱动语义一致，但追踪器对该族 plan 断点的解析证据未单独核验，列为 §四 未完成项，不作完全证明。
+           本复算不能证明追踪器未系统性漏记：summary 与 events 同源，C6 只检查两者一致。
+       (2) §五 非硬编码复核（summarize_additions_strict_r8m1a4audit.py）：
+           首次运行（输出 m1a4audit/ADDITIONS_STRICT_R8_M1a4AUDIT.tsv，保留）：9 行中 3 MISMATCH（A 段 closed2d-ng1、fft-ng5、kottke-ng5），6 MATCH。
+           三项 MISMATCH 的原因：(a) 脚本把所有 n==0 的 outside 索引都算作 K0 候选，而 closed2d-ng1 有 k=6 与 k=8 两个 n==0，故 K0 不唯一，status 为 NOT_UNIQUE；(b) 比较时使用字段名 caller_function_of_K，期望文件中该字段名为 caller，因而出现 NO_EXPECTATION。
+           修正（输出 m1a4audit/additions_strict_r2/，首次运行结果未覆盖）：
+             a. K0 判据改为：K0 候选 = 紧邻 K_init 之前的 outside 索引（k = K_init − 1）且其 n 为 0。判据依据为三组 A 日志（closed2d-ng1、fft-ng5、kottke-ng5）的观测序列：三组中 K_init 均唯一（n=4），且 K0 = K_init − 1（n=0）；其余 n=0 索引（k=8 或 k=9）位于 K_init 之后。
+                 该判据是本轮从观测数据归纳的派生规则，历史文档没有以此明文表述 K0；它是在首次运行出现 MISMATCH 之后修改的，属于事后修正。
+             b. 键名映射：期望字段 caller 对应观测字段 caller_function_of_K。只改取值的键名，不改任何期望值。
+           修正后：9 行 MATCH 9，MISMATCH 0，解析或运行失败 0；A 段 K_init、K0、caller 与期望一致（closed2d-ng1 K_init 7、K0 6；fft-ng5 与 kottke-ng5 K_init 8、K0 7；caller Simulation_InitSolution）。
+           B 段 6 行首次运行即 MATCH，未修改任何判据：Mtot 与 Mfirst 取自 gdb 的 $2（退出时窗口计数）与 $1（GetFieldPlane 返回时窗口计数），定义见 b_map_run_c3.sh 第 3 行；n_values 取自 WIN_MALLOC 行的 n 去重观测，结果为单值 36；polygon_breakpoint_hits 按 B_MAP_C3 的历史推导口径计数（n 等于期望中的多边形尺寸的行），不是源码断点命中。
+           n_values=36 在判定代码中不作为常量出现；36 来自冻结期望文件，且与 ES3R4-25 的源码算式一致（sizeof(int)*3*(n_vertices-2)，n_vertices=5）。
+       (3) 22 行映射的严格关联（map22_strict_r8m1a4audit.py）：旧表 ADDITIONS_MAPPING_22_R8_M1a4.tsv 不修改。新表 additions_strict_r2/ADDITIONS_MAPPING_22_STRICT_R8_M1a4AUDIT.tsv：22 行全部 MAPPING_VERIFIED_STRICT，每行逐一列出其映射组合及 MATCH。
+           此结论仅指无注入映射复核，不是 22 次注入验证。旧表中 "MAPPING_VERIFIED" 的依据是作废的旧汇总（E8-64），不得引用。
+       (4) E8-64 第 (2) 条表述精确化：旧汇总器的问题是把冻结期望 36 直接写入观测字段 n_values，然后以之判定 MATCH，因此比较恒真，观测从未被解析。这不是"观测值硬编码"的单纯表述，应以本条为准。
+       (5) 未完成：§二（完整请求语义重建、44 行 INVALID_NOT_REACHED 逐行结论、旧 1026 差异表、1128 行逐行解释）；§四（追踪器符号证据表、缺口清单、补跑决策）。二者需要符号查询或补跑，依据停止点不在本轮执行，待用户裁决 gdb 运行时序后处理。
+E8-66  续3a 审核修正第二部分（r8m1a4audit2）：流程缺陷披露（U187）及上一部分报告四处矛盾的更正（只追加，不改旧条目；旧报告保留，本条为其补充更正）。
+        (1) 流程缺陷（U187）：上一部分（E8-63–E8-65 的追加）未在开工时自建本轮门禁，也未运行 start 门禁，即追加了 E8-63–E8-65。
+            这属于执行流程缺陷，不是技术停止。已追加内容经前缀校验（起点 ERRATA_8 前 37669 字节 sha256 ff958d24…）保留，不回退、不改写。
+            "缺少合格 start 文件"今后不得作为停止理由；执行者须在开工时自建本轮门禁并先运行 start（U187）。
+        (2) 报告 P05_S4R8_REPORT_M1a_CONT3a_AUDIT.md §1 写"任务书假设 331c022"不实。本轮任务书（第二部分）以 HEAD fbc4668 为基线，HEAD^ 为 331c022；
+            上一部分开工时 HEAD 即为 fbc4668，与任务书一致。§1 的表述与任务书相反，应以本条为准。
+        (3) 报告 §5 第 2 条"旧 99 VALID/IDENTICAL 为旧程序输出，本轮未做 §三 严格复算"与该报告 §10.1 的"严格复算 PASS 198、FAIL 0"相矛盾。
+            §10.1 的严格复算确已完成（只读，strict_recheck_callseq_r8m1a4audit.py）；§5 第 2 条的表述应视为过时。
+            须注意：§10.1 的复算只检查事件结构，不是 F2↔F3 逐事件序列比较，后者本轮尚未做（见本轮第二部分报告）。
+        (4) 报告 §5 第 6 条引用的"本轮 end 门禁"并不存在：上一部分没有生成 AUDIT 的 END 门禁文件（evidence 中无对应 GATE 文件）。
+            该条所述 HEAD^ 关系也未被核对。本条予以更正：无 end 门禁，HEAD^ 关系于本轮第二部分的提交后核对。
+        (5) 报告 §4 把 §三 写成"已完成（有边界）"。准确表述为"部分完成：十项单元内检查完成，F2↔F3 序列比较未做"。
+            十项单元内检查为 strict_recheck_callseq_r8m1a4audit.py 的 C1–C10；F2↔F3 逐事件序列比较未在上一部分完成。

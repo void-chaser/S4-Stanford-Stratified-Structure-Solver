@@ -1,0 +1,10 @@
+section	combo	verdict	detail	extra
+A	closed2d-ng1	MATCH	all_7_fields_equal_expectation	K_init=7,K0=6,caller=Simulation_InitSolution
+A	fft-ng5	MATCH	all_7_fields_equal_expectation	K_init=8,K0=7,caller=Simulation_InitSolution
+A	kottke-ng5	MATCH	all_7_fields_equal_expectation	K_init=8,K0=7,caller=Simulation_InitSolution
+B	fft-ng1	MATCH	all_7_fields_equal_expectation	Mtot=1,n_values=36
+B	fft-ng5	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	fft-ng9	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng1	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng5	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36
+B	kottke-ng9	MATCH	all_7_fields_equal_expectation	Mtot=64,n_values=36

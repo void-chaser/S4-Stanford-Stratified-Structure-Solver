@@ -1,0 +1,7 @@
+audit_driver_tags_r8m1a4.py	utc=2026-10-14T07:12:36Z	grep_hits=0	script_sha256=b695c343a3455e399ba87d8ce62f73f8e9f6bc1776351f459f398563ad019980	scope=testing/d003/stage_s4r8/
+audit_driver_tags_r8m1a4.py	utc=2026-10-14T07:13:32Z	grep_hits=0	script_sha256=753a9bffabc21a29ce94c8cc0bea26eb6af378ddbb29cd32003008d83faa90b4	scope=testing/d003/stage_s4r8/
+audit_units_vs_history_r8m1a4audit.py	utc=2026-10-14T07:15:01Z	grep_hits=0	script_sha256=6639d10b0de1faa24bfa93381f50d3f109e722a5a3546b37567fb6987e7d95aa	scope=testing/d003/stage_s4r8/
+compare_units_vs_history_r8m1a4audit.py	utc=2026-10-14T07:15:24Z	grep_hits=0	script_sha256=49054b9c2b3a5c88fc9c4adb1612f1f1d1f5869118dc1bcfe7b5fc4353e6b31d	scope=testing/d003/stage_s4r8/
+compare_units_vs_history_r8m1a4audit.py	utc=2026-10-14T07:15:41Z	grep_hits=0	script_sha256=aa7f8caf6d51a4a5fd41a9ee319e9d0d60c34696e66cc628f9b4c1f73504562a	scope=testing/d003/stage_s4r8/
+append_errata_r8m1a4audit.py	utc=2026-10-14T07:18:26Z	grep_hits=0	script_sha256=4668df020201d58633c86544b0d24f7877de85629592acea50d9f8293166f7a4	scope=testing/d003/stage_s4r8/
+copy_registries_r8m1a4audit.py	utc=2026-10-14T07:19:08Z	grep_hits=0	script_sha256=8ca7bef218899165b119eff4e5529919b7dc123545c05dd2f298134d638f19c3	scope=testing/d003/stage_s4r8/
