@@ -128,7 +128,7 @@
 1. **M1c 审核**：440/440 AGREE，本轮未执行。是否进入 r8m1c1，待用户审核（U208）。
 2. **字段值拼写**：任务书 §5 "INVALID 22" 与 R7 字段值 `INVALID_NOT_REACHED` 的差异仅为拼写，已在本报告与预注册记录中说明；如用户要求，可在下轮以 ERRATA 方式补正任务书口径。
 3. **ENV 口径**：任务书"488 行 ENV_AGREE"与本轮分拆 482 + 6 NOT_RUN 的差异，两者合计 830 一致；待用户确认采用哪种口径。
-4. **44 行 M1b1 MISMATCH（期望不符）**：补跑后与 INVALID_NOT_REACHED 一致（未命中）。M1b1 报告把其归为 "REPORTED_FAILURE 与期望不符" 的原因是环境缺 NTH，与 U206 的环境假象同源，但本轮未对其 44 行单独裁决，留待用户确认。
+4. **44 行 M1b1 MISMATCH**：M1b1 实测 REPORTED_FAILURE（期望 INVALID 的 M1b1 行），补跑在正确环境下为 INVALID（未命中，与 INVALID_NOT_REACHED 一致）。这 44 行的注入项以 `S4FMM_INJECT=plan` 为主，M1b1 的环境缺 NTH。本轮只记录事实，不对这 44 行做环境假象裁决，留待用户确认（U206 只涵盖 50 行 SILENT_SWALLOW）。
 5. **S4 R8 余项**：M1b 完成、M1c 待执行；R8 其余开放项（见 STATE）不变。
 
 ## 结论边界
