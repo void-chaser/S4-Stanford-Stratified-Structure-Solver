@@ -1,0 +1,13 @@
+family	label	counting_semantics	injector_source	requests_distinct	requests_list
+s4malloc	s4malloc	wrapped S4_malloc calls (per process)	testing/d003/src/inject_d003.cpp	1	s4malloc
+exec	exec	wrapped fft_plan_exec calls (per process)	testing/d003/stage_s4/inject_r4_plan.cpp	1	exec
+plan	plan:N	N-th wrapped malloc inside the N-th plan (arm==1 of plan call N)	testing/d003/stage_s4/inject_r4_plan.cpp	1	plan
+linearsolve	linearsolve:SITE:K:MODE	K-th call of the linearsolve hook SITE	testing/d003/src/inject_d003.cpp	2	linearsolve:1:1:info;linearsolve:2:1:info
+kottke_alloc	kottke_alloc:31:K	K-th call of hook ID 31 (kottke work allocation)	testing/d003/stage_s4/inject_r4_plan.cpp	1	kottke_alloc:31:1
+fmmret	fmmret:ID:K	K-th call of fmmret hook ID (per ID)	testing/d003/src/inject_d003.cpp	10	fmmret:150:1;fmmret:151:1;fmmret:152:1;fmmret:153:1;fmmret:154:1;fmmret:155:1;fmmret:156:1;fmmret:157:1;fmmret:158:1;fmmret:159:1
+linearsolve_null2	linearsolve_null2:ID:K	K-th call of linearsolve_null2 hook ID	testing/d003/src/inject_d003.cpp	7	linearsolve_null2:134:1;linearsolve_null2:138:1;linearsolve_null2:144:1;linearsolve_null2:244:1;linearsolve_null2:265:1;linearsolve_null2:273:1;linearsolve_null2:375:1
+alloc	alloc:ID:K	K-th call of hook ID 21..25 (per ID)	testing/d003/stage_s4/inject_r4_plan.cpp	5	alloc:21:1;alloc:22:1;alloc:23:1;alloc:24:1;alloc:25:1
+plancall	plancall:K:M	M-th wrapped malloc inside plan call K (counter reset at plan call K start)	testing/d003/stage_s4/inject_r4_plan.cpp	18	plancall:12:1;plancall:12:2;plancall:13:1;plancall:13:2;plancall:14:1;plancall:14:2;plancall:15:1;plancall:15:2;plancall:16:1;plancall:16:2;plancall:1:2;plancall:2:2;plancall:3:1;plancall:3:2;plancall:4:1;plancall:4:2;plancall:5:1;plancall:5:2
+rnv1	rnv1:M	M-th wrapped malloc inside a Pattern_GenerateFlowField window (per window reset; first window reaching M)	testing/d003/stage_s4/inject_r6d_rnv1.cpp	3	rnv1:1;rnv1:2;rnv1:3
+win	win:M	M-th wrapped malloc of the whole process inside the Pattern_DiscretizeCell window (cumulative; S3R4 B poly injector)	testing/d003/stage_s3r4c3/inject_s3r4c3_poly.cpp	2	win:1;win:64
+init	init:K	K-th malloc OUTSIDE every Pattern_GetContainmentTree window (global outside index; S3R4 A injector)	testing/d003/stage_s3r4/inject_s3r4_init.cpp	3	init:6;init:7;init:8

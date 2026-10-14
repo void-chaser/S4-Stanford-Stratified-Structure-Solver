@@ -1,0 +1,34 @@
+# P05-S4 R8 M1a CONT3a gate9 (end) -> GATE_R8_M1a4_END.txt, utc=2026-10-14T06:15:43Z
+PASS	BRANCH	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_EQ_START	expected=331c022c3d9944cff8e7e63e16c24d33253ce847	actual=331c022c3d9944cff8e7e63e16c24d33253ce847
+RECORD	HEAD	value=331c022c3d9944cff8e7e63e16c24d33253ce847
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	S4_DIFF_a07b5ac_8d8202a	expected=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 	actual=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	REGISTRY_S3R4C3_D_SHA256	expected=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5	actual=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
+PASS	TRACKED_TESTING_D003_CHANGES_NONE	expected=	actual=
+PASS	RULINGS_FIRST_66509_BYTES_SHA256	expected=77ca58673d471b8122b7c805cbd77c4aac65923c89c800241118132b426376d5	actual=77ca58673d471b8122b7c805cbd77c4aac65923c89c800241118132b426376d5
+PASS	ERRATA_8_FIRST_37669_BYTES_SHA256	expected=ff958d246e6fb967e2c8f524c9376d48d34833c861fd83651ebff581d6eab725	actual=ff958d246e6fb967e2c8f524c9376d48d34833c861fd83651ebff581d6eab725
+PASS	RULINGS_NF_ALL_5	expected=	actual=
+PASS	PRERUN_PREFIX_5603	expected=8eb5c81a07ba467d36c8b6a760cc72e1d817887fe956638c7e598e754d43687d	actual=8eb5c81a07ba467d36c8b6a760cc72e1d817887fe956638c7e598e754d43687d
+PASS	ERRATA_8_FIRST_13990_BYTES_SHA256	expected=72dc6aedfe698022727c7871a643a354dfa245c495d5346405b42c9ba01a1551	actual=72dc6aedfe698022727c7871a643a354dfa245c495d5346405b42c9ba01a1551
+RECORD	RULINGS_BYTES	value=68691
+RECORD	ERRATA_8_BYTES	value=41272
+RECORD	PRERUN_BYTES	value=8347
+PASS	S4R8_OTHER_LINES_ALL_OK	expected=24	actual=24
+PASS	S4R8_TOTAL_LINES_25	expected=25	actual=25
+PASS	S3R4C5_SHA256SUMS_OK_LINES_EQ_TOTAL	expected=14	actual=14
+PASS	M1A_MANIFEST_SHA256SUMS.txt_OK_LINES_EQ_TOTAL	expected=33	actual=33
+PASS	M1A_MANIFEST_SHA256SUMS_M1a3c_A.txt_OK_LINES_EQ_TOTAL	expected=5	actual=5
+PASS	M1A_MANIFEST_SHA256SUMS_M1a3c_B.txt_OK_LINES_EQ_TOTAL	expected=9	actual=9
+PASS	M1A_MANIFEST_SHA256SUMS_M1a3c_B_END.txt_OK_LINES_EQ_TOTAL	expected=1	actual=1
+PASS	M1A_MANIFEST_SHA256SUMS_M1a4.txt_OK_LINES_EQ_TOTAL	expected=21	actual=21
+PASS	S4R7_MANIFESTS	expected=fails=0	actual=fails=0
+RECORD	S4R7_RECHECK_FILE	value=checkpoints/p05/evidence/p05-s4r8/S4R7_RECHECK_GATE_R8_M1A4_END.tsv
+PASS	GIT_STATUS_ALLOWED_ONLY	expected=	actual=
+RECORD	GIT_STATUS	value= M checkpoints/p05/STATE.md; M checkpoints/p05/registries/RULINGS.tsv; M checkpoints/p05/registries/s4r8/ERRATA_8.txt;?? checkpoints/p05/P05_S4R8_HANDOVER_M1a_CONT3a_PAUSE.md;?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT3a.md;?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md;?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a_RESUME.md;?? checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a4.tsv;?? checkpoints/p05/registries/s4r8/M1a/APPEND_ERRATA_R8_M1a4_R3.txt;?? checkpoints/p05/registries/s4r8/M1a/APPEND_R8_M1a4.txt;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_ADDITIONS_R8_M1a4.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_F2_F3_R8_M1a4_R2.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_KMAX_R8_M1a4_R2.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_POINT_COVERAGE_CHECK_R8_M1a4_R2.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_POINT_COVERAGE_R8_M1a4_R3.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_RUNS_R8_M1a4_R3.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_UNITS_R8_M1a4_R3.tsv;?? checkpoints/p05/registries/s4r8/M1a/CALLSEQ_VALIDITY_R8_M1a4_R2.tsv;?? checkpoints/p05/registries/s4r8/M1a/COUNTED_FAMILIES_R8_M1a4_R3.tsv;?? checkpoints/p05/registries/s4r8/M1a/EXPECT_ADDITIONS_R8_M1a4.txt;?? checkpoints/p05/registries/s4r8/M1a/EXPECT_CALLSEQ_R8_M1a4_R3.txt;?? checkpoints/p05/registries/s4r8/M1a/GATE_R8_M1a4_RESUME_R2.txt;?? checkpoints/p05/registries/s4r8/M1a/GATE_R8_M1a4_START.txt;?? checkpoints/p05/registries/s4r8/M1a/RUNNER_DIFF_R8_M1a4.txt;?? checkpoints/p05/registries/s4r8/M1a/S4R7_RECHECK_GATE_R8_M1A4_RESUME_R2.tsv;?? checkpoints/p05/registries/s4r8/M1a/S4R7_RECHECK_GATE_R8_M1A4_START.tsv;?? checkpoints/p05/registries/s4r8/M1a/SHA256SUMS_M1a4.txt;?? checkpoints/p05/registries/s4r8/M1a/SOURCE_HASHES_R8_M1a4_R3.tsv;?? checkpoints/p05/registries/s4r8/M1a/USED_IN_M1_CORRECTION_R8_M1a4.tsv;?? testing/d003/stage_s4r8/a1map_r8m1a4.gdb;?? testing/d003/stage_s4r8/a1map_r8m1a4.sh;?? testing/d003/stage_s4r8/append_errata_r8m1a4.txt;?? testing/d003/stage_s4r8/append_errata_r8m1a4_r3.sh;?? testing/d003/stage_s4r8/append_errata_r8m1a4_r3.txt;?? testing/d003/stage_s4r8/append_r8m1a4.sh;?? testing/d003/stage_s4r8/append_rulings_r8m1a4.tsv;?? testing/d003/stage_s4r8/b_map_r8m1a4.gdb;?? testing/d003/stage_s4r8/b_map_r8m1a4.sh;?? testing/d003/stage_s4r8/callseq_r8m1a4_gdb.py;?? testing/d003/stage_s4r8/callseq_runner_r8m1a4.py;?? testing/d003/stage_s4r8/compare_callseq_r8m1a4.py;?? testing/d003/stage_s4r8/copy_m1a4.sh;?? testing/d003/stage_s4r8/counted_families_r8m1a4.py;?? testing/d003/stage_s4r8/gate9_r8m1a4.sh;?? testing/d003/stage_s4r8/gate9_resume_r8m1a4.sh;?? testing/d003/stage_s4r8/recheck_s4r7_r8m1a4.py;?? testing/d003/stage_s4r8/summarize_additions_r8m1a4.py
+PASS	TMP_COUNT_EQ_START	expected=0	actual=0
+PASS	TMP_SHA256_EQ_START	expected=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	actual=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=0

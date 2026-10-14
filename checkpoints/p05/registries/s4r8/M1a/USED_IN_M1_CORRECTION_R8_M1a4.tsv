@@ -1,0 +1,11 @@
+# USED_IN_M1_CORRECTION_R8_M1a4.tsv -- P05-S4 R8 M1a CONT3a, U177 (ruling) and E8-56 (erratum).  New file.
+# Correction of the used_in_m1 category of two rows of LINEMAP_F2_F3_R8_M1a3c.tsv (map v3c, not rewritten, not re-run).
+# Rule: a BP_LINE citation counts only when it is a non-comment line and is not explicitly marked as "not used" (U177).
+# The cited line of stage_s4/r6_plan14_caller.gdb is the file-name citation that appears in the comment line 13 of
+# registries/s4r7/LINEMAP_M3_R7.tsv; that comment does not count, so the BP_LINE class of these two sites is not supported.
+# Other rows: line numbers, functions, status and used_in_m1 values are unchanged (checked by the diff below).
+site	F2_line	F3_line	F3_function	status	used_in_m1_v3c	used_in_m1_effective	citation_source	ruling
+S4/fmm/fmm_FFT.cpp:90	90	90	FMMGetEpsilon_FFT	SAME_LINE	BP_LINE testing/d003/stage_s4/r6_plan14_caller.gdb:26	NO	LINEMAP_F2_F3_R8_M1a3c.tsv row 35; citation comment in registries/s4r7/LINEMAP_M3_R7.tsv line 13 (not a non-comment use)	U177
+S4/fmm/fmm_kottke.cpp:94	94	94	FMMGetEpsilon_Kottke	SAME_LINE	BP_LINE testing/d003/stage_s4/r6_plan14_caller.gdb:32	NO	LINEMAP_F2_F3_R8_M1a3c.tsv row 36; citation comment in registries/s4r7/LINEMAP_M3_R7.tsv line 13 (not a non-comment use)	U177
+# summary (v3c historical -> effective under U177): BP_LINE 4 -> 2; REGISTRY_ONLY 26 -> 26; NO 1 -> 3.
+# The v3c historical statistic is kept unchanged in LINEMAP_F2_F3_R8_M1a3c.tsv and in STATE; the effective statistic is this table.

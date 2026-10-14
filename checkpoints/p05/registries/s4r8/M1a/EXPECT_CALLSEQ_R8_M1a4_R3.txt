@@ -1,0 +1,17 @@
+# EXPECT_CALLSEQ_R8_M1a4_R3.txt -- P05-S4 R8 M1a CONT3a section 4 (written before any callseq run). Status: INFLUENCED.
+# Full driver identity, mode, NG, route, environment, and argv expanded per unit.
+# Rule: every mapped counted family must trace identically in F2 and F3 (IDENTICAL, or IDENTICAL_AFTER_RENAME for
+#       shape_get_intersection_area_quad -> shape_get_intersection_area_quad_st only), with no trace error and no unexpected not-reached.
+# Coverage counts:
+#   total_sources=22
+#   total_coverage_rows=1128 (M1=108, M2=554, M3=440, CTRL_SEAM=4, ADDITIONS=22)
+#   mapped_points=1026
+#   na_control_points=80
+#   addition_review_points=22
+#   total_callseq_units=198 (F2=99, F3=99, pairs=99)
+status INFLUENCED
+expect_all_mapped_families_identical 1
+expect_trace_errors 0
+expect_unexpected_not_reached 0
+expect_unit_pairs 99
+expect_total_units 198

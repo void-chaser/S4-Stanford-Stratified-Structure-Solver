@@ -1,0 +1,18 @@
+# EXPECT_ADDITIONS_R8_M1a4.txt -- P05-S4 R8 M1a CONT3a section 7 expectation (written before any addition recheck run). Status: INFLUENCED.
+# Recheck of S3R4 additions on F3: Section A (3 combinations on init-F3) and Section B (6 combinations on polyinj-F3).
+# Source references: checkpoints/p05/registries/s3r4c2/A1_MAP_SUMMARY_S3R4C2.tsv, checkpoints/p05/registries/s3r4c3/B_MAP_C3.tsv, checkpoints/p05/registries/s3r4c3/R8_ADDITIONS_S3R4C3.tsv.
+# Expected values on F3:
+# Section A (driver: init-F3, argv: pattern both 4 3, env: FMM_MODE=<mode> S4FMM_NG=<ng>):
+#   combo=closed2d-ng1: win_open=3 win_malloc_in_window=1 outside_malloc_count=104 K_init=7 K0=6 caller=Simulation_InitSolution status=UNIQUE
+#   combo=fft-ng5:      win_open=3 win_malloc_in_window=1 outside_malloc_count=116 K_init=8 K0=7 caller=Simulation_InitSolution status=UNIQUE
+#   combo=kottke-ng5:   win_open=3 win_malloc_in_window=1 outside_malloc_count=116 K_init=8 K0=7 caller=Simulation_InitSolution status=UNIQUE
+# Section B (driver: polyinj-F3, argv: pattern both 4 3, env: FMM_MODE=<mode> S4FMM_NG=<ng>):
+#   combo=fft-ng1:    Mtot=1  Mfirst=1  n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=1
+#   combo=fft-ng5:    Mtot=64 Mfirst=64 n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=64
+#   combo=fft-ng9:    Mtot=64 Mfirst=64 n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=64
+#   combo=kottke-ng1: Mtot=64 Mfirst=64 n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=64
+#   combo=kottke-ng5: Mtot=64 Mfirst=64 n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=64
+#   combo=kottke-ng9: Mtot=64 Mfirst=64 n_values=36 RC_first=0 RC_retry=0 inject_hits=0 polygon_breakpoint_hits=64
+status INFLUENCED
+expect_all_9_combos_match 1
+expect_addition_mismatches 0

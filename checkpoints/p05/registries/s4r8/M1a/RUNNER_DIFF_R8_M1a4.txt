@@ -1,0 +1,26 @@
+# RUNNER_DIFF_R8_M1a4.txt -- P05-S4 R8 M1a CONT3a section 7 runner diff documentation.  New file.
+
+This document describes all differences between the section 7 recheck runners in stage_s4r8 and the historical runners in stage_s3r4c2 and stage_s3r4c3.
+
+1. testing/d003/stage_s4r8/a1map_r8m1a4.sh
+   Base script: testing/d003/stage_s3r4c2/a1map_c2_v2.sh (historical)
+   Differences:
+   (a) Standard header: replaced REPO/EV header with the standard clean header for p05-s4r8.
+   (b) Parameterization: historical script accepted tree as argument $2; the new script focuses on F3 per brief section 7.
+   (c) Driver path and hash check: points to $EV/drivers_r8m1/init-F3/driver and verifies sha256 before running (ff66cfc1...).
+   (d) Output directory: outputs to $EV/additions_r8m1a4/a1map_F3_<mode>-ng<NG>/.
+   (e) gdb flags: added -nx to ensure clean gdb environment.
+   (f) Loop over all 3 combinations: closed2d-ng1, fft-ng5, kottke-ng5 in a single controlled script invocation with refusal on overwrite (U17).
+
+2. testing/d003/stage_s4r8/b_map_r8m1a4.sh
+   Base script: testing/d003/stage_s3r4c3/b_map_run_c3.sh (historical)
+   Differences:
+   (a) Standard header: replaced with the standard clean header for p05-s4r8.
+   (b) Trees: historical script looped over F2 and F3; new script loops strictly over F3 per brief section 7.
+   (c) Driver path and hash check: points to $EV/drivers_r8m1/polyinj-F3/driver and verifies sha256 before running (419cfb72...).
+   (d) Output directory: outputs to $EV/additions_r8m1a4/b_map_F3_<mode>-ng<NG>/.
+   (e) gdb flags: added -nx.
+   (f) Clean environment: env -i, PATH, LANG=C, LC_ALL=C, PYTHONDONTWRITEBYTECODE=1, FMM_MODE, S4FMM_NG.
+   (g) Overwrite protection: checks test ! -e $D before creating directory.
+
+All differences are authorized device adjustments per brief section 7.

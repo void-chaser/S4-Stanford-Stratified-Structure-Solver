@@ -1,0 +1,7 @@
+U176	R8 M1a 续3a 任务书 §2	接受续2c A/B 两段提交、静态映射及已披露事件。接受范围不是阶段签收，也不是动态映射完成。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U177	R8 M1a 续3a 任务书 §2	E8-55 采用排除注释及明确"不使用"引用的规则。v3c 原件保留；两处 FFT:90、kottke:94 的有效分类改为 NO；有效统计 BP_LINE 2、REGISTRY_ONLY 26、NO 3。生成 USED_IN_M1_CORRECTION_R8_M1a4.tsv（旧值、新值、出处、裁决号）；不重跑静态映射；其他映射行号、函数和状态不变。STATE 同时保留"v3c 历史统计"与"U177 生效统计"的区别。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U178	R8 M1a 续3a 任务书 §2	采用任务书 §1 的命令规则。续2c 的命令偏离仍是执行偏离，不因新规则倒推成历史合规。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U179	R8 M1a 续3a 任务书 §2	优先用 M1b/M1c 实际对应的 F2/F3 驱动做无注入映射；不得仅因文件名带 dbg/plain 判定实际构建身份，逐一核对驱动表的路径、驱动哈希、库身份及驱动族。不另链 r6dnv1-F3-dbg；U151 的该链接要求由本条替代。实际驱动若无法可靠获取调用序列，停止报告，不自动换驱动。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U180	R8 M1a 续3a 任务书 §2	新命名使用 r8m1a4/M1a4。预计组合数只作工作量参考，不作为覆盖证明或通过条件。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U181	R8 M1a 续3a 任务书 §2	不采纳"K=1 seam 可全部跳过映射"的建议。G2a/G6 的 site/ID 钩子仍做无注入计数序列核对；无注入控制行写 N/A，不写 K1_HIT_CHECKED；命中数检查仍保留到未来回归，但不能替代本轮映射。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
+U182	R8 M1a 续3a 任务书 §2	续3b 才生成正式预注册、逐组计数、dry-run 和回归运行器。所需映射必须完整、无追踪错误；未完成项不得被 N/A 掩盖。	checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3a.md §2	生效
