@@ -122,12 +122,140 @@
 
 ## 11. 待用户裁决
 
-无。
+无。(A 段。)
 
-## 11. 待用户裁决
+## 12. B 段(映射 v3c;收尾)
 
-无。
+### 12.1 startB 门禁
 
-## 12. B 段
+- 运行:`sh testing/d003/stage_s4r8/gate8_r8m1a3c.sh p05-s4r8 GATE_R8_M1a3c_STARTB.txt startB 0 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`(经 safe_run,UTC 03:29:31Z)。
+- 结果:**FAILS=0**。HEAD^ = e2589cb;HEAD 主题以 `P05-S4 R8 M1a records (cont1+cont2+cont2b` 开头;`git status --short` 为空;RULINGS 与 ERRATA_8 工作区与 HEAD 版本逐字节相同;HEAD_B = `b39135e1a57a1620ace5caa36199a34ae8fcf8a3`。
+- /tmp 快照(B 开工,03:29:28Z,形式 (5)):0 项,sha256 e3b0c442…b855。
 
-(待追加)
+### 12.2 期望(EXPECT)
+
+- `checkpoints/p05/evidence/p05-s4r8/EXPECT_LINEMAP_R8_M1a3c.txt`,sha256 `21696bf9e1e92254cd0789514e4ad67d26e185d8ece4a34bcb26e5402141a24d`,UTC 2026-10-14T03:33:11Z(形式 (4)),**在映射运行(03:35:06Z)之前写入**。
+- 第一行 `status INFLUENCED`;出处"续2c 任务书 U170、U171;v3 停止记录;规划者只读模拟"。内容为 31 行站点与 6 种格式的其余期望。
+
+### 12.3 脚本差异分类(v3 → v3c)
+
+源码差异 `checkpoints/p05/evidence/p05-s4r8/MAP_V3_V3C_SRC_DIFF_R8_M1a3c.txt`(由 `diff_map_r8m1a3c.sh` 经 `git diff --no-index` 写出,UTC 03:35:00Z)。逐段归类:
+
+| 类 | 内容 | 差异位置(近似) |
+|---|---|---|
+| (1) 输出名与说明 | OUT、OUT_PARSER、OUT_SYM、OUT_CHECK、OUT_DIFF、EXPECT、V3_TSV;文件头字样;docstring | 文件头与 `OUT = …` 段 |
+| (2) U170 `__attribute__` | 新增 `ATTR_RE` 与 `mask_attributes`;头识别改用 `mask_attributes(text)`,花括号深度仍用原文本 | `mask_attributes` 段与 `function_table` 头识别段 |
+| (3) 自检加驱动 | `PARSED_FILES` 加驱动;新增 `FORBIDDEN_FUNC_NAMES`、`DRIVER`;自检加禁止名单与第 73 行检查 | `PARSED_FILES` 段与 `main` 自检段 |
+| (4) U171 三值 | 新增 `used_class` 与常量,替代 `use_hits`;`used_in_m1` 列改为类别加最多 3 条引用 | `used_class` 段与 `main` 的 `used_in_m1` 赋值 |
+| (5) EXPECT 比较器 | 按 6 种格式解析;不能解析者 UNPARSED 计 MISMATCH;`got_for` 改为 `got_count` 等 | `main` 的 LINEMAP_CHECK 段 |
+| (6) 差异文件 | v3 对 v3c 逐站点比较 F3 行、函数、状态、used_in_m1;只记录 | `main` 的差异段 |
+
+- 未改动:站点表(SITES)、状态规则、改名表(RENAME_F2_TO_F3)、U147 核对(MODIFIED_BY_FIX_SITES)、diff 偏移算法(`hunks`、`offset_for`)、`in_added_segment`。
+- 全部差异均属于 6 类之一,无超出范围的改动。
+
+### 12.4 自检(PARSER_SELFCHECK_R8_M1a3c.tsv)
+
+- 深度:7 个 (树, 文件) 组合全部 end-depth 0、min-depth 0(含驱动两树)。
+- 驱动第 73 行:两树均为 `r6_probe`(OK)。
+- 禁止名单:无 `forbidden` 行,即 5+1 个文件的函数表中均未出现 `__attribute__`、`extern`、`static`、`inline`、`const`。
+- 期望函数行:F2 7 行、F3 6 行,全部 OK;`BAD count: 0`。
+- 结论:自检 BAD 0(任务书 B② 条件不触发)。
+
+### 12.5 LINEMAP_CHECK(逐项)
+
+`checkpoints/p05/evidence/p05-s4r8/LINEMAP_CHECK_R8_M1a3c.txt`:**30 项全部 MATCH,MISMATCH 0,UNPARSED 0**(任务书 B③ 条件不触发)。逐项见该文件。
+
+### 12.6 偏移交叉核对与计数
+
+- `DIFF_OFFSET DISAGREE` 0(B④ 不触发);diff_offset_check 计数:AGREE 28,N/A(MODIFIED_BY_FIX) 3。
+- 站点计数:MODIFIED_BY_FIX 3、SAME_LINE 7、SHIFTED 21、AMBIGUOUS 0、MISSING 0;stops 0。
+
+### 12.7 符号核对(U155)
+
+`FUNC_BP_SYMBOLS_R8_M1a3c.tsv`:Simulation_GetLayerSolution F2 1778 → F3 1787;Simulation_ComputeLayerModes F2 2250 → F3 2259;S4_Simulation_GetFieldPlane F2 4210 → F3 4219;r6_probe F2 73 → F3 73;全部 PRESENT/PRESENT(每树恰一个定义行),**not OK 0**(B⑤ 不触发)。
+
+### 12.8 used_in_m1 三类计数(U171)
+
+| 类别 | 计数 | 站点 |
+|---|---|---|
+| BP_LINE | 4 | S4/S4.cpp:2413(依据 stage_s4r7/gdb_chain_jones_line_r7.gdb:16)、S4/fmm/fmm_PolBasisJones.cpp:192(依据 stage_s4r7/gdb_chain_jones_line_r7.gdb:10)、S4/fmm/fmm_FFT.cpp:90(依据 stage_s4/r6_plan14_caller.gdb:26)、S4/fmm/fmm_kottke.cpp:94(依据 stage_s4/r6_plan14_caller.gdb:32) |
+| REGISTRY_ONLY | 26 | 其余站点(引用见 `LINEMAP_F2_F3_R8_M1a3c.tsv` 第 8–37 行 used_in_m1 列,最多 3 条) |
+| NO | 1 | S4/S4.cpp:4334(U171)。stage_s4 的 `r5_plan_twice.gdb:97` 引用此行,但 `r5_plan_twice.gdb` 的文件名只出现在 `registries/s4r5/`、`registries/RULINGS.tsv`、`registries/s4r8/` 与 stage_s4r8 文本中,**不在** stage_s4r7、stage_s3r4c2、stage_s3r4c3 或 `registries/{s4r7,s3r4c2,s3r4c3}` 的文本中,因此不计入 BP_LINE;`registries/{s4r7,s3r4c2,s3r4c3}` 的 .tsv 非注释行也不含该 文件名 与行号 4334 的同时出现,故不计入 REGISTRY_ONLY。(grep 核实,B 段。) |
+
+**用于 M1b/M1c 的断点**(任务书 §5.4):BP_LINE 的 4 个 `文件:行` 断点,M1b/M1c 使用 F3 行号的复制品,不改原件:
+- S4/S4.cpp:2413 → F3 2422;
+- S4/fmm/fmm_PolBasisJones.cpp:192 → F3 192;
+- S4/fmm/fmm_FFT.cpp:90 → F3 90;
+- S4/fmm/fmm_kottke.cpp:94 → F3 94。
+
+**待用户裁决(E8-55)**:S4/fmm/fmm_FFT.cpp:90 与 S4/fmm/fmm_kottke.cpp:94 的 BP_LINE 依赖 stage_s4/r6_plan14_caller.gdb 的文件名在 `registries/s4r7/LINEMAP_M3_R7.tsv` 第 13 行(注释行)中出现。按 U171 字面规则计入;若只计非注释行则为 REGISTRY_ONLY 或 NO,BP_LINE 为 2 而非 4。映射未改规则,不重跑。
+
+### 12.9 v3 → v3c 差异
+
+`checkpoints/p05/evidence/p05-s4r8/LINEMAP_V3_V3C_DIFF_R8_M1a3c.txt`(31 行;28 站点 changed):
+
+- **F3 行**:0 处变化。
+- **状态**:0 处变化。
+- **F3 函数**:1 处变化:`testing/d003/stage_s4/driver_r6b_state.cpp:73`,`__attribute__` → `r6_probe`(U170 修正,符合 5.2(6) 预期)。
+- **used_in_m1**:28 处变化(三值规则与 v3 的 `YES …` 格式不同,按 5.2(6) 预期每行类别词变化)。
+  - 其中 `S4/S4.cpp:4334` v3 为 `YES …`(含 map_f2_f3_r8m1a3.py 与 append_* 自引用行),v3c 为 `NO`。这正是 E8-42(c) 所指的自引用问题的修正。
+
+与任务书 §5.2(6) 的预期对照:预期"只有 driver:73 的函数列与各行 used_in_m1 列有变化"——**符合**。
+
+### 12.10 偏离与事件
+
+- **表二事件(B 段)**:
+  - E8-53:`python3 -I -B testing/d003/stage_s4r8/diff_map_r8m1a3c.sh`(误用解释器,Python SyntaxError,无写入)。该文件之后用 `sh` 正确运行(写 `MAP_V3_V3C_SRC_DIFF_R8_M1a3c.txt` 成功)。
+  - E8-54:一行内多 safe_run、awk/wc/cut/tr/sort/uniq 的只读内联核对。
+  - 无门禁自身错误重跑(startB 与 endB 首次运行均按设计)。
+- **表一越界写入尝试**:无。
+- 报告 A 段的 `GATE`/`/tmp` 快照记录完整,未改。
+
+### 12.11 STATE 变更(B 段)
+
+- 当前轮次行:改为 B 段文字(存量已提交 A 段 b39135e;映射 v3c 31 行的计数;used_in_m1 4/26/1;E8-55 待用户裁决;下一步 续3a 动态映射,待用户审核)。
+- 关键数字表 S4R8 M1a 行:同步为 v3c 结果。
+- 开放问题表:新增 E8-55 行(待用户裁决)。
+
+### 12.12 内联命令自查(B 段)
+
+B 段所有 safe_run 的 <X> 只含 `sh testing/d003/stage_s4r8/<文件>.sh` 或 `python3 -I -B testing/d003/stage_s4r8/<文件>.py`,未含 `sh -c`、grep、head、wc、awk 或管道。写入全部经 safe_run 或 edit/write 到合法目标。
+
+非白名单的只读内联命令(表二,已披露):
+- 03:23:56Z–03:25:40Z 的一行多 safe_run(prerun 多次、copy 与 prerun 合并),UTC 与原文见 A 段 §10。
+- 03:25:18Z `awk`、`cut`、`tr`、`sort`、`uniq`、`echo` 的列计数(A 段 §10 第 14 行)。
+- 03:29:20Z–03:29:31Z:/tmp 快照与 startB 门禁(形式 (5)、(1)),合规。
+- 03:35:59Z:`date …; sh testing/d003/safe_run.sh p05-s4r8 -- python3 -I -B testing/d003/stage_s4r8/diff_map_r8m1a3c.sh; date …`。这是误用解释器(对 shell 脚本调用 python3),报 SyntaxError,未写入任何文件。它是 E8-53 所记的唯一一次误用(见 12.14 更正)。
+- 03:36:40Z、03:36:50Z、03:37:22Z、03:37:51Z:一行内多 safe_run 与 `grep -c`、`wc` 在脚本内(合规)或内联(表二)。
+
+### 12.13 完成情况
+
+| 项 | 结论 |
+|---|---|
+| startB 门禁 | 完成(FAILS=0) |
+| EXPECT 写入(先于映射) | 完成(03:33:11Z < 03:35:06Z) |
+| 脚本 6 类改动 | 完成(见 12.3) |
+| 自检 | 完成(BAD 0) |
+| LINEMAP_CHECK | 完成(30 MATCH,MISMATCH 0) |
+| 符号核对 | 完成(4/4 PRESENT) |
+| used_in_m1 三类 | 完成(4/26/1);E8-55 未裁决 |
+| v3→v3c 差异 | 完成(仅 driver:73 函数列与 used_in_m1 列,符合预期) |
+| 小表复制与 SHA256SUMS_M1a3c_B.txt | 完成(9/9 OK) |
+| 追加 E8-53–E8-55 | 完成(FAILS=0) |
+| endB 门禁 | 见 12.15 |
+| commit_rec_r8m1a3c_B.sh | 见 12.15 |
+
+### 12.14 待用户裁决
+
+- **E8-55**(U171 BP_LINE 规则是否计注释行;影响 S4/fmm/fmm_FFT.cpp:90、S4/fmm/fmm_kottke.cpp:94 的类别;若只计非注释行,BP_LINE 为 2 而非 4)。映射结果按字面规则输出,未改规则,未重跑。
+- **E8-53 更正(本报告撰写时核实)**:误用解释器 `python3` 调用 shell 脚本的事件只发生一次,即 03:35:59Z(见 12.12)。03:35:00Z 那次调用是正确的 `sh`,写出了 `MAP_V3_V3C_SRC_DIFF_R8_M1a3c.txt`。本报告 12.10 与 12.12 先前把误用写成两次,是撰写错误,已在本节改正。ERRATA_8 中 E8-53 文本只记了一次,与此一致;无需另行补记。
+- 注:12.10 第一条所述"该文件之后用 sh 正确运行"指 03:35:00Z 的那次,正确。
+
+### 12.15 收尾(B 段)
+
+- 违规两张表(B 段):
+  - **表一(越界写入尝试)**:无。
+  - **表二(工具/脚本事件)**:E8-53(python3 误调 .sh,一次,03:35:59Z,未写入);E8-54(一行多 safe_run 与内联 awk/wc/cut/tr/sort/uniq 只读核对)。
+- endB 门禁与 commit_rec_r8m1a3c_B.sh 的结果在本节之后由 FINAL_GIT_R8_M1a3c_B.txt 记录。
+
+本轮 A、B 两段范围内的工作已按任务书完成。

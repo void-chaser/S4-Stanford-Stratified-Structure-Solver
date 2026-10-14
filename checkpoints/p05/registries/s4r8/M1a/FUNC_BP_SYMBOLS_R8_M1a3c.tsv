@@ -1,0 +1,7 @@
+# FUNC_BP_SYMBOLS_R8_M1a3.tsv -- U155: function-name breakpoints of LINEMAP_M3_R7.tsv Part A, each symbol checked in both trees.
+symbol	file	F2_definition_line	F3_definition_line	F2_status	F3_status	expected	result
+Simulation_GetLayerSolution	S4/S4.cpp	1778	1787	PRESENT	PRESENT	expected F2 1778 F3 1787	OK
+Simulation_ComputeLayerModes	S4/S4.cpp	2250	2259	PRESENT	PRESENT	expected F2 2250 F3 2259	OK
+S4_Simulation_GetFieldPlane	S4/S4.cpp	4210	4219	PRESENT	PRESENT	expected F2 4210 F3 4219	OK
+r6_probe	testing/d003/stage_s4/driver_r6b_state.cpp	73	73	PRESENT	PRESENT	expected F2 73 F3 73	OK
+# not OK: 0

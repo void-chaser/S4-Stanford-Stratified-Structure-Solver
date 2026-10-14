@@ -1,0 +1,435 @@
+# git diff --no-index testing/d003/stage_s4r8/map_f2_f3_r8m1a3.py testing/d003/stage_s4r8/map_f2_f3_r8m1a3c.py (P05-S4 R8 M1a CONT2c 5.2; record only; exit 1 = files differ)
+# utc=2026-10-14T03:35:00Z
+diff --git a/testing/d003/stage_s4r8/map_f2_f3_r8m1a3.py b/testing/d003/stage_s4r8/map_f2_f3_r8m1a3c.py
+index 1c9d0fb..997f64b 100644
+--- a/testing/d003/stage_s4r8/map_f2_f3_r8m1a3.py
++++ b/testing/d003/stage_s4r8/map_f2_f3_r8m1a3c.py
+@@ -1,7 +1,17 @@
+ #!/usr/bin/env python3
+-"""P05-S4 R8 M1a CONT2 section 4 (U153-U155, U154 rules): static map v3 of the injection sites, F2 (a07b5ac) to F3 (8d8202a).
+-
+-New file.  Copy of map_f2_f3_r8m1a2.py (committed in CONT1, not modified) with these changes (U154):
++"""P05-S4 R8 M1a CONT2c section 5 (U170, U171): static map v3c of the injection sites, F2 (a07b5ac) to F3 (8d8202a).
++
++New file.  Copy of map_f2_f3_r8m1a3.py (committed in CONT2b, not modified) with the six classes of change of CONT2c 5.2:
++  (1) output names and this description (the *_r8m1a3c / *_M1a3c names);
++  (2) U170: the __attribute__((...)) text of a function head is replaced by spaces of the same length before the head regex;
++  (3) self-check: driver_r6b_state.cpp added to PARSED_FILES; both trees: end depth 0, min depth >= 0, line 73 = r6_probe;
++      no function table may contain __attribute__, extern, static, inline or const (any such name is BAD);
++  (4) U171: used_in_m1 is three-valued (BP_LINE / REGISTRY_ONLY / NO), with at most three file:line references per value;
++  (5) EXPECT comparator: the six line formats of CONT2c 5.1; a line that cannot be parsed is UNPARSED and counted as MISMATCH;
++  (6) the diff file compares v3 with v3c (F3 line, function, status, used_in_m1 per site; record only).
++The site table, the status rules, the rename table, the U147 checks and the diff-offset algorithm are unchanged.
++
++Description of the v3 parts that are kept (CONT2 section 4.2, U154 rules):
+   (a) before parsing, the text of each line is blanked: // comments, /* */ block comments (across lines), string literals and
+       character literals (with \\ escapes) become spaces; line breaks are kept.  Lines whose first non-blank character is #
+       do not take part in function-head recognition.  Brace depth is computed only on the blanked text.
+@@ -30,13 +40,14 @@ import sys
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+ EV = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8")
+-OUT = os.path.join(EV, "LINEMAP_F2_F3_R8_M1a3.tsv")
+-OUT_PARSER = os.path.join(EV, "PARSER_SELFCHECK_R8_M1a3.tsv")
+-OUT_SYM = os.path.join(EV, "FUNC_BP_SYMBOLS_R8_M1a3.tsv")
+-OUT_CHECK = os.path.join(EV, "LINEMAP_CHECK_R8_M1a3.txt")
+-OUT_DIFF = os.path.join(EV, "LINEMAP_V2_V3_DIFF_R8_M1a3.txt")
+-EXPECT = os.path.join(EV, "EXPECT_LINEMAP_R8_M1a3.txt")
+-V2 = os.path.join(EV, "LINEMAP_F2_F3_R8_M1a2.tsv")
++# (1) CONT2c output names
++OUT = os.path.join(EV, "LINEMAP_F2_F3_R8_M1a3c.tsv")
++OUT_PARSER = os.path.join(EV, "PARSER_SELFCHECK_R8_M1a3c.tsv")
++OUT_SYM = os.path.join(EV, "FUNC_BP_SYMBOLS_R8_M1a3c.tsv")
++OUT_CHECK = os.path.join(EV, "LINEMAP_CHECK_R8_M1a3c.txt")
++OUT_DIFF = os.path.join(EV, "LINEMAP_V3_V3C_DIFF_R8_M1a3c.txt")
++EXPECT = os.path.join(EV, "EXPECT_LINEMAP_R8_M1a3c.txt")
++V3_TSV = os.path.join(EV, "LINEMAP_F2_F3_R8_M1a3.tsv")   # (6) v3 result (committed as a stop record; read only)
+ F2 = "a07b5ac"
+ F3 = "8d8202a"
+ 
+@@ -101,7 +112,10 @@ SYMBOLS = [
+     ("r6_probe", "testing/d003/stage_s4/driver_r6b_state.cpp", 73, 73),
+ ]
+ 
+-PARSED_FILES = ["S4/S4.cpp", "S4/pattern/pattern.c", "S4/fmm/fmm_FFT.cpp", "S4/fmm/fmm_kottke.cpp", "S4/fmm/fmm_PolBasisJones.cpp"]
++PARSED_FILES = ["S4/S4.cpp", "S4/pattern/pattern.c", "S4/fmm/fmm_FFT.cpp", "S4/fmm/fmm_kottke.cpp", "S4/fmm/fmm_PolBasisJones.cpp",
++                "testing/d003/stage_s4/driver_r6b_state.cpp"]  # (3) CONT2c: driver added
++FORBIDDEN_FUNC_NAMES = {"__attribute__", "extern", "static", "inline", "const"}  # (3) CONT2c: no function table may contain these
++DRIVER = "testing/d003/stage_s4/driver_r6b_state.cpp"
+ # [source] function of each expected line, both trees (self-check of the parser): (file, line, function)
+ SELFCHECK_F2 = [("S4/S4.cpp", 4210, "S4_Simulation_GetFieldPlane"), ("S4/S4.cpp", 4334, "S4_Simulation_GetFieldPlane"),
+                 ("S4/S4.cpp", 2413, "Simulation_ComputeLayerModes"), ("S4/pattern/pattern.c", 415, "shape_get_intersection_area_quad"),
+@@ -177,6 +191,15 @@ def blank_text(lines):
+     return out
+ 
+ 
++ATTR_RE = re.compile(r"__attribute__\s*\((?:[^()]|\([^()]*\))*\)")
++
++
++def mask_attributes(text):
++    """U170(2): replace __attribute__((...)) (one level of nested brackets allowed) by spaces of the same length.
++    Used only for function-head recognition; brace depth is still computed on the unmasked blanked text."""
++    return ATTR_RE.sub(lambda m: " " * len(m.group(0)), text)
++
++
+ def function_table(lines):
+     """Return (t, depth_end, min_depth): t[n] = function of 1-based line n (FILE_SCOPE if none), by FUNCTION_RULE on the blanked text."""
+     blank = blank_text(lines)
+@@ -191,9 +214,10 @@ def function_table(lines):
+             t[no] = body[0] if body is not None else "FILE_SCOPE"
+             continue
+         if body is None and depth == 0:
+-            m = re.match(r"^([A-Za-z_]\w*)\s*\(", text) or re.match(
+-                r"^(?:[A-Za-z_][\w\s\*&:<>,]*?[\s\*&])([A-Za-z_]\w*)\s*\(", text)
+-            if m and m.group(1) not in CONTROL_KEYWORDS and not text.rstrip().endswith(";"):
++            head = mask_attributes(text)
++            m = re.match(r"^([A-Za-z_]\w*)\s*\(", head) or re.match(
++                r"^(?:[A-Za-z_][\w\s\*&:<>,]*?[\s\*&])([A-Za-z_]\w*)\s*\(", head)
++            if m and m.group(1) not in CONTROL_KEYWORDS and not head.rstrip().endswith(";"):
+                 pending = m.group(1)
+         for ch in text:
+             if ch == "{":
+@@ -231,22 +255,78 @@ def collect_citations():
+     return out
+ 
+ 
+-def use_hits(basename, line):
+-    """U154(d): the R7/S3R4/R8 runner or registry files (and lines) that cite basename:line, in the USE_DIRS trees."""
+-    hits = []
+-    for d in USE_DIRS:
+-        base = os.path.join(REPO, d)
+-        if not os.path.isdir(base):
++USED_BP_DIRS = ["testing/d003/stage_s4r7", "testing/d003/stage_s3r4c2", "testing/d003/stage_s3r4c3"]   # (4) U171 BP_LINE, first rule
++USED_REG_DIRS = ["checkpoints/p05/registries/s4r7", "checkpoints/p05/registries/s3r4c2", "checkpoints/p05/registries/s3r4c3"]
++USED_S4_DIR = "testing/d003/stage_s4"                                                                # (4) U171 BP_LINE, second rule
++USED_TEXT_EXT = (".py", ".sh", ".gdb", ".tsv", ".txt")
++BP_RE = re.compile(r"(?:\bt?break\s+|LineBP\(\"|gdb\.Breakpoint\(\")([A-Za-z0-9_./-]+\.(?:cpp|cc|c|h|hpp))\s*:\s*(\d+)")
++
++
++def _files_under(rel, exts):
++    base = os.path.join(REPO, rel)
++    out = []
++    if not os.path.isdir(base):
++        return out
++    for root, _dirs, files in os.walk(base):
++        for fn in sorted(files):
++            if fn.endswith(exts):
++                out.append(os.path.join(root, fn))
++    return out
++
++
++def used_class(basename, line):
++    """(4) U171: three-valued used_in_m1 for the site basename:line.
++    BP_LINE: a break/tbreak/LineBP/gdb.Breakpoint reference file:line in stage_s4r7, stage_s3r4c2, stage_s3r4c3 (.gdb/.py);
++             or such a reference in stage_s4 (.gdb/.py) when the file name (whole word) occurs in one of the three stage
++             directories or in registries/{s4r7,s3r4c2,s3r4c3} (.py/.sh/.gdb/.tsv/.txt).
++    REGISTRY_ONLY: not BP_LINE, but a non-comment line of a .tsv in registries/{s4r7,s3r4c2,s3r4c3} contains the file name and the
++             line number (whole words).
++    NO: neither.  stage_s4r8 and every r8m1 file are outside the search (U171, E8-51(c)).
++    Returns (class, refs) where refs are at most three 'file:line' strings."""
++    word = re.compile(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" % re.escape(basename))
++    num = re.compile(r"(?<![0-9])%d(?![0-9])" % line)
++    bp_refs = []
++    stage_hits = []
++    for d in USED_BP_DIRS:
++        for p in _files_under(d, (".gdb", ".py")):
++            with open(p, encoding="utf-8", errors="replace") as fh:
++                for no, text in enumerate(fh, 1):
++                    for m in BP_RE.finditer(text):
++                        if os.path.basename(m.group(1)) == basename and int(m.group(2)) == line:
++                            bp_refs.append("%s:%d" % (os.path.relpath(p, REPO), no))
++                            stage_hits.append(p)
++    # stage_s4 (.gdb/.py): counted only when the file name (whole word) occurs in a text file of the three stage
++    # directories or of the three registry directories (.py/.sh/.gdb/.tsv/.txt)
++    known_texts = []
++    for d in USED_BP_DIRS + USED_REG_DIRS:
++        for p in _files_under(d, USED_TEXT_EXT):
++            with open(p, encoding="utf-8", errors="replace") as fh:
++                known_texts.append(fh.read())
++    s4_files = _files_under(USED_S4_DIR, (".gdb", ".py"))
++    for p in s4_files:
++        fn = os.path.basename(p)
++        fn_word = re.compile(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" % re.escape(fn))
++        if not any(fn_word.search(t) for t in known_texts):
+             continue
+-        for root, _dirs, files in os.walk(base):
+-            for fn in sorted(files):
+-                p = os.path.join(root, fn)
+-                if fn.endswith(".sh") or fn.endswith(".gdb") or fn.endswith(".py") or fn.endswith(".tsv") or fn.endswith(".txt"):
+-                    with open(p, encoding="utf-8", errors="replace") as fh:
+-                        for no, text in enumerate(fh, 1):
+-                            if re.search(r"(?<![0-9])%d(?![0-9])" % line, text) and basename in text:
+-                                hits.append("%s:%d" % (os.path.relpath(p, REPO), no))
+-    return hits
++        with open(p, encoding="utf-8", errors="replace") as fh:
++            for no, text in enumerate(fh, 1):
++                for m in BP_RE.finditer(text):
++                    if os.path.basename(m.group(1)) == basename and int(m.group(2)) == line:
++                        bp_refs.append("%s:%d" % (os.path.relpath(p, REPO), no))
++    if bp_refs:
++        return "BP_LINE", bp_refs[:3]
++    reg_refs = []
++    for d in USED_REG_DIRS:
++        for p in _files_under(d, (".tsv",)):
++            with open(p, encoding="utf-8", errors="replace") as fh:
++                for no, text in enumerate(fh, 1):
++                    if text.lstrip().startswith("#"):
++                        continue
++                    if word.search(text) and num.search(text):
++                        reg_refs.append("%s:%d" % (os.path.relpath(p, REPO), no))
++    if reg_refs:
++        return "REGISTRY_ONLY", reg_refs[:3]
++    return "NO", []
+ 
+ 
+ def in_added_segment(path, f3_line):
+@@ -322,6 +402,17 @@ def main(argv):
+                 parser_bad += 1
+             parser_rows.append([rev, path, str(depth_end), str(min_depth), "OK" if ok else "BAD",
+                                 "end-depth 0 and min-depth >= 0"])
++            # (3) CONT2c: no forbidden name may be a function-table entry; the driver's line 73 must be r6_probe
++            names = set(t[1:len(lines) + 1])
++            bad_names = sorted(names & FORBIDDEN_FUNC_NAMES)
++            if bad_names:
++                parser_bad += 1
++                parser_rows.append([rev, path, "forbidden", ",".join(bad_names), "BAD", "forbidden function name in table"])
++            if path == DRIVER:
++                okd = t[73] == "r6_probe"
++                if not okd:
++                    parser_bad += 1
++                parser_rows.append([rev, path, "line 73", t[73], "OK" if okd else "BAD", "expected r6_probe (driver self-check)"])
+     for rev, expect_list in ((F2, SELFCHECK_F2), (F3, SELFCHECK_F3)):
+         for path, n, want in expect_list:
+             t, lines = tree_fn[(rev, path)]
+@@ -332,7 +423,7 @@ def main(argv):
+             parser_rows.append([rev, path, "line %d" % n, got, "OK" if ok else "BAD", "expected %s" % want])
+ 
+     with open(OUT_PARSER, "x", encoding="utf-8") as fh:
+-        fh.write("# PARSER_SELFCHECK_R8_M1a3.tsv -- P05-S4 R8 M1a CONT2 section 4.2 (U154(b)). Written by map_f2_f3_r8m1a3.py (read only).\n")
++        fh.write("# PARSER_SELFCHECK_R8_M1a3c.tsv -- P05-S4 R8 M1a CONT2c section 5 (U170 driver self-check; U154(b)). Written by map_f2_f3_r8m1a3c.py (read only).\n")
+         fh.write("# rule: " + FUNCTION_RULE + "\n")
+         fh.write("\t".join(["tree", "file", "end_depth_or_line", "min_depth_or_function", "result", "note"]) + "\n")
+         for r in parser_rows:
+@@ -400,8 +491,8 @@ def main(argv):
+         f3_fn = fn_cache[(F3, path)]
+         anchor_hits = cite_by_key.get((os.path.basename(path), line_f2), [])
+         anchor_use = ("GDB_LINE_BP " + ";".join(anchor_hits)) if anchor_hits else "CLASSIFICATION_ONLY"
+-        uses = use_hits(os.path.basename(path), line_f2)
+-        used_in_m1 = ("YES " + ";".join(uses)) if uses else "NO (searched: " + ", ".join(USE_DIRS) + ")"
++        ucls, urefs = used_class(os.path.basename(path), line_f2)   # (4) U171 three-valued column
++        used_in_m1 = ucls + ((" " + ";".join(urefs)) if urefs else "")
+ 
+         mod = MODIFIED_BY_FIX_SITES.get((path, line_f2))
+         if mod is not None:
+@@ -464,7 +555,7 @@ def main(argv):
+     for r in rows:
+         diff_counts[r[12]] = diff_counts.get(r[12], 0) + 1
+     lines = [
+-        "# LINEMAP_F2_F3_R8_M1a3.tsv -- P05-S4 R8 M1a CONT2 section 4 (map v3; U153-U155, U154 rules).  Written by map_f2_f3_r8m1a3.py (read only, git show / git diff).",
++        "# LINEMAP_F2_F3_R8_M1a3c.tsv -- P05-S4 R8 M1a CONT2c section 5 (map v3c; U170, U171).  Written by map_f2_f3_r8m1a3c.py (read only, git show / git diff).",
+         "# F2 = a07b5ac (S4 e124925f5b242486a913b813fa181664f665b048), F3 = 8d8202a (S4 6cff923a02baf19e01966b2339755cbf3a5deeef).",
+         "# Function rule: " + FUNCTION_RULE,
+         "# Rename (U145, U148): F2 shape_get_intersection_area_quad == F3 shape_get_intersection_area_quad_st.",
+@@ -522,102 +613,136 @@ def main(argv):
+         return key_line
+     exp_lines = [l.rstrip("\n") for l in open(EXPECT, encoding="utf-8")]
+     exp = [l for l in exp_lines if l and not l.startswith("#") and not l.startswith("status ")]
+-    def got_for(key):
+-        if key == "MISSING":
+-            return str(counts_all.get("MISSING", 0))
+-        if key == "AMBIGUOUS":
+-            return str(counts_all.get("AMBIGUOUS", 0))
+-        if key == "MODIFIED_BY_FIX":
+-            return str(counts_all.get("MODIFIED_BY_FIX", 0))
+-        if key == "PARSER_SELFCHECK BAD":
++    # (5) CONT2c 5.1 formats; a line that matches none of them is UNPARSED and counts as MISMATCH
++    FMT_COUNT = re.compile(r"^COUNT (MISSING|AMBIGUOUS|MODIFIED_BY_FIX|SAME_LINE|SHIFTED) (\d+)$")
++    FMT_CHECK = re.compile(r"^CHECK (PARSER_SELFCHECK_BAD|DIFF_OFFSET_DISAGREE) (\d+)$")
++    FMT_USEDCOUNT = re.compile(r"^USED_COUNT (BP_LINE|REGISTRY_ONLY|NO) (\d+)$")
++    FMT_SITE = re.compile(r"^SITE (\S+) (\d+) F3 (\d+) (MISSING|AMBIGUOUS|MODIFIED_BY_FIX|SAME_LINE|SHIFTED) (\S+)$")
++    FMT_USED = re.compile(r"^USED (\S+) (\d+) (BP_LINE|REGISTRY_ONLY|NO)$")
++    FMT_SYMBOL = re.compile(r"^SYMBOL (\S+) F2 (\d+) F3 (\d+) PRESENT$")
++    def got_count(status):
++        return str(sum(1 for r in rows if r[8] == status))
++    def got_check(name):
++        if name == "PARSER_SELFCHECK_BAD":
+             return str(parser_bad)
+-        if key == "DIFF_OFFSET DISAGREE":
+-            return str(diff_counts.get("DISAGREE", 0))
+-        return None
++        return str(diff_counts.get("DISAGREE", 0))
++    def got_usedcount(cls):
++        return str(sum(1 for r in rows if r[11].split(" ")[0] == cls))
+     for e in exp:
+-        parts = e.split()
+-        if parts[0] in ("MISSING", "AMBIGUOUS", "MODIFIED_BY_FIX") and len(parts) == 2:
+-            want = parts[1]
+-            got = got_for(parts[0])
++        m = FMT_COUNT.match(e)
++        if m:
++            want, got = m.group(2), got_count(m.group(1))
+             ok = got == want
+-            res.append("%s\t%s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", parts[0], want, got))
++            res.append("%s\tCOUNT %s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", m.group(1), want, got))
+             if not ok:
+-                mismatch.append(parts[0])
+-        elif parts[0] == "PARSER_SELFCHECK" and len(parts) == 3:
+-            got = got_for("PARSER_SELFCHECK BAD")
+-            ok = got == parts[2]
+-            res.append("%s\tPARSER_SELFCHECK_BAD\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", parts[2], got))
++                mismatch.append("COUNT " + m.group(1))
++            continue
++        m = FMT_CHECK.match(e)
++        if m:
++            want, got = m.group(2), got_check(m.group(1))
++            ok = got == want
++            res.append("%s\tCHECK %s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", m.group(1), want, got))
+             if not ok:
+-                mismatch.append("PARSER_SELFCHECK")
+-        elif parts[0] == "DIFF_OFFSET" and len(parts) == 3:
+-            got = got_for("DIFF_OFFSET DISAGREE")
+-            ok = got == parts[2]
+-            res.append("%s\tDIFF_OFFSET_DISAGREE\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", parts[2], got))
++                mismatch.append("CHECK " + m.group(1))
++            continue
++        m = FMT_USEDCOUNT.match(e)
++        if m:
++            want, got = m.group(2), got_usedcount(m.group(1))
++            ok = got == want
++            res.append("%s\tUSED_COUNT %s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", m.group(1), want, got))
+             if not ok:
+-                mismatch.append("DIFF_OFFSET")
+-        elif parts[0] == "S4/S4.cpp" and len(parts) >= 4 and parts[3] == "used_in_m1":
+-            # site used_in_m1 check: expected NO
+-            sel = [r for r in rows if r[1] == "S4/S4.cpp" and r[2] == parts[2]]
++                mismatch.append("USED_COUNT " + m.group(1))
++            continue
++        m = FMT_SITE.match(e)
++        if m:
++            file_, line_, n_, status_, fn_ = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)
++            sel = [r for r in rows if r[1] == file_ and r[2] == line_]
++            got_n = sel[0][5] if sel else "-"
++            got_s = sel[0][8] if sel else "-"
++            got_f = sel[0][6] if sel else "-"
++            ok = (got_n == n_) and (got_s == status_) and (got_f == fn_)
++            res.append("%s\tSITE %s:%s\texpected=F3 %s %s %s\tactual=F3 %s %s %s" % (
++                "MATCH" if ok else "MISMATCH", file_, line_, n_, status_, fn_, got_n, got_s, got_f))
++            if not ok:
++                mismatch.append("SITE %s:%s" % (file_, line_))
++            continue
++        m = FMT_USED.match(e)
++        if m:
++            file_, line_, want = m.group(1), m.group(2), m.group(3)
++            sel = [r for r in rows if r[1] == file_ and r[2] == line_]
+             got = sel[0][11].split(" ")[0] if sel else "-"
+-            ok = got == parts[4]
+-            res.append("%s\tUSED_IN_M1 S4.cpp %s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", parts[2], parts[4], got))
++            ok = got == want
++            res.append("%s\tUSED %s:%s\texpected=%s\tactual=%s" % ("MATCH" if ok else "MISMATCH", file_, line_, want, got))
+             if not ok:
+-                mismatch.append("USED_IN_M1 " + parts[2])
+-        elif parts[0] == "SYMBOL":
+-            sym = parts[1]
++                mismatch.append("USED %s:%s" % (file_, line_))
++            continue
++        m = FMT_SYMBOL.match(e)
++        if m:
++            sym = m.group(1)
+             sel = [r for r in sym_rows if r[0] == sym]
+-            ok = bool(sel) and sel[0][7] == "OK"
+-            res.append("%s\tSYMBOL %s\texpected=PRESENT\tactual=%s" % ("MATCH" if ok else "MISMATCH", sym,
+-                                                                     (sel[0][4] + "/" + sel[0][5]) if sel else "-"))
++            ok = bool(sel) and sel[0][7] == "OK" and sel[0][4] == "PRESENT" and sel[0][5] == "PRESENT" \
++                and sel[0][2] == m.group(2) and sel[0][3] == m.group(3)
++            res.append("%s\tSYMBOL %s\texpected=F2 %s F3 %s PRESENT\tactual=%s" % (
++                "MATCH" if ok else "MISMATCH", sym, m.group(2), m.group(3),
++                ("F2 %s F3 %s %s/%s" % (sel[0][2], sel[0][3], sel[0][4], sel[0][5])) if sel else "-"))
+             if not ok:
+                 mismatch.append("SYMBOL " + sym)
+-        else:
+-            # site rows: "S4/file LINE F3 N STATUS"
+-            if len(parts) >= 5 and parts[2] == "F3":
+-                file_, line_, _f3, n_, status_ = parts[0], parts[1], parts[2], parts[3], parts[4]
+-                sel = [r for r in rows if r[1] == file_ and r[2] == line_]
+-                got_n = sel[0][5] if sel else "-"
+-                got_s = sel[0][8] if sel else "-"
+-                ok = (got_n == n_) and (got_s == status_)
+-                res.append("%s\t%s:%s\texpected=F3 %s %s\tactual=F3 %s %s" % ("MATCH" if ok else "MISMATCH", file_, line_, n_, status_, got_n, got_s))
+-                if not ok:
+-                    mismatch.append("%s:%s" % (file_, line_))
++            continue
++        # (5) not one of the six formats: UNPARSED, counted as MISMATCH
++        res.append("MISMATCH\tUNPARSED\texpected=six formats only\tactual=%s" % e)
++        mismatch.append("UNPARSED")
+     with open(OUT_CHECK, "x", encoding="utf-8") as fh:
+-        fh.write("# LINEMAP_CHECK_R8_M1a3.txt -- item by item comparison with EXPECT_LINEMAP_R8_M1a3.txt (written by map_f2_f3_r8m1a3.py)\n")
++        fh.write("# LINEMAP_CHECK_R8_M1a3c.txt -- item by item comparison with EXPECT_LINEMAP_R8_M1a3c.txt (written by map_f2_f3_r8m1a3c.py)\n")
+         for r in res:
+             fh.write(r + "\n")
+         fh.write("# MISMATCH count: %d\n" % len(mismatch))
+ 
+     # ---- (c) V2 vs V3 diff (LINEMAP_V2_V3_DIFF_R8_M1a3.txt): record only ----
+-    v2 = {}
+-    with open(V2, encoding="utf-8") as fh:
++    # (6) CONT2c: v3 (LINEMAP_F2_F3_R8_M1a3.tsv) against v3c (this run), per site: F3 line, function, status, used_in_m1.  Record only.
++    v3old = {}
++    with open(V3_TSV, encoding="utf-8") as fh:
+         for l in fh:
+             if l.startswith("#") or l.startswith("cited_by\t"):
+                 continue
+             f = l.rstrip("\n").split("\t")
+-            if len(f) >= 9:
+-                v2[(f[1], f[2])] = f
+-    v3 = {}
++            if len(f) >= 12:
++                v3old[(f[1], f[2])] = f
++    v3c = {}
+     for r in rows:
+-        v3[(r[1], r[2])] = r
+-    dl = ["# LINEMAP_V2_V3_DIFF_R8_M1a3.txt -- v2 (LINEMAP_F2_F3_R8_M1a2.tsv) against v3 (LINEMAP_F2_F3_R8_M1a3.tsv), per site.  Record only, no judgement (CONT2b section 4.3).",
+-          "\t".join(["file", "F2_line", "v2_F3_line", "v3_F3_line", "v2_F3_function", "v3_F3_function", "v2_status", "v3_status",
+-                     "changed"])]
++        v3c[(r[1], r[2])] = r
++    dl = ["# LINEMAP_V3_V3C_DIFF_R8_M1a3c.txt -- v3 (LINEMAP_F2_F3_R8_M1a3.tsv) against v3c (LINEMAP_F2_F3_R8_M1a3c.tsv), per site.  Record only, no judgement (CONT2c 5.2 (6)).",
++          "\t".join(["file", "F2_line", "v3_F3_line", "v3c_F3_line", "v3_F3_function", "v3c_F3_function", "v3_status", "v3c_status",
++                     "v3_used_in_m1", "v3c_used_in_m1", "changed_columns"])]
+     changed = 0
+-    for k in sorted(set(v2) | set(v3)):
+-        a = v2.get(k)
+-        b = v3.get(k)
++    chg_cols = {"F3_line": 0, "F3_function": 0, "status": 0, "used_in_m1": 0}
++    for k in sorted(set(v3old) | set(v3c)):
++        a = v3old.get(k)
++        b = v3c.get(k)
+         a_line = a[5] if a else "-"
+         b_line = b[5] if b else "-"
+         a_fn = a[6] if a else "-"
+         b_fn = b[6] if b else "-"
+         a_st = a[8] if a else "-"
+         b_st = b[8] if b else "-"
+-        ch = (a_line != b_line) or (a_fn != b_fn) or (a_st != b_st)
+-        if ch:
++        a_u = a[11] if a else "-"
++        b_u = b[11] if b else "-"
++        cols = []
++        if a_line != b_line:
++            cols.append("F3_line")
++            chg_cols["F3_line"] += 1
++        if a_fn != b_fn:
++            cols.append("F3_function")
++            chg_cols["F3_function"] += 1
++        if a_st != b_st:
++            cols.append("status")
++            chg_cols["status"] += 1
++        if a_u.split(" ")[0] != b_u.split(" ")[0]:
++            cols.append("used_in_m1")
++            chg_cols["used_in_m1"] += 1
++        if cols:
+             changed += 1
+-        dl.append("\t".join([k[0], k[1], a_line, b_line, a_fn, b_fn, a_st, b_st, "CHANGED" if ch else "same"]))
+-    dl.append("# changed sites: %d" % changed)
++        dl.append("\t".join([k[0], k[1], a_line, b_line, a_fn, b_fn, a_st, b_st, a_u, b_u, ",".join(cols) if cols else "none"]))
++    dl.append("# changed sites: %d; per column: %s" % (changed, ", ".join("%s=%d" % (k, chg_cols[k]) for k in chg_cols)))
+     with open(OUT_DIFF, "x", encoding="utf-8") as fh:
+         fh.write("\n".join(dl) + "\n")
+ 

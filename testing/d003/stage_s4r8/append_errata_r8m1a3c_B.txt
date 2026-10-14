@@ -1,0 +1,13 @@
+
+== R8 M1a 续2c B 段勘误与事件(追加,未改上方任何条目;B 段映射 v3c 与收尾)
+
+E8-53  表二事件(B 段):python3 -I -B 被用于运行一个 shell 脚本(diff_map_r8m1a3c.sh),Python 在解析阶段报 SyntaxError,未执行任何写入。
+       正确调用应为 sh。该文件的差异输出已由映射脚本本身写入 LINEMAP_V3_V3C_DIFF_R8_M1a3c.txt;MAP_V3_V3C_SRC_DIFF_R8_M1a3c.txt 由 sh 调用一次成功写出(见报告 B 段)。
+       归为表二事件,已披露,不作废结果。
+E8-54  表二事件(B 段):一行内多个 safe_run(prerun_log 与 copy、check 的组合),以及 awk、wc、cut、tr、sort、uniq 的内联只读核对。
+       全部只读或写入合法目标(经 safe_run),未写仓库外路径。按 U172 归为表二,已披露。
+E8-55  规则待裁决(B 段映射 v3c 的结果,不是运行错误):U171 的 BP_LINE 第二条规则(stage_s4 的 .gdb/.py 只限文件名整词出现在三个 stage 目录或三个 registry 目录的文本中)
+       按字面包括注释行。registries/s4r7/LINEMAP_M3_R7.tsv 第 13 行是注释行,其中出现了 r6_plan14_caller.gdb 的文件名;
+       因此 stage_s4/r6_plan14_caller.gdb:26 与 :32 被计为 BP_LINE(S4/fmm/fmm_FFT.cpp:90 与 S4/fmm/fmm_kottke.cpp:94)。
+       若只计非注释行,这两站点应为 REGISTRY_ONLY 或 NO,计数会变化(BP_LINE 2 而非 4)。映射 v3c 按规则字面结果输出,不改规则,不重跑。
+       归为待用户裁决(见报告 B 段"待用户裁决")。E8-53 至 E8-55 不改任何已提交的映射结果。

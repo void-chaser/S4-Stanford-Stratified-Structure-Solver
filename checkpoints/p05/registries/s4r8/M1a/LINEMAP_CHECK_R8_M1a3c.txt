@@ -1,0 +1,32 @@
+# LINEMAP_CHECK_R8_M1a3c.txt -- item by item comparison with EXPECT_LINEMAP_R8_M1a3c.txt (written by map_f2_f3_r8m1a3c.py)
+MATCH	COUNT MISSING	expected=0	actual=0
+MATCH	COUNT AMBIGUOUS	expected=0	actual=0
+MATCH	COUNT MODIFIED_BY_FIX	expected=3	actual=3
+MATCH	COUNT SAME_LINE	expected=7	actual=7
+MATCH	COUNT SHIFTED	expected=21	actual=21
+MATCH	CHECK PARSER_SELFCHECK_BAD	expected=0	actual=0
+MATCH	CHECK DIFF_OFFSET_DISAGREE	expected=0	actual=0
+MATCH	USED_COUNT BP_LINE	expected=4	actual=4
+MATCH	USED_COUNT REGISTRY_ONLY	expected=26	actual=26
+MATCH	USED_COUNT NO	expected=1	actual=1
+MATCH	SITE S4/pattern/pattern.c:415	expected=F3 418 MODIFIED_BY_FIX shape_get_intersection_area_quad_st	actual=F3 418 MODIFIED_BY_FIX shape_get_intersection_area_quad_st
+MATCH	SITE S4/pattern/pattern.c:528	expected=F3 545 SHIFTED shape_get_intersection_area	actual=F3 545 SHIFTED shape_get_intersection_area
+MATCH	SITE S4/fmm/fmm_FFT.cpp:98	expected=F3 101 MODIFIED_BY_FIX FMMGetEpsilon_FFT	actual=F3 101 MODIFIED_BY_FIX FMMGetEpsilon_FFT
+MATCH	SITE S4/fmm/fmm_kottke.cpp:102	expected=F3 105 MODIFIED_BY_FIX FMMGetEpsilon_Kottke	actual=F3 105 MODIFIED_BY_FIX FMMGetEpsilon_Kottke
+MATCH	SITE S4/S4.cpp:2413	expected=F3 2422 SHIFTED Simulation_ComputeLayerModes	actual=F3 2422 SHIFTED Simulation_ComputeLayerModes
+MATCH	SITE S4/fmm/fmm_PolBasisJones.cpp:192	expected=F3 192 SAME_LINE FMMGetEpsilon_PolBasisJones	actual=F3 192 SAME_LINE FMMGetEpsilon_PolBasisJones
+MATCH	SITE S4/S4.cpp:4334	expected=F3 4343 SHIFTED S4_Simulation_GetFieldPlane	actual=F3 4343 SHIFTED S4_Simulation_GetFieldPlane
+MATCH	SITE S4/S4.cpp:4210	expected=F3 4219 SHIFTED S4_Simulation_GetFieldPlane	actual=F3 4219 SHIFTED S4_Simulation_GetFieldPlane
+MATCH	SITE S4/fmm/fmm_FFT.cpp:90	expected=F3 90 SAME_LINE FMMGetEpsilon_FFT	actual=F3 90 SAME_LINE FMMGetEpsilon_FFT
+MATCH	SITE S4/fmm/fmm_kottke.cpp:94	expected=F3 94 SAME_LINE FMMGetEpsilon_Kottke	actual=F3 94 SAME_LINE FMMGetEpsilon_Kottke
+MATCH	SITE testing/d003/stage_s4/driver_r6b_state.cpp:73	expected=F3 73 SAME_LINE r6_probe	actual=F3 73 SAME_LINE r6_probe
+MATCH	USED S4/S4.cpp:4334	expected=NO	actual=NO
+MATCH	USED S4/S4.cpp:2413	expected=BP_LINE	actual=BP_LINE
+MATCH	USED S4/fmm/fmm_PolBasisJones.cpp:192	expected=BP_LINE	actual=BP_LINE
+MATCH	USED S4/fmm/fmm_FFT.cpp:90	expected=BP_LINE	actual=BP_LINE
+MATCH	USED S4/fmm/fmm_kottke.cpp:94	expected=BP_LINE	actual=BP_LINE
+MATCH	SYMBOL Simulation_GetLayerSolution	expected=F2 1778 F3 1787 PRESENT	actual=F2 1778 F3 1787 PRESENT/PRESENT
+MATCH	SYMBOL Simulation_ComputeLayerModes	expected=F2 2250 F3 2259 PRESENT	actual=F2 2250 F3 2259 PRESENT/PRESENT
+MATCH	SYMBOL S4_Simulation_GetFieldPlane	expected=F2 4210 F3 4219 PRESENT	actual=F2 4210 F3 4219 PRESENT/PRESENT
+MATCH	SYMBOL r6_probe	expected=F2 73 F3 73 PRESENT	actual=F2 73 F3 73 PRESENT/PRESENT
+# MISMATCH count: 0

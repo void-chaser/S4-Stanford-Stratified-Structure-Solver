@@ -1,0 +1,35 @@
+status INFLUENCED
+# EXPECT_LINEMAP_R8_M1a3c.txt -- P05-S4 R8 M1a CONT2c section 5.1 (written before the map v3c run).
+# Source of the expectation: 续2c 任务书 U170、U171; v3 停止记录; 规划者只读模拟 (planner read-only simulation).  Status INFLUENCED.
+# Formats: COUNT <STATUS> <n>; CHECK PARSER_SELFCHECK_BAD <n>; CHECK DIFF_OFFSET_DISAGREE <n>; USED_COUNT <BP_LINE|REGISTRY_ONLY|NO> <n>;
+#          SITE <file> <F2 line> F3 <F3 line> <STATUS> <F3 function>; USED <file> <F2 line> <BP_LINE|REGISTRY_ONLY|NO>; SYMBOL <name> F2 <line> F3 <line> PRESENT
+COUNT MISSING 0
+COUNT AMBIGUOUS 0
+COUNT MODIFIED_BY_FIX 3
+COUNT SAME_LINE 7
+COUNT SHIFTED 21
+CHECK PARSER_SELFCHECK_BAD 0
+CHECK DIFF_OFFSET_DISAGREE 0
+USED_COUNT BP_LINE 4
+USED_COUNT REGISTRY_ONLY 26
+USED_COUNT NO 1
+SITE S4/pattern/pattern.c 415 F3 418 MODIFIED_BY_FIX shape_get_intersection_area_quad_st
+SITE S4/pattern/pattern.c 528 F3 545 SHIFTED shape_get_intersection_area
+SITE S4/fmm/fmm_FFT.cpp 98 F3 101 MODIFIED_BY_FIX FMMGetEpsilon_FFT
+SITE S4/fmm/fmm_kottke.cpp 102 F3 105 MODIFIED_BY_FIX FMMGetEpsilon_Kottke
+SITE S4/S4.cpp 2413 F3 2422 SHIFTED Simulation_ComputeLayerModes
+SITE S4/fmm/fmm_PolBasisJones.cpp 192 F3 192 SAME_LINE FMMGetEpsilon_PolBasisJones
+SITE S4/S4.cpp 4334 F3 4343 SHIFTED S4_Simulation_GetFieldPlane
+SITE S4/S4.cpp 4210 F3 4219 SHIFTED S4_Simulation_GetFieldPlane
+SITE S4/fmm/fmm_FFT.cpp 90 F3 90 SAME_LINE FMMGetEpsilon_FFT
+SITE S4/fmm/fmm_kottke.cpp 94 F3 94 SAME_LINE FMMGetEpsilon_Kottke
+SITE testing/d003/stage_s4/driver_r6b_state.cpp 73 F3 73 SAME_LINE r6_probe
+USED S4/S4.cpp 4334 NO
+USED S4/S4.cpp 2413 BP_LINE
+USED S4/fmm/fmm_PolBasisJones.cpp 192 BP_LINE
+USED S4/fmm/fmm_FFT.cpp 90 BP_LINE
+USED S4/fmm/fmm_kottke.cpp 94 BP_LINE
+SYMBOL Simulation_GetLayerSolution F2 1778 F3 1787 PRESENT
+SYMBOL Simulation_ComputeLayerModes F2 2250 F3 2259 PRESENT
+SYMBOL S4_Simulation_GetFieldPlane F2 4210 F3 4219 PRESENT
+SYMBOL r6_probe F2 73 F3 73 PRESENT
