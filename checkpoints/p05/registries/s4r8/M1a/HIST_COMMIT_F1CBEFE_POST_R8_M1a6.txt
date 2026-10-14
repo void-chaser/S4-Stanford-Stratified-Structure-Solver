@@ -1,0 +1,50 @@
+# HIST_COMMIT_F1CBEFE_POST_R8_M1a6.txt
+# Note: Old round FAILS=2 gate end snapshot exists in HIST_GATE_R8_M1a5_END_R8_M1a6.txt.
+# Note: Worktree state at current round start is NOT identical to post-commit state of f1cbefe.
+# Historical clean post state is recorded in checkpoints/p05/evidence/p05-s4r8/m1a5/FINAL_GIT_R8_M1a5.txt.
+
+## git show --stat f1cbefe84001c5957532133377f77d1d003e48c6
+commit f1cbefe84001c5957532133377f77d1d003e48c6
+Author: Ziyang Li <155395920+void-chaser@users.noreply.github.com>
+Date:   Wed Oct 14 21:55:46 2026 +1100
+
+    P05-S4 R8 M1a cont3b1: audit3 accepted (U192), STATE compacted, E8-68/E8-69, M1b/M1c formal pre-registration and counts (no runs); awaiting user review
+
+ checkpoints/p05/P05_S4R8_REPORT_M1a_CONT3b1.md     | 156 +++++++++++++
+ checkpoints/p05/STATE.md                           |  10 +-
+ .../p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1.md       | 122 ++++++++++
+ checkpoints/p05/registries/RULINGS.tsv             |   6 +
+ checkpoints/p05/registries/s4r8/ERRATA_8.txt       |   9 +
+ .../s4r8/M1a/FINAL_GIT_R8_M1a4AUDIT3_POST.txt      |  23 ++
+ .../p05/registries/s4r8/M1a/GATE_R8_M1a5_START.txt |  34 +++
+ .../s4r8/M1a/K_SOURCE_PLANCALL58_R8_M1a5.tsv       |  59 +++++
+ .../registries/s4r8/M1a/PREREG_COUNTS_R8_M1a5.tsv  |   9 +
+ .../registries/s4r8/M1a/PREREG_INPUTS_R8_M1a5.tsv  |  35 +++
+ .../registries/s4r8/M1a/PREREG_STOP_R8_M1a5.tsv    |   3 +
+ .../p05/registries/s4r8/M1a/SHA256SUMS_M1a5.txt    |   7 +
+ .../registries/s4r8/M1a/STATE_HISTORY_R8_M1a5.md   |  75 +++++++
+ .../p05/registries/s4r8/M1a/SURVEY_R8_M1a5.txt     |  25 +++
+ testing/d003/stage_s4r8/append_r8m1a5.sh           |  43 ++++
+ testing/d003/stage_s4r8/check_facts_r8m1a5.py      | 107 +++++++++
+ testing/d003/stage_s4r8/commit_rec_r8m1a5.sh       |  49 ++++
+ testing/d003/stage_s4r8/compact_state_r8m1a5.py    |  47 ++++
+ testing/d003/stage_s4r8/copy_m1a5.sh               |  26 +++
+ testing/d003/stage_s4r8/final_git_r8m1a5.sh        |  24 ++
+ testing/d003/stage_s4r8/gate12_r8m1a5.sh           | 185 +++++++++++++++
+ testing/d003/stage_s4r8/gate_allow_r8m1a5_end.txt  |  11 +
+ .../d003/stage_s4r8/gate_allow_r8m1a5_start.txt    |   4 +
+ testing/d003/stage_s4r8/make_prereg_r8m1a5.py      | 250 +++++++++++++++++++++
+ testing/d003/stage_s4r8/manifest_r8m1a5.sh         |  20 ++
+ testing/d003/stage_s4r8/report_facts_r8m1a5.py     |  35 +++
+ testing/d003/stage_s4r8/state_history_r8m1a5.sh    |  27 +++
+ testing/d003/stage_s4r8/survey_r8m1a5.py           |  86 +++++++
+ 28 files changed, 1484 insertions(+), 3 deletions(-)
+
+## Historical FINAL_GIT_R8_M1a5.txt content
+# git record (POST), utc=2026-10-14T10:55:50Z
+## git log -3 --oneline
+f1cbefe P05-S4 R8 M1a cont3b1: audit3 accepted (U192), STATE compacted, E8-68/E8-69, M1b/M1c formal pre-registration and counts (no runs); awaiting user review
+abf3e42 P05-S4 R8 M1a cont3a audit part3: U188-U191 applied (plan N by nth-call malloc count, 44 EXPECTED_NOT_REACHED; G5-F2 K from agreed history, 119 REACHED; tracer gap 0, rerun prereg WITHDRAWN, not executed; 18 drivers symbol-checked; K0 EVIDENCE_INSUFFICIENT to M1b); awaiting user review
+2a08aa5 P05-S4 R8 M1a cont3a audit part2: stop record (no-injection checks; rerun gap pre-registered, not executed; K0 INFLUENCED, EVIDENCE_INSUFFICIENT; 44 INVALID rows and 119 G5-F2 rows open for ruling); awaiting user review
+## git status --short
+## end

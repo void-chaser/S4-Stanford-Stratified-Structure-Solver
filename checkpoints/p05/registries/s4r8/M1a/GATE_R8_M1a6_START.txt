@@ -1,0 +1,34 @@
+# P05-S4 R8 M1a CONT3b1 fix gate13 (startA) -> GATE_R8_M1a6_START.txt, utc=2026-10-14T11:10:50Z
+PASS	BRANCH	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_IS_BASE	expected=f1cbefe84001c5957532133377f77d1d003e48c6	actual=f1cbefe84001c5957532133377f77d1d003e48c6
+PASS	HEAD_PARENT_IS_ABF3E42	expected=abf3e420f5ba3600e079ecf213612bc1fc2a0aad	actual=abf3e420f5ba3600e079ecf213612bc1fc2a0aad
+RECORD	HEAD	value=f1cbefe84001c5957532133377f77d1d003e48c6
+RECORD	HEAD_PARENT	value=abf3e420f5ba3600e079ecf213612bc1fc2a0aad
+RECORD	START_MODE	value=startA
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+RECORD	ALLOW_START_SHA256	value=c0c5793b6ba9d5b1a59d0d3e9ee54cdff5709daf0ca036e421a3190b157e00df
+RECORD	ALLOW_END_SHA256	value=b9a4aacb176d64e25fc1720be629f71b276ff5bf0adeda1903eabbccce07ba90
+PASS	ALLOW_START_LINES	expected=4	actual=4
+PASS	TRACKED_TESTING_D003_WORKTREE_NONE	expected=	actual=
+PASS	STATUS_START_EQ_ALLOW_START	expected=?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1_FIX.md;?? testing/d003/stage_s4r8/gate13_r8m1a6.sh;?? testing/d003/stage_s4r8/gate_allow_r8m1a6_end.txt;?? testing/d003/stage_s4r8/gate_allow_r8m1a6_start.txt	actual=?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1_FIX.md;?? testing/d003/stage_s4r8/gate13_r8m1a6.sh;?? testing/d003/stage_s4r8/gate_allow_r8m1a6_end.txt;?? testing/d003/stage_s4r8/gate_allow_r8m1a6_start.txt
+RECORD	STATUS_START	value=?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1_FIX.md
+RECORD	STATUS_START	value=?? testing/d003/stage_s4r8/gate13_r8m1a6.sh
+RECORD	STATUS_START	value=?? testing/d003/stage_s4r8/gate_allow_r8m1a6_end.txt
+RECORD	STATUS_START	value=?? testing/d003/stage_s4r8/gate_allow_r8m1a6_start.txt
+PASS	RULINGS_LINES_NOT_5_FIELDS	expected=0	actual=0
+PASS	RULINGS_HEAD_BLOB_EQ_WORKTREE	expected=b20a0690eb60453e61c8e9e95d936fe3cd885bc3fb7aebb9eae300760e4831a7	actual=b20a0690eb60453e61c8e9e95d936fe3cd885bc3fb7aebb9eae300760e4831a7
+PASS	ERRATA_8_HEAD_BLOB_EQ_WORKTREE	expected=18e94dd432d783ca88727c81c8cc941bd16c3693b879c17dcb03874f4c4c05ca	actual=18e94dd432d783ca88727c81c8cc941bd16c3693b879c17dcb03874f4c4c05ca
+PASS	RULINGS_BYTES_START_A	expected=75328	actual=75328
+PASS	ERRATA_8_BYTES_START_A	expected=56089	actual=56089
+PASS	RULINGS_U198_TO_U201_ROWS_NOT_YET	expected=0	actual=0
+PASS	ERRATA_E8_70_AND_FOLLOWING_NOT_YET	expected=0	actual=0
+RECORD	RULINGS_BYTES	value=75328
+RECORD	RULINGS_SHA256	value=b20a0690eb60453e61c8e9e95d936fe3cd885bc3fb7aebb9eae300760e4831a7
+RECORD	ERRATA_8_BYTES	value=56089
+RECORD	ERRATA_8_SHA256	value=18e94dd432d783ca88727c81c8cc941bd16c3693b879c17dcb03874f4c4c05ca
+RECORD	TMP_COUNT_START	value=0
+RECORD	TMP_SHA256_START	value=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=0

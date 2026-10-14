@@ -1,0 +1,4 @@
+# PREREG_RECORD_R8_M1a6.txt -- frozen preregistration record
+record_utc	2026-10-14T11:33:03Z
+registry_m1b	REGISTRY_S4_PRE_R8_M1b_R8_M1a6.tsv	sha256=66696e831b18a98c1bad30903a45a39e525b6b1c0f9563b01b0f135f343829e2	bytes=264018
+registry_m1c	REGISTRY_S4_PRE_R8_M1c_R8_M1a6.tsv	sha256=e1e555ee4ca20421b6e5681e18be6cd1b873fc7cff06d246c01fad65d8d3a562	bytes=142136

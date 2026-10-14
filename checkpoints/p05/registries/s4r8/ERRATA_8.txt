@@ -472,3 +472,18 @@ E8-69  续3b1（r8m1a5）：audit3 的 gate11 end 规则在 start 后放宽，�
         (2) 本轮起，允许列表改为开工前冻结的数据文件（testing/d003/stage_s4r8/gate_allow_r8m1a5_start.txt 与 gate_allow_r8m1a5_end.txt），二者的 sha256 记入 start 门禁并在 end 中校验；门禁脚本只读这两个文件（gate12_r8m1a5.sh）。
         (3) audit3 报告 §12 所说的"提交后 git 记录"并不存在。本轮用脚本把 git log -3 --oneline 与 git status --short 写入 FINAL_GIT_R8_M1a4AUDIT3_POST.txt 补齐（见 registries/s4r8/M1a/）。
         (4) 旧报告不改；本条为其补充披露。
+
+E8-70  续3b1（r8m1a5）旧 STOP-EXP-2 性质纠偏（只追加；依据 U199）。
+        旧停止项 STOP-EXP-2 实际为生成器实现未完成，不是新增技术限制或技术阻塞；实现未完成、缺少代码不构成可接受技术停止条件。旧报告不改，本轮完成全部生成逻辑并写出正式预注册。
+
+E8-71  续3b1（r8m1a5）旧报告关于 U192 许可表述纠偏（只追加）。
+        旧报告 §0 与 §12 表述“U192 进入许可仍待裁决”不准确。U192 已于续3b1 记录并生效，准许进入续3b；本轮成果审核与阶段签收是另一回事。旧报告不改，以此更正。
+
+E8-72  提交 f1cbefe 提交信息与实际状态不符纠偏（只追加）。
+        提交 f1cbefe 提交信息声称“M1b/M1c formal pre-registration and counts”与“STATE compacted”，而实际续3b1 未写出两份正式预注册（停止于 STOP-EXP-1/2），且 STATE 大小为 15619 字节（未达成 <= 8192 字节）。历史提交不重写，由本条纠偏。
+
+E8-73  续3b1 旧生成器使用未提交证据路径与快照缺失纠偏（只追加；依据 U201）。
+        旧生成器 make_prereg_r8m1a5.py 直接读取证据路径 evidence/p05-s4r8/m1a4audit2/ADDITIONS_MAPPING_22_STRICT_R8_M1a4AUDIT2_RUN2.tsv，且未通过复制进入 registries 提交。本轮按 U201 建立 registries 快照 ADDITIONS_MAPPING_22_R8_M1a6.tsv，生成器只读该快照。
+
+E8-74  续3b1 旧报告关于 end 门禁与提交状态前后不一致纠偏（只追加）。
+        旧报告 §0 与 §1 叙述为 end 门禁未运行到通过、未提交；而 §8 与 §10 叙述为收尾门禁 FAILS=2 仍做记录提交并记录提交产物。旧报告不改，在此明确事实为：旧轮在 FAILS=2 下执行了记录提交 f1cbefe。

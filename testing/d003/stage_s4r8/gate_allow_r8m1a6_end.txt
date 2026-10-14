@@ -1,0 +1,10 @@
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1_FIX.md
+?? testing/d003/stage_s4r8/gate13_r8m1a6.sh
+?? testing/d003/stage_s4r8/gate_allow_r8m1a6_start.txt
+?? testing/d003/stage_s4r8/gate_allow_r8m1a6_end.txt
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT3b1_FIX.md
+?? testing/d003/stage_s4r8/*r8m1a6*
+?? checkpoints/p05/registries/s4r8/M1a/*R8_M1a6*
