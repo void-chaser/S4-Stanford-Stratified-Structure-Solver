@@ -1,0 +1,23 @@
+# git record (PRE), utc=2026-10-14T10:53:04Z
+## git log -3 --oneline
+abf3e42 P05-S4 R8 M1a cont3a audit part3: U188-U191 applied (plan N by nth-call malloc count, 44 EXPECTED_NOT_REACHED; G5-F2 K from agreed history, 119 REACHED; tracer gap 0, rerun prereg WITHDRAWN, not executed; 18 drivers symbol-checked; K0 EVIDENCE_INSUFFICIENT to M1b); awaiting user review
+2a08aa5 P05-S4 R8 M1a cont3a audit part2: stop record (no-injection checks; rerun gap pre-registered, not executed; K0 INFLUENCED, EVIDENCE_INSUFFICIENT; 44 INVALID rows and 119 G5-F2 rows open for ruling); awaiting user review
+86ba3a2 P05-S4 R8 M1a cont3a audit part1 stop record (as-is) + rulings U183-U187 + E8-66; awaiting user review
+## git status --short
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT3b1.md
+?? checkpoints/p05/registries/s4r8/M1a/STATE_HISTORY_R8_M1a5.md
+?? testing/d003/stage_s4r8/append_r8m1a5.sh
+?? testing/d003/stage_s4r8/check_facts_r8m1a5.py
+?? testing/d003/stage_s4r8/compact_state_r8m1a5.py
+?? testing/d003/stage_s4r8/final_git_r8m1a5.sh
+?? testing/d003/stage_s4r8/gate12_r8m1a5.sh
+?? testing/d003/stage_s4r8/gate_allow_r8m1a5_end.txt
+?? testing/d003/stage_s4r8/gate_allow_r8m1a5_start.txt
+?? testing/d003/stage_s4r8/make_prereg_r8m1a5.py
+?? testing/d003/stage_s4r8/manifest_r8m1a5.sh
+?? testing/d003/stage_s4r8/state_history_r8m1a5.sh
+?? testing/d003/stage_s4r8/survey_r8m1a5.py
+## end

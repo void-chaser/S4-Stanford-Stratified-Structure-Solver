@@ -1,0 +1,25 @@
+# survey_r8m1a5 (read-only).  Input tables and counts for the CONT3b1 pre-registration.
+REG_M1	rows=108	sha256=db52957355afadf6fe66f0de6562832a536ed400738237c24ada2e6c8cf53cf3	cols=point_id,group,tree,mode,NG,M,request,first_expected_class,expected_class,expected_win1_rc,basis,status
+REG_M2	rows=554	sha256=e4dd2c8779887f57044253a7e1674923a0fb34a0c6fcd437459572ae8d92ba2c	cols=point_id,group,tree,mode,NG,M,nth,route,request,inj_call,expected_class,expected_rc,basis,status
+REG_M2_ADD_v3	rows=414	sha256=6474dd7645e97fc806815ee79ac2ae2ece0412ca5e177d195a88804ea587837c	cols=point_id,tree,group,expected_class,request,nth,route,twice_env,inj_call,ng,stack,inj_call_source
+REG_M2_CTRL_SEAM	rows=4	sha256=f473c98ae25d2f45a50a6c7541334a82ff68df8c228f01510745fade0f234784	cols=point_id,driver,tree,mode,NG,request,inj_call,expected_class,expected_source,status
+REG_M3	rows=440	sha256=cc84caf2b1bf41e31d70b16c5a7c970d7f44d8c73646e5b67e1fc25494d9b957	cols=group,point_id,tree,library,mode,route,request,inj_call,k_before,k_fail,k_preretry,k_retry,retry_call,applicable_invariants,expected,status,source_file
+REQ_TARGETS_AUDIT3	rows=1128	sha256=135c7207cc0f49cefd2adf8c4fbd0164007df11f3a79f64ce32cff3ae7c21649	cols=source_registry,source_row,point_id,group,source_tree,mode,NG,route,request_raw,kind,canonical_target,K,M,site_id,unit_id,old_reach_status,audit2_status,status,k_source,detail
+CALLSEQ_F2_F3_R2	rows=99	sha256=664fbb8b1edb0c97d1873312920a7333151200bd496419ceb36a818de3acedc6	cols=pair_id,unit_f2,unit_f3,driver_family,mode,ng,route,twice_env,events_f2,events_f3,status,note
+ADD_MAP_22_RUN2	MISSING	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_STRICT_R8_M1a4AUDIT2_RUN2.tsv
+DRIVERS_R8_M1a	rows=33	sha256=2b7c14462799bf383c0642e9c7d65fe173efc7725149aa525a55cf8bd705e84e	cols=driver,tree,mode,lib_sha256,driver_sha256,lib_path,driver_path,link_script,history_compare,history_note
+DRIVERS_F2_REUSED	rows=18	sha256=542c8e77b5fcb997f07ba17682070d349453b1b62226fbb2407ac3bed6c8205d	cols=driver,path,sha256_now,sha256_record,verdict,record_source
+K_SOURCE_G5F2	rows=177	sha256=e3f5103eb42f3ef65b5bd77f74c3d10b34cefb6329ae1755864116727517c346	cols=point_id,status,K,detail
+REG_S3R4C2_A	rows=18	sha256=3f08fd8b86d2a5164b272cf3881729b3fbda04dca52e7b8d96dd64c586e5845d	cols=combo,mode,NG,tree,point_id,inj_spec,k_index,expected_rc1,expected_class,expected_side_rc2,note,status
+REG_S3R4C2_C_POLY	rows=33	sha256=4513c8cdfaa7cb732f0e72306321d2ec87f689400e2c4d658cca100fe97cca2e	cols=combo_id,mode,NG,lattice,driver,injection,expected_dump_F2_vs_F3,expected_rc_F2_vs_F3,status
+REG_S3R4C3_A_CTRL	rows=6	sha256=8a300b93a5589580df0644ccffcbbefe7dc00e646a938bcab5a8005dbfbd9727	cols=combo,mode,NG,tree,point_id,inj_spec,expected_class,expected_rc1,status
+REG_S3R4C3_B	rows=24	sha256=20ba91255d673524dc76be352c461741fcb975417277f6d74bb8d7e70028bdc9	cols=combo,mode,NG,tree,point_id,inj_spec,mfirst,mtot,n_expected,expected_rc1,expected_class,expected_side_rc2,note,status
+RESULTS_M1_REJUDGE	rows=36	sha256=3bd05a4afd5fe7f2a0ecb3450405ab3625e85b22925fff68404cb0b08127e781	cols=point_id,mode,NG,registered_string,pass,obs_rc_first,obs_rc_retry,obs_run_rc,hit,label,match_to_registry
+GROUP M1	rows_p1=108	rows_p2=108	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G1	rows_p1=298	rows_p2=298	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G2a	rows_p1=50	rows_p2=50	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G2b	rows_p1=44	rows_p2=44	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G2c	rows_p1=60	rows_p2=60	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G3	rows_p1=72	rows_p2=72	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP G4	rows_p1=24	rows_p2=24	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0
+GROUP CTRL_SEAM	rows_p1=4	rows_p2=4	same_order=True	class_or_rc1_diff=0	dup_ids_p1=0

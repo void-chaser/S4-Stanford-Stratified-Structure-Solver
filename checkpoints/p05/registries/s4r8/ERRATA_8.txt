@@ -463,3 +463,12 @@ E8-67  续3a 审核修正第三部分（r8m1a4audit3）：更正 audit2 报告 �
         (4) audit2 §9 第 1 项"历史 R3 类别是否仍有效，或以本轮计数为准"已由本条解决：历史类别与正确计数一致，无冲突。STATE 待裁决项 (a) 改为"已按 U188 更正为 EXPECTED_NOT_REACHED（E8-67）"。
         (5) 同一更正适用于 audit2 的 REQUEST_TARGETS_R8_M1a4AUDIT2_RUN3.tsv：其中 44 行 NOW_REACHED_WAS_NOT_REACHED 不再是冲突，而是 EXPECTED_NOT_REACHED。audit2 文件保留不改；audit3 的分类表 REQUEST_TARGETS_R8_M1a4AUDIT3.tsv 给出新结论。
         (6) audit2 报告 §4.4 与 §9 第 2 项（119 行 G5-F2 裸请求无历史 K）：按 U189 已由 K 来源表补 K（两遍一致 119 点），audit2 的 EVIDENCE_INSUFFICIENT 在 audit3 中改判为 REACHED，依据见 audit3 报告，不在本条内改写 audit2 报告。
+
+E8-68  续3b1（r8m1a5）补写：STATE 引用的 E8-68 正文（只追加）。
+        内容：audit2 阶段 B 记录提交脚本 commit_rec_r8m1a4audit2_B.sh 的清单缺少脚本自身，且该脚本在 audit2 中未执行。audit3（r8m1a4audit3）在开工时把该脚本加入清单后执行，得到提交 2a08aa5（HEAD^ = 86ba3a2）。这是存量记录提交，不是 audit3 的新工作。依据：audit3 报告 §8.1。
+
+E8-69  续3b1（r8m1a5）：audit3 的 gate11 end 规则在 start 后放宽，已披露（只追加；依据 U194）。
+        (1) audit3 的 gate11_r8m1a4audit3.sh 在 start 之后放宽了 end 规则：允许 start 中已有的行、三个活文件（前缀校验）以及名字含 AUDIT3/audit3/m1a4audit3 的未跟踪本轮文件。该放宽在 start 之后、end 之前作出，已记入 audit3 报告 §1.3。
+        (2) 本轮起，允许列表改为开工前冻结的数据文件（testing/d003/stage_s4r8/gate_allow_r8m1a5_start.txt 与 gate_allow_r8m1a5_end.txt），二者的 sha256 记入 start 门禁并在 end 中校验；门禁脚本只读这两个文件（gate12_r8m1a5.sh）。
+        (3) audit3 报告 §12 所说的"提交后 git 记录"并不存在。本轮用脚本把 git log -3 --oneline 与 git status --short 写入 FINAL_GIT_R8_M1a4AUDIT3_POST.txt 补齐（见 registries/s4r8/M1a/）。
+        (4) 旧报告不改；本条为其补充披露。

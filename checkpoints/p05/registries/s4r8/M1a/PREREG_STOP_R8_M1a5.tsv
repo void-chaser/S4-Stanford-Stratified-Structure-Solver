@@ -1,0 +1,3 @@
+stage	item	reason
+EXP	STOP-EXP-1	U139(c) defines expectations only for CONTROL_OK; BASELINE_RC_EQUAL points M1-CTRL-F2-fftvl-ng1,M1-CTRL-F2-vl-ng1 have no expected class under the rulings; not written, awaiting ruling (brief 7, 'expectation cannot be determined')
+EXP	STOP-EXP-2	REGISTRY_S4_PRE_R8_M1b.tsv and REGISTRY_S4_PRE_R8_M1c.tsv are not written: this version computes the counts and the mandatory checks only; the expectation generator (U139a-e, U197) is not implemented here, so no formal pre-registration exists in this round (brief 5, 7)
