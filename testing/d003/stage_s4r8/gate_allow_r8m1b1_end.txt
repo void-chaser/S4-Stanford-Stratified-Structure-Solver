@@ -1,0 +1,21 @@
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_M1B1_REPORT.md
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/ANOMALIES_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/CONSISTENCY_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/COVERAGE_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/F2_F3_DIFF_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/GATE_R8_M1b1_END.txt
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/GATE_R8_M1b1_START.txt
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/PLAN_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/RESULTS_M1B_R8_M1b1.tsv
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/SHA256SUMS.txt
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b1/VERDICT_M1B_R8_M1b1.tsv
+?? testing/d003/stage_s4r8/copy_registries_r8m1b1.sh
+?? testing/d003/stage_s4r8/gate14_check_r8m1b1.py
+?? testing/d003/stage_s4r8/gate14_r8m1b1.sh
+?? testing/d003/stage_s4r8/gate_allow_r8m1b1_end.txt
+?? testing/d003/stage_s4r8/gate_allow_r8m1b1_start.txt
+?? testing/d003/stage_s4r8/plan_and_run_m1b_r8m1b1.py
+?? testing/d003/stage_s4r8/summarize_m1b_r8m1b1.py
