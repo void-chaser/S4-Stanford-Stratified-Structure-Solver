@@ -1,0 +1,23 @@
+row	item	tree	point_or_combo	injection	expected_class	expected_rc1	section	mapped_combo	status	detail
+1	A-806	F3	closed2d-ng1	win:1	REPORTED_FAILURE	1	A	closed2d-ng1	MAPPING_VERIFIED_STRICT	closed2d-ng1=MATCH
+2	A-806	F3	fft-ng5	win:1	REPORTED_FAILURE	1	A	fft-ng5	MAPPING_VERIFIED_STRICT	fft-ng5=MATCH
+3	A-806	F3	kottke-ng5	win:1	REPORTED_FAILURE	1	A	kottke-ng5	MAPPING_VERIFIED_STRICT	kottke-ng5=MATCH
+4	A-1729	F3	closed2d-ng1	init:7	REPORTED_FAILURE	1	A	closed2d-ng1	MAPPING_VERIFIED_STRICT	closed2d-ng1=MATCH
+5	A-1729	F3	fft-ng5	init:8	REPORTED_FAILURE	1	A	fft-ng5	MAPPING_VERIFIED_STRICT	fft-ng5=MATCH
+6	A-1729	F3	kottke-ng5	init:8	REPORTED_FAILURE	1	A	kottke-ng5	MAPPING_VERIFIED_STRICT	kottke-ng5=MATCH
+7	A-U96	F3	closed2d-ng1	init:6	SILENT_SWALLOW	0	A	closed2d-ng1	NOT_VERIFIED_K0	closed2d-ng1=MATCH; closed2d-ng1=K0_STATUS:EVIDENCE_INSUFFICIENT
+8	A-U96	F3	fft-ng5	init:7	SILENT_SWALLOW	0	A	fft-ng5	NOT_VERIFIED_K0	fft-ng5=MATCH; fft-ng5=K0_STATUS:EVIDENCE_INSUFFICIENT
+9	A-U96	F3	kottke-ng5	init:7	SILENT_SWALLOW	0	A	kottke-ng5	NOT_VERIFIED_K0	kottke-ng5=MATCH; kottke-ng5=K0_STATUS:EVIDENCE_INSUFFICIENT
+10	A-control	F3	closed2d-ng1|fft-ng5|kottke-ng5	none	CONTROL_OK	0	A	closed2d-ng1|fft-ng5|kottke-ng5	MAPPING_VERIFIED_STRICT	closed2d-ng1=MATCH; fft-ng5=MATCH; kottke-ng5=MATCH
+11	B-415	F3	fft-ng1	win:1	REPORTED_FAILURE	20	B	fft-ng1	NOT_VERIFIED_OTHER	fft-ng1=FIELD_MISSING:gdb_rc
+12	B-415	F3	fft-ng5	win:1	REPORTED_FAILURE	20	B	fft-ng5	NOT_VERIFIED_OTHER	fft-ng5=FIELD_MISSING:gdb_rc
+13	B-415	F3	fft-ng5	win:64	REPORTED_FAILURE	20	B	fft-ng5	NOT_VERIFIED_OTHER	fft-ng5=FIELD_MISSING:gdb_rc
+14	B-415	F3	fft-ng9	win:1	REPORTED_FAILURE	20	B	fft-ng9	NOT_VERIFIED_OTHER	fft-ng9=FIELD_MISSING:gdb_rc
+15	B-415	F3	fft-ng9	win:64	REPORTED_FAILURE	20	B	fft-ng9	NOT_VERIFIED_OTHER	fft-ng9=FIELD_MISSING:gdb_rc
+16	B-415	F3	kottke-ng1	win:1	REPORTED_FAILURE	20	B	kottke-ng1	NOT_VERIFIED_OTHER	kottke-ng1=FIELD_MISSING:gdb_rc
+17	B-415	F3	kottke-ng1	win:64	REPORTED_FAILURE	20	B	kottke-ng1	NOT_VERIFIED_OTHER	kottke-ng1=FIELD_MISSING:gdb_rc
+18	B-415	F3	kottke-ng5	win:1	REPORTED_FAILURE	20	B	kottke-ng5	NOT_VERIFIED_OTHER	kottke-ng5=FIELD_MISSING:gdb_rc
+19	B-415	F3	kottke-ng5	win:64	REPORTED_FAILURE	20	B	kottke-ng5	NOT_VERIFIED_OTHER	kottke-ng5=FIELD_MISSING:gdb_rc
+20	B-415	F3	kottke-ng9	win:1	REPORTED_FAILURE	20	B	kottke-ng9	NOT_VERIFIED_OTHER	kottke-ng9=FIELD_MISSING:gdb_rc
+21	B-415	F3	kottke-ng9	win:64	REPORTED_FAILURE	20	B	kottke-ng9	NOT_VERIFIED_OTHER	kottke-ng9=FIELD_MISSING:gdb_rc
+22	B-control	F3	fft/kottke x NG1,5,9	none	CONTROL_OK	0	B	fft/kottke x NG1,5,9	NOT_VERIFIED_OTHER	fft-ng1=FIELD_MISSING:gdb_rc; fft-ng5=FIELD_MISSING:gdb_rc; fft-ng9=FIELD_MISSING:gdb_rc; kottke-ng1=FIELD_MISSING:gdb_rc; kottke-ng5=FIELD_MISSING:gdb_rc; kottke-ng9=FIELD_MISSING:gdb_rc

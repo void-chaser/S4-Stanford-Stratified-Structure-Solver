@@ -1,0 +1,24 @@
+# breakpoint address of each tracer symbol under gdb (no run)
+ADDR __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i locations=1 pending=False address=0x5551
+ADDR __wrap_malloc locations=1 pending=False address=0x41ed
+ADDR __wrap__Z9S4_mallocm locations=1 pending=False address=0x5230
+ADDR __wrap__Z13fft_plan_execP12tag_fft_plan locations=1 pending=False address=0x5607
+ADDR __wrap_Pattern_GenerateFlowField locations=0 pending=True address=NONE
+ADDR S4_TEST_ALLOC_HOOK locations=1 pending=False address=0x52a2
+ADDR S4_TEST_KOTTKE_HOOK locations=1 pending=False address=0x5406
+ADDR S4_TEST_FMMRET_AFTER locations=1 pending=False address=0x4c84
+ADDR S4_TEST_LINEARSOLVE_AFTER locations=1 pending=False address=0x42e8
+ADDR S4_TEST_LINEARSOLVE_NULLINFO2_AFTER locations=1 pending=False address=0x47c4
+ADDR S4_TEST_ADDFIELD_AFTER locations=1 pending=False address=0x508e
+# readelf st_value of the same names (function entry)
+ENTRY __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i st_value=0x0000000000005551
+ENTRY __wrap_malloc st_value=0x00000000000041ed
+ENTRY __wrap__Z9S4_mallocm st_value=0x0000000000005230
+ENTRY __wrap__Z13fft_plan_execP12tag_fft_plan st_value=0x0000000000005607
+ENTRY __wrap_Pattern_GenerateFlowField not-found
+ENTRY S4_TEST_ALLOC_HOOK st_value=0x00000000000052a2
+ENTRY S4_TEST_KOTTKE_HOOK st_value=0x0000000000005406
+ENTRY S4_TEST_FMMRET_AFTER st_value=0x0000000000004c84
+ENTRY S4_TEST_LINEARSOLVE_AFTER st_value=0x00000000000042e8
+ENTRY S4_TEST_LINEARSOLVE_NULLINFO2_AFTER st_value=0x00000000000047c4
+ENTRY S4_TEST_ADDFIELD_AFTER st_value=0x000000000000508e

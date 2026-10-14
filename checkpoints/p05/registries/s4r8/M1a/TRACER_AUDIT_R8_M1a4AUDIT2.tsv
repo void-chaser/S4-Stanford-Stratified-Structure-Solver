@@ -1,0 +1,1129 @@
+unit_id	check	status	detail
+U0001	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0001	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0001	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0001	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0001	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0001	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0002	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0002	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0002	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0002	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0002	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0002	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0003	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0003	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0003	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0003	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0003	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0003	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0004	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0004	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0004	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0004	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0004	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0004	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0005	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0005	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0005	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0005	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0005	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0005	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0006	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0006	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0006	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0006	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0006	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0006	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0007	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0007	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0007	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0007	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0007	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0008	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0008	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0008	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0008	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0008	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0009	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0009	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0009	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0009	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0009	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0010	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0010	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0010	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0010	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0010	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0011	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0011	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0011	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0011	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0011	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0012	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0012	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0012	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0012	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0012	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0013	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0013	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0013	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0013	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0013	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0014	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0014	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0014	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0014	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0014	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0015	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0015	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0015	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0015	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0015	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0016	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0016	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0016	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0016	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0016	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0017	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0017	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0017	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0017	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0017	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0017	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0018	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0018	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0018	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0018	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0018	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0018	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0019	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0019	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0019	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0019	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0019	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0019	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0020	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0020	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0020	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0020	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0020	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0020	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0021	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0021	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0021	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0021	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0021	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0021	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0022	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0022	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0022	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0022	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0022	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0022	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0023	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0023	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0023	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0023	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0023	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0024	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0024	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0024	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0024	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0024	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0025	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0025	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0025	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0025	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0025	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0026	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0026	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0026	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0026	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0026	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0027	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0027	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0027	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0027	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0027	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0028	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0028	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0028	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0028	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0028	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0029	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0029	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0029	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0029	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0029	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0030	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0030	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0030	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0030	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0030	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0031	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0031	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0031	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0031	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0031	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0032	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0032	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0032	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0032	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0032	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0033	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0033	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0033	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0033	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0033	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0033	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0034	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0034	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0034	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0034	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0034	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0034	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0035	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0035	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0035	T3_REQUIRED_SYMBOLS	PASS	required=kottke_alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0035	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0035	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0035	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0036	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0036	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0036	T3_REQUIRED_SYMBOLS	PASS	required=kottke_alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0036	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0036	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0036	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0037	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0037	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0037	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0037	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0037	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0037	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0038	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0038	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0038	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0038	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0038	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0038	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0039	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0039	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0039	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0039	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0039	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0039	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0040	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0040	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0040	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0040	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0040	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0040	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0041	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0041	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0041	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0041	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0041	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0041	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0042	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0042	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0042	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0042	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0042	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0042	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0043	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0043	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0043	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0043	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0043	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0043	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0044	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0044	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0044	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0044	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0044	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0044	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0045	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0045	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0045	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0045	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0045	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0045	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0046	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0046	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0046	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0046	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0046	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0046	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0047	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0047	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0047	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0047	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0047	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0047	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0048	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0048	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0048	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0048	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0048	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0048	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0049	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0049	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0049	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0049	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0049	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0049	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0050	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0050	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0050	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0050	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0050	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0050	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0051	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0051	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0051	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0051	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0051	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0051	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0052	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0052	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0052	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0052	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0052	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0052	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0053	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0053	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0053	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0053	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0053	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0053	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0054	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0054	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0054	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0054	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0054	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0054	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0055	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0055	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0055	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0055	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0055	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0055	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0056	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0056	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0056	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0056	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0056	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0056	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0057	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0057	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0057	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0057	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0057	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0057	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0058	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0058	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0058	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0058	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0058	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0058	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0059	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0059	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0059	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0059	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0059	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0059	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0060	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0060	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0060	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0060	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0060	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0060	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0061	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0061	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0061	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0061	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0061	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0061	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0062	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0062	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0062	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0062	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0062	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0062	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0063	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0063	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0063	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0063	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0063	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0063	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0064	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0064	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0064	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0064	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0064	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0064	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0065	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0065	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0065	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0065	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0065	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0065	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0066	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0066	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0066	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0066	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0066	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0066	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0067	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0067	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0067	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0067	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0067	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0067	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0068	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0068	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0068	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0068	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0068	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0068	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0069	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0069	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0069	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0069	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0069	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0070	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0070	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0070	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0070	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0070	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0071	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0071	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0071	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0071	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0071	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0072	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0072	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0072	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0072	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0072	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0073	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0073	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0073	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0073	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0073	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0074	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0074	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0074	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0074	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0074	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0075	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0075	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0075	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0075	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0075	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0076	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0076	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0076	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0076	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0076	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0077	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0077	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0077	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0077	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0077	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0078	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0078	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0078	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0078	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0078	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0079	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0079	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0079	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0079	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0079	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0080	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0080	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0080	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0080	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0080	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0081	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0081	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0081	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0081	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0081	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0082	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0082	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0082	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0082	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0082	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0083	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0083	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0083	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0083	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0083	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0084	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0084	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0084	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0084	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0084	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0085	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0085	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0085	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0085	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0085	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0086	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0086	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0086	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0086	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0086	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0087	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0087	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0087	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0087	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0087	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0088	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0088	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0088	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0088	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0088	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0089	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0089	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0089	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0089	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0089	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0089	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0090	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0090	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0090	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0090	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0090	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0090	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0091	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0091	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0091	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0091	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0091	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0091	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0092	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0092	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0092	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0092	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0092	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0092	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0093	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0093	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0093	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0093	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0093	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0093	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0094	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0094	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0094	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0094	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0094	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0094	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0095	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0095	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0095	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0095	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0095	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0095	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0096	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0096	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0096	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0096	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0096	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0096	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0097	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0097	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0097	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0097	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0097	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0097	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0098	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0098	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0098	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0098	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0098	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0098	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0099	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0099	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0099	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0099	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0099	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0099	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0100	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0100	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0100	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0100	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0100	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0100	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0101	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0101	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0101	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0101	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0101	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0101	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0102	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0102	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0102	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0102	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0102	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0102	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0103	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0103	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0103	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0103	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0103	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0103	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0104	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0104	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0104	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0104	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0104	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0104	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0105	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0105	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0105	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0105	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0105	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0105	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0106	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0106	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0106	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0106	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0106	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0106	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0107	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0107	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0107	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0107	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0107	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0107	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0108	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0108	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0108	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0108	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0108	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0108	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0109	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0109	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0109	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0109	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0109	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0109	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0110	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0110	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0110	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0110	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0110	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0110	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0111	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0111	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0111	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0111	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0111	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0111	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0112	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0112	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0112	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0112	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0112	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0112	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0113	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0113	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0113	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0113	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0113	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0113	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0114	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0114	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0114	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0114	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0114	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0114	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0115	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0115	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0115	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0115	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0115	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0115	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0116	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0116	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0116	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0116	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0116	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0116	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0117	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0117	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0117	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0117	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0117	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0117	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0118	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0118	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0118	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0118	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0118	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0118	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0119	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0119	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0119	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0119	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0119	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0119	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0120	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0120	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0120	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0120	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0120	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0120	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0121	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0121	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0121	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0121	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0121	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0121	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0122	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0122	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0122	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0122	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0122	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0122	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0123	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0123	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0123	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0123	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0123	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0123	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0124	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0124	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0124	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0124	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0124	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0124	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0125	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0125	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0125	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0125	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0125	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0125	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0126	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0126	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0126	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0126	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0126	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0126	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0127	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0127	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0127	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0127	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0127	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0127	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0128	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0128	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0128	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0128	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0128	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0128	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0129	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0129	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0129	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0129	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0129	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0129	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0130	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0130	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0130	T3_REQUIRED_SYMBOLS	PASS	required=rnv1; undefined_in_gdb=S4_TEST_ADDFIELD_AFTER;S4_TEST_ALLOC_HOOK;S4_TEST_FMMRET_AFTER;S4_TEST_KOTTKE_HOOK;S4_TEST_LINEARSOLVE_AFTER;S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+U0130	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0130	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0130	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0131	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0131	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0131	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0131	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0131	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0131	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0132	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0132	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0132	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0132	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0132	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0132	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0133	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0133	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0133	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0133	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0133	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0133	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0134	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0134	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0134	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0134	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0134	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0134	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0135	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0135	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0135	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0135	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0135	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0135	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0136	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0136	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0136	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0136	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0136	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0136	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0137	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0137	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0137	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0137	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0137	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0138	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0138	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0138	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0138	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0138	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0139	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0139	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0139	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0139	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0139	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0140	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0140	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0140	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0140	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0140	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0141	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0141	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0141	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0141	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0141	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0142	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0142	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0142	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0142	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0142	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0143	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0143	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0143	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0143	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0143	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0144	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0144	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0144	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0144	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0144	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0145	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0145	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0145	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0145	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0145	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0146	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0146	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0146	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0146	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0146	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0147	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0147	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0147	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0147	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0147	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0147	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0148	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0148	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0148	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0148	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0148	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0148	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0149	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0149	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0149	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0149	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0149	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0149	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0150	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0150	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0150	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0150	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0150	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0150	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0151	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0151	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0151	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0151	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0151	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0151	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0152	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0152	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0152	T3_REQUIRED_SYMBOLS	PASS	required=s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0152	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0152	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0152	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0153	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0153	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0153	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0153	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0153	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0154	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0154	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0154	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0154	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0154	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0155	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0155	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0155	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0155	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0155	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0156	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0156	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0156	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0156	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0156	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0157	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0157	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0157	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0157	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0157	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0158	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0158	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0158	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0158	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0158	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0159	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0159	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0159	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0159	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0159	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0160	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0160	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0160	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0160	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0160	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0161	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0161	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0161	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0161	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0161	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0162	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0162	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0162	T3_REQUIRED_SYMBOLS	PASS	required=exec;plan;plancall;s4malloc; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0162	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0162	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0163	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0163	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0163	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0163	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0163	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0163	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0164	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0164	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0164	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0164	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0164	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0164	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0165	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0165	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0165	T3_REQUIRED_SYMBOLS	PASS	required=kottke_alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0165	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0165	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0165	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0166	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0166	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0166	T3_REQUIRED_SYMBOLS	PASS	required=kottke_alloc;linearsolve; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0166	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0166	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0166	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0167	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0167	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0167	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0167	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0167	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0167	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0168	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0168	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0168	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0168	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0168	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0168	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0169	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0169	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0169	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0169	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0169	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0169	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0170	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0170	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0170	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0170	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0170	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0170	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0171	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0171	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0171	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0171	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0171	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0171	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0172	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0172	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0172	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0172	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0172	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0172	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0173	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0173	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0173	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0173	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0173	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0173	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0174	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0174	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0174	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0174	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0174	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0174	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0175	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0175	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0175	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0175	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0175	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0175	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0176	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0176	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0176	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0176	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0176	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0176	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0177	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0177	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0177	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0177	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0177	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0177	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0178	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0178	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0178	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0178	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0178	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0178	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0179	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0179	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0179	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0179	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0179	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0179	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0180	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0180	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0180	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0180	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0180	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0180	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0181	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0181	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0181	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0181	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0181	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0181	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0182	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0182	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0182	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0182	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0182	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0182	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0183	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0183	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0183	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0183	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0183	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0183	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0184	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0184	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0184	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0184	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0184	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0184	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0185	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0185	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0185	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0185	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0185	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0185	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0186	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0186	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0186	T3_REQUIRED_SYMBOLS	PASS	required=fmmret; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0186	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0186	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0186	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0187	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0187	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0187	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0187	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0187	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0187	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0188	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0188	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0188	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0188	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0188	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0188	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0189	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0189	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0189	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0189	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0189	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0189	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0190	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0190	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0190	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0190	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0190	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0190	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0191	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0191	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0191	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0191	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0191	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0191	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0192	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0192	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0192	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0192	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0192	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0192	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0193	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0193	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0193	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0193	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0193	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0193	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0194	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0194	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0194	T3_REQUIRED_SYMBOLS	PASS	required=alloc;linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0194	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0194	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0194	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0195	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0195	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0195	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0195	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0195	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0195	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0196	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0196	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0196	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0196	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0196	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0196	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0197	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0197	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0197	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0197	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0197	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0197	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)
+U0198	T1_FINISH_OUT_OF_SCOPE	EVIDENCE_INSUFFICIENT	out_of_scope() writes no record; raw logs cannot show it did not fire
+U0198	T2_PLAN_WINDOW_NESTING	PASS	no nesting or overlap
+U0198	T3_REQUIRED_SYMBOLS	PASS	required=linearsolve_null2; undefined_in_gdb=__wrap_Pattern_GenerateFlowField
+U0198	T4_EXIT_RECORDED	PASS	status=EXITED exit_code=0 signal=None
+U0198	T5_CALLBACK_EXCEPTION	PASS	no traceback in gdb stderr
+U0198	T6_PLAN_BP_NOT_REQUIRED	EVIDENCE_INSUFFICIENT	plan not required; plan breakpoint resolution is shown only by symbol query (SYMQ files)

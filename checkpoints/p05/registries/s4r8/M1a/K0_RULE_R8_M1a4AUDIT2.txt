@@ -1,0 +1,17 @@
+# K0_RULE_R8_M1a4AUDIT2.txt -- frozen rule for K and K0 of the S3R4 additions A segment (section 5, step 1).
+# Status: INFLUENCED (the first A-segment result was already seen: E8-65, task U184).  Written before the re-computation.
+# Written by the round (r8m1a4audit2).  The rule is taken ONLY from the historical definitions named below.
+# Nothing in this file was chosen to make an expected value match.
+
+RULE_ID	K0_RULE_R8_M1a4AUDIT2
+STATUS	INFLUENCED
+SOURCE_1	checkpoints/p05/P05_S3R4_CLOSEOUT_CONT2.md section 3.3 (line 86): K criterion = the last window-external malloc before the SECOND WIN_OPEN (the nshapes=1 layer), with n = 4 x nshapes = 4, caller Simulation_InitSolution; exactly one such allocation per combination.
+SOURCE_2	testing/d003/stage_s3r4c2/prereg_a_c2.sh lines 6-8 (header): K0 = nshapes=0 layer, n=0 (closed2d NG1 K0=6; fft NG5 K0=7; kottke NG5 K0=7).
+SOURCE_3	checkpoints/p05/P05_S3R4_CLOSEOUT_CONT2.md section 4 (line 89): the mapping defines the values; the task's predicted K0 is not a source.
+
+RULE_K	K = the window-external malloc (OUT_MALLOC line) with the largest k that occurs BEFORE the second S3R4_WIN_OPEN line of stderr.txt, and whose n equals 4 (the nshapes=1 layer, SOURCE_1).  Uniqueness: exactly one OUT_MALLOC line satisfies this; otherwise NOT_UNIQUE.
+RULE_K0	K0 = the window-external malloc of the nshapes=0 layer with n = 0 (SOURCE_2).  The layer of a stderr OUT_MALLOC line is NOT recorded in stderr.txt (its fields are k, n, caller, hit).  K0 is therefore determined only when the log itself records the layer or nshapes of the allocation.  If it does not, K0 = EVIDENCE_INSUFFICIENT.  No K0 value is selected from the order of the lines, from the n value, or from the caller.
+RULE_K0_ORDER	(recorded only, NOT a determining rule) the position of an n=0 allocation relative to WIN_OPEN lines is shown in the report; it does not establish the layer.
+
+RULE_UNIQUE	K is UNIQUE only if exactly one candidate is found.  K0 is UNIQUE only if the log records the layer of exactly one n=0 window-external allocation.  Otherwise the status is NOT_UNIQUE (K) or EVIDENCE_INSUFFICIENT (K0).
+RULE_NO_EDIT	This rule is not edited after the application starts.  A rule change requires a new file (K0_RULE_R8_M1a4AUDIT2_<n>.txt) and a new ruling.

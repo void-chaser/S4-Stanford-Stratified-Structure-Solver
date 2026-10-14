@@ -1,0 +1,30 @@
+# RERUN_PREREG_R8_M1a4AUDIT2.txt -- rerun pre-registration and design note for the tracer gaps (section 4, step 4).
+# Status: INFLUENCED (the offline tracer audit of the 198 original logs was already seen).
+# NOT EXECUTED IN THIS ROUND.  The rerun is left to the next round (section 4: planned stop point).
+# Written by the round (r8m1a4audit2).  Written before any rerun.
+
+PREREG_ID	RERUN_PREREG_R8_M1a4AUDIT2
+STATUS	INFLUENCED
+RECORDED_UTC	2026-10-14T09:10:13Z
+SCOPE_TABLE	checkpoints/p05/evidence/p05-s4r8/m1a4audit2/RERUN_SCOPE_R8_M1a4AUDIT2_RUN1.tsv
+SCOPE_TABLE_SHA256	c086a63e0ab49f233406a02835d2f7e70d973ed8f1702ac30adf7fbfea8d8fe2
+GAP_SOURCE	checkpoints/p05/evidence/p05-s4r8/m1a4audit2/TRACER_AUDIT_R8_M1a4AUDIT2_RUN1.tsv
+GAP_SOURCE_SHA256	2b89ea40ad5f4d1bffa952a7cea52b74df13a803e350b95af6446604b030ea4a
+
+# 1. Affected pairs (complete F2/F3 pairs)
+AFFECTED_PAIRS	99 pairs (198 units): every pair, listed in SCOPE_TABLE with status RERUN_IN_SCOPE.
+AFFECTED_REASON_G1	T1 FINISH_OUT_OF_SCOPE: callseq_r8m1a4_gdb.py PlanFinishBP.out_of_scope and WindowFinishBP.out_of_scope set a flag and write no record.  The original raw logs cannot show whether they fired.  This applies to every unit.
+AFFECTED_REASON_G2	T6 PLAN_BP_NOT_REQUIRED: 138 units whose families do not contain plan or plancall.  Their plan breakpoint resolution is shown by symbol query for the driver families queried only (SYMQ files).  Not all 198 drivers were queried.
+CLOSED_IN_THIS_ROUND	G3 P0048 plan breakpoint (U0095 F2, U0096 F3): resolved by symbol query on both drivers (locations=1, pending=False; see SYMQ_R8_M1a4AUDIT2_F2_r6dnv1.txt and SYMQ_R8_M1a4AUDIT2_F3_r6dnv1.txt).  This gap is closed by direct evidence, not by the rerun.
+
+# 2. Design of the new tracer and runner (described; not written as code in this round)
+DESIGN_TRACER	(a) every out_of_scope callback appends a record TRACE_OUT_OF_SCOPE (type, seq, plan or window) to EVENTS and sets SUMMARY trace_error; the unit then fails T1.  (b) On every FinishBreakpoint creation, a record TRACE_FINISH_OK is written at the stop; a unit without one for each opened plan/window fails.  (c) Breakpoint location and pending state are read after creation and written to SUMMARY (addr, pending, locations); a required symbol with pending or zero locations is REQUIRED_SYMBOL_MISSING; a non-required symbol is recorded, not raised.  (d) Entry-address check: the breakpoint address must equal the ELF st_value of the symbol (readelf); otherwise TRACE_ERROR.  (e) Parameter source: DWARF variable first; when absent, the x86_64 $rdi value at function entry is used and the source is recorded as REG_FALLBACK per hit.
+DESIGN_RUNNER	(a) the runner reads the unit table, checks driver sha256 and argv, and sets the environment from the unit row only (env -i plus the registered variables); (b) a unit passes only if gdb rc is 0, SUMMARY status is EXITED, exit_code is recorded, trace_error is null, and no TRACE_OUT_OF_SCOPE or TRACE_ERROR record is present; (c) each unit's raw log is saved under a new directory callseq_r8m1a4_rerun/<unit>; (d) the runner refuses to overwrite a directory (U17).
+DESIGN_NO_HISTORY_CHANGE	No file of the historical tracer (callseq_r8m1a4_gdb.py, callseq_runner_r8m1a4.py) is modified.  The new tracer and runner are new files with the rerun round name.
+
+# 3. New expectation (observation completeness only; the pass rule is NOT relaxed)
+EXPECT_RERUN_PAIR	a pair passes only if: (1) both units pass the DESIGN_RUNNER rule (b); (2) the event sequences of F2 and F3 are IDENTICAL under the strict comparison (seqcompare_r8m1a4audit2.py rule: only quad -> quad_st may be renamed); (3) rc_first and rc_retry are read from the log, or the pair is RC_UNAVAILABLE and is not counted as pass; (4) no EVIDENCE_INSUFFICIENT on any of the checks T1 to T6.
+EXPECT_RERUN_NOT	a pair is not IDENTICAL if any event differs, if any gap remains (T1 not closed by a TRACE_FINISH_OK or TRACE_OUT_OF_SCOPE record), or if the trace reports TRACE_ERROR.
+
+# 4. Scope note
+SCOPE	The rerun would cover 99 pairs.  It has NOT been run.  No K0, no A/B value and no pair status is taken from a rerun yet.  The 99 pairs remain IDENTICAL on the ORIGINAL logs only (strict comparison), with the T1 gap stated.

@@ -1,0 +1,2 @@
+# readelf -S section names with 'debug' and the count of DWARF sections for /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r7/drivers_r7/d003-F2-plain/driver
+DEBUG_SECTION_COUNT=0
