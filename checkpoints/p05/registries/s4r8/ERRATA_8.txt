@@ -454,3 +454,12 @@ E8-66  续3a 审核修正第二部分（r8m1a4audit2）：流程缺陷披露（U
             该条所述 HEAD^ 关系也未被核对。本条予以更正：无 end 门禁，HEAD^ 关系于本轮第二部分的提交后核对。
         (5) 报告 §4 把 §三 写成"已完成（有边界）"。准确表述为"部分完成：十项单元内检查完成，F2↔F3 序列比较未做"。
             十项单元内检查为 strict_recheck_callseq_r8m1a4audit.py 的 C1–C10；F2↔F3 逐事件序列比较未在上一部分完成。
+E8-67  续3a 审核修正第三部分（r8m1a4audit3）：更正 audit2 报告 §4.3 与 §9 第 1 项，以及 STATE 待裁决项 (a)（只追加，不改旧条目；旧报告与旧 STATE 保留，本条为其补充更正）。依据：U188。
+        (1) audit2 对 plan:N 的判定为"第 N 次 PLAN_START 的 seq ≥ N"。这与注入器语义不符：注入器的 plan 模式是"第 nth 次 plan 调用内的第 nth 次 malloc"（inject_r4_plan.cpp:38、79–84、587，两个计数共用 nth()）。
+            正确判定为：第 N 次 plan 调用内 PLAN_MALLOC 的最大 sub_seq ≥ N。
+        (2) 数据（只读核对 callseq_r8m1a4_r3/U0007、U0008 的 events.tsv）：17 次 plan 调用中，第 1 次调用 malloc 数 1，第 2–17 次各 2。因此 N=3、4、5、12–16 均不可达（该调用内 malloc 数 2 < N）。
+        (3) 结论：audit2 §4.3 把 44 行写成"历史 INVALID_NOT_REACHED 与本轮计数冲突（NOW_REACHED_WAS_NOT_REACHED）"是错误的。按正确语义，这 44 行与历史 INVALID_NOT_REACHED 一致，本轮分类为 EXPECTED_NOT_REACHED。
+            这是更正分类，不是改期望；历史 INVALID 的期望值未被修改。
+        (4) audit2 §9 第 1 项"历史 R3 类别是否仍有效，或以本轮计数为准"已由本条解决：历史类别与正确计数一致，无冲突。STATE 待裁决项 (a) 改为"已按 U188 更正为 EXPECTED_NOT_REACHED（E8-67）"。
+        (5) 同一更正适用于 audit2 的 REQUEST_TARGETS_R8_M1a4AUDIT2_RUN3.tsv：其中 44 行 NOW_REACHED_WAS_NOT_REACHED 不再是冲突，而是 EXPECTED_NOT_REACHED。audit2 文件保留不改；audit3 的分类表 REQUEST_TARGETS_R8_M1a4AUDIT3.tsv 给出新结论。
+        (6) audit2 报告 §4.4 与 §9 第 2 项（119 行 G5-F2 裸请求无历史 K）：按 U189 已由 K 来源表补 K（两遍一致 119 点），audit2 的 EVIDENCE_INSUFFICIENT 在 audit3 中改判为 REACHED，依据见 audit3 报告，不在本条内改写 audit2 报告。

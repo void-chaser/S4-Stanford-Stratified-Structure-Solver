@@ -1,0 +1,42 @@
+# symq3 (U190 T6) for driver /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/seam-seamF-F3/driver
+# driver_sha256 expected=c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6 actual=c691acd71db3d4aabdc08f999058033228513f7049e19c3715720aab55df4ae6 sha_ok=yes units=8
+# nm: exact-name lookup of the tracer breakpoint names:
+SYM __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i present: 0000000000005551 T __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i
+SYM __wrap_malloc present: 00000000000041ed T __wrap_malloc
+SYM __wrap__Z9S4_mallocm present: 0000000000005230 T __wrap__Z9S4_mallocm
+SYM __wrap__Z13fft_plan_execP12tag_fft_plan present: 0000000000005607 T __wrap__Z13fft_plan_execP12tag_fft_plan
+SYM __wrap_Pattern_GenerateFlowField absent-from-nm
+SYM S4_TEST_ALLOC_HOOK present: 00000000000052a2 T S4_TEST_ALLOC_HOOK
+SYM S4_TEST_KOTTKE_HOOK present: 0000000000005406 T S4_TEST_KOTTKE_HOOK
+SYM S4_TEST_FMMRET_AFTER present: 0000000000004c84 T S4_TEST_FMMRET_AFTER
+SYM S4_TEST_LINEARSOLVE_AFTER present: 00000000000042e8 T S4_TEST_LINEARSOLVE_AFTER
+SYM S4_TEST_LINEARSOLVE_NULLINFO2_AFTER present: 00000000000047c4 T S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+SYM S4_TEST_ADDFIELD_AFTER present: 000000000000508e T S4_TEST_ADDFIELD_AFTER
+SYM _Z15fft_plan_dft_2dPiPSt7complexIdES2_i present: 0000000000038730 T _Z15fft_plan_dft_2dPiPSt7complexIdES2_i
+SYM _Z9S4_mallocm present: 0000000000005960 T _Z9S4_mallocm
+SYM _Z13fft_plan_execP12tag_fft_plan present: 0000000000038790 T _Z13fft_plan_execP12tag_fft_plan
+SYM Pattern_GenerateFlowField present: 00000000000403f0 T Pattern_GenerateFlowField
+# readelf -sW: symbol table entry for the same names:
+READELF __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i value_size_type_bind_ndx_name: 0000000000005551 182 FUNC GLOBAL 14 __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i
+READELF __wrap_malloc value_size_type_bind_ndx_name: 00000000000041ed 251 FUNC GLOBAL 14 __wrap_malloc
+READELF __wrap__Z9S4_mallocm value_size_type_bind_ndx_name: 0000000000005230 114 FUNC GLOBAL 14 __wrap__Z9S4_mallocm
+READELF __wrap__Z13fft_plan_execP12tag_fft_plan value_size_type_bind_ndx_name: 0000000000005607 131 FUNC GLOBAL 14 __wrap__Z13fft_plan_execP12tag_fft_plan
+READELF __wrap_Pattern_GenerateFlowField not-found
+READELF S4_TEST_ALLOC_HOOK value_size_type_bind_ndx_name: 00000000000052a2 356 FUNC GLOBAL 14 S4_TEST_ALLOC_HOOK
+READELF S4_TEST_KOTTKE_HOOK value_size_type_bind_ndx_name: 0000000000005406 331 FUNC GLOBAL 14 S4_TEST_KOTTKE_HOOK
+READELF S4_TEST_FMMRET_AFTER value_size_type_bind_ndx_name: 0000000000004c84 187 FUNC GLOBAL 14 S4_TEST_FMMRET_AFTER
+READELF S4_TEST_LINEARSOLVE_AFTER value_size_type_bind_ndx_name: 00000000000042e8 717 FUNC GLOBAL 14 S4_TEST_LINEARSOLVE_AFTER
+READELF S4_TEST_LINEARSOLVE_NULLINFO2_AFTER value_size_type_bind_ndx_name: 00000000000047c4 641 FUNC GLOBAL 14 S4_TEST_LINEARSOLVE_NULLINFO2_AFTER
+READELF S4_TEST_ADDFIELD_AFTER value_size_type_bind_ndx_name: 000000000000508e 418 FUNC GLOBAL 14 S4_TEST_ADDFIELD_AFTER
+# gdb -batch -nx: breakpoint resolution of each name (no run)
+GDB __wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i locations=1 pending=False
+GDB __wrap_malloc locations=1 pending=False
+GDB __wrap__Z9S4_mallocm locations=1 pending=False
+GDB __wrap__Z13fft_plan_execP12tag_fft_plan locations=1 pending=False
+GDB __wrap_Pattern_GenerateFlowField locations=0 pending=True
+GDB S4_TEST_ALLOC_HOOK locations=1 pending=False
+GDB S4_TEST_KOTTKE_HOOK locations=1 pending=False
+GDB S4_TEST_FMMRET_AFTER locations=1 pending=False
+GDB S4_TEST_LINEARSOLVE_AFTER locations=1 pending=False
+GDB S4_TEST_LINEARSOLVE_NULLINFO2_AFTER locations=1 pending=False
+GDB S4_TEST_ADDFIELD_AFTER locations=1 pending=False

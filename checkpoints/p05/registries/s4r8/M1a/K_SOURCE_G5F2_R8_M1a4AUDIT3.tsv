@@ -1,0 +1,178 @@
+point_id	status	K	detail
+M-once-closed1d-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-closed2d-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-experimental-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-fft-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-fft-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-fft-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-fft-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-fft-exec-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-once-fft-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-fft-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-fft-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-fft-plan-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-fft-plan-3	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M-once-fft-plan-4	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M-once-fft-plan-5	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M-once-jones-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-jones-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-jones-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-jones-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-jones-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-jones-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-jones-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-jones-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-jones-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-kottke-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-kottke-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-kottke-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-kottke-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-kottke-exec-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-once-kottke-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-kottke-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-kottke-plan-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-kottke-plan-3	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M-once-kottke-plan-4	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M-once-kottke-plan-5	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M-once-nv-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-nv-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-nv-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-nv-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-nv-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-nv-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-nv-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-nv-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-nv-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-vl-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-vl-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-vl-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-vl-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-vl-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-once-vl-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-once-vl-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-once-vl-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-once-vl-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-closed1d-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-closed1d-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-closed2d-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-closed2d-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-experimental-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-experimental-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-fft-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-fft-exec-12	K_FROM_HISTORY_AGREED	12	res1=12 res2=12 env1=12 env2=12
+M-twice-fft-exec-13	K_FROM_HISTORY_AGREED	13	res1=13 res2=13 env1=13 env2=13
+M-twice-fft-exec-14	K_FROM_HISTORY_AGREED	14	res1=14 res2=14 env1=14 env2=14
+M-twice-fft-exec-15	K_FROM_HISTORY_AGREED	15	res1=15 res2=15 env1=15 env2=15
+M-twice-fft-exec-16	K_FROM_HISTORY_AGREED	16	res1=16 res2=16 env1=16 env2=16
+M-twice-fft-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-fft-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-fft-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-fft-exec-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-twice-fft-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-fft-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-fft-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-fft-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-fft-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-fft-plan-12	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=12 res2=K=12 env1=None env2=None
+M-twice-fft-plan-13	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=13 res2=K=13 env1=None env2=None
+M-twice-fft-plan-14	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=14 res2=K=14 env1=None env2=None
+M-twice-fft-plan-15	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=15 res2=K=15 env1=None env2=None
+M-twice-fft-plan-16	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=16 res2=K=16 env1=None env2=None
+M-twice-fft-plan-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-fft-plan-3	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M-twice-fft-plan-4	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M-twice-fft-plan-5	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M-twice-jones-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-jones-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-jones-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-jones-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-jones-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-jones-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-jones-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-jones-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-jones-malloc-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-twice-jones-malloc-6	K_FROM_HISTORY_AGREED	6	res1=6 res2=6 env1=6 env2=6
+M-twice-jones-malloc-7	K_FROM_HISTORY_AGREED	7	res1=7 res2=7 env1=7 env2=7
+M-twice-jones-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-kottke-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-kottke-exec-12	K_FROM_HISTORY_AGREED	12	res1=12 res2=12 env1=12 env2=12
+M-twice-kottke-exec-13	K_FROM_HISTORY_AGREED	13	res1=13 res2=13 env1=13 env2=13
+M-twice-kottke-exec-14	K_FROM_HISTORY_AGREED	14	res1=14 res2=14 env1=14 env2=14
+M-twice-kottke-exec-15	K_FROM_HISTORY_AGREED	15	res1=15 res2=15 env1=15 env2=15
+M-twice-kottke-exec-16	K_FROM_HISTORY_AGREED	16	res1=16 res2=16 env1=16 env2=16
+M-twice-kottke-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-kottke-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-kottke-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-kottke-exec-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-twice-kottke-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-kottke-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-kottke-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-kottke-plan-12	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=12 res2=K=12 env1=None env2=None
+M-twice-kottke-plan-13	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=13 res2=K=13 env1=None env2=None
+M-twice-kottke-plan-14	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=14 res2=K=14 env1=None env2=None
+M-twice-kottke-plan-15	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=15 res2=K=15 env1=None env2=None
+M-twice-kottke-plan-16	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=16 res2=K=16 env1=None env2=None
+M-twice-kottke-plan-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-kottke-plan-3	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M-twice-kottke-plan-4	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M-twice-kottke-plan-5	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M-twice-nv-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-nv-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-nv-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-nv-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-nv-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-nv-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-nv-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-nv-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-nv-malloc-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-twice-nv-malloc-6	K_FROM_HISTORY_AGREED	6	res1=6 res2=6 env1=6 env2=6
+M-twice-nv-malloc-7	K_FROM_HISTORY_AGREED	7	res1=7 res2=7 env1=7 env2=7
+M-twice-nv-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-vl-exec-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-vl-exec-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-vl-exec-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-vl-exec-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-vl-malloc-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M-twice-vl-malloc-2	K_FROM_HISTORY_AGREED	2	res1=2 res2=2 env1=2 env2=2
+M-twice-vl-malloc-3	K_FROM_HISTORY_AGREED	3	res1=3 res2=3 env1=3 env2=3
+M-twice-vl-malloc-4	K_FROM_HISTORY_AGREED	4	res1=4 res2=4 env1=4 env2=4
+M-twice-vl-malloc-5	K_FROM_HISTORY_AGREED	5	res1=5 res2=5 env1=5 env2=5
+M-twice-vl-malloc-6	K_FROM_HISTORY_AGREED	6	res1=6 res2=6 env1=6 env2=6
+M-twice-vl-malloc-7	K_FROM_HISTORY_AGREED	7	res1=7 res2=7 env1=7 env2=7
+M-twice-vl-plan-1	K_FROM_HISTORY_AGREED	1	res1=1 res2=1 env1=1 env2=1
+M2-once-fft-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-once-fft-plan-2-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=2 res2=K=2 env1=None env2=None
+M2-once-fft-plan-3-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M2-once-fft-plan-4-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M2-once-fft-plan-5-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M2-once-jones-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-once-kottke-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-once-kottke-plan-2-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=2 res2=K=2 env1=None env2=None
+M2-once-kottke-plan-3-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M2-once-kottke-plan-4-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M2-once-kottke-plan-5-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M2-once-nv-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-once-vl-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-twice-fft-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-twice-fft-plan-12-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=12 res2=K=12 env1=None env2=None
+M2-twice-fft-plan-13-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=13 res2=K=13 env1=None env2=None
+M2-twice-fft-plan-14-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=14 res2=K=14 env1=None env2=None
+M2-twice-fft-plan-15-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=15 res2=K=15 env1=None env2=None
+M2-twice-fft-plan-16-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=16 res2=K=16 env1=None env2=None
+M2-twice-fft-plan-2-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=2 res2=K=2 env1=None env2=None
+M2-twice-fft-plan-3-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M2-twice-fft-plan-4-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M2-twice-fft-plan-5-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M2-twice-jones-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-twice-kottke-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-twice-kottke-plan-12-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=12 res2=K=12 env1=None env2=None
+M2-twice-kottke-plan-13-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=13 res2=K=13 env1=None env2=None
+M2-twice-kottke-plan-14-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=14 res2=K=14 env1=None env2=None
+M2-twice-kottke-plan-15-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=15 res2=K=15 env1=None env2=None
+M2-twice-kottke-plan-16-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=16 res2=K=16 env1=None env2=None
+M2-twice-kottke-plan-2-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=2 res2=K=2 env1=None env2=None
+M2-twice-kottke-plan-3-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=3 res2=K=3 env1=None env2=None
+M2-twice-kottke-plan-4-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=4 res2=K=4 env1=None env2=None
+M2-twice-kottke-plan-5-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=5 res2=K=5 env1=None env2=None
+M2-twice-nv-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None
+M2-twice-vl-plan-1-F	EVIDENCE_INSUFFICIENT	-	missing or non-numeric: res1=K=1 res2=K=1 env1=None env2=None

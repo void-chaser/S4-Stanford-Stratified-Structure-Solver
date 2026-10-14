@@ -1,0 +1,22 @@
+# RERUN_WITHDRAWAL_R8_M1a4AUDIT3.txt -- withdrawal record for the pre-registered tracer rerun (U190, r8m1a4audit3).
+# The original pre-registration is KEPT, not deleted and not edited:
+#   RERUN_PREREG_R8_M1a4AUDIT2.txt   sha256 35fec7275cfa4a3ccd147efc5bce72fd366aa698a4622629a2c819e55441e185
+# Written in the audit3 round after the offline tracer pairing check and the symbol query (T6).
+
+PREREG_ID	RERUN_PREREG_R8_M1a4AUDIT2
+PREREG_STATUS_BEFORE	INFLUENCED (not executed)
+WITHDRAWAL_STATUS	WITHDRAWN
+WITHDRAWAL_RULE	U190 (R8 M1a CONT3a audit part 3): withdrawn when every one of the 198 units has PLAN_START seq set = PLAN_END seq set, WIN_OPEN seq set = WIN_CLOSE seq set, and trace_error NONE.
+WITHDRAWAL_EVIDENCE	checkpoints/p05/evidence/p05-s4r8/m1a4audit3/TRACER_PAIRING_R8_M1a4AUDIT3.tsv   sha256 9577ff525dfbb69afb50730161d6b69aac00fa7277246eb5a90458e25f813e9b
+WITHDRAWAL_EVIDENCE_GAP	checkpoints/p05/evidence/p05-s4r8/m1a4audit3/GAP_TABLE_R8_M1a4AUDIT3.tsv   sha256 2c2505d4e8a495f4e68021b6a0132788363e35a9df5856e431ab1db68ef1b1e4
+UNITS_TOTAL	198
+UNITS_PROVEN	198   (NO_OUT_OF_SCOPE_PROVEN)
+UNITS_GAP	0
+PAIRS_TOTAL	99
+PAIRS_ALL_UNITS_PROVEN	99
+PAIRS_RERUN_IN_SCOPE	0
+RERUN_EXECUTED	no   (no rerun was run in this round; the withdrawal means the rerun is not required, not that it passed)
+SYMQ_INDEX	checkpoints/p05/evidence/p05-s4r8/m1a4audit3/SYMQ_INDEX_R8_M1a4AUDIT3.tsv   sha256 280085706a92add2ba786630ae2de7af4d11f21ea37b91e293d3f18f68caa37a   (18 distinct drivers, sha_ok yes for all)
+SYMQ_NOTE	__wrap_Pattern_GenerateFlowField is absent from 14 drivers and present in 4 drivers; the four drivers with WIN events are the four drivers with the symbol.  S4_TEST_* hook names are absent from the 4 drivers that use no hook of that family.  These are symbol-level facts [symbol evidence], not event evidence.
+SCOPE_NOTE	The withdrawal concerns the tracer gap T1 only.  It does not change any pair status of the original logs, does not give a K0 or A/B value, and is not an injection verification.
+REMAINING_OPEN	none for T1.  The historical RERUN_SCOPE table (RERUN_SCOPE_R8_M1a4AUDIT2_RUN1.tsv) is kept unchanged; its 99 RERUN_IN_SCOPE rows are superseded by this withdrawal.
