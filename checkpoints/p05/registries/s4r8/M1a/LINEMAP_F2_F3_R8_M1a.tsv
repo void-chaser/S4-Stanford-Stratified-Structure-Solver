@@ -1,0 +1,39 @@
+# LINEMAP_F2_F3_R8_M1a.tsv -- P05-S4 R8 M1a section 6.1 (U140).  Written by map_f2_f3_r8m1.py (read only, git show).
+# F2 = a07b5ac (S4 e124925f5b242486a913b813fa181664f665b048), F3 = 8d8202a (S4 6cff923a02baf19e01966b2339755cbf3a5deeef).
+# Key = the F2 text of the cited line (stripped); F3 position = the line of the same text in the F3 file.
+# Status: SAME_LINE, SHIFTED, MISSING, AMBIGUOUS (stop), AUDIT_* (stop).
+cited_by	file	F2_line	F2_text_key	F3_line	status	role
+LINEMAP_F_F2_R7.tsv malloc_cg_work	S4/pattern/pattern.c	1253	double *work = (double*)malloc(sizeof(double) * 4*n);	1279	SHIFTED	RNV1 window malloc (cg work)
+LINEMAP_F_F2_R7.tsv solve_rect	S4/pattern/pattern.c	1643	lstatus = sparse_linsolve_d(N2, M, Mcol, 4, b, x, _dxdy);	1669	SHIFTED	rect solver call
+LINEMAP_F_F2_R7.tsv malloc_rect_work	S4/pattern/pattern.c	1489	double *work = (double*)malloc(sizeof(double)*N2*(5+2));	1515	SHIFTED	RNV1 window malloc (rect work)
+LINEMAP_F_F2_R7.tsv malloc_rect_iwork	S4/pattern/pattern.c	1499	iwork = (int*)malloc(sizeof(int)*N2*4);	1525	SHIFTED	RNV1 window malloc (rect iwork)
+LINEMAP_F_F2_R7.tsv solve_tri	S4/pattern/pattern.c	2089	lstatus = sparse_linsolve_d(N3, M, Mcol, 10, b, x, M[0]);	2115	SHIFTED	tri solver call
+LINEMAP_F_F2_R7.tsv malloc_tri_work	S4/pattern/pattern.c	1679	double *work = (double*)malloc(sizeof(double)*N3*(11+2));	1705	SHIFTED	RNV1 window malloc (tri work)
+LINEMAP_F_F2_R7.tsv malloc_tri_iwork	S4/pattern/pattern.c	1689	iwork = (int*)malloc(sizeof(int)*N3*10);	1715	SHIFTED	RNV1 window malloc (tri iwork)
+LINEMAP_F_F2_R7.tsv fn_cg	S4/pattern/pattern.c	1247	static int cg(int n, const double *M, const int *Mcol, int Mnd, const double *b, double *x, double anorm){	1273	SHIFTED	static definition of cg
+LINEMAP_F_F2_R7.tsv fn_rect	S4/pattern/pattern.c	1476	static double pattern_generate_flow_field_rect(	1502	SHIFTED	definition of pattern_generate_flow_field_rect
+LINEMAP_F_F2_R7.tsv fn_tri	S4/pattern/pattern.c	1666	static double pattern_generate_flow_field_tri(	1692	SHIFTED	definition of pattern_generate_flow_field_tri
+LINEMAP_F_F2_R7.tsv fn_pattern_generate_flow_field	S4/pattern/pattern.c	2123	int pattern_generate_flow_field(	2149	SHIFTED	definition of pattern_generate_flow_field
+LINEMAP_F_F2_R7.tsv note_cg_call_in_sparse	S4/pattern/pattern.c	1416	return cg(n, M, Mcol, Mnd, b, x, anorm);	1442	SHIFTED	cg call inside sparse_linsolve_d
+LINEMAP_M3_R7.tsv Part B (U38) 415	S4/pattern/pattern.c	415	int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));	418,545	AMBIGUOUS	malloc of shape_get_intersection_area_quad
+LINEMAP_M3_R7.tsv Part B (U38) 528	S4/pattern/pattern.c	528	int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));	418,545	AMBIGUOUS	malloc of shape_get_intersection_area
+LINEMAP_M3_R7.tsv Part B (U38) 806	S4/pattern/pattern.c	806	area = (double*)malloc(sizeof(double)*nshapes);	825	SHIFTED	malloc of pattern_get_containment_tree (area)
+LINEMAP_M3_R7.tsv Part B (U38) 1164	S4/pattern/pattern.c	1164	target = (char*)malloc(sizeof(char)*(len+lexpsymb));	1190	SHIFTED	malloc of fprint_double
+LINEMAP_M3_R7.tsv Part B (U38) 1251 (F2 column 1253)	S4/pattern/pattern.c	1253	double *work = (double*)malloc(sizeof(double) * 4*n);	1279	SHIFTED	malloc of cg work (F2 line; F line is 1251)
+LINEMAP_M3_R7.tsv Part B (U38) 1481 (F2 column 1499)	S4/pattern/pattern.c	1499	iwork = (int*)malloc(sizeof(int)*N2*4);	1525	SHIFTED	malloc of rect iwork (F2 line; F line is 1481)
+LINEMAP_M3_R7.tsv Part B (U38) 1660 (F2 column 1689)	S4/pattern/pattern.c	1689	iwork = (int*)malloc(sizeof(int)*N3*10);	1715	SHIFTED	malloc of tri iwork (F2 line; F line is 1660)
+LINEMAP_M3_R7.tsv Part A (FUNC)	S4/S4.cpp	23	#include "S4.h"	23	SAME_LINE	declaration of Simulation_ComputeLayerModes
+LINEMAP_M3_R7.tsv Part A (FUNC)	S4/S4.cpp	32	# include <TBLAS_ext.h>	32	SAME_LINE	declaration of Simulation_GetLayerSolution
+LINEMAP_M3_R7.tsv Part A (FUNC)	S4/S4.cpp	4210	int S4_Simulation_GetFieldPlane(S4_Simulation *S, const int nxy[2], const S4_real *xyz0, S4_real *E, S4_real *H){	4219	SHIFTED	definition of S4_Simulation_GetFieldPlane
+LINEMAP_A1_R7.tsv / gdb_chain_jones_line_r7.gdb	S4/S4.cpp	2413	if(0 != fmm_ret){	2422	SHIFTED	FMM epsilon status check (if(0 != fmm_ret){)
+LINEMAP_A1_R7.tsv / gdb_chain_jones_line_r7.gdb	S4/fmm/fmm_PolBasisJones.cpp	192	return error;	192	SAME_LINE	failure branch after Pattern_GenerateFlowField (return error;)
+LINEMAP_A1_R7.tsv	S4/fmm/fmm_PolBasisJones.cpp	185	error = Pattern_GenerateFlowField(&L->pattern, 0, S->Lr, ngrid[0], ngrid[1], vfield);	185	SAME_LINE	call of Pattern_GenerateFlowField (context)
+r5_rnv1_malloc_count.gdb comment (F lines)	S4/fmm/fmm_FFT.cpp	98	Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval);	-	MISSING	FMMGetEpsilon_FFT epsilon call site (Pattern_DiscretizeCell)
+r5_rnv1_malloc_count.gdb comment (F lines)	S4/fmm/fmm_kottke.cpp	102	Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval);	-	MISSING	FMMGetEpsilon_Kottke epsilon call site
+LINEMAP_M3_R7.tsv Part A (FUNC) driver	testing/d003/stage_s4/driver_r6b_state.cpp	73	extern "C" __attribute__((noinline)) void r6_probe(int k){	73	SAME_LINE	r6_probe (driver source; not in S4/, identical in F2 and F3)
+# counts: AMBIGUOUS=2, MISSING=2, SAME_LINE=5, SHIFTED=19
+# stops: 4
+# STOP: AMBIGUOUS: S4/pattern/pattern.c:415 'int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));' occurs at F3 lines 418,545
+# STOP: AMBIGUOUS: S4/pattern/pattern.c:528 'int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));' occurs at F3 lines 418,545
+# STOP: MISSING: S4/fmm/fmm_FFT.cpp:98 'Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], '
+# STOP: MISSING: S4/fmm/fmm_kottke.cpp:102 'Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], '

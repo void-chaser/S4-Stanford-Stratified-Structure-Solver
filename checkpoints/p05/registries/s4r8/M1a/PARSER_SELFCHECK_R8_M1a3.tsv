@@ -1,0 +1,27 @@
+# PARSER_SELFCHECK_R8_M1a3.tsv -- P05-S4 R8 M1a CONT2 section 4.2 (U154(b)). Written by map_f2_f3_r8m1a3.py (read only).
+# rule: text is first blanked (// and /* */ comments, string and character literals become spaces; lines whose first non-blank character is # are not heads). Function of a line = the identifier of the most recent function head at brace depth 0 whose body '{' opens at depth 0; a head is a depth-0 line matching ^ident( or a depth-0 line with a type, identifier and '(' that does not end with ';' and is not a control keyword; lines before any head = FILE_SCOPE.
+tree	file	end_depth_or_line	min_depth_or_function	result	note
+a07b5ac	S4/S4.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+8d8202a	S4/S4.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+a07b5ac	S4/pattern/pattern.c	0	0	OK	end-depth 0 and min-depth >= 0
+8d8202a	S4/pattern/pattern.c	0	0	OK	end-depth 0 and min-depth >= 0
+a07b5ac	S4/fmm/fmm_FFT.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+8d8202a	S4/fmm/fmm_FFT.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+a07b5ac	S4/fmm/fmm_kottke.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+8d8202a	S4/fmm/fmm_kottke.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+a07b5ac	S4/fmm/fmm_PolBasisJones.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+8d8202a	S4/fmm/fmm_PolBasisJones.cpp	0	0	OK	end-depth 0 and min-depth >= 0
+a07b5ac	S4/S4.cpp	line 4210	S4_Simulation_GetFieldPlane	OK	expected S4_Simulation_GetFieldPlane
+a07b5ac	S4/S4.cpp	line 4334	S4_Simulation_GetFieldPlane	OK	expected S4_Simulation_GetFieldPlane
+a07b5ac	S4/S4.cpp	line 2413	Simulation_ComputeLayerModes	OK	expected Simulation_ComputeLayerModes
+a07b5ac	S4/pattern/pattern.c	line 415	shape_get_intersection_area_quad	OK	expected shape_get_intersection_area_quad
+a07b5ac	S4/pattern/pattern.c	line 528	shape_get_intersection_area	OK	expected shape_get_intersection_area
+a07b5ac	S4/pattern/pattern.c	line 1253	cg	OK	expected cg
+a07b5ac	S4/S4.cpp	line 2413	Simulation_ComputeLayerModes	OK	expected Simulation_ComputeLayerModes
+8d8202a	S4/S4.cpp	line 4219	S4_Simulation_GetFieldPlane	OK	expected S4_Simulation_GetFieldPlane
+8d8202a	S4/S4.cpp	line 4343	S4_Simulation_GetFieldPlane	OK	expected S4_Simulation_GetFieldPlane
+8d8202a	S4/S4.cpp	line 2422	Simulation_ComputeLayerModes	OK	expected Simulation_ComputeLayerModes
+8d8202a	S4/pattern/pattern.c	line 418	shape_get_intersection_area_quad_st	OK	expected shape_get_intersection_area_quad_st
+8d8202a	S4/pattern/pattern.c	line 545	shape_get_intersection_area	OK	expected shape_get_intersection_area
+8d8202a	S4/pattern/pattern.c	line 1279	cg	OK	expected cg
+# BAD count: 0

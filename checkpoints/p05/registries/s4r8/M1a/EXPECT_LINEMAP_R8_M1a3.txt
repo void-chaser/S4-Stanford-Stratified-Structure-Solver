@@ -1,0 +1,22 @@
+status INFLUENCED
+# EXPECT_LINEMAP_R8_M1a3.txt -- expectations for map_f2_f3_r8m1a3.py, written BEFORE the run (CONT2b section 4.1; CONT2 U153-U155).
+# Source of each value: CONT2 brief section 2 (U153, U154(b)-(d), U155) and CONT2b brief section 4.1.  Not derived from the v3 run.
+# The six v2 expectations of EXPECT_LINEMAP_R8_M1a2.txt are kept; S4.cpp 4334 and 4210 are added (U153, U155).
+MISSING 0
+AMBIGUOUS 0
+MODIFIED_BY_FIX 3
+PARSER_SELFCHECK BAD 0
+DIFF_OFFSET DISAGREE 0
+S4/pattern/pattern.c 415 F3 418 MODIFIED_BY_FIX
+S4/pattern/pattern.c 528 F3 545 SHIFTED
+S4/fmm/fmm_FFT.cpp 98 F3 101 MODIFIED_BY_FIX
+S4/fmm/fmm_kottke.cpp 102 F3 105 MODIFIED_BY_FIX
+S4/S4.cpp 2413 F3 2422 SHIFTED
+S4/fmm/fmm_PolBasisJones.cpp 192 F3 192 SAME_LINE
+S4/S4.cpp 4334 F3 4343 SHIFTED
+S4/S4.cpp 4334 used_in_m1 NO
+S4/S4.cpp 4210 F3 4219 SHIFTED
+SYMBOL Simulation_GetLayerSolution F2 1778 F3 1787 PRESENT
+SYMBOL Simulation_ComputeLayerModes F2 2250 F3 2259 PRESENT
+SYMBOL S4_Simulation_GetFieldPlane F2 4210 F3 4219 PRESENT
+SYMBOL r6_probe F2 73 F3 73 PRESENT

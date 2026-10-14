@@ -1,0 +1,45 @@
+
+== 续2b 裁决与勘误(R8 M1a 续2b 任务书 §2;追加,未改上方任何条目)
+
+U160–U167 见 registries/RULINGS.tsv(生效,共 8 行)。以下为续2b 的勘误与事项,编号自 E8-37 起,与续2b 任务书 §2 一致。
+
+E8-37  续2 在 §2 之后停下(U160 记录)。续2 追加的 RULINGS 与 ERRATA 已落盘通过;§4 映射 v3、§5 动态映射、§6 记录提交均未做;续2 没有做 end 门禁与记录提交,也没写续2 报告。
+       续2 不符合任何停止条件(续2 任务书 §1 的 ①–⑤、⑦'、⑩、⑪、⑫、⑬ 均未触发;工作量不是停止理由,U167)。该停止属于 U158 的违反,记为事件;续2b 按 U160 存档续2 的停止报告原文(报告 第 1 节),并补做记录提交。
+
+E8-38  禁止项检查(U161)。(a) append_errata_r8m1a3.txt 第 46 行含根目录临时区路径字样(文字),禁止项检查命中 1 行后仍被运行,违反"0 行才能运行"(表二)。
+       该文本已进入 ERRATA_8,不改。(b) PRERUN 中 append_r8m1a3.sh 记为 grep_hits=1;规划者用同一正则复查为 0 行(标准首段中的临时目录路径不命中),续2 报告中"标准首段命中"的说法不成立,记为记录错误。
+
+E8-39  gate6 start 用的根目录临时区快照参数(计数 0,sha256 e3b0c442…b855)来源没有记录(U162)。续2b 的 gate7 start 用的快照参数由内联形式 (5) 于 2026-10-14T02:15:23Z 取得(计数 0,sha256 与上值相同);
+       gate6 参数的来源仍记为"来源未记录"。tmp_snapshot_r8m1a3.sh 标记 DO NOT RUN(U162),原样保留。
+
+E8-40  续2 的 01:47:14Z 只读查询(git log --oneline 等)不在四种形式内,与 E8-26、E8-34 同类,第三次出现(U163)。续2b 新增形式 (5),并如实记录本轮的违规(见 E8-45)。
+
+E8-41  append_r8m1a3.sh 注释写"追加后 163 行",实际 168 行(HEAD 145 + U137–U151 共 15 + U152–U159 共 8)。后置检查不比行数,不影响结果(U164)。续1 报告文件头多写一行 E8-35 引用,接受。
+
+E8-42  映射 v3 的停止项(续2b §4,停止条件 ⑫、⑬):
+       (a) ⑬ 函数名断点符号核对:driver_r6b_state.cpp 的 r6_probe 在 F2 与 F3 中均为 MISSING(FUNC_BP_SYMBOLS_R8_M1a3.tsv 第 6 行)。原因见 E8-43:解析器把 __attribute__ 误认为函数头,r6_probe 的定义行(73)未被识别。驱动源未改,行号 73 与 73 一致。
+       (b) ⑫ LINEMAP_CHECK 1 项 MISMATCH(r6_probe 符号),其余 17 项 MATCH。映射 v3 的站点结果 MISSING 0、AMBIGUOUS 0、MODIFIED_BY_FIX 3、PARSER_SELFCHECK BAD 0、DIFF_OFFSET DISAGREE 0 与期望一致。
+       (c) ⑫ S4/S4.cpp:4334 的 used_in_m1 列为 YES(期望 NO):引用来自 testing/d003/stage_s4r8/append_errata_r8m1a3.txt:32、append_rulings_r8m1a3.tsv:2、map_f2_f3_r8m1a3.py:51、map_f2_f3_r8m1a3.py:106 等。
+           这些引用是 R8 M1a 续1/续2 的文本与脚本内对该行号的描述(不是运行器对该站点的断点引用),used_in_m1 的查找规则过宽(只要文件中出现 4334 与 S4.cpp 文字就命中)。
+           这是 v3 used_in_m1 查找规则的缺陷,不是 S4 的变化。按规则 used_in_m1 应由运行器/登记表的 gdb 断点引用决定,而不是任意文本。
+       处置:按续2b §1 停止(⑫、⑬);不改规则、不重跑,不做 §5 动态映射。映射文件保留为停止记录。
+
+E8-43  map_f2_f3_r8m1a3.py 解析器缺陷(U154(b) 自检未覆盖的情形):第一条函数头正则把 __attribute__(...) 误认为函数名。
+       驱动源 driver_r6b_state.cpp:73 为 extern "C" __attribute__((noinline)) void r6_probe(int k){;解析结果为 __attribute__,不是 r6_probe。自检(PARSER_SELFCHECK)未包含该文件的该行,因此没有报 BAD。
+       修正方向(未做,由用户裁决):在函数头正则中忽略 __attribute__((...)) 与 extern "C" 修饰,或把 r6_probe 的核对改为按文本定位。在本轮不改。
+
+E8-44  v2→v3 的函数列变化(块注释修正,§7 记录项;LINEMAP_V2_V3_DIFF_R8_M1a3.txt,CHANGED 4 行):
+       (a) S4/S4.cpp:4210 所在函数 v2 为 output_povray_shape,v3 为 S4_Simulation_GetFieldPlane(v2 的函数头识别受字符串影响,U153);
+       (b) S4/S4.cpp:4334 v2 为 AMBIGUOUS,v3 为 SHIFTED(F3:4343,S4_Simulation_GetFieldPlane);
+       (c) S4/pattern/pattern.c:1164 所在函数 v2 为 fprint_double,v3 为 FILE_SCOPE。源码 [源码]:1177 行起的 fprint_double 与 1190 行的 malloc 都在 /* */ 块注释内(1162 行后),v3 正确;
+       (d) driver_r6b_state.cpp:73 的函数列 v2 为 FILE_SCOPE,v3 为 __attribute__(见 E8-43)。
+       以上只记录,不判(续2b §4.3)。
+
+E8-45  续2b 内联命令违规(表二),逐条见报告 "内联命令自查"。要点:
+       (a) 形式 (2)(3)(4)(5) 与形式 (1) 之外的命令:git show 与 sha256sum 组合(形式 (4) 的变体)、grep 形式的 git diff、列数检查 awk 与 sort 管道;
+       (b) 命令中含 2>&1 的只读核对若干条;
+       (c) 以上均为只读,未写仓库外路径,未落盘;按续2 §1 与 RESTART2 §2 记入表二,继续执行。
+       (d) 续2b 的根目录临时区快照在 02:09:43Z(开工)与 02:15:23Z(gate7 start)两次,均为形式 (5)。
+
+E8-46  续2b 门禁 gate_hashes_r8m1a3b.txt 第一次禁止项检查命中 1 行(tmp_snapshot_r8m1a3.sh 的文件名中带有临时目录路径字样,grep 字面命中)。
+       处置:该行的目录前缀改为标记 @S4R8DIR@(门禁脚本 gate7_r8m1a3b.sh 在读取时替换为 testing/d003/stage_s4r8/,U161);改后检查为 0 行才运行。该更正记入 PRERUN(第一次命中 1 行,修改后 0 行)。

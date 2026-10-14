@@ -142,7 +142,7 @@
 - 收尾门禁:`GATE_R8_M0_R2_END.txt`(FAILS=1,停止记录)与 `GATE_R8_M0_R3_END.txt`(FAILS=0,收尾门禁)。
 - 复制(`copy_registries_r8.sh`):26 个小表复制到 `checkpoints/p05/registries/s4r8/`,每个副本与原件 `cmp` 一致(`COPY_IDENTICAL`);无超过 1 MB 的文件;`registries/s4r8/SHA256SUMS.txt` 覆盖 26 个副本与 `ERRATA_8.txt`(27 行),目录内 `sha256sum -c` 全部 OK(`check_rc=0`),明细 `COPY_CHECK_R8_M0.txt`。
 - 证据清单(`manifest_r8.sh`):`SHA256SUMS.txt` 覆盖证据目录的 436 个文本与日志文件;排除类别与计数见 `SHA256SUMS_EXCLUDED_R8_M0.txt`(trees/ 1609、build_r8 副本与库 6537、seam_r8 源码树 3218、驱动二进制 6、tmp 6、safe_run.log 1)。注意:清单包含 `build_r8/*/build-*.log`、`drivers_r8/*/build.stdout`(均为空文件,sha256 `e3b0c442…`,与链接无输出一致)与 `noinject_r8/run1/F3/*` 的 dump 文件。
-- **未完成**:最终提交与 `FINAL_GIT_R8_M0.txt`(见 §16)。
+- **已完成**(§16):最终提交 `e2589cb`;`FINAL_GIT_R8_M0.txt` 已写入证据目录,`git status --short` 为空。
 - 证据目录主要文件:`GATE_R8_M0.txt`、`GATE_R8_M0_R2.txt`、`PRERUN_CHECKS_R8_M0.txt`、`TREE_CHECK_R8.txt`、`TREE_MANIFEST_R8.tsv`、`BUILD_R8.tsv`、`SEAM_DIFF_F2_vs_F3_R8.txt`、`DRIVERS_R8.tsv`、`DRIVERS_R8_F2_REUSED.tsv`、`DRIVER_MAP_R8_D.tsv`、`EXPECT_R8_D.txt`、`D_PREPARE_CHECK_R8.tsv`、`RESULTS_R8_D_pass1.tsv`、`RESULTS_R8_D_pass2.tsv`、`D_SUMMARY_R8.txt`、`EXPECT_R8_NOINJECT.txt`、`RESULTS_R8_NOINJECT_run1.tsv`、`RUNNER_DIFF_R8_M0.txt`、`status_before_rec_r8.txt`、`safe_run.log`。
 
 ## 11. 裁决(原待裁决项,已由收尾任务书裁决)
@@ -230,6 +230,8 @@
 - 最终提交脚本:`testing/d003/stage_s4r8/commit_final_r8_m0.sh`(先写 `status_before_final_r8.txt` 与 `COMMIT_MSG_R8_M0_FINAL.txt`;工作区与预期集合(51 项:4 个仓库文件、26 个 registries/s4r8 文件、21 个 stage_s4r8 文件)不符则拒绝;逐个 `git add`,不用 `-A` 或 `.`;`git commit -F`;提交后写 `FINAL_GIT_R8_M0.txt`)。
 - 提交信息:`P05-S4 R8 M0 on F3: builds, seam plain, D smoke 8/8 MATCH (U113/U119/U124), F2-F3 no-injection 117/117 IDENTICAL, closeout gate per U133, rulings U133-U136, STATE updated. awaiting user review`
 - 提交后的真实 `git log -3 --oneline` 与 `git status --short` 写入 `checkpoints/p05/evidence/p05-s4r8/FINAL_GIT_R8_M0.txt`(不提交,证据目录),并在对话中贴出。
-- **本报告结论的前提**:最终提交成功,且 `FINAL_GIT_R8_M0.txt` 中 `git status --short` 为空。若该文件显示提交失败或 status 非空,本报告的结论作废,以对话中的说明为准。
+- **提交结果**:最终提交 `e2589cb` 成功(51 个文件)。`FINAL_GIT_R8_M0.txt` 中 `git log -3 --oneline` 为 `e2589cb`、`2875c55`、`3ab5680`,`git status --short` 为空(该文件记录的是提交时刻)。
+- **提交之后的一处偏离(需用户裁决)**:提交 `e2589cb` 之后,为使 §10 与事实一致,对本报告 §10 的一句措辞做了修正(原句写"最终提交未完成",提交后已不成立)。该修正**未提交**,因此当前 `git status --short` 为 ` M checkpoints/p05/P05_S4R8_REPORT_M0.md`。这是本报告唯一的未提交改动,是否以单独提交入库由用户决定;未另做提交,以免超出任务书"最终提交一次"的规定。
+- **本报告结论的前提**:最终提交成功(已满足)。若用户要求 status 必须为空,则需提交该 §10 修正;在此之前结论不受影响,因为该修正只涉及报告措辞,未改变任何证据或代码。
 
 本轮已完成 R8 M0 范围,等待用户审核。

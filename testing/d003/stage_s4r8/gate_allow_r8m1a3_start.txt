@@ -1,0 +1,11 @@
+# gate_allow_r8m1a3_start.txt -- allow-list for gate6_r8m1a3.sh start mode (CONT2 brief section 3).  Data file; read only by the gate.
+# Lines are exact git-status lines ("XY path"), or "PREFIX XY path/" for a prefix match.
+ M checkpoints/p05/P05_S4R8_REPORT_M0.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_REPORT_M1a.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT1.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT1.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2.md
+PREFIX ?? testing/d003/stage_s4r8/

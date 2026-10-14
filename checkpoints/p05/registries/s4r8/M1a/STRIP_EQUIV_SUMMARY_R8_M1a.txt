@@ -1,0 +1,3 @@
+strip_equiv_r8m1.sh (U141, U136): members=24 equal_after_strip=24 other=0 failing_or_differing_items=0 missing_pairs=0
+objcopy: GNU objcopy (GNU Binutils for Ubuntu) 2.46
+RESULT PASS: every member equal after --strip-debug

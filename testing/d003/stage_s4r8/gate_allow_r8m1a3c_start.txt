@@ -1,0 +1,15 @@
+# gate_allow_r8m1a3c_start.txt -- allow-list for gate8 start (CONT2c A1).  Lines starting with # are comments.
+ M checkpoints/p05/P05_S4R8_REPORT_M0.md
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_REPORT_M1a.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT1.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT2.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT1.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2b.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2c.md
+?? checkpoints/p05/registries/s4r8/M1a/
+PREFIX ?? testing/d003/stage_s4r8/

@@ -1,0 +1,21 @@
+# P05-S4 R8 M1a gate4 (start) -> GATE_R8_M1a.txt, utc=2026-10-13T08:05:28Z
+RECORD	ALLOW_FILE	value=testing/d003/stage_s4r8/gate_allow_r8m1a_start.txt
+RECORD	ALLOW_FILE_SHA256	value=7df7f53e43208d0df9838a1a8eaaa8970e5e9abeb77a81511351deb57ba77128
+RECORD	BRIEF_M1A_SHA256	value=a84da018b782f52e73a533d79d2224058e48d924bf817df869a94e5656686ec3
+PASS	HEAD	expected=e2589cbc2b470ae88286d582ee62699e7c0d9e4c	actual=e2589cbc2b470ae88286d582ee62699e7c0d9e4c
+PASS	HEAD_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	S4_DIFF_a07b5ac_8d8202a	expected=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 	actual=S4/S4.cpp S4/fmm/fmm_FFT.cpp S4/fmm/fmm_kottke.cpp S4/pattern/pattern.c 
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	REGISTRY_S3R4C3_D_SHA256	expected=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5	actual=a251a3b856f7772a09ce587918125f3b91d525cacc16db238e6787312353a9d5
+PASS	S4R8_M0_SHA256SUMS_OK_LINES_EQ_TOTAL	expected=25	actual=25
+PASS	S3R4C5_SHA256SUMS_OK_LINES_EQ_TOTAL	expected=14	actual=14
+PASS	S4R7_MANIFESTS	expected=fails=0	actual=fails=0
+RECORD	S4R7_RECHECK_FILE	value=checkpoints/p05/evidence/p05-s4r8/S4R7_RECHECK_R8_M1A_START.tsv
+PASS	GIT_STATUS_ALLOWED_ONLY	expected=	actual=
+RECORD	GIT_STATUS	value= M checkpoints/p05/P05_S4R8_REPORT_M0.md;?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a.md;?? testing/d003/stage_s4r8/gate4_r8m1.sh;?? testing/d003/stage_s4r8/gate_allow_r8m1a_end.txt;?? testing/d003/stage_s4r8/gate_allow_r8m1a_start.txt;?? testing/d003/stage_s4r8/prerun_log_r8m1.sh;?? testing/d003/stage_s4r8/recheck_s4r7_r8m1.py
+PASS	TMP_SNAPSHOT_ARGS_GIVEN	expected=yes	actual=yes
+RECORD	TMP_COUNT_START	value=0
+RECORD	TMP_SHA256_START	value=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FAILS=0

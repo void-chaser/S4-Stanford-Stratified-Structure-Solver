@@ -1,0 +1,19 @@
+# LINEMAP_CHECK_R8_M1a3.txt -- item by item comparison with EXPECT_LINEMAP_R8_M1a3.txt (written by map_f2_f3_r8m1a3.py)
+MATCH	MISSING	expected=0	actual=0
+MATCH	AMBIGUOUS	expected=0	actual=0
+MATCH	MODIFIED_BY_FIX	expected=3	actual=3
+MATCH	PARSER_SELFCHECK_BAD	expected=0	actual=0
+MATCH	DIFF_OFFSET_DISAGREE	expected=0	actual=0
+MATCH	S4/pattern/pattern.c:415	expected=F3 418 MODIFIED_BY_FIX	actual=F3 418 MODIFIED_BY_FIX
+MATCH	S4/pattern/pattern.c:528	expected=F3 545 SHIFTED	actual=F3 545 SHIFTED
+MATCH	S4/fmm/fmm_FFT.cpp:98	expected=F3 101 MODIFIED_BY_FIX	actual=F3 101 MODIFIED_BY_FIX
+MATCH	S4/fmm/fmm_kottke.cpp:102	expected=F3 105 MODIFIED_BY_FIX	actual=F3 105 MODIFIED_BY_FIX
+MATCH	S4/S4.cpp:2413	expected=F3 2422 SHIFTED	actual=F3 2422 SHIFTED
+MATCH	S4/fmm/fmm_PolBasisJones.cpp:192	expected=F3 192 SAME_LINE	actual=F3 192 SAME_LINE
+MATCH	S4/S4.cpp:4334	expected=F3 4343 SHIFTED	actual=F3 4343 SHIFTED
+MATCH	S4/S4.cpp:4210	expected=F3 4219 SHIFTED	actual=F3 4219 SHIFTED
+MATCH	SYMBOL Simulation_GetLayerSolution	expected=PRESENT	actual=PRESENT/PRESENT
+MATCH	SYMBOL Simulation_ComputeLayerModes	expected=PRESENT	actual=PRESENT/PRESENT
+MATCH	SYMBOL S4_Simulation_GetFieldPlane	expected=PRESENT	actual=PRESENT/PRESENT
+MISMATCH	SYMBOL r6_probe	expected=PRESENT	actual=MISSING/MISSING
+# MISMATCH count: 1

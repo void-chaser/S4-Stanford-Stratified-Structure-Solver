@@ -1,0 +1,49 @@
+# recheck of registries/s4r7 manifests (gate5 M1a CONT1, read only; check_s4r7_manifests_r8 functions, imported)
+manifest	check	expected	actual	result
+SHA256SUMS_M1.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2bprep.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2b_run6prep.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2b_run7_std.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2b_run7prep_std.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M3_prep.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M3.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M3_closeout.txt	sha256sum -c: rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS.txt	own sha256 (manifest file unchanged)	0f8f06be5bdbbed833ba09199ec79ae4b0813ff32750d16d1d9af0ca45db0a36	0f8f06be5bdbbed833ba09199ec79ae4b0813ff32750d16d1d9af0ca45db0a36	PASS
+SHA256SUMS.txt	snapshot rows (file names)	ERRATA_7.txt	ERRATA_7.txt	PASS
+SHA256SUMS.txt	non-snapshot row count	10	10	PASS
+SHA256SUMS.txt	ERRATA_7.txt: recorded = sha256(current first 5378 bytes)	c80b68dc7089a743c47591f0f3290ad0c7217a41399b050435789edec2654b2b	c80b68dc7089a743c47591f0f3290ad0c7217a41399b050435789edec2654b2b	PASS
+SHA256SUMS.txt	ERRATA_7.txt: recorded = sha256(git show 8a71b3f459b2:checkpoints/p05/registries/s4r7/ERRATA_7.txt)	c80b68dc7089a743c47591f0f3290ad0c7217a41399b050435789edec2654b2b	c80b68dc7089a743c47591f0f3290ad0c7217a41399b050435789edec2654b2b	PASS
+SHA256SUMS.txt	ERRATA_7.txt: byte length of git show version = 5378	5378	5378	PASS
+SHA256SUMS.txt	non-snapshot rows: sha256sum -c rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2a.txt	own sha256 (manifest file unchanged)	f03268ee014db0a2ac064bc9a5e641584abeec4de50aa1581c5c96ba5c7525f3	f03268ee014db0a2ac064bc9a5e641584abeec4de50aa1581c5c96ba5c7525f3	PASS
+SHA256SUMS_M2a.txt	snapshot rows (file names)	../../STATE.md, ../RULINGS.tsv, ERRATA_7.txt	../../STATE.md, ../RULINGS.tsv, ERRATA_7.txt	PASS
+SHA256SUMS_M2a.txt	non-snapshot row count	16	16	PASS
+SHA256SUMS_M2a.txt	../../STATE.md: recorded = sha256(git show 6319a3ca75cb:checkpoints/p05/STATE.md)	993696e27eb8cdc76968d9e7e63702725df065c812ec1634cb7a675a5fd4f32e	993696e27eb8cdc76968d9e7e63702725df065c812ec1634cb7a675a5fd4f32e	PASS
+SHA256SUMS_M2a.txt	../RULINGS.tsv: recorded = sha256(current first 16066 bytes)	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	PASS
+SHA256SUMS_M2a.txt	../RULINGS.tsv: recorded = sha256(git show 6319a3ca75cb:checkpoints/p05/registries/RULINGS.tsv)	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	PASS
+SHA256SUMS_M2a.txt	../RULINGS.tsv: byte length of git show version = 16066	16066	16066	PASS
+SHA256SUMS_M2a.txt	ERRATA_7.txt: recorded = sha256(current first 19434 bytes)	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	PASS
+SHA256SUMS_M2a.txt	ERRATA_7.txt: recorded = sha256(git show 6319a3ca75cb:checkpoints/p05/registries/s4r7/ERRATA_7.txt)	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	5cb5ab60c409271dba2a60504ec498d4579375eb9e2919db70cc1f574e276fb1	PASS
+SHA256SUMS_M2a.txt	ERRATA_7.txt: byte length of git show version = 19434	19434	19434	PASS
+SHA256SUMS_M2a.txt	non-snapshot rows: sha256sum -c rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2pre.txt	own sha256 (manifest file unchanged)	40380dd10223101e8b63adb9af5143e22ead818f629b14a640de4f8eda646fe1	40380dd10223101e8b63adb9af5143e22ead818f629b14a640de4f8eda646fe1	PASS
+SHA256SUMS_M2pre.txt	snapshot rows (file names)	../../STATE.md, ../RULINGS.tsv, ERRATA_7.txt	../../STATE.md, ../RULINGS.tsv, ERRATA_7.txt	PASS
+SHA256SUMS_M2pre.txt	non-snapshot row count	13	13	PASS
+SHA256SUMS_M2pre.txt	../../STATE.md: recorded = sha256(git show db9264887add:checkpoints/p05/STATE.md)	993696e27eb8cdc76968d9e7e63702725df065c812ec1634cb7a675a5fd4f32e	993696e27eb8cdc76968d9e7e63702725df065c812ec1634cb7a675a5fd4f32e	PASS
+SHA256SUMS_M2pre.txt	../RULINGS.tsv: recorded = sha256(current first 16066 bytes)	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	PASS
+SHA256SUMS_M2pre.txt	../RULINGS.tsv: recorded = sha256(git show db9264887add:checkpoints/p05/registries/RULINGS.tsv)	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	30ca8f9e836ef6eef2a52ba3d8b1bed2f0e8468c3973681ea5d12f5efd865f98	PASS
+SHA256SUMS_M2pre.txt	../RULINGS.tsv: byte length of git show version = 16066	16066	16066	PASS
+SHA256SUMS_M2pre.txt	ERRATA_7.txt: recorded = sha256(current first 18030 bytes)	6032f4f3ee635a27a3c9123fae75790f10079d6d7e33ce8c4d8571e3037a8f1d	6032f4f3ee635a27a3c9123fae75790f10079d6d7e33ce8c4d8571e3037a8f1d	PASS
+SHA256SUMS_M2pre.txt	ERRATA_7.txt: recorded = sha256(git show db9264887add:checkpoints/p05/registries/s4r7/ERRATA_7.txt)	6032f4f3ee635a27a3c9123fae75790f10079d6d7e33ce8c4d8571e3037a8f1d	6032f4f3ee635a27a3c9123fae75790f10079d6d7e33ce8c4d8571e3037a8f1d	PASS
+SHA256SUMS_M2pre.txt	ERRATA_7.txt: byte length of git show version = 18030	18030	18030	PASS
+SHA256SUMS_M2pre.txt	non-snapshot rows: sha256sum -c rc=0 and every line OK	rc=0;bad=0	rc=0;bad=0	PASS
+SHA256SUMS_M2b_run7.txt	own sha256 (manifest file unchanged)	3e189f3820263c8f1c01d62aa57cb5bb43462be30d2d810b5a0cd7fd092bfe56	3e189f3820263c8f1c01d62aa57cb5bb43462be30d2d810b5a0cd7fd092bfe56	PASS
+SHA256SUMS_M2b_run7.txt	row count	13	13	PASS
+SHA256SUMS_M2b_run7.txt	row count of SHA256SUMS_M2b_run7_std.txt	13	13	PASS
+SHA256SUMS_M2b_run7.txt	first two columns equal to SHA256SUMS_M2b_run7_std.txt, line by line	13	13	PASS
+SHA256SUMS_M2b_run7prep.txt	own sha256 (manifest file unchanged)	29ea95057b5942358b4ee1704d6fd4adb61c44f9ea7301b81faf3390f715ad44	29ea95057b5942358b4ee1704d6fd4adb61c44f9ea7301b81faf3390f715ad44	PASS
+SHA256SUMS_M2b_run7prep.txt	row count	3	3	PASS
+SHA256SUMS_M2b_run7prep.txt	row count of SHA256SUMS_M2b_run7prep_std.txt	3	3	PASS
+SHA256SUMS_M2b_run7prep.txt	first two columns equal to SHA256SUMS_M2b_run7prep_std.txt, line by line	3	3	PASS
+registries/s4r7	SHA256SUMS*.txt set (exactly the 13 expected names)	SHA256SUMS.txt, SHA256SUMS_M1.txt, SHA256SUMS_M2a.txt, SHA256SUMS_M2b_run6prep.txt, SHA256SUMS_M2b_run7.txt, SHA256SUMS_M2b_run7_std.txt, SHA256SUMS_M2b_run7prep.txt, SHA256SUMS_M2b_run7prep_std.txt, SHA256SUMS_M2bprep.txt, SHA256SUMS_M2pre.txt, SHA256SUMS_M3.txt, SHA256SUMS_M3_closeout.txt, SHA256SUMS_M3_prep.txt	SHA256SUMS.txt, SHA256SUMS_M1.txt, SHA256SUMS_M2a.txt, SHA256SUMS_M2b_run6prep.txt, SHA256SUMS_M2b_run7.txt, SHA256SUMS_M2b_run7_std.txt, SHA256SUMS_M2b_run7prep.txt, SHA256SUMS_M2b_run7prep_std.txt, SHA256SUMS_M2bprep.txt, SHA256SUMS_M2pre.txt, SHA256SUMS_M3.txt, SHA256SUMS_M3_closeout.txt, SHA256SUMS_M3_prep.txt	PASS
+fails=0

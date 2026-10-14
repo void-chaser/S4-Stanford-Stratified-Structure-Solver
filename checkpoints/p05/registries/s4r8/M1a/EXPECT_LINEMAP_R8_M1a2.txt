@@ -1,0 +1,11 @@
+# EXPECT_LINEMAP_R8_M1a2.txt -- expectations for map_f2_f3_r8m1a2.py, written BEFORE the run (CONT1 section 4.3; U145-U147).
+# Source of each value: CONT1 brief section 4.3 (expectation line) and U145, U146.  Not derived from the run.
+MISSING 0
+AMBIGUOUS 0
+MODIFIED_BY_FIX 3
+S4/pattern/pattern.c 415 F3 418 MODIFIED_BY_FIX
+S4/pattern/pattern.c 528 F3 545 SHIFTED
+S4/fmm/fmm_FFT.cpp 98 F3 101 MODIFIED_BY_FIX
+S4/fmm/fmm_kottke.cpp 102 F3 105 MODIFIED_BY_FIX
+S4/S4.cpp 2413 F3 2422 SHIFTED
+S4/fmm/fmm_PolBasisJones.cpp 192 F3 192 SAME_LINE

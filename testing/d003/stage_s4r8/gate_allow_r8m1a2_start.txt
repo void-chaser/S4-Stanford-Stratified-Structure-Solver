@@ -1,0 +1,9 @@
+# gate_allow_r8m1a2_start.txt -- allowed `git status --short` lines at the opening of P05-S4 R8 M1a CONT1 (U143, U150(c)).
+# Read by gate5_r8m1a2.sh only.  One entry per line.  A line that begins with "PREFIX " is a prefix rule:
+# any path under the given directory prefix is allowed with the status code given after PREFIX.  Lines starting with # are comments.
+ M checkpoints/p05/P05_S4R8_REPORT_M0.md
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_REPORT_M1a.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT1.md
+PREFIX ?? testing/d003/stage_s4r8/

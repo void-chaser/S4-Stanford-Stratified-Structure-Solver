@@ -1,0 +1,9 @@
+
+== R8 M1a 续2c 裁决与勘误(追加,未改上方任何条目;裁决原文 registries/RULINGS.tsv U168–U175,生效)
+
+E8-47  内联 mkdir(同 U172):02:29:41Z 的内联 mkdir 目标在仓库内、已落盘,未经 safe_run。归为表二事件,已披露,不作废结果。
+E8-48  sh -c 包裹(同 U172):经 safe_run 运行的命令中含 sh -c 包裹,至少 4 次。归为表二事件,已披露。从续2c 起 <X> 不得含 sh -c(U172)。
+E8-49  STRIP_EQUIV 主表与复制计数(同 U173):(a) 通配 STRIP_EQUIV_*_R8_M1a.* 不匹配 strip_cmp_r8m1/STRIP_EQUIV_R8_M1a.tsv(sha256 9aef51ef8864b72043993d594213925551636478a4205220d80b7d337a010825),主表此前未进入 registries;续2c A 段补复制。报告 2.5"已复制"只对 SUMMARY 成立。(b) 续2b 复制清单中 GATE_R8_M1a3b.txt 与 GATE_R8_M1a3b_END.txt 各出现两次,COPIED=35 对应 33 个不同文件。已存在的 M1a/SHA256SUMS.txt 不改,续2c 另写 SHA256SUMS_M1a3c_A.txt。
+E8-50  U169 的两项原因:(a) 执行者把当前快照 sha256 填进了 end 门禁的计数位,属执行者错误;(b) end 模式手填 4 个位置参数,recheck 子输出名写死,门禁无法重跑,属规划缺陷。GATE_R8_M1a3b_END.txt 作为停止记录保留(FAILS=1)。新门禁 gate8_r8m1a3c.sh 由开工门禁文件读取开工快照值。
+E8-51  规划缺陷记录:(a) 续2 任务书 U154(b) 的解析器自检没有包含驱动文件,所以 E8-43 未被自检发现;(b) 续2 任务书 §4.1 的期望项没有规定统一的行格式,用"used_in_m1 NO"写进站点行,导致比较分支与 EXPECT 不一致(E8-42(d));(c) 续2 任务书 U154(d) 的 used_in_m1 定义把 stage_s4r8 也纳入查找范围,造成自引用(E8-42(c))。修正见 U170、U171。
+E8-52  U170、U171 的期望来自规划者只读模拟,状态 INFLUENCED。映射 v3c 与 EXPECT_LINEMAP_R8_M1a3c.txt 的比较在续2c B 段进行,不据此判定 S4 的行为。

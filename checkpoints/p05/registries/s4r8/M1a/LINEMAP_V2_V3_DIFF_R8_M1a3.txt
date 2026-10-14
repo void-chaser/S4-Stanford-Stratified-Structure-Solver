@@ -1,0 +1,31 @@
+# LINEMAP_V2_V3_DIFF_R8_M1a3.txt -- v2 (LINEMAP_F2_F3_R8_M1a2.tsv) against v3 (LINEMAP_F2_F3_R8_M1a3.tsv), per site.  Record only, no judgement (CONT2b section 4.3).
+file	F2_line	v2_F3_line	v3_F3_line	v2_F3_function	v3_F3_function	v2_status	v3_status	changed
+S4/S4.cpp	23	23	23	FILE_SCOPE	FILE_SCOPE	SAME_LINE	SAME_LINE	same
+S4/S4.cpp	2413	2422	2422	Simulation_ComputeLayerModes	Simulation_ComputeLayerModes	SHIFTED	SHIFTED	same
+S4/S4.cpp	32	32	32	FILE_SCOPE	FILE_SCOPE	SAME_LINE	SAME_LINE	same
+S4/S4.cpp	4210	4219	4219	output_povray_shape	S4_Simulation_GetFieldPlane	SHIFTED	SHIFTED	CHANGED
+S4/S4.cpp	4334	2516,2568,2672,3428,3523,3706,4343	4343	-	S4_Simulation_GetFieldPlane	AMBIGUOUS	SHIFTED	CHANGED
+S4/fmm/fmm_FFT.cpp	90	90	90	FMMGetEpsilon_FFT	FMMGetEpsilon_FFT	SAME_LINE	SAME_LINE	same
+S4/fmm/fmm_FFT.cpp	98	101	101	FMMGetEpsilon_FFT	FMMGetEpsilon_FFT	MODIFIED_BY_FIX	MODIFIED_BY_FIX	same
+S4/fmm/fmm_PolBasisJones.cpp	185	185	185	FMMGetEpsilon_PolBasisJones	FMMGetEpsilon_PolBasisJones	SAME_LINE	SAME_LINE	same
+S4/fmm/fmm_PolBasisJones.cpp	192	192	192	FMMGetEpsilon_PolBasisJones	FMMGetEpsilon_PolBasisJones	SAME_LINE	SAME_LINE	same
+S4/fmm/fmm_kottke.cpp	102	105	105	FMMGetEpsilon_Kottke	FMMGetEpsilon_Kottke	MODIFIED_BY_FIX	MODIFIED_BY_FIX	same
+S4/fmm/fmm_kottke.cpp	94	94	94	FMMGetEpsilon_Kottke	FMMGetEpsilon_Kottke	SAME_LINE	SAME_LINE	same
+S4/pattern/pattern.c	1164	1190	1190	fprint_double	FILE_SCOPE	SHIFTED	SHIFTED	CHANGED
+S4/pattern/pattern.c	1247	1273	1273	cg	cg	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1253	1279	1279	cg	cg	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1416	1442	1442	sparse_linsolve_d	sparse_linsolve_d	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1476	1502	1502	FILE_SCOPE	FILE_SCOPE	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1489	1515	1515	pattern_generate_flow_field_rect	pattern_generate_flow_field_rect	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1499	1525	1525	pattern_generate_flow_field_rect	pattern_generate_flow_field_rect	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1643	1669	1669	pattern_generate_flow_field_rect	pattern_generate_flow_field_rect	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1666	1692	1692	FILE_SCOPE	FILE_SCOPE	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1679	1705	1705	pattern_generate_flow_field_tri	pattern_generate_flow_field_tri	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	1689	1715	1715	pattern_generate_flow_field_tri	pattern_generate_flow_field_tri	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	2089	2115	2115	pattern_generate_flow_field_tri	pattern_generate_flow_field_tri	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	2123	2149	2149	FILE_SCOPE	FILE_SCOPE	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	415	418	418	shape_get_intersection_area_quad_st	shape_get_intersection_area_quad_st	MODIFIED_BY_FIX	MODIFIED_BY_FIX	same
+S4/pattern/pattern.c	528	545	545	shape_get_intersection_area	shape_get_intersection_area	SHIFTED	SHIFTED	same
+S4/pattern/pattern.c	806	825	825	pattern_get_containment_tree	pattern_get_containment_tree	SHIFTED	SHIFTED	same
+testing/d003/stage_s4/driver_r6b_state.cpp	73	73	73	FILE_SCOPE	__attribute__	SAME_LINE	SAME_LINE	CHANGED
+# changed sites: 4

@@ -1,0 +1,16 @@
+# gate_allow_r8m1a3c_endA.txt -- allow-list for gate8 endA (CONT2c A1): start list plus the A-segment report.  Comments start with #.
+ M checkpoints/p05/P05_S4R8_REPORT_M0.md
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_REPORT_M1a.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT1.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT2.md
+?? checkpoints/p05/P05_S4R8_REPORT_M1a_CONT2c.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT1.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2b.md
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1a_CONT2c.md
+?? checkpoints/p05/registries/s4r8/M1a/
+PREFIX ?? testing/d003/stage_s4r8/

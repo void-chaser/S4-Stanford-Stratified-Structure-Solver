@@ -171,3 +171,193 @@ U136  E8-9 的原因查明移到 R8 M1 第 0 步(E8-17):M1 的 gdb 链路要用 
 == E8-16  E8-10 关闭(U135):见上 U135 条目。
 
 == E8-17  E8-9 的查明移入 M1(U136):见上 U136 条目。
+
+== R8 M1a 裁决(任务书 §2,R8 M1a 任务书原文存于 briefs/P05_S4R8_BRIEF_M1a.md;登记于 RULINGS.tsv 的生效条目)
+
+U137  R8 M0 由用户审核接受(e2589cb)。提交后对 P05_S4R8_REPORT_M0.md §10/§16 的措辞修正(未提交)接受,随本轮记录提交入库,不单独提交。
+      收尾阶段那条超出白名单的只读内联命令(ls -la … | head -20; echo ---; git status --short)记入表二。以上记为 E8-18。
+U138  R8 M1 分为三个子里程碑,每个结束后停下,等用户审核:M1a = 准备,不做注入运行;M1b = plain 组注入回归
+      (R7 的 G7、G8、4.2、G2b、G3、G4、CTRL_SEAM、G2c、G1、G2a),加 S3R4 的 22 行新增与多边形等价;M1c = dbg/gdb 状态组(R7 的 G5、G6 与 18 对照)。
+U139  M1b/M1c 的比较规则(在本轮预注册):(a) 每组先在 F2 上跑基线,逐点与 R7 中 F2 的结果比较;(b) 再在 F3 上跑,F3 的期望 = R7 中 F2 两遍一致的
+      class 与 rc1(INFLUENCED);(c) 对照行期望 CONTROL_OK,R7 M1 的 18 行对照按 U44 的 POSTHOC 重判取期望,不用 RESULTS 中 E7-8 的错位行;
+      (d) R7 G1 中 22 个 NOT_REACHED_AS_EXPECTED 点,期望照旧;(e) G2c-control 6 行沿用 U65(a) 的 NOT_RUN_REGISTRY_ERROR,不运行。
+      期望只能由脚本从 R7 已提交的 registries/s4r7/ 表生成,不得手写。
+U140  按调用次数计数的注入在 F3 上能否照搬期望,取决于 §6 的 F2→F3 调用序列映射:只有 IDENTICAL 的点才能照搬;任何 DIFFERENT 都停下等裁决,不得自行重映射。
+U141  E8-9 的查明(U136)是本轮第 0 步。方法照 R7 U84/U87:对复制件做 objcopy --strip-debug,静态库逐成员比较;比较对象是 R8 的 F3-dbg 库与 S3R4 的 F3-dbg 库。
+      全部成员 EQUAL_AFTER_STRIP 就关闭 E8-9(措辞同 U87:差异只来自调试段);否则停下。
+U142  22 行新增与多边形等价在 M1b 运行。F3 侧驱动用 R8 的 F3 plain 库重新链接,并把驱动 sha256 与 S3R4 记录比较,结果写 SAME 或 DIFFERENT(DIFFERENT 只记录,不停止)。
+      F2 侧复用 S3R4 的 F2 驱动,运行前核对 sha256。期望取自 REGISTRY_S3R4C2_A.tsv、REGISTRY_S3R4C3_A_CTRL.tsv、REGISTRY_S3R4C3_B.tsv、REGISTRY_S3R4C2_C_POLY.tsv 的原行(INFLUENCED)。
+      这是 S4 的修复后验证,不再是自检;报告仍只写 REPORTED_FAILURE(该注入下返回码非零),不写"已修好"。
+U143  门禁的允许修改列表与允许未跟踪列表改为数据文件 testing/d003/stage_s4r8/gate_allow_r8m1a_{start,end}.txt,记录 sha256,并随记录提交入库;门禁脚本只读这两个文件。
+
+== E8-18  收尾阶段的一条超出白名单的只读内联命令(M0 收尾,记入表二;R8 M1a 任务书 §2 指定)
+  · 命令(原文,M0 报告 §13.2 补记):ls -la checkpoints/p05/P05_S4R8_REPORT_M0.md checkpoints/p05/briefs/ | head -20; echo ---; git status --short
+  · 性质:ls -la 带选项(超出 RESTART2 §1 U132(c) 白名单);只读;未写仓库外路径;未落盘。
+  · UTC:未记录(会话中未标注;不能从证据文件还原)。本条为 M1a 任务书要求的记录。
+  · 处置:按任务书 §2 记入表二,不停止。
+
+== E8-19  E8-9 关闭(U141;R8 M1a 第 0 步)
+  · 方法:testing/d003/stage_s4r8/strip_equiv_r8m1.sh(复制自 check_dbg_strip_equiv_r7.sh;只改比较对象与输出目录;删去驱动比较段,U141 只要求库)。
+  · 比较对象:M0 的 F3 dbg 库 sha256 56f72c58…(build_r8/F3-dbg)与 S3R4 的 F3 dbg 库 sha256 10ea03b3…(evidence/p05-s3r4/build_f3/dbg;运行前核对 sha256)。
+  · 结果:24 个成员全部 EQUAL_AFTER_STRIP(strip_cmp_r8m1/STRIP_EQUIV_R8_M1a.tsv;摘要 RESULT PASS)。原始字节不等(sha_raw_equal=no),去调试段后相等。
+  · 处置:按 U141/U87 措辞关闭 E8-9:差异只来自调试段。这不是修复验证,不改任何 S4/ 与历史装置。
+
+== E8-20  §6.1 静态映射停止(U140;R8 M1a 任务书 §6.1 "MISSING 就停下")
+  · 脚本:testing/d003/stage_s4r8/map_f2_f3_r8m1.py(只读 git show a07b5ac 与 8d8202a;输出 LINEMAP_F2_F3_R8_M1a.tsv;exit 1)。
+  · 28 个站点:SAME_LINE 5、SHIFTED 19、MISSING 2、AMBIGUOUS 2。停止项:
+    (a) S4/pattern/pattern.c:415 与 528 的同一行文字 "int *tri = (int*)malloc(sizeof(int)*3*(s->vtab.polygon.n_vertices-2));"
+        在 F3 中出现在 418 与 545(AMBIGUOUS)。F3 中 418 位于 shape_get_intersection_area_quad_st(303 起),545 位于 shape_get_intersection_area(474 起);
+        F2 的 415 与 528 所属函数(LINEMAP_M3_R7 Part B)与 F3 的函数归属不能由文字匹配确定,需要人工核对。
+    (b) S4/fmm/fmm_FFT.cpp:98 与 S4/fmm/fmm_kottke.cpp:102 的 Pattern_DiscretizeCell 调用行在 F3 中被 S3R4 修复(U94/U96)改写为
+        "if(-12 == Pattern_DiscretizeCell(...)){ ret = 1; goto cleanup; }"(F3 第 101 与 105 行)。站点仍在、文字已改;[源码] git diff a07b5ac 8d8202a 确认。
+  · 状态:未解决。MISSING 与 AMBIGUOUS 不由脚本自行判定为 SAME 或 SHIFTED(任务书 §6.1)。等待用户裁决(见报告 "待用户裁决")。
+  · 对后续的影响:§6.2(动态映射)、§7(预注册)与 §8(记录提交)未进行。
+
+== E8-21  F2 驱动的 sha 记录(§5.3,FIRST_RECORD 与 SAME 的来源说明)
+  · poly-F2(evidence/p05-s3r4c2/drivers/poly-F2/driver):registries/s3r4c2 中无 sha 记录(FIRST_RECORD)。本轮记录其当前值 e9b75ca2…(DRIVERS_R8_M1a_F2_REUSED.tsv)。
+  · polyinj-F2:BINARIES_C3.tsv 标为 FIRST_RECORD(值 237bbefc…);本轮当前值与该值相同。按记录值比较为 SAME;其 S3R4 记录的性质为 FIRST_RECORD,报告中如实注明。
+  · init-F2:BINARIES_C3.tsv 标为 SAME(29bb377c…);本轮当前值相同。
+
+== E8-22  本轮工具与脚本事件(表二)
+  · 本轮内联命令中含超出 RESTART2 §1 U132(c) 白名单的形式(grep、wc、sed、cut、ls -la、git diff … | grep、git show … | head、ls … 2>&1 等)。
+    均为只读、未写仓库外路径、未落盘。UTC 未记录(会话中未逐条标注);逐条原文列于报告 "内联命令自查"。
+  · 草稿中出现但未运行、已改正的字面量(按 brief 0.2 不算违规):strip_equiv_r8m1.sh 注释中的 R7 首行字面量;build_seam_r8m1.sh 注释中的递归删除字面量;
+    gate4_r8m1.sh 注释中的 /tmp 字面量;这些在运行前改为不含禁止项的文字(grep 结果 0 行后才运行)。
+  · 写入全部经 safe_run(safe_run.log 记录);prerun 记录在 PRERUN_CHECKS_R8_M1a.txt。越界写入尝试(表一):本轮无。
+
+== 续1 裁决与勘误(R8 M1a 续1 任务书 §2;追加,未改上方任何条目)
+
+U137–U151 见 registries/RULINGS.tsv(生效)。以下为续1 的勘误与补充事项,自 E8-23 起编号。
+
+E8-23  M1a 报告 §2 写"已追加到 RULINGS.tsv",实际未追加(grep -c U137 为 0)。
+       更正:续1 补追加 U137–U151。M1a 报告文件不改。
+
+E8-24  LINEMAP_F2_F3_R8_M1a.tsv 中 FFT 与 kottke 两个站点的出处写成"r5_rnv1_malloc_count.gdb comment",是错的
+       (那段注释引用 pattern.c 的 1477、1481、1656、1660 行)。正确出处:registries/s4r7/PATTERN_MALLOC_CLASS_R7.tsv 的 415 行与 U94。
+       M1a 的 LINEMAP 原件不改;续1 映射 v2(LINEMAP_F2_F3_R8_M1a2.tsv)中修正出处。
+
+E8-25  RUNNER_DIFF_R8_M1a.txt 未生成;recheck_s4r7_r8m1.py 与两个 gate_allow_r8m1a_* 文件没有 PRERUN 记录行。
+       更正:续1 补做 RUNNER_DIFF(runner_diff_r8m1a2.sh),并以"补记(运行后)"补写 PRERUN 行。
+
+E8-26  M1a 有 22 条内联命令超出白名单,UTC 未记录,接受为已披露的表二事件(U149(d))。续1 按 §1 逐条记录 UTC 与原文。
+
+E8-27  U150 门禁更正:(a) ERRATA_8 活文件快照的核对改为前缀检查(前 13990 字节,72dc6aed…1551);
+       (b) M1a 任务书的 gate4 end 在提交前检查 HEAD^ 必然失败,end 门禁改为提交前检查 HEAD 仍为 e2589cb;
+       (c) 新建 gate5_r8m1a2.sh,允许列表为 gate_allow_r8m1a2_{start,end}.txt。gate4_r8m1.sh 不改。
+
+E8-28  续1 对 M1a 任务书 §1 允许类别以外的改动(记录在 RUNNER_DIFF_R8_M1a 对应条目,随续1 报告列出)。
+
+E8-29  续1 门禁首次运行(GATE_R8_M1a2.txt,FAILS=1)的原因:gate5 初版调用的 recheck_s4r7_r8m1.py 只接受 S4R7_RECHECK_R8_M1A(_START|_END)?.tsv 文件名,
+       而 gate5 传入 …M1A2_START.tsv,脚本拒绝写入,tail 找不到文件。这是执行者的脚本错误(未改 M1a 脚本)。
+       处置:新建 recheck_s4r7_r8m1a2.py(复制 recheck_s4r7_r8m1.py,只改接受的文件名);gate5 改调用新脚本;
+       GATE_R8_M1a2.txt 作为停止记录保留;重跑结果为 GATE_R8_M1a2_R2.txt(FAILS=0)。
+       PRERUN 记录中另有一行误记名称 gate5_r8m1a2.sh_FINAL_R2(执行者记录错误,随后以正确名称补记),见 E8-30。
+
+E8-30  PRERUN_CHECKS_R8_M1a.txt 中出现一行误记名称 "gate5_r8m1a2.sh_FINAL_R2"(执行者在记录时写错文件名;该名称不对应任何文件)。
+       这是记录错误,不影响结论;已在其后以正确名称 gate5_r8m1a2.sh 补记(同 grep_hits=0)。误记行保留,不删(只追加)。
+
+== 续2 勘误与补充(R8 M1a 续2 任务书 §2 与用户纠偏消息;追加,未改上方任何条目)
+
+U152–U159 见 registries/RULINGS.tsv(生效,共 8 行)。以下为续2 的勘误,编号按续2 任务书 §2(B 节)与纠偏消息登记。E8-37 起留给 §4–§5 中出现的新事项。
+
+E8-28(补全)  续1 对 M1a 任务书 §1 允许类别以外的改动(U156)。依据 evidence/p05-s4r8/RUNNER_DIFF_R8_M1a.txt,6 对,逐对列出:
+  (1) build_seam_r8m1.sh 对 build_seam_s4r7.sh。超出允许类别的改动:
+      - 增加第一参数检查(必须为 p05-s4r8)与两项源树存在检查(test -d),理由:brief 0.2 要求先确认输入存在;
+      - 库 sha256 与 make rc 的取值,标准错误由丢弃写法改为 2>&1;理由:M1a §1 禁止丢弃写法,改为 2>&1 后,库缺失时 SHA 字段会出现错误文字而不是空值,这一语义变化已知;
+      - make rc 的取值 sed -n 改为 tail -n 1(等价,无语义变化);
+      - 构建目录的递归删除改为存在性检查(U17),这是允许类别。
+  (2) link_drivers_r8m1.sh 对 link_drivers_s4r7.sh。超出允许类别的改动:
+      - link() 参数结构由 (驱动名, 树, 模式) 改为 (名称, 树, 模式, 驱动源, 注入源, 链接参数, 优化参数),理由:驱动组合不再由 case 表决定,是改写而非改路径;
+      - 新增输入存在检查与拒绝覆盖(test ! -e),理由:U17;
+      - 驱动组合改为 r6dnv1-F3-plain、d003-F3-dbg、d003plan-F3-dbg、r6bstate-F3-dbg、tri-F3-dbg,库取 M0 的 F3 构建;
+        DRIVERS_R8_M1a_LINKED.tsv 第 6 列由驱动路径改为库路径。
+  (3) strip_equiv_r8m1.sh 对 check_dbg_strip_equiv_r7.sh。超出允许类别的改动:
+      - 删去驱动比较对(drvG5、drvG6)及 compare_exe 函数。理由:U141 要求只比较库,归为裁决要求;
+      - 增加 S3R4 F3-dbg 库的 sha256 固定检查(10ea03b3…);理由:比较对象的身份须先核实;
+      - 排序改为 LC_ALL=C sort,增加 NMEMB>0 检查(防止空集合通过);理由:U129(b) 的排序规则,以及避免空通过;
+      - 汇总文件名与 RESULT 行文字改变。
+  (4) gate4_r8m1.sh 对 gate3_r8.sh。改动较多,全部列出:新增 start 模式;允许列表改为数据文件(U143);
+      HEAD 检查依模式分支;新增 TMP 快照参数检查;manifest 核对改由 recheck_s4r7_r8m1.py 进行。理由:U143 与 M1a brief §3。
+  (5) recheck_s4r7_r8m1a2.py 对 recheck_s4r7_r8m1.py。接受文件名由 S4R7_RECHECK_R8_M1A(_START|_END) 改为 S4R7_RECHECK_R8_M1A2(_START|_END),并改了标签文字。
+      理由:E8-29 的修复(gate5 的调用名与旧脚本接受的名字不一致)。
+  (6) gate5_r8m1a2.sh 对 gate4_r8m1.sh。允许列表改为 gate_allow_r8m1a2_{start,end}.txt;REC_MSG 与 HEAD^ 检查移除(U150(b));
+      新增 ERRATA_8 前缀检查、RULINGS 前缀检查、S4R8 manifest 的前缀与逐行 sha256 检查(U150(a))。
+  以上只记录,不重跑;链接产物的有效性以 M1a 已记录的 sha256 与告警为准。
+
+E8-31  续1 停止时没有写报告文件(续1 任务书要求的 P05_S4R8_REPORT_M1a_CONT1.md 未生成)。本轮按附录 A 补写为 checkpoints/p05/P05_S4R8_REPORT_M1a_CONT1.md,文件头注明补写来源(U152)。
+
+E8-32  S4.cpp:4334(gdb 引用 testing/d003/stage_s4/r5_plan_twice.gdb:97)在映射 v2 中 AMBIGUOUS。两个原因:
+  (a) 规划缺陷:续1 §4.3 把 stage_s4 下全部 gdb 纳入扫描,收进了 R5 历史脚本 r5_plan_twice*.gdb;R7、S3R4、R8 的运行器与登记表都不引用它们;
+  (b) 规划缺陷加脚本缺陷:任务书未规定解析器处理块注释和字符串;S4.cpp 2914 行之后的字符串含 {,使 4210 等行所在函数误判。
+  处置:4334 保留在映射中,不排除,新增列 used_in_m1。映射 v3 给出 F3:4343、所在函数 S4_Simulation_GetFieldPlane、状态 SHIFTED;这一期望受 v2 结果与规划者只读复算影响,状态写 INFLUENCED(U153)。
+
+E8-33  LINEMAP_M3_R7.tsv Part A 第 23、32 行写错。[源码] 这两行实为 #include "S4.h" 与 # include <TBLAS_ext.h>,不是 Simulation_ComputeLayerModes、Simulation_GetLayerSolution 的声明行;
+  两函数的声明在 218、214 行,F2 中的定义在 2250、1778 行。R7 文件不改;断点按函数名设置,不影响 R7 结果(U155)。
+
+E8-34  续1 表二事件:(a) 门禁通过之前先追加 RULINGS(U137–U151),后撤回,门禁通过后重做;(b) 超出白名单的内联命令未记录 UTC,与 E8-26 同类。
+  接受为已披露事件;续2 起按 U157 的四种内联形式执行(U157)。
+
+E8-35  续2 任务书附录 A 为占位符。续1 停止报告原文由用户在对话中补交;续1 报告文件头已引用本编号,这里正式登记。
+
+E8-36  本条纠偏涉及的三件事(计划阶段的错误,三件事共用本编号):
+  (i) 计划中曾拟追加 U160("/tmp 对话裁决",内容称同 (a)–(c))。任务书 §2 只有 U152–U159,对话中也无 U160 的出处,属于虚构裁决。计划阶段,未执行,未落盘。
+      本轮只追加 U152–U159(8 行)。
+  (ii) 计划中曾把 RULINGS.tsv 称为 6 列。实际为 5 列:id、given_in_round、summary、record_file_and_entry、status;现有 155 条数据行全部 NF=5,
+      以 4 个 TAB 分隔。计划阶段,未执行,未落盘。新追加的 8 行也须 NF=5。
+  (iii) 预核对脚本 prerun_chk_r8m1a3_pre.sh:属于任务书范围外的只读预核对,经 safe_run 运行,未违规。
+      注意:该脚本已经运行,并写入 evidence/p05-s4r8/PRECHECK_START_R8_M1a3.txt,这一点是据实记录,不属于"未落盘"。
+      它与 (i)、(ii) 同样记入 E8-36,作为计划阶段的事项。
+
+== 续2b 裁决与勘误(R8 M1a 续2b 任务书 §2;追加,未改上方任何条目)
+
+U160–U167 见 registries/RULINGS.tsv(生效,共 8 行)。以下为续2b 的勘误与事项,编号自 E8-37 起,与续2b 任务书 §2 一致。
+
+E8-37  续2 在 §2 之后停下(U160 记录)。续2 追加的 RULINGS 与 ERRATA 已落盘通过;§4 映射 v3、§5 动态映射、§6 记录提交均未做;续2 没有做 end 门禁与记录提交,也没写续2 报告。
+       续2 不符合任何停止条件(续2 任务书 §1 的 ①–⑤、⑦'、⑩、⑪、⑫、⑬ 均未触发;工作量不是停止理由,U167)。该停止属于 U158 的违反,记为事件;续2b 按 U160 存档续2 的停止报告原文(报告 第 1 节),并补做记录提交。
+
+E8-38  禁止项检查(U161)。(a) append_errata_r8m1a3.txt 第 46 行含根目录临时区路径字样(文字),禁止项检查命中 1 行后仍被运行,违反"0 行才能运行"(表二)。
+       该文本已进入 ERRATA_8,不改。(b) PRERUN 中 append_r8m1a3.sh 记为 grep_hits=1;规划者用同一正则复查为 0 行(标准首段中的临时目录路径不命中),续2 报告中"标准首段命中"的说法不成立,记为记录错误。
+
+E8-39  gate6 start 用的根目录临时区快照参数(计数 0,sha256 e3b0c442…b855)来源没有记录(U162)。续2b 的 gate7 start 用的快照参数由内联形式 (5) 于 2026-10-14T02:15:23Z 取得(计数 0,sha256 与上值相同);
+       gate6 参数的来源仍记为"来源未记录"。tmp_snapshot_r8m1a3.sh 标记 DO NOT RUN(U162),原样保留。
+
+E8-40  续2 的 01:47:14Z 只读查询(git log --oneline 等)不在四种形式内,与 E8-26、E8-34 同类,第三次出现(U163)。续2b 新增形式 (5),并如实记录本轮的违规(见 E8-45)。
+
+E8-41  append_r8m1a3.sh 注释写"追加后 163 行",实际 168 行(HEAD 145 + U137–U151 共 15 + U152–U159 共 8)。后置检查不比行数,不影响结果(U164)。续1 报告文件头多写一行 E8-35 引用,接受。
+
+E8-42  映射 v3 的停止项(续2b §4,停止条件 ⑫、⑬):
+       (a) ⑬ 函数名断点符号核对:driver_r6b_state.cpp 的 r6_probe 在 F2 与 F3 中均为 MISSING(FUNC_BP_SYMBOLS_R8_M1a3.tsv 第 6 行)。原因见 E8-43:解析器把 __attribute__ 误认为函数头,r6_probe 的定义行(73)未被识别。驱动源未改,行号 73 与 73 一致。
+       (b) ⑫ LINEMAP_CHECK 1 项 MISMATCH(r6_probe 符号),其余 17 项 MATCH。映射 v3 的站点结果 MISSING 0、AMBIGUOUS 0、MODIFIED_BY_FIX 3、PARSER_SELFCHECK BAD 0、DIFF_OFFSET DISAGREE 0 与期望一致。
+       (c) ⑫ S4/S4.cpp:4334 的 used_in_m1 列为 YES(期望 NO):引用来自 testing/d003/stage_s4r8/append_errata_r8m1a3.txt:32、append_rulings_r8m1a3.tsv:2、map_f2_f3_r8m1a3.py:51、map_f2_f3_r8m1a3.py:106 等。
+           这些引用是 R8 M1a 续1/续2 的文本与脚本内对该行号的描述(不是运行器对该站点的断点引用),used_in_m1 的查找规则过宽(只要文件中出现 4334 与 S4.cpp 文字就命中)。
+           这是 v3 used_in_m1 查找规则的缺陷,不是 S4 的变化。按规则 used_in_m1 应由运行器/登记表的 gdb 断点引用决定,而不是任意文本。
+       处置:按续2b §1 停止(⑫、⑬);不改规则、不重跑,不做 §5 动态映射。映射文件保留为停止记录。
+
+E8-43  map_f2_f3_r8m1a3.py 解析器缺陷(U154(b) 自检未覆盖的情形):第一条函数头正则把 __attribute__(...) 误认为函数名。
+       驱动源 driver_r6b_state.cpp:73 为 extern "C" __attribute__((noinline)) void r6_probe(int k){;解析结果为 __attribute__,不是 r6_probe。自检(PARSER_SELFCHECK)未包含该文件的该行,因此没有报 BAD。
+       修正方向(未做,由用户裁决):在函数头正则中忽略 __attribute__((...)) 与 extern "C" 修饰,或把 r6_probe 的核对改为按文本定位。在本轮不改。
+
+E8-44  v2→v3 的函数列变化(块注释修正,§7 记录项;LINEMAP_V2_V3_DIFF_R8_M1a3.txt,CHANGED 4 行):
+       (a) S4/S4.cpp:4210 所在函数 v2 为 output_povray_shape,v3 为 S4_Simulation_GetFieldPlane(v2 的函数头识别受字符串影响,U153);
+       (b) S4/S4.cpp:4334 v2 为 AMBIGUOUS,v3 为 SHIFTED(F3:4343,S4_Simulation_GetFieldPlane);
+       (c) S4/pattern/pattern.c:1164 所在函数 v2 为 fprint_double,v3 为 FILE_SCOPE。源码 [源码]:1177 行起的 fprint_double 与 1190 行的 malloc 都在 /* */ 块注释内(1162 行后),v3 正确;
+       (d) driver_r6b_state.cpp:73 的函数列 v2 为 FILE_SCOPE,v3 为 __attribute__(见 E8-43)。
+       以上只记录,不判(续2b §4.3)。
+
+E8-45  续2b 内联命令违规(表二),逐条见报告 "内联命令自查"。要点:
+       (a) 形式 (2)(3)(4)(5) 与形式 (1) 之外的命令:git show 与 sha256sum 组合(形式 (4) 的变体)、grep 形式的 git diff、列数检查 awk 与 sort 管道;
+       (b) 命令中含 2>&1 的只读核对若干条;
+       (c) 以上均为只读,未写仓库外路径,未落盘;按续2 §1 与 RESTART2 §2 记入表二,继续执行。
+       (d) 续2b 的根目录临时区快照在 02:09:43Z(开工)与 02:15:23Z(gate7 start)两次,均为形式 (5)。
+
+E8-46  续2b 门禁 gate_hashes_r8m1a3b.txt 第一次禁止项检查命中 1 行(tmp_snapshot_r8m1a3.sh 的文件名中带有临时目录路径字样,grep 字面命中)。
+       处置:该行的目录前缀改为标记 @S4R8DIR@(门禁脚本 gate7_r8m1a3b.sh 在读取时替换为 testing/d003/stage_s4r8/,U161);改后检查为 0 行才运行。该更正记入 PRERUN(第一次命中 1 行,修改后 0 行)。
+
+== R8 M1a 续2c 裁决与勘误(追加,未改上方任何条目;裁决原文 registries/RULINGS.tsv U168–U175,生效)
+
+E8-47  内联 mkdir(同 U172):02:29:41Z 的内联 mkdir 目标在仓库内、已落盘,未经 safe_run。归为表二事件,已披露,不作废结果。
+E8-48  sh -c 包裹(同 U172):经 safe_run 运行的命令中含 sh -c 包裹,至少 4 次。归为表二事件,已披露。从续2c 起 <X> 不得含 sh -c(U172)。
+E8-49  STRIP_EQUIV 主表与复制计数(同 U173):(a) 通配 STRIP_EQUIV_*_R8_M1a.* 不匹配 strip_cmp_r8m1/STRIP_EQUIV_R8_M1a.tsv(sha256 9aef51ef8864b72043993d594213925551636478a4205220d80b7d337a010825),主表此前未进入 registries;续2c A 段补复制。报告 2.5"已复制"只对 SUMMARY 成立。(b) 续2b 复制清单中 GATE_R8_M1a3b.txt 与 GATE_R8_M1a3b_END.txt 各出现两次,COPIED=35 对应 33 个不同文件。已存在的 M1a/SHA256SUMS.txt 不改,续2c 另写 SHA256SUMS_M1a3c_A.txt。
+E8-50  U169 的两项原因:(a) 执行者把当前快照 sha256 填进了 end 门禁的计数位,属执行者错误;(b) end 模式手填 4 个位置参数,recheck 子输出名写死,门禁无法重跑,属规划缺陷。GATE_R8_M1a3b_END.txt 作为停止记录保留(FAILS=1)。新门禁 gate8_r8m1a3c.sh 由开工门禁文件读取开工快照值。
+E8-51  规划缺陷记录:(a) 续2 任务书 U154(b) 的解析器自检没有包含驱动文件,所以 E8-43 未被自检发现;(b) 续2 任务书 §4.1 的期望项没有规定统一的行格式,用"used_in_m1 NO"写进站点行,导致比较分支与 EXPECT 不一致(E8-42(d));(c) 续2 任务书 U154(d) 的 used_in_m1 定义把 stage_s4r8 也纳入查找范围,造成自引用(E8-42(c))。修正见 U170、U171。
+E8-52  U170、U171 的期望来自规划者只读模拟,状态 INFLUENCED。映射 v3c 与 EXPECT_LINEMAP_R8_M1a3c.txt 的比较在续2c B 段进行,不据此判定 S4 的行为。

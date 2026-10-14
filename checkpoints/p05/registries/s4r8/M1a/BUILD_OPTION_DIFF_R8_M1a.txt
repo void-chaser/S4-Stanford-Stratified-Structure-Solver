@@ -1,0 +1,9 @@
+BUILD_OPTION_DIFF_R8_M1a (P05-S4 R8 M1a section 5.2): g++ command lines, path prefixes removed; expected diff_lines=0
+pair	lines_r7	lines_r8	diff_lines
+G5 R7-F-dbg vs R8-F3-dbg (M0 build)	12	12	0
+G6 R7-seamF-F vs R8-seamF-F3 (seam dbg, M1a build)	12	12	0
+G6 R7-fmmret-F vs R8-fmmret-F3 (seam dbg, M1a build)	12	12	0
+plain R7-F-plain vs R8-F3-plain (M0 build)	12	12	0
+seam plain R7-seamF-F-plain vs R8-seamF-F3-plain (M0 build)	12	12	0
+seam plain R7-fmmret-F-plain vs R8-fmmret-F3-plain (M0 build)	12	12	0
+total_diff_lines=0
