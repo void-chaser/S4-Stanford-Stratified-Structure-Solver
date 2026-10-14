@@ -1,0 +1,10 @@
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_M1B2_REPORT.md
+?? checkpoints/p05/registries/s4r8/M1b/r8m1b2/*
+?? testing/d003/stage_s4/gate_allow_r8m1b2_end.txt
+?? testing/d003/stage_s4/gate_allow_r8m1b2_start.txt
+?? testing/d003/stage_s4/gate_check_r8m1b2.py
+?? testing/d003/stage_s4/gate_r8m1b2.sh
+?? testing/d003/stage_s4/*r8m1b2*

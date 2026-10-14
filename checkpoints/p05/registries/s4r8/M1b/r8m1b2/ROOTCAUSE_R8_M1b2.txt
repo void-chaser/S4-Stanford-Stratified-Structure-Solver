@@ -1,0 +1,69 @@
+# P05-S4 R8 M1b2 根因审计报告：M1a6 生成器环境变量缺失技术根因证明与静态门禁失效分析
+# 文件名：ROOTCAUSE_R8_M1b2.txt
+# 审计时间：2026-10-14 UTC
+
+1. 根因结论：“R7 结果表无 nth 列导致缺失”【已证实】
+
+1.1 make_prereg_r8m1a6.py 具体代码行引用
+在生成器 testing/d003/stage_s4r8/make_prereg_r8m1a6.py 中，构建 M1b 各组预注册环境变量的核心逻辑如下：
+- 第 123-124 行加载 G1 组结果表：
+    RES_G1_P1 = load_tsv("RESULTS_G1_P1", os.path.join(R7, "RESULTS_R7_G1_pass1_run7.tsv"))
+    RES_G1_P2 = load_tsv("RESULTS_G1_P2", os.path.join(R7, "RESULTS_R7_G1_pass2_run7.tsv"))
+- 第 132-133 行加载 G2c 组结果表：
+    RES_G2c_P1 = load_tsv("RESULTS_G2c_P1", os.path.join(R7, "RESULTS_R7_G2c_pass1_run7.tsv"))
+    RES_G2c_P2 = load_tsv("RESULTS_G2c_P2", os.path.join(R7, "RESULTS_R7_G2c_pass2_run7.tsv"))
+- 第 416 行定义通用组处理器 process_r7_group：
+    def process_r7_group(grp_name, res_p1, res_p2, default_drv_f2, default_drv_f3, is_plan=False):
+- 第 426-440 行从结果行字典 p1 提取参数构造 env：
+    426: mode = p1.get("mode") or "fft"
+    427: ng = p1.get("ng") or p1.get("NG") or "9"
+    428: req = p1.get("request", "-")
+    429: nth = p1.get("nth") or p1.get("NTH") or p1.get("M", "-")
+    430: case = p1.get("case", "")
+    432: # Build env
+    433: env_parts = ["FMM_MODE=" + mode, "S4FMM_NG=" + ng]
+    434: if req not in ("-", ""):
+    435:     env_parts.append("S4FMM_INJECT=" + req)
+    436: if nth not in ("-", ""):
+    437:     env_parts.append("S4FMM_NTH=" + nth)
+    438: if case.startswith("t4/") or (p1.get("route") == "twice") or ("-twice-" in pid):
+    439:     env_parts.append("S4FMM_TWICE=slab")
+    440: env = ";".join(env_parts)
+- 第 526 行调用处理 G1 组：
+    process_r7_group("G1", RES_G1_P1, RES_G1_P2, "d003-F2-plain", "d003-F3-plain")
+- 第 497 行调用处理 G2c 组：
+    process_r7_group("G2c", RES_G2c_P1, RES_G2c_P2, "d003plan-F2-plain", "d003plan-F3-plain")
+
+1.2 R7 结果表表头事实证据
+检查 checkpoints/p05/registries/s4r7/RESULTS_R7_G1_pass1_run7.tsv 第 2 行表头：
+    point_id	group	tree	mode	request	inj_call	expected_class	class	verdict	rc	rc1	rc2	hit	reason
+检查 checkpoints/p05/registries/s4r7/RESULTS_R7_G2c_pass1_run7.tsv 第 2 行表头：
+    point_id	group	tree	mode	request	inj_call	expected_class	class	verdict	rc	rc1	rc2	hit	reason
+
+两份结果表仅包含运行观测事实与分类结论，均【完全没有】名为 "nth"、"NTH" 或 "M" 的列。
+
+1.3 逻辑链路证明
+在第 429 行中：
+- p1.get("nth") 返回 None；
+- p1.get("NTH") 返回 None；
+- p1.get("M", "-") 因无 "M" 列而返回默认值 "-"；
+- 因此变量 nth 恒等于 "-"；
+- 在第 436 行，条件 `if nth not in ("-", "")` 恒判定为 False；
+- 代码行 `env_parts.append("S4FMM_NTH=" + nth)` 对 G1 组全部 298 行及 G2c 组全部 60 行【100% 被跳过、从未执行】。
+
+由此直接导致生成的 REGISTRY_S4_PRE_R8_M1b_R8_M1a6.tsv 中，G1 组 298 行与 G2c 组 60 行的 env 字段均缺失了 S4FMM_NTH 设置。
+结论：R7 结果表无 nth 列导致缺失完全属实，技术链条证明闭合。
+
+2. M1a6 静态门禁为什么没拦住这个问题？
+
+在 M1a6 轮次的门禁脚本 testing/d003/stage_s4r8/gate13_r8m1a6.sh 以及测试校验 helper gate13_check_r8m1a6.py 中，静态门禁设置了以下核验条款：
+1) 核对 M1b 预注册总行数恰为 830 行（F2 415 行、F3 415 行）；
+2) 核对 (group, point_id, tree) 三元主键的全局唯一性；
+3) 核对所选驱动名称在 DRIVERS_R8_M1a.tsv 中存在且 sha256 吻合；
+4) 核对两项 U198 对照点（fftvl-ng1、vl-ng1）的期望 class 与 BASELINE_RC_EQUAL 契约；
+5) 核对 PREREG_RECORD 记录的哈希一致性。
+
+门禁失效的根因分析：
+- 静态门禁仅核查了预注册表的【结构完整性】（行数、字段非空、键唯一、哈希匹配），但【未对 env 字段内容进行端到端语义反向映射核验】。
+- 门禁未建立"从 point_id 语法解析出的预期环境变量集合（如 expected_env_independent_r7.py 提供的规则）与生成的 env 字段的逐变量强一致性比对"。
+- 生成器 make_prereg_r8m1a6.py 产出的 env 字符串格式合法（非空、包含 FMM_MODE 与 S4FMM_NG 等常规项），未触发任何结构性异常，从而使得缺失 S4FMM_NTH 的缺陷逃逸了 M1a6 静态门禁。

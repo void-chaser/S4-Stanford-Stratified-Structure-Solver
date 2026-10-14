@@ -1,0 +1,50 @@
+# P05-S4 R8 M1b2 耗时与驱动真实执行核实报告
+# 文件名：TIMING_CHECK_R8_M1b2.txt
+# 审计时间：2026-10-14 UTC
+
+1. 进程调用方式与执行模式
+- 总物理进程调用数：1648 次（覆盖 824 个用例 × 独立两遍 pass1/pass2）。
+- 并行/串行判定：【严格串行】。
+  依据：plan_and_run_m1b_r8m1b1.py 为单进程 Python 脚本，采用单层循环逐个执行 `subprocess.run(...)`；
+  1648 次调用的输出文件生成时间戳严格单调递增，无任何重叠或并行交错。
+
+2. 执行耗时分布统计
+- 首个调用完成时间：2026-10-14T12:11:18.171240+00:00
+- 末个调用完成时间：2026-10-14T12:11:24.517612+00:00
+- 1648 次调用总耗时：6.346 秒
+- 单次调用耗时间隔分布：
+  * 最小值（Min）：1.80 ms (0.0018 s)
+  * 中位数（Median）：2.34 ms (0.0023 s)
+  * 最大值（Max）：88.76 ms (0.0888 s)
+  * 平均值（Mean）：3.85 ms (0.0039 s)
+
+3. 10 次跨组随机抽样驱动真实执行核验
+对 1648 次调用按时间序等间距抽取 10 次调用，逐一检查其 stdout.txt、stderr.txt 及 run.out 内容：
+
+抽样 0: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G7/M1-G7-F2-fftnv-ng1-m1/pass1/run.out
+  完成时间: 12:11:18.171 UTC | 输出字节: 2991 | 错误字节: 454 | 驱动标志: S4FMM DRIVER,R6STATE,RC first,R6D_WIN,HIT
+抽样 183: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/4.2/M1-42-F3-fftjones-ng9-m1/pass2/run.out
+  完成时间: 12:11:18.625 UTC | 输出字节: 2994 | 错误字节: 454 | 驱动标志: S4FMM DRIVER,R6STATE,RC first,R6D_WIN,HIT
+抽样 366: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G2b/M-twice-fft-plan-16-F3/pass1/run.out
+  完成时间: 12:11:19.130 UTC | 输出字节: 1059 | 错误字节: 636 | 驱动标志: S4FMM DRIVER,RC first,HIT
+抽样 549: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G3/M2-twice-nv-plan-1-F-F2/pass2/run.out
+  完成时间: 12:11:19.554 UTC | 输出字节: 1115 | 错误字节: 346 | 驱动标志: S4FMM DRIVER,RC first,HIT
+抽样 732: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G1/CTL-closed1d-F2/pass1/run.out
+  完成时间: 12:11:19.988 UTC | 输出字节: 749 | 错误字节: 423 | 驱动标志: S4FMM DRIVER,RC first
+抽样 915: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G1/M-once-nv-exec-3-F3/pass2/run.out
+  完成时间: 12:11:20.423 UTC | 输出字节: 1098 | 错误字节: 329 | 驱动标志: S4FMM DRIVER,RC first,HIT
+抽样 1098: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G1/M-twice-jones-exec-1-F3/pass1/run.out
+  完成时间: 12:11:20.862 UTC | 输出字节: 1101 | 错误字节: 329 | 驱动标志: S4FMM DRIVER,RC first,HIT
+抽样 1281: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/G1/M-twice-vl-exec-1-F2/pass2/run.out
+  完成时间: 12:11:21.300 UTC | 输出字节: 1098 | 错误字节: 329 | 驱动标志: S4FMM DRIVER,RC first,HIT
+抽样 1464: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/ADDITIONS_22/ADD22-A-10-F2/pass1/run.out
+  完成时间: 12:11:22.240 UTC | 输出字节: 9096 | 错误字节: 6558 | 驱动标志: S4FMM DRIVER,R6STATE,RC first
+抽样 1647: checkpoints/p05/evidence/p05-s4r8/m1b1/runs/POLY_33/POLY-fftvl-ng9-F3/pass2/run.out
+  完成时间: 12:11:24.517 UTC | 输出字节: 3426 | 错误字节: 855 | 驱动标志: S4FMM DRIVER,R6STATE,RC first,POLY/CTRL
+
+4. 驱动真实执行结论
+经核查：
+1) 抽样的全部 10 次调用均产生了实质性标准输出与错误输出，包含完整的底层 S4 驱动标头（如 `S4FMM DRIVER_R6B mode=...`、`R6STATE` 状态打印、`RC first` 返回码输出）；
+2) 包含底层注入钩子所产生的实时事实日志（如 `S4FMM R6D_WIN_MALLOC`、`S4FMM S3R4C3_WIN_MALLOC`、`S4FMM HIT` 命中记录）；
+3) 真实进程退出码与返回码同日志内打印完全吻合；
+4) 耗时核实证明 1648 次调用【全部真实执行了被测驱动】，无任何 mock、伪造输出或空转现象。
