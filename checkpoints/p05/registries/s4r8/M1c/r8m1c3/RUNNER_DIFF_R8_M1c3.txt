@@ -1,0 +1,143 @@
+# RUNNER_DIFF_R8_M1c3 -- diff -u of r8m1c2 originals against r8m1c3 copies
+## run_m1c_r8m1c2.sh -> run_m1c_r8m1c3.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/run_m1c_r8m1c2.sh	2026-10-15 14:29:44.751457497 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/run_m1c_r8m1c3.sh	2026-10-15 16:10:24.091628259 +1100
+@@ -1,21 +1,18 @@
+-#!/bin/sh
+-REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m1c2; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# run_m1c_r8m1c2.sh -- P05-S4 R8 M1c2 M1c runner (brief section 6). New file.
+-# Usage: sh testing/d003/safe_run.sh p05-s4r8/m1c2 -- sh testing/d003/stage_s4/run_m1c_r8m1c2.sh <F2|F3>
+-# Round R8 M1c2 calls this with F2 only.  F3 is reserved for round R8 M1c3 (not run here).
+-# Order (R7 m3r1 form, serial, no '&'): G5 pass1 -> G5 pass2 -> r6c_judge -> seam pass1 -> seam pass2 -> r6c2_seam_judge.
+-# Outputs: $EV/m1c_<tree>/ ; stdout of each call in $EV/m1c_<tree>/*.stdout ;
+-# driver sha256 before and after each runner call appended to $EV/DRIVER_RUN_RECORD_R8_M1c2.tsv.
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m1c3; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# run_m1c_r8m1c3.sh -- P05-S4 R8 M1c3 M1c runner (brief section 5). New file (copied from run_m1c_r8m1c2.sh; original unchanged).
++# Changes from the r8m1c2 version: EV is m1c3; only F3 is accepted (F2 refused); the M1C_ALLOW_F3 gate is removed;
++# driver records go to DRIVER_RUN_RECORD_R8_M1c3.tsv via record_drivers_r8m1c3.py.
++# Usage: sh testing/d003/safe_run.sh p05-s4r8/m1c3 -- sh testing/d003/stage_s4/run_m1c_r8m1c3.sh F3
++# Order (serial, no '&'): G5 pass1 -> G5 pass2 -> r6c_judge -> seam pass1 -> seam pass2 -> r6c2_seam_judge.
++# Outputs: $EV/m1c_F3/ ; stdout of each call in $EV/m1c_F3/*.stdout ;
++# driver sha256 before and after each runner call appended to $EV/DRIVER_RUN_RECORD_R8_M1c3.tsv.
+ set -u
+-refuse() { echo "run_m1c_r8m1c2: REFUSED: $1" >&2; exit 2; }
++refuse() { echo "run_m1c_r8m1c3: REFUSED: $1" >&2; exit 2; }
+ TREE=${1:-}
+ case "$TREE" in
+-    F2|F3) ;;
+-    *) refuse "argument must be F2 or F3" ;;
++    F3) ;;
++    *) refuse "argument must be F3 (R8 M1c3 runs F3 only)" ;;
+ esac
+-if [ "$TREE" = F3 ] && [ -z "${M1C_ALLOW_F3:-}" ]; then
+-    refuse "F3 is not run in R8 M1c2 (deferred to R8 M1c3)"
+-fi
+ OUTDIR="$EV/m1c_$TREE"
+ test ! -e "$OUTDIR" || refuse "output dir exists (U17): $OUTDIR"
+ mkdir -p "$OUTDIR" || refuse "cannot create $OUTDIR"
+@@ -25,17 +22,11 @@
+ PREREG_SEAM="$REPO/checkpoints/p05/registries/s4r6c/REGISTRY_S4_PRE_R6c_SEAM.tsv"
+ CONTROL_SEAM="$REPO/checkpoints/p05/registries/s4r6c/REGISTRY_S4_PRE_R6c_SEAM_CONTROL.tsv"
+ EVROOT="$REPO/checkpoints/p05/evidence"
+-if [ "$TREE" = F2 ]; then
+-    DRV_STATE="$EVROOT/p05-s4r7/drivers_r7/r6bstate-F2-dbg/driver"
+-    DRV_SEAMF="$EVROOT/p05-s4r7/drivers_r7/r6bseam-seamF-F2/driver"
+-    DRV_FMMRET="$EVROOT/p05-s4r7/drivers_r7/r6bseam-fmmret-F2/driver"
+-else
+-    DRV_STATE="$EVROOT/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver"
+-    DRV_SEAMF="$EVROOT/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver"
+-    DRV_FMMRET="$EVROOT/p05-s4r8/drivers_r8m1/r6bseam-fmmret-F3/driver"
+-fi
++DRV_STATE="$EVROOT/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver"
++DRV_SEAMF="$EVROOT/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver"
++DRV_FMMRET="$EVROOT/p05-s4r8/drivers_r8m1/r6bseam-fmmret-F3/driver"
+ 
+-rec() { python3 -I -B "$REPO/testing/d003/stage_s4/record_drivers_r8m1c2.py" "$TREE" "$1" || refuse "driver record failed at $1"; }
++rec() { python3 -I -B "$REPO/testing/d003/stage_s4/record_drivers_r8m1c3.py" "$TREE" "$1" || refuse "driver record failed at $1"; }
+ 
+ cd "$REPO" || refuse "cannot cd to repo"
+ 
+@@ -43,37 +34,37 @@
+ python3 -I -B testing/d003/stage_s4/run_r6c_state.py full "$PREREG_G5" "$CONTROL_G5" "$DRV_STATE" "$OUTDIR" 1 > "$OUTDIR/run_g5_pass1.stdout" 2>&1
+ RC_G5P1=$?
+ rec "after_g5_pass1"
+-echo "run_m1c_r8m1c2: $TREE G5 pass1 rc=$RC_G5P1"
++echo "run_m1c_r8m1c3: $TREE G5 pass1 rc=$RC_G5P1"
+ 
+ rec "before_g5_pass2"
+ python3 -I -B testing/d003/stage_s4/run_r6c_state.py full "$PREREG_G5" "$CONTROL_G5" "$DRV_STATE" "$OUTDIR" 2 > "$OUTDIR/run_g5_pass2.stdout" 2>&1
+ RC_G5P2=$?
+ rec "after_g5_pass2"
+-echo "run_m1c_r8m1c2: $TREE G5 pass2 rc=$RC_G5P2"
++echo "run_m1c_r8m1c3: $TREE G5 pass2 rc=$RC_G5P2"
+ 
+ rec "before_judge_g5"
+ python3 -I -B testing/d003/stage_s4/r6c_judge.py "$PREREG_G5" "$CONTROL_G5" "$OUTDIR" > "$OUTDIR/judge_g5.stdout" 2>&1
+ RC_JG5=$?
+ rec "after_judge_g5"
+-echo "run_m1c_r8m1c2: $TREE judge G5 rc=$RC_JG5"
++echo "run_m1c_r8m1c3: $TREE judge G5 rc=$RC_JG5"
+ 
+ rec "before_seam_pass1"
+ python3 -I -B testing/d003/stage_s4/r6c2_seam_state.py "$PREREG_SEAM" "$CONTROL_SEAM" "$DRV_SEAMF" "$DRV_FMMRET" "$OUTDIR" 1 > "$OUTDIR/run_seam_pass1.stdout" 2>&1
+ RC_SP1=$?
+ rec "after_seam_pass1"
+-echo "run_m1c_r8m1c2: $TREE seam pass1 rc=$RC_SP1"
++echo "run_m1c_r8m1c3: $TREE seam pass1 rc=$RC_SP1"
+ 
+ rec "before_seam_pass2"
+ python3 -I -B testing/d003/stage_s4/r6c2_seam_state.py "$PREREG_SEAM" "$CONTROL_SEAM" "$DRV_SEAMF" "$DRV_FMMRET" "$OUTDIR" 2 > "$OUTDIR/run_seam_pass2.stdout" 2>&1
+ RC_SP2=$?
+ rec "after_seam_pass2"
+-echo "run_m1c_r8m1c2: $TREE seam pass2 rc=$RC_SP2"
++echo "run_m1c_r8m1c3: $TREE seam pass2 rc=$RC_SP2"
+ 
+ rec "before_judge_seam"
+ python3 -I -B testing/d003/stage_s4/r6c2_seam_judge.py "$PREREG_SEAM" "$CONTROL_SEAM" "$OUTDIR" > "$OUTDIR/judge_seam.stdout" 2>&1
+ RC_JS=$?
+ rec "after_judge_seam"
+-echo "run_m1c_r8m1c2: $TREE judge seam rc=$RC_JS"
++echo "run_m1c_r8m1c3: $TREE judge seam rc=$RC_JS"
+ 
+-echo "run_m1c_r8m1c2: $TREE DONE g5p1=$RC_G5P1 g5p2=$RC_G5P2 jg5=$RC_JG5 sp1=$RC_SP1 sp2=$RC_SP2 js=$RC_JS"
++echo "run_m1c_r8m1c3: $TREE DONE g5p1=$RC_G5P1 g5p2=$RC_G5P2 jg5=$RC_JG5 sp1=$RC_SP1 sp2=$RC_SP2 js=$RC_JS"
+ exit 0
+## record_drivers_r8m1c2.py -> record_drivers_r8m1c3.py
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/record_drivers_r8m1c2.py	2026-10-15 14:29:31.702019269 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/record_drivers_r8m1c3.py	2026-10-15 16:09:58.527759295 +1100
+@@ -1,20 +1,15 @@
+ #!/usr/bin/env python3
+-# record_drivers_r8m1c2.py -- append one record line per driver (sha256) to DRIVER_RUN_RECORD_R8_M1c2.tsv.
+-# Called by run_m1c_r8m1c2.sh immediately before and after each runner/judge call.
+-# Usage: python3 -I -B record_drivers_r8m1c2.py TREE TAG    (TREE is F2 or F3; TAG names the call site)
++# record_drivers_r8m1c3.py -- append one record line per driver (sha256) to DRIVER_RUN_RECORD_R8_M1c3.tsv.
++# Called by run_m1c_r8m1c3.sh immediately before and after each runner/judge call.  F3 only (M1c3).
++# Usage: python3 -I -B record_drivers_r8m1c3.py TREE TAG    (TREE must be F3; TAG names the call site)
+ import hashlib, os, sys, time
+ 
+ REPO = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+-EV = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m1c2")
++EV = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m1c3")
+ EVROOT = os.path.join(REPO, "checkpoints", "p05", "evidence")
+ os.makedirs(os.path.join(EV, "tmp"), exist_ok=True)
+ 
+ DRIVERS = {
+-    "F2": [
+-        ("r6bstate-F2-dbg", os.path.join(EVROOT, "p05-s4r7", "drivers_r7", "r6bstate-F2-dbg", "driver")),
+-        ("r6bseam-seamF-F2", os.path.join(EVROOT, "p05-s4r7", "drivers_r7", "r6bseam-seamF-F2", "driver")),
+-        ("r6bseam-fmmret-F2", os.path.join(EVROOT, "p05-s4r7", "drivers_r7", "r6bseam-fmmret-F2", "driver")),
+-    ],
+     "F3": [
+         ("r6bstate-F3-dbg", os.path.join(EVROOT, "p05-s4r8", "drivers_r8m1", "r6bstate-F3-dbg", "driver")),
+         ("r6bseam-seamF-F3", os.path.join(EVROOT, "p05-s4r8", "drivers_r8m1", "r6bseam-seamF-F3", "driver")),
+@@ -32,7 +27,9 @@
+ 
+ 
+ tree, tag = sys.argv[1], sys.argv[2]
+-out = os.path.join(EV, "DRIVER_RUN_RECORD_R8_M1c2.tsv")
++if tree not in DRIVERS:
++    raise SystemExit("REFUSED tree must be F3 in R8 M1c3: %s" % tree)
++out = os.path.join(EV, "DRIVER_RUN_RECORD_R8_M1c3.tsv")
+ new = not os.path.isfile(out)
+ with open(out, "a", encoding="utf-8") as fh:
+     if new:
