@@ -1,0 +1,70 @@
+# SRC_DIFF_R8_M2a2_inject_dual -- base inject_r4_plan.cpp (sha256 90bf45cef8657f888bf68b4a8968d7df1dbe2257036752e4abd21ff8f8740e28) -> inject_r8m2a2_dual.cpp (sha256 7400e215fe498eb4397425946b056ced001c128f6aad638cf0a8f5b948fc9f03)
+--- a/testing/d003/stage_s4/inject_r4_plan.cpp
++++ b/testing/d003/stage_s4/inject_r8m2a2_dual.cpp
+@@ -615,3 +615,66 @@
+ 	arm = 0;
+ 	return r;
+ }
++
++/* ------------------------------------------------------------------------
++ * R8 M2a2 dual target (P05-S4 R8 M2a2, U244).  Appended to a copy of inject_r4_plan.cpp.
++ * Second, independent request S4FMM_INJECT2 with its own parser, call counters and hit counter.
++ * It does not read or change S4FMM_INJECT; the original branches above keep their exact text.
++ *   S4FMM_INJECT2 = linearsolve_null2:ID:K     status write (*info := 1) plus model-1 RHS, as family B2
++ *   S4FMM_INJECT2 = linearsolve_null2buf:ID:K  buffer only, as family B2-buf
++ * It is fired from S4_TEST_DUAL_HOOK, which the dual seam calls next to the family B2 hook.
++ * ------------------------------------------------------------------------ */
++static const char *dual_mode(void){ const char *m = getenv("S4FMM_INJECT2"); return m ? m : ""; }
++static long dual_calls[7] = {0};
++static long dual_hits_n = 0;
++static int dual_req_ok = 0, dual_req_id = 0, dual_req_k = 0, dual_req_buf = 0;
++
++static int dual_index(int id){
++	for(int i = 0; i < 7; ++i){ if(b2_ids[i] == id){ return i; } }
++	return -1;
++}
++
++static void dual_parse_request(void){
++	const char *m = dual_mode();
++	dual_req_ok = 0;
++	dual_req_buf = 0;
++	if(0 == strncmp(m, "linearsolve_null2:", 18)){
++		int id = 0, k = 0;
++		if(2 != sscanf(m + 18, "%d:%d", &id, &k)){ return; }
++		if(dual_index(id) < 0 || k < 1){ return; }
++		dual_req_id = id; dual_req_k = k; dual_req_ok = 1; dual_req_buf = 0;
++	}else if(0 == strncmp(m, "linearsolve_null2buf:", 21)){
++		int id = 0, k = 0;
++		if(2 != sscanf(m + 21, "%d:%d", &id, &k)){ return; }
++		if(dual_index(id) < 0 || k < 1){ return; }
++		dual_req_id = id; dual_req_k = k; dual_req_ok = 1; dual_req_buf = 1;
++	}
++}
++
++/* Second-target hook.  Returns 1 when the second target fires for this call.  The write rule is the family B2
++ * rule: status (*info := 1) unless buffer-only, and model 1 writes the identity RHS. */
++extern "C" int S4_TEST_DUAL_HOOK(int id, int *info, std::complex<double> *b, int n, int ld, int model){
++	dual_parse_request();
++	const int ix = dual_index(id);
++	if(ix < 0){ return 0; }
++	dual_calls[ix]++;
++	if(!dual_req_ok || id != dual_req_id || dual_calls[ix] != dual_req_k){ return 0; }
++	if(!dual_req_buf){
++		if(NULL == info){ return 0; }
++		*info = 1;
++	}
++	if(1 == model){
++		for(int j = 0; j < n; ++j){
++			for(int i = 0; i < n; ++i){
++				b[i + j*ld] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
++			}
++		}
++	}
++	dual_hits_n++;
++	n_hits++;
++	std::fprintf(stderr, "S4FMM HIT dual id=%d call=%ld buf=%d model=%d (hit=%ld)\n", id, dual_calls[ix], dual_req_buf, model, n_hits);
++	return 1;
++}
++
++/* Read-only view of the second-target hit counter. */
++extern "C" long s4fmm_inject2_hits(void){ return dual_hits_n; }

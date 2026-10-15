@@ -1,0 +1,77 @@
+# SRC_DIFF -- base testing/d003/stage_s4/driver_r6b_state.cpp (db2e7a2efe29792949b7e8a30f2727a777b9e3638debb662816353ef0696c545) -> testing/d003/stage_s4/driver_r8m2a2_layers.cpp (30b36fb974a6d74285701d7ea785eea776a9cd7540d5120d7c04a418506203e5)
+--- a/testing/d003/stage_s4/driver_r6b_state.cpp
++++ b/testing/d003/stage_s4/driver_r8m2a2_layers.cpp
+@@ -99,19 +99,50 @@
+ 		? S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_XYTENSOR_REAL, ten)
+ 		: S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_SCALAR_REAL, glass);
+ 	S4_real zero = 0.0, half = 0.5;
++	const char *layout = getenv("S4FMM_LAYOUT");
+ 	if(0 == strcmp(which, "pattern")){
+-		S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
+-		S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
+ 		S4_real radius[2] = {0.25, 0.25}, center[2] = {0.0, 0.0}, angle_frac = 0.0;
+ 		const int is1d = (NULL != mode && 0 == strcmp(mode, "closed1d"));
+ 		const int rtype = is1d ? S4_REGION_TYPE_INTERVAL : S4_REGION_TYPE_CIRCLE;
+ 		S4_real ival[2] = {0.25, 0.0};
+-		if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype,
+-		                                     is1d ? ival : radius, center, &angle_frac)){
+-			S4_Simulation_Destroy(S);
+-			return NULL;
++
++		if(NULL != layout && 0 == strcmp(layout, "P0")){
++			/* P0: pattern on layer 0 */
++			S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
++			if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype, is1d ? ival : radius, center, &angle_frac)){
++				S4_Simulation_Destroy(S); return NULL;
++			}
++			S4_Simulation_SetLayer(S, -1, "Spacer", &zero, -1, mAir);
++			S4_Simulation_SetLayer(S, -1, "Below", &zero, -1, mAir);
++		}else if(NULL != layout && 0 == strcmp(layout, "P2")){
++			/* P2: pattern on layer 2 */
++			S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
++			S4_Simulation_SetLayer(S, -1, "Spacer", &zero, -1, mAir);
++			S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
++			if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype, is1d ? ival : radius, center, &angle_frac)){
++				S4_Simulation_Destroy(S); return NULL;
++			}
++		}else if(NULL != layout && (0 == strcmp(layout, "PP1") || 0 == strcmp(layout, "PP2"))){
++			/* PP1/PP2: two pattern layers (layer 1 and layer 2) */
++			S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
++			S4_LayerID slab1 = S4_Simulation_SetLayer(S, -1, "Slab1", &half, -1, mAir);
++			if(0 != S4_Layer_SetRegionHalfwidths(S, slab1, mGlass, rtype, is1d ? ival : radius, center, &angle_frac)){
++				S4_Simulation_Destroy(S); return NULL;
++			}
++			S4_LayerID slab2 = S4_Simulation_SetLayer(S, -1, "Slab2", &half, -1, mAir);
++			if(0 != S4_Layer_SetRegionHalfwidths(S, slab2, mGlass, rtype, is1d ? ival : radius, center, &angle_frac)){
++				S4_Simulation_Destroy(S); return NULL;
++			}
++			S4_Simulation_SetLayer(S, -1, "Below", &zero, -1, mAir);
++		}else{
++			/* Default: pattern on layer 1 (identical to driver_r6b_state.cpp) */
++			S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
++			S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
++			if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype, is1d ? ival : radius, center, &angle_frac)){
++				S4_Simulation_Destroy(S); return NULL;
++			}
++			S4_Simulation_SetLayer(S, -1, "Below", &zero, -1, mAir);
+ 		}
+-		S4_Simulation_SetLayer(S, -1, "Below", &zero, -1, mAir);
+ 	}else{
+ 		S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
+ 		S4_Simulation_SetLayer(S, -1, "Spacer", &zero, -1, mAir);
+@@ -216,7 +247,14 @@
+ 	r6_snap(S, 1, &both_e, &both_h, 1);
+ 
+ 	/* twice route: destroy the modes of layer 1 between the calls (identical to driver_r6_state.cpp). */
+-	if(twice){ S4_Simulation_DestroyLayerModes(S, 1); }
++	const char *lay_env = getenv("S4FMM_LAYOUT");
++	int target_destroy_layer = 1;
++	if(NULL != lay_env && 0 == strcmp(lay_env, "P0")){ target_destroy_layer = 0; }
++	else if(NULL != lay_env && 0 == strcmp(lay_env, "P2")){ target_destroy_layer = 2; }
++	else if(NULL != lay_env && 0 == strcmp(lay_env, "PP1")){ target_destroy_layer = 1; }
++	else if(NULL != lay_env && 0 == strcmp(lay_env, "PP2")){ target_destroy_layer = 2; }
++	std::printf("S4FMM LAYOUT %s target_layer %d\n", lay_env ? lay_env : "default", target_destroy_layer);
++	if(twice){ S4_Simulation_DestroyLayerModes(S, target_destroy_layer); }
+ 	/* k = 2: after the destroy (for once it is the same instant as k = 1 and is still recorded). */
+ 	r6_snap(S, 2, &both_e, &both_h, 0);
+ 

@@ -1,0 +1,40 @@
+# INDEX_DERIVATION_R8_M2a2 -- P05-S4 R8 M2a2 section 4.6 & Part E (Snapshot and Call Index Derivation)
+# Derived from driver execution order and injector counting semantics [源码].
+# columns: point_id	driver	env	hook_or_wrap	counter_rule	inj_call	retry_call	k_before	k_fail	k_preretry	k_retry	target_layer	source_basis	dual_inj2_call	dual_k2_before	dual_k2_fail	dual_k2_preretry	dual_k_recovery
+M2-01-01-F3	init-F3-dbg	FMM_MODE=closed2d;S4FMM_NG=1;S4FMM_INJECT=win:1	--wrap=Pattern_GetContainmentTree	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-02-F3	init-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=win:1	--wrap=Pattern_GetContainmentTree	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-03-F3	init-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=win:1	--wrap=Pattern_GetContainmentTree	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-04-F3	init-F3-dbg	FMM_MODE=closed2d;S4FMM_NG=1;S4FMM_INJECT=init:7	--wrap=malloc	outside malloc 7	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-05-F3	init-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=init:8	--wrap=malloc	outside malloc 8	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-06-F3	init-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=init:8	--wrap=malloc	outside malloc 8	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-11-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=1;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-12-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-13-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=win:64	--wrap=Pattern_DiscretizeCell	window malloc 64	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-14-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=9;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-15-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=9;S4FMM_INJECT=win:64	--wrap=Pattern_DiscretizeCell	window malloc 64	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-16-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=1;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-17-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=1;S4FMM_INJECT=win:64	--wrap=Pattern_DiscretizeCell	window malloc 64	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-18-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-19-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=win:64	--wrap=Pattern_DiscretizeCell	window malloc 64	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-20-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=9;S4FMM_INJECT=win:1	--wrap=Pattern_DiscretizeCell	window malloc 1	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-21-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=9;S4FMM_INJECT=win:64	--wrap=Pattern_DiscretizeCell	window malloc 64	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-232;inject_s3r4_init.cpp:65	-	-	-	-	-
+M2-01-CTRL-01-F3	init-F3-dbg	FMM_MODE=closed2d;S4FMM_NG=1	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-02-F3	init-F3-dbg	FMM_MODE=fft;S4FMM_NG=5	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-03-F3	init-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-11-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=1	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-12-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=5	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-14-F3	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=9	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-16-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=1	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-18-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-01-CTRL-20-F3	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=9	none	no injection	-	-	0	-	-	-	1	driver_r6b_state.cpp:208;no_inject	-	-	-	-	-
+M2-04-01-F3	dual-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=s4malloc;S4FMM_NTH=1;S4FMM_INJECT2=s4malloc;S4FMM_NTH2=2	--wrap=_Z9S4_mallocm	s4malloc call 1 then call 2	1	2	0	1	2	3	1	driver_r6b_state.cpp:208-242;inject_r8m2a2_dual.cpp	2	2	3	3	4
+M2-04-02-F3	layers-dual-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_LAYOUT=PP1;S4FMM_INJECT=s4malloc;S4FMM_NTH=1;S4FMM_INJECT2=s4malloc;S4FMM_NTH2=2	--wrap=_Z9S4_mallocm	layer 1 malloc 1, then layer 2 malloc 2	1	2	0	1	2	3	1,2	driver_r8m2a2_layers.cpp:make_stack;inject_r8m2a2_dual.cpp	2	2	3	3	4
+M2-05-P0-F3	layers-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_LAYOUT=P0;S4FMM_INJECT=s4malloc;S4FMM_NTH=1	--wrap=_Z9S4_mallocm	pattern on layer 0, s4malloc 1	1	2	0	1	2	3	0	driver_r8m2a2_layers.cpp:make_stack;S4.cpp:1892	-	-	-	-	-
+M2-05-P2-F3	layers-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_LAYOUT=P2;S4FMM_INJECT=s4malloc;S4FMM_NTH=1	--wrap=_Z9S4_mallocm	pattern on layer 2, s4malloc 1	1	2	0	1	2	3	2	driver_r8m2a2_layers.cpp:make_stack;S4.cpp:1892	-	-	-	-	-
+M2-05-PP1-F3	layers-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_LAYOUT=PP1;S4FMM_INJECT=s4malloc;S4FMM_NTH=1	--wrap=_Z9S4_mallocm	two patterns, fail layer 1	1	2	0	1	2	3	1	driver_r8m2a2_layers.cpp:make_stack;S4.cpp:1892	-	-	-	-	-
+M2-05-PP2-F3	layers-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_LAYOUT=PP2;S4FMM_INJECT=s4malloc;S4FMM_NTH=2	--wrap=_Z9S4_mallocm	two patterns, fail layer 2	1	2	0	1	2	3	2	driver_r8m2a2_layers.cpp:make_stack;S4.cpp:1892	-	-	-	-	-
+M2-06-01-F3	nan-F3	FMM_MODE=tensor;S4FMM_NG=5;S4FMM_INJECT=linearsolve_nanbuf:244:1	S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER	site 244 call 1 output NaN	1	-	0	1	-	-	1	tree_F3/S4/fmm/fmm_closed.cpp:244-245;inject_r8m2a2_nan.cpp	-	-	-	-	-
+M2-09-01-F3	seam-fmmret-F3	FMM_MODE=fft;S4FMM_NG=9	none	clean control	-	-	0	-	-	-	1	DRIVERS_R8.tsv:7;no_inject	-	-	-	-	-
+M2-09-01-F2	seam-fmmret-F2	FMM_MODE=fft;S4FMM_NG=9	none	clean control	-	-	0	-	-	-	1	DRIVERS_R7_SEAM.tsv:4;no_inject	-	-	-	-	-
+M2-10-01-B	r6bstate-B-dbg	FMM_MODE=vl;S4FMM_NG=1	gdb:m210_b_r8m2a2.gdb	breakpoint S4.cpp:2432	1	-	0	1	-	-	1	tree_B/S4/S4.cpp:2432;m210_b_r8m2a2.gdb	-	-	-	-	-
+# TOTAL_INDEXED_POINTS=36 UNRESOLVED_INDEX=0

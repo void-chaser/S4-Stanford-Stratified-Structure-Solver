@@ -1,0 +1,51 @@
+# SRC_DIFF -- base testing/d003/stage_s4/inject_r4_plan.cpp (90bf45cef8657f888bf68b4a8968d7df1dbe2257036752e4abd21ff8f8740e28) -> testing/d003/stage_s4/inject_r8m2a2_nan.cpp (26e6c75c6af8e9d5daeb09f23b4bfd3c85e42c8f20302f5e1ba0f8283d730a75)
+--- a/testing/d003/stage_s4/inject_r4_plan.cpp
++++ b/testing/d003/stage_s4/inject_r8m2a2_nan.cpp
+@@ -312,6 +312,25 @@
+ 	b2b_req_id = id; b2b_req_k = k; b2b_req_ok = 1;
+ }
+ 
++
++/* ------------------------------------------------------------------------
++ * [P05-S4 R8 M2a2, U240] linearsolve_nanbuf:ID:K request parsing and hits.
++ * Writes quiet_NaN to the output buffer without setting solve_info.
++ * ------------------------------------------------------------------------ */
++#include <limits>
++static int nan_req_ok = 0, nan_req_id = 0, nan_req_k = 0;
++static long nan_hits_count = 0;
++
++static void nan_parse_request(void){
++	const char *m = mode();
++	nan_req_ok = 0;
++	if(0 != strncmp(m, "linearsolve_nanbuf:", 19)){ return; }
++	int id = 0, k = 0;
++	if(2 != sscanf(m + 19, "%d:%d", &id, &k)){ return; }
++	if(b2b_index(id) < 0 || k < 1){ return; }
++	nan_req_id = id; nan_req_k = k; nan_req_ok = 1;
++}
++
+ extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER(int id, std::complex<double> *b, int n, int ld, int model){
+ 	b2b_parse_request();
+ 	const int ix = b2b_index(id);
+@@ -331,6 +350,21 @@
+ 	n_hits++;
+ 	std::fprintf(stderr, "S4FMM HIT linearsolve_null2buf id=%d call=%ld model=%d (hit=%ld)\n",
+ 	             id, b2b_calls[ix], model, n_hits);
++}
++	/* [P05-S4 R8 M2a2, U240] linearsolve_nanbuf */
++	nan_parse_request();
++	if(nan_req_ok && id == nan_req_id && b2b_calls[ix] == nan_req_k){
++		const double qnan = std::numeric_limits<double>::quiet_NaN();
++		for(int j = 0; j < n; ++j){
++			for(int i = 0; i < n; ++i){
++				b[i + j*ld] = std::complex<double>(qnan, qnan);
++			}
++		}
++		nan_hits_count++;
++		n_hits++;
++		std::fprintf(stderr, "S4FMM HIT linearsolve_nanbuf id=%d call=%ld (hit=%ld)\n",
++		             id, b2b_calls[ix], n_hits);
++	}
+ }
+ 
+ /* ------------------------------------------------------------------------

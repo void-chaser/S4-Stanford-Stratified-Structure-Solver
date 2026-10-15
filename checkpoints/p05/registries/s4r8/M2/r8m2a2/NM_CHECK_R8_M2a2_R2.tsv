@@ -1,0 +1,8 @@
+# NM_CHECK_R8_M2a2_R2 -- symbol checks (P05-S4 R8 M2a2 section 4.1, R2)
+# columns: check	library	probe	result	detail
+SYMBOL	seamF-F3-plain	S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER	ABSENT	nm_count=0
+SYMBOL	seamF-F3-plain	S4_TEST_LINEARSOLVE_NULLINFO2_AFTER	PRESENT	nm_count=4
+SYMBOL	F3-plain	S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER	ABSENT	nm_count=0
+SYMBOL	F3-plain	S4_TEST_LINEARSOLVE_NULLINFO2_AFTER	ABSENT	nm_count=0
+DEBUG	F3-dbg	.debug_info	HAS_DEBUG_INFO	section_lines=48
+DEBUG	F3-plain	.debug_info	NO_DEBUG_INFO	section_lines=0

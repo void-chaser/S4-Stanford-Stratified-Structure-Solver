@@ -1,0 +1,181 @@
+# SRC_DIFF -- base testing/d003/stage_s4/inject_r4_plan.cpp (90bf45cef8657f888bf68b4a8968d7df1dbe2257036752e4abd21ff8f8740e28) -> testing/d003/stage_s4/inject_r8m2a2_dual_R2.cpp (a5695be4b861425db957ac5667c83332dcb93eb8cc2c34b9489666158c188ad2)
+--- a/testing/d003/stage_s4/inject_r4_plan.cpp
++++ b/testing/d003/stage_s4/inject_r8m2a2_dual_R2.cpp
+@@ -62,6 +62,79 @@
+ /* Read-only view of the hit counter for the driver. */
+ extern "C" long s4fmm_inject_hits(void){ return n_hits; }
+ extern "C" int s4fmm_inject_requested(void){ return '\0' != mode()[0]; }
++
++/* ------------------------------------------------------------------------
++ * [P05-S4 R8 M2a2 R2, U244] Target 2 of the dual-target injector.
++ *   S4FMM_INJECT2 = s4malloc                (with S4FMM_NTH2 = plain integer >= 1)
++ *   S4FMM_INJECT2 = plancall:K:M            (K-th fft_plan_dft_2d call of the process, M-th malloc inside it)
++ *   S4FMM_INJECT2 = linearsolve_null2:ID:K  (ID in the seven B2 sites, K-th call of that ID)
++ * Target 2 has its own parser (whole string must be consumed; anything else is refused and the request fails closed:
++ * nothing is injected, the hit count stays low and the judge reports INVALID), its own armed flag, its own malloc
++ * counters and its own hit counter.  It does not read or change S4FMM_INJECT / S4FMM_NTH; the call streams (S4_malloc
++ * calls from FMM objects, fft_plan_dft_2d calls, per-site LinearSolve calls) are the process-wide event streams that
++ * both targets index.  A request that names the same event as target 1 is refused.
++ * ------------------------------------------------------------------------ */
++static const char *mode2(void){ const char *m = getenv("S4FMM_INJECT2"); return m ? m : ""; }
++static int t2_parsed = 0;
++static int t2_kind = 0;              /* 0 none, 1 s4malloc, 2 plancall, 3 linearsolve_null2, -1 invalid request */
++static long t2_nth = 0, t2_k = 0, t2_m = 0;
++static int t2_id = 0;
++static long n_hits2 = 0;
++static long t2_malloc_seen = 0;      /* S4_malloc calls from FMM objects, counted for target 2 on its own */
++static int t2_arm = 0;
++static long t2_plan_alloc = 0;
++static const int t2_b2_ids[7] = {134, 138, 144, 244, 375, 265, 273};
++
++static int t2_strict_long(const char *s, long *out){
++	if(NULL == s || s[0] < '0' || s[0] > '9'){ return 0; }
++	char *end = NULL;
++	long v = strtol(s, &end, 10);
++	if(end == s || '\0' != *end){ return 0; }
++	*out = v;
++	return 1;
++}
++static void t2_invalid(const char *why){
++	t2_kind = -1;
++	std::fprintf(stderr, "S4FMM DUAL_REQUEST_INVALID %s\n", why);
++}
++static void t2_parse(void){
++	if(t2_parsed){ return; }
++	t2_parsed = 1;
++	const char *m = mode2();
++	if('\0' == m[0]){ return; }
++	if(0 == strcmp(m, "s4malloc")){
++		long v = 0;
++		if(!t2_strict_long(getenv("S4FMM_NTH2"), &v) || v < 1){ t2_invalid("s4malloc needs S4FMM_NTH2 as a plain integer >= 1"); return; }
++		if(0 == strcmp(mode(), "s4malloc") && nth() == v){ t2_invalid("target 1 and target 2 name the same S4_malloc call"); return; }
++		t2_kind = 1; t2_nth = v;
++		return;
++	}
++	if(0 == strcmp(mode(), m)){ t2_invalid("target 2 repeats target 1"); return; }
++	if(0 == strncmp(m, "plancall:", 9)){
++		long k = 0, mm = 0;
++		int used = 0;
++		if(m[9] < '0' || m[9] > '9' || 2 != sscanf(m + 9, "%ld:%ld%n", &k, &mm, &used) || '\0' != m[9 + used] || k < 1 || mm < 1){
++			t2_invalid("plancall needs K:M as plain integers >= 1"); return;
++		}
++		pc_parse();
++		if(pc_ok && pc_k == k){ t2_invalid("target 1 and target 2 name the same plan call"); return; }
++		t2_kind = 2; t2_k = k; t2_m = mm;
++		return;
++	}
++	if(0 == strncmp(m, "linearsolve_null2:", 18)){
++		int id = 0, k = 0, used = 0, known = 0;
++		if(m[18] < '0' || m[18] > '9' || 2 != sscanf(m + 18, "%d:%d%n", &id, &k, &used) || '\0' != m[18 + used] || k < 1){
++			t2_invalid("linearsolve_null2 needs ID:K as plain integers"); return;
++		}
++		for(int i = 0; i < 7; ++i){ if(t2_b2_ids[i] == id){ known = 1; } }
++		if(!known){ t2_invalid("linearsolve_null2 ID is not one of the seven B2 sites"); return; }
++		t2_kind = 3; t2_id = id; t2_k = k;
++		return;
++	}
++	t2_invalid("unknown target 2 kind");
++}
++extern "C" long s4fmm_inject2_hits(void){ return n_hits2; }
++extern "C" int s4fmm_inject2_requested(void){ return '\0' != mode2()[0]; }
+ 
+ extern "C" void *__real_malloc(size_t);
+ extern "C" void *__wrap_malloc(size_t n){
+@@ -90,6 +163,17 @@
+ 		if(pc_alloc == pc_m){
+ 			n_hits++;
+ 			std::fprintf(stderr, "S4FMM HIT real malloc failure: plan call %ld malloc %ld, %zu B (hit=%ld)\n", pc_k, pc_alloc, n, n_hits);
++			return NULL;
++		}
++	}
++	/* [P05-S4 R8 M2a2 R2, U244] target 2 plancall: its own armed flag and malloc counter. */
++	t2_parse();
++	if(1 == t2_arm && 2 == t2_kind){
++		t2_plan_alloc++;
++		if(t2_plan_alloc == t2_m){
++			n_hits2++;
++			n_hits++;
++			std::fprintf(stderr, "S4FMM HIT dual target2 real malloc failure: plan call %ld malloc %ld, %zu B (hit2=%ld total=%ld)\n", t2_k, t2_plan_alloc, n, n_hits2, n_hits);
+ 			return NULL;
+ 		}
+ 	}
+@@ -256,7 +340,7 @@
+ 	b2_req_id = id; b2_req_k = k; b2_req_ok = 1;
+ }
+ 
+-extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2_AFTER(int id, int *info, std::complex<double> *b, int n, int ld, int model){
++static void b2_target1_hook(int id, int *info, std::complex<double> *b, int n, int ld, int model){
+ 	b2_parse_request();
+ 	const int ix = b2_index(id);
+ 	if(ix < 0){ return; }
+@@ -279,6 +363,30 @@
+ 	             id, b2_calls[ix], model, n_hits);
+ }
+ 
++/* [P05-S4 R8 M2a2 R2, U244] Target 2 for family B2.  The original hook (target 1; body unchanged, it also counts this
++ * call in b2_calls) runs first; target 2 then acts only if target 1 did not consume this event. */
++extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2_AFTER(int id, int *info, std::complex<double> *b, int n, int ld, int model){
++	const long hits_before = n_hits;
++	b2_target1_hook(id, info, b, n, ld, model);
++	t2_parse();
++	if(3 != t2_kind || id != t2_id){ return; }
++	const int ix = b2_index(id);
++	if(ix < 0 || n_hits != hits_before){ return; }
++	if(b2_calls[ix] != t2_k){ return; }
++	if(NULL == info){ return; }
++	*info = 1;
++	if(1 == model){
++		for(int j = 0; j < n; ++j){
++			for(int i = 0; i < n; ++i){
++				b[i + j*ld] = std::complex<double>(i == j ? 1.0 : 0.0, 0.0);
++			}
++		}
++	}
++	n_hits2++;
++	n_hits++;
++	std::fprintf(stderr, "S4FMM HIT dual target2 linearsolve_null2 id=%d call=%ld model=%d (hit2=%ld total=%ld)\n", id, b2_calls[ix], model, n_hits2, n_hits);
++}
++
+ /* ------------------------------------------------------------------------
+  * Family B2-buf (P05-S2R4, R4-1).  Independent of family B2 above: its own request prefix,
+  * its own counters, its own hook.  It writes ONLY the output buffer, with the same rule as
+@@ -494,6 +602,10 @@
+  * S4.o; this wrapper receives only the undefined references from fmm_*.o. */
+ extern "C" void *__real__Z9S4_mallocm(size_t);
+ extern "C" void *__wrap__Z9S4_mallocm(size_t size){
++	/* [P05-S4 R8 M2a2 R2, U244] the target 2 stream index is counted before target 1 can return NULL, so a call that
++	 * target 1 fails still advances target 2's index (both index the same process-wide stream of FMM S4_malloc calls). */
++	t2_parse();
++	const long t2_idx = (1 == t2_kind) ? ++t2_malloc_seen : 0;
+ 	if(0 == strcmp(mode(), "s4malloc")){
+ 		n_s4malloc++;
+ 		if(n_s4malloc == nth()){
+@@ -501,6 +613,12 @@
+ 			std::fprintf(stderr, "S4FMM HIT real S4_malloc failure: FMM call %zu B (hit=%ld)\n", size, n_s4malloc);
+ 			return NULL;
+ 		}
++	}
++	if(1 == t2_kind && t2_idx == t2_nth){
++		n_hits2++;
++		n_hits++;
++		std::fprintf(stderr, "S4FMM HIT dual target2 real S4_malloc failure: FMM call %zu B (stream index %ld, hit2=%ld total=%ld)\n", size, t2_idx, n_hits2, n_hits);
++		return NULL;
+ 	}
+ 	return __real__Z9S4_mallocm(size);
+ }
+@@ -599,6 +717,15 @@
+ 		arm = 0;
+ 		return p;
+ 	}
++	/* [P05-S4 R8 M2a2 R2, U244] target 2 plancall: arm only for its own plan call K and restart its own count there. */
++	t2_parse();
++	if(2 == t2_kind && n_plan_calls == t2_k){
++		t2_plan_alloc = 0;
++		t2_arm = 1;
++		fft_plan p = __real__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(n, a, b, s);
++		t2_arm = 0;
++		return p;
++	}
+ 	return __real__Z15fft_plan_dft_2dPiPSt7complexIdES2_i(n, a, b, s);
+ }
+ 

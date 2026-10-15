@@ -1,0 +1,73 @@
+# CATC_SEARCH_R8_M2a2_R2 -- P05-S4 R8 M2a2 CONT1 section 5 (SUPERSEDES CATC_SEARCH_R8_M2a2.tsv, kept)
+# Source facts (line numbers found by search in the exported F3 tree):
+#   resolution=8 S4.cpp:343 ; G_select call S4.cpp:365 ; 1D formula S4.cpp:368 ; Gsel_circular gsel.c:117 ; fft_next_fast_size fmm/fft_iface.cpp:35
+#   kiss scratch kiss_fft.c:216 ; kiss tmpbuf kiss_fft.c:392 ; GetFieldOnGrid alloc rcwa.cpp:2204 exec rcwa.cpp:2245
+#   build: HAVE_LIBFFTW3 defined=False ; KISS_FFT_USE_ALLOCA defined=False
+#   PLANNER_FACT_MISMATCH=0
+mode	NG_requested	lattice	n_G_actual	ngrid_x	ngrid_y	fmm_uses_fft	exec_alloc_in_fmm	exec_alloc_outside_fmm	NB_ge_2	basis	verdict
+closed1d	2	1D (Lr={1,0,0,0})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+closed1d	3	1D (Lr={1,0,0,0})	3	8	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=1	NOT_FOUND
+closed1d	4	1D (Lr={1,0,0,0})	3	8	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=1	NOT_FOUND
+closed1d	5	1D (Lr={1,0,0,0})	5	16	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=16 gy=1	NOT_FOUND
+closed1d	6	1D (Lr={1,0,0,0})	5	16	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=16 gy=1	NOT_FOUND
+closed1d	7	1D (Lr={1,0,0,0})	7	24	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=24 gy=1	NOT_FOUND
+closed1d	8	1D (Lr={1,0,0,0})	7	24	1	NO	YES	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=24 gy=1	NOT_FOUND
+closed2d	2	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+closed2d	3	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+closed2d	4	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+closed2d	5	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+closed2d	6	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+closed2d	7	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+closed2d	8	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+experimental	2	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+experimental	3	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+experimental	4	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+experimental	5	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+experimental	6	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+experimental	7	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+experimental	8	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_experimental.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+fft	2	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+fft	3	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+fft	4	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+fft	5	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+fft	6	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+fft	7	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+fft	8	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+kottke	2	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+kottke	3	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+kottke	4	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+kottke	5	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+kottke	6	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+kottke	7	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+kottke	8	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+tensor	2	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+tensor	3	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+tensor	4	square (Lr={1,0,0,1})	1	1	1	NO	YES	YES_GetFieldOnGrid	NO	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=1 gy=1	NOT_FOUND
+tensor	5	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+tensor	6	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+tensor	7	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+tensor	8	square (Lr={1,0,0,1})	5	8	8	NO	NO	YES_GetFieldOnGrid	YES	fmm file fmm/fmm_closed.cpp, fft_plan_exec count 0; rule R3 gx=8 gy=8	NOT_FOUND
+jones	2	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+jones	3	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+jones	4	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+jones	5	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+jones	6	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+jones	7	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+jones	8	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+nv	2	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+nv	3	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+nv	4	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+nv	5	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+nv	6	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+nv	7	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+nv	8	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+vl	2	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+vl	3	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+vl	4	square (Lr={1,0,0,1})	1	1	1	YES	YES	NO	NO	fmm_uses_fft=YES; rule R3 gx=1 gy=1	NOT_FOUND
+vl	5	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+vl	6	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+vl	7	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+vl	8	square (Lr={1,0,0,1})	5	8	8	YES	NO	NO	YES	fmm_uses_fft=YES; rule R3 gx=8 gy=8	NOT_FOUND
+# CANDIDATES_OUTSIDE_U242_GRID
+# 1D lattice + FFT-class FMM mode (fft/kottke/jones/nv/vl) with actual NB>=3: NEEDS_NEW_DRIVER_SCOPE_EXPANSION (not searched here)
+# SUMMARY: ROWS=63 FOUND=0 NOT_FOUND=63 PLANNER_FACT_MISMATCH=0 M2_08=NOT_FOUND

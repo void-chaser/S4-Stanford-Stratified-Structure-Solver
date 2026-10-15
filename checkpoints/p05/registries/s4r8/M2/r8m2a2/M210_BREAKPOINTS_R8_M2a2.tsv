@@ -1,0 +1,17 @@
+# M210_BREAKPOINTS_R8_M2a2 -- tree B, Simulation_ComputeLayerModes body 2250-2440
+line	kind	text
+2362	RETURN_20	return 20;
+2416	RETURN_20	return 20;
+2432	RETURN_20	return 20;
+2368	FMM_CALL	FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2372	FMM_CALL	FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2374	FMM_CALL	FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2377	FMM_CALL	FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2379	FMM_CALL	FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2381	FMM_CALL	FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2386	FMM_CALL	FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2389	FMM_CALL	FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2391	FMM_CALL	FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+2393	FMM_CALL	FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+# RETURN_20_SITES=3 FMM_CALL_SITES=10 B_HAS_FMM_RETURN_CHECK=YES
+# ARGV_FROM_RUNNER=pattern both 4 3

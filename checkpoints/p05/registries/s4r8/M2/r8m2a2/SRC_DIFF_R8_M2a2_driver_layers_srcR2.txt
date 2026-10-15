@@ -1,0 +1,62 @@
+# SRC_DIFF -- base testing/d003/stage_s4/driver_r6b_state.cpp (db2e7a2efe29792949b7e8a30f2727a777b9e3638debb662816353ef0696c545) -> testing/d003/stage_s4/driver_r8m2a2_layers_R2.cpp (4a8c61b8f62be7cc8ab4391863f11c8cd412d3641bae6ed20d06bedb7f0d6079)
+--- a/testing/d003/stage_s4/driver_r6b_state.cpp
++++ b/testing/d003/stage_s4/driver_r8m2a2_layers_R2.cpp
+@@ -100,18 +100,40 @@
+ 		: S4_Simulation_SetMaterial(S, -1, "Glass", S4_MATERIAL_TYPE_SCALAR_REAL, glass);
+ 	S4_real zero = 0.0, half = 0.5;
+ 	if(0 == strcmp(which, "pattern")){
+-		S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
+-		S4_LayerID slab = S4_Simulation_SetLayer(S, -1, "Slab", &half, -1, mAir);
+ 		S4_real radius[2] = {0.25, 0.25}, center[2] = {0.0, 0.0}, angle_frac = 0.0;
+ 		const int is1d = (NULL != mode && 0 == strcmp(mode, "closed1d"));
+ 		const int rtype = is1d ? S4_REGION_TYPE_INTERVAL : S4_REGION_TYPE_CIRCLE;
+ 		S4_real ival[2] = {0.25, 0.0};
+-		if(0 != S4_Layer_SetRegionHalfwidths(S, slab, mGlass, rtype,
+-		                                     is1d ? ival : radius, center, &angle_frac)){
++		S4_real *halfw = is1d ? ival : radius;
++		/* [P05-S4 R8 M2a2 R2, U245] S4FMM_LAYOUT selects the layer stack.  Unset = the original stack of
++		 * driver_r6b_state.cpp (Above, Slab with the pattern, Below).  P0: pattern on layer 0.  P2: pattern on layer 2.
++		 * PP1 and PP2: the same two-pattern stack (layers 1 and 2); the names differ only in which pattern layer the
++		 * injection index targets.  Any other value, including an empty one, fails closed (the fixture is not built). */
++		const char *layout = getenv("S4FMM_LAYOUT");
++		const char *names[4] = {NULL, NULL, NULL, NULL};
++		int pat[4] = {0, 0, 0, 0};
++		S4_real *thick[4] = {&zero, &zero, &zero, &zero};
++		int nl = 0;
++		if(NULL == layout){
++			names[0] = "Above"; names[1] = "Slab"; pat[1] = 1; thick[1] = &half; names[2] = "Below"; nl = 3;
++		}else if(0 == strcmp(layout, "P0")){
++			names[0] = "Slab"; pat[0] = 1; thick[0] = &half; names[1] = "Spacer"; names[2] = "Below"; nl = 3;
++		}else if(0 == strcmp(layout, "P2")){
++			names[0] = "Above"; names[1] = "Spacer"; names[2] = "Slab"; pat[2] = 1; thick[2] = &half; nl = 3;
++		}else if(0 == strcmp(layout, "PP1") || 0 == strcmp(layout, "PP2")){
++			names[0] = "Above"; names[1] = "Slab1"; pat[1] = 1; thick[1] = &half; names[2] = "Slab2"; pat[2] = 1; thick[2] = &half; names[3] = "Below"; nl = 4;
++		}else{
++			std::fprintf(stderr, "S4FMM ARGERROR unknown S4FMM_LAYOUT=%s\n", layout);
+ 			S4_Simulation_Destroy(S);
+ 			return NULL;
+ 		}
+-		S4_Simulation_SetLayer(S, -1, "Below", &zero, -1, mAir);
++		for(int li = 0; li < nl; ++li){
++			S4_LayerID lid = S4_Simulation_SetLayer(S, -1, names[li], thick[li], -1, mAir);
++			if(pat[li] && 0 != S4_Layer_SetRegionHalfwidths(S, lid, mGlass, rtype, halfw, center, &angle_frac)){
++				S4_Simulation_Destroy(S);
++				return NULL;
++			}
++		}
+ 	}else{
+ 		S4_Simulation_SetLayer(S, -1, "Above", &zero, -1, mAir);
+ 		S4_Simulation_SetLayer(S, -1, "Spacer", &zero, -1, mAir);
+@@ -195,10 +217,12 @@
+ 	std::printf("S4FMM DRIVER_R6B mode=%s num_basis=%d\n", mode, g_ng);
+ 	S4_Simulation *S = make_stack(stack, 0.999);
+ 	if(NULL == S){ std::fprintf(stderr, "fixture failed\n"); return 2; }
++	{ const char *lay_name = getenv("S4FMM_LAYOUT"); std::printf("S4FMM LAYOUT %s n_layers %d\n", NULL != lay_name ? lay_name : "default", (int)S->n_layers); }
+ 
+ 	/* twice route selection (for the retry output file): the retry is call3 for twice, call2 for once. */
+ 	const char *tw = getenv("S4FMM_TWICE");
+ 	const int twice = (NULL != tw && 0 == strcmp(tw, "slab"));
++	if(twice && NULL != getenv("S4FMM_LAYOUT")){ std::fprintf(stderr, "S4FMM ARGERROR S4FMM_TWICE is not supported with S4FMM_LAYOUT\n"); return 2; }
+ 
+ 	Buf both_e(n), both_h(n);
+ 	S4_real *Ep = (0 == strcmp(outs, "h") ? NULL : both_e.ptr());

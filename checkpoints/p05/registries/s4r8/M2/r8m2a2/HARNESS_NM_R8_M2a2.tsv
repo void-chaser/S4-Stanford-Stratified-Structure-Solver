@@ -1,0 +1,6 @@
+# HARNESS_NM_R8_M2a2 -- nm of the synthetic dual harness (dual_stubs_r8m2a2.cpp, no libS4)
+binary	nm_lines	S4_symbols_found	result
+build/harness_try2/dual_harness_r8m2a2	183	NONE	PASS_NO_S4_SYMBOL
+build/harness_try3/dual_harness_r8m2a2	183	NONE	PASS_NO_S4_SYMBOL
+build/harness_try3/dual_harness_r8m2a2_suppress	184	NONE	PASS_NO_S4_SYMBOL
+# BINARIES=3 FAILS=0

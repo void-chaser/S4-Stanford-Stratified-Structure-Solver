@@ -1,0 +1,15 @@
+# COMPLETENESS_R8_M2a2 -- P05-S4 R8 M2a2 section 4.9 & CONT1 section 8
+item	result	details
+M2-00	PASS	category COVERED_BY_M0 with reference: A10_CONTROL_CROSSWALK_R8_M2a_R2.tsv: 6 of 6 COVERED_BY_M0 (rc 0, call IDENTICAL)
+M2-01	PASS	prereg points = 21 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+M2-02	PASS	search table STAGE_E_SEARCH_R8_M2a2_R2.tsv rows=306, summary: # SUMMARY: A_ROWS=227 B_ROWS=77 STAGE_E_IN_SCOPE=0, M2_02=NOT_FOUND_IN_SCOPE confirmed
+M2-03	PASS	prereg points = 31 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+M2-04	PASS	prereg points = 4 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+M2-05	PASS	prereg points = 8 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+M2-06	PASS	prereg points = 2 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+M2-07	PASS	prereg points = 81 > 0 (feasibility=FEASIBLE_EXISTING)
+M2-08	PASS	search table CATC_SEARCH_R8_M2a2_R2B.tsv rows=64, summary: # SUMMARY: ROWS=63 FOUND=0 NOT_FOUND=63 PLANNER_FACT_MISMATCH=0 M2_08=NOT_FOUND
+M2-09	PASS	prereg points = 2 > 0 (feasibility=FEASIBLE_EXISTING)
+M2-10	PASS	prereg points = 1 > 0 (feasibility=FEASIBLE_NEW_APPARATUS)
+# TOTAL_ITEMS=11 FAILS=0
+# COMPLETENESS=PASS

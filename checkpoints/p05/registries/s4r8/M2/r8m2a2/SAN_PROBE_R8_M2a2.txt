@@ -1,0 +1,8 @@
+# SAN_PROBE_R8_M2a2 -- sanitizer toolchain probe (P05-S4 R8 M2a2 section 4.5; no S4 linked)
+compile_rc=0
+run_clean_rc=0
+run_overflow_rc=1
+asan_reports_overflow=YES
+probe_src=testing/d003/stage_s4/san_probe_r8m2a2.cpp
+probe_exe=checkpoints/p05/evidence/p05-s4r8/m2a2/build/san/san_probe_r8m2a2
+SAN_TOOLCHAIN=USABLE

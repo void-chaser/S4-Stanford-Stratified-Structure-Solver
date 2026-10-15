@@ -1,0 +1,19 @@
+# STAGE_E_SEARCH_R8_M2a2 -- P05-S4 R8 M2a2 section 4.1 & U241 (Stage e candidate search)
+# Stage e definition (ERRATA_6d.txt:65): HIT lies outside all ENTER/RETURN pairs of ComputeLayerModes.
+# Scope criterion (U5b/E6-4, MEMORY.md): in D003 scope only if on FMM/FFT failure propagation chain into layer modes.
+# columns: candidate_id	location	stage_def	in_scope_d003	reason
+U2_R3_INJECT_119	S4/fmm/FMMGetEpsilon_*.cpp	stage b	IN_SCOPE	Inside ComputeLayerModes failing layer
+U2_R4PC_PLAN_22	S4/fmm/fmm_FFT.cpp	stage b	IN_SCOPE	Inside ComputeLayerModes plan calls
+U2_R5M2_PLAN_36	S4/fmm/fmm_FFT.cpp	stage b	IN_SCOPE	Inside ComputeLayerModes plan calls
+SEAM_ALLOC_21_22	S4/S4.cpp:2267,2295	stage a	IN_SCOPE	Inside ComputeLayerModes before FMM
+SEAM_ALLOC_23_24	S4/S4.cpp:2408,2425	stage d	IN_SCOPE	Inside ComputeLayerModes eigensystem work
+SEAM_ALLOC_25	S4/S4.cpp:3977	stage c	IN_SCOPE	AddFieldToCache inside ComputeLayerModes
+SEAM_KOTTKE_31	S4/fmm/fmm_kottke.cpp:78	stage b	IN_SCOPE	Inside Kottke FMM call
+SEAM_FMMRET_150_159	S4/S4.cpp:2310-2350	stage b	IN_SCOPE	FMM return check inside ComputeLayerModes
+SEAM_NULLINFO2_134_273	S4/fmm/fmm_closed.cpp,PolBasis*.cpp	stage b	IN_SCOPE	LinearSolve inside FMM
+SEAM_ADDF_160_162	S4/fmm/fmm_PolBasis*.cpp	stage c	IN_SCOPE	AddFieldToCache caller check
+CAND_GETFIELDONGRID_PLAN	S4/rcwa.cpp:GetFieldOnGrid:4050	stage e	OUT_OF_SCOPE_D003	Post-processing field calculation, not on layer modes error propagation chain (U5b/E6-4)
+CAND_GETFIELDONGRID_EXEC	S4/rcwa.cpp:GetFieldOnGrid:4065	stage e	OUT_OF_SCOPE_D003	Post-processing field transform execution (U5b/E6-4)
+CAND_POWERFLUX_WORK	S4/S4.cpp:Simulation_GetPowerFlux:2460	stage e	OUT_OF_SCOPE_D003	Flux output post-processing, outside ComputeLayerModes (U5b)
+CAND_FIELD_CACHE_INIT	S4/S4.cpp:Simulation_InitSolution:1780	stage e	OUT_OF_SCOPE_D003	Global simulation setup before layer modes loop, outside FMM
+# SUMMARY: ALL_CANDIDATES_IN_STAGE_E_ARE_OUT_OF_SCOPE -> RESULT=NOT_FOUND_IN_SCOPE

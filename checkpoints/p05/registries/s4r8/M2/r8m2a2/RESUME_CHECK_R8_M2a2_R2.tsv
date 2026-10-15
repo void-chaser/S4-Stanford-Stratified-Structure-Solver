@@ -1,0 +1,112 @@
+# RESUME_CHECK_R8_M2a2_R2 -- item-by-item resume consistency; original start gate not repeated
+class	item	check	expected	actual	note
+BASE	HEAD	PASS	6a4f0031afeda0a3105c9983d5a65a2d847f1488	6a4f0031afeda0a3105c9983d5a65a2d847f1488	
+BASE	HEAD:S4	PASS	6cff923a02baf19e01966b2339755cbf3a5deeef	6cff923a02baf19e01966b2339755cbf3a5deeef	
+BASE	JUDGE_SHA256	PASS	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	
+BASE	BRANCH	PASS	codex/p05-d003-fft-error-propagation	codex/p05-d003-fft-error-propagation	
+BASE	RULINGS_PREFIX_92855	PASS	c1632c0f518ff20d3139891230b379772ad6757ef16e60cc7564abf71c19813c	c1632c0f518ff20d3139891230b379772ad6757ef16e60cc7564abf71c19813c	now 101120 bytes
+BASE	ERRATA_8_PREFIX_67104	PASS	e559b0110a26f3f039b27a39c1a08924eee4b43e394ddf799cee347706cf7520	e559b0110a26f3f039b27a39c1a08924eee4b43e394ddf799cee347706cf7520	now 68512 bytes
+BASE	RULINGS_U236_COUNT	PASS	1	1	
+BASE	RULINGS_U237_COUNT	PASS	1	1	
+BASE	RULINGS_U238_COUNT	PASS	1	1	
+BASE	RULINGS_U239_COUNT	PASS	1	1	
+BASE	RULINGS_U240_COUNT	PASS	1	1	
+BASE	RULINGS_U241_COUNT	PASS	1	1	
+BASE	RULINGS_U242_COUNT	PASS	1	1	
+BASE	RULINGS_U243_COUNT	PASS	1	1	
+BASE	RULINGS_U244_COUNT	PASS	1	1	
+BASE	RULINGS_U245_COUNT	PASS	1	1	
+BASE	RULINGS_U246_COUNT	PASS	1	1	
+BASE	RULINGS_U247_COUNT	PASS	1	1	
+BASE	ERRATA_E8-91_COUNT	PASS	1	1	
+BASE	ERRATA_E8-92_COUNT	PASS	1	1	
+BASE	ERRATA_E8-93_COUNT	PASS	1	1	
+BASE	ERRATA_E8-94_COUNT	PASS	1	1	
+BASE	ERRATA_E8-95_COUNT	PASS	1	1	
+BASE	TRACKED_MODIFIED_FILES	PASS	checkpoints/p05/registries/RULINGS.tsv;checkpoints/p05/registries/s4r8/ERRATA_8.txt	checkpoints/p05/registries/RULINGS.tsv;checkpoints/p05/registries/s4r8/ERRATA_8.txt	
+BASE	TRACKED_DIFF_S4	PASS			
+BASE	TRACKED_DIFF_testing_d003	PASS			
+BASE	TRACKED_DIFF_r8m2a_registry	PASS			
+BASE	R8M2A_TRACKED_FILES_20	PASS	20	20	
+CLASS1	checkpoints/p05/registries/s4r8/M2/r8m2a/GATE_R8_M2a_end.txt	EQUALS_EVIDENCE_ORIGINAL	6c885fa85b69c9e9d1f8cdba31bb7d6bc438b6bd7b6eff0c943e4ff152d3c075	6c885fa85b69c9e9d1f8cdba31bb7d6bc438b6bd7b6eff0c943e4ff152d3c075	brief 4.0 back-fill; origin evidence/p05-s4r8/m2a/GATE_R8_M2a_end.txt
+CLASS1	checkpoints/p05/registries/s4r8/M2/r8m2a/GATE_R8_M2a_end_R2.txt	EQUALS_EVIDENCE_ORIGINAL	50eaf00d46f5dff52fce2a514737730a4fb1ce858291476fd72fdccb35d9a3b6	50eaf00d46f5dff52fce2a514737730a4fb1ce858291476fd72fdccb35d9a3b6	brief 4.0 back-fill; origin evidence/p05-s4r8/m2a/GATE_R8_M2a_end_R2.txt
+CLASS1	checkpoints/p05/registries/s4r8/M2/r8m2a/GATE_R8_M2a_end_R3.txt	EQUALS_EVIDENCE_ORIGINAL	900852d4774af5af236474c6b4eb7503d4e44098359664151a191d848755b77c	900852d4774af5af236474c6b4eb7503d4e44098359664151a191d848755b77c	brief 4.0 back-fill; origin evidence/p05-s4r8/m2a/GATE_R8_M2a_end_R3.txt
+CLASS1	checkpoints/p05/registries/s4r8/M2/r8m2a/POSTCOMMIT_R8_M2a.txt	EQUALS_EVIDENCE_ORIGINAL	3c8edb9a4e5abb70491666e40f9f3b7564e28338388f86696c6a64ee7e403bf1	3c8edb9a4e5abb70491666e40f9f3b7564e28338388f86696c6a64ee7e403bf1	brief 4.0 back-fill; origin evidence/p05-s4r8/m2a/POSTCOMMIT_R8_M2a.txt
+CLASS1	checkpoints/p05/registries/s4r8/M2/r8m2a/SHA256SUMS_END.txt	4_ENTRIES_ALL_MATCH	4 entries ok	4 entries, ok=True	brief 4.0; E8-93
+CLASS1	checkpoints/p05/registries/RULINGS.tsv	TASK_APPEND_PREFIX_OK	brief section 3	 M checkpoints/p05/registries/RULINGS.tsv	U236-U247 / E8-91..95 appended once; prefix unchanged (BASE rows)
+CLASS1	checkpoints/p05/registries/s4r8/ERRATA_8.txt	TASK_APPEND_PREFIX_OK	brief section 3	 M checkpoints/p05/registries/s4r8/ERRATA_8.txt	U236-U247 / E8-91..95 appended once; prefix unchanged (BASE rows)
+CLASS1	checkpoints/p05/briefs/P05_S4R8_BRIEF_M2a2.md	BRIEF_COPY	brief step 1	?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M2a2.md	task brief copy
+CLASS2	testing/d003/stage_s4/build_apparatus_sources_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/build_apparatus_sources_r8m2a2.py	replacements were not asserted to match exactly once; replaced by build_apparatus_sources_r8m2a2_R2.py
+CLASS1	testing/d003/stage_s4/build_errata_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/build_errata_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS2	testing/d003/stage_s4/build_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/build_r8m2a2.py	compile commands are not recorded per object; build dir reused names; replaced by build_r8m2a2_R3.py (new directory build_R3)
+CLASS2	testing/d003/stage_s4/build_r8m2a2.sh	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/build_r8m2a2.sh	wrapper of build_r8m2a2.py
+CLASS1	testing/d003/stage_s4/build_rulings_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/build_rulings_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/copy_r8m2a_end_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/copy_r8m2a_end_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/diff_gate_r8m2a2.sh	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/diff_gate_r8m2a2.sh	round script, allowed by end allow list *r8m2a2*
+CLASS2	testing/d003/stage_s4/driver_r8m2a2_layers.cpp	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/driver_r8m2a2_layers.cpp	unknown S4FMM_LAYOUT falls through to the default layout silently; replaced by driver_r8m2a2_layers_R2.cpp
+CLASS1	testing/d003/stage_s4/export_r8m2a2.sh	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/export_r8m2a2.sh	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/gate_allow_r8m2a2_end.txt	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/gate_allow_r8m2a2_end.txt	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/gate_allow_r8m2a2_start.txt	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/gate_allow_r8m2a2_start.txt	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/gate_check_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/gate_check_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/gate_r8m2a2.sh	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/gate_r8m2a2.sh	round script, allowed by end allow list *r8m2a2*
+CLASS2	testing/d003/stage_s4/generate_index_derivation_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/generate_index_derivation_r8m2a2.py	hard-coded table; PP2 used NTH=2 as layer 2; replaced by index derivation inside points_r8m2a2.py
+CLASS2	testing/d003/stage_s4/generate_search_tables_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/generate_search_tables_r8m2a2.py	category C table asserts zero allocations for every cell without computing the grid; stage e table is a hand list; replaced by generate_search_tables_r8m2a2_R2.py
+CLASS2	testing/d003/stage_s4/inject_r8m2a2_dual.cpp	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/inject_r8m2a2_dual.cpp	target 2 of linearsolve_null2 parsed with permissive sscanf; target 2 of plancall counts mallocs while target 1 arms the call (shared arm flag); s4malloc target 2 reads the counter of target 1; replaced by inject_r8m2a2_dual_R2.cpp
+CLASS2	testing/d003/stage_s4/inject_r8m2a2_dual_DRAFT_SUPERSEDED.cpp.txt	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/inject_r8m2a2_dual_DRAFT_SUPERSEDED.cpp.txt	draft already renamed .txt; superseded
+CLASS2	testing/d003/stage_s4/inject_r8m2a2_dual_append.inc	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/inject_r8m2a2_dual_append.inc	unreferenced draft include (S4_TEST_DUAL_HOOK); superseded
+CLASS2	testing/d003/stage_s4/inject_r8m2a2_nan.cpp	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/inject_r8m2a2_nan.cpp	request parser accepts trailing text; replaced by inject_r8m2a2_nan_R2.cpp
+CLASS1	testing/d003/stage_s4/k1_anchor_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/k1_anchor_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS2	testing/d003/stage_s4/m210_b_r8m2a2.gdb	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/m210_b_r8m2a2.gdb	one breakpoint only (S4.cpp:2432) although the B tree has three return 20 sites; replaced by m210_b_r8m2a2_R2.gdb
+CLASS2	testing/d003/stage_s4/make_dual_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/make_dual_r8m2a2.py	generator of the draft; superseded
+CLASS2	testing/d003/stage_s4/nm_audit_buf_r8m2a2_R2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/nm_audit_buf_r8m2a2_R2.py	symbol table only; no relocation or call-site coverage; extended by nm_audit_buf_r8m2a2_R3.py
+CLASS2	testing/d003/stage_s4/nm_check_r8m2a2.sh	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/nm_check_r8m2a2.sh	R1 static check, kept as record
+CLASS2	testing/d003/stage_s4/nm_check_r8m2a2_R2.sh	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/nm_check_r8m2a2_R2.sh	static check wrapper, kept as record
+CLASS1	testing/d003/stage_s4/r6c_state_gdb_r8m2a2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/r6c_state_gdb_r8m2a2.py	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/r6c_state_r8m2a2.gdb	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/r6c_state_r8m2a2.gdb	round script, allowed by end allow list *r8m2a2*
+CLASS2	testing/d003/stage_s4/resume_check_r8m2a2.py	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/resume_check_r8m2a2.py	R1 resume check (generic 'status non-empty'); replaced by this R2
+CLASS1	testing/d003/stage_s4/resume_check_r8m2a2_R2.py	CONTINUATION_SCRIPT	-	?? testing/d003/stage_s4/resume_check_r8m2a2_R2.py	new continuation script (version-suffixed or round-named)
+CLASS2	testing/d003/stage_s4/reuse_check_r8m2a2.sh	NEEDS_CORRECTION	-	?? testing/d003/stage_s4/reuse_check_r8m2a2.sh	R1 reuse check, kept as record
+CLASS1	testing/d003/stage_s4/reuse_check_r8m2a2_R2.py	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/reuse_check_r8m2a2_R2.py	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/san_probe_r8m2a2.cpp	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/san_probe_r8m2a2.cpp	round script, allowed by end allow list *r8m2a2*
+CLASS1	testing/d003/stage_s4/san_probe_r8m2a2.sh	ROUND_SCRIPT_VALID	-	?? testing/d003/stage_s4/san_probe_r8m2a2.sh	round script, allowed by end allow list *r8m2a2*
+CLASS2	evidence/BUILD_R8_M2a2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	BUILD_R8_M2a2.tsv	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/BUILD_R8_M2a2_R2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	BUILD_R8_M2a2_R2.tsv	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/CATC_SEARCH_R8_M2a2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	CATC_SEARCH_R8_M2a2.tsv	kept (U17); replaced by a later version, report says so
+CLASS1	evidence/ERRATA_APPEND_R8_M2a2.txt	EVIDENCE_FILE	-	ERRATA_APPEND_R8_M2a2.txt	round evidence file
+CLASS1	evidence/EXPORT_R8_M2a2.txt	EVIDENCE_FILE	-	EXPORT_R8_M2a2.txt	round evidence file
+CLASS1	evidence/GATE_R8_M2a2_start.txt	EVIDENCE_FILE	-	GATE_R8_M2a2_start.txt	round evidence file
+CLASS2	evidence/INDEX_DERIVATION_R8_M2a2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	INDEX_DERIVATION_R8_M2a2.tsv	kept (U17); replaced by a later version, report says so
+CLASS1	evidence/K1_ANCHOR_R8_M2a2.tsv	EVIDENCE_FILE	-	K1_ANCHOR_R8_M2a2.tsv	round evidence file
+CLASS2	evidence/NM_CHECK_BUF_R8_M2a2_R2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	NM_CHECK_BUF_R8_M2a2_R2.tsv	kept (U17); replaced by a later version, report says so
+CLASS1	evidence/NM_CHECK_R8_M2a2.tsv	EVIDENCE_FILE	-	NM_CHECK_R8_M2a2.tsv	round evidence file
+CLASS1	evidence/NM_CHECK_R8_M2a2_R2.tsv	EVIDENCE_FILE	-	NM_CHECK_R8_M2a2_R2.tsv	round evidence file
+CLASS1	evidence/RESUME_CHECK_R8_M2a2.tsv	EVIDENCE_FILE	-	RESUME_CHECK_R8_M2a2.tsv	round evidence file
+CLASS1	evidence/REUSE_CHECK_R8_M2a2.tsv	EVIDENCE_FILE	-	REUSE_CHECK_R8_M2a2.tsv	round evidence file
+CLASS1	evidence/REUSE_CHECK_R8_M2a2_R2.tsv	EVIDENCE_FILE	-	REUSE_CHECK_R8_M2a2_R2.tsv	round evidence file
+CLASS1	evidence/RULINGS_APPEND_R8_M2a2.tsv	EVIDENCE_FILE	-	RULINGS_APPEND_R8_M2a2.tsv	round evidence file
+CLASS1	evidence/SAN_PROBE_R8_M2a2.txt	EVIDENCE_FILE	-	SAN_PROBE_R8_M2a2.txt	round evidence file
+CLASS1	evidence/SEAM_BUF_PATCH_DIFF_R8_M2a2.txt	EVIDENCE_FILE	-	SEAM_BUF_PATCH_DIFF_R8_M2a2.txt	round evidence file
+CLASS2	evidence/SRC_DIFF_R8_M2a2_driver_layers.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_driver_layers.txt	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/SRC_DIFF_R8_M2a2_inject_dual.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_inject_dual.txt	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/SRC_DIFF_R8_M2a2_inject_dual_R2.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_inject_dual_R2.txt	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/SRC_DIFF_R8_M2a2_inject_dual_R3.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_inject_dual_R3.txt	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/SRC_DIFF_R8_M2a2_inject_nan.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_inject_nan.txt	kept (U17); replaced by a later version, report says so
+CLASS2	evidence/SRC_DIFF_R8_M2a2_inject_nan_R2.txt	SUPERSEDED_EVIDENCE_KEPT	-	SRC_DIFF_R8_M2a2_inject_nan_R2.txt	kept (U17); replaced by a later version, report says so
+CLASS1	evidence/SRC_DIFF_R8_M2a2_r6c_state_gdb.txt	EVIDENCE_FILE	-	SRC_DIFF_R8_M2a2_r6c_state_gdb.txt	round evidence file
+CLASS2	evidence/STAGE_E_SEARCH_R8_M2a2.tsv	SUPERSEDED_EVIDENCE_KEPT	-	STAGE_E_SEARCH_R8_M2a2.tsv	kept (U17); replaced by a later version, report says so
+CLASS1	evidence/STRAY_BASELINE_R8_M2a2.tsv	EVIDENCE_FILE	-	STRAY_BASELINE_R8_M2a2.tsv	round evidence file
+CLASS1	evidence/build/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	evidence/safe_run.log	EVIDENCE_FILE	-	safe_run.log	round evidence file
+CLASS1	evidence/tmp/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	evidence/tree_B/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	evidence/tree_F3/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	evidence/tree_F3_buf/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	evidence/tree_F3_san/	EVIDENCE_DIR	-	dir	round evidence directory (not committed)
+CLASS1	nm_audit_buf_r8m2a2_R2.py	RUN_THROUGH_SAFE_RUN	log line present	start line 1, nm line 23	original start gate precedes the audit run in safe_run.log; no start-order violation is claimed
+CLASS1	nm_audit_buf_r8m2a2_R2.py	PRE_RUN_CHECK_LOG	no record file	none found	no pre-run check log exists for this script; none is invented (disclosed in the report)
+CLASS1	NM_CHECK_BUF_R8_M2a2_R2.tsv	OUTPUT_PATH_IN_EV	under evidence dir	yes	coverage: symbol table only (4 undefined, 1 defined); call-site coverage added in R3
+CLASS1=48
+CLASS2=29
+CLASS3=0
+BASE_FAIL=0
+RESUME_CHECK_R2=PASS

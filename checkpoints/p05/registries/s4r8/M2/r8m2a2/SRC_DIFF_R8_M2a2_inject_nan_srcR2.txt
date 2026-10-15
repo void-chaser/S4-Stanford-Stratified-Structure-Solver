@@ -1,0 +1,54 @@
+# SRC_DIFF -- base testing/d003/stage_s4/inject_r4_plan.cpp (90bf45cef8657f888bf68b4a8968d7df1dbe2257036752e4abd21ff8f8740e28) -> testing/d003/stage_s4/inject_r8m2a2_nan_R2.cpp (1f80900d41bf089dfdfaf3185002603c102e993bc2c7e7f81e81c5a04c9a719b)
+--- a/testing/d003/stage_s4/inject_r4_plan.cpp
++++ b/testing/d003/stage_s4/inject_r8m2a2_nan_R2.cpp
+@@ -312,7 +312,7 @@
+ 	b2b_req_id = id; b2b_req_k = k; b2b_req_ok = 1;
+ }
+ 
+-extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER(int id, std::complex<double> *b, int n, int ld, int model){
++static void b2b_original_hook(int id, std::complex<double> *b, int n, int ld, int model){
+ 	b2b_parse_request();
+ 	const int ix = b2b_index(id);
+ 	if(ix < 0){ return; }
+@@ -331,6 +331,41 @@
+ 	n_hits++;
+ 	std::fprintf(stderr, "S4FMM HIT linearsolve_null2buf id=%d call=%ld model=%d (hit=%ld)\n",
+ 	             id, b2b_calls[ix], model, n_hits);
++}
++
++/* [P05-S4 R8 M2a2 R2, U240] linearsolve_nanbuf:ID:K.  The original B2BUF hook (body unchanged, it also counts this call
++ * in b2b_calls) runs first; the NaN request then acts only if the original did not consume this event.  The output buffer
++ * of the solve is overwritten with quiet NaN; solve_info is NOT touched (the real solve left it 0). */
++#include <limits>
++static int nan_parsed = 0, nan_ok = 0, nan_id = 0, nan_k = 0;
++static void nan_parse(void){
++	if(nan_parsed){ return; }
++	nan_parsed = 1;
++	const char *m = mode();
++	if(0 != strncmp(m, "linearsolve_nanbuf:", 19)){ return; }
++	int id = 0, k = 0, used = 0;
++	if(m[19] < '0' || m[19] > '9' || 2 != sscanf(m + 19, "%d:%d%n", &id, &k, &used) || '\0' != m[19 + used] || k < 1 || b2b_index(id) < 0){
++		std::fprintf(stderr, "S4FMM NAN_REQUEST_INVALID %s\n", m);
++		return;
++	}
++	nan_id = id; nan_k = k; nan_ok = 1;
++}
++extern "C" void S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER(int id, std::complex<double> *b, int n, int ld, int model){
++	const long hits_before = n_hits;
++	b2b_original_hook(id, b, n, ld, model);
++	nan_parse();
++	if(!nan_ok || id != nan_id){ return; }
++	const int ix = b2b_index(id);
++	if(ix < 0 || n_hits != hits_before){ return; }
++	if(b2b_calls[ix] != nan_k){ return; }
++	const double qnan = std::numeric_limits<double>::quiet_NaN();
++	for(int j = 0; j < n; ++j){
++		for(int i = 0; i < n; ++i){
++			b[i + j*ld] = std::complex<double>(qnan, qnan);
++		}
++	}
++	n_hits++;
++	std::fprintf(stderr, "S4FMM HIT linearsolve_nanbuf id=%d call=%ld model=%d (hit=%ld)\n", id, b2b_calls[ix], model, n_hits);
+ }
+ 
+ /* ------------------------------------------------------------------------

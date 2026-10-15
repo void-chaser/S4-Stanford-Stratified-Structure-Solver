@@ -8,26 +8,26 @@
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
 | 开工基线 HEAD（P05-S4 R8 M0 开工） | `3ab56801e697910bdff9fbe6056807c2e41841b5`（S3R4 续5 收尾；R8 M0 记录提交 `2875c55`） |
-| 本轮开工基线 HEAD（r8m2a） | `ef8b087d33d26a4727f896b8dad88d862de93b3f`（r8m1c4 收尾提交） |
+| 本轮开工基线 HEAD（r8m2a2） | `6a4f0031afeda0a3105c9983d5a65a2d847f1488`（r8m2a 记录提交） |
 | 收尾提交查询 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
 | `HEAD:S4`（当前冻结被测树 F3） | `6cff923a02baf19e01966b2339755cbf3a5deeef`（F3 提交 `8d8202a`；前一冻结树 F2 `e124925f…` = `a07b5ac`；F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S4 R8 M2a 部分完成，待用户审核**：U229–U235、E8-88–90 已登记；预注册仅 M2-01（17 点）；大部分 M2 项未完成（见报告）。不宣布阶段完成。 |
+| 当前轮次 | **P05-S4 R8 M2a2 完成，待用户审核**：U236–U247、E8-91–E8-95 已登记；构建 18 项 OK；预注册 150 行（对照 90）；设计 v3 闭合；完整性 PASS。不宣布阶段完成。 |
 
 ## 2. 关键数字（每轮一行）
 
 | 轮 | 关键数字 | 报告 |
 |---|---|---|
-| R1–R5 | R1 门禁预注册；R2 三列 45 行；R3 141 点；R4 seam 25/25；R5 等价 24/24、M=2 36 点、V4 0 发现、V3 132 点 | `P05_S4R2_REPORT.md` … `P05_S4R5_REPORT.md` |
-| R6–R6d | R6 twice 48 MATCH；R6b 177 预注册；R6c 177 HOLD；R6c2 U18 18 行与自检；R6d 202 一致，RNV1 F_CONFIRMED | `P05_S4R6_REPORT.md` … `P05_S4R6d_REPORT.md` |
-| S3R3–S3R4 | S3R3 a9679bc 冻结 F2，自检 36/36；S3R4 806/415 冻结 F3 8d8202a，自检 117/117、多边形 99/99 | `P05_S3R3_CLOSEOUT.md` / `P05_S3R4_CLOSEOUT.md` |
-| S4R7 | M1、M2（run7：CTRL_SEAM 4/4、G2c 60、G1 254+44 NOT_REACHED、G2a 50，MISMATCH 0）；M3（G5 177、G6 25 HOLD） | `P05_S4R7_REPORT_FINAL.md` |
-| S4R8 M0–M1a | M0 F3 构建与冒烟 8/8；M1a 续1-3a 静态/动态 99 对 IDENTICAL；续3b1 U193/U196 通过；续3b1补正 M1b/M1c 冻结（91 PASS） | `P05_S4R8_REPORT_M0.md` … `P05_S4R8_REPORT_M1a_CONT3b1_FIX.md` |
-| S4R8 M1b（r8m1b1–b3） | 830 行全覆盖，补充预注册与补跑后闭合（U212）；FLAKY 0、MISMATCH 0 | `P05_S4R8_M1B1_REPORT.md`…`M1B3` |
+| R1–R5 | R1 预注册；R2 45 行；R3 141 点；R4 seam 25/25；R5 等价 24/24、M=2 36 点、V3 132 点 | `P05_S4R2_REPORT.md` … `P05_S4R5_REPORT.md` |
+| R6–R6d | R6 twice 48 MATCH；R6b/c 177 预注册与 HOLD；R6c2 U18 自检；R6d 202 一致，RNV1 确认 | `P05_S4R6_REPORT.md` … `P05_S4R6d_REPORT.md` |
+| S3R3–S3R4 | S3R3 a9679bc 冻结 F2（36/36）；S3R4 806/415 冻结 F3 8d8202a（117/117、多边形 99/99） | `P05_S3R3_CLOSEOUT.md` / `P05_S3R4_CLOSEOUT.md` |
+| S4R7 | M1/M2（run7：CTRL_SEAM 4/4、G2c 60、G1 254+44、G2a 50，MISMATCH 0）；M3（G5 177、G6 25 HOLD） | `P05_S4R7_REPORT_FINAL.md` |
+| S4R8 M0–M1a | M0 F3 冒烟 8/8；M1a 静态/动态 99 对 IDENTICAL；续3b1 U193/U196 通过；M1b/M1c 冻结（91 PASS） | `P05_S4R8_REPORT_M0.md` … `P05_S4R8_REPORT_M1a_CONT3b1_FIX.md` |
+| S4R8 M1b（r8m1b1–b3） | 830 行全覆盖，补预注册与补跑闭合（U212）；FLAKY 0、MISMATCH 0 | `P05_S4R8_M1B1_REPORT.md`…`M1B3` |
 | S4R8 M1c（r8m1c1–c3） | F2 基线 DIFFS=0；F3 rc 全 0，F3 vs 冻结 DIFFS=0；阳性对照 PASS | `P05_S4R8_M1C1…M1C3_REPORT.md` |
-| S4R8 M1 总表（r8m1c4） | 1302 行 = MATCH 1252 + NOT_REACHED_AS_EXPECTED 44 + NOT_RUN_AS_EXPECTED 6（U224）；MISMATCH 0、FLAKY 0；U212 单列 SILENT 6、CRASH 14 | `registries/s4r8/M1c/r8m1c4/M1_SUMMARY_R8_M1c4.tsv` |
-| S4R8 M2a（部分） | 预注册 17 行（M2-01）sha `557f568a…`；设计 12 项；A-10 6/6 COVERED；阳性对照 PASS | `P05_S4R8_M2A_REPORT.md` |
+| S4R8 M1 总表（r8m1c4） | 1302 行 = MATCH 1252 + NOT_REACHED 44 + NOT_RUN 6（U224）；MISMATCH 0、FLAKY 0；SILENT 6、CRASH 14 | `registries/s4r8/M1c/r8m1c4/M1_SUMMARY_R8_M1c4.tsv` |
+| S4R8 M2a（部分+r8m2a2） | 预注册 150 行（对照 90）sha `1b60f95c…`；构建 OK 18 / FAILED 0；设计 12 项；阶段 e/类别 C 搜索完成；完整性 PASS | `P05_S4R8_M2A_REPORT.md` / `P05_S4R8_M2A2_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接；完整台账见 RED_POINTS_LEDGER_R6c）
 
@@ -37,32 +37,32 @@
 | D 冒烟 8 点 | 已运行（两遍 MATCH 8/8、FLAKY 0） | 完成（M0）；回归见 R8 计划 | `D_SUMMARY_R8.txt` |
 | F3-dbg 库 sha256 差异（E8-9） | **已关闭（E8-19）**：去调试段后等价 EQUAL_AFTER_STRIP | — | `P05_S4R8_REPORT_M1a.md` |
 | U171 BP_LINE 注释行规则（E8-55） | **已关闭（U177/E8-56）**：排除注释行引用，BP_LINE 2/REG 26/NO 3 | — | `USED_IN_M1_CORRECTION_R8_M1a4.tsv` |
-| 806、415、RP-S3R4-1 | M1 已覆盖（返回码与类别口径，U225）；I1–I6 纳入 M2-01（U232）：预注册 17 点已冻结，**未运行** | I1–I6 纳入 M2-01（U232） | `registries/s4r8/M2/r8m2a/`（预注册，收尾后）；`FIX_COVERAGE_M1_R8_M1c4_R2.tsv` |
-| R7 M2b CTRL_SEAM fmmret 驱动不符（ES3R4-29） | 记录更正（U118）；M2-09 未出点（C5 表无 env 与期望，待用户裁决） | M2-09 | `CTRL_SEAM_DRIVER_RESOLUTION_C5.tsv` |
+| 806、415、RP-S3R4-1 | M1 已覆盖（返回码与类别口径，U225）；I1–I6 纳入 M2-01（U232）：预注册 21 行（12 测试 + 9 对照），5 行 win:64 为 UNRESOLVED_INDEX 待裁决 | I1–I6 纳入 M2-01（U232） | `PREREG_M2_R8_M2a2.tsv`；`INDEX_DERIVATION_R8_M2a2_R2.tsv` |
+| R7 M2b CTRL_SEAM fmmret 驱动不符（ES3R4-29） | 记录更正（U118）；M2-09 预注册 2 对照点（F3、F2），CONTROL_OK | M2-09（U239） | `PREREG_M2_R8_M2a2.tsv` |
 | RNV1（RP-R6d-1） | F 上 CRASH；S3R3 方案 R3（a9679bc）；F2 自检通过；修后 F3 | R8（F3 上，U92） | `P05_S3R3_CLOSEOUT.md` |
-| 双目标注入（M2-04）、I7 sanitizer（M2-03） | 设计项；新装置**未构建**，未出点 | M2-04 / M2-03（M2b 前补做） | `M2_DESIGN_R8_M2a_R2.tsv` |
-| "其他层失败"变体（M2-05） | 设计项；新驱动**未构建**，未出点 | M2-05 | `M2_DESIGN_R8_M2a_R2.tsv` |
+| 双目标注入（M2-04）、I7 sanitizer（M2-03） | 新装置已建（dual-F3-dbg, layers-dual-F3-dbg, san 库驱动）；预注册 4 点与 31 点 | M2-04 / M2-03（转 M2b 运行） | `M2_DESIGN_R8_M2a2.tsv`；`PREREG_M2_R8_M2a2.tsv` |
+| "其他层失败"变体（M2-05） | 新驱动已构建（layers-F3-dbg）；预注册 8 点（4 测试 + 4 对照） | M2-05（转 M2b 运行） | `M2_DESIGN_R8_M2a2.tsv`；`PREREG_M2_R8_M2a2.tsv` |
 | 注释措辞 `S4_internal.h:263`（U11） | 已改为 U31 措辞（提交 `a07b5ac`） | R8 回归确认 | `P05_S3R3_CLOSEOUT.md` |
-| 张量路径 K-1（RP-R6d-8） | F_SUSPECT_SOURCE（[源码]，未测）；设计 M2-06，注入 ID→行映射未核实，未出点 | M2-06 | `P05_S4R6d_REPORT.md` |
+| 张量路径 K-1（RP-R6d-8） | F_SUSPECT_SOURCE（[源码]，未测）；nan-F3 与 bufseam 库已建，预注册 2 点 | M2-06（转 M2b 运行） | `M2_DESIGN_R8_M2a2.tsv`；`PREREG_M2_R8_M2a2.tsv` |
 | B 侧 jones/vl SILENT_SWALLOW、nv CRASH | OPEN（基线，不是修复证据） | S5 | `P05_S1R_O1_ATTRIBUTION.md` |
-| NB=1–8（RP-R6d-16）、类别 C（RP-R6d-17） | 设计 M2-07、M2-08；未出点（M2-08 搜索未完成） | M2-07 / M2-08 | `M2_DESIGN_R8_M2a_R2.tsv` |
+| NB=1–8（RP-R6d-16）、类别 C（RP-R6d-17） | M2-07 预注册 81 点；M2-08 搜索表判定 NOT_FOUND，待用户裁决 | M2-07（转 M2b）/ M2-08（裁决） | `CATC_SEARCH_R8_M2a2_R2B.tsv` |
 | Python/Lua 可见性（RP-R6d-15） | 按 U235 在 M3 做 | M3（U235） | `PROJECT_ROADMAP.md` |
 | ES3R4-5(a)(b)（首个形状返回码 i+1） | OUT_OF_SCOPE_D003（U99、U95） | S5 | `P05_S3R4_CLOSEOUT.md` |
 | −1…−9（DiscretizeCell 在 FFT/Kottke 被忽略） | OUT_OF_SCOPE_D003（U100；[源码] 说明） | S5 | `registries/s3r4c3/U100_SOURCE_NOTE.md` |
 | 528、1164（S3R4 U90 分类） | OUT_OF_SCOPE_D003（无调用者；唯一调用点已注释） | S5 | `P05_S3R4_CLOSEOUT.md` |
-| D016 B 侧 rc 20 来源；B 侧 vl NG=1 rc 20（RP-R6d-7） | OPEN（BASELINE_ONLY）；设计 M2-10（gdb 方案），未运行 | M2-10（基线，非修复证据） | `RESULTS_R7_M1_CTRL_REJUDGE_POSTHOC.tsv` |
+| D016 B 侧 rc 20 来源；B 侧 vl NG=1 rc 20（RP-R6d-7） | M2-10 补建同族 r6dnv1-B-dbg，gdb 脚本已成，预注册 1 点（BASELINE_ONLY） | M2-10（转 M2b，非修复证据） | `m210_b_r8m2a2_R2.gdb` |
 | 非 FMM `S4_malloc`（约 35–43 处） | OUT_OF_SCOPE_D003 | S5 | `PROJECT_ROADMAP.md` |
 | 续3a 审核修正第三部分处置 | **已处置（U188–U191，U192 接受）** | — | `P05_S4R8_REPORT_M1a_CONT3a_AUDIT3.md` |
 | M1b 数据闭合（U212） | MISMATCH 0、FLAKY 0；SILENT 假象（U206）不进红点台账 | 已闭合（U229 接受） | `P05_S4R8_M1B3_REPORT.md` |
 | M1c 结果（F3 vs 冻结） | F3 236 MATCH；独立重比 DIFFS=0（U223、U229） | 已接受（U229） | `registries/s4r8/M1c/r8m1c4/RECHECK_F3_R8_M1c4.tsv` |
 | ADD22 中 -3→1 返回码跨树变化 | [源码]/未验证（E8-77） | R8 回归确认 | `E8-77` |
 | U2、U4、U5 原文 | 用户在 R6d 对话中补录；U2 部分落实（U28） | U2 覆盖见表 | `evidence/p05-s4r6d/U2_COVERAGE_R6d.tsv` |
-| U2 中 stage e（I1 特殊规则） | 0 点，**未覆盖**；M2-02 候选搜索未完成，范围需用户裁决 | M2-02 | `P05_S4R6d_REPORT.md` |
+| U2 中 stage e（I1 特殊规则） | M2-02 搜索表判定 NOT_FOUND_IN_SCOPE，0 点，去向待用户裁决 | M2-02（待用户裁决） | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 
 ## 4. 证据位置
 
 只列最近三轮证据与清单位置，其余指向各轮报告：
-- **S4 R8 M2a（r8m2a）**：证据 `checkpoints/p05/evidence/p05-s4r8/m2a/`（`SHA256SUMS.txt`，收尾生成）；小表与清单 `checkpoints/p05/registries/s4r8/M2/r8m2a/`（`SHA256SUMS.txt` 与 `SHA256SUMS_END.txt`）；报告 `P05_S4R8_M2A_REPORT.md`。
-- **S4 R8 M1c4（r8m1c4）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1c4/`；小表与清单 `checkpoints/p05/registries/s4r8/M1c/r8m1c4/`（`SHA256SUMS.txt`，end 门禁文件见 `SHA256SUMS_END.txt`）；报告 `P05_S4R8_M1C4_REPORT.md`。
-- **S4 R8 M1c3（r8m1c3）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1c3/`；清单 `registries/s4r8/M1c/r8m1c3/`；报告 `P05_S4R8_M1C3_REPORT.md`（名称对照见 `r8m1c4/REGISTRY_NAME_MAP_R8_M1c3.tsv`）。
+- **S4 R8 M2a2（r8m2a2）**：证据 `checkpoints/p05/evidence/p05-s4r8/m2a2/`（`SHA256SUMS.txt`，收尾生成）；小表与清单 `checkpoints/p05/registries/s4r8/M2/r8m2a2/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M2A2_REPORT.md`。
+- **S4 R8 M2a（r8m2a）**：证据 `checkpoints/p05/evidence/p05-s4r8/m2a/`；小表与清单 `checkpoints/p05/registries/s4r8/M2/r8m2a/`（`SHA256SUMS.txt` 与 `SHA256SUMS_END.txt`，后者由 r8m2a2 补登，E8-93）；报告 `P05_S4R8_M2A_REPORT.md`。
+- **S4 R8 M1c4（r8m1c4）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1c4/`；小表与清单 `checkpoints/p05/registries/s4r8/M1c/r8m1c4/`（`SHA256SUMS.txt` 与 `SHA256SUMS_END.txt`）；报告 `P05_S4R8_M1C4_REPORT.md`。
 - 更早轮次证据与清单位置：详见各轮报告（`checkpoints/p05/P05_S4R*_REPORT*.md`）。完整台账：`RED_POINTS_LEDGER_R6c.tsv`；裁决总表：`registries/RULINGS.tsv`。

@@ -1,0 +1,10 @@
+# POSCTRL_M2_R8_M2a2 -- positive controls of verdict_m2_r8m2a2.py on synthetic data (no S4 run)
+# columns: case	description	expect_mismatch	expect_flaky	obs_mismatch	obs_flaky	obs_missing	point_P2_verdict	point_P3_verdict	point_P4_verdict	rc	result
+A	all observations equal the expectation	0	0	1	0	0	MATCH	MATCH	MATCH	0	FAIL
+B	P2 rc1 changed to 20 in both passes	1	0	2	1	0	FLAKY	MATCH	MATCH	0	FAIL
+C	P1 rc2 differs between pass1 and pass2	0	1	1	1	0	MATCH	MATCH	MATCH	0	FAIL
+D0	NZ expectation with observed rc1=0 (both passes)	1	0	2	0	0	MATCH	MISMATCH	MATCH	0	FAIL
+D20	NZ expectation with observed rc1=20 (P3 as prepared)	0	0	1	0	0	MATCH	MATCH	MATCH	0	FAIL
+E	exp_I1 expectation 1, observed I1 changed to 0	1	0	2	0	0	MATCH	MATCH	MISMATCH	0	FAIL
+POSCTRL_CASES=6
+POSCTRL=FAIL

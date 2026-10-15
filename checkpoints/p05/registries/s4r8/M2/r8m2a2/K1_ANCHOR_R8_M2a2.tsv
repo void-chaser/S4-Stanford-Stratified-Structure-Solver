@@ -1,0 +1,9 @@
+# K1_ANCHOR_R8_M2a2 -- [source] anchors for K-1 (P05-S4 R8 M2a2 section 4.1)
+# columns: check	location	value	[label]
+SEAM_ID244_LINE	testing/d003/seam/apply_seam_b2.py:[68]	found=1
+CLOSED_BLOCK_244_MATCH_COUNT	fmm_closed.cpp	1
+CLOSED_SOLVE_LINE	fmm_closed.cpp:244	RNP::LinearSolve<'N'>(n,n, &Epsilon2[0+0*n2],n2, Epsilon_inv,n, &solve_info, NULL);
+CLOSED_CHECK_LINE	fmm_closed.cpp:245	if(0 != solve_info){ S4_free(ivalues); return 1; }
+CLOSED_BLOCK_LINES	fmm_closed.cpp:241-245	[source]
+CLOSED_ISFINITE_LINES	fmm_closed.cpp	NONE	[source]
+KOTTKE_ISFINITE_LINES	fmm_kottke.cpp	[312, 315]	[source]

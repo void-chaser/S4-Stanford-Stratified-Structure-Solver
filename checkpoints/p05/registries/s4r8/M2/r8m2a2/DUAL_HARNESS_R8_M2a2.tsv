@@ -1,0 +1,14 @@
+case	exe	env	expect_s4_null	expect_b2_info	expect_hits	expect_hits2	expect_invalid2	expect_suppressed2	obs_s4_null	obs_b2_info	obs_hits	obs_hits2	obs_invalid2	obs_suppressed2	rc	verdict	rule
+C1_same_event_same_spelling	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=s4malloc S4FMM_NTH2=2	1	0	1	0	1	0	1	0	1	0	1	0	0	PASS	rule2 same stream index -> INVALID, target 2 never fires
+C2_same_event_leading_zero	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=s4malloc S4FMM_NTH2=02	1	0	1	0	1	0	1	0	1	0	1	0	0	PASS	rule1 leading zero -> INVALID
+C3_distinct_index	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=s4malloc S4FMM_NTH2=4	2	0	2	1	0	0	2	0	2	1	0	0	0	PASS	different stream index -> both targets hit once
+C4_cross_kind_s4malloc_plancall	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=plancall:2:1	1	0	2	1	0	0	1	0	2	1	0	0	0	PASS	rule3 cross kind -> no conflict, both hit once
+C5_noncanonical_plus_sign	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=s4malloc S4FMM_NTH2=+3	1	0	1	0	1	0	1	0	1	0	1	0	0	PASS	rule1 sign -> INVALID
+C6_noncanonical_blank	dual_harness_r8m2a2	S4FMM_INJECT=s4malloc S4FMM_NTH=2 S4FMM_INJECT2=s4malloc S4FMM_NTH2=3x	1	0	1	0	1	0	1	0	1	0	1	0	0	PASS	rule1 trailing text -> INVALID
+C7_plancall_same_K_distinct_M	dual_harness_r8m2a2	S4FMM_INJECT=plancall:1:1 S4FMM_INJECT2=plancall:1:3	0	0	2	1	0	0	0	0	2	1	0	0	0	PASS	rule2 same K different M -> not a conflict, both hit once
+C8_plancall_same_KM	dual_harness_r8m2a2	S4FMM_INJECT=plancall:1:2 S4FMM_INJECT2=plancall:1:2	0	0	1	0	1	0	0	0	1	0	1	0	0	PASS	rule2 same (K,M) -> INVALID
+C9_b2_distinct_K	dual_harness_r8m2a2	S4FMM_INJECT=linearsolve_null2:244:1 S4FMM_INJECT2=linearsolve_null2:244:2	0	2	2	1	0	0	0	2	2	1	0	0	0	PASS	rule2 same ID different K -> both hit once
+C10_b2_same_IDK	dual_harness_r8m2a2	S4FMM_INJECT=linearsolve_null2:244:2 S4FMM_INJECT2=linearsolve_null2:244:2	0	1	1	0	1	0	0	1	1	0	1	0	0	PASS	rule2 same (ID,K) -> INVALID
+C11_suppressed_runtime	dual_harness_r8m2a2_suppress	S4FMM_INJECT=s4malloc S4FMM_NTH=2 HARNESS_FORCE_T2=1:2:0	1	0	1	0	0	1	1	0	1	0	0	1	0	PASS	rule4 target 1 consumes the same event -> SUPPRESSED (defence; parse-time rule 2 bypassed by the harness-only force path)
+CASES_ROWS=11 FAILS=0
+HARNESS=PASS
