@@ -13,7 +13,7 @@
 | `HEAD:S4`（当前冻结被测树 F3） | `6cff923a02baf19e01966b2339755cbf3a5deeef`（F3 提交 `8d8202a`；前一冻结树 F2 `e124925f…` = `a07b5ac`；F `4a6f649…` = `1c11905`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S4 R8 M1b3（r8m1b3，本轮）**：U205–U208 登记；补充预注册 342 行冻结（712a5547）；补跑 684 次：342 行 MATCH 298 + NRAE 44，MISMATCH/FLAKY/CRASH 均 0；M1c 日志核对 440/440 AGREE，M1c 本轮不跑（待 r8m1c1）。 |
+| 当前轮次 | **P05-S4 R8 M1c1（r8m1c1，已停止）**：开工门禁 FAILS=0；因三次 heredoc 写入未经 safe_run，按停止条件 ② 停止，未做裁决、冻结与运行（见 `P05_S4R8_M1C1_REPORT.md`）。 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -52,7 +52,7 @@
 | 非 FMM `S4_malloc`（约 35–43 处） | OUT_OF_SCOPE_D003 | S5 | `PROJECT_ROADMAP.md` |
 | 续3a 审核修正第三部分处置 | **已处置（U188–U191，U192 接受）** | — | `P05_S4R8_REPORT_M1a_CONT3a_AUDIT3.md` |
 | M1b env 审计与补充补跑 | **补跑完成（U205）**：342 行补充预注册 712a5547；684 次；MISMATCH 0、FLAKY 0 | 待用户审核（M1b3 报告） | `P05_S4R8_M1B3_REPORT.md` / `EFFECTIVE_M1B_R8_M1b3.tsv` |
-| M1c 环境 | **日志核对 440/440 AGREE**（U208）；M1c 本轮不跑 | 待 r8m1c1 执行 | `ENV_LOGCHECK_M1C_R8_M1b3.tsv` |
+| M1c 环境 | **日志核对 440/440 AGREE**（U208）；r8m1c1 因违规停止，M1c 未跑 | 待用户裁决后另开轮次 | `P05_S4R8_M1C1_REPORT.md` / `ENV_LOGCHECK_M1C_R8_M1b3.tsv` |
 | 50 行 SILENT_SWALLOW 假象（U206） | **已闭合（补跑）**：正确环境（含 NTH、TWICE=slab）下 50 行为 REPORTED_FAILURE，不进红点台账 | — | `CROSSWALK_M1B1_SUPP_R8_M1b3.tsv` |
 | ADD22 中 -3→1 返回码跨树变化 | [源码]/未验证（两树均为 REPORTED_FAILURE，机理解释标[源码/未验证]，E8-77） | R8 回归确认 | `F2_F3_DIFF_M1B_R8_M1b1.tsv` / `E8-77` |
 | （原第 58 行，历史全文见 STATE_HISTORY） | 此行已被上两行取代 | — | `registries/s4r8/M1a/STATE_HISTORY_R8_M1a5.md` |
@@ -62,7 +62,8 @@
 ## 4. 证据位置
 
 只列最近三轮证据与清单位置，其余指向各轮报告：
-- **S4 R8 M1b3 补跑（r8m1b3，本轮）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1b3/`；小表与清单 `checkpoints/p05/registries/s4r8/M1b/r8m1b3/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M1B3_REPORT.md`。
+- **S4 R8 M1c1（r8m1c1，已停止）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1c1/`；报告 `P05_S4R8_M1C1_REPORT.md`。
+- **S4 R8 M1b3 补跑（r8m1b3）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1b3/`；小表与清单 `checkpoints/p05/registries/s4r8/M1b/r8m1b3/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M1B3_REPORT.md`。
 - **S4 R8 M1b2 审计（r8m1b2）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1b2/`；小表与清单 `checkpoints/p05/registries/s4r8/M1b/r8m1b2/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M1B2_REPORT.md`。
 - **S4 R8 M1b 首轮执行（r8m1b1）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1b1/`；小表与清单 `checkpoints/p05/registries/s4r8/M1b/r8m1b1/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M1B1_REPORT.md`。
 - **S4 R8 M1a 续3b1补正（r8m1a6）**：证据 `checkpoints/p05/evidence/p05-s4r8/m1a6/`；小表与清单 `checkpoints/p05/registries/s4r8/M1a/`（`SHA256SUMS_R8_M1a6.txt`）；报告 `P05_S4R8_REPORT_M1a_CONT3b1_FIX.md`。
