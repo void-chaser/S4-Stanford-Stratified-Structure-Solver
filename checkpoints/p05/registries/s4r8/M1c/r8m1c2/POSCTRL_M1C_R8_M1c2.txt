@@ -1,0 +1,9 @@
+# POSCTRL_M1C_R8_M1c2 -- positive control for compare_m1c_f2_r8m1c2.py
+copyA_changed: one gdb_rc2 flipped in STATE_R6c_pass1.tsv (first point row)
+copyA_result: DIFFS=2 GDB_DIVERGENT=1 rc=0
+copyA_detected_criterion: DIFFS>0 (brief literal DIFFS=1 not forced; see report)
+copyA_detected: True (DIFFS=2)
+copyB_unchanged_result: DIFFS=0 GDB_DIVERGENT=0 rc=0
+copyB_expected: DIFFS=0 GDB_DIVERGENT=0
+copyB_clean: True
+POSCTRL=PASS

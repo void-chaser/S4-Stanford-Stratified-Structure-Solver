@@ -1,0 +1,207 @@
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_r8m1c1.sh	2026-10-15 13:34:12.381750842 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_r8m1c2.sh	2026-10-15 14:23:28.115903750 +1100
+@@ -1,29 +1,29 @@
+ #!/bin/sh
+-REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m1c1; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# gate_r8m1c1.sh -- P05-S4 R8 M1c1 gate script. New file (copied from gate_r8m1b3.sh; original unchanged).
+-# Baseline HEAD (this round): 9d8333364d57977bbeb00e1ce522924b2399fd51
+-# Evidence dir: checkpoints/p05/evidence/p05-s4r8/m1c1
+-# Usage: sh testing/d003/stage_s4/gate_r8m1c1.sh p05-s4r8/m1c1 GATE_R8_M1c1_<name>.txt start TC TS
+-#        sh testing/d003/stage_s4/gate_r8m1c1.sh p05-s4r8/m1c1 GATE_R8_M1c1_<name>.txt end START_FILE TC TS
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m1c2; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# gate_r8m1c2.sh -- P05-S4 R8 M1c2 gate script. New file (copied from gate_r8m1c1.sh; original unchanged).
++# Baseline HEAD (this round): f913b57a487f4ae64ff6f9d1d48136e99ae65e77
++# Evidence dir: checkpoints/p05/evidence/p05-s4r8/m1c2
++# Usage: sh testing/d003/stage_s4/gate_r8m1c2.sh p05-s4r8/m1c2 GATE_R8_M1c2_<name>.txt start TC TS
++#        sh testing/d003/stage_s4/gate_r8m1c2.sh p05-s4r8/m1c2 GATE_R8_M1c2_<name>.txt end START_FILE TC TS
+ set -u
+-refuse() { echo "gate_r8m1c1: REFUSED: $1" >&2; exit 2; }
+-[ "${1:-}" = p05-s4r8/m1c1 ] || refuse "first argument must be p05-s4r8/m1c1"
++refuse() { echo "gate_r8m1c2: REFUSED: $1" >&2; exit 2; }
++[ "${1:-}" = p05-s4r8/m1c2 ] || refuse "first argument must be p05-s4r8/m1c2"
+ OUTNAME=${2:-}
+ MODE=${3:-}
+ case "$OUTNAME" in
+-    GATE_R8_M1c1_*.txt) ;;
+-    *) refuse "OUT must be GATE_R8_M1c1_<name>.txt" ;;
++    GATE_R8_M1c2_*.txt) ;;
++    *) refuse "OUT must be GATE_R8_M1c2_<name>.txt" ;;
+ esac
+ OUTSTEM=${OUTNAME%.txt}
+-NAMEPART=${OUTSTEM#GATE_R8_M1c1_}
++NAMEPART=${OUTSTEM#GATE_R8_M1c2_}
+ case "$NAMEPART" in
+     '') refuse "OUT name is empty" ;;
+     *[!A-Za-z0-9_]*) refuse "OUT name has illegal characters" ;;
+ esac
+ OUT="$EV/$OUTNAME"
+ test ! -e "$OUT" || refuse "exists (U17): $OUTNAME"
+-ALLOW_START="$REPO/testing/d003/stage_s4/gate_allow_r8m1c1_start.txt"
+-ALLOW_END="$REPO/testing/d003/stage_s4/gate_allow_r8m1c1_end.txt"
++ALLOW_START="$REPO/testing/d003/stage_s4/gate_allow_r8m1c2_start.txt"
++ALLOW_END="$REPO/testing/d003/stage_s4/gate_allow_r8m1c2_end.txt"
+ STARTF=""
+ TC=""
+ TS=""
+@@ -48,8 +48,8 @@
+ if [ "$MODE" = end ]; then
+     test -f "$STARTF" || refuse "start file missing: $STARTF"
+     case "$(head -n 1 "$STARTF")" in
+-        *"gate_r8m1c1 (start) ->"*) ;;
+-        *) refuse "start file header is not a gate_r8m1c1 start" ;;
++        *"gate_r8m1c2 (start) ->"*) ;;
++        *) refuse "start file header is not a gate_r8m1c2 start" ;;
+     esac
+     [ "$(tail -n 1 "$STARTF")" = "FAILS=0" ] || refuse "start file last line is not FAILS=0"
+ fi
+@@ -58,7 +58,7 @@
+ ST_FILE="$EV/tmp/status_now_${OUTSTEM}.txt"
+ PY_OUT="$EV/tmp/py_checks_${OUTSTEM}.txt"
+ : > "$OUT"
+-printf '# P05-S4 R8 M1c1 gate_r8m1c1 (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
++printf '# P05-S4 R8 M1c2 gate_r8m1c2 (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
+ 
+ check() {
+     _e=$(printf '%s' "$2" | tr '\n' ';')
+@@ -74,7 +74,7 @@
+     awk -F'\t' -v k="$2" '$1=="RECORD" && $2==k {sub(/^value=/, "", $3); print $3}' "$1" | head -n 1
+ }
+ 
+-BASE=9d8333364d57977bbeb00e1ce522924b2399fd51
++BASE=f913b57a487f4ae64ff6f9d1d48136e99ae65e77
+ HEAD_NOW=$(git rev-parse HEAD)
+ check BRANCH codex/p05-d003-fft-error-propagation "$(git branch --show-current)"
+ check HEAD_IS_BASE "$BASE" "$HEAD_NOW"
+@@ -116,7 +116,7 @@
+ esac
+ 
+ # ---- Detailed python checks ----
+-python3 -I -B "$REPO/testing/d003/stage_s4/gate_check_r8m1c1.py" "$MODE" "$STARTF" > "$PY_OUT"
++python3 -I -B "$REPO/testing/d003/stage_s4/gate_check_r8m1c2.py" "$MODE" "$STARTF" > "$PY_OUT"
+ PY_FAILS=$?
+ cat "$PY_OUT" >> "$OUT"
+ if [ "$PY_FAILS" -ne 0 ]; then
+@@ -131,6 +131,11 @@
+ record ERRATA_8_BYTES "$(wc -c < "$REPO/$ERR" | tr -d ' ')"
+ record ERRATA_8_SHA256 "$(sha256sum "$REPO/$ERR" | cut -d' ' -f1)"
+ 
++# ---- Record historical runner and judge hashes (for preflight comparison) ----
++for _h in run_r6c_state.py r6c2_seam_state.py r6c_judge.py r6c2_seam_judge.py; do
++    record "SHA256_$_h" "$(sha256sum "$REPO/testing/d003/stage_s4/$_h" | cut -d' ' -f1)"
++done
++
+ # ---- temporary-area snapshot ----
+ case "$MODE" in
+     start)
+@@ -142,5 +147,5 @@
+ esac
+ 
+ printf 'FAILS=%s\n' "$FAILS" >> "$OUT"
+-echo "gate_r8m1c1: $MODE FAILS=$FAILS -> $OUT"
++echo "gate_r8m1c2: $MODE FAILS=$FAILS -> $OUT"
+ exit 0
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_check_r8m1c1.py	2026-10-15 13:36:04.080456926 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_check_r8m1c2.py	2026-10-15 14:23:28.234907712 +1100
+@@ -1,14 +1,18 @@
+ #!/usr/bin/env python3
+-# gate_check_r8m1c1.py -- P05-S4 R8 M1c1 gate helper. New file (copied from gate_check_r8m1b3.py; original unchanged).
++# gate_check_r8m1c2.py -- P05-S4 R8 M1c2 gate helper. New file (copied from gate_check_r8m1c1.py; original unchanged).
+ import hashlib, os, subprocess, sys
+ 
+ REPO = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+ 
+-EXPECTED_BASE = "9d8333364d57977bbeb00e1ce522924b2399fd51"
++EXPECTED_BASE = "f913b57a487f4ae64ff6f9d1d48136e99ae65e77"
+ EXPECTED_JUDGE_SHA = "d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb"
+ EXPECTED_S4_TREE = "6cff923a02baf19e01966b2339755cbf3a5deeef"
+ EXPECTED_F2_TREE = "e124925f5b242486a913b813fa181664f665b048"
+ EXPECTED_M1C_PREREG_SHA = "e1e555ee4ca20421b6e5681e18be6cd1b873fc7cff06d246c01fad65d8d3a562"
++EXPECTED_RULINGS_BYTES = 79849
++EXPECTED_RULINGS_SHA = "d7262cf74df0eb13fa4f91b44f5a8e7342936dea524c439c01f308255216bdc7"
++EXPECTED_ERRATA8_BYTES = 62127
++EXPECTED_ERRATA8_SHA = "ee7c5e2def47a45b9602e8ff90687414703e7e955015ca62d0eb222b894dfdba"
+ HIST_RUNNERS = [
+     "testing/d003/stage_s4/run_r6c_state.py",
+     "testing/d003/stage_s4/r6c2_seam_state.py",
+@@ -101,19 +105,18 @@
+     prereg_sha = sha256_file(prereg) if os.path.isfile(prereg) else "missing"
+     check("M1C_PREREG_SHA256", prereg_sha == EXPECTED_M1C_PREREG_SHA, EXPECTED_M1C_PREREG_SHA, prereg_sha)
+ 
+-    # 5. r8m1b3 (10 files) SHA256SUMS all OK; r8m1b1 and r8m1b2 are checked at their own recorded lists
++    # 5. r8m1b3 (10 files) SHA256SUMS all OK
+     for tag, cnt in (("r8m1b3", 10),):
+         d = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r8", "M1b", tag)
+         ok, detail = check_sums_dir(d, cnt)
+         check("%s_SUMS_ALL_OK" % tag.upper(), ok, "all %d OK" % cnt, detail)
+ 
+     # 6. s4r8 SHA256SUMS: all lines except the living ERRATA_8.txt line must verify (-c OK).
+-    #    ERRATA_8.txt is checked by prefix (U121 / MEMORY) in section 7.
++    #    ERRATA_8.txt is checked by prefix in section 7.
+     s4r8 = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r8")
+     sums_path = os.path.join(s4r8, "SHA256SUMS.txt")
+     sums_bad = []
+     sums_n = 0
+-    err8_line_sha = None
+     with open(sums_path, encoding="utf-8") as fh:
+         for line in fh:
+             line = line.strip()
+@@ -121,7 +124,6 @@
+                 continue
+             exp_sha, fname = line.split(None, 1)
+             if fname == "ERRATA_8.txt":
+-                err8_line_sha = exp_sha
+                 continue
+             sums_n += 1
+             fpath = os.path.join(s4r8, fname)
+@@ -154,6 +156,13 @@
+     # 8. ERRATA_8 prefix of the living file (SHA256SUMS.txt line) at the R8 M1a6 record (72dc6aed..., 13990 bytes)
+     check("ERRATA_8_SUMS_LINE_PREFIX", hashlib.sha256(err_now[:13990]).hexdigest() == "72dc6aedfe698022727c7871a643a354dfa245c495d5346405b42c9ba01a1551", "72dc6aed...", hashlib.sha256(err_now[:13990]).hexdigest())
+ 
++    # 8b. Start-only: the append bases recorded in the brief (section 0 / section 2)
++    if mode == "start":
++        check("RULINGS_START_BYTES", len(rul_now) == EXPECTED_RULINGS_BYTES, EXPECTED_RULINGS_BYTES, len(rul_now))
++        check("RULINGS_START_SHA256", hashlib.sha256(rul_now).hexdigest() == EXPECTED_RULINGS_SHA, EXPECTED_RULINGS_SHA, hashlib.sha256(rul_now).hexdigest())
++        check("ERRATA_8_START_BYTES", len(err_now) == EXPECTED_ERRATA8_BYTES, EXPECTED_ERRATA8_BYTES, len(err_now))
++        check("ERRATA_8_START_SHA256", hashlib.sha256(err_now).hexdigest() == EXPECTED_ERRATA8_SHA, EXPECTED_ERRATA8_SHA, hashlib.sha256(err_now).hexdigest())
++
+     start_records = parse_start_records(start_file)
+     if mode == "end":
+         check("START_RECORDS_PRESENT", bool(start_records), True, bool(start_records))
+@@ -161,6 +170,8 @@
+         start_rul_bytes = int(start_records.get("RULINGS_BYTES", "0"))
+         start_err_sha = start_records.get("ERRATA_8_SHA256")
+         start_err_bytes = int(start_records.get("ERRATA_8_BYTES", "0"))
++        check("START_RULINGS_BASE_FROM_RECORD", (start_rul_bytes, start_rul_sha) == (EXPECTED_RULINGS_BYTES, EXPECTED_RULINGS_SHA), "record", "%s %s" % (start_rul_bytes, start_rul_sha))
++        check("START_ERRATA8_BASE_FROM_RECORD", (start_err_bytes, start_err_sha) == (EXPECTED_ERRATA8_BYTES, EXPECTED_ERRATA8_SHA), "record", "%s %s" % (start_err_bytes, start_err_sha))
+         if start_rul_bytes > 0:
+             rul_pfx_sha = hashlib.sha256(rul_now[:start_rul_bytes]).hexdigest()
+             check("RULINGS_PREFIX_OF_START_UNCHANGED", rul_pfx_sha == start_rul_sha, start_rul_sha, rul_pfx_sha)
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m1c1_start.txt	2026-10-15 13:34:35.188507549 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m1c2_start.txt	2026-10-15 14:23:28.245908079 +1100
+@@ -1,5 +1,5 @@
+-?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1c1.md
+-?? testing/d003/stage_s4/gate_allow_r8m1c1_end.txt
+-?? testing/d003/stage_s4/gate_allow_r8m1c1_start.txt
+-?? testing/d003/stage_s4/gate_check_r8m1c1.py
+-?? testing/d003/stage_s4/gate_r8m1c1.sh
++?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1c2.md
++?? testing/d003/stage_s4/gate_allow_r8m1c2_end.txt
++?? testing/d003/stage_s4/gate_allow_r8m1c2_start.txt
++?? testing/d003/stage_s4/gate_check_r8m1c2.py
++?? testing/d003/stage_s4/gate_r8m1c2.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m1c1_end.txt	2026-10-15 13:34:35.191507648 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m1c2_end.txt	2026-10-15 14:23:28.259908545 +1100
+@@ -1,8 +1,8 @@
+-# allowed git status entries at end of P05-S4 R8 M1c1 (case patterns; checked by gate_r8m1c1.sh)
++# allowed git status entries at end of P05-S4 R8 M1c2 (case patterns; checked by gate_r8m1c2.sh)
+  M checkpoints/p05/STATE.md
+  M checkpoints/p05/registries/RULINGS.tsv
+  M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+-?? checkpoints/p05/P05_S4R8_M1C1_REPORT.md
+-?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1c1.md
+-?? checkpoints/p05/registries/s4r8/M1c/r8m1c1/*
+-?? testing/d003/stage_s4/*r8m1c1*
++?? checkpoints/p05/P05_S4R8_M1C2_REPORT.md
++?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1c2.md
++?? checkpoints/p05/registries/s4r8/M1c/r8m1c2/*
++?? testing/d003/stage_s4/*r8m1c2*

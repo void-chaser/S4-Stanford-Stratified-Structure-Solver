@@ -1,0 +1,10 @@
+key	count
+G5_control_zero	16
+G5_rc1_0_rc2_20_hit1	45
+G5_rc1_20_rc2_0_hit1	132
+G6_rc1_20_rc2_0_hit1	25
+G6c_control_zero	18
+STATE_PASS1_EQ_PASS2_ON_FACT_COLUMNS	True	all rows equal on fact columns
+SEAM_PASS1_EQ_PASS2_ON_FACT_COLUMNS	True	all rows equal on fact columns
+ROWS_STATE_PASS1	193
+ROWS_SEAM_PASS1	43

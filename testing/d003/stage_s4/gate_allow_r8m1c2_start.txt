@@ -1,0 +1,5 @@
+?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M1c2.md
+?? testing/d003/stage_s4/gate_allow_r8m1c2_end.txt
+?? testing/d003/stage_s4/gate_allow_r8m1c2_start.txt
+?? testing/d003/stage_s4/gate_check_r8m1c2.py
+?? testing/d003/stage_s4/gate_r8m1c2.sh

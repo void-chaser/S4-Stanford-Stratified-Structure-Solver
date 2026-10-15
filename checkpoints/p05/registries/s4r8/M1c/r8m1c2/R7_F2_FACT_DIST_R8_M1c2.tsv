@@ -1,0 +1,10 @@
+key	count
+G5_control_zero	16
+G5_rc1_0_rc2_20_hit1	45
+G5_rc1_20_rc2_0_hit1	132
+G6_rc1_20_rc2_0_hit1	25
+G6c_control_zero	18
+PASS1_EQ_PASS2_STATE	False
+PASS1_EQ_PASS2_SEAM	True
+ROWS_STATE_PASS1	193
+ROWS_SEAM_PASS1	43

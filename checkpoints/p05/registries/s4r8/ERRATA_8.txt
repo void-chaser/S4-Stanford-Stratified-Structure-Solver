@@ -521,3 +521,14 @@ E8-78	P05-S4 R8 M1b3 更正（只追加；依据 AGENTS.md 第 2、5 节与任�
         (d) M1b2 报告"缺 NTH/TWICE"的提法更正为：只缺 S4FMM_NTH，TWICE 正确。
         (e) M1b2 报告"M1c 可以执行"更正为"待用户审核"（U204/U208）。
 
+E8-79	P05-S4 R8 M1c2 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M1c1 任务书 §3.2）。
+        (a) U210 的内容；
+        (b) U211 的口径说明；
+        (c) r8m1b3 报告 §6 的"非对照 SILENT_SWALLOW 0"只适用于补跑的 342 行；830 行有效表的完整构成见 U212；
+        (d) 第一版补充预注册在运行前被删除（`safe_run.log` 13:37:30Z 的 `rm -f`），首版的 sha256 没有保留；按 U209 处理；
+        (e) U213 的内容，R7 F2 实际事实分布（由 count_r7_f2_facts_r8m1c2.py 从已提交表中重新计算，见 R7_F2_FACT_DIST_R8_M1c2.tsv；以下数字以表为准，与任务书数字的差异另行写明）：G5 point rc1=20/rc2=0/hit=1 为 132 点；G5 point rc1=0/rc2=20/hit=1 为 45 点；G6 point rc1=20/rc2=0/hit=1 为 25 点；G5 control（rc1=0/rc2=0/hit=0）为 16 点；G6c control（rc1=0/rc2=0/hit=0）为 18 点。
+
+E8-80	P05-S4 R8 M1c1 报告瑕疵记录（只追加；原报告不改）。
+        (a) r8m1c1 报告 §1 写“两次违规”，实际表二列出三次（两份允许列表、gate_check_r8m1c1.py、报告本身均为 heredoc 写入），以表二为准。
+        (b) r8m1c1 报告表二第 2 行称 gate_check_r8m1c1.py 由 heredoc 写入，第 4 行称由 write 工具生成，二者矛盾。以 safe_run.log 无对应记录、报告自述 heredoc 为准：gate_check_r8m1c1.py 为 heredoc 写入，未经 safe_run。
+        (c) r8m1c1 报告缺提交后的 git log -1 与 git status --short。r8m1c2 开工时核实 HEAD = f913b57、git status --short 为空，以此补记；见 POSTCOMMIT_R8_M1c2.txt。
