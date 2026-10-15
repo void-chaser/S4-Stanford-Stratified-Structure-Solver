@@ -1,0 +1,16 @@
+# PREREG_M2_COUNT_R8_M2a_R2 -- counts by item x tree (sum asserted = total)
+COUNT	M2-01	F3	17
+TOTAL_ROWS	17
+SUM_OF_ITEMS	17
+ASSERT_SUM_EQ_TOTAL	PASS
+NOT_WRITTEN	M2-00	no point: all six A_CTRL combos COVERED_BY_M0 (A10 crosswalk R2)
+NOT_WRITTEN	M2-02	NOT_FOUND: candidate search not completed in M2a
+NOT_WRITTEN	M2-03	not written: sanitizer apparatus not built in M2a
+NOT_WRITTEN	M2-04	not written: dual-target apparatus not built in M2a
+NOT_WRITTEN	M2-05	not written: other-layer apparatus not built in M2a
+NOT_WRITTEN	M2-06	not written: tensor path injection ID-to-line mapping not verified
+NOT_WRITTEN	M2-07	not written: NB=1-8 grid not enumerated in M2a
+NOT_WRITTEN	M2-08	NOT_FOUND: NB>=2 configuration search not completed in M2a
+NOT_WRITTEN	M2-09	not written: CTRL_SEAM_DRIVER_RESOLUTION_C5.tsv has no env or expectation for fmmret; needs user ruling
+NOT_WRITTEN	M2-10	not written: B gdb run not in M2a (no S4 run)
+NOT_WRITTEN	M3_DEFERRED	deferred to M3 (U235)

@@ -1,0 +1,8 @@
+# POSCTRL_M2_R8_M2a -- positive controls of verdict_m2_r8m2a.py on synthetic data (no S4 run)
+CASE_A rc=0 summary=VERDICT_M2 points=3 MISMATCH=0 FLAKY=0 MISSING=0
+CASE_B rc=0 summary=VERDICT_M2 points=3 MISMATCH=1 FLAKY=0 MISSING=0 point_in_output=True
+CASE_C rc=0 summary=VERDICT_M2 points=3 MISMATCH=0 FLAKY=1 MISSING=0
+A MISMATCH=0 FLAKY=0 expected 0/0
+B MISMATCH=1 FLAKY=0 point_in_output=True expected 1/0/True
+C FLAKY=1 expected 1
+POSCTRL=PASS

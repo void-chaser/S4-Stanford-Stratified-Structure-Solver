@@ -553,3 +553,10 @@ E8-86	P05-S4 R8 M1c4 更正（只追加）。原条目不改。
 
 E8-87	P05-S4 R8 M1c4 更正（只追加）。原条目不改。
         r8m1c3 比较阳性对照的实现与正式比较脚本不同，且正式脚本的 OUT_PREFIX 参数未被使用（见 U227）。本轮阳性对照调用 compare_m1c_f3_r8m1c4.py，结果见 POSCTRL_M1C_R8_M1c4.txt。
+
+E8-88	P05-S4 R8 M2a 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2a 任务书 §3.2）。原条目不改。
+        M1a6 预注册中 ADD22-A-10 的 env（closed1d NG=1）与映射表第 10 行和来源 A_CTRL 第 2–7 行不一致（U231）。r8m1c4 `FIX_COVERAGE_M1_R8_M1c4_R2.tsv` 中的 MAP_ENV_MISMATCH 2 行如实反映了这一点。原条目与原表不改。
+E8-89	P05-S4 R8 M2a 更正（只追加）。原条目不改。
+        r8m1c4 任务书 §4.5「27 个文件」应为「29 个文件（27 个由清单覆盖 + 2 份清单）」（U230）。
+E8-90	P05-S4 R8 M2a 更正（只追加）。原条目不改。
+        r8m1c4 的判定阳性对照在 m1c3 证据目录的 tmp 下生成了 `verdict_override.tsv`（U233）。

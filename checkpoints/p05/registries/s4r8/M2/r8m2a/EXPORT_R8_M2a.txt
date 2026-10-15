@@ -1,0 +1,3 @@
+# EXPORT_R8_M2a -- git archive exports (P05-S4 R8 M2a section 4.4)
+tree_F3	8d8202a	S4	6cff923a02baf19e01966b2339755cbf3a5deeef	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	MATCH
+tree_B	37a82e8	S4	1d738e64f9864a475fdb3de34cd3601605df2c64	expected=1d738e64f9864a475fdb3de34cd3601605df2c64	MATCH
