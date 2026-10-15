@@ -1,0 +1,175 @@
+audit_id	point_id	item	tree	driver	source_line	check_category	verdict	affected_field	detail
+1	M2-01-01-F3	M2-01	F3	init-F3-dbg	2	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+2	M2-01-01-F3	M2-01	F3	init-F3-dbg	2	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+3	M2-01-02-F3	M2-01	F3	init-F3-dbg	3	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+4	M2-01-02-F3	M2-01	F3	init-F3-dbg	3	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+5	M2-01-03-F3	M2-01	F3	init-F3-dbg	4	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+6	M2-01-03-F3	M2-01	F3	init-F3-dbg	4	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+7	M2-01-04-F3	M2-01	F3	init-F3-dbg	5	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+8	M2-01-04-F3	M2-01	F3	init-F3-dbg	5	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+9	M2-01-05-F3	M2-01	F3	init-F3-dbg	6	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+10	M2-01-05-F3	M2-01	F3	init-F3-dbg	6	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+11	M2-01-06-F3	M2-01	F3	init-F3-dbg	7	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+12	M2-01-06-F3	M2-01	F3	init-F3-dbg	7	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+13	M2-01-11-F3	M2-01	F3	polyinj-F3-dbg	8	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+14	M2-01-11-F3	M2-01	F3	polyinj-F3-dbg	8	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+15	M2-01-12-F3	M2-01	F3	polyinj-F3-dbg	9	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+16	M2-01-12-F3	M2-01	F3	polyinj-F3-dbg	9	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+17	M2-01-14-F3	M2-01	F3	polyinj-F3-dbg	10	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+18	M2-01-14-F3	M2-01	F3	polyinj-F3-dbg	10	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+19	M2-01-16-F3	M2-01	F3	polyinj-F3-dbg	11	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+20	M2-01-16-F3	M2-01	F3	polyinj-F3-dbg	11	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+21	M2-01-18-F3	M2-01	F3	polyinj-F3-dbg	12	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+22	M2-01-18-F3	M2-01	F3	polyinj-F3-dbg	12	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+23	M2-01-20-F3	M2-01	F3	polyinj-F3-dbg	13	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+24	M2-01-20-F3	M2-01	F3	polyinj-F3-dbg	13	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+25	M2-03-G5-01-F3	M2-03	F3	r6bstate-F3-san	23	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+26	M2-03-G5-01-F3	M2-03	F3	r6bstate-F3-san	23	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+27	M2-03-G5-01-F3	M2-03	F3	r6bstate-F3-san	23	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+28	M2-03-G5-01-F3	M2-03	F3	r6bstate-F3-san	23	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+29	M2-03-G5-02-F3	M2-03	F3	r6bstate-F3-san	24	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+30	M2-03-G5-02-F3	M2-03	F3	r6bstate-F3-san	24	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+31	M2-03-G5-02-F3	M2-03	F3	r6bstate-F3-san	24	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+32	M2-03-G5-02-F3	M2-03	F3	r6bstate-F3-san	24	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+33	M2-03-G5-03-F3	M2-03	F3	r6bstate-F3-san	25	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+34	M2-03-G5-03-F3	M2-03	F3	r6bstate-F3-san	25	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+35	M2-03-G5-03-F3	M2-03	F3	r6bstate-F3-san	25	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+36	M2-03-G5-03-F3	M2-03	F3	r6bstate-F3-san	25	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+37	M2-03-G5-04-F3	M2-03	F3	r6bstate-F3-san	26	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+38	M2-03-G5-04-F3	M2-03	F3	r6bstate-F3-san	26	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+39	M2-03-G5-04-F3	M2-03	F3	r6bstate-F3-san	26	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+40	M2-03-G5-04-F3	M2-03	F3	r6bstate-F3-san	26	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+41	M2-03-G5-05-F3	M2-03	F3	r6bstate-F3-san	27	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+42	M2-03-G5-05-F3	M2-03	F3	r6bstate-F3-san	27	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+43	M2-03-G5-05-F3	M2-03	F3	r6bstate-F3-san	27	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+44	M2-03-G5-05-F3	M2-03	F3	r6bstate-F3-san	27	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+45	M2-03-G5-06-F3	M2-03	F3	r6bstate-F3-san	28	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+46	M2-03-G5-06-F3	M2-03	F3	r6bstate-F3-san	28	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+47	M2-03-G5-06-F3	M2-03	F3	r6bstate-F3-san	28	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+48	M2-03-G5-06-F3	M2-03	F3	r6bstate-F3-san	28	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+49	M2-03-G5-07-F3	M2-03	F3	r6bstate-F3-san	29	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+50	M2-03-G5-07-F3	M2-03	F3	r6bstate-F3-san	29	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+51	M2-03-G5-07-F3	M2-03	F3	r6bstate-F3-san	29	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+52	M2-03-G5-07-F3	M2-03	F3	r6bstate-F3-san	29	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+53	M2-03-G5-08-F3	M2-03	F3	r6bstate-F3-san	30	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+54	M2-03-G5-08-F3	M2-03	F3	r6bstate-F3-san	30	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+55	M2-03-G5-08-F3	M2-03	F3	r6bstate-F3-san	30	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+56	M2-03-G5-08-F3	M2-03	F3	r6bstate-F3-san	30	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+57	M2-03-G5-09-F3	M2-03	F3	r6bstate-F3-san	31	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+58	M2-03-G5-09-F3	M2-03	F3	r6bstate-F3-san	31	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+59	M2-03-G5-09-F3	M2-03	F3	r6bstate-F3-san	31	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+60	M2-03-G5-09-F3	M2-03	F3	r6bstate-F3-san	31	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+61	M2-03-G5-10-F3	M2-03	F3	r6bstate-F3-san	32	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+62	M2-03-G5-10-F3	M2-03	F3	r6bstate-F3-san	32	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+63	M2-03-G5-10-F3	M2-03	F3	r6bstate-F3-san	32	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+64	M2-03-G5-10-F3	M2-03	F3	r6bstate-F3-san	32	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+65	M2-03-G5-11-F3	M2-03	F3	r6bstate-F3-san	33	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+66	M2-03-G5-11-F3	M2-03	F3	r6bstate-F3-san	33	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+67	M2-03-G5-11-F3	M2-03	F3	r6bstate-F3-san	33	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+68	M2-03-G5-11-F3	M2-03	F3	r6bstate-F3-san	33	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+69	M2-03-G5-12-F3	M2-03	F3	r6bstate-F3-san	34	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+70	M2-03-G5-12-F3	M2-03	F3	r6bstate-F3-san	34	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+71	M2-03-G5-12-F3	M2-03	F3	r6bstate-F3-san	34	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+72	M2-03-G5-12-F3	M2-03	F3	r6bstate-F3-san	34	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+73	M2-03-G5-13-F3	M2-03	F3	r6bstate-F3-san	35	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+74	M2-03-G5-13-F3	M2-03	F3	r6bstate-F3-san	35	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+75	M2-03-G5-13-F3	M2-03	F3	r6bstate-F3-san	35	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+76	M2-03-G5-13-F3	M2-03	F3	r6bstate-F3-san	35	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+77	M2-03-G6-01-F3	M2-03	F3	seamF-F3-san	36	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+78	M2-03-G6-01-F3	M2-03	F3	seamF-F3-san	36	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+79	M2-03-G6-01-F3	M2-03	F3	seamF-F3-san	36	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+80	M2-03-G6-01-F3	M2-03	F3	seamF-F3-san	36	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+81	M2-03-G6-02-F3	M2-03	F3	seamF-F3-san	37	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+82	M2-03-G6-02-F3	M2-03	F3	seamF-F3-san	37	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+83	M2-03-G6-02-F3	M2-03	F3	seamF-F3-san	37	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+84	M2-03-G6-02-F3	M2-03	F3	seamF-F3-san	37	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+85	M2-03-G6-03-F3	M2-03	F3	seamF-F3-san	38	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+86	M2-03-G6-03-F3	M2-03	F3	seamF-F3-san	38	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+87	M2-03-G6-03-F3	M2-03	F3	seamF-F3-san	38	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+88	M2-03-G6-03-F3	M2-03	F3	seamF-F3-san	38	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+89	M2-03-G6-04-F3	M2-03	F3	seamF-F3-san	39	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+90	M2-03-G6-04-F3	M2-03	F3	seamF-F3-san	39	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+91	M2-03-G6-04-F3	M2-03	F3	seamF-F3-san	39	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+92	M2-03-G6-04-F3	M2-03	F3	seamF-F3-san	39	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+93	M2-03-G6-05-F3	M2-03	F3	seamF-F3-san	40	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+94	M2-03-G6-05-F3	M2-03	F3	seamF-F3-san	40	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+95	M2-03-G6-05-F3	M2-03	F3	seamF-F3-san	40	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+96	M2-03-G6-05-F3	M2-03	F3	seamF-F3-san	40	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+97	M2-03-G6-06-F3	M2-03	F3	seamF-F3-san	41	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+98	M2-03-G6-06-F3	M2-03	F3	seamF-F3-san	41	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+99	M2-03-G6-06-F3	M2-03	F3	seamF-F3-san	41	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+100	M2-03-G6-06-F3	M2-03	F3	seamF-F3-san	41	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+101	M2-03-REP-INIT-01-F3	M2-03	F3	init-F3-san	42	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+102	M2-03-REP-INIT-01-F3	M2-03	F3	init-F3-san	42	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+103	M2-03-REP-INIT-01-F3	M2-03	F3	init-F3-san	42	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+104	M2-03-REP-INIT-01-F3	M2-03	F3	init-F3-san	42	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+105	M2-03-REP-INIT-02-F3	M2-03	F3	init-F3-san	43	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+106	M2-03-REP-INIT-02-F3	M2-03	F3	init-F3-san	43	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+107	M2-03-REP-INIT-02-F3	M2-03	F3	init-F3-san	43	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+108	M2-03-REP-INIT-02-F3	M2-03	F3	init-F3-san	43	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+109	M2-03-REP-INIT-03-F3	M2-03	F3	init-F3-san	44	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+110	M2-03-REP-INIT-03-F3	M2-03	F3	init-F3-san	44	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+111	M2-03-REP-INIT-03-F3	M2-03	F3	init-F3-san	44	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+112	M2-03-REP-INIT-03-F3	M2-03	F3	init-F3-san	44	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+113	M2-03-REP-INIT-04-F3	M2-03	F3	init-F3-san	45	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+114	M2-03-REP-INIT-04-F3	M2-03	F3	init-F3-san	45	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+115	M2-03-REP-INIT-04-F3	M2-03	F3	init-F3-san	45	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+116	M2-03-REP-INIT-04-F3	M2-03	F3	init-F3-san	45	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+117	M2-03-REP-INIT-05-F3	M2-03	F3	init-F3-san	46	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+118	M2-03-REP-INIT-05-F3	M2-03	F3	init-F3-san	46	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+119	M2-03-REP-INIT-05-F3	M2-03	F3	init-F3-san	46	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+120	M2-03-REP-INIT-05-F3	M2-03	F3	init-F3-san	46	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+121	M2-03-REP-INIT-06-F3	M2-03	F3	init-F3-san	47	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+122	M2-03-REP-INIT-06-F3	M2-03	F3	init-F3-san	47	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+123	M2-03-REP-INIT-06-F3	M2-03	F3	init-F3-san	47	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+124	M2-03-REP-INIT-06-F3	M2-03	F3	init-F3-san	47	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+125	M2-03-REP-POLY-11-F3	M2-03	F3	polyinj-F3-san	48	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+126	M2-03-REP-POLY-11-F3	M2-03	F3	polyinj-F3-san	48	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+127	M2-03-REP-POLY-11-F3	M2-03	F3	polyinj-F3-san	48	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+128	M2-03-REP-POLY-11-F3	M2-03	F3	polyinj-F3-san	48	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+129	M2-03-REP-POLY-12-F3	M2-03	F3	polyinj-F3-san	49	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+130	M2-03-REP-POLY-12-F3	M2-03	F3	polyinj-F3-san	49	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+131	M2-03-REP-POLY-12-F3	M2-03	F3	polyinj-F3-san	49	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+132	M2-03-REP-POLY-12-F3	M2-03	F3	polyinj-F3-san	49	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+133	M2-03-REP-POLY-14-F3	M2-03	F3	polyinj-F3-san	50	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+134	M2-03-REP-POLY-14-F3	M2-03	F3	polyinj-F3-san	50	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+135	M2-03-REP-POLY-14-F3	M2-03	F3	polyinj-F3-san	50	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+136	M2-03-REP-POLY-14-F3	M2-03	F3	polyinj-F3-san	50	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+137	M2-03-REP-POLY-16-F3	M2-03	F3	polyinj-F3-san	51	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+138	M2-03-REP-POLY-16-F3	M2-03	F3	polyinj-F3-san	51	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+139	M2-03-REP-POLY-16-F3	M2-03	F3	polyinj-F3-san	51	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+140	M2-03-REP-POLY-16-F3	M2-03	F3	polyinj-F3-san	51	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+141	M2-03-REP-POLY-18-F3	M2-03	F3	polyinj-F3-san	52	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+142	M2-03-REP-POLY-18-F3	M2-03	F3	polyinj-F3-san	52	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+143	M2-03-REP-POLY-18-F3	M2-03	F3	polyinj-F3-san	52	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+144	M2-03-REP-POLY-18-F3	M2-03	F3	polyinj-F3-san	52	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+145	M2-03-REP-POLY-20-F3	M2-03	F3	polyinj-F3-san	53	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+146	M2-03-REP-POLY-20-F3	M2-03	F3	polyinj-F3-san	53	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+147	M2-03-REP-POLY-20-F3	M2-03	F3	polyinj-F3-san	53	SANITIZER	CONFLICT	exp_I7	Sanitizer row has both exp_I7=HOLD and exp_san=0; I7 is redundant with exp_san, and private state cannot be collected in sanitizer run
+148	M2-03-REP-POLY-20-F3	M2-03	F3	polyinj-F3-san	53	SANITIZER	CONFLICT	gdb_script	Sanitizer binary cannot run state collector without paired dbg run; I1..I6 cannot be observed directly in sanitizer run
+149	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+150	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+151	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	SNAPSHOT_INDICES	DEFECT	retry_call	M2-04 dual failure recovers at call3, but retry_call is registered as 2 (call2 fails with rc2=20)
+152	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	SNAPSHOT_INDICES	DEFECT	k_retry	M2-04 recovery state is after call3 (k=4), but k_retry is registered as 3 (k=3 is after second failure call2)
+153	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	SNAPSHOT_INDICES	DEFECT	k_preretry	M2-04 state before final recovery call3 is k=3, but k_preretry is 2
+154	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	DUAL_FAILURE	GAP	exp_rc3	Dual target driver executes call3, but prereg schema lacks explicit exp_rc3 column (expected 0)
+155	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	I6_BINDING	DEFECT	exp_I6	I6 comparison currently targets retry_call=2, which is the second failure, instead of recovery call3
+156	M2-04-01-F3	M2-04	F3	dual-F3-dbg	54	VERDICT_COVERAGE	GAP	verdict_m2	verdict_m2_r8m2a2 does not verify rc3, does not check dual failure sequence, and does not compare pass2 independently against expectations
+157	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+158	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+159	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	SNAPSHOT_INDICES	DEFECT	retry_call	M2-04 dual failure recovers at call3, but retry_call is registered as 2 (call2 fails with rc2=20)
+160	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	SNAPSHOT_INDICES	DEFECT	k_retry	M2-04 recovery state is after call3 (k=4), but k_retry is registered as 3 (k=3 is after second failure call2)
+161	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	SNAPSHOT_INDICES	DEFECT	k_preretry	M2-04 state before final recovery call3 is k=3, but k_preretry is 2
+162	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	DUAL_FAILURE	GAP	exp_rc3	Dual target driver executes call3, but prereg schema lacks explicit exp_rc3 column (expected 0)
+163	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	I6_BINDING	DEFECT	exp_I6	I6 comparison currently targets retry_call=2, which is the second failure, instead of recovery call3
+164	M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	55	VERDICT_COVERAGE	GAP	verdict_m2	verdict_m2_r8m2a2 does not verify rc3, does not check dual failure sequence, and does not compare pass2 independently against expectations
+165	M2-05-P0-F3	M2-05	F3	layers-F3-dbg	58	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+166	M2-05-P0-F3	M2-05	F3	layers-F3-dbg	58	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+167	M2-05-P2-F3	M2-05	F3	layers-F3-dbg	60	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+168	M2-05-P2-F3	M2-05	F3	layers-F3-dbg	60	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+169	M2-05-PP1-F3	M2-05	F3	layers-F3-dbg	62	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+170	M2-05-PP1-F3	M2-05	F3	layers-F3-dbg	62	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+171	M2-05-PP2-F3	M2-05	F3	layers-F3-dbg	64	GDB_CONFLICT	CONFLICT	gdb_script	Requires private state invariants (I1..I6=HOLD) but gdb_script is '-' (no state collector)
+172	M2-05-PP2-F3	M2-05	F3	layers-F3-dbg	64	CONTROL_BINDING	GAP	control_group	Test row expects HOLD on I2/I6 but no explicit control_point_id or output_call mapping is provided
+173	M2-09-01-F2	M2-09-CTRL	F2	seam-fmmret-F2	150	IDENTITY	GAP	driver_sha256	Driver sha256 unspecified (-)
+174	M2-09-01-F2	M2-09-CTRL	F2	seam-fmmret-F2	150	IDENTITY	GAP	lib_sha256	Library sha256 unspecified (-)
