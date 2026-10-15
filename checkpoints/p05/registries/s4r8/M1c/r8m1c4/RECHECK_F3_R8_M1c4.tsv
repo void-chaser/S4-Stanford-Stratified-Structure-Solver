@@ -1,0 +1,55 @@
+# RECHECK_F3_R8_M1c4 -- independent recheck of the F3 M1c facts (committed r8m1c3 registries vs frozen table)
+# part 1: check counts per group x row_kind x field
+group	row_kind	field	checks
+CTRL_AUX	control_aux	env	32
+CTRL_AUX	control_aux	hit	64
+CTRL_AUX	control_aux	rc1	64
+CTRL_AUX	control_aux	rc2	64
+G5	point	I1	354
+G5	point	I2	354
+G5	point	I3	354
+G5	point	I4	354
+G5	point	I5	354
+G5	point	I6	354
+G5	point	env	354
+G5	point	hit	708
+G5	point	point_verdict	354
+G5	point	rc1	708
+G5	point	rc2	708
+G5	point	rc3	708
+G6	point	I1	50
+G6	point	I2	50
+G6	point	I3	50
+G6	point	I4	50
+G6	point	I5	50
+G6	point	I6	50
+G6	point	env	50
+G6	point	hit	100
+G6	point	point_verdict	50
+G6	point	rc1	100
+G6	point	rc2	100
+G6c	control	env	36
+G6c	control	hit	72
+G6c	control	rc1	72
+G6c	control	rc2	72
+# part 1b: totals per field
+FIELD_TOTAL	I1	404
+FIELD_TOTAL	I2	404
+FIELD_TOTAL	I3	404
+FIELD_TOTAL	I4	404
+FIELD_TOTAL	I5	404
+FIELD_TOTAL	I6	404
+FIELD_TOTAL	env	472
+FIELD_TOTAL	hit	944
+FIELD_TOTAL	point_verdict	404
+FIELD_TOTAL	rc1	944
+FIELD_TOTAL	rc2	944
+FIELD_TOTAL	rc3	708
+# part 2: rows per group x row_kind (planned: G5 point 177, G6 point 25, G6c control 18, CTRL_AUX control_aux 16)
+ROWS	CTRL_AUX	control_aux	16
+ROWS	G5	point	177
+ROWS	G6	point	25
+ROWS	G6c	control	18
+# part 3: differences
+group	row_kind	base_id	pass	field	expected	actual
+CHECKS=6840 DIFFS=0

@@ -1,0 +1,10 @@
+# CMP_OUTPUTS_R8_M1c4 -- formal reproduction vs committed r8m1c3 registries (line 1 excluded)
+# CMP_REAL_R8_M1c4_VS_FROZEN.tsv vs COMPARE_M1C_F3_VS_FROZEN_R8_M1c3.tsv
+#   line counts: mine=6912 ref=6912
+#   header line 1 may differ: mine=# CMP_REAL_R8_M1c4_VS_FROZEN -- F3 actual (checkpoints/p05/evidence/p05-s4r8/m1c3/m1c_F3) vs frozen table F3 rows (236).
+#   header line 1 may differ: ref=# COMPARE_M1C_F3_VS_FROZEN_R8_M1c3 -- F3 actual (m1c_F3) vs frozen table F3 rows (236).
+# CMP_REAL_R8_M1c4_F2_F3_DIFF.tsv vs F2_F3_DIFF_M1C_R8_M1c3.tsv
+#   line counts: mine=644 ref=644
+#   header line 1 may differ: mine=# CMP_REAL_R8_M1c4_F2_F3_DIFF -- F3 actual (checkpoints/p05/evidence/p05-s4r8/m1c3/m1c_F3) vs R8 F2 committed copies (re
+#   header line 1 may differ: ref=# F2_F3_DIFF_M1C_R8_M1c3 -- F3 actual (m1c_F3) vs R8 F2 committed copies (registries/s4r8/M1c/r8m1c2).
+CMP_REAL_SAME=7554/7554

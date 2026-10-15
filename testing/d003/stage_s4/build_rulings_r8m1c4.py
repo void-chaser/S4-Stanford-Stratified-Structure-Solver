@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+# build_rulings_r8m1c4.py -- P05-S4 R8 M1c4 RULINGS builder (brief section 3.1, U223-U228). New file.
+# Writes the text to append to checkpoints/p05/registries/RULINGS.tsv as $EV/RULINGS_APPEND_R8_M1c4.tsv
+# (5 columns: id, given-by, summary, record, status 生效; source P05-S4 R8 M1c4 任务书 §3).
+# Called by append_rulings_r8m1c4.sh. It does not modify RULINGS.tsv itself.
+# Usage: python3 -I -B build_rulings_r8m1c4.py
+import os
+
+REPO = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+EV = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m1c4")
+os.makedirs(os.path.join(EV, "tmp"), exist_ok=True)
+OUT = os.path.join(EV, "RULINGS_APPEND_R8_M1c4.tsv")
+if os.path.exists(OUT):
+    raise SystemExit("REFUSED exists (U17): %s" % OUT)
+
+SRC = "P05-S4 R8 M1c4 任务书 §3"
+ROWS = [
+    ("U223", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "接受 r8m1c3（`fc3e8ca`）的 F3 运行数据：6 次调用 rc=0，36 条驱动记录等于预注册值，F3 与冻结表 DIFFS=0，F2↔F3 DIFFS=0，GDB_DIVERGENT=0。判定脚本 v1/v2 的错误只出在 34 个控制行上（冻结表中这些行的 point_verdict 与 I 项为 `-`），G5/G6 的 202 行在三个版本中规则未变，冻结表未改，因此按实现错误接受，不算\"看到结果后改期望\"。F3 236 行 MATCH 的采信，以本轮独立重比为 0 差异为条件。这不是 M1、R8 或 P05-S4 的签收。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+    ("U224", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "r8m1c3 的 M1 总表少计 6 行：M1b 中 G2c_control 的 6 行（F2/F3 各 3 行，NOT_RUN_REGISTRY_ERROR，effective_verdict = NOT_RUN_AS_EXPECTED，依据 U65/U139/U212）没有计入合计。正确合计为 1302 行 = MATCH 1252 + NOT_REACHED_AS_EXPECTED 44 + NOT_RUN_AS_EXPECTED 6 + MISMATCH 0 + FLAKY 0。总表必须断言\"各类之和 = 830 + 472\"。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+    ("U225", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "修复覆盖的映射规则：`ADD22-<A|B>-<n>-<tree>` 中的 n 等于 `registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv` 的 row；对应关系以两表的 env 逐键相等为准（mode、NG、INJECT）。806 = A-1/2/3，RP-S3R4-1（1729）= A-4/5/6，415 = B-11…21；对照为 A-10、B-22；U96 为 A-7/8/9（属 U100，转 S5）。806、1729/RP-S3R4-1、415 在 M1 中按\"该注入下的返回码与类别\"口径已覆盖（F3 行均为 MATCH），不转 M2。F2 侧是修复前的基线，不是修复证据。这些注入点的 I1–I6 在 M1 中未测，作为局限写明，不进 M2，除非用户另行裁决。r8m1c3 的 `FIX_COVERAGE_M1_R8_M1c3_R2.tsv` 作废（保留原文件）。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+    ("U226", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "r8m1c3 复制到 registries 时去掉了后缀：registries 中的 `VERDICT_M1C_R8_M1c3.tsv`、`VERDICT_M1C_R8_M1c3_AGG.tsv`、`M1_SUMMARY_R8_M1c3.tsv`、`FIX_COVERAGE_M1_R8_M1c3.tsv` 分别是证据中 `_R3`、`_AGG_R3`、`_R2`、`_R2` 的内容，与证据中的同名文件不同。已提交的文件不改名（U17），由 `REGISTRY_NAME_MAP_R8_M1c3.tsv` 说明。自本轮起，复制一律保留原名。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+    ("U227", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "r8m1c3 比较阳性对照没有调用正式比较脚本（另写了只比 pass1 的逻辑）；正式比较脚本 `compare_m1c_f3_r8m1c3.py` 的第三个参数 OUT_PREFIX 未被使用，输出名写死。本轮新建 `compare_m1c_f3_r8m1c4.py`：与 r8m1c3 版本相比只改 EV、输入目录参数与输出名（由 OUT_PREFIX 生成），比较逻辑逐字不变（`COMPARE_DIFF_R8_M1c4.txt` 为证）。阳性对照必须调用它。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+    ("U228", "P05-S4 R8 M1c4 任务书 §3（于 r8m1c4 登记）",
+     "对 r8m1c3 报告\"需要你裁决\"三项的答复：(1) F3 MATCH 按 U223 有条件采信；(2) 806/415/RP-S3R4-1 按 U225 处理，不转 M2；(3) 阳性对照按 U227 重做，计数如实记录，口径仍为 U220。r8m1c3 的内联 `grep -c` 按执行偏离接受，不追认为合规。",
+     "P05-S4 R8 M1c4 任务书 §3.1"),
+]
+
+with open(OUT, "w", encoding="utf-8") as fh:
+    for rid, given, summary, record in ROWS:
+        fh.write("\t".join([rid, given, summary, record, "生效"]) + "\n")
+print("BUILT_RULINGS_ROWS=%d -> %s" % (len(ROWS), OUT))
