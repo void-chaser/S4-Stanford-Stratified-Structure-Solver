@@ -1,0 +1,5 @@
+id	source_round	site	tree	category	evidence	status	destination
+RP-R8-M2c-1	R8 M2c (U265)	S4/S4.cpp:1763-1766	F3, B	F_CONFIRMED	checkpoints/p05/evidence/p05-s4r8/m2c/MALLOC_MAP_R8_M2c.tsv; ASAN SEGV at S4.cpp:1764 (dereference S->solution before NULL check)	OPEN (characterized, unrepaired)	待用户裁决：S3R5 修复轮（改 S4.cpp InitSolution 判空清理，冻结新树 F4）或转 S5
+RP-R8-M2c-1b	R8 M2c (U265)	S4/S4.cpp:1764,1765; 1798-1815	F3, B	OBSERVATION	S4/S4.cpp:1764-1772, 1798-1815 [源码]; ab/solved failure returns 1 leaving S->solution non-NULL; retry Simulation_GetLayerSolution uses NULL pointer	[源码] 未验证	与 RP-R8-M2c-1 一并待用户裁决
+K-1	R8 M2c (U264)	fmm_closed.cpp:244 / S4.cpp:2474-2478	F3	OBSERVATION	checkpoints/p05/evidence/p05-s4r8/m2c/diag/m206/M206_DIAG_SUMMARY.txt; rcwa.cpp:666 prints info=10, S4.cpp:2477 returns 20; K-1 silent swallow refuted on nan-F3	MISMATCH (refuted on nan-F3 model 1; returns rc 20)	待用户裁决是否以「F3 上未复现」关闭
+AUDIT-TRACE-M2c	R8 M2c (S-B)	SOURCE_TRACE_R8_M2c.tsv	-	HARNESS_OR_PROCESS	checkpoints/p05/evidence/p05-s4r8/m2c/SOURCE_TRACE_R8_M2c.tsv (174 rows audited; 0 new diffs beyond F1-F3)	AUDIT_PASSED (0 new diffs)	none

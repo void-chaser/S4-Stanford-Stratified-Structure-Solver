@@ -267,3 +267,13 @@ U257	P05-S4 R8 M2b 任务书 §3	M2-03 的 19 个 NO_REF 点（G5 13、G6 6）�
 U258	P05-S4 R8 M2b 任务书 §3	M2-04-02-F3 的 fail_layer2=UNRESOLVED 保持不变，实际失败层按 RECORD_ONLY 登记，不作断言。I1 用实际层的 modes_null 判定。fail_layer1（两行都是 1）和 exp_hit1 必须断言。	P05-S4 R8 M2b 任务书 §3	生效
 U259	P05-S4 R8 M2b 任务书 §3	按 U251 执行 5 个 win:64 点：先做诊断运行（标 INFLUENCED），再确认索引，然后冻结补充预注册 PREREG_M2_WIN64_R8_M2b.tsv 及其 sha256，最后正式跑两遍。期望值取 M1 中 F3 上同环境的观察值（ADD22-B-13/15/17/19/21-F3，按 ADDITIONS_MAPPING_22_R8_M1a6 的行号 join，并核对 env）。诊断结果不得回填成事前预言。	P05-S4 R8 M2b 任务书 §3	生效
 U260	P05-S4 R8 M2b 任务书 §3	本轮范围是第 5 节的 S-A 到 S-H。M3（Python/Lua 可见性）不开始。F3 上出现的 MISMATCH、FLAKY、CRASH、SILENT_SWALLOW、GDB_DIVERGENT 只登记为红点，不修改 S4，不修改期望。	P05-S4 R8 M2b 任务书 §3	生效
+U261	P05-S4 R8 M2c 任务书 §3	r8m2b 的执行链与 148 个 MATCH 予以采信。26 个 MISMATCH 保持原记录，不改任何 r8m2b 文件。分诊结果按第 2 节 F1–F5 执行，写入 TRIAGE 表。	P05-S4 R8 M2c 任务书 §3	生效
+U262	P05-S4 R8 M2c 任务书 §3	F1 和 F2 属于预注册转录错误，正确来源早于运行就已存在并提交。允许在 v4 增量表中按来源改正，用新 id（原 id 加 -C 后缀），状态写 INFLUENCED。原 v3 行和它的 MISMATCH 保留，并标 SUPERSEDED_BY。这不算"通过改期望消除 MISMATCH"，而是有来源行号的转录更正；每一行都必须给出来源文件和行号。	P05-S4 R8 M2c 任务书 §3	生效
+U263	P05-S4 R8 M2c 任务书 §3	F3 的 vl-ng2/3/4 在 v4 中新建 -C 行，class_rule=NATIVE_FAIL_CONTROL（与 U255 相同：rc1=20、rc2=20、信号 0、hit=0、classify==INVALID）。依据是预注册自身的 n_G_actual=1 加 M0 的 vl NG=1 rc 20。	P05-S4 R8 M2c 任务书 §3	生效
+U264	P05-S4 R8 M2c 任务书 §3	M2-06-01 保持 MISMATCH，红点台账写"K-1 静默吞没在 nan-F3 model 1 上未复现，F3 报 rc 20"。增设记录型诊断行（RECORD_ONLY），用 gdb 定位是哪一处 return 20、NaN 是否到达本征求解。K-1 是否关闭由用户在 M2c 后裁决。	P05-S4 R8 M2c 任务书 §3	生效
+U265	P05-S4 R8 M2c 任务书 §3	F5 登记为新红点 RP-R8-M2c-1（S4.cpp:1763–1766 的 Solution_ 分配先解引用后判空），附带 [源码] 子项 RP-R8-M2c-1b（ab/solved 失败后 solution 残留）。本轮只做表征，不修。修不修（S3R5→F4，或转 S5）在 M2c 之后由用户裁决。注意 S2R4 曾把 1754/1756 划在范围外（用户确认）；本裁决不改变这一划分，只登记观察。	P05-S4 R8 M2c 任务书 §3	生效
+U266	P05-S4 R8 M2c 任务书 §3	REP-INIT-04..06 的本意是"1729 parent 分配在 san 下复现"。v4 按 san 驱动的实测 malloc 映射重新确定 K，新建 -C 行。映射按 caller 源码行确认，不按序号假设。	P05-S4 R8 M2c 任务书 §3	生效
+U267	P05-S4 R8 M2c 任务书 §3	判定器 v4 规则：exp_I* ∈ {HOLD, VIOLATED, N/A} 时与实测严格相等，不等即 MISMATCH；exp 为 - 或 UNOBSERVED 时不判。用 v4 离线重判 r8m2b 的 174 点（只重判，不重跑），结果单独成表，不覆盖 r8m2b。	P05-S4 R8 M2c 任务书 §3	生效
+U268	P05-S4 R8 M2c 任务书 §3	InitSolution 路径失败（M2-01-01..06-C、REP-INIT-*-C）的 exp_I1/exp_I2 写 N/A，另设断言 INIT_CLEAN：失败调用之后，所有层 modes_null=1、solution null、cache_count 0。M2-05-P0-F3-C 的 exp_I2 写 N/A，依据是失败层为 0、没有保留层（R6c 规则）。这些都是 INFLUENCED 更正，必须写 ERRATA。	P05-S4 R8 M2c 任务书 §3	生效
+U269	P05-S4 R8 M2c 任务书 §3	sanitizer 行增加事实列 san_crash：san 日志出现 ERROR: AddressSanitizer: SEGV 或 ABORTING 时记 1。新增派生类别 SAN_CRASH，它与 judge_d003.classify 的输出并列，不替换后者。	P05-S4 R8 M2c 任务书 §3	生效
+U270	P05-S4 R8 M2c 任务书 §3	冒烟门禁 v2 新增两项：(a) exp_hit≥1 的行实测 hit≥1；(b) 冒烟中每个非 MATCH 都必须先写入分诊表，归类为 预注册错误 / 装置错误 / 真实行为，才能进入正式运行。归为预注册错误的不得在本轮自行改期望：要么停下报告，要么按已有裁决处理。	P05-S4 R8 M2c 任务书 §3	生效

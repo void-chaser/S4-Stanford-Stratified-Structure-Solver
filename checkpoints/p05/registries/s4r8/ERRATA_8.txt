@@ -606,3 +606,39 @@ E8-107	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-
 
 E8-108	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §3，U257）。原条目不改。
         M2-03 的 19 个 NO_REF 点（G5 13、G6 6）补跑同环境非 sanitizer 参照点。参照驱动要求源文件、注入文件、-D 宏、--wrap 参数完全一致，仅去掉 -fsanitize=address,undefined -fno-omit-frame-pointer。参照点写入附表 PREREG_M2_SANREF_R8_M2b.tsv（19 行），状态标记为 INFLUENCED，exp_rc1/exp_class 取对应 san 行原值；主表 19 行的 san_ref_point_id 填入参照 id（非 exp 列）。
+
+E8-109	P05-S4 R8 M2c 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2c 任务书 §2、§4，U262，F1、F2）。原条目不改。
+        F1 与 F2 预注册转录更正。
+        (1) F1（9 行）：M2-01-01-F3 至 M2-01-06-F3、M2-03-REP-INIT-01-F3 至 M2-03-REP-INIT-03-F3 原预注册 v3 误写 exp_rc1=20。正确期望取自历史已提交表 checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv 第 1–6 行（row 1–6），exp_rc1=1（RP-S3R4-1/U95：806 与 1729 失败返回 1）。在 v4 增量表中建 -C 行更正（exp_rc1=1），原行保留并标 SUPERSEDED_BY。
+        (2) F2（10 行）：G6 组 5 点及对应 SANREF 5 点原预注册 v3 误用 clm:、acf: 注入前缀，注入器不识别致实测 hit=0。正确 env 取自 checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv 的 R4-*-F-F3 行：
+        - G6-01 / SANREF-G6-01（R4-CLM1-F，行 80）：FMM_MODE=fft;S4FMM_INJECT=alloc:21:1;S4FMM_NG=9，期望 rc1 20, rc2 0, hit 1, REPORTED_FAILURE；
+        - G6-03 / SANREF-G6-03（R4-CL01-F，行 78）：FMM_MODE=closed1d;S4FMM_INJECT=linearsolve_null2:134:1;S4FMM_NG=9，期望同上；
+        - G6-04 / SANREF-G6-04（R4-AL18-F，行 77）：FMM_MODE=kottke;S4FMM_INJECT=kottke_alloc:31:1;S4FMM_NG=9，期望同上；
+        - G6-05 / SANREF-G6-05（R4-ACF1-F，行 76）：FMM_MODE=jones;S4FMM_INJECT=alloc:25:1;S4FMM_NG=9，期望同上；
+        - G6-06 / SANREF-G6-06（R4-CLM3-F，行 81）：FMM_MODE=fft;S4FMM_INJECT=alloc:23:1;S4FMM_NG=9，期望同上。
+        在 v4 增量表中建 -C 行更正，原行保留并标 SUPERSEDED_BY。（G6-02/SANREF-G6-02 在 v3 中用 NG=5 实测 MATCH，不重做，NG 历史差异记入溯源审计）。
+
+E8-110	P05-S4 R8 M2c 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2c 任务书 §2、§4，F7）。原条目不改。
+        r8m2b 报告与 ERRATA 三处勘误更正：
+        (1) M2-10-01-B 实测断点命中数 m210_hits=2432（两遍均 2432），报告第 192 行误写为 2362，特此更正；
+        (2) r8m2b 三张预注册表的 UTC 冻结时间按证据目录中 *_TIMESTAMP_UTC.txt 实际记录分别为：PREREG_M2_EFFECTIVE_R8_M2b.tsv 为 2026-10-16T06:21:23Z，PREREG_M2_SANREF_R8_M2b.tsv 为 2026-10-16T06:21:23Z，PREREG_M2_WIN64_R8_M2b.tsv 为 2026-10-16T06:34:45Z。报告表 3 中误写为 06:50:52Z 和 07:11:53Z，特此更正；
+        (3) E8-106 记录状态分析器 sha256 截断误写为 89f00f0e6ca4...，其实际有效完整 sha256 为 89f00f0ef91b927066bad059b58073a47cbf34594d65a35ee7bdddb576a6ff1f。
+
+E8-111	P05-S4 R8 M2c 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2c 任务书 §2、§4，F8）。原条目不改。
+        r8m2b safe_run.log 第 15–21 行记录的未披露操作事件补正：
+        (1) GATE_R8_M2b_end_R1.txt 运行报 FAILS=1（检出 stage_s4/__pycache__）；
+        (2) 运行 rm -rf testing/d003/stage_s4/__pycache__ 清除 pycache；
+        (3) mv 门禁文件（将初次运行结果留存为 _R1.txt）；
+        (4) rm -f testing/d003/stage_s4/postcommit_r8m2b.py 删除未提交脚本。
+        上述事件均记录在案，r8m2c 起严格执行无删除、无覆盖、门禁产物重跑留存 _R1 并进事件表。
+
+E8-112	P05-S4 R8 M2c 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2c 任务书 §2、§3、§4，U267、U268，F6）。原条目不改。
+        判定器宽松逻辑消除与 InitSolution / P0 布局 exp_I 更正：
+        (1) verdict_m2_r8m2b.py:297-310 宽松比对仅在实测为 VIOLATED/UNJUDGED 时报错，将 exp_I=HOLD 而实测 N/A 误判为通；verdict v4 改为严格比对（exp_I* ∈ {HOLD, VIOLATED, N/A} 必须严格相等，不等即 MISMATCH；仅 exp 为 - 或 UNOBSERVED 时豁免）；
+        (2) InitSolution 路径失败（M2-01-01..06-C、REP-INIT-*-C）在进入层求解前即退出，不存在失败层与保留层，exp_I1 与 exp_I2 更正为 N/A；同时增设 INIT_CLEAN=HOLD 断言（要求失败后所有层 modes_null=1、solution null、cache_count 0）；
+        (3) M2-05-P0-F3-C 图案层在第 0 层，失败层为 0，无保留层（依据 R6c 规则），exp_I2 更正为 N/A。
+
+E8-113	P05-S4 R8 M2c 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2c 任务书 §2、§3、§4，U270，F9）。原条目不改。
+        冒烟门禁 v2 规则增强：
+        (1) 新增注入行实测命中数校验：凡 exp_hit ≥ 1 的行，实测必须 hit ≥ 1（防止 G6 类似前缀错误导致未命中静默通过门禁）；
+        (2) 冒烟非 MATCH 分诊门禁：冒烟中出现任何非 MATCH 点，必须先写入分诊表并完成归类（预注册错误 / 装置错误 / 真实行为），方可启动正式运行。凡归类为预注册错误者，不得自行修改期望，必须报告或依已有裁决处理。

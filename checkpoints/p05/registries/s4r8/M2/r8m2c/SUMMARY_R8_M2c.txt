@@ -1,0 +1,23 @@
+# VERDICT_SUMMARY_R8_M2c -- P05-S4 R8 M2c verdict summary
+total_points: 54
+superseded_points: 0
+effective_points: 54
+MATCH: 36
+MISMATCH: 18
+FLAKY: 0
+GDB_DIVERGENT: 0
+UNJUDGED: 0 (by_design=0, missing=0)
+SCHEMA_ERROR: 0
+partition_assertion_54: PASSED
+
+## Breakdown by item:
+item	MATCH	MISMATCH	FLAKY	GDB_DIVERGENT	UNJUDGED_DESIGN	UNJUDGED_MISSING	SCHEMA_ERROR	TOTAL
+M2-03	11	0	0	0	0	0	0	11
+M2-03-SANREF	5	0	0	0	0	0	0	5
+M2-01	6	0	0	0	0	0	0	6
+M2-07-CTRL	3	0	0	0	0	0	0	3
+M2-05	1	0	0	0	0	0	0	1
+SOLN-1763	9	0	0	0	0	0	0	9
+SOLN-1764	0	9	0	0	0	0	0	9
+SOLN-1765	0	9	0	0	0	0	0	9
+M2-06-DIAG	1	0	0	0	0	0	0	1

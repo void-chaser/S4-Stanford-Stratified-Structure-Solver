@@ -1,0 +1,45 @@
+point_id	r8m2b_verdict	category	evidence	action
+M2-01-01-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:2	M2-01-01-F3-C
+M2-01-02-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:3	M2-01-02-F3-C
+M2-01-03-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:4	M2-01-03-F3-C
+M2-01-04-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:5	M2-01-04-F3-C
+M2-01-05-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:6	M2-01-05-F3-C
+M2-01-06-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:7	M2-01-06-F3-C
+M2-03-G6-01-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:80	M2-03-G6-01-F3-C
+M2-03-G6-03-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:78	M2-03-G6-03-F3-C
+M2-03-G6-04-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:77	M2-03-G6-04-F3-C
+M2-03-G6-05-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:76	M2-03-G6-05-F3-C
+M2-03-G6-06-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:81	M2-03-G6-06-F3-C
+M2-03-REP-INIT-01-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:2	M2-03-REP-INIT-01-F3-C
+M2-03-REP-INIT-02-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:3	M2-03-REP-INIT-02-F3-C
+M2-03-REP-INIT-03-F3	MISMATCH	F1	checkpoints/p05/registries/s4r8/M1a/ADDITIONS_MAPPING_22_R8_M1a6.tsv:4	M2-03-REP-INIT-03-F3-C
+M2-03-REP-INIT-04-F3	MISMATCH	F5	S4/S4.cpp:1763-1766	M2-03-REP-INIT-04-F3-C
+M2-03-REP-INIT-05-F3	MISMATCH	F5	S4/S4.cpp:1763-1766	M2-03-REP-INIT-05-F3-C
+M2-03-REP-INIT-06-F3	MISMATCH	F5	S4/S4.cpp:1763-1766	M2-03-REP-INIT-06-F3-C
+M2-06-01-F3	MISMATCH	F4	checkpoints/p05/evidence/p05-s4r8/m2b/run/pass1/M2-06-01-F3/stderr.txt:1	M2-06-DIAG-01-F3
+M2-07-CTRL-vl-ng2-F3	MISMATCH	F3	checkpoints/p05/registries/s4r8/M2/r8m2b/PREREG_M2_EFFECTIVE_R8_M2b.tsv:113	M2-07-CTRL-vl-ng2-F3-C
+M2-07-CTRL-vl-ng3-F3	MISMATCH	F3	checkpoints/p05/registries/s4r8/M2/r8m2b/PREREG_M2_EFFECTIVE_R8_M2b.tsv:114	M2-07-CTRL-vl-ng3-F3-C
+M2-07-CTRL-vl-ng4-F3	MISMATCH	F3	checkpoints/p05/registries/s4r8/M2/r8m2b/PREREG_M2_EFFECTIVE_R8_M2b.tsv:115	M2-07-CTRL-vl-ng4-F3-C
+M2-03-SANREF-G6-01-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:80	M2-03-SANREF-G6-01-F3-C
+M2-03-SANREF-G6-03-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:78	M2-03-SANREF-G6-03-F3-C
+M2-03-SANREF-G6-04-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:77	M2-03-SANREF-G6-04-F3-C
+M2-03-SANREF-G6-05-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:76	M2-03-SANREF-G6-05-F3-C
+M2-03-SANREF-G6-06-F3	MISMATCH	F2	checkpoints/p05/registries/s4r8/M1c/r8m1c2/PREREG_M1C_FACTS_R8_M1c2.tsv:81	M2-03-SANREF-G6-06-F3-C
+SOLN-1764-closed2d-ng1-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-closed2d-ng1-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-closed2d-ng1-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san posix_memalign not wrapped; ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-fft-ng5-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-fft-ng5-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-fft-ng5-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san posix_memalign not wrapped; ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-kottke-ng5-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-kottke-ng5-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1764-kottke-ng5-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san posix_memalign not wrapped; ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-closed2d-ng1-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-closed2d-ng1-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-closed2d-ng1-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-fft-ng5-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-fft-ng5-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-fft-ng5-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-kottke-ng5-F3-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1773 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-kottke-ng5-B-dbg	SMOKE_MISMATCH	真实行为	S4/S4.cpp:1764 memset(NULL) crash terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
+SOLN-1765-kottke-ng5-F3-san	SMOKE_MISMATCH	真实行为	init-F3-san ASAN abort terminates process before stdout flush; hit=1 reached	保持预注册不改进入正式两遍
