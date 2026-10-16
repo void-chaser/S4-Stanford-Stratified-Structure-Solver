@@ -254,3 +254,8 @@ U244	P05-S4 R8 M2a2 任务书 §3（于 r8m2a2 登记）	M2-04 双目标的语�
 U245	P05-S4 R8 M2a2 任务书 §3（于 r8m2a2 登记）	M2-05 的布局为 P0（图案层在第 0 层）、P2（图案层在第 2 层）、PP1（两个图案层，第一个失败）、PP2（两个图案层，第二个失败）。新建 `driver_r8m2a2_layers.cpp`（复制品规则，从 `driver_r6b_state.cpp` 复制），用 env `S4FMM_LAYOUT` 选布局。原布局（不设该变量时）的行为逐字不变。	P05-S4 R8 M2a2 任务书 §3.1	生效
 U246	P05-S4 R8 M2a2 任务书 §3（于 r8m2a2 登记）	M2-03 sanitizer。先跑 `san_probe_r8m2a2.sh`：只编译运行一个不链接 S4 的探针，确认 `-fsanitize=address,undefined` 可用。可用时，在 `$EV/build/san/` 构建 F3 sanitizer 库与 M2-01、M2-03 所需驱动。点集：`registries/s4r7/REGRESS_R7_M3.tsv`（G5、G6）中每个（mode × stage × inj_kind）单元格各 1 点，加 M2-01 的 17 个修复点。判定：sanitizer 报告数为 0，且 rc 与类别与非 sanitizer 运行一致。工具链不可用时标 `BUILD_FAILED`，不出点。	P05-S4 R8 M2a2 任务书 §3.1	生效
 U247	P05-S4 R8 M2a2 任务书 §3（于 r8m2a2 登记）	本轮为 r8m2a2。结束后停下，等用户审核预注册与 NOT_FOUND 类各项的去向。M2b 只在用户审核后开始。	P05-S4 R8 M2a2 任务书 §3.1	生效
+U248	P05-S4 R8 M2a4 任务书 §3	M2-02（阶段 e）：接受 r8m2a2 搜索结论 NOT_FOUND_IN_SCOPE；M2-02 在 S4 内不出点，转 S5。	P05-S4 R8 M2a4 任务书 §3	生效
+U249	P05-S4 R8 M2a4 任务书 §3	M2-08（类别 C）：接受原网格 NOT_FOUND；1D+FFT 候选（NEEDS_NEW_DRIVER_SCOPE_EXPANSION）不在 S4 扩驱动范围，转 S5 登记。	P05-S4 R8 M2a4 任务书 §3	生效
+U250	P05-S4 R8 M2a4 任务书 §3	r8m2a2 已披露的 14 项 safe_run 偏离按执行偏离接受，不追认为合规。	P05-S4 R8 M2a4 任务书 §3	生效
+U251	P05-S4 R8 M2a4 任务书 §3	五个 win:64 行（UNRESOLVED_INDEX）：M2b 中先做诊断运行（标 INFLUENCED，不得回填为事前验证）→ 确认索引 → 补预注册冻结 sha256 → 正式两遍运行。本轮只写设计（§7），不运行。	P05-S4 R8 M2a4 任务书 §3	生效
+U252	P05-S4 R8 M2a4 任务书 §3	r8m2a3 的结果按以下口径接受：原预注册未变；M2-04 call3 恢复索引、rc3 列、sanitizer UNOBSERVED、I7 与 exp_san 关系等修正有效；但 r8m2a3 的 COMPLETENESS「150/150 PASS / Complete end-to-end evidence chain verified」不成立（无运行器、无事实提取、无 gdb→I 值分析器），由本轮 COMPLETENESS v2 取代；Case J 把 I6 输出差异定为 SCHEMA_ERROR 是设计错误，由本轮更正。	P05-S4 R8 M2a4 任务书 §3	生效

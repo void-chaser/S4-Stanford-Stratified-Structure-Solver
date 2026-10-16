@@ -1,0 +1,212 @@
+# POSCTRL_M2_R8_M2a4 -- Synthetic Positive Control Results
+total_cases: 19
+passed_cases: 2
+failed_cases: 17
+
+Case	Description	Status	Detail
+Case A	完全匹配	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case B	改 rc1	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case C	仅第二遍改值	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case D	NZ 对 0 与 20	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case E	I1 违反	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case F	双失败 rc3!=0	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case F2	双失败 hit2=0	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case F3	双失败出现 INJECT2 SUPPRESSED	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case F4	第二失败层与 fail_layer2 不符	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case G	缺 gdb 日志	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case H	缺失 ID	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case I	tree 不符 (Tree mismatch -> SCHEMA_ERROR)	PASS	verdict=SCHEMA_ERROR, issues=TREE_MISMATCH_PASS1(B!=F3)
+Case J	I6 输出不同	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case L	M2-07 注入行 call1 输出	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case M	M2-10 rc1=20	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case K	san_reports!=0	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case P	sanitizer rc 与 san_ref 不同	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case Q	san_ref=NO_REF	FAIL	state_judge failed: Traceback (most recent call last):
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 519, in main
+    res, fl, req = judge_point(d, g, c, outs, couts, rc_retry)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/state_judge_m2_r8m2a4.py", line 213, in judge_point
+    res["I1"] = ("HOLD", "call1 layer %d modes_null 1 at k_fail; call2 layer %d modes_null 1 at k_fail2" % (fl1, fl2))
+                                                                                                            ^^^
+NameError: name 'fl1' is not defined. Did you mean: 'fl'?
+
+Case R	汇总合计!=150 构造输入断言失败退出 (Total!=150 exits non-zero)	PASS	exit_code=1, stderr=FATAL: Total points evaluated 149 != 150!

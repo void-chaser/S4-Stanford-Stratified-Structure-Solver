@@ -1,0 +1,13 @@
+# COMPLETENESS_SUMMARY_R8_M2a4 -- Traceability and completeness verification summary
+total_points_evaluated: 150
+PASS: 131
+UNJUDGED_BY_DESIGN: 19
+BLOCKER: 0
+total_assertion_150: PASSED
+blocker_list: none
+
+## Completeness partition:
+  - PASS: 131 points (all executable with full command plan, facts extraction, and analysis/verdict rules)
+  - UNJUDGED_BY_DESIGN: 19 points (M2-03 G5/G6 points with san_ref_point_id=NO_REF by U246/§5.2d design)
+  - BLOCKER: 0 points
+  - SUM: 131 + 19 = 150

@@ -1,0 +1,25 @@
+# POSCTRL_M2_R8_M2a4 -- Synthetic Positive Control Results
+total_cases: 19
+passed_cases: 18
+failed_cases: 1
+
+Case	Description	Status	Detail
+Case A	完全匹配 (Full match baseline)	FAIL	total=150, MATCH=130, UNJUDGED_DESIGN=19
+Case B	改 rc1 (Tamper rc1)	PASS	verdict=MISMATCH, mismatches=exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=20)
+Case C	仅第二遍改值 (FLAKY on pass 2)	PASS	verdict=FLAKY, flaky_fields=rc1(p1=20,p2=0),class(p1=REPORTED_FAILURE,p2=SILENT_SWALLOW)
+Case D	NZ 对 0 与 20 (NZ notation rc1=0 fails)	PASS	verdict=MISMATCH, mismatches=exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=NZ)
+Case E	I1 违反 (I1 VIOLATED -> MISMATCH)	PASS	verdict=MISMATCH, mismatches=I1=VIOLATED
+Case F	双失败 rc3!=0 (Dual failure rc3 non-zero)	PASS	verdict=MISMATCH, mismatches=I5=VIOLATED,exp_rc3(20!=0)
+Case F2	双失败 hit2=0 (Dual failure hit2=0)	PASS	verdict=MISMATCH, mismatches=exp_hit2(0!=1)
+Case F3	双失败出现 INJECT2 SUPPRESSED	PASS	verdict=MISMATCH, mismatches=exp_inject2_suppressed(1!=0)
+Case F4	第二失败层与 fail_layer2 不符 (Second fail layer mismatch)	PASS	verdict=MISMATCH, mismatches=I1=VIOLATED
+Case G	缺 gdb 日志 (Missing gdb log -> UNJUDGED)	PASS	verdict=UNJUDGED, detail=UNJUDGED_MISSING
+Case H	缺失 ID (Missing ID in pass 1 -> SCHEMA_ERROR)	PASS	verdict=SCHEMA_ERROR, issues=MISSING_IN_PASS1
+Case I	tree 不符 (Tree mismatch -> SCHEMA_ERROR)	PASS	verdict=SCHEMA_ERROR, issues=TREE_MISMATCH_PASS1(B!=F3)
+Case J	I6 输出不同记为 MISMATCH(I6) (I6 diff -> MISMATCH, not SCHEMA_ERROR)	PASS	verdict=MISMATCH, mismatches=I6=VIOLATED
+Case L	M2-07 注入行 call1 输出与对照不同不报错 (Failed call output diff not judged)	PASS	verdict=MATCH, mismatches=-
+Case M	M2-10 rc1=20 -> MATCH (BASELINE_ONLY_RULE)	PASS	verdict=MATCH, mismatches=-
+Case K	san_reports!=0 -> MISMATCH (ASan report detected)	PASS	verdict=MISMATCH, mismatches=exp_san(1!=0)
+Case P	sanitizer rc 与 san_ref 不同 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=20),san_ref_class(SILENT_SWALLOW!=REPORTED_FAILURE),san_ref_rc1(0!=20)
+Case Q	san_ref=NO_REF -> UNJUDGED_BY_DESIGN	PASS	verdict=UNJUDGED, detail=UNJUDGED_BY_DESIGN
+Case R	汇总合计!=150 构造输入断言失败退出 (Total!=150 exits non-zero)	PASS	exit_code=1, stderr=FATAL: Total points evaluated 149 != 150!

@@ -1,0 +1,9 @@
+# REPLAY_R6c_SUMMARY_R8_M2a4 -- Historical R6c State Analysis Replay Summary
+points_evaluated: 177
+passes_evaluated: 2
+total_point_pass_rows: 354
+invariants_checked_per_row: 6 (I1, I2, I3, I4, I5, I6)
+total_invariant_checks: 2124 (177 * 2 * 6)
+matching_invariant_checks: 2124
+differing_invariant_checks: 0
+replay_status: PASS_ZERO_DIFFERENCE

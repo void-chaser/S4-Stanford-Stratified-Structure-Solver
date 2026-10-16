@@ -1,0 +1,5 @@
+U248	P05-S4 R8 M2a4 任务书 §3	M2-02（阶段 e）：接受 r8m2a2 搜索结论 NOT_FOUND_IN_SCOPE；M2-02 在 S4 内不出点，转 S5。	P05-S4 R8 M2a4 任务书 §3	生效
+U249	P05-S4 R8 M2a4 任务书 §3	M2-08（类别 C）：接受原网格 NOT_FOUND；1D+FFT 候选（NEEDS_NEW_DRIVER_SCOPE_EXPANSION）不在 S4 扩驱动范围，转 S5 登记。	P05-S4 R8 M2a4 任务书 §3	生效
+U250	P05-S4 R8 M2a4 任务书 §3	r8m2a2 已披露的 14 项 safe_run 偏离按执行偏离接受，不追认为合规。	P05-S4 R8 M2a4 任务书 §3	生效
+U251	P05-S4 R8 M2a4 任务书 §3	五个 win:64 行（UNRESOLVED_INDEX）：M2b 中先做诊断运行（标 INFLUENCED，不得回填为事前验证）→ 确认索引 → 补预注册冻结 sha256 → 正式两遍运行。本轮只写设计（§7），不运行。	P05-S4 R8 M2a4 任务书 §3	生效
+U252	P05-S4 R8 M2a4 任务书 §3	r8m2a3 的结果按以下口径接受：原预注册未变；M2-04 call3 恢复索引、rc3 列、sanitizer UNOBSERVED、I7 与 exp_san 关系等修正有效；但 r8m2a3 的 COMPLETENESS「150/150 PASS / Complete end-to-end evidence chain verified」不成立（无运行器、无事实提取、无 gdb→I 值分析器），由本轮 COMPLETENESS v2 取代；Case J 把 I6 输出差异定为 SCHEMA_ERROR 是设计错误，由本轮更正。	P05-S4 R8 M2a4 任务书 §3	生效
