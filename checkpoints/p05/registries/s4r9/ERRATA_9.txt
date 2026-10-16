@@ -1,3 +1,39 @@
 # ERRATA_9.txt -- P05-S4 R9 勘误与执行偏离记录（P05-S4 子轮次 R9，M0+M2）
 # 只追加。编号从 E9-1 起。依据 AGENTS.md 第 2、5 节与 P05-S4 R9 任务书 §4 S-B。
 # 截至 S-B 阶段：本轮尚未发生执行偏离或勘误事项。
+
+E9-1
+- 事实：k_inherit_r9.py:279 取 min(len(f3), len(f4), K_max+2)，命中数不等时不判失败；:294-296 大小不同时直接 pass。实测：KGRP-071（seamF-F4-san, fft NG9, S4_TEST_ALLOC_HOOK）F3 命中 4 次、F4 命中 2 次，仍记 PASS；24 组命中数少于 K_max+2；10 组（KGRP-001…009 d003plan，bp __wrap__Z9S4_mallocm；KGRP-025 nan）所有命中都是 arg=None func=… -:0，没有大小，也没有 S4 帧。
+- 证据文件与行号：testing/d003/stage_s4r9/k_inherit_r9.py:279,294-296；checkpoints/p05/registries/s4r9/M0/K_INHERIT_RAW_R9.txt:817-830,1-35；checkpoints/p05/registries/s4r9/M0/K_INHERIT_R9.tsv。
+- 影响范围：R9 M0 的 K 继承证明结论（K_INHERIT_R9.tsv）。191 点运行本身未被直接影响，但其 K 继承证据链存在形式漏洞。
+- 处理方式：依 U300 重做 K 继承证明脚本 k_inherit_r9m2b.py，产出 K_INHERIT_R9M2b.tsv 与 K_INHERIT_RAW_R9M2b.txt；严格要求命中数相等、比对大小与映射帧；无法取证的记 NO_SEQ_EVIDENCE_R2 并以 F-3 HIT 等价作为替代证据列入待裁决；原 K_INHERIT_R9.tsv 原样保留。
+
+E9-2
+- 事实：verdict_m2_r9.py:316 只在 state_analyzer 非空时判 exp_I1..I6，SOLN 18 行该列是 -；:281 只对 item=M2-03 判 exp_san。因此 SOLN 的 exp_I6=HOLD 与 9 个 san 行的 exp_san=0 未被判定引擎执行判定。只读核对表明：两遍中 SOLN 的 call2_sha256 均等于对应对照点（M2-01-CTRL-01/02/03-F4）的 call2_sha256（18/18 相同）；9 个 san 行两遍的 san_reports=0、san_crash=0。posctrl R9_5/R9_6 误用 M2-01-01-F3（带 state_analyzer），未覆盖 SOLN 配置。
+- 证据文件与行号：testing/d003/stage_s4r9/verdict_m2_r9.py:281,316；testing/d003/stage_s4r9/posctrl_r9.py:339-354；checkpoints/p05/registries/s4r9/M2/FACTS_pass1_R9.tsv、FACTS_pass2_R9.tsv；checkpoints/p05/registries/s4r9/M0/PREREG_SOLN_F4_R9.tsv。
+- 影响范围：R9 M2 中 18 个 SOLN 点的 I6 与 san 判定覆盖状态（引擎漏判这两列）。
+- 处理方式：编写独立补判脚本 soln_supp_r9m2b.py 及阳性对照 posctrl_soln_r9m2b.py，直接只读 FACTS 表对 SOLN 18 点进行两遍 I6 与 san 独立补判，产出 SOLN_SUPP_JUDGE_R9M2b.tsv；原判定文件不改写。
+
+E9-3
+- 事实：Git reflog 显示收尾提交先为 a7f6044，后续经 git commit --amend 改写为 ebf3d00。而在报告 checkpoints/p05/P05_S4R9_M2_REPORT.md 第 17 节中记录的提交哈希仍为 a7f6044。
+- 证据文件与行号：git reflog（ebf3d00 HEAD@{0}: commit (amend)... a7f6044 HEAD@{1}: commit...）；checkpoints/p05/P05_S4R9_M2_REPORT.md:327,334。
+- 影响范围：R9 M2 收尾提交的追溯记录与报告文本不一致。违反不得 amend 历史的软/硬纪律。
+- 处理方式：依据 U299 采信实测数据，报告原件不改写；在 EVENTS_R9_ALL_R9M2b.tsv 与补充报告 P05_S4R9_M2b_REPORT.md 中如实披露 amend 记录与真实 HEAD ebf3d00；严禁再次执行 amend 或 rebase。
+
+E9-4
+- 事实：m0 与 m2 的 safe_run.log 存在多次重跑与清理未在报告 §14.2 工具与脚本事件表中完整披露，且日志行号引述有误。m0 日志第 118、119、121 行为 build（第 120 行为 rm）；第 122、123 行为 gdb_audit；第 124、125 行为 noinj；第 127、128 行为 prereg；第 129–139 行为 posctrl（11 次）。m2 日志第 1、3、5、7 行为 smoke，第 2、4、6 行为 rm，第 9、10 行为 consolidate。报告 §14.2 误记为"m0 第 103/105 行"，且遗漏大量重跑记录。
+- 证据文件与行号：checkpoints/p05/evidence/p05-s4r9/m0/safe_run.log:118-139；checkpoints/p05/evidence/p05-s4r9/m2/safe_run.log:1-10；checkpoints/p05/P05_S4R9_M2_REPORT.md:293-302。
+- 影响范围：R9 M0 与 M2 执行过程事件的完整度与追溯准确性。
+- 处理方式：由脚本 events_r9m2b.py 自动从 m0、m2、m2b 的 safe_run.log 提取全部行号与命令，重建完整事件总表 EVENTS_R9_ALL_R9M2b.tsv，不手填行号，并在补充报告中披露。
+
+E9-5
+- 事实：判定装置脚本 facts_m2_r9.py、state_judge_m2_r9.py、verdict_m2_r9.py、run_*_r9.py、posctrl_r9.py 写于 M0 提交 bb6f1e8 之后。相对 stage_s4/*_r8m2e.py 原件存在实质改动：facts 增加从 stdout R6STATE 1 solution_null 提取 post_call1_solution；state_judge 在 -F3 对照不存在时自动改用 -F4 并调整 dump 目录查找顺序；verdict 对照点与 san_ref 执行 F3→F4 重映射。上述变更未在 M0 提交时的 RUNNER_DIFF_R9.txt 或 ERRATA_9.txt 中登记。
+- 证据文件与行号：git log --oneline -- testing/d003/stage_s4r9/；testing/d003/stage_s4r9/facts_m2_r9.py:370,406；testing/d003/stage_s4r9/state_judge_m2_r9.py:439-448,462-470；testing/d003/stage_s4r9/verdict_m2_r9.py:292-293,356-357；checkpoints/p05/registries/s4r9/M0/RUNNER_DIFF_R9.txt。
+- 影响范围：装置演化合规性与记录透明度。改动本身使得 F4 上的判定能正常找到 F4 产物及从 stdout 捕获状态，未篡改判定准则。
+- 处理方式：由 judge_diff_r9m2b.py 生成统一 diff 文件 JUDGE_TOOL_DIFF_R9M2b.txt，逐段分析说明，并用事实论证改动对 191 点判定结果无非预期负面影响。
+
+E9-6
+- 事实：执行报告 P05_S4R9_M2_REPORT.md 多处使用了违规措辞（如"100%""完全符合""全面闭环"）；SUMMARY_R9.txt 表头误写为 VERDICT_SUMMARY_R8_M2d，FACTS_pass{1,2}_R9.tsv 表头误写为 FACTS_R8_M2d pass 1/2。
+- 证据文件与行号：checkpoints/p05/P05_S4R9_M2_REPORT.md:115,266,307；checkpoints/p05/registries/s4r9/M2/SUMMARY_R9.txt:1；checkpoints/p05/registries/s4r9/M2/FACTS_pass1_R9.tsv:1、FACTS_pass2_R9.tsv:1。
+- 影响范围：报告规范性与表头命名历史遗留标识。
+- 处理方式：原提交文件依据 U299 不作改写；在补充报告 P05_S4R9_M2b_REPORT.md 中纠正表头说明并规范措辞，严格消除强化用语。
