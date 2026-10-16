@@ -1760,17 +1760,30 @@ int Simulation_InitSolution(S4_Simulation *S){
 	if(NULL != S->solution){
 		Simulation_DestroySolution(S);
 	}
-	S->solution = (Solution_*)malloc(sizeof(Solution_));
-	S->solution->ab = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * S->n_layers * 4 * S->n_G);
-	S->solution->solved = (int*)malloc(sizeof(int) * S->n_layers);
-	if(NULL == S->solution || NULL == S->solution->ab || NULL == S->solution->solved){
+	Solution_ *sol = (Solution_*)malloc(sizeof(Solution_));
+	if(NULL == sol){
 		S4_TRACE("< Simulation_InitSolution (failed; could not allocate S->solution) [omega=%f]\n", S->omega[0]);
 		if(NULL != S->msg){
 			S->msg(S->msgdata, "Simulation_InitSolution", S4_MSG_ERROR, "Could not allocate solution memory");
 		}
 		return 1;
 	}
-	memset(S->solution->solved, 0, sizeof(int) * S->n_layers);
+	sol->ab = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * S->n_layers * 4 * S->n_G);
+	sol->solved = (int*)malloc(sizeof(int) * S->n_layers);
+	if(NULL == sol->ab || NULL == sol->solved){
+		if(NULL != sol->ab){
+			S4_free(sol->ab);
+		}
+		free(sol->solved);
+		free(sol);
+		S4_TRACE("< Simulation_InitSolution (failed; could not allocate S->solution) [omega=%f]\n", S->omega[0]);
+		if(NULL != S->msg){
+			S->msg(S->msgdata, "Simulation_InitSolution", S4_MSG_ERROR, "Could not allocate solution memory");
+		}
+		return 1;
+	}
+	memset(sol->solved, 0, sizeof(int) * S->n_layers);
+	S->solution = sol;
 
 	S4_TRACE("I  Simulation_InitSolution G: (%d) [omega=%f]\n", S->n_G, S->omega[0]);
 
