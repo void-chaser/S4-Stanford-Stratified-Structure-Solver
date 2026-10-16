@@ -1,0 +1,7 @@
+# allowed git status entries at end of P05-S4 R8 M2d (case patterns; checked by gate_r8m2d.sh)
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/P05_S4R8_M2D_REPORT.md
+?? checkpoints/p05/registries/s4r8/M2/r8m2d/*
+?? testing/d003/stage_s4/*r8m2d*

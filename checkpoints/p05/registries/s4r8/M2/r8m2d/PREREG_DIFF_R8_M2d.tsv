@@ -1,0 +1,209 @@
+# PREREG_DIFF_R8_M2d.tsv -- audit of all column changes in v5 delta table
+new_point_id	orig_point_id	column	orig_value	new_value	authorization	reason
+M2-06-01-F3-C	M2-06-01-F3	exp_rc1	0	20	U274	M206_DIAG_SUMMARY.txt: rc1=20
+M2-06-01-F3-C	M2-06-01-F3	exp_class	SILENT_SWALLOW	REPORTED_FAILURE	U274	M206_DIAG_SUMMARY.txt: REPORTED_FAILURE
+M2-06-01-F3-C	M2-06-01-F3	exp_crash_call	-	NONE	U272	non-crash point
+M2-06-01-F3-C	M2-06-01-F3	exp_crash_site	-	-	U272	non-crash point
+M2-06-01-F3-C	M2-06-01-F3	exp_post_call1_solution	-	-	U272	not a SOLN point
+M2-06-01-F3-C	M2-06-01-F3	basis	U240; K1_ANCHOR_R8_M2a2.tsv; [源码]: fmm_closed.cpp:244 tensor branch has no isfinite check; r8m2a4: output_assertion=RECORD_ONLY	U274; M206_DIAG_SUMMARY.txt; supersedes M2-06-01-F3	U274	updated basis note
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-closed2d-ng1-F3-dbg-C	SOLN-1763-closed2d-ng1-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-closed2d-ng1-F3-dbg	U273	updated basis note
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	exp_crash_site	-	S4.cpp:1755	U272/U273	crashed at S4.cpp:1755
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-closed2d-ng1-B-dbg-C	SOLN-1763-closed2d-ng1-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-closed2d-ng1-B-dbg	U273	updated basis note
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-closed2d-ng1-F3-san-C	SOLN-1763-closed2d-ng1-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-closed2d-ng1-F3-san	U273	updated basis note
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-fft-ng5-F3-dbg-C	SOLN-1763-fft-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-fft-ng5-F3-dbg	U273	updated basis note
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	exp_crash_site	-	S4.cpp:1755	U272/U273	crashed at S4.cpp:1755
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-fft-ng5-B-dbg-C	SOLN-1763-fft-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-fft-ng5-B-dbg	U273	updated basis note
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-fft-ng5-F3-san-C	SOLN-1763-fft-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-fft-ng5-F3-san	U273	updated basis note
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-kottke-ng5-F3-dbg-C	SOLN-1763-kottke-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-kottke-ng5-F3-dbg	U273	updated basis note
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	exp_crash_site	-	S4.cpp:1755	U272/U273	crashed at S4.cpp:1755
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-kottke-ng5-B-dbg-C	SOLN-1763-kottke-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-kottke-ng5-B-dbg	U273	updated basis note
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	exp_rc1	MISSING	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	exp_rc2	MISSING	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	exp_crash_call	-	1	U272/U273	crashed in call 1
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	exp_crash_site	-	S4.cpp:1764	U272/U273	crashed at S4.cpp:1764
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	exp_post_call1_solution	-	-	U272	call 1 crashed before finish
+SOLN-1763-kottke-ng5-F3-san-C	SOLN-1763-kottke-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; 补断言，非消除 MISMATCH; supersedes SOLN-1763-kottke-ng5-F3-san	U273	updated basis note
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	crashed at S4.cpp:1995（[源码] 推断）
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-closed2d-ng1-F3-dbg-C	SOLN-1764-closed2d-ng1-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-closed2d-ng1-F3-dbg	U273	updated basis note
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	exp_crash_site	-	S4.cpp:1986（[源码] 推断）	U272/S-D	crashed at S4.cpp:1986（[源码] 推断）
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-closed2d-ng1-B-dbg-C	SOLN-1764-closed2d-ng1-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-closed2d-ng1-B-dbg	U273	updated basis note
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	env	FMM_MODE=closed2d;S4FMM_NG=1;S4FMM_INJECT=init:8	FMM_MODE=closed2d;S4FMM_NG=1;S4_FAIL_ALLOC_AT=3	U273	changed to S4_FAIL_ALLOC_AT=3 injection
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	inferred crash site
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	exp_post_call1_solution	-	-	U272	no gdb log for san
+SOLN-1764-closed2d-ng1-F3-san-FA	SOLN-1764-closed2d-ng1-F3-san	basis	[源码] 未验证	U272, U273; F-5/F-6 S4_FAIL_ALLOC_AT=3 from S4MALLOC_MAP_R8_M2d.tsv; supersedes SOLN-1764-closed2d-ng1-F3-san	U273	updated basis note
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	crashed at S4.cpp:1995（[源码] 推断）
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-fft-ng5-F3-dbg-C	SOLN-1764-fft-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-fft-ng5-F3-dbg	U273	updated basis note
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	exp_crash_site	-	S4.cpp:1986（[源码] 推断）	U272/S-D	crashed at S4.cpp:1986（[源码] 推断）
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-fft-ng5-B-dbg-C	SOLN-1764-fft-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-fft-ng5-B-dbg	U273	updated basis note
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	env	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=init:9	FMM_MODE=fft;S4FMM_NG=5;S4_FAIL_ALLOC_AT=3	U273	changed to S4_FAIL_ALLOC_AT=3 injection
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	inferred crash site
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	exp_post_call1_solution	-	-	U272	no gdb log for san
+SOLN-1764-fft-ng5-F3-san-FA	SOLN-1764-fft-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-5/F-6 S4_FAIL_ALLOC_AT=3 from S4MALLOC_MAP_R8_M2d.tsv; supersedes SOLN-1764-fft-ng5-F3-san	U273	updated basis note
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	crashed at S4.cpp:1995（[源码] 推断）
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-kottke-ng5-F3-dbg-C	SOLN-1764-kottke-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-kottke-ng5-F3-dbg	U273	updated basis note
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	exp_crash_site	-	S4.cpp:1986（[源码] 推断）	U272/S-D	crashed at S4.cpp:1986（[源码] 推断）
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	exp_post_call1_solution	-	NONNULL	U272	S->solution non-null after call 1
+SOLN-1764-kottke-ng5-B-dbg-C	SOLN-1764-kottke-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-3/F-4; supersedes SOLN-1764-kottke-ng5-B-dbg	U273	updated basis note
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	env	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=init:9	FMM_MODE=kottke;S4FMM_NG=5;S4_FAIL_ALLOC_AT=3	U273	changed to S4_FAIL_ALLOC_AT=3 injection
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	exp_crash_site	-	S4.cpp:1995（[源码] 推断）	U272/S-D	inferred crash site
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	exp_post_call1_solution	-	-	U272	no gdb log for san
+SOLN-1764-kottke-ng5-F3-san-FA	SOLN-1764-kottke-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-5/F-6 S4_FAIL_ALLOC_AT=3 from S4MALLOC_MAP_R8_M2d.tsv; supersedes SOLN-1764-kottke-ng5-F3-san	U273	updated basis note
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-closed2d-ng1-F3-dbg-C	SOLN-1765-closed2d-ng1-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-closed2d-ng1-F3-dbg	U273	updated basis note
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	exp_crash_site	-	S4.cpp:2012	U272/S-D	crashed at S4.cpp:2012
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-closed2d-ng1-B-dbg-C	SOLN-1765-closed2d-ng1-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-closed2d-ng1-B-dbg	U273	updated basis note
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	exp_post_call1_solution	-	-	U272	post call 1 solution state
+SOLN-1765-closed2d-ng1-F3-san-C	SOLN-1765-closed2d-ng1-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-closed2d-ng1-F3-san	U273	updated basis note
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-fft-ng5-F3-dbg-C	SOLN-1765-fft-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-fft-ng5-F3-dbg	U273	updated basis note
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	exp_crash_site	-	S4.cpp:2012	U272/S-D	crashed at S4.cpp:2012
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-fft-ng5-B-dbg-C	SOLN-1765-fft-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-fft-ng5-B-dbg	U273	updated basis note
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	exp_post_call1_solution	-	-	U272	post call 1 solution state
+SOLN-1765-fft-ng5-F3-san-C	SOLN-1765-fft-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-fft-ng5-F3-san	U273	updated basis note
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-kottke-ng5-F3-dbg-C	SOLN-1765-kottke-ng5-F3-dbg	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-kottke-ng5-F3-dbg	U273	updated basis note
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	gdb_script	testing/d003/stage_s4/r6c_state_r8m2a3.gdb	testing/d003/stage_s4/r6c_state_bt_r8m2d.gdb	U272/S-B	upgraded to bt 24 gdb script
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	gdb_script_sha256	5afecd95cc5a914e7ce8d7d6f054daea0d3942b294503833ae28ac59b7ce7221	e5e92799a524df3f4dad3a12a0740f126b6bdcf461b8bae318d6bb8d928e28ba	U272/S-B	sha of upgraded gdb script
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	exp_crash_site	-	S4.cpp:2012	U272/S-D	crashed at S4.cpp:2012
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	exp_post_call1_solution	-	NONNULL	U272	post call 1 solution state
+SOLN-1765-kottke-ng5-B-dbg-C	SOLN-1765-kottke-ng5-B-dbg	basis	[源码] 未验证; BASELINE_ONLY 非修复证据	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-kottke-ng5-B-dbg	U273	updated basis note
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	exp_rc1	1	-	U272	crash row exp_rc1 unobservable -> -
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	exp_rc2	0	-	U272	crash row exp_rc2 unobservable -> -
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	exp_crash_call	-	2	U272	crashed in call 2
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	exp_crash_site	-	S4.cpp:2021	U272/S-D	crashed at S4.cpp:2021
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	exp_post_call1_solution	-	-	U272	post call 1 solution state
+SOLN-1765-kottke-ng5-F3-san-C	SOLN-1765-kottke-ng5-F3-san	basis	[源码] 未验证	U272, U273; F-1/F-2/F-4; supersedes SOLN-1765-kottke-ng5-F3-san	U273	updated basis note

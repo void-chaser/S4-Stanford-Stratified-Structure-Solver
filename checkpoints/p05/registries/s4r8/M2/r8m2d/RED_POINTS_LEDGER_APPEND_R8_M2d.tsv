@@ -1,0 +1,5 @@
+# RED_POINTS_LEDGER_APPEND_R8_M2d.tsv -- Red points ledger append for r8m2d
+id	source_round	site	tree	category	evidence	status	destination
+RP-R8-M2c-1	R8 M2c (U265), M2d (U271/U272)	S4/S4.cpp:1763–1766 (B: 1754–1757)	F3, B	F_CONFIRMED	S4MALLOC_MAP_R8_M2d.tsv; ASAN SEGV at S4.cpp:1764 (调用1 driver_r6b_state.cpp:211); S->solution 解引用空指针崩溃。改正 r8m2c 误写 1773 的问题。	OPEN (已表征，待修复)	P05-S3R5 修复轮（改 S4.cpp InitSolution 判空清理，冻结新树 F4）
+RP-R8-M2c-1b	R8 M2c (U265), M2d (U272/U275)	S4/S4.cpp:1764,1765; 1802; 1995,2021 (B: 1755,1756; 1793; 1986,2012)	F3, B	F_CONFIRMED	实测证实：R6BSTATE 1 记录 solution solved 非 NULL；S4.cpp:1802 重试跳过 InitSolution；调用 2（driver_r6b_state.cpp:227）解引用空指针；1764 经 bt 24 确认崩于 S4.cpp:1995 memset(pab)；1765 经 ASAN/bt 确认崩于 S4.cpp:2021 sol->solved。升级为 F_CONFIRMED。	OPEN (已实测证实重试崩溃，待修复)	P05-S3R5 修复轮（与 RP-R8-M2c-1 一并修复）
+K-1	R8 M2c (U264), M2d (U274)	fmm_closed.cpp:244 / S4.cpp:2474-2478	F3	CLOSED	U274; M206_DIAG_SUMMARY.txt; F3 nan 驱动 tensor NG=5 model 1 上未复现静默吞没：NaN 到达本征求解 info=10，S4.cpp:2477 return 20。M2-06-01-F3-C 实测 MATCH（rc1=20, REPORTED_FAILURE）。	CLOSED (带范围声明关闭：本装置与模型下未复现静默吞没，由 U274 关闭)	关闭

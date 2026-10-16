@@ -1,0 +1,20 @@
+# ERRATA_R8_M2d.txt -- P05-S4 R8 M2d 勘误记录
+# 依据：AGENTS.md 第 2、5 节，P05-S4 R8 M2d 任务书 §2、§3，U271、U272、U273
+
+E8-114	P05-S4 R8 M2d 更正（依据 U271、U272、U273，F-1 至 F-7。任务书注 E8-110 起编号；因 r8m2c 已在 ERRATA_8.txt 登记至 E8-113，为保持全局编号唯一递增，顺延为 E8-114）。
+	SOLN-1764 与 SOLN-1765 共 18 行分诊改正与装置标签更正：
+	(1) 预注册错误改正（18 行）：
+	    driver_r6b_state.cpp 使用全缓冲 printf 输出返回码；进程被 SIGSEGV 击毙时 stdout 为空，rc1/rc2 在进程崩溃时不可观测。
+	    原预注册 v4 增量表中对预期 CRASH / SAN_CRASH 的行登记了 exp_rc1/exp_rc2 数值期望，导致实测 MISSING 报 MISMATCH。
+	    此为预注册错误，更正为 exp_rc1="-"、exp_rc2="-"（不判），改判 exp_signal、exp_crash_call=2、exp_crash_site、exp_post_call1_solution=NONNULL。
+	(2) 装置标签错误改正（1764-san 3 行）：
+	    init-F3-san 驱动在 S4_HAVE_ASAN 条件下，numalloc.c 中的 malloc_aligned 走 posix_memalign，不经过链接器的 --wrap=malloc。
+	    因此 MALLOC_MAP_R8_M2c.tsv 中 closed2d san k=8、fft/kottke san k=9 实际命中的均为 1765_solved（NULL == sol->solved），
+	    原预注册 PREREG_M2_DELTA_R8_M2c.tsv 中的 SOLN-1764-{closed2d-ng1,fft-ng5,kottke-ng5}-F3-san 三行属装置标签错误。
+	    更正为：原行标 SUPERSEDED_BY；改用 S4.cpp:52-113 现有的 S4_FAIL_ALLOC_AT 进行注入，建立 -C-FA 行。
+	(3) 崩溃位置与事实列更正：
+	    r8m2c 分诊表第 28–45 行误写崩溃发生在 "S4.cpp:1773 memset(NULL)"，与物理实测不符（1773 位于判空之后）。
+	    真实崩溃位置经实测堆栈确认：
+	    - 1765：发生在调用 2（driver_r6b_state.cpp:227），F3 停在 S4.cpp:2021 sol->solved，B 停在 S4.cpp:2012；
+	    - 1764 dbg：发生在调用 2（driver_r6b_state.cpp:227），崩在 libc __memset_avx2_unaligned_erms（推断为 S4.cpp:1995 memset(pab)）；
+	    - 调用 1 失败返回后，S->solution 保持非 NULL（R6BSTATE 1 记录），S4.cpp:1802 使调用 2 重试跳过 InitSolution 直接解引用空指针崩溃。

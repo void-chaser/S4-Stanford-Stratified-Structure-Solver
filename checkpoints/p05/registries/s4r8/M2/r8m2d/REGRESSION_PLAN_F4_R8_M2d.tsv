@@ -1,0 +1,29 @@
+# REGRESSION_PLAN_F4_R8_M2d.tsv -- F4 regression plan for SOLN 27 points
+point_id	f4_driver	f4_exp_rc1	f4_exp_rc2	f4_exp_class	f4_exp_init_clean	f4_exp_crash_call	b_baseline_behavior	notes
+SOLN-1763-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-closed2d-ng1-B-dbg-C	init-F4-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-closed2d-ng1-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-fft-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-fft-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-kottke-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-kottke-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-closed2d-ng1-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-closed2d-ng1-F3-san-FA	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-fft-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-fft-ng5-F3-san-FA	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-kottke-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-kottke-ng5-F3-san-FA	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-closed2d-ng1-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-closed2d-ng1-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-fft-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-fft-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-kottke-ng5-B-dbg-C	init-F4-dbg	-	-	CRASH	-	2	CRASH at call 1 (1763) or call 2 (1764/1765) [BASELINE_ONLY 非修复证据]	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-kottke-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功

@@ -1,0 +1,184 @@
+# S4_MALLOC MAPPING TEST OUTPUT
+
+=== DRIVER: init-F3-san COMBO: closed2d-ng1 ===
+  k=1: #1  0x00005555557a39f5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=1, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x00005555557a64b5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=1, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x00005555557bede9 in Simulation_InitSolution (S=0x7d2ff4fe0040) at S4/S4.cpp:1764
+  k=4: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0180, layer_modes=0x7d0ff4fe01b8) at S4/S4.cpp:2310
+  k=5: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2310
+  k=6: #1  0x00005555557a176b in __wrap__Z9S4_mallocm (size=192) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x00005555557d1ec3 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2430
+  k=8: #1  0x00005555557d25f5 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2455
+  k=9: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0200, layer_modes=0x7d0ff4fe0238) at S4/S4.cpp:2310
+  k=10: #1  0x00005555557c2209 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1918
+  k=11: #1  0x00005555557c22b6 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1919
+  k=12: #1  0x00005555557c2363 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1920
+  k=13: #1  0x00005555557c3541 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1949
+  k=14: #1  0x00005555557c4987 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2002
+  k=15: #1  0x00005555557c4a3c in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2003
+  k=16: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe1240, H=0x7d6ff4fe15c0) at S4/S4.cpp:4342
+  k=17: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe1940, H=0x7d6ff4fe1cc0) at S4/S4.cpp:4342
+  k=18: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe2040, H=0x7d6ff4fe23c0) at S4/S4.cpp:4342
+
+=== DRIVER: init-F3-san COMBO: fft-ng5 ===
+  k=1: #1  0x00005555557a39f5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x00005555557a64b5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x00005555557bede9 in Simulation_InitSolution (S=0x7d2ff4fe0040) at S4/S4.cpp:1764
+  k=4: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0180, layer_modes=0x7d0ff4fe01b8) at S4/S4.cpp:2310
+  k=5: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2310
+  k=6: #1  0x00005555557a176b in __wrap__Z9S4_mallocm (size=6144) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x00005555557a176b in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=8: #1  0x00005555557d1ec3 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2430
+  k=9: #1  0x00005555557d25f5 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2455
+  k=10: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0200, layer_modes=0x7d0ff4fe0238) at S4/S4.cpp:2310
+  k=11: #1  0x00005555557c2209 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1918
+  k=12: #1  0x00005555557c22b6 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1919
+  k=13: #1  0x00005555557c2363 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1920
+  k=14: #1  0x00005555557c3541 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1949
+  k=15: #1  0x00005555557c4987 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2002
+  k=16: #1  0x00005555557c4a3c in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2003
+  k=17: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe15c0, H=0x7d6ff4fe1940) at S4/S4.cpp:4342
+  k=18: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe1cc0, H=0x7d6ff4fe2040) at S4/S4.cpp:4342
+  k=19: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe23c0, H=0x7d6ff4fe2740) at S4/S4.cpp:4342
+
+=== DRIVER: init-F3-san COMBO: kottke-ng5 ===
+  k=1: #1  0x00005555557a39f5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x00005555557a64b5 in S4_Simulation_New (Lr=0x7bfff3ef0210, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x00005555557bede9 in Simulation_InitSolution (S=0x7d2ff4fe0040) at S4/S4.cpp:1764
+  k=4: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0180, layer_modes=0x7d0ff4fe01b8) at S4/S4.cpp:2310
+  k=5: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2310
+  k=6: #1  0x00005555557a176b in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x00005555557d1ec3 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2430
+  k=8: #1  0x00005555557d25f5 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7d0ff4fe01f8) at S4/S4.cpp:2455
+  k=9: #1  0x00005555557cd664 in Simulation_ComputeLayerModes (S=0x7d2ff4fe0040, L=0x7d0ff4fe0200, layer_modes=0x7d0ff4fe0238) at S4/S4.cpp:2310
+  k=10: #1  0x00005555557c2209 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1918
+  k=11: #1  0x00005555557c22b6 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1919
+  k=12: #1  0x00005555557c2363 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1920
+  k=13: #1  0x00005555557c3541 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:1949
+  k=14: #1  0x00005555557c4987 in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2002
+  k=15: #1  0x00005555557c4a3c in Simulation_ComputeLayerSolution (S=0x7d2ff4fe0040, L=0x7d0ff4fe01c0, layer_modes=0x7bfff3cf0020, layer_solution=0x7bfff3cf0040) at S4/S4.cpp:2003
+  k=16: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe15c0, H=0x7d6ff4fe1940) at S4/S4.cpp:4342
+  k=17: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe1cc0, H=0x7d6ff4fe2040) at S4/S4.cpp:4342
+  k=18: #1  0x00005555557f88ce in S4_Simulation_GetFieldPlane (S=0x7d2ff4fe0040, nxy=0x7bfff42f01a0, xyz0=0x7bfff42f01c0, E=0x7d6ff4fe23c0, H=0x7d6ff4fe2740) at S4/S4.cpp:4342
+
+=== DRIVER: init-F3-dbg COMBO: closed2d-ng1 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb240, nG=1, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb240, nG=1, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555daee in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1764
+  k=4: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169c0, layer_modes=0x5555556169f8) at S4/S4.cpp:2310
+  k=5: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2310
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=192) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x000055555556189c in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2430
+  k=8: #1  0x0000555555561a36 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2455
+  k=9: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a40, layer_modes=0x555555616a78) at S4/S4.cpp:2310
+  k=10: #1  0x000055555555e2d2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1918
+  k=11: #1  0x000055555555e2f1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1919
+  k=12: #1  0x000055555555e310 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1920
+  k=13: #1  0x000055555555e610 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1949
+  k=14: #1  0x000055555555eacb in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2002
+  k=15: #1  0x000055555555eaf2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2003
+  k=16: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x555555616c20, H=0x555555616ef0) at S4/S4.cpp:4342
+  k=17: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x555555619eb0, H=0x55555561a180) at S4/S4.cpp:4342
+  k=18: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x55555561a450, H=0x55555561a720) at S4/S4.cpp:4342
+
+=== DRIVER: init-F3-dbg COMBO: fft-ng5 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb240, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb240, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555daee in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1764
+  k=4: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169e0, layer_modes=0x555555616a18) at S4/S4.cpp:2310
+  k=5: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2310
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=6144) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=8: #1  0x000055555556189c in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2430
+  k=9: #1  0x0000555555561a36 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2455
+  k=10: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a60, layer_modes=0x555555616a98) at S4/S4.cpp:2310
+  k=11: #1  0x000055555555e2d2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1918
+  k=12: #1  0x000055555555e2f1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1919
+  k=13: #1  0x000055555555e310 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1920
+  k=14: #1  0x000055555555e610 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1949
+  k=15: #1  0x000055555555eacb in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2002
+  k=16: #1  0x000055555555eaf2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2003
+  k=17: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x555555617210, H=0x5555556174e0) at S4/S4.cpp:4342
+  k=18: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x55555561cf30, H=0x55555561c7c0) at S4/S4.cpp:4342
+  k=19: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x55555561ca90, H=0x55555561e190) at S4/S4.cpp:4342
+
+=== DRIVER: init-F3-dbg COMBO: kottke-ng5 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb240, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb240, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555daee in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1764
+  k=4: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169e0, layer_modes=0x555555616a18) at S4/S4.cpp:2310
+  k=5: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2310
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x000055555556189c in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2430
+  k=8: #1  0x0000555555561a36 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2455
+  k=9: #1  0x0000555555560c30 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a60, layer_modes=0x555555616a98) at S4/S4.cpp:2310
+  k=10: #1  0x000055555555e2d2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1918
+  k=11: #1  0x000055555555e2f1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1919
+  k=12: #1  0x000055555555e310 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1920
+  k=13: #1  0x000055555555e610 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:1949
+  k=14: #1  0x000055555555eacb in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2002
+  k=15: #1  0x000055555555eaf2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1b0, layer_solution=0x7fffffffb1b8) at S4/S4.cpp:2003
+  k=16: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x555555617210, H=0x5555556174e0) at S4/S4.cpp:4342
+  k=17: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x55555561cf20, H=0x55555561c7b0) at S4/S4.cpp:4342
+  k=18: #1  0x0000555555569cb3 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb418, xyz0=0x7fffffffb420, E=0x55555561ca80, H=0x55555561e180) at S4/S4.cpp:4342
+
+=== DRIVER: init-B-dbg COMBO: closed2d-ng1 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb260, nG=1, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb260, nG=1, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555dabf in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1755
+  k=4: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169c0, layer_modes=0x5555556169f8) at S4/S4.cpp:2295
+  k=5: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2295
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=192) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x00005555555617a7 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2402
+  k=8: #1  0x0000555555561921 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x555555616a38) at S4/S4.cpp:2419
+  k=9: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a40, layer_modes=0x555555616a78) at S4/S4.cpp:2295
+  k=10: #1  0x000055555555e2a3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1909
+  k=11: #1  0x000055555555e2c2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1910
+  k=12: #1  0x000055555555e2e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1911
+  k=13: #1  0x000055555555e5e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1940
+  k=14: #1  0x000055555555ea9c in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1993
+  k=15: #1  0x000055555555eac3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a00, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1994
+  k=16: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x555555616c20, H=0x555555616ef0) at S4/S4.cpp:4290
+  k=17: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x555555619eb0, H=0x55555561a180) at S4/S4.cpp:4290
+  k=18: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x55555561a450, H=0x55555561a720) at S4/S4.cpp:4290
+
+=== DRIVER: init-B-dbg COMBO: fft-ng5 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb260, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb260, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555dabf in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1755
+  k=4: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169e0, layer_modes=0x555555616a18) at S4/S4.cpp:2295
+  k=5: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2295
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=6144) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=8: #1  0x00005555555617a7 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2402
+  k=9: #1  0x0000555555561921 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2419
+  k=10: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a60, layer_modes=0x555555616a98) at S4/S4.cpp:2295
+  k=11: #1  0x000055555555e2a3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1909
+  k=12: #1  0x000055555555e2c2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1910
+  k=13: #1  0x000055555555e2e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1911
+  k=14: #1  0x000055555555e5e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1940
+  k=15: #1  0x000055555555ea9c in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1993
+  k=16: #1  0x000055555555eac3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1994
+  k=17: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x555555617210, H=0x5555556174e0) at S4/S4.cpp:4290
+  k=18: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x55555561cf30, H=0x55555561c7c0) at S4/S4.cpp:4290
+  k=19: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x55555561ca90, H=0x55555561e190) at S4/S4.cpp:4290
+
+=== DRIVER: init-B-dbg COMBO: kottke-ng5 ===
+  k=1: #1  0x000055555555991e in S4_Simulation_New (Lr=0x7fffffffb260, nG=5, G=0x0) at S4/S4.cpp:311
+  k=2: #1  0x0000555555559d9c in S4_Simulation_New (Lr=0x7fffffffb260, nG=5, G=0x0) at S4/S4.cpp:381
+  k=3: #1  0x000055555555dabf in Simulation_InitSolution (S=0x5555556166a0) at S4/S4.cpp:1755
+  k=4: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x5555556169e0, layer_modes=0x555555616a18) at S4/S4.cpp:2295
+  k=5: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2295
+  k=6: #1  0x0000555555559038 in __wrap__Z9S4_mallocm (size=16) at /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s3r4/inject_s3r4_init.cpp:104
+  k=7: #1  0x00005555555617a7 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2402
+  k=8: #1  0x0000555555561921 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x555555616a58) at S4/S4.cpp:2419
+  k=9: #1  0x0000555555560be8 in Simulation_ComputeLayerModes (S=0x5555556166a0, L=0x555555616a60, layer_modes=0x555555616a98) at S4/S4.cpp:2295
+  k=10: #1  0x000055555555e2a3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1909
+  k=11: #1  0x000055555555e2c2 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1910
+  k=12: #1  0x000055555555e2e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1911
+  k=13: #1  0x000055555555e5e1 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1940
+  k=14: #1  0x000055555555ea9c in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1993
+  k=15: #1  0x000055555555eac3 in Simulation_ComputeLayerSolution (S=0x5555556166a0, L=0x555555616a20, layer_modes=0x7fffffffb1d0, layer_solution=0x7fffffffb1d8) at S4/S4.cpp:1994
+  k=16: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x555555617210, H=0x5555556174e0) at S4/S4.cpp:4290
+  k=17: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x55555561cf20, H=0x55555561c7b0) at S4/S4.cpp:4290
+  k=18: #1  0x0000555555569b60 in S4_Simulation_GetFieldPlane (S=0x5555556166a0, nxy=0x7fffffffb438, xyz0=0x7fffffffb440, E=0x55555561ca80, H=0x55555561e180) at S4/S4.cpp:4290

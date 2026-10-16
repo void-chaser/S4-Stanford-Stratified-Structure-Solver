@@ -1,0 +1,167 @@
+# S4MALLOC_MAP_R8_M2d.tsv -- S4_malloc call mapping across 9 combinations
+driver	combo	k	size	caller_file	caller_line	caller_func	tag	notes
+init-F3-san	closed2d-ng1	1	8	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-san	closed2d-ng1	2	16	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-san	closed2d-ng1	3	192	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-san	closed2d-ng1	4	176	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	closed2d-ng1	5	240	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	closed2d-ng1	6	192	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-san	closed2d-ng1	7	32	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-san	closed2d-ng1	8	128	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-san	closed2d-ng1	9	176	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	closed2d-ng1	10	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	11	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	12	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	13	32	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	14	1152	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	15	48	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-san	closed2d-ng1	16	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	closed2d-ng1	17	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	closed2d-ng1	18	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	fft-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-san	fft-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-san	fft-ng5	3	960	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-san	fft-ng5	4	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	fft-ng5	5	5360	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	fft-ng5	6	6144	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-san	fft-ng5	7	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-san	fft-ng5	8	160	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-san	fft-ng5	9	1920	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-san	fft-ng5	10	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	fft-ng5	11	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	12	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	13	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	14	160	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	15	28800	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	16	240	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-san	fft-ng5	17	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	fft-ng5	18	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	fft-ng5	19	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	kottke-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-san	kottke-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-san	kottke-ng5	3	960	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-san	kottke-ng5	4	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	kottke-ng5	5	5360	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	kottke-ng5	6	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-san	kottke-ng5	7	160	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-san	kottke-ng5	8	1920	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-san	kottke-ng5	9	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-san	kottke-ng5	10	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	11	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	12	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	13	160	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	14	28800	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	15	240	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-san	kottke-ng5	16	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	kottke-ng5	17	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-san	kottke-ng5	18	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	closed2d-ng1	1	8	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-dbg	closed2d-ng1	2	16	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-dbg	closed2d-ng1	3	192	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-dbg	closed2d-ng1	4	176	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	closed2d-ng1	5	240	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	closed2d-ng1	6	192	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-dbg	closed2d-ng1	7	32	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	closed2d-ng1	8	128	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	closed2d-ng1	9	176	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	closed2d-ng1	10	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	11	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	12	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	13	32	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	14	1152	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	15	48	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	closed2d-ng1	16	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	closed2d-ng1	17	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	closed2d-ng1	18	320	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	fft-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-dbg	fft-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-dbg	fft-ng5	3	960	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-dbg	fft-ng5	4	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	fft-ng5	5	5360	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	fft-ng5	6	6144	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-dbg	fft-ng5	7	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-dbg	fft-ng5	8	160	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	fft-ng5	9	1920	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	fft-ng5	10	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	fft-ng5	11	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	12	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	13	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	14	160	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	15	28800	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	16	240	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	fft-ng5	17	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	fft-ng5	18	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	fft-ng5	19	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	kottke-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-F3-dbg	kottke-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-F3-dbg	kottke-ng5	3	960	S4.cpp	1764	Simulation_InitSolution	1764_ab	S->solution->ab via S4_malloc (F3 S4.cpp:1764; target site for -FA injection)
+init-F3-dbg	kottke-ng5	4	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	kottke-ng5	5	5360	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	kottke-ng5	6	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-F3-dbg	kottke-ng5	7	160	S4.cpp	2430	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	kottke-ng5	8	1920	S4.cpp	2455	Simulation_ComputeLayerModes	other	-
+init-F3-dbg	kottke-ng5	9	3760	S4.cpp	2310	Simulation_ComputeLayerModes	ComputeLayerModes_2310	LayerModes allocation in Simulation_ComputeLayerModes
+init-F3-dbg	kottke-ng5	10	24	S4.cpp	1918	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	11	12	S4.cpp	1919	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	12	96	S4.cpp	1920	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	13	160	S4.cpp	1949	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	14	28800	S4.cpp	2002	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	15	240	S4.cpp	2003	Simulation_ComputeLayerSolution	other	-
+init-F3-dbg	kottke-ng5	16	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	kottke-ng5	17	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-F3-dbg	kottke-ng5	18	1600	S4.cpp	4342	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	closed2d-ng1	1	8	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-B-dbg	closed2d-ng1	2	16	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-B-dbg	closed2d-ng1	3	192	S4.cpp	1755	Simulation_InitSolution	1755_ab	S->solution->ab via S4_malloc (B S4.cpp:1755 baseline)
+init-B-dbg	closed2d-ng1	4	176	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	closed2d-ng1	5	240	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	closed2d-ng1	6	192	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-B-dbg	closed2d-ng1	7	32	S4.cpp	2402	Simulation_ComputeLayerModes	other	-
+init-B-dbg	closed2d-ng1	8	128	S4.cpp	2419	Simulation_ComputeLayerModes	other	-
+init-B-dbg	closed2d-ng1	9	176	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	closed2d-ng1	10	24	S4.cpp	1909	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	11	12	S4.cpp	1910	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	12	96	S4.cpp	1911	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	13	32	S4.cpp	1940	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	14	1152	S4.cpp	1993	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	15	48	S4.cpp	1994	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	closed2d-ng1	16	320	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	closed2d-ng1	17	320	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	closed2d-ng1	18	320	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	fft-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-B-dbg	fft-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-B-dbg	fft-ng5	3	960	S4.cpp	1755	Simulation_InitSolution	1755_ab	S->solution->ab via S4_malloc (B S4.cpp:1755 baseline)
+init-B-dbg	fft-ng5	4	3760	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	fft-ng5	5	5360	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	fft-ng5	6	6144	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-B-dbg	fft-ng5	7	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-B-dbg	fft-ng5	8	160	S4.cpp	2402	Simulation_ComputeLayerModes	other	-
+init-B-dbg	fft-ng5	9	1920	S4.cpp	2419	Simulation_ComputeLayerModes	other	-
+init-B-dbg	fft-ng5	10	3760	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	fft-ng5	11	24	S4.cpp	1909	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	12	12	S4.cpp	1910	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	13	96	S4.cpp	1911	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	14	160	S4.cpp	1940	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	15	28800	S4.cpp	1993	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	16	240	S4.cpp	1994	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	fft-ng5	17	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	fft-ng5	18	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	fft-ng5	19	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	kottke-ng5	1	40	S4.cpp	311	S4_Simulation_New	S4_Simulation_New_311	lattice / grid setup in S4_Simulation_New (S4.cpp:311)
+init-B-dbg	kottke-ng5	2	80	S4.cpp	381	S4_Simulation_New	S4_Simulation_New_381	lattice / grid setup in S4_Simulation_New (S4.cpp:381)
+init-B-dbg	kottke-ng5	3	960	S4.cpp	1755	Simulation_InitSolution	1755_ab	S->solution->ab via S4_malloc (B S4.cpp:1755 baseline)
+init-B-dbg	kottke-ng5	4	3760	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	kottke-ng5	5	5360	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	kottke-ng5	6	16	inject_s3r4_init.cpp	104	__wrap__Z9S4_mallocm	other	-
+init-B-dbg	kottke-ng5	7	160	S4.cpp	2402	Simulation_ComputeLayerModes	other	-
+init-B-dbg	kottke-ng5	8	1920	S4.cpp	2419	Simulation_ComputeLayerModes	other	-
+init-B-dbg	kottke-ng5	9	3760	S4.cpp	2295	Simulation_ComputeLayerModes	ComputeLayerModes_2295	LayerModes allocation in Simulation_ComputeLayerModes (B)
+init-B-dbg	kottke-ng5	10	24	S4.cpp	1909	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	11	12	S4.cpp	1910	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	12	96	S4.cpp	1911	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	13	160	S4.cpp	1940	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	14	28800	S4.cpp	1993	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	15	240	S4.cpp	1994	Simulation_ComputeLayerSolution	other	-
+init-B-dbg	kottke-ng5	16	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	kottke-ng5	17	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
+init-B-dbg	kottke-ng5	18	1600	S4.cpp	4290	S4_Simulation_GetFieldPlane	other	-
