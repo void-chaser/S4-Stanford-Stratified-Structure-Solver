@@ -1,0 +1,33 @@
+# REGRESSION_PLAN_F4_S3R5.tsv -- F4 regression plan for SOLN 27 points, M2/M1 regression, and closeout items (S-J, U290)
+point_id	f4_driver	k_fail	f4_exp_rc1	f4_exp_rc2	f4_exp_class	f4_exp_post_call1_solution	f4_exp_crash_call	b_baseline_behavior	f4_recovery_requirement	notes
+SOLN-1763-closed2d-ng1-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=9)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1763-closed2d-ng1-B-dbg	init-B-dbg	9	-	-	CRASH	-	1	CRASH at call 1 (1763) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1763-closed2d-ng1-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=7)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1763-fft-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=10)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1763-fft-ng5-B-dbg	init-B-dbg	10	-	-	CRASH	-	1	CRASH at call 1 (1763) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1763-fft-ng5-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=8)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1763-kottke-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=10)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1763-kottke-ng5-B-dbg	init-B-dbg	10	-	-	CRASH	-	1	CRASH at call 1 (1763) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1763-kottke-ng5-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=8)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第1次调用 (1763) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1764-closed2d-ng1-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=10)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1764-closed2d-ng1-B-dbg	init-B-dbg	10	-	-	CRASH	-	2	CRASH at call 2 (1764) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1764-closed2d-ng1-F4-san-AL	init-F4-san-AL	取 K_MAP_F4_S3R5.tsv (k=3)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：驱动 init-F4-san-AL; malloc_aligned 注入; 调用1失败置NULL并返回1; 重试成功
+SOLN-1764-fft-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=11)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1764-fft-ng5-B-dbg	init-B-dbg	11	-	-	CRASH	-	2	CRASH at call 2 (1764) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1764-fft-ng5-F4-san-AL	init-F4-san-AL	取 K_MAP_F4_S3R5.tsv (k=3)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：驱动 init-F4-san-AL; malloc_aligned 注入; 调用1失败置NULL并返回1; 重试成功
+SOLN-1764-kottke-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=11)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1764-kottke-ng5-B-dbg	init-B-dbg	11	-	-	CRASH	-	2	CRASH at call 2 (1764) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1764-kottke-ng5-F4-san-AL	init-F4-san-AL	取 K_MAP_F4_S3R5.tsv (k=3)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1764) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：驱动 init-F4-san-AL; malloc_aligned 注入; 调用1失败置NULL并返回1; 重试成功
+SOLN-1765-closed2d-ng1-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=11)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1765-closed2d-ng1-B-dbg	init-B-dbg	11	-	-	CRASH	-	2	CRASH at call 2 (1765) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1765-closed2d-ng1-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=8)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1765-fft-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=12)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1765-fft-ng5-B-dbg	init-B-dbg	12	-	-	CRASH	-	2	CRASH at call 2 (1765) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1765-fft-ng5-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=9)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1765-kottke-ng5-F4-dbg	init-F4-dbg	取 K_MAP_F4_S3R5.tsv (k=12)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+SOLN-1765-kottke-ng5-B-dbg	init-B-dbg	12	-	-	CRASH	-	2	CRASH at call 2 (1765) [仅基线，非修复证据]	N/A (基线对照)	基线驱动使用 init-B-dbg (sha 3ccc2897...)，非修复证据
+SOLN-1765-kottke-ng5-F4-san	init-F4-san	取 K_MAP_F4_S3R5.tsv (k=9)	1	0	REPORTED_FAILURE	NULL	NONE	未修复基线B行为：崩于第2次调用 (1765) [仅基线，非修复证据]	调用2输出与无注入对照逐字节一致 (I6)	S3R5修后：调用1失败置S->solution=NULL并返回1；调用2重试进入InitSolution成功
+M2-HEALTH-175-F4-REGRESSION	multi-driver-F4	-	-	-	MATCH	-	NONE	历史有效175点在F3全闭环	F4上175点结果与F3逐点一致	追加登记项1（只登记，不执行）：M2健康175点在F4上回归测试，确保修复无负面影响
+M1-EQUIVALENCE-F3-F4	equivalence_runner	-	-	-	MATCH	-	NONE	M1在F3上1302点全闭环	F3与F4之间等价对比无分歧	追加登记项2（只登记，不执行）：M1在F3与F4之间等价对比，确保F4未破坏M1任何修复
+S3R5-CLOSEOUT-MAKE-TEST	make_test_runner	-	0	-	CONTROL_OK	-	NONE	相对未修复基线B无新增失败	make test 全套件通过	收口测试项1（只登记，不执行）：在 $EV 导出树上运行 make test，主套件相对基线B无新增失败
+S3R5-CLOSEOUT-E2E-API	e2e_api_runner	-	0	-	CONTROL_OK	-	NONE	经公共API验证全链路	Python/Lua端到端链路顺畅	收口测试项2（只登记，不执行）：Python/Lua 公共 API 的“失败→可见报错→重试恢复”全链路端到端恢复测试（并入 M3）

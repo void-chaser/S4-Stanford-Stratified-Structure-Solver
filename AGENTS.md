@@ -69,9 +69,10 @@ REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/<本轮
 | F | `1c11905` | `4a6f64927a30537740dd0c8f11f9a5aae5e46ba4` | P05-S4 的冻结被测树(含 S3、S3R、S3R2 全部修复;与 `ff6dd7c` 的 `S4/` 相同) |
 | F2 | `a07b5ac` | `e124925f5b242486a913b813fa181664f665b048` | P05-S3R3 修复后的冻结被测树(RNV1 方案 R3 + 注释 U31) |
 | F3 | `8d8202a` | `6cff923a02baf19e01966b2339755cbf3a5deeef` | P05-S3R4 修复后的冻结被测树(806、415 链路、RP-S3R4-1;U91 批准的四个文件);自检不是 S4 验证,修复后验证由 P05-S4 R8 在 F3 上完成 |
+| F4 | `05097a7` | `589e15eb11fcb04e031b524f25a443e7921946cf` | P05-S3R5 修复后冻结被测树；自检不是 S4 验证，修后验证由 P05-S4 R9 在 F4 上完成 |
 
 - 当前分支:`codex/p05-d003-fft-error-propagation`。
-- 开工门禁:HEAD 与 `STATE.md` 记录一致;`git rev-parse HEAD:S4` 等于 F3 的树哈希(`6cff923a02baf19e01966b2339755cbf3a5deeef`,P05-S3R4 批准的门禁修改;除非用户已批准新的修复轮);判定器 sha256 一致;`git status --short` 为空(或仅含任务书点名的文件)。任一不符就停下报告。
+- 开工门禁:HEAD 与 `STATE.md` 记录一致;`git rev-parse HEAD:S4` 等于 F4 的树哈希(`589e15eb11fcb04e031b524f25a443e7921946cf`,P05-S3R5 批准的门禁修改;除非用户已批准新的修复轮);判定器 sha256 一致;`git status --short` 为空(或仅含任务书点名的文件)。任一不符就停下报告。
 
 ## 7. 每轮结束必须做
 

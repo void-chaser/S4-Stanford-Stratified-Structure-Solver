@@ -1,0 +1,188 @@
+# noinj_control_s3r5.txt -- S-G non-injection control run for F4 drivers (U289(C))
+# Expectation: rc=0, san_reports=0, no injection hits
+==================================================
+Driver: init-F4-dbg (/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r5/build/init-F4-dbg)
+## Combo: closed2d-ng1 (mode=closed2d, ng=1)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 111
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x64cd98fc086f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=31 caller=0x64cd98fe3207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x64cd98fc097e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x64cd98fc09b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=39 caller=0x64cd98fe3207 hit=0
+
+## Combo: fft-ng5 (mode=fft, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x621b35ae686f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=63 caller=0x621b35b09207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x621b35ae697e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x621b35ae69b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=648 caller=0x621b35b08ace hit=0
+
+## Combo: kottke-ng5 (mode=kottke, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5923720c686f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=63 caller=0x5923720e9207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x5923720c697e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x5923720c69b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=648 caller=0x5923720e8ace hit=0
+
+==================================================
+Driver: init-F4-san (/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r5/build/init-F4-san)
+## Combo: closed2d-ng1 (mode=closed2d, ng=1)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 90
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5d84d2ffc545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5d84d2ffccbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5d84d2ffcefc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=0 caller=0x5d84d3017553 hit=0
+S4FMM S3R4_WIN_OPEN
+
+## Combo: fft-ng5 (mode=fft, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 101
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5a88a4dd5545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5a88a4dd5cbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5a88a4dd5efc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x5a88a4e7c342 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x5a88a4df0553 hit=0
+
+## Combo: kottke-ng5 (mode=kottke, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 102
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x59459fe52545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x59459fe52cbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x59459fe52efc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x59459fef9342 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x59459fe6d553 hit=0
+
+==================================================
+Driver: init-F4-san-AL (/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s3r5/build/init-F4-san-AL)
+## Combo: closed2d-ng1 (mode=closed2d, ng=1)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 111
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x62003df8a8b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=8 alignment=16 caller=0x62003df88e3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x62003df8b02e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x62003df8b26c hit=0
+S4FMM S4_MALLOC_ALIGNED k=2 size=16 alignment=16 caller=0x62003df88e3f hit=0
+
+## Combo: fft-ng5 (mode=fft, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x59256eb1f8b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x59256eb1de3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x59256eb2002e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x59256eb2026c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x59256ebc66b2 hit=0
+
+## Combo: kottke-ng5 (mode=kottke, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5791cb5948b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x5791cb592e3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5791cb59502e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5791cb59526c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x5791cb63b6b2 hit=0
+

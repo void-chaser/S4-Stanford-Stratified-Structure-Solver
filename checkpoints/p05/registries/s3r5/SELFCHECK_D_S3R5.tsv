@@ -1,0 +1,12 @@
+# SELFCHECK_D_S3R5.tsv -- Selfcheck D observed facts on F4 dbg (U289(D))
+# Note: Strictly records observed facts. Not judged as MATCH, not a verification report.
+point_id	combo	defect_site	driver	k_fail	rc1	rc2	signal	hit	post_call1_solution	crash_call	driver_exitcode
+SOLN-1763-closed2d-ng1-F4-dbg	closed2d-ng1	1763	init-F4-dbg	9	1	0	0	1	NULL	NONE	0
+SOLN-1764-closed2d-ng1-F4-dbg	closed2d-ng1	1764	init-F4-dbg	10	1	0	0	1	NULL	NONE	0
+SOLN-1765-closed2d-ng1-F4-dbg	closed2d-ng1	1765	init-F4-dbg	11	1	0	0	1	NULL	NONE	0
+SOLN-1763-fft-ng5-F4-dbg	fft-ng5	1763	init-F4-dbg	10	1	0	0	1	NULL	NONE	0
+SOLN-1764-fft-ng5-F4-dbg	fft-ng5	1764	init-F4-dbg	11	1	0	0	1	NULL	NONE	0
+SOLN-1765-fft-ng5-F4-dbg	fft-ng5	1765	init-F4-dbg	12	1	0	0	1	NULL	NONE	0
+SOLN-1763-kottke-ng5-F4-dbg	kottke-ng5	1763	init-F4-dbg	10	1	0	0	1	NULL	NONE	0
+SOLN-1764-kottke-ng5-F4-dbg	kottke-ng5	1764	init-F4-dbg	11	1	0	0	1	NULL	NONE	0
+SOLN-1765-kottke-ng5-F4-dbg	kottke-ng5	1765	init-F4-dbg	12	1	0	0	1	NULL	NONE	0

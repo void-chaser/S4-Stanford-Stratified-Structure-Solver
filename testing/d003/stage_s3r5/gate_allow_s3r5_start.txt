@@ -1,0 +1,5 @@
+?? checkpoints/p05/briefs/P05_S3R5_BRIEF.md
+?? testing/d003/stage_s3r5/gate_allow_s3r5_end.txt
+?? testing/d003/stage_s3r5/gate_allow_s3r5_start.txt
+?? testing/d003/stage_s3r5/gate_check_s3r5.py
+?? testing/d003/stage_s3r5/gate_s3r5.sh

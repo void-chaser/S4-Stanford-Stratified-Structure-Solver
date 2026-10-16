@@ -1,0 +1,35 @@
+# R9_INPUTS_S3R5.tsv -- All inputs required for P05-S4 R9 on F4 apparatus (U290)
+category	item	value	note
+F4_LIBRARY	lib_F4_dbg	6a711fbbec84d1fb322ee1d9c678ae6750a04f647e3f1eba7840c8c7502fae26	checkpoints/p05/evidence/p05-s3r5/build/lib_F4_dbg/libS4.a; -O0 -g; warnings=62
+F4_LIBRARY	lib_F4_san	ce057b5065bb5ac487d66992930991c1f09f17431abfc957777f375436be0fbd	checkpoints/p05/evidence/p05-s3r5/build/lib_F4_san/libS4.a; ASAN/UBSAN -O0 -g; warnings=62
+F4_LIBRARY	lib_F4_plain	5a4bfa601bf14b896b9c0c25807c0a38c05d040a17268cf0669902763cda5757	checkpoints/p05/evidence/p05-s3r5/build/lib_F4_plain/libS4.a; -O3 -march=native; warnings=71
+F4_DRIVER	init-F4-dbg	a4643e7e67ad74019104466ff9773ec2cfc1e684e488705a16a4a8f32526aca2	checkpoints/p05/evidence/p05-s3r5/build/init-F4-dbg; driver_r6b_state + inject_s3r4_init + lib_F4_dbg; warnings=0
+F4_DRIVER	init-F4-san	33a230029df224ddecb64f0884833e7e20251c461f0459ce315122d5987666c3	checkpoints/p05/evidence/p05-s3r5/build/init-F4-san; driver_r6b_state + inject_s3r4_init + lib_F4_san; warnings=0
+F4_DRIVER	init-F4-san-AL	f14c536ea54d81348dd4f53f36c5c2eba65c0ca15fdb16160b8296186d7f5f8e	checkpoints/p05/evidence/p05-s3r5/build/init-F4-san-AL; driver_r6b_state + inject_r8m2e_aligned + lib_F4_san; warnings=0
+F4_DRIVER	init-B-dbg	3ccc2897fae2ce293d3c656e2a334dad05e53fe7f622b749a71e19bfd021b0b8	checkpoints/p05/evidence/p05-s4r8/m2c/build/init-B-dbg; reused (U286)
+F4_K_MAPPING	closed2d-ng1:1763:init-F4-dbg	k=9	size=16 B; S4.cpp:1763
+F4_K_MAPPING	closed2d-ng1:1764:init-F4-dbg	k=10	size=215 B (outer 192 B); S4.cpp:1771
+F4_K_MAPPING	closed2d-ng1:1765:init-F4-dbg	k=11	size=12 B; S4.cpp:1772
+F4_K_MAPPING	closed2d-ng1:1763:init-F4-san	k=7	size=16 B; S4.cpp:1763
+F4_K_MAPPING	closed2d-ng1:1765:init-F4-san	k=8	size=12 B; S4.cpp:1772
+F4_K_MAPPING	closed2d-ng1:1764:init-F4-san-AL	k=3	size=192 B; S4.cpp:1771 (malloc_aligned)
+F4_K_MAPPING	fft-ng5:1763:init-F4-dbg	k=10	size=16 B; S4.cpp:1763
+F4_K_MAPPING	fft-ng5:1764:init-F4-dbg	k=11	size=983 B (outer 960 B); S4.cpp:1771
+F4_K_MAPPING	fft-ng5:1765:init-F4-dbg	k=12	size=12 B; S4.cpp:1772
+F4_K_MAPPING	fft-ng5:1763:init-F4-san	k=8	size=16 B; S4.cpp:1763
+F4_K_MAPPING	fft-ng5:1765:init-F4-san	k=9	size=12 B; S4.cpp:1772
+F4_K_MAPPING	fft-ng5:1764:init-F4-san-AL	k=3	size=960 B; S4.cpp:1771 (malloc_aligned)
+F4_K_MAPPING	kottke-ng5:1763:init-F4-dbg	k=10	size=16 B; S4.cpp:1763
+F4_K_MAPPING	kottke-ng5:1764:init-F4-dbg	k=11	size=983 B (outer 960 B); S4.cpp:1771
+F4_K_MAPPING	kottke-ng5:1765:init-F4-dbg	k=12	size=12 B; S4.cpp:1772
+F4_K_MAPPING	kottke-ng5:1763:init-F4-san	k=8	size=16 B; S4.cpp:1763
+F4_K_MAPPING	kottke-ng5:1765:init-F4-san	k=9	size=12 B; S4.cpp:1772
+F4_K_MAPPING	kottke-ng5:1764:init-F4-san-AL	k=3	size=960 B; S4.cpp:1771 (malloc_aligned)
+F4_LINEMAP	S4/S4.cpp:1..1759	offset=0	Pre-fix lines unchanged
+F4_LINEMAP	S4/S4.cpp:1760..1774	MODIFIED_BY_FIX	14 lines in F3 -> 27 lines in F4 (net +13 lines)
+F4_LINEMAP	S4/S4.cpp:1775+	offset=+13	Post-fix lines shifted by +13 (e.g. 1995->2008, 2021->2034)
+GDB_SCRIPT_AUDIT	r6c_state_bt_r8m2d.gdb	NO_LINE_BREAKPOINTS	Uses function breakpoints (r6_probe, CLM, GetLayerSolution); safe for F4 without rewrite
+GDB_SCRIPT_AUDIT	r6c_state_r8m2a3.gdb	NO_LINE_BREAKPOINTS	Uses function breakpoints; safe for F4
+GDB_SCRIPT_AUDIT	r6c_state_gdb_r8m2a3.py	NO_LINE_BREAKPOINTS	Uses symbol breakpoints; safe for F4
+GDB_SCRIPT_AUDIT	malloc_map_r8m2c.gdb	INJECTOR_LINE_BP	Break at inject_s3r4_init.cpp:79; not in S4/, unchanged
+GDB_SCRIPT_AUDIT	OVERALL_STATUS	NO_REWRITE_NEEDED	0 gdb scripts require line number rewriting for F4

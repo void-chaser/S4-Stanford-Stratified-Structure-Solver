@@ -1,0 +1,20 @@
+# K_MAP_F4_S3R5.tsv -- GDB K-mapping on F4 apparatus (U286)
+combo	defect_site	driver	F4_caller	F4_k	F4_size	F3_caller	F3_k	F3_size	k_match	status
+closed2d-ng1	1763	init-F4-dbg	S4.cpp:1763	9	16	S4.cpp:1763	9	16	True	PASS_EXACT_MATCH
+closed2d-ng1	1764	init-F4-dbg	S4.cpp:1771	10	215	S4.cpp:1764	10	192	True	PASS_EXACT_MATCH
+closed2d-ng1	1765	init-F4-dbg	S4.cpp:1772	11	12	S4.cpp:1765	11	12	True	PASS_EXACT_MATCH
+closed2d-ng1	1763	init-F4-san	S4.cpp:1763	7	16	S4.cpp:1763	7	16	True	PASS_EXACT_MATCH
+closed2d-ng1	1765	init-F4-san	S4.cpp:1772	8	12	S4.cpp:1765	8	12	True	PASS_EXACT_MATCH
+closed2d-ng1	1764	init-F4-san-AL	S4.cpp:1771	3	192	S4.cpp:1764	3	192	True	PASS_EXACT_MATCH
+fft-ng5	1763	init-F4-dbg	S4.cpp:1763	10	16	S4.cpp:1763	10	16	True	PASS_EXACT_MATCH
+fft-ng5	1764	init-F4-dbg	S4.cpp:1771	11	983	S4.cpp:1764	11	960	True	PASS_EXACT_MATCH
+fft-ng5	1765	init-F4-dbg	S4.cpp:1772	12	12	S4.cpp:1765	12	12	True	PASS_EXACT_MATCH
+fft-ng5	1763	init-F4-san	S4.cpp:1763	8	16	S4.cpp:1763	8	16	True	PASS_EXACT_MATCH
+fft-ng5	1765	init-F4-san	S4.cpp:1772	9	12	S4.cpp:1765	9	12	True	PASS_EXACT_MATCH
+fft-ng5	1764	init-F4-san-AL	S4.cpp:1771	3	960	S4.cpp:1764	3	960	True	PASS_EXACT_MATCH
+kottke-ng5	1763	init-F4-dbg	S4.cpp:1763	10	16	S4.cpp:1763	10	16	True	PASS_EXACT_MATCH
+kottke-ng5	1764	init-F4-dbg	S4.cpp:1771	11	983	S4.cpp:1764	11	960	True	PASS_EXACT_MATCH
+kottke-ng5	1765	init-F4-dbg	S4.cpp:1772	12	12	S4.cpp:1765	12	12	True	PASS_EXACT_MATCH
+kottke-ng5	1763	init-F4-san	S4.cpp:1763	8	16	S4.cpp:1763	8	16	True	PASS_EXACT_MATCH
+kottke-ng5	1765	init-F4-san	S4.cpp:1772	9	12	S4.cpp:1765	9	12	True	PASS_EXACT_MATCH
+kottke-ng5	1764	init-F4-san-AL	S4.cpp:1771	3	960	S4.cpp:1764	3	960	True	PASS_EXACT_MATCH

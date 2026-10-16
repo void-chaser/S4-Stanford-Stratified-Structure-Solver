@@ -1,0 +1,11 @@
+# allowed git status entries at end of P05-S3R5 (case patterns; checked by gate_s3r5.sh)
+ M AGENTS.md
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+?? checkpoints/p05/ERRATA_S3R5.txt
+?? checkpoints/p05/P05_S3R5_CLOSEOUT.md
+?? checkpoints/p05/PRE_FIX_SOURCE_S3R5.md
+?? checkpoints/p05/briefs/P05_S3R5_BRIEF.md
+?? checkpoints/p05/registries/s3r5/*
+?? testing/d003/stage_s3r5/*

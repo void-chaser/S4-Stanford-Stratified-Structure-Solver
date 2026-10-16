@@ -1,0 +1,6 @@
+# WARN_DIFF_F3_F4_S3R5 -- Library compile warning comparison between F3 and F4
+# Hard stop condition 4: F4 warnings must not exceed F3 warnings
+Mode	F3_warnings	F4_warnings	Diff	Status
+dbg	62	62	+0	PASS
+san	62	62	+0	PASS
+plain	71	71	+0	PASS
