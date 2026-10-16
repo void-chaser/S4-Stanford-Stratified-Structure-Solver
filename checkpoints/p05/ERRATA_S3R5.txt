@@ -1,3 +1,14 @@
 # P05-S3R5 勘误表（只追加；依据 AGENTS.md 第 2、5 节与 P05-S3R5 任务书 §3 U288）
 # 编号格式：ES3R5-n
 # 截至 S-B 阶段：本轮尚未发生执行偏离或勘误事项。
+ES3R5-1（文书强化词与章节错引）：
+  P05_S3R5_CLOSEOUT.md 第 21、34、69、167、246、257 行用了"完全一致/完全保持一致/证实/精确"等强化词；第 167 行"已在第 5 节证实"应为第 6 节。依 U291 勘误，不重跑，不改 s3r5 已提交文件。
+
+ES3R5-2（K_MAP_F4_S3R5.tsv 口径差异）：
+  K_MAP_F4_S3R5.tsv 中 dbg 1764 行的 F4_size 记的是外层 malloc 的 n（215/983 = malloc_aligned size + 23），F3_size 记的是 malloc_aligned 的 size（192/960），口径不同；PASS_EXACT_MATCH 只比较 k。依 U291 勘误，不重跑，不改 s3r5 已提交文件。
+
+ES3R5-3（GDB_SCRIPT_AUDIT 范围未覆盖全库）：
+  R9_INPUTS_S3R5.tsv 的 GDB_SCRIPT_AUDIT 只审了 4 个脚本。仓库内的行号断点实际有：stage_s4/win64_diag_r8m2b.gdb:12 S4/S4.cpp:1894（F4=1907）；stage_s4/diag_r8m2c.py:95 内嵌 S4/S4.cpp:2445（F4=2458）；stage_s4r7/gdb_chain_jones_line_r7.gdb:16 S4.cpp:2413（F2 行号）；stage_s4/m210_b_r8m2a2_R2.gdb（B 树，不受影响）；stage_s4/r6_plan14_caller.gdb fmm_kottke.cpp:94（文件未改）；stage_s1r/layer_probe.gdb、nb_probe.gdb（历史）。"0 个需重写"的结论只对已审的 4 个成立。依 U291 勘误，不重跑，由 R9 S-E 完整审计。
+
+ES3R5-4（R9_INPUTS 驱动族未覆盖 M2 回归需求）：
+  R9_INPUTS 只列 init 族驱动，未覆盖 M2 回归所需的其他驱动族（共需 15 个非 init 驱动族）。依 U291 勘误，不重跑，由 R9 S-D 补齐全套 F4 驱动。

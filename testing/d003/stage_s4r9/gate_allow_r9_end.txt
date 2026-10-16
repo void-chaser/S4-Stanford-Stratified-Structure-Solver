@@ -1,0 +1,8 @@
+# allowed git status entries at end of P05-S4 R9 M0+M2 (case patterns; checked by gate_r9.sh)
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/registries/RULINGS.tsv
+ M checkpoints/p05/ERRATA_S3R5.txt
+?? checkpoints/p05/P05_S4R9_M2_REPORT.md
+?? checkpoints/p05/briefs/P05_S4R9_BRIEF_M0M2.md
+?? checkpoints/p05/registries/s4r9/*
+?? testing/d003/stage_s4r9/*
