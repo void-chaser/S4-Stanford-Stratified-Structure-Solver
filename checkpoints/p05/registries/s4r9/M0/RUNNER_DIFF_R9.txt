@@ -1,0 +1,30 @@
+# RUNNER_DIFF_R9.txt -- P05-S4 R9 runner/builder diff explanation (Rule 4)
+
+1. testing/d003/stage_s4r9/build_r9.py
+   - Source: Adapted and consolidated from:
+     * stage_s4/build_r8m2a2_R3.py (fresh export, seam patch apply, library compilation, and drivers dual, layers, layers-dual, nan, polyinj-dbg, polyinj-san, r6bstate-san, seamF-san)
+     * stage_s4r8/link_drivers_r8.sh (plain drivers d003-plain, d003plan-plain, seam-fmmret)
+     * stage_s4r8/link_drivers_r8m1.sh (driver r6bstate-dbg)
+     * stage_s4r8/link_r6b_seam_r8m1.sh (driver r6bseam-seamF)
+     * stage_s4/build_r8m2e.py (init-san-AL)
+     * stage_s3r5/build_s3r5.py (reused F4 libraries and init drivers)
+   - Diff details:
+     * Header uses standard first line (Rule 1 & Rule 4): REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+     * Trees exported from F4 commit 05097a7 (tree 589e15eb11fcb04e031b524f25a443e7921946cf) instead of F3 8d8202a.
+     * Reuses s3r5 base F4 libraries (lib_F4_dbg, lib_F4_san, lib_F4_plain) and 3 init drivers (init-F4-dbg, init-F4-san, init-F4-san-AL) per U296.
+     * Freshly builds 4 F4 seam libraries (lib_F4_bufseam, lib_F4_seamF_san, lib_F4_seamF_dbg, lib_F4_fmmret_plain) with exact macros and flags matching F3.
+     * Links 13 F4 drivers with options identical to F3 counterparts (0 option differences verified in BUILD_OPTION_DIFF_R9.txt).
+     * Output directory set to checkpoints/p05/evidence/p05-s4r9/m0/.
+
+2. testing/d003/stage_s4r9/effective_set_r9.py
+   - Source: New script for R9 S-C.
+   - Extracts 202 effective rows from checkpoints/p05/registries/s4r8/M2/r8m2e/M2_CONSOLIDATED_R8_M2e.tsv.
+   - Resolves preregistration fields from r8m2b, r8m2c, r8m2d, r8m2e.
+   - Asserts all H-3 tree, driver, and GDB counts.
+
+3. testing/d003/stage_s4r9/gate_r9.sh & gate_check_r9.py
+   - Source: Adapted from testing/d003/stage_s3r5/gate_s3r5.sh and gate_check_s3r5.py.
+   - Baseline HEAD updated to a3a74bb32f68f4d330891394b3e660ef106ebfd1.
+   - Baseline HEAD:S4 updated to F4 tree 589e15eb11fcb04e031b524f25a443e7921946cf.
+   - S3R5 artifacts and SHA256SUMS.txt integrity verification added per S-A.
+   - Output paths set to p05-s4r9/m0 (start) and p05-s4r9/m2 (end).

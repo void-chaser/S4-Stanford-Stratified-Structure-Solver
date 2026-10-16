@@ -1,0 +1,150 @@
+# SEAM_APPLY_DIFF_F3_F4_R9.txt -- Comparison of seam apply reports between F3 and F4
+# Rule U296: Only line number offsets (+13 after line 1774 in S4.cpp) are permitted.
+
+=== apply_seam_r4_buf ===
+IDENTICAL (0 differences)
+
+=== apply_seam_r2 (A,C,D) ===
+--- F3:SEAM_ACD_PATCH_DIFF_R8_M2a2_R3.txt
++++ F4:apply_F4_seamF_san_ACD.txt
+@@ -1,10 +1,10 @@
+ apply_seam_r2: WRITTEN  families=A,C,D
+ file: S4/S4.cpp
+-  family C id 21: lines 2276..2276 replaced under S4_TEST_ALLOC_SEAM
+-  family C id 22: lines 2310..2313 replaced under S4_TEST_ALLOC_SEAM
+-  family C id 23: lines 2430..2430 replaced under S4_TEST_ALLOC_SEAM
+-  family C id 24: lines 2455..2455 replaced under S4_TEST_ALLOC_SEAM
+-  family C id 25: lines 4016..4016 replaced under S4_TEST_ALLOC_SEAM
++  family C id 21: lines 2289..2289 replaced under S4_TEST_ALLOC_SEAM
++  family C id 22: lines 2323..2326 replaced under S4_TEST_ALLOC_SEAM
++  family C id 23: lines 2443..2443 replaced under S4_TEST_ALLOC_SEAM
++  family C id 24: lines 2468..2468 replaced under S4_TEST_ALLOC_SEAM
++  family C id 25: lines 4029..4029 replaced under S4_TEST_ALLOC_SEAM
+   family C declaration after line 48
+ --- a/S4/S4.cpp
+ +++ b/S4/S4.cpp
+@@ -12,38 +12,38 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +extern "C" int S4_TEST_ALLOC_HOOK(int id, size_t size);
+ +#endif
+-@@ -2275,0 +2279,3 @@
++@@ -2288,0 +2292,3 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +	*layer_modes = (LayerModes*)(S4_TEST_ALLOC_HOOK(21, sizeof(LayerModes)) ? NULL : malloc(sizeof(LayerModes)));
+ +#else
+-@@ -2276,0 +2283 @@
++@@ -2289,0 +2296 @@
+ +#endif
+-@@ -2309,0 +2317,6 @@
++@@ -2322,0 +2330,6 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +	pB->q = (std::complex<double>*)(S4_TEST_ALLOC_HOOK(22, sizeof(std::complex<double>)*(2*n + kp_size + phi_size + Epsilon_inv_size + Epsilon2_size)) ? NULL : S4_malloc(sizeof(std::complex<double>)*(
+ +		2*n + // for q
+ +		kp_size + phi_size + Epsilon_inv_size + Epsilon2_size
+ +		)));
+ +#else
+-@@ -2313,0 +2327 @@
++@@ -2326,0 +2340 @@
+ +#endif
+-@@ -2429,0 +2444,3 @@
++@@ -2442,0 +2457,3 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +			double *rwork = (double*)(S4_TEST_ALLOC_HOOK(23, sizeof(double) * 4*n) ? NULL : S4_malloc(sizeof(double) * 4*n));
+ +#else
+-@@ -2430,0 +2448 @@
++@@ -2443,0 +2461 @@
+ +#endif
+-@@ -2454,0 +2473,3 @@
++@@ -2467,0 +2486,3 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +			work = (std::complex<double>*)(S4_TEST_ALLOC_HOOK(24, sizeof(std::complex<double>) * lwork) ? NULL : S4_malloc(sizeof(std::complex<double>) * lwork));
+ +#else
+-@@ -2455,0 +2477 @@
++@@ -2468,0 +2490 @@
+ +#endif
+-@@ -4015,0 +4038,3 @@
++@@ -4028,0 +4051,3 @@
+ +#ifdef S4_TEST_ALLOC_SEAM
+ +	FieldCache *f = (FieldCache*)(S4_TEST_ALLOC_HOOK(25, sizeof(FieldCache)+sizeof(std::complex<double>)*Plen) ? NULL : S4_malloc(sizeof(FieldCache)+sizeof(std::complex<double>)*Plen));
+ +#else
+-@@ -4016,0 +4042 @@
++@@ -4029,0 +4055 @@
+ +#endif
+ file: S4/fmm/fmm_FFT.cpp
+   family A site 1: call at line 212, hook after it
+
+=== apply_seam_b2 ===
+IDENTICAL (0 differences)
+
+=== apply_seam_r5_fmmret ===
+--- F3:SEAM_FMMRET_PATCH_DIFF_R8_M2a2_R3.txt
++++ F4:apply_F4_fmmret.txt
+@@ -1,16 +1,16 @@
+ apply_seam_r5_fmmret: tree=A WRITE
+ file: S4/S4.cpp  macro: S4_TEST_FMMRET_SEAM  hook: S4_TEST_FMMRET_AFTER
+   declaration after line 48
+-  point id=150  FMMGetEpsilon_Experimental  tabs=3  anchor line=2391
+-  point id=151  FMMGetEpsilon_Kottke  tabs=5  anchor line=2395
+-  point id=152  FMMGetEpsilon_FFT  tabs=5  anchor line=2397
+-  point id=153  FMMGetEpsilon_PolBasisJones  tabs=7  anchor line=2400
+-  point id=154  FMMGetEpsilon_PolBasisNV  tabs=7  anchor line=2402
+-  point id=155  FMMGetEpsilon_PolBasisVL  tabs=7  anchor line=2404
+-  point id=156  FMMGetEpsilon_PolBasisJones  tabs=6  anchor line=2412
+-  point id=157  FMMGetEpsilon_PolBasisNV  tabs=6  anchor line=2414
+-  point id=158  FMMGetEpsilon_PolBasisVL  tabs=6  anchor line=2416
+-  point id=159  FMMGetEpsilon_ClosedForm  tabs=4  anchor line=2409
++  point id=150  FMMGetEpsilon_Experimental  tabs=3  anchor line=2404
++  point id=151  FMMGetEpsilon_Kottke  tabs=5  anchor line=2408
++  point id=152  FMMGetEpsilon_FFT  tabs=5  anchor line=2410
++  point id=153  FMMGetEpsilon_PolBasisJones  tabs=7  anchor line=2413
++  point id=154  FMMGetEpsilon_PolBasisNV  tabs=7  anchor line=2415
++  point id=155  FMMGetEpsilon_PolBasisVL  tabs=7  anchor line=2417
++  point id=156  FMMGetEpsilon_PolBasisJones  tabs=6  anchor line=2425
++  point id=157  FMMGetEpsilon_PolBasisNV  tabs=6  anchor line=2427
++  point id=158  FMMGetEpsilon_PolBasisVL  tabs=6  anchor line=2429
++  point id=159  FMMGetEpsilon_ClosedForm  tabs=4  anchor line=2422
+ --- a/S4/S4.cpp
+ +++ b/S4/S4.cpp
+ @@ -48,2 +48,5 @@
+@@ -19,13 +19,13 @@
+ +extern "C" int S4_TEST_FMMRET_AFTER(int id, int ret);
+ +#endif
+  
+-@@ -2391,2 +2394,5 @@
++@@ -2404,2 +2407,5 @@
+  			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+ +#ifdef S4_TEST_FMMRET_SEAM
+ +			fmm_ret = S4_TEST_FMMRET_AFTER(150, fmm_ret);
+ +#endif
+  		}else{
+-@@ -2395,4 +2401,10 @@
++@@ -2408,4 +2414,10 @@
+  					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+ +#ifdef S4_TEST_FMMRET_SEAM
+ +					fmm_ret = S4_TEST_FMMRET_AFTER(151, fmm_ret);
+@@ -36,7 +36,7 @@
+ +					fmm_ret = S4_TEST_FMMRET_AFTER(152, fmm_ret);
+ +#endif
+  					if(0 == fmm_ret && S->options.use_polarization_basis){
+-@@ -2400,6 +2412,15 @@
++@@ -2413,6 +2425,15 @@
+  							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+ +#ifdef S4_TEST_FMMRET_SEAM
+ +							fmm_ret = S4_TEST_FMMRET_AFTER(153, fmm_ret);
+@@ -52,13 +52,13 @@
+ +							fmm_ret = S4_TEST_FMMRET_AFTER(155, fmm_ret);
+ +#endif
+  						}
+-@@ -2409,2 +2430,5 @@
++@@ -2422,2 +2443,5 @@
+  				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+ +#ifdef S4_TEST_FMMRET_SEAM
+ +				fmm_ret = S4_TEST_FMMRET_AFTER(159, fmm_ret);
+ +#endif
+  				if(0 == fmm_ret && S->options.use_polarization_basis){
+-@@ -2412,6 +2436,15 @@
++@@ -2425,6 +2449,15 @@
+  						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+ +#ifdef S4_TEST_FMMRET_SEAM
+ +						fmm_ret = S4_TEST_FMMRET_AFTER(156, fmm_ret);
+

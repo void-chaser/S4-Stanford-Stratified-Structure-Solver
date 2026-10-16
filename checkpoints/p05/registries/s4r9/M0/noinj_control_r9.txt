@@ -1,0 +1,3999 @@
+# noinj_control_r9.txt -- Non-injection control run for F4 drivers (P05-S4 R9 S-F)
+# Expectation: rc=0, san_reports=0, no injection hits
+
+=== Combo NOINJ-001: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-11-F3
+env: FMM_MODE=fft;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x62cb2254b42c hit=0
+
+
+=== Combo NOINJ-002: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-12-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x60697994542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x60697994542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x60697994542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x60697994542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x60697994542c h
+
+=== Combo NOINJ-003: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-14-F3
+env: FMM_MODE=fft;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x5c55386d442c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x5c55386d442c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x5c55386d442c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x5c55386d442c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x5c55386d442c h
+
+=== Combo NOINJ-004: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-16-F3
+env: FMM_MODE=kottke;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x5b2e3d49542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x5b2e3d49542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x5b2e3d49542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x5b2e3d49542c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x5b2e3d49542c h
+
+=== Combo NOINJ-005: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-18-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x5c5e3340342c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x5c5e3340342c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x5c5e3340342c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x5c5e3340342c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x5c5e3340342c h
+
+=== Combo NOINJ-006: polyinj-F4-dbg (F3: polyinj-F3-dbg) ===
+sample_point: M2-01-20-F3
+env: FMM_MODE=kottke;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x5604b335f42c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x5604b335f42c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x5604b335f42c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x5604b335f42c hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x5604b335f42c h
+
+=== Combo NOINJ-007: init-F4-dbg (F3: init-F3-dbg) ===
+sample_point: M2-01-CTRL-01-F3
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x6155bdcbf86f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=31 caller=0x6155bdce2207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x6155bdcbf97e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x6155bdcbf9b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=39 caller=0x6155bdce2207 hit=0
+S4
+
+=== Combo NOINJ-008: init-F4-dbg (F3: init-F3-dbg) ===
+sample_point: M2-01-CTRL-02-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5df8d151086f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=63 caller=0x5df8d1533207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x5df8d151097e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x5df8d15109b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=648 caller=0x5df8d1532ace hit=0
+S
+
+=== Combo NOINJ-009: init-F4-dbg (F3: init-F3-dbg) ===
+sample_point: M2-01-CTRL-03-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5f412fa2986f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=63 caller=0x5f412fa4c207 hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=384 caller=0x5f412fa2997e hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=256 caller=0x5f412fa299b4 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=648 caller=0x5f412fa4bace hit=0
+S
+
+=== Combo NOINJ-010: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-01-F3
+env: FMM_MODE=closed1d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed1d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-011: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-02-F3
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-012: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-03-F3
+env: FMM_MODE=experimental;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=experimental num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 ns
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-013: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-04-F3
+env: FMM_MODE=fft;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-014: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-05-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-015: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-06-F3
+env: FMM_MODE=jones;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-016: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-07-F3
+env: FMM_MODE=jones;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-017: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-08-F3
+env: FMM_MODE=kottke;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-018: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-09-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-019: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-10-F3
+env: FMM_MODE=nv;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=nv num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-020: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-11-F3
+env: FMM_MODE=nv;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=nv num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-021: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-12-F3
+env: FMM_MODE=vl;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=vl num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-022: r6bstate-F4-san (F3: r6bstate-F3-san) ===
+sample_point: M2-03-G5-13-F3
+env: FMM_MODE=vl;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=vl num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-023: seamF-F4-san (F3: seamF-F3-san) ===
+sample_point: M2-03-G6-02-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-024: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-11-F3
+env: FMM_MODE=fft;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x59afe62bd6a2 hit=0
+
+
+=== Combo NOINJ-025: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-12-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x61343071f6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x61343071f6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x61343071f6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x61343071f6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x61343071f6a2 h
+
+=== Combo NOINJ-026: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-14-F3
+env: FMM_MODE=fft;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x59ce21e946a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x59ce21e946a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x59ce21e946a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x59ce21e946a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x59ce21e946a2 h
+
+=== Combo NOINJ-027: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-16-F3
+env: FMM_MODE=kottke;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x5819dd69a6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x5819dd69a6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x5819dd69a6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x5819dd69a6a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x5819dd69a6a2 h
+
+=== Combo NOINJ-028: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-18-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x55e358ba26a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x55e358ba26a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x55e358ba26a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x55e358ba26a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x55e358ba26a2 h
+
+=== Combo NOINJ-029: polyinj-F4-san (F3: polyinj-F3-san) ===
+sample_point: M2-03-REP-POLY-20-F3
+env: FMM_MODE=kottke;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4C3_WIN_MALLOC k=1 n=36 caller=0x56309a5086a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=2 n=36 caller=0x56309a5086a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=3 n=36 caller=0x56309a5086a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=4 n=36 caller=0x56309a5086a2 hit=0
+S4FMM S3R4C3_WIN_MALLOC k=5 n=36 caller=0x56309a5086a2 h
+
+=== Combo NOINJ-030: dual-F4-dbg (F3: dual-F3-dbg) ===
+sample_point: M2-04-01-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-031: layers-dual-F4-dbg (F3: layers-dual-F3-dbg) ===
+sample_point: M2-04-02-F3
+env: FMM_MODE=fft;S4FMM_LAYOUT=PP1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+S4FMM LAYOUT PP1 n_layers 4
+R6STATE 0 n_layers 4
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_p
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=8x8
+S4FMM WITNESS plan call=7 grid=8x8
+S4FMM WITNESS plan call=8 grid=8x8
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-032: layers-F4-dbg (F3: layers-F3-dbg) ===
+sample_point: M2-05-CTRL-P0-F3
+env: FMM_MODE=fft;S4FMM_LAYOUT=P0;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+S4FMM LAYOUT P0 n_layers 3
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_pt
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-033: layers-F4-dbg (F3: layers-F3-dbg) ===
+sample_point: M2-05-P2-F3
+env: FMM_MODE=fft;S4FMM_LAYOUT=P2;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+S4FMM LAYOUT P2 n_layers 3
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_pt
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-034: layers-F4-dbg (F3: layers-F3-dbg) ===
+sample_point: M2-05-PP1-F3
+env: FMM_MODE=fft;S4FMM_LAYOUT=PP1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+S4FMM LAYOUT PP1 n_layers 4
+R6STATE 0 n_layers 4
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_p
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=8x8
+S4FMM WITNESS plan call=7 grid=8x8
+S4FMM WITNESS plan call=8 grid=8x8
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-035: layers-F4-dbg (F3: layers-F3-dbg) ===
+sample_point: M2-05-PP2-F3
+env: FMM_MODE=fft;S4FMM_LAYOUT=PP2;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+S4FMM LAYOUT PP2 n_layers 4
+R6STATE 0 n_layers 4
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_p
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=8x8
+S4FMM WITNESS plan call=7 grid=8x8
+S4FMM WITNESS plan call=8 grid=8x8
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-036: nan-F4 (F3: nan-F3) ===
+sample_point: M2-06-CTRL-01-F3
+env: FMM_MODE=tensor;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=tensor num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-037: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng1-F3
+env: FMM_MODE=closed1d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-038: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng2-F3
+env: FMM_MODE=closed1d;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-039: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng3-F3
+env: FMM_MODE=closed1d;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-040: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng4-F3
+env: FMM_MODE=closed1d;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-041: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng5-F3
+env: FMM_MODE=closed1d;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-042: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng6-F3
+env: FMM_MODE=closed1d;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-043: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng7-F3
+env: FMM_MODE=closed1d;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-044: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed1d-ng8-F3
+env: FMM_MODE=closed1d;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-045: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-closed1d-ng5-F3
+env: FMM_MODE=closed1d;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed1d num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-046: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng1-F3
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-047: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng2-F3
+env: FMM_MODE=closed2d;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-048: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng3-F3
+env: FMM_MODE=closed2d;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-049: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng4-F3
+env: FMM_MODE=closed2d;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-050: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng5-F3
+env: FMM_MODE=closed2d;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-051: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng6-F3
+env: FMM_MODE=closed2d;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-052: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng7-F3
+env: FMM_MODE=closed2d;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-053: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-closed2d-ng8-F3
+env: FMM_MODE=closed2d;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-054: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-closed2d-ng5-F3
+env: FMM_MODE=closed2d;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=closed2d num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-055: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng1-F3
+env: FMM_MODE=experimental;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-056: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng2-F3
+env: FMM_MODE=experimental;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-057: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng3-F3
+env: FMM_MODE=experimental;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-058: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng4-F3
+env: FMM_MODE=experimental;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-059: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng5-F3
+env: FMM_MODE=experimental;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-060: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng6-F3
+env: FMM_MODE=experimental;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-061: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng7-F3
+env: FMM_MODE=experimental;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-062: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-experimental-ng8-F3
+env: FMM_MODE=experimental;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-063: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-experimental-ng5-F3
+env: FMM_MODE=experimental;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=experimental num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER D
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-064: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng1-F3
+env: FMM_MODE=fft;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=1x1
+S4FMM WITNESS plan call=2 grid=1x1
+S4FMM WITNESS plan call=3 grid=1x1
+S4FMM WITNESS plan call=4 grid=1x1
+S4FMM WITNESS plan call=5 grid=1x1
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-065: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng2-F3
+env: FMM_MODE=fft;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=1x1
+S4FMM WITNESS plan call=2 grid=1x1
+S4FMM WITNESS plan call=3 grid=1x1
+S4FMM WITNESS plan call=4 grid=1x1
+S4FMM WITNESS plan call=5 grid=1x1
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-066: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng3-F3
+env: FMM_MODE=fft;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=1x1
+S4FMM WITNESS plan call=2 grid=1x1
+S4FMM WITNESS plan call=3 grid=1x1
+S4FMM WITNESS plan call=4 grid=1x1
+S4FMM WITNESS plan call=5 grid=1x1
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-067: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng4-F3
+env: FMM_MODE=fft;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=1x1
+S4FMM WITNESS plan call=2 grid=1x1
+S4FMM WITNESS plan call=3 grid=1x1
+S4FMM WITNESS plan call=4 grid=1x1
+S4FMM WITNESS plan call=5 grid=1x1
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-068: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng5-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-069: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng6-F3
+env: FMM_MODE=fft;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-070: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng7-F3
+env: FMM_MODE=fft;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-071: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-fft-ng8-F3
+env: FMM_MODE=fft;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-072: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-fft-ng5-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-073: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng1-F3
+env: FMM_MODE=kottke;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-074: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng2-F3
+env: FMM_MODE=kottke;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-075: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng3-F3
+env: FMM_MODE=kottke;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-076: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng4-F3
+env: FMM_MODE=kottke;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-077: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng5-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-078: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng6-F3
+env: FMM_MODE=kottke;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-079: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng7-F3
+env: FMM_MODE=kottke;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-080: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-kottke-ng8-F3
+env: FMM_MODE=kottke;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-081: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-kottke-ng5-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=kottke num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-082: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng1-F3
+env: FMM_MODE=tensor;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-083: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng2-F3
+env: FMM_MODE=tensor;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-084: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng3-F3
+env: FMM_MODE=tensor;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-085: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng4-F3
+env: FMM_MODE=tensor;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-086: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng5-F3
+env: FMM_MODE=tensor;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-087: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng6-F3
+env: FMM_MODE=tensor;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-088: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng7-F3
+env: FMM_MODE=tensor;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-089: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-tensor-ng8-F3
+env: FMM_MODE=tensor;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-090: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-tensor-ng5-F3
+env: FMM_MODE=tensor;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=tensor num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RE
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-091: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng1-F3
+env: FMM_MODE=jones;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-092: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng2-F3
+env: FMM_MODE=jones;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-093: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng3-F3
+env: FMM_MODE=jones;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-094: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng4-F3
+env: FMM_MODE=jones;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-095: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng5-F3
+env: FMM_MODE=jones;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-096: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng6-F3
+env: FMM_MODE=jones;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-097: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng7-F3
+env: FMM_MODE=jones;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-098: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-jones-ng8-F3
+env: FMM_MODE=jones;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-099: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-jones-ng5-F3
+env: FMM_MODE=jones;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=jones num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RES
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-100: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng1-F3
+env: FMM_MODE=nv;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-101: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng2-F3
+env: FMM_MODE=nv;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-102: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng3-F3
+env: FMM_MODE=nv;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-103: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng4-F3
+env: FMM_MODE=nv;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-104: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng5-F3
+env: FMM_MODE=nv;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-105: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng6-F3
+env: FMM_MODE=nv;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-106: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng7-F3
+env: FMM_MODE=nv;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-107: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-nv-ng8-F3
+env: FMM_MODE=nv;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-108: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-nv-ng5-F3
+env: FMM_MODE=nv;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=nv num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-109: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng1-F3
+env: FMM_MODE=vl;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 1
+san_reports: 0
+has_hit: False
+status: PASS_MATCH_F3_NATIVE_FAIL
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=1 stage=none plan_call=0 alloc=0 exec=0
+RC first 20
+RC retry 20
+CHECK failed call returns the allocation code 1 FAILED
+CHECK failed call left E untouched             ok
+CHECK failed call left H untouched             ok
+CHECK sentinels around E intact            
+
+=== Combo NOINJ-110: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng5-F3
+env: FMM_MODE=vl;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-111: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng6-F3
+env: FMM_MODE=vl;S4FMM_NG=6
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=6 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-112: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng7-F3
+env: FMM_MODE=vl;S4FMM_NG=7
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=7 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-113: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng8-F3
+env: FMM_MODE=vl;S4FMM_NG=8
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=8 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-114: d003plan-F4-plain (F3: d003plan-F3-plain) ===
+sample_point: M2-07-INJ-vl-ng5-F3
+env: FMM_MODE=vl;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=5 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESULT
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-115: seam-fmmret-F4 (F3: seam-fmmret-F3) ===
+sample_point: M2-09-01-F3
+env: FMM_MODE=fft;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER actual mode=fft num_basis=9 stage=none plan_call=0 alloc=0 exec=0
+RC first 0
+RC retry 0
+CHECK second call also succeeds                ok
+CHECK successful call wrote its outputs        ok
+CHECK successful output is finite              ok
+RESULT no injection fired
+S4FMM DRIVER DONE
+RESUL
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-116: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-01-F3
+env: FMM_MODE=closed1d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed1d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-117: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-02-F3
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-118: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-03-F3
+env: FMM_MODE=experimental;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=experimental num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 ns
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-119: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-04-F3
+env: FMM_MODE=fft;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-120: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-05-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-121: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-06-F3
+env: FMM_MODE=jones;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-122: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-07-F3
+env: FMM_MODE=jones;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-123: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-08-F3
+env: FMM_MODE=kottke;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-124: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-09-F3
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-125: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-10-F3
+env: FMM_MODE=nv;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=nv num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-126: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-11-F3
+env: FMM_MODE=nv;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=nv num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-127: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-12-F3
+env: FMM_MODE=vl;S4FMM_K=1;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=vl num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-128: r6bstate-F4-dbg (F3: r6bstate-F3-dbg) ===
+sample_point: M2-03-SANREF-G5-13-F3
+env: FMM_MODE=vl;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=vl num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-129: r6bseam-seamF-F4 (F3: r6bseam-seamF-F3) ===
+sample_point: M2-03-SANREF-G6-02-F3
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-130: seamF-F4-san (F3: seamF-F3-san) ===
+sample_point: M2-03-G6-01-F3-C
+env: FMM_MODE=fft;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-131: r6bseam-seamF-F4 (F3: r6bseam-seamF-F3) ===
+sample_point: M2-03-SANREF-G6-01-F3-C
+env: FMM_MODE=fft;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-132: seamF-F4-san (F3: seamF-F3-san) ===
+sample_point: M2-03-G6-03-F3-C
+env: FMM_MODE=closed1d;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed1d num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-133: r6bseam-seamF-F4 (F3: r6bseam-seamF-F3) ===
+sample_point: M2-03-SANREF-G6-03-F3-C
+env: FMM_MODE=closed1d;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed1d num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=3x4
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-134: seamF-F4-san (F3: seamF-F3-san) ===
+sample_point: M2-03-G6-04-F3-C
+env: FMM_MODE=kottke;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-135: r6bseam-seamF-F4 (F3: r6bseam-seamF-F3) ===
+sample_point: M2-03-SANREF-G6-04-F3-C
+env: FMM_MODE=kottke;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=8x8
+S4FMM WITNESS plan call=3 grid=8x8
+S4FMM WITNESS plan call=4 grid=8x8
+S4FMM WITNESS plan call=5 grid=8x8
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-136: seamF-F4-san (F3: seamF-F3-san) ===
+sample_point: M2-03-G6-05-F3-C
+env: FMM_MODE=jones;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-137: r6bseam-seamF-F4 (F3: r6bseam-seamF-F3) ===
+sample_point: M2-03-SANREF-G6-05-F3-C
+env: FMM_MODE=jones;S4FMM_NG=9
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=jones num_basis=9
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+--- stderr head ---
+S4FMM WITNESS plan call=1 grid=8x8
+S4FMM WITNESS plan call=2 grid=3x4
+S4FMM WITNESS plan call=3 grid=3x4
+S4FMM WITNESS plan call=4 grid=3x4
+S4FMM WITNESS plan call=5 grid=3x4
+S4FMM WITNESS plan call=6 grid=3x4
+S4FMM WITNESS plan call=7 grid=3x4
+S4FMM WITNESS plan call=8 grid=3x4
+S4FMM WITNESS plan c
+
+=== Combo NOINJ-138: init-F4-san (F3: init-F3-san) ===
+sample_point: M2-03-REP-INIT-01-F3-C
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x57a0a39b0545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x57a0a39b0cbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x57a0a39b0efc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=0 caller=0x57a0a39cb553 hit=0
+S4FMM S3R4_WIN_OPEN
+S4FMM S3R4_WIN_CLOSE malloc_in_window=0 rc
+
+=== Combo NOINJ-139: init-F4-san (F3: init-F3-san) ===
+sample_point: M2-03-REP-INIT-02-F3-C
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x59e377f6c545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x59e377f6ccbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x59e377f6cefc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x59e378013342 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x59e377f87553 hit=0
+S4
+
+=== Combo NOINJ-140: init-F4-san (F3: init-F3-san) ===
+sample_point: M2-03-REP-INIT-03-F3-C
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x64ab20376545 hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x64ab20376cbe hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x64ab20376efc hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x64ab2041d342 hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x64ab20391553 hit=0
+S4
+
+=== Combo NOINJ-141: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng2-F3-C
+env: FMM_MODE=vl;S4FMM_NG=2
+argv: pattern both 4 3
+exit_code: 1
+san_reports: 0
+has_hit: False
+status: PASS_MATCH_F3_NATIVE_FAIL
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=2 stage=none plan_call=0 alloc=0 exec=0
+RC first 20
+RC retry 20
+CHECK failed call returns the allocation code 1 FAILED
+CHECK failed call left E untouched             ok
+CHECK failed call left H untouched             ok
+CHECK sentinels around E intact            
+
+=== Combo NOINJ-142: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng3-F3-C
+env: FMM_MODE=vl;S4FMM_NG=3
+argv: pattern both 4 3
+exit_code: 1
+san_reports: 0
+has_hit: False
+status: PASS_MATCH_F3_NATIVE_FAIL
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=3 stage=none plan_call=0 alloc=0 exec=0
+RC first 20
+RC retry 20
+CHECK failed call returns the allocation code 1 FAILED
+CHECK failed call left E untouched             ok
+CHECK failed call left H untouched             ok
+CHECK sentinels around E intact            
+
+=== Combo NOINJ-143: d003-F4-plain (F3: d003-F3-plain) ===
+sample_point: M2-07-CTRL-vl-ng4-F3-C
+env: FMM_MODE=vl;S4FMM_NG=4
+argv: pattern both 4 3
+exit_code: 1
+san_reports: 0
+has_hit: False
+status: PASS_MATCH_F3_NATIVE_FAIL
+--- stdout head ---
+S4FMM DRIVER actual mode=vl num_basis=4 stage=none plan_call=0 alloc=0 exec=0
+RC first 20
+RC retry 20
+CHECK failed call returns the allocation code 1 FAILED
+CHECK failed call left E untouched             ok
+CHECK failed call left H untouched             ok
+CHECK sentinels around E intact            
+
+=== Combo NOINJ-144: init-F4-san-AL (F3: init-F3-san-AL) ===
+sample_point: SOLN-1764-closed2d-ng1-F3-san-AL
+env: FMM_MODE=closed2d;S4FMM_NG=1
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshape
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x628407b9c8b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=8 alignment=16 caller=0x628407b9ae3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x628407b9d02e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x628407b9d26c hit=0
+S4FMM S4_MALLOC_ALIGNED k=2 size=16 alignmen
+
+=== Combo NOINJ-145: init-F4-san-AL (F3: init-F3-san-AL) ===
+sample_point: SOLN-1764-fft-ng5-F3-san-AL
+env: FMM_MODE=fft;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5802e99798b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x5802e9977e3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5802e997a02e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5802e997a26c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x58
+
+=== Combo NOINJ-146: init-F4-san-AL (F3: init-F3-san-AL) ===
+sample_point: SOLN-1764-kottke-ng5-F3-san-AL
+env: FMM_MODE=kottke;S4FMM_NG=5
+argv: pattern both 4 3
+exit_code: 0
+san_reports: 0
+has_hit: False
+status: PASS
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x641196ccf8b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x641196ccde3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x641196cd002e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x641196cd026c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x64
+

@@ -1,0 +1,25 @@
+# GDB_LINE_AUDIT_R9.tsv -- Full audit of file:line breakpoints in testing/d003/ (Section 4 S-E)
+script	script_line	target	tree	F4_mapped_line	R9_used	action
+testing/d003/stage_s3r5/map_k_s3r5.py	50	inject_s3r4_init.cpp:79	F3	79(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/malloc_map_r8m2c.gdb	5	inject_s3r4_init.cpp:79	F3	79(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/m210_b_r8m2a2_R2.gdb	7	S4/S4.cpp:2362	B	N/A(non-F4_tree)	YES	B_TREE_SAFE(cited_on_B_not_run_on_F4)
+testing/d003/stage_s4/m210_b_r8m2a2_R2.gdb	12	S4/S4.cpp:2416	B	N/A(non-F4_tree)	YES	B_TREE_SAFE(cited_on_B_not_run_on_F4)
+testing/d003/stage_s4/m210_b_r8m2a2_R2.gdb	17	S4/S4.cpp:2432	B	N/A(non-F4_tree)	YES	B_TREE_SAFE(cited_on_B_not_run_on_F4)
+testing/d003/stage_s4/r6_plan14_caller.gdb	26	fmm_FFT.cpp:90	F3	90(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/r6_plan14_caller.gdb	32	fmm_kottke.cpp:94	F3	94(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/win64_diag_r8m2b.gdb	12	S4/S4.cpp:1894	F3	1907	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/diag_r8m2c.py	95	S4/S4.cpp:2445	F3	2458	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/diag_r8m2c.py	102	S4/fmm/fmm_closed.cpp:244	F3	244(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4/m210_b_r8m2a2.gdb	6	S4/S4.cpp:2432	B	N/A(non-F4_tree)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r7/gdb_chain_jones_line_r7.gdb	10	fmm_PolBasisJones.cpp:192	F2/F	192(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r7/gdb_chain_jones_line_r7.gdb	16	S4.cpp:2413	F2/F	2426	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a3c.py	91	fmm_FFT.cpp:90	F3	90(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a3c.py	92	fmm_kottke.cpp:94	F3	94(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a3.py	80	fmm_FFT.cpp:90	F3	90(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a3.py	81	fmm_kottke.cpp:94	F3	94(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a2.py	64	fmm_FFT.cpp:90	F3	90(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s4r8/map_f2_f3_r8m1a2.py	65	fmm_kottke.cpp:94	F3	94(file_unmodified)	NO	NOT_USED_IN_R9
+testing/d003/stage_s1r/layer_probe.gdb	10	S4.cpp:2274	HISTORICAL_S1	N/A(non-F4_tree)	NO	NOT_USED_IN_R9
+testing/d003/stage_s1r/layer_probe.gdb	24	rcwa.cpp:883	HISTORICAL_S1	N/A(non-F4_tree)	NO	NOT_USED_IN_R9
+testing/d003/stage_s1r/nb_probe.gdb	20	S4.cpp:2274	HISTORICAL_S1	N/A(non-F4_tree)	NO	NOT_USED_IN_R9
+testing/d003/stage_s1r/nb_probe.gdb	34	rcwa.cpp:883	HISTORICAL_S1	N/A(non-F4_tree)	NO	NOT_USED_IN_R9

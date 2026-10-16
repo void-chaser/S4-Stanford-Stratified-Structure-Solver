@@ -1,0 +1,51 @@
+# BUILD_OPTION_DIFF_R9.txt -- Comparison of F3 and F4 compiler/linker options (Rule U296)
+# Requirement: All options must be identical when tree/lib paths are stripped (0 differences).
+
+=== init-F3-dbg vs init-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== init-F3-san vs init-F4-san ===
+IDENTICAL (0 differences)
+
+=== init-F3-san-AL vs init-F4-san-AL ===
+IDENTICAL (0 differences)
+
+=== dual-F3-dbg vs dual-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== layers-F3-dbg vs layers-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== layers-dual-F3-dbg vs layers-dual-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== nan-F3 vs nan-F4 ===
+IDENTICAL (0 differences)
+
+=== polyinj-F3-dbg vs polyinj-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== polyinj-F3-san vs polyinj-F4-san ===
+IDENTICAL (0 differences)
+
+=== r6bstate-F3-san vs r6bstate-F4-san ===
+IDENTICAL (0 differences)
+
+=== seamF-F3-san vs seamF-F4-san ===
+IDENTICAL (0 differences)
+
+=== d003-F3-plain vs d003-F4-plain ===
+IDENTICAL (0 differences)
+
+=== d003plan-F3-plain vs d003plan-F4-plain ===
+IDENTICAL (0 differences)
+
+=== seam-fmmret-F3 vs seam-fmmret-F4 ===
+IDENTICAL (0 differences)
+
+=== r6bstate-F3-dbg vs r6bstate-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== r6bseam-seamF-F3 vs r6bseam-seamF-F4 ===
+IDENTICAL (0 differences)
+
