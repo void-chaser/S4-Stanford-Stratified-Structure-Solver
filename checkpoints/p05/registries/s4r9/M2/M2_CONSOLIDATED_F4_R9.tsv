@@ -1,0 +1,261 @@
+# M2_CONSOLIDATED_F4_R9.tsv -- P05-S4 R9 Consolidated M2 Table (259 rows, 202 effective)
+point_id	origin	item	tree	verdict	verdict_detail	mismatches	flaky_fields	superseded_by	consolidation_status	verdict_source	f3_point_id	f3_verdict	notes
+M2-01-01-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-01-F3-C	SUPERSEDED	formal_r8m2b	M2-01-01-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-02-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-02-F3-C	SUPERSEDED	formal_r8m2b	M2-01-02-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-03-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-03-F3-C	SUPERSEDED	formal_r8m2b	M2-01-03-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-04-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-04-F3-C	SUPERSEDED	formal_r8m2b	M2-01-04-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-05-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-05-F3-C	SUPERSEDED	formal_r8m2b	M2-01-05-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-06-F3	r8m2b_v4_rejudge	M2-01	F3	MISMATCH	MISMATCH	I1(N/A!=HOLD),I2(N/A!=HOLD),exp_rc1(1!=20)	-	M2-01-06-F3-C	SUPERSEDED	formal_r8m2b	M2-01-06-F3	MISMATCH	p1_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc1(1!=20),I1(N/A!=HOLD),I2(N/A!=HOLD)
+M2-01-11-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-11-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-12-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-12-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-14-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-14-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-16-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-16-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-18-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-18-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-20-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-20-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-01-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-02-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-03-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-03-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-11-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-11-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-12-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-12-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-14-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-14-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-16-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-16-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-18-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-18-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-CTRL-20-F4	r9m2_formal	M2-01-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-CTRL-20-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-01-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-02-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-03-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-03-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-04-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-04-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-05-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-05-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-06-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-06-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-07-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-07-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-08-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-08-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-09-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-09-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-10-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-10-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-11-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-11-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-12-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-12-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G5-13-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G5-13-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-01-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-G6-01-F3-C	SUPERSEDED	formal_r8m2b	M2-03-G6-01-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-G6-02-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-03-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-G6-03-F3-C	SUPERSEDED	formal_r8m2b	M2-03-G6-03-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-G6-04-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-G6-04-F3-C	SUPERSEDED	formal_r8m2b	M2-03-G6-04-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-G6-05-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-G6-05-F3-C	SUPERSEDED	formal_r8m2b	M2-03-G6-05-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-G6-06-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-G6-06-F3-C	SUPERSEDED	formal_r8m2b	M2-03-G6-06-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-REP-INIT-01-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_rc1(1!=20)	-	M2-03-REP-INIT-01-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-01-F3	MISMATCH	p1_diffs=exp_rc1(1!=20);p2_diffs=exp_rc1(1!=20)
+M2-03-REP-INIT-02-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_rc1(1!=20)	-	M2-03-REP-INIT-02-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-02-F3	MISMATCH	p1_diffs=exp_rc1(1!=20);p2_diffs=exp_rc1(1!=20)
+M2-03-REP-INIT-03-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_rc1(1!=20)	-	M2-03-REP-INIT-03-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-03-F3	MISMATCH	p1_diffs=exp_rc1(1!=20);p2_diffs=exp_rc1(1!=20)
+M2-03-REP-INIT-04-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_san(2!=0),san_ref_class(INVALID!=REPORTED_FAILURE),san_ref_rc1(MISSING!=1)	-	M2-03-REP-INIT-04-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-04-F3	MISMATCH	p1_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE)
+M2-03-REP-INIT-05-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_san(2!=0),san_ref_class(INVALID!=REPORTED_FAILURE),san_ref_rc1(MISSING!=1)	-	M2-03-REP-INIT-05-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-05-F3	MISMATCH	p1_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE)
+M2-03-REP-INIT-06-F3	r8m2b_v4_rejudge	M2-03	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_san(2!=0),san_ref_class(INVALID!=REPORTED_FAILURE),san_ref_rc1(MISSING!=1)	-	M2-03-REP-INIT-06-F3-C	SUPERSEDED	formal_r8m2b	M2-03-REP-INIT-06-F3	MISMATCH	p1_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(MISSING!=20),exp_rc2(MISSING!=0),exp_class(INVALID!=REPORTED_FAILURE),exp_san(2!=0),san_ref_rc1(MISSING!=1),san_ref_class(INVALID!=REPORTED_FAILURE)
+M2-03-REP-POLY-11-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-11-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-POLY-12-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-12-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-POLY-14-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-14-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-POLY-16-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-16-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-POLY-18-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-18-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-POLY-20-F4	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-POLY-20-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-04-01-F4	r9m2_formal	M2-04	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-04-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-04-02-F4	r9m2_formal	M2-04	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-04-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-04-CTRL-01-F4	r9m2_formal	M2-04-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-04-CTRL-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-04-CTRL-02-F4	r9m2_formal	M2-04-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-04-CTRL-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-P0-F3	r8m2b_v4_rejudge	M2-05	F3	MISMATCH	MISMATCH	I2(N/A!=HOLD)	-	M2-05-P0-F3-C	SUPERSEDED	formal_r8m2b	M2-05-P0-F3	MISMATCH	p1_diffs=I2(N/A!=HOLD);p2_diffs=I2(N/A!=HOLD)
+M2-05-CTRL-P0-F4	r9m2_formal	M2-05-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-CTRL-P0-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-P2-F4	r9m2_formal	M2-05	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-P2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-CTRL-P2-F4	r9m2_formal	M2-05-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-CTRL-P2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-PP1-F4	r9m2_formal	M2-05	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-PP1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-CTRL-PP1-F4	r9m2_formal	M2-05-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-CTRL-PP1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-PP2-F4	r9m2_formal	M2-05	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-PP2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-CTRL-PP2-F4	r9m2_formal	M2-05-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-CTRL-PP2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-06-01-F3	r8m2b_v4_rejudge	M2-06	F3	MISMATCH	MISMATCH	exp_class(REPORTED_FAILURE!=SILENT_SWALLOW),exp_rc1(20!=0)	-	M2-06-01-F3-C	SUPERSEDED	formal_r8m2b	M2-06-01-F3	MISMATCH	p1_diffs=exp_rc1(20!=0),exp_class(REPORTED_FAILURE!=SILENT_SWALLOW);p2_diffs=exp_rc1(20!=0),exp_class(REPORTED_FAILURE!=SILENT_SWALLOW)
+M2-06-CTRL-01-F4	r9m2_formal	M2-06-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-06-CTRL-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed1d-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed1d-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-closed1d-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-closed1d-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-closed2d-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-closed2d-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-closed2d-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-closed2d-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-experimental-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-experimental-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-experimental-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-experimental-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-fft-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-fft-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-fft-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-fft-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-kottke-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-kottke-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-kottke-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-kottke-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-tensor-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-tensor-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-tensor-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-tensor-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-jones-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-jones-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-jones-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-jones-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng2-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng2-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng3-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng3-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng4-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng4-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-nv-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-nv-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-nv-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-nv-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng1-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng1-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng2-F3	r8m2b_v4_rejudge	M2-07-CTRL	F3	MISMATCH	MISMATCH	exp_class(INVALID!=CONTROL_OK),exp_rc1(20!=0),exp_rc2(20!=0)	-	M2-07-CTRL-vl-ng2-F3-C	SUPERSEDED	formal_r8m2b	M2-07-CTRL-vl-ng2-F3	MISMATCH	p1_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK);p2_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK)
+M2-07-CTRL-vl-ng3-F3	r8m2b_v4_rejudge	M2-07-CTRL	F3	MISMATCH	MISMATCH	exp_class(INVALID!=CONTROL_OK),exp_rc1(20!=0),exp_rc2(20!=0)	-	M2-07-CTRL-vl-ng3-F3-C	SUPERSEDED	formal_r8m2b	M2-07-CTRL-vl-ng3-F3	MISMATCH	p1_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK);p2_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK)
+M2-07-CTRL-vl-ng4-F3	r8m2b_v4_rejudge	M2-07-CTRL	F3	MISMATCH	MISMATCH	exp_class(INVALID!=CONTROL_OK),exp_rc1(20!=0),exp_rc2(20!=0)	-	M2-07-CTRL-vl-ng4-F3-C	SUPERSEDED	formal_r8m2b	M2-07-CTRL-vl-ng4-F3	MISMATCH	p1_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK);p2_diffs=exp_rc1(20!=0),exp_rc2(20!=0),exp_class(INVALID!=CONTROL_OK)
+M2-07-CTRL-vl-ng5-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng6-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng6-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng7-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng7-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng8-F4	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng8-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-INJ-vl-ng5-F4	r9m2_formal	M2-07	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-INJ-vl-ng5-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-09-01-F4	r9m2_formal	M2-09-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-09-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-09-01-F2	r8m2b_v4_rejudge	M2-09-CTRL	F2	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2b	M2-09-01-F2	MATCH	Cited F2 baseline point from formal_r8m2b; all verified
+M2-10-01-B	r8m2b_v4_rejudge	M2-10	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2b	M2-10-01-B	MATCH	Cited B baseline point from formal_r8m2b; all verified
+M2-03-SANREF-G5-01-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-02-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-03-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-03-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-04-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-04-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-05-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-05-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-06-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-06-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-07-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-07-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-08-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-08-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-09-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-09-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-10-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-10-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-11-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-11-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-12-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-12-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G5-13-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G5-13-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-01-F3	r8m2b_v4_rejudge	M2-03-SANREF	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-SANREF-G6-01-F3-C	SUPERSEDED	formal_r8m2b	M2-03-SANREF-G6-01-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-SANREF-G6-02-F4	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-02-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-03-F3	r8m2b_v4_rejudge	M2-03-SANREF	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-SANREF-G6-03-F3-C	SUPERSEDED	formal_r8m2b	M2-03-SANREF-G6-03-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-SANREF-G6-04-F3	r8m2b_v4_rejudge	M2-03-SANREF	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-SANREF-G6-04-F3-C	SUPERSEDED	formal_r8m2b	M2-03-SANREF-G6-04-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-SANREF-G6-05-F3	r8m2b_v4_rejudge	M2-03-SANREF	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-SANREF-G6-05-F3-C	SUPERSEDED	formal_r8m2b	M2-03-SANREF-G6-05-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-SANREF-G6-06-F3	r8m2b_v4_rejudge	M2-03-SANREF	F3	MISMATCH	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	-	M2-03-SANREF-G6-06-F3-C	SUPERSEDED	formal_r8m2b	M2-03-SANREF-G6-06-F3	MISMATCH	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-01-13-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-13-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-15-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-15-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-17-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-17-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-19-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-19-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-21-F4	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-21-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-01-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-01-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-01-F4-C	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-01-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-03-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-03-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-03-F4-C	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-03-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-04-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-04-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-04-F4-C	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-04-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-05-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-05-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-05-F4-C	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-05-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-G6-06-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-G6-06-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-SANREF-G6-06-F4-C	r9m2_formal	M2-03-SANREF	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-SANREF-G6-06-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-01-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-01-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-02-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-02-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-03-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-03-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-04-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-04-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-05-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-05-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-01-06-F4-C	r9m2_formal	M2-01	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-01-06-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-01-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-01-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-02-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-02-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-03-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-03-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-04-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-04-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-05-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-05-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-03-REP-INIT-06-F4-C	r9m2_formal	M2-03	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-03-REP-INIT-06-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng2-F4-C	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng2-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng3-F4-C	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng3-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-07-CTRL-vl-ng4-F4-C	r9m2_formal	M2-07-CTRL	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-07-CTRL-vl-ng4-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-05-P0-F4-C	r9m2_formal	M2-05	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-05-P0-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-closed2d-ng1-F3-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-closed2d-ng1-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-closed2d-ng1-F3-dbg	MATCH	all verified
+SOLN-1763-closed2d-ng1-B-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-closed2d-ng1-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-closed2d-ng1-B-dbg	MATCH	all verified
+SOLN-1763-closed2d-ng1-F3-san	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-closed2d-ng1-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1763-closed2d-ng1-F3-san	MATCH	all verified
+SOLN-1763-fft-ng5-F3-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-fft-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-fft-ng5-F3-dbg	MATCH	all verified
+SOLN-1763-fft-ng5-B-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-fft-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-fft-ng5-B-dbg	MATCH	all verified
+SOLN-1763-fft-ng5-F3-san	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-fft-ng5-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1763-fft-ng5-F3-san	MATCH	all verified
+SOLN-1763-kottke-ng5-F3-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-kottke-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-kottke-ng5-F3-dbg	MATCH	all verified
+SOLN-1763-kottke-ng5-B-dbg	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-kottke-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1763-kottke-ng5-B-dbg	MATCH	all verified
+SOLN-1763-kottke-ng5-F3-san	r8m2c_delta	SOLN-1763	F3	MATCH	MATCH	-	-	SOLN-1763-kottke-ng5-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1763-kottke-ng5-F3-san	MATCH	all verified
+SOLN-1764-closed2d-ng1-F3-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-closed2d-ng1-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-closed2d-ng1-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-closed2d-ng1-B-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-closed2d-ng1-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-closed2d-ng1-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-closed2d-ng1-F3-san	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-closed2d-ng1-F3-san-FA	SUPERSEDED	formal_r8m2c	SOLN-1764-closed2d-ng1-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-fft-ng5-F3-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-fft-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-fft-ng5-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-fft-ng5-B-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-fft-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-fft-ng5-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-fft-ng5-F3-san	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-fft-ng5-F3-san-FA	SUPERSEDED	formal_r8m2c	SOLN-1764-fft-ng5-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-kottke-ng5-F3-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-kottke-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-kottke-ng5-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-kottke-ng5-B-dbg	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-kottke-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1764-kottke-ng5-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1764-kottke-ng5-F3-san	r8m2c_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1764-kottke-ng5-F3-san-FA	SUPERSEDED	formal_r8m2c	SOLN-1764-kottke-ng5-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-closed2d-ng1-F3-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-closed2d-ng1-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-closed2d-ng1-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-closed2d-ng1-B-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-closed2d-ng1-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-closed2d-ng1-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-closed2d-ng1-F3-san	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-closed2d-ng1-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1765-closed2d-ng1-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-fft-ng5-F3-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-fft-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-fft-ng5-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-fft-ng5-B-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-fft-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-fft-ng5-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-fft-ng5-F3-san	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-fft-ng5-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1765-fft-ng5-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-kottke-ng5-F3-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-kottke-ng5-F3-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-kottke-ng5-F3-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-kottke-ng5-B-dbg	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-kottke-ng5-B-dbg-C	SUPERSEDED	formal_r8m2c	SOLN-1765-kottke-ng5-B-dbg	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+SOLN-1765-kottke-ng5-F3-san	r8m2c_delta	SOLN-1765	F3	MISMATCH	MISMATCH	exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)	-	SOLN-1765-kottke-ng5-F3-san-C	SUPERSEDED	formal_r8m2c	SOLN-1765-kottke-ng5-F3-san	MISMATCH	p1_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0);p2_diffs=exp_rc1(MISSING!=1),exp_rc2(MISSING!=0)
+M2-06-DIAG-01-F4	r9m2_formal	M2-06-DIAG	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-06-DIAG-01-F3	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+M2-06-01-F4-C	r9m2_formal	M2-06	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	M2-06-01-F3-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-closed2d-ng1-F4-dbg	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-closed2d-ng1-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-closed2d-ng1-B-dbg-C	r8m2d_delta	SOLN-1763	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1763-closed2d-ng1-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1763-closed2d-ng1-F4-san	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-closed2d-ng1-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-fft-ng5-F4-dbg	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-fft-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-fft-ng5-B-dbg-C	r8m2d_delta	SOLN-1763	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1763-fft-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1763-fft-ng5-F4-san	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-fft-ng5-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-kottke-ng5-F4-dbg	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-kottke-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1763-kottke-ng5-B-dbg-C	r8m2d_delta	SOLN-1763	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1763-kottke-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1763-kottke-ng5-F4-san	r9m2_formal	SOLN-1763	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1763-kottke-ng5-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-closed2d-ng1-F4-dbg	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-closed2d-ng1-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-closed2d-ng1-B-dbg-C	r8m2d_delta	SOLN-1764	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1764-closed2d-ng1-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1764-closed2d-ng1-F3-san-FA	r8m2d_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_class(no_san_crash!=SAN_CRASH),exp_crash_call(NONE!=2),exp_crash_site(-!=S4.cpp:1995（[源码] 推断）),exp_hit(MISSING!=1)	-	SOLN-1764-closed2d-ng1-F3-san-AL	SUPERSEDED	smoke_r8m2d	SOLN-1764-closed2d-ng1-F3-san-FA	MISMATCH	superseded by SOLN-1764-closed2d-ng1-F3-san-AL per U276/U279 (apparatus error: S4_FAIL_ALLOC_AT not armed)
+SOLN-1764-fft-ng5-F4-dbg	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-fft-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-fft-ng5-B-dbg-C	r8m2d_delta	SOLN-1764	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1764-fft-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1764-fft-ng5-F3-san-FA	r8m2d_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_class(no_san_crash!=SAN_CRASH),exp_crash_call(NONE!=2),exp_crash_site(-!=S4.cpp:1995（[源码] 推断）),exp_hit(MISSING!=1)	-	SOLN-1764-fft-ng5-F3-san-AL	SUPERSEDED	smoke_r8m2d	SOLN-1764-fft-ng5-F3-san-FA	MISMATCH	superseded by SOLN-1764-fft-ng5-F3-san-AL per U276/U279 (apparatus error: S4_FAIL_ALLOC_AT not armed)
+SOLN-1764-kottke-ng5-F4-dbg	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-kottke-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-kottke-ng5-B-dbg-C	r8m2d_delta	SOLN-1764	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1764-kottke-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1764-kottke-ng5-F3-san-FA	r8m2d_delta	SOLN-1764	F3	MISMATCH	MISMATCH	exp_class(no_san_crash!=SAN_CRASH),exp_crash_call(NONE!=2),exp_crash_site(-!=S4.cpp:1995（[源码] 推断）),exp_hit(MISSING!=1)	-	SOLN-1764-kottke-ng5-F3-san-AL	SUPERSEDED	smoke_r8m2d	SOLN-1764-kottke-ng5-F3-san-FA	MISMATCH	superseded by SOLN-1764-kottke-ng5-F3-san-AL per U276/U279 (apparatus error: S4_FAIL_ALLOC_AT not armed)
+SOLN-1765-closed2d-ng1-F4-dbg	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-closed2d-ng1-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1765-closed2d-ng1-B-dbg-C	r8m2d_delta	SOLN-1765	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1765-closed2d-ng1-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1765-closed2d-ng1-F4-san	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-closed2d-ng1-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1765-fft-ng5-F4-dbg	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-fft-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1765-fft-ng5-B-dbg-C	r8m2d_delta	SOLN-1765	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1765-fft-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1765-fft-ng5-F4-san	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-fft-ng5-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1765-kottke-ng5-F4-dbg	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-kottke-ng5-F3-dbg-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1765-kottke-ng5-B-dbg-C	r8m2d_delta	SOLN-1765	B	MATCH	MATCH	-	-	-	ACTIVE	formal_r8m2e	SOLN-1765-kottke-ng5-B-dbg-C	MATCH	Cited B baseline point from formal_r8m2e; formal run in r8m2e (all verified)
+SOLN-1765-kottke-ng5-F4-san	r9m2_formal	SOLN-1765	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1765-kottke-ng5-F3-san-C	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-closed2d-ng1-F4-san-AL	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-closed2d-ng1-F3-san-AL	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-fft-ng5-F4-san-AL	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-fft-ng5-F3-san-AL	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH
+SOLN-1764-kottke-ng5-F4-san-AL	r9m2_formal	SOLN-1764	F4	MATCH	MATCH	-	-	-	ACTIVE	formal_r9m2	SOLN-1764-kottke-ng5-F3-san-AL	MATCH	All verified on F4 (formal_r9m2); F3 verdict was MATCH

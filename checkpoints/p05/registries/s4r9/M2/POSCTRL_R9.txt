@@ -1,0 +1,59 @@
+# POSCTRL_R9.txt -- Synthetic Positive Control Results (P05-S4 R9 S-J)
+total_cases: 53
+passed_cases: 53
+failed_cases: 0
+
+Case	Description	Status	Detail
+Case A	全通基线验证 (All clean synthetic baseline passes)	PASS	MATCH=150/150, UNJUDGED=0
+Case B	单点 rc1 不符 (rc1 mismatch)	PASS	verdict=MISMATCH, mismatches=I1(N/A!=HOLD),I2(N/A!=HOLD),exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=20),exp_rc3(-!=0)
+Case C	单点 rc2 不符 (rc2 mismatch)	PASS	verdict=MISMATCH, mismatches=I5(VIOLATED!=HOLD),exp_rc2(20!=0),exp_rc3(-!=0)
+Case D	异常退出信号 (signal mismatch)	PASS	verdict=MISMATCH, mismatches=exp_class(CRASH!=REPORTED_FAILURE),exp_signal(11!=0)
+Case E	命中次数不符 (hit mismatch)	PASS	verdict=MISMATCH, mismatches=exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc3(-!=0)
+Case F	双失败 hit2 不符 (hit2 mismatch)	PASS	verdict=MISMATCH, mismatches=exp_hit1(2!=1),exp_hit2(0!=1)
+Case F2	第二注入无效报错 (INJECT2 INVALID)	PASS	verdict=MISMATCH, mismatches=exp_inject2_invalid(1!=0)
+Case F3	第二注入抑制报错 (INJECT2 SUPPRESSED)	PASS	verdict=MISMATCH, mismatches=exp_inject2_suppressed(1!=0)
+Case F4	双失败恢复调用 rc3 不符 (rc3 mismatch)	PASS	verdict=MISMATCH, mismatches=I5(VIOLATED!=HOLD),exp_rc3(20!=0)
+Case G	私有状态缺失 (Missing gdb.log) -> UNJUDGED_MISSING	PASS	verdict=UNJUDGED, detail=UNJUDGED_MISSING
+Case H	缺失 pass 目录结构 -> SCHEMA_ERROR	PASS	verdict=SCHEMA_ERROR, mismatches=MISSING_IN_PASS1
+Case I	树哈希不符 -> SCHEMA_ERROR	PASS	verdict=SCHEMA_ERROR, mismatches=TREE_MISMATCH_PASS1(TREE_CORRUPTED!=F3)
+Case J	恢复输出数据与对照组不符 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=I6(VIOLATED!=HOLD),I6_OUTPUT_DIFF(f5ee7be7!=de48d8d5)
+Case L	两遍运行不一致 -> FLAKY	PASS	verdict=FLAKY, detail=FLAKY, flaky_fields=rc(p1=20,p2=0),rc1(p1=20,p2=0),rc3(p1=0,p2=-),class(p1=REPORTED_FAILURE,p2=SILENT_SWALLOW),I1(p1=HOLD,p2=N/A),I2(p1=HOLD,p2=N/A)
+Case M	M2-10-01-B 基线断点命中且 rc=20 -> MATCH	PASS	verdict=MATCH, detail=MATCH
+Case K	sanitizer 报错 (exp_san=0!=1) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_san(1!=0)
+Case P	参照点行为漂移 (san_ref_rc1 20!=0) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=san_ref_class(REPORTED_FAILURE!=SILENT_SWALLOW),san_ref_rc1(20!=0)
+Case Q	设计未决项 (NO_REF) -> UNJUDGED_BY_DESIGN	PASS	verdict=UNJUDGED, detail=UNJUDGED_BY_DESIGN
+Case R	汇总断言失败 (Total!=150) -> 异常退出	PASS	exit_code=1, stderr=ASSERTION FAILED: total evaluated 150 != assert_total 999
+Case S1	gdb 退出码 0，日志写 exited with code 024 -> rc=20, divergent=0	PASS	rc=20, signal=0, divergent=0
+Case S2	不挂 gdb 的运行出现 SIGSEGV -> CRASH -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_class(CRASH!=REPORTED_FAILURE),exp_signal(11!=0)
+Case S3	gdb 与 nogdb 的 rc1 不同 -> GDB_DIVERGENT	PASS	verdict=GDB_DIVERGENT, detail=GDB_DIVERGENT, notes=GDB_DIVERGENT(p1=1,p2=1); p1_diffs=exp_rc3(-!=0),I1(N/A!=HOLD),I2(N/A!=HOLD);p2_diffs=exp_rc3(-!=0),I1(N/A!=HOLD),I2(N/A!=HOLD)
+Case S4	log_path 含 $ -> 运行器拒绝	PASS	exit_code=1, stderr=FATAL: Command plan contains unexpanded '$' in env for M2-01
+Case S5	NATIVE_FAIL_CONTROL 在 rc1=0 时 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_rc1(0!=20),native_fail_rc1(0!=20)
+Case S6	M2-10 没有 M210_HIT -> MISMATCH	PASS	verdict=MISMATCH, mismatches=baseline_m210_hits_none(0)
+Case S7	hit1 不符 (hit1=2!=1) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_hit(3!=2),exp_hit1(2!=1)
+Case S8	参照点 rc 不同 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=san_ref_class(REPORTED_FAILURE!=SILENT_SWALLOW),san_ref_rc1(20!=0)
+Case P1	exp HOLD 实测 N/A -> MISMATCH (U267)	PASS	verdict=MISMATCH, mismatches=I1(N/A!=HOLD),I2(N/A!=HOLD)
+Case P2	exp N/A 实测 HOLD -> MISMATCH (U267)	PASS	verdict=MISMATCH, mismatches=I1(HOLD!=N/A)
+Case P3	ASAN SEGV 日志 -> san_crash=1, exp=SAN_CRASH 判定 MATCH (U269)	PASS	verdict=MATCH, mismatches=-
+Case P4	注入行 hit=0 -> 冒烟门禁 FAIL (U270a)	PASS	rc=2
+Case P5	INIT_CLEAN 断言失败 (VIOLATED!=HOLD) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=init_clean(VIOLATED!=HOLD)
+Case P6	SUPERSEDED_BY 行不重复计数 (superseded=1, effective=149)	PASS	summary=['# VERDICT_SUMMARY_R8_M2d -- P05-S4 R8 M2d verdict summary', 'total_points: 150', 'superseded_points: 1', 'effective_points: 149', 'MATCH: 150']
+Case P7	NATIVE_FAIL_CONTROL 用于 vl-ng2 实测 20 -> MATCH (U263)	PASS	verdict=MATCH, mismatches=-
+Case D1	crash_call 不符 (实测1 != 预期2) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_crash_call(1!=2)
+Case D2	crash_site 不符 (实测2021 != 预期1995) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_crash_site(S4.cpp:2021!=S4.cpp:1995)
+Case D3	exp_rc1='-' 时 rc1=MISSING 不判 -> MATCH	PASS	verdict=MATCH, mismatches=-
+Case D4	post_call1_solution 不符 (实测NULL != 预期NONNULL) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_class(REPORTED_FAILURE!=CRASH),exp_crash_call(UNKNOWN!=2),exp_post_call1_solution(NULL!=NONNULL),exp_signal(0!=11)
+Case D5	libc 帧被跳过，提取第一个 S4/ 帧 (S4.cpp:1995) 且 crash_call=2	PASS	site=S4.cpp:1995, call=2
+Case D6	SUPERSEDED 统计正确 (total=2, superseded=1, effective=1)	PASS	summary=['# VERDICT_SUMMARY_R8_M2d -- P05-S4 R8 M2d verdict summary', 'total_points: 2', 'superseded_points: 1', 'effective_points: 1', 'MATCH: 2']
+Case D7	exp_crash_site 带[源码]推断归一化比对 -> MATCH	PASS	verdict=MATCH, mismatches=-
+Case E1	ASAN 拦截帧 (__interceptor_memset) 被跳过，提取首个 S4 帧 (S4.cpp:1995)	PASS	site=S4.cpp:1995, call=2
+Case E2	S4FMM_INJECT=aligned:3 请求被解析并触发 K=3 注入与 HIT 报告	PASS	rc=0, hit=True
+Case E3	facts 提取器正确解析 stdout 中的 S4FMM HITCOUNT 1 为 hit=1	PASS	hit=1, rc1=0, rc2=0
+Case E4	合并总表生成器产出 verdict_source 列 (U280)	PASS	rc=0, has_col=True
+Case E5	合并总表有效行中无 smoke_* 来源，仅 3 个 SUPERSEDED -FA 行保留 smoke_r8m2d	PASS	active_smoke_count=0
+Case E6	合并总表合计断言满足 (总行数 259, SUPERSEDED 57, 有效行 202)	PASS	total=259, sup=57, act=202
+Case R9_1	post_call1_solution=NULL 匹配预期 -> MATCH	PASS	verdict=MATCH, mismatches=-
+Case R9_2	post_call1_solution 不符 (实测NONNULL != 预期NULL) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_post_call1_solution(NONNULL!=NULL)
+Case R9_3	crash_call=NONE 匹配预期 -> MATCH	PASS	verdict=MATCH, mismatches=-
+Case R9_4	crash_call 不符 (实测1 != 预期NONE) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_class(CRASH!=REPORTED_FAILURE),exp_crash_call(1!=NONE),exp_signal(11!=0)
+Case R9_5	I6=HOLD 匹配预期 -> MATCH	PASS	verdict=MATCH, mismatches=-
+Case R9_6	I6 输出与对照不符 (实测VIOLATED != 预期HOLD) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=I6(VIOLATED!=HOLD),I6_OUTPUT_DIFF(258bdf8e!=de48d8d5)
