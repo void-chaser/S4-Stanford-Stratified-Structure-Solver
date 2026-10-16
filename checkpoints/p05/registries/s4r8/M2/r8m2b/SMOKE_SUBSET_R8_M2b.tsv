@@ -1,0 +1,26 @@
+# SMOKE_SUBSET_R8_M2b.tsv -- Smoke subset points (P05-S4 R8 M2b §5 S-E)
+point_id	item	driver	control_group	tree	table_source	notes
+M2-01-01-F3	M2-01	init-F3-dbg	NO	F3	MAIN	item x driver x ctrl
+M2-01-11-F3	M2-01	polyinj-F3-dbg	NO	F3	MAIN	item x driver x ctrl
+M2-01-CTRL-01-F3	M2-01-CTRL	init-F3-dbg	YES	F3	MAIN	item x driver x ctrl
+M2-01-CTRL-11-F3	M2-01-CTRL	polyinj-F3-dbg	YES	F3	MAIN	item x driver x ctrl
+M2-03-REP-INIT-01-F3	M2-03	init-F3-san	NO	F3	MAIN	item x driver x ctrl
+M2-03-REP-POLY-11-F3	M2-03	polyinj-F3-san	NO	F3	MAIN	item x driver x ctrl
+M2-03-G5-01-F3	M2-03	r6bstate-F3-san	NO	F3	MAIN	item x driver x ctrl
+M2-03-G6-01-F3	M2-03	seamF-F3-san	NO	F3	MAIN	item x driver x ctrl
+M2-04-01-F3	M2-04	dual-F3-dbg	NO	F3	MAIN	item x driver x ctrl
+M2-04-02-F3	M2-04	layers-dual-F3-dbg	NO	F3	MAIN	item x driver x ctrl
+M2-04-CTRL-01-F3	M2-04-CTRL	dual-F3-dbg	YES	F3	MAIN	item x driver x ctrl
+M2-04-CTRL-02-F3	M2-04-CTRL	layers-dual-F3-dbg	YES	F3	MAIN	item x driver x ctrl
+M2-05-P0-F3	M2-05	layers-F3-dbg	NO	F3	MAIN	item x driver x ctrl
+M2-05-CTRL-P0-F3	M2-05-CTRL	layers-F3-dbg	YES	F3	MAIN	item x driver x ctrl
+M2-06-01-F3	M2-06	nan-F3	NO	F3	MAIN	item x driver x ctrl
+M2-06-CTRL-01-F3	M2-06-CTRL	nan-F3	YES	F3	MAIN	item x driver x ctrl
+M2-07-INJ-closed1d-ng5-F3	M2-07	d003plan-F3-plain	NO	F3	MAIN	item x driver x ctrl
+M2-07-CTRL-closed1d-ng1-F3	M2-07-CTRL	d003-F3-plain	YES	F3	MAIN	item x driver x ctrl
+M2-07-CTRL-vl-ng1-F3	M2-07-CTRL	d003-F3-plain	YES	F3	MAIN	U255 NATIVE_FAIL_CONTROL test
+M2-09-01-F2	M2-09-CTRL	seam-fmmret-F2	YES	F2	MAIN	M2-09 F2 ctrl
+M2-09-01-F3	M2-09-CTRL	seam-fmmret-F3	YES	F3	MAIN	M2-09 F3 ctrl
+M2-10-01-B	M2-10	r6dnv1-B-dbg	NO	B	MAIN	M2-10 B tree baseline
+M2-03-SANREF-G5-01-F3	M2-03-SANREF	r6bstate-F3-dbg	NO	F3	SANREF	U257 reference point for G5
+M2-03-SANREF-G6-01-F3	M2-03-SANREF	r6bseam-seamF-F3	NO	F3	SANREF	U257 reference point for G6

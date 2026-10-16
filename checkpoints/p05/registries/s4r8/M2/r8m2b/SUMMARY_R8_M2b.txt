@@ -1,0 +1,95 @@
+# SUMMARY_R8_M2b.txt -- P05-S4 R8 M2b Formal Execution Summary
+# Table Totals Assertion: Main=150, SanRef=19, Win64=5, Grand Total=174
+
+============================================================
+=== SECTION 1: GRAND COMBINED SUMMARY (174 POINTS) ===
+============================================================
+# VERDICT_SUMMARY_R8_M2b -- P05-S4 R8 M2b verdict summary
+total_points: 174
+MATCH: 148
+MISMATCH: 26
+FLAKY: 0
+GDB_DIVERGENT: 0
+UNJUDGED: 0 (by_design=0, missing=0)
+SCHEMA_ERROR: 0
+partition_assertion_174: PASSED
+
+## Breakdown by item:
+item	MATCH	MISMATCH	FLAKY	GDB_DIVERGENT	UNJUDGED_DESIGN	UNJUDGED_MISSING	SCHEMA_ERROR	TOTAL
+M2-01	11	6	0	0	0	0	0	17
+M2-01-CTRL	9	0	0	0	0	0	0	9
+M2-03	20	11	0	0	0	0	0	31
+M2-04	2	0	0	0	0	0	0	2
+M2-04-CTRL	2	0	0	0	0	0	0	2
+M2-05	4	0	0	0	0	0	0	4
+M2-05-CTRL	4	0	0	0	0	0	0	4
+M2-06	0	1	0	0	0	0	0	1
+M2-06-CTRL	1	0	0	0	0	0	0	1
+M2-07-CTRL	69	3	0	0	0	0	0	72
+M2-07	9	0	0	0	0	0	0	9
+M2-09-CTRL	2	0	0	0	0	0	0	2
+M2-10	1	0	0	0	0	0	0	1
+M2-03-SANREF	14	5	0	0	0	0	0	19
+
+============================================================
+=== SECTION 2: MAIN MATRIX SUMMARY (150 POINTS) ===
+============================================================
+# VERDICT_SUMMARY_R8_M2b -- P05-S4 R8 M2b verdict summary
+total_points: 150
+MATCH: 129
+MISMATCH: 21
+FLAKY: 0
+GDB_DIVERGENT: 0
+UNJUDGED: 0 (by_design=0, missing=0)
+SCHEMA_ERROR: 0
+partition_assertion_150: PASSED
+
+## Breakdown by item:
+item	MATCH	MISMATCH	FLAKY	GDB_DIVERGENT	UNJUDGED_DESIGN	UNJUDGED_MISSING	SCHEMA_ERROR	TOTAL
+M2-01	6	6	0	0	0	0	0	12
+M2-01-CTRL	9	0	0	0	0	0	0	9
+M2-03	20	11	0	0	0	0	0	31
+M2-04	2	0	0	0	0	0	0	2
+M2-04-CTRL	2	0	0	0	0	0	0	2
+M2-05	4	0	0	0	0	0	0	4
+M2-05-CTRL	4	0	0	0	0	0	0	4
+M2-06	0	1	0	0	0	0	0	1
+M2-06-CTRL	1	0	0	0	0	0	0	1
+M2-07-CTRL	69	3	0	0	0	0	0	72
+M2-07	9	0	0	0	0	0	0	9
+M2-09-CTRL	2	0	0	0	0	0	0	2
+M2-10	1	0	0	0	0	0	0	1
+
+============================================================
+=== SECTION 3: SANREF MATRIX SUMMARY (19 POINTS) ===
+============================================================
+# VERDICT_SUMMARY_R8_M2b -- P05-S4 R8 M2b verdict summary
+total_points: 19
+MATCH: 14
+MISMATCH: 5
+FLAKY: 0
+GDB_DIVERGENT: 0
+UNJUDGED: 0 (by_design=0, missing=0)
+SCHEMA_ERROR: 0
+partition_assertion_19: PASSED
+
+## Breakdown by item:
+item	MATCH	MISMATCH	FLAKY	GDB_DIVERGENT	UNJUDGED_DESIGN	UNJUDGED_MISSING	SCHEMA_ERROR	TOTAL
+M2-03-SANREF	14	5	0	0	0	0	0	19
+
+============================================================
+=== SECTION 4: WIN64 MATRIX SUMMARY (5 POINTS) ===
+============================================================
+# VERDICT_SUMMARY_R8_M2b -- P05-S4 R8 M2b verdict summary
+total_points: 5
+MATCH: 5
+MISMATCH: 0
+FLAKY: 0
+GDB_DIVERGENT: 0
+UNJUDGED: 0 (by_design=0, missing=0)
+SCHEMA_ERROR: 0
+partition_assertion_5: PASSED
+
+## Breakdown by item:
+item	MATCH	MISMATCH	FLAKY	GDB_DIVERGENT	UNJUDGED_DESIGN	UNJUDGED_MISSING	SCHEMA_ERROR	TOTAL
+M2-01	5	0	0	0	0	0	0	5

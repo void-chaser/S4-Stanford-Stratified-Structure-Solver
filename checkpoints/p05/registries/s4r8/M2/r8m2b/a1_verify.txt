@@ -1,0 +1,7 @@
+# A1 verification: gdb -batch exit code behavior
+gdb_exit_code_default=0
+gdb_exit_code_with_return_child_result=20
+--- gdb output ---
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 40) exited with code 024]

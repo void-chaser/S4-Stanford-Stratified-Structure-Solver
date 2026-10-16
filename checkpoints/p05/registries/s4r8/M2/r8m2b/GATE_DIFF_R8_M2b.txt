@@ -1,0 +1,295 @@
+# GATE_DIFF_R8_M2b -- diff -u of r8m2a4 originals against r8m2b copies
+## gate_r8m2a4.sh -> gate_r8m2b.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_r8m2a4.sh	2026-10-16 15:32:31.036623156 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_r8m2b.sh	2026-10-16 16:57:05.687262440 +1100
+@@ -1,28 +1,28 @@
+-REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m2a4; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# gate_r8m2a4.sh -- P05-S4 R8 M2a4 gate script. New file (copied from gate_r8m2a3.sh; original unchanged).
+-# Baseline HEAD: 2395f669359795c126f4f4fc2223804c900b06f5
+-# Evidence dir: checkpoints/p05/evidence/p05-s4r8/m2a4
+-# Usage: sh testing/d003/safe_run.sh p05-s4r8/m2a4 -- sh testing/d003/stage_s4/gate_r8m2a4.sh p05-s4r8/m2a4 GATE_R8_M2a4_<name>.txt start TC TS
+-#        sh testing/d003/safe_run.sh p05-s4r8/m2a4 -- sh testing/d003/stage_s4/gate_r8m2a4.sh p05-s4r8/m2a4 GATE_R8_M2a4_<name>.txt end START_FILE TC TS
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m2b; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# gate_r8m2b.sh -- P05-S4 R8 M2b gate script. New file (copied from gate_r8m2a4.sh; original unchanged).
++# Baseline HEAD: e57a2f38705e0c385eeab175a3c6a7442cab84fc
++# Evidence dir: checkpoints/p05/evidence/p05-s4r8/m2b
++# Usage: sh testing/d003/safe_run.sh p05-s4r8/m2b -- sh testing/d003/stage_s4/gate_r8m2b.sh p05-s4r8/m2b GATE_R8_M2b_<name>.txt start TC TS
++#        sh testing/d003/safe_run.sh p05-s4r8/m2b -- sh testing/d003/stage_s4/gate_r8m2b.sh p05-s4r8/m2b GATE_R8_M2b_<name>.txt end START_FILE TC TS
+ set -u
+-refuse() { echo "gate_r8m2a4: REFUSED: $1" >&2; exit 2; }
+-[ "${1:-}" = p05-s4r8/m2a4 ] || refuse "first argument must be p05-s4r8/m2a4"
++refuse() { echo "gate_r8m2b: REFUSED: $1" >&2; exit 2; }
++[ "${1:-}" = p05-s4r8/m2b ] || refuse "first argument must be p05-s4r8/m2b"
+ OUTNAME=${2:-}
+ MODE=${3:-}
+ case "$OUTNAME" in
+-    GATE_R8_M2a4_*.txt) ;;
+-    *) refuse "OUT must be GATE_R8_M2a4_<name>.txt" ;;
++    GATE_R8_M2b_*.txt) ;;
++    *) refuse "OUT must be GATE_R8_M2b_<name>.txt" ;;
+ esac
+ OUTSTEM=${OUTNAME%.txt}
+-NAMEPART=${OUTSTEM#GATE_R8_M2a4_}
++NAMEPART=${OUTSTEM#GATE_R8_M2b_}
+ case "$NAMEPART" in
+     '') refuse "OUT name is empty" ;;
+     *[!A-Za-z0-9_]*) refuse "OUT name has illegal characters" ;;
+ esac
+ OUT="$EV/$OUTNAME"
+ test ! -e "$OUT" || refuse "exists (U17): $OUTNAME"
+-ALLOW_START="$REPO/testing/d003/stage_s4/gate_allow_r8m2a4_start.txt"
+-ALLOW_END="$REPO/testing/d003/stage_s4/gate_allow_r8m2a4_end.txt"
++ALLOW_START="$REPO/testing/d003/stage_s4/gate_allow_r8m2b_start.txt"
++ALLOW_END="$REPO/testing/d003/stage_s4/gate_allow_r8m2b_end.txt"
+ STARTF=""
+ TC=""
+ TS=""
+@@ -47,8 +47,8 @@
+ if [ "$MODE" = end ]; then
+     test -f "$STARTF" || refuse "start file missing: $STARTF"
+     case "$(head -n 1 "$STARTF")" in
+-        *"gate_r8m2a4 (start) ->"*) ;;
+-        *) refuse "start file header is not a gate_r8m2a4 start" ;;
++        *"gate_r8m2b (start) ->"*) ;;
++        *) refuse "start file header is not a gate_r8m2b start" ;;
+     esac
+     [ "$(tail -n 1 "$STARTF")" = "FAILS=0" ] || refuse "start file last line is not FAILS=0"
+ fi
+@@ -57,7 +57,7 @@
+ ST_FILE="$EV/tmp/status_now_${OUTSTEM}.txt"
+ PY_OUT="$EV/tmp/py_checks_${OUTSTEM}.txt"
+ : > "$OUT"
+-printf '# P05-S4 R8 M2a4 gate_r8m2a4 (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
++printf '# P05-S4 R8 M2b gate_r8m2b (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
+ 
+ check() {
+     _e=$(printf '%s' "$2" | tr '\n' ';')
+@@ -73,7 +73,7 @@
+     awk -F'\t' -v k="$2" '$1=="RECORD" && $2==k {sub(/^value=/, "", $3); print $3}' "$1" | head -n 1
+ }
+ 
+-BASE=2395f669359795c126f4f4fc2223804c900b06f5
++BASE=e57a2f38705e0c385eeab175a3c6a7442cab84fc
+ HEAD_NOW=$(git rev-parse HEAD)
+ check BRANCH codex/p05-d003-fft-error-propagation "$(git branch --show-current)"
+ check HEAD_IS_BASE "$BASE" "$HEAD_NOW"
+@@ -88,7 +88,7 @@
+ record ALLOW_END_SHA256 "$(sha256sum "$ALLOW_END" | cut -d' ' -f1)"
+ case "$MODE" in
+     start)
+-        check ALLOW_START_LINES 6 "$(wc -l < "$ALLOW_START" | tr -d ' ')"
++        check ALLOW_START_LINES 5 "$(wc -l < "$ALLOW_START" | tr -d ' ')"
+         check TRACKED_TESTING_D003_WORKTREE_NONE "" "$(git diff --name-only HEAD -- testing/d003)" ;;
+     end)
+         check ALLOW_START_SHA256_EQ_START "$(recval "$STARTF" ALLOW_START_SHA256)" "$(sha256sum "$ALLOW_START" | cut -d' ' -f1)"
+@@ -116,7 +116,7 @@
+ esac
+ 
+ # ---- Detailed python checks ----
+-python3 -I -B "$REPO/testing/d003/stage_s4/gate_check_r8m2a4.py" "$MODE" "$STARTF" > "$PY_OUT"
++python3 -I -B "$REPO/testing/d003/stage_s4/gate_check_r8m2b.py" "$MODE" "$STARTF" > "$PY_OUT"
+ PY_FAILS=$?
+ cat "$PY_OUT" >> "$OUT"
+ if [ "$PY_FAILS" -ne 0 ]; then
+@@ -142,5 +142,5 @@
+ esac
+ 
+ printf 'FAILS=%s\n' "$FAILS" >> "$OUT"
+-echo "gate_r8m2a4: $MODE FAILS=$FAILS -> $OUT"
++echo "gate_r8m2b: $MODE FAILS=$FAILS -> $OUT"
+ exit 0
+## gate_check_r8m2a4.py -> gate_check_r8m2b.py
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_check_r8m2a4.py	2026-10-16 15:33:38.951983320 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_check_r8m2b.py	2026-10-16 16:56:46.629602945 +1100
+@@ -1,31 +1,30 @@
+ #!/usr/bin/env python3
+-# gate_check_r8m2a4.py -- P05-S4 R8 M2a4 gate helper. New file (copied from gate_check_r8m2a3.py; original unchanged).
+-# Baseline HEAD: 2395f669359795c126f4f4fc2223804c900b06f5
++# gate_check_r8m2b.py -- P05-S4 R8 M2b gate helper. New file (copied from gate_check_r8m2a4.py; original unchanged).
++# Baseline HEAD: e57a2f38705e0c385eeab175a3c6a7442cab84fc
+ # Checks:
+-#  - baseline HEAD 2395f66; STATE/RULINGS/ERRATA_8 start values from r8m2a3 closeout;
+-#  - start-only: r8m2a3 SHA256SUMS.txt (15 entries) -c OK;
+-#  - stray build products are BASELINE-based: start writes STRAY_BASELINE_R8_M2a4.tsv (path, bytes, mtime_ns, sha256)
++#  - baseline HEAD e57a2f3; STATE/RULINGS/ERRATA_8 start values from r8m2a4 closeout;
++#  - start-only: r8m2a4 SHA256SUMS.txt (25 entries) -c OK;
++#  - stray build products are BASELINE-based: start writes STRAY_BASELINE_R8_M2b.tsv (path, bytes, mtime_ns, sha256)
+ #    and checks the two known testing/d003 pyc files; end rescans and fails only for new or changed entries.
+ import hashlib, os, subprocess, sys
+ 
+ REPO = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+-EV_REL = os.path.join("checkpoints", "p05", "evidence", "p05-s4r8", "m2a4")
++EV_REL = os.path.join("checkpoints", "p05", "evidence", "p05-s4r8", "m2b")
+ EV = os.path.join(REPO, EV_REL)
+-BASELINE_TSV = os.path.join(EV, "STRAY_BASELINE_R8_M2a4.tsv")
++BASELINE_TSV = os.path.join(EV, "STRAY_BASELINE_R8_M2b.tsv")
+ 
+-EXPECTED_BASE = "2395f669359795c126f4f4fc2223804c900b06f5"
++EXPECTED_BASE = "e57a2f38705e0c385eeab175a3c6a7442cab84fc"
+ EXPECTED_JUDGE_SHA = "d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb"
+ EXPECTED_S4_TREE = "6cff923a02baf19e01966b2339755cbf3a5deeef"
+ EXPECTED_F2_TREE = "e124925f5b242486a913b813fa181664f665b048"
+ EXPECTED_B_TREE = "1d738e64f9864a475fdb3de34cd3601605df2c64"
+-EXPECTED_PREREG_R8M2A3_SHA = "27e33b27ae4a7202e402e223a73f2634b66d70a1288596622be7071280a20a09"
+-EXPECTED_PREREG_R8M2A2_SHA = "1b60f95ccb1ab4b77e26d71fc1d9bf4f4fee25c29092ae0c3620a6c9e42be7ce"
+-EXPECTED_STATE_BYTES = 7945
+-EXPECTED_STATE_SHA = "360224602e035e1d11e2dadd07e3f7c5bfe36be1d9122594d19d96890e946360"
+-EXPECTED_RULINGS_BYTES = 101120
+-EXPECTED_RULINGS_SHA = "d2aced9b76e8a2e69845f076f78a71b6d7954e7691829814cf60abcec1f6cd1d"
+-EXPECTED_ERRATA8_BYTES = 70676
+-EXPECTED_ERRATA8_SHA = "870d86ee9e5d51dabbfd4ff9c16a7c8f92e913c61bd3c20edf939803ca0b2f81"
++EXPECTED_PREREG_R8M2A4_SHA = "ee46fecf7f6575b220aadd5bd245fd473d1504f955d10accb732514f901d9a21"
++EXPECTED_STATE_BYTES = 8051
++EXPECTED_STATE_SHA = "bf77dae216f965ffcbbb34c156e5169272af80b49aa58dbe4b45e5072753ed11"
++EXPECTED_RULINGS_BYTES = 102488
++EXPECTED_RULINGS_SHA = "8b32ae21a445dd8470bc86b2885d2f8363dd8b79f7d9d2279ac501e33613991a"
++EXPECTED_ERRATA8_BYTES = 73187
++EXPECTED_ERRATA8_SHA = "8299d0a075ca50bd8ed1021bd82315695ca6d4a59887b5971eab01c2aa36e2e1"
+ 
+ HIST_RUNNERS = [
+     "testing/d003/stage_s4/run_r6c_state.py",
+@@ -35,8 +34,7 @@
+     "testing/d003/stage_s4/r6c_state.gdb",
+     "testing/d003/stage_s4/r6c_state_gdb.py",
+ ]
+-R8M2A3_DIR = os.path.join("checkpoints", "p05", "registries", "s4r8", "M2", "r8m2a3")
+-R8M2A2_DIR = os.path.join("checkpoints", "p05", "registries", "s4r8", "M2", "r8m2a2")
++R8M2A4_DIR = os.path.join("checkpoints", "p05", "registries", "s4r8", "M2", "r8m2a4")
+ KNOWN_PYC = [
+     "testing/d003/__pycache__/judge_d003.cpython-314.pyc",
+     "testing/d003/__pycache__/matrix_r2.cpython-314.pyc",
+@@ -124,7 +122,7 @@
+ def write_baseline(entries):
+     os.makedirs(EV, exist_ok=True)
+     with open(BASELINE_TSV, "x", encoding="utf-8") as fh:
+-        fh.write("# STRAY_BASELINE_R8_M2a4 (start): path\tkind\tbytes\tmtime_ns\tsha256\n")
++        fh.write("# STRAY_BASELINE_R8_M2b (start): path\tkind\tbytes\tmtime_ns\tsha256\n")
+         for k in sorted(entries):
+             kind, size, mt, sh = entries[k]
+             fh.write("%s\t%s\t%d\t%d\t%s\n" % (k, kind, size, mt, sh))
+@@ -171,25 +169,21 @@
+     judge_sha = sha256_file(judge_path) if os.path.isfile(judge_path) else "missing"
+     check("JUDGE_SHA256", judge_sha == EXPECTED_JUDGE_SHA, EXPECTED_JUDGE_SHA, judge_sha)
+ 
+-    # 4. start-only: STATE.md size and sha256; prereg checks; r8m2a3 manifests
++    # 4. start-only: STATE.md size and sha256; prereg checks; r8m2a4 manifests
+     if mode == "start":
+         state_path = os.path.join(REPO, "checkpoints", "p05", "STATE.md")
+         state_b = open(state_path, "rb").read() if os.path.isfile(state_path) else b""
+         check("STATE_START_BYTES", len(state_b) == EXPECTED_STATE_BYTES, EXPECTED_STATE_BYTES, len(state_b))
+         check("STATE_START_SHA256", hashlib.sha256(state_b).hexdigest() == EXPECTED_STATE_SHA, EXPECTED_STATE_SHA, hashlib.sha256(state_b).hexdigest())
+ 
+-        pr_m2a3 = os.path.join(REPO, R8M2A3_DIR, "PREREG_M2_EFFECTIVE_R8_M2a3.tsv")
+-        pr_m2a3_sha = sha256_file(pr_m2a3) if os.path.isfile(pr_m2a3) else "missing"
+-        check("R8M2A3_PREREG_SHA256", pr_m2a3_sha == EXPECTED_PREREG_R8M2A3_SHA, EXPECTED_PREREG_R8M2A3_SHA, pr_m2a3_sha)
+-
+-        pr_m2a2 = os.path.join(REPO, R8M2A2_DIR, "PREREG_M2_R8_M2a2.tsv")
+-        pr_m2a2_sha = sha256_file(pr_m2a2) if os.path.isfile(pr_m2a2) else "missing"
+-        check("R8M2A2_PREREG_SHA256", pr_m2a2_sha == EXPECTED_PREREG_R8M2A2_SHA, EXPECTED_PREREG_R8M2A2_SHA, pr_m2a2_sha)
+-
+-        ok_m2a3, detail_m2a3 = verify_sums_dir(os.path.join(REPO, R8M2A3_DIR), 15)
+-        check("R8M2A3_SUMS_15_ALL_OK", ok_m2a3, "all 15 OK", detail_m2a3)
+-        n_r8m2a3 = len(os.listdir(os.path.join(REPO, R8M2A3_DIR)))
+-        check("R8M2A3_DIR_FILE_COUNT_16", n_r8m2a3 == 16, 16, n_r8m2a3)
++        pr_m2a4 = os.path.join(REPO, R8M2A4_DIR, "PREREG_M2_EFFECTIVE_R8_M2a4.tsv")
++        pr_m2a4_sha = sha256_file(pr_m2a4) if os.path.isfile(pr_m2a4) else "missing"
++        check("R8M2A4_PREREG_SHA256", pr_m2a4_sha == EXPECTED_PREREG_R8M2A4_SHA, EXPECTED_PREREG_R8M2A4_SHA, pr_m2a4_sha)
++
++        ok_m2a4, detail_m2a4 = verify_sums_dir(os.path.join(REPO, R8M2A4_DIR), 25)
++        check("R8M2A4_SUMS_25_ALL_OK", ok_m2a4, "all 25 OK", detail_m2a4)
++        n_r8m2a4 = len(os.listdir(os.path.join(REPO, R8M2A4_DIR)))
++        check("R8M2A4_DIR_FILE_COUNT_26", n_r8m2a4 == 26, 26, n_r8m2a4)
+ 
+     # 5. RULINGS & ERRATA_8 prefix checks (living files, append only)
+     rulings_path = os.path.join(REPO, "checkpoints", "p05", "registries", "RULINGS.tsv")
+@@ -237,9 +231,9 @@
+             err_pfx_sha = hashlib.sha256(err_now[:start_err_bytes]).hexdigest()
+             check("ERRATA_8_PREFIX_OF_START_UNCHANGED", err_pfx_sha == start_err_sha, start_err_sha, err_pfx_sha)
+             check("ERRATA_8_NOT_TRUNCATED", len(err_now) >= start_err_bytes, True, len(err_now) >= start_err_bytes)
+-        # r8m2a3 directory: unchanged
+-        ok_m2a3_end, det_m2a3_end = verify_sums_dir(os.path.join(REPO, R8M2A3_DIR), 15)
+-        check("R8M2A3_ORIGINAL_15_SHA_UNCHANGED_END", ok_m2a3_end, "all 15 OK", det_m2a3_end)
++        # r8m2a4 directory: unchanged
++        ok_m2a4_end, det_m2a4_end = verify_sums_dir(os.path.join(REPO, R8M2A4_DIR), 25)
++        check("R8M2A4_ORIGINAL_25_SHA_UNCHANGED_END", ok_m2a4_end, "all 25 OK", det_m2a4_end)
+ 
+     # 7. Baseline-based stray build products
+     if mode == "start":
+## gate_allow_r8m2a4_start.txt -> gate_allow_r8m2b_start.txt
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m2a4_start.txt	2026-10-16 15:31:03.442579134 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m2b_start.txt	2026-10-16 16:56:03.447108607 +1100
+@@ -1,6 +1,5 @@
+-?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M2a4.md
+-?? testing/d003/stage_s4/diff_gate_r8m2a4.sh
+-?? testing/d003/stage_s4/gate_allow_r8m2a4_end.txt
+-?? testing/d003/stage_s4/gate_allow_r8m2a4_start.txt
+-?? testing/d003/stage_s4/gate_check_r8m2a4.py
+-?? testing/d003/stage_s4/gate_r8m2a4.sh
++?? testing/d003/stage_s4/diff_gate_r8m2b.sh
++?? testing/d003/stage_s4/gate_allow_r8m2b_end.txt
++?? testing/d003/stage_s4/gate_allow_r8m2b_start.txt
++?? testing/d003/stage_s4/gate_check_r8m2b.py
++?? testing/d003/stage_s4/gate_r8m2b.sh
+## gate_allow_r8m2a4_end.txt -> gate_allow_r8m2b_end.txt
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m2a4_end.txt	2026-10-16 15:31:27.523415966 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/gate_allow_r8m2b_end.txt	2026-10-16 16:56:07.653254162 +1100
+@@ -1,8 +1,7 @@
+-# allowed git status entries at end of P05-S4 R8 M2a4 (case patterns; checked by gate_r8m2a4.sh)
++# allowed git status entries at end of P05-S4 R8 M2b (case patterns; checked by gate_r8m2b.sh)
+  M checkpoints/p05/STATE.md
+  M checkpoints/p05/registries/RULINGS.tsv
+  M checkpoints/p05/registries/s4r8/ERRATA_8.txt
+-?? checkpoints/p05/P05_S4R8_M2A4_REPORT.md
+-?? checkpoints/p05/briefs/P05_S4R8_BRIEF_M2a4.md
+-?? checkpoints/p05/registries/s4r8/M2/r8m2a4/*
+-?? testing/d003/stage_s4/*r8m2a4*
++?? checkpoints/p05/P05_S4R8_M2B_REPORT.md
++?? checkpoints/p05/registries/s4r8/M2/r8m2b/*
++?? testing/d003/stage_s4/*r8m2b*
+## diff_gate_r8m2a4.sh -> diff_gate_r8m2b.sh
+--- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/diff_gate_r8m2a4.sh	2026-10-16 15:32:45.780135523 +1100
++++ /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4/diff_gate_r8m2b.sh	2026-10-16 16:57:16.775646155 +1100
+@@ -1,24 +1,24 @@
+-REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m2a4; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# diff_gate_r8m2a4.sh -- P05-S4 R8 M2a4: unified diffs of the gate scripts against the r8m2a3 originals.
+-# New file (copied from diff_gate_r8m2a3.sh; original unchanged).
+-# Output: $EV/GATE_DIFF_R8_M2a4.txt (diff exit 1 = differences, expected).
+-# Usage: sh testing/d003/safe_run.sh p05-s4r8/m2a4 -- sh testing/d003/stage_s4/diff_gate_r8m2a4.sh
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r8/m2b; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# diff_gate_r8m2b.sh -- P05-S4 R8 M2b: unified diffs of the gate scripts against the r8m2a4 originals.
++# New file (copied from diff_gate_r8m2a4.sh; original unchanged).
++# Output: $EV/GATE_DIFF_R8_M2b.txt (diff exit 1 = differences, expected).
++# Usage: sh testing/d003/safe_run.sh p05-s4r8/m2b -- sh testing/d003/stage_s4/diff_gate_r8m2b.sh
+ set -u
+ S=$REPO/testing/d003/stage_s4
+-OUT=$EV/GATE_DIFF_R8_M2a4.txt
+-test ! -e "$OUT" || { echo "diff_gate_r8m2a4: REFUSED exists (U17): $OUT" >&2; exit 2; }
++OUT=$EV/GATE_DIFF_R8_M2b.txt
++test ! -e "$OUT" || { echo "diff_gate_r8m2b: REFUSED exists (U17): $OUT" >&2; exit 2; }
+ {
+-    echo "# GATE_DIFF_R8_M2a4 -- diff -u of r8m2a3 originals against r8m2a4 copies"
+-    echo "## gate_r8m2a3.sh -> gate_r8m2a4.sh"
+-    diff -u "$S/gate_r8m2a3.sh" "$S/gate_r8m2a4.sh"
+-    echo "## gate_check_r8m2a3.py -> gate_check_r8m2a4.py"
+-    diff -u "$S/gate_check_r8m2a3.py" "$S/gate_check_r8m2a4.py"
+-    echo "## gate_allow_r8m2a3_start.txt -> gate_allow_r8m2a4_start.txt"
+-    diff -u "$S/gate_allow_r8m2a3_start.txt" "$S/gate_allow_r8m2a4_start.txt"
+-    echo "## gate_allow_r8m2a3_end.txt -> gate_allow_r8m2a4_end.txt"
+-    diff -u "$S/gate_allow_r8m2a3_end.txt" "$S/gate_allow_r8m2a4_end.txt"
+-    echo "## diff_gate_r8m2a3.sh -> diff_gate_r8m2a4.sh"
+-    diff -u "$S/diff_gate_r8m2a3.sh" "$S/diff_gate_r8m2a4.sh"
++    echo "# GATE_DIFF_R8_M2b -- diff -u of r8m2a4 originals against r8m2b copies"
++    echo "## gate_r8m2a4.sh -> gate_r8m2b.sh"
++    diff -u "$S/gate_r8m2a4.sh" "$S/gate_r8m2b.sh"
++    echo "## gate_check_r8m2a4.py -> gate_check_r8m2b.py"
++    diff -u "$S/gate_check_r8m2a4.py" "$S/gate_check_r8m2b.py"
++    echo "## gate_allow_r8m2a4_start.txt -> gate_allow_r8m2b_start.txt"
++    diff -u "$S/gate_allow_r8m2a4_start.txt" "$S/gate_allow_r8m2b_start.txt"
++    echo "## gate_allow_r8m2a4_end.txt -> gate_allow_r8m2b_end.txt"
++    diff -u "$S/gate_allow_r8m2a4_end.txt" "$S/gate_allow_r8m2b_end.txt"
++    echo "## diff_gate_r8m2a4.sh -> diff_gate_r8m2b.sh"
++    diff -u "$S/diff_gate_r8m2a4.sh" "$S/diff_gate_r8m2b.sh"
+ } > "$OUT"
+-echo "diff_gate_r8m2a4: wrote $OUT"
++echo "diff_gate_r8m2b: wrote $OUT"
+ exit 0

@@ -1,0 +1,25 @@
+point_id	item	tree	driver	exp_rc1	obs_rc1_p1	obs_rc1_p2	exp_class	obs_class_p1	obs_class_p2	exp_hit	obs_hit_p1	obs_hit_p2	gdb_divergent	verdict	mismatches	notes
+M2-01-01-F3	M2-01	F3	init-F3-dbg	20	1	1	REPORTED_FAILURE	0/c	0/c	1	1	1	0	MISMATCH	exp_rc1(1!=20)	p1_diffs=exp_rc1(1!=20);p2_diffs=exp_rc1(1!=20)
+M2-01-11-F3	M2-01	F3	polyinj-F3-dbg	20	20	20	REPORTED_FAILURE	0/c	0/c	1	1	1	0	MATCH	-	all verified
+M2-01-CTRL-01-F3	M2-01-CTRL	F3	init-F3-dbg	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	0	MATCH	-	all verified
+M2-01-CTRL-11-F3	M2-01-CTRL	F3	polyinj-F3-dbg	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	0	MATCH	-	all verified
+M2-03-G5-01-F3	M2-03	F3	r6bstate-F3-san	20	20	20	REPORTED_FAILURE	0/c	0/c	1	1	1	-	MATCH	-	all verified
+M2-03-G6-01-F3	M2-03	F3	seamF-F3-san	20	0	0	REPORTED_FAILURE	0/c	0/c	1	0	0	-	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)
+M2-03-REP-INIT-01-F3	M2-03	F3	init-F3-san	20	1	1	REPORTED_FAILURE	0/c	0/c	1	1	1	-	MISMATCH	exp_rc1(1!=20)	p1_diffs=exp_rc1(1!=20);p2_diffs=exp_rc1(1!=20)
+M2-03-REP-POLY-11-F3	M2-03	F3	polyinj-F3-san	20	20	20	REPORTED_FAILURE	0/c	0/c	1	1	1	-	MATCH	-	all verified
+M2-04-01-F3	M2-04	F3	dual-F3-dbg	20	20	20	REPORTED_FAILURE	0/c	0/c	2	2	2	0	MATCH	-	all verified
+M2-04-02-F3	M2-04	F3	layers-dual-F3-dbg	20	20	20	REPORTED_FAILURE	0/c	0/c	2	2	2	0	MATCH	-	all verified
+M2-04-CTRL-01-F3	M2-04-CTRL	F3	dual-F3-dbg	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	0	MATCH	-	all verified
+M2-04-CTRL-02-F3	M2-04-CTRL	F3	layers-dual-F3-dbg	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	0	MATCH	-	all verified
+M2-05-P0-F3	M2-05	F3	layers-F3-dbg	20	20	20	REPORTED_FAILURE	0/c	0/c	1	1	1	0	MATCH	-	all verified
+M2-05-CTRL-P0-F3	M2-05-CTRL	F3	layers-F3-dbg	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	0	MATCH	-	all verified
+M2-06-01-F3	M2-06	F3	nan-F3	0	20	20	SILENT_SWALLOW	0/c	0/c	1	1	1	-	MISMATCH	exp_class(REPORTED_FAILURE!=SILENT_SWALLOW),exp_rc1(20!=0)	p1_diffs=exp_rc1(20!=0),exp_class(REPORTED_FAILURE!=SILENT_SWALLOW);p2_diffs=exp_rc1(20!=0),exp_class(REPORTED_FAILURE!=SILENT_SWALLOW)
+M2-06-CTRL-01-F3	M2-06-CTRL	F3	nan-F3	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	-	MATCH	-	all verified
+M2-07-CTRL-closed1d-ng1-F3	M2-07-CTRL	F3	d003-F3-plain	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	-	MATCH	-	all verified
+M2-07-INJ-closed1d-ng5-F3	M2-07	F3	d003plan-F3-plain	NZ	20	20	REPORTED_FAILURE	1/c	1/c	1	1	1	-	MATCH	-	all verified
+M2-07-CTRL-vl-ng1-F3	M2-07-CTRL	F3	d003-F3-plain	20	20	20	CONTROL_OK	1/c	1/c	0	0	0	-	MATCH	-	all verified
+M2-09-01-F3	M2-09-CTRL	F3	seam-fmmret-F3	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	-	MATCH	-	all verified
+M2-09-01-F2	M2-09-CTRL	F2	seam-fmmret-F2	0	0	0	CONTROL_OK	0/c	0/c	0	0	0	-	MATCH	-	all verified
+M2-10-01-B	M2-10	B	r6dnv1-B-dbg	20	20	20	BASELINE_ONLY	0/c	0/c	-	0	0	0	MATCH	-	all verified
+M2-03-SANREF-G5-01-F3	M2-03-SANREF	F3	r6bstate-F3-dbg	20	20	20	REPORTED_FAILURE	0/c	0/c	1	1	1	-	MATCH	-	all verified
+M2-03-SANREF-G6-01-F3	M2-03-SANREF	F3	r6bseam-seamF-F3	20	0	0	REPORTED_FAILURE	0/c	0/c	1	0	0	-	MISMATCH	exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc1(0!=20)	p1_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE);p2_diffs=exp_rc1(0!=20),exp_hit(0!=1),exp_class(INVALID!=REPORTED_FAILURE)

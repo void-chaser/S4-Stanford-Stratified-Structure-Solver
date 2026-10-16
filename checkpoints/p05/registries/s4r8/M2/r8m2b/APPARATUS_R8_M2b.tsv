@@ -1,0 +1,7 @@
+apparatus	path	sha256	role	notes
+run_m2_r8m2b.py	testing/d003/stage_s4/run_m2_r8m2b.py	fa7e9f324d9c695e45907ae58099cd6e3396f1a33f72674e7700f60ac4b0569b	runner	Runner and command planner supporting dry-run and paired execution (U256)
+facts_m2_r8m2b.py	testing/d003/stage_s4/facts_m2_r8m2b.py	41fa7db46586e29abbbd3af7ec5cb900499461c6b909b0a2ce2031d693e83f4a	facts	Facts extractor with paired gdb divergence check and octal exit code parsing (U256)
+verdict_m2_r8m2b.py	testing/d003/stage_s4/verdict_m2_r8m2b.py	fdc0a075410c22e4120fd661bf5b93fd29de98bad3be36081af79d93cc16b5e9	verdict	Verdict engine with GDB_DIVERGENT priority, NATIVE_FAIL_CONTROL, sanref, hit1, and fail_layer1 assertions
+state_judge_m2_r8m2a4.py	testing/d003/stage_s4/state_judge_m2_r8m2a4.py	89f00f0ef91b927066bad059b58073a47cbf34594d65a35ee7bdddb576a6ff1f	state_analyzer	Private state analyzer reused unchanged (89f00f0e...)
+posctrl_m2_r8m2b.py	testing/d003/stage_s4/posctrl_m2_r8m2b.py	36232fd08644297d6d63976545ac52c4926ee89b524d58ae4626816255544c44	positive_control	Synthetic positive control suite (27 cases)
+judge_d003.py	testing/d003/judge_d003.py	d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	judge_core	Frozen canonical judge (d2d04145...)

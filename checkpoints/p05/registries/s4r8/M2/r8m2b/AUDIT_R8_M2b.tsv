@@ -1,0 +1,10 @@
+# AUDIT_R8_M2b.tsv -- Audit verification of A1-A8 (P05-S4 R8 M2b Task §4)
+id	location	verification	action
+A1	facts_m2_r8m2a4.py:90-105	VERIFIED: gdb -batch 默认退出码为 0，程序 exit 20 时 gdb 日志打印 'exited with code 024'，事实提取若仅读 exitcode 会使 rc/信号恒为 0	按 U256 成对运行 (a) gdb 下运行产出 gdb.log 与 dump，(b) 不挂 gdb 运行产出 stdout/stderr/exitcode，rc与信号取自 (b)，并从 (a) 解析 exited with code / received signal 交叉核对，不一致判 GDB_DIVERGENT
+A2	run_m2_r8m2a4.py:119-123; state_judge_m2_r8m2a4.py:466-471	VERIFIED: 运行器仅定义 stdout.txt/stderr.txt/exitcode.txt，不产出 gdb.log；而状态分析器首要查找 gdb.log，导致分析器必然判定 UNJUDGED	新运行器 run_m2_r8m2b.py 将 (a) 的输出写入 $EV/run/pass<n>/<point_id>/gdb.log，dump 写入同一目录，使原状态分析器无需修改直接可用
+A3	run_m2_r8m2a4.py:131-134; PREREG_M2_EFFECTIVE_R8_M2a4.tsv:23-53	VERIFIED: 预注册 san_options 中含字面量 $EV，运行器 replace 仅替换 {pass} 与 {point_id}，未展开 $EV，导致日志路径解析为字面量或空	新运行器将 $EV 展开为绝对路径，并断言最终计划命令行中不含任何 $ 字符；明确 ASAN/UBSAN 仅在有报告时生成日志，不作为存在性门禁
+A4	PREREG_M2_EFFECTIVE_R8_M2a4.tsv:151; COMPLETENESS_R8_M2a4.tsv:151	VERIFIED: M2-10 登记 gdb 脚本 sha 为 bbab8579...，而仓库内实际为 d1fc5498...，身份核对必然失败，但 COMPLETENESS 表却登记 PASS	按 U254 处置：更正预注册 v3 中的身份列为 d1fc5498...（非 exp 列），并记录 ERRATA；COMPLETENESS 依实测严密判定
+A5	verdict_m2_r8m2a4.py:211-215	VERIFIED: 判定器中对 point_id == M2-07-CTRL-vl-ng1-F3 增加了硬编码特判，同时容纳 CONTROL_OK 与 INVALID，违背冻结判定器纪律	按 U255 处置：为该点设 class_rule=NATIVE_FAIL_CONTROL，判定条件严格要求 rc1=20、rc2=20、信号0、hit=0、classify==INVALID；exp_class 原值不改；删除判定器中的 point_id 特判，记录 ERRATA
+A6	ERRATA_APPEND_R8_M2a4.txt:5,8; ERRATA_8.txt:590,593	VERIFIED: r8m2a4 提交附件 ERRATA_APPEND 中 E8-102 误写 d917b3e2...、E8-103 误写 becf0ab5...，与实际有效 sha ee46fecf... 及 89f00f0e... 出现差异	追加新 ERRATA（E8-106）予以更正澄清，原条目与附件保持不变
+A7	verdict_m2_r8m2a4.py:200-240; state_judge_m2_r8m2a4.py:460-500	VERIFIED: verdict 仅核对 exp_hit，未断言 exp_hit1；state_judge 未断言 fail_layer1	新判定器 verdict_m2_r8m2b.py 补齐 exp_hit1 断言与 fail_layer1 检查
+A8	facts_m2_r8m2a4.py:80-110	VERIFIED: 事实提取器未解析 gdb 日志中的 M210_HIT 行，导致无法核实 baseline 断点命中事实	新事实提取器 facts_m2_r8m2b.py 解析 M210_HIT 行号与命中次数并记录为 RECORD_ONLY；BASELINE_ONLY_RULE 要求 rc1=20、信号0且至少命中一个 return 20 断点

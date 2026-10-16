@@ -1,0 +1,6 @@
+point_id	item	driver	env	hit_reached	inj_call	k_before	k_fail	k_preretry	k_retry	retry_call	fail_layer	index_status	evidence_basis
+M2-01-13-F3	M2-01	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=5;S4FMM_INJECT=win:64	YES	1	0	1	2	3	2	1	INDEX_CONFIRMED	DIAG_HIT between probe k=0 and k=1 in call1; next probe k=1; clm_ret=20; ADD22-B-13-F3
+M2-01-15-F3	M2-01	polyinj-F3-dbg	FMM_MODE=fft;S4FMM_NG=9;S4FMM_INJECT=win:64	YES	1	0	1	2	3	2	1	INDEX_CONFIRMED	DIAG_HIT between probe k=0 and k=1 in call1; next probe k=1; clm_ret=20; ADD22-B-15-F3
+M2-01-17-F3	M2-01	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=1;S4FMM_INJECT=win:64	YES	1	0	1	2	3	2	1	INDEX_CONFIRMED	DIAG_HIT between probe k=0 and k=1 in call1; next probe k=1; clm_ret=20; ADD22-B-17-F3
+M2-01-19-F3	M2-01	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=5;S4FMM_INJECT=win:64	YES	1	0	1	2	3	2	1	INDEX_CONFIRMED	DIAG_HIT between probe k=0 and k=1 in call1; next probe k=1; clm_ret=20; ADD22-B-19-F3
+M2-01-21-F3	M2-01	polyinj-F3-dbg	FMM_MODE=kottke;S4FMM_NG=9;S4FMM_INJECT=win:64	YES	1	0	1	2	3	2	1	INDEX_CONFIRMED	DIAG_HIT between probe k=0 and k=1 in call1; next probe k=1; clm_ret=20; ADD22-B-21-F3

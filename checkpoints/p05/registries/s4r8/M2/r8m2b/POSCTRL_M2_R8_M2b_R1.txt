@@ -1,0 +1,33 @@
+# POSCTRL_M2_R8_M2b_R1 -- Synthetic Positive Control Results (Initial Run)
+total_cases: 27
+passed_cases: 26
+failed_cases: 1
+
+Case	Description	Status	Detail
+Case A	全通基线验证 (All clean synthetic baseline passes)	FAIL	MATCH=131/150, UNJUDGED=19 (19 san points UNJUDGED_MISSING because SANREF reference points were not populated in facts)
+Case B	单点 rc1 不符 (rc1 mismatch)	PASS	verdict=MISMATCH, mismatches=exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=20),exp_rc3(-!=0)
+Case C	单点 rc2 不符 (rc2 mismatch)	PASS	verdict=MISMATCH, mismatches=I5=VIOLATED,exp_rc2(20!=0),exp_rc3(-!=0)
+Case D	单点信号异常 (Signal abnormal)	PASS	verdict=MISMATCH, mismatches=exp_class(CRASH!=REPORTED_FAILURE),exp_signal(11!=0)
+Case E	命中数不符 (Hit mismatch)	PASS	verdict=MISMATCH, mismatches=exp_class(INVALID!=REPORTED_FAILURE),exp_hit(0!=1),exp_rc3(-!=0)
+Case F	双失败 hit2 不符 (Dual failure hit2 mismatch)	PASS	verdict=MISMATCH, mismatches=exp_hit(1!=2),exp_hit2(0!=1)
+Case F2	双失败 inject2_invalid 检出	PASS	verdict=MISMATCH, mismatches=exp_inject2_invalid(1!=0)
+Case F3	双失败 inject2_suppressed 检出	PASS	verdict=MISMATCH, mismatches=exp_inject2_suppressed(1!=0)
+Case F4	双失败恢复 rc3 不符	PASS	verdict=MISMATCH, mismatches=I5=VIOLATED,exp_rc3(20!=0)
+Case G	缺 gdb 日志 (Missing gdb log -> UNJUDGED_MISSING)	PASS	verdict=UNJUDGED, detail=UNJUDGED_MISSING
+Case H	缺失 ID (Missing ID in pass 1 -> SCHEMA_ERROR)	PASS	verdict=SCHEMA_ERROR, issues=MISSING_IN_PASS1
+Case I	Tree 不符 (Tree mismatch -> SCHEMA_ERROR)	PASS	verdict=SCHEMA_ERROR, issues=TREE_MISMATCH_PASS1(B!=F3)
+Case J	I6 恢复输出差异判为 MISMATCH (I6 diff -> MISMATCH)	PASS	verdict=MISMATCH, mismatches=I6=VIOLATED
+Case L	跨 pass 不一致检为 FLAKY (Flaky between passes)	PASS	verdict=FLAKY, flaky_fields=rc(p1=0,p2=20),rc1(p1=0,p2=20),rc3(p1=-,p2=0),class(p1=SILENT_SWALLOW,p2=REPORTED_FAILURE),I1(p1=N/A,p2=HOLD),I2(p1=N/A,p2=HOLD)
+Case M	M2-10 baseline_only_rule 正确判 MATCH	PASS	verdict=MATCH, detail=MATCH
+Case K	sanitizer 检出报告判为 MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_san(1!=0)
+Case P	sanitizer rc 与 san_ref 不同	PASS	verdict=MISMATCH, mismatches=exp_class(SILENT_SWALLOW!=REPORTED_FAILURE),exp_rc1(0!=20),san_ref_class(SILENT_SWALLOW!=REPORTED_FAILURE),san_ref_rc1(0!=20)
+Case Q	san_ref=NO_REF -> UNJUDGED_BY_DESIGN	PASS	verdict=UNJUDGED, detail=UNJUDGED_BY_DESIGN
+Case R	汇总合计!=150 构造输入断言失败退出	PASS	exit_code=1, stderr=FATAL: Total points evaluated 149 != expected 150!
+Case S1	gdb 退出码 0、日志 exited 024 解析为 rc=20 且 gdb_divergent=0	PASS	rc=20, signal=0, gdb_divergent=0
+Case S2	不挂 gdb 的运行出现 SIGSEGV -> CRASH -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_class(CRASH!=REPORTED_FAILURE),exp_signal(11!=0)
+Case S3	gdb 与 nogdb 的 rc1 不同 -> GDB_DIVERGENT	PASS	verdict=GDB_DIVERGENT, detail=GDB_DIVERGENT, notes=GDB_DIVERGENT(p1=1,p2=1); p1_diffs=exp_rc3(-!=0);p2_diffs=exp_rc3(-!=0)
+Case S4	log_path 含 $ -> 运行器拒绝	PASS	exit_code=1, stderr=FATAL: Command plan contains unexpanded '$' in env for M2-01
+Case S5	NATIVE_FAIL_CONTROL 在 rc1=0 时 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_rc1(0!=20),native_fail_rc1(0!=20)
+Case S6	M2-10 没有 M210_HIT -> MISMATCH	PASS	verdict=MISMATCH, mismatches=baseline_m210_hits_none(0)
+Case S7	hit1 不符 (hit1=2!=1) -> MISMATCH	PASS	verdict=MISMATCH, mismatches=exp_hit(3!=2),exp_hit1(2!=1)
+Case S8	参照点 rc 不同 -> MISMATCH	PASS	verdict=MISMATCH, mismatches=san_ref_class(REPORTED_FAILURE!=SILENT_SWALLOW),san_ref_rc1(20!=0)

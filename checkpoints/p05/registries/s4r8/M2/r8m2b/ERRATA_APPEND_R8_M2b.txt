@@ -1,0 +1,14 @@
+E8-104	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §3、§4，U254、A4）。原条目不改。
+        M2-10-01-B 的 gdb 脚本 sha 登记值 bbab8579... 是登记错误。来源是 prereg_effective_r8m2a3.py:23 的硬编码；m210_b_r8m2a2_R2.gdb 在 git 中只有提交 c66b7d2 一个版本，sha256 实际为 d1fc549859f311543ce4b1aaeb23f3adee8a8204b4c17f5fa32d8ff4acca4006。预注册 v3 把身份列更正为 d1fc...（非 exp 列）；历史预注册与 COMPLETENESS 表原件保持不变。
+
+E8-105	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §3、§4，U255、A5）。原条目不改。
+        M2-07-CTRL-vl-ng1-F3 规则更正与判定器硬编码特判消除。r8m2a4 在冻结后于 verdict_m2_r8m2a4.py:211-215 针对该点添加硬编码特判同时容纳 CONTROL_OK 与 INVALID，违背判定器冻结纪律。本轮新判定器删除该特判；预注册 v3 为该点新设 class_rule=NATIVE_FAIL_CONTROL，严格要求 rc1=20、rc2=20、信号 0、hit=0、classify 结果 == INVALID（依据 judge_d003.py:144-145 自检例）。exp_class 原值不改。
+
+E8-106	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §4，A6）。原条目不改。
+        r8m2a4 提交附件 ERRATA_APPEND_R8_M2a4.txt 中哈希引用更正。附件中 E8-102 误写 sha 为 d917b3e2...、E8-103 误写 sha 为 becf0ab5...，与实际有效预注册 v2（ee46fecf7f6575b220aadd5bd245fd473d1504f955d10accb732514f901d9a21）与状态分析器（89f00f0e6ca4e144a49c2e078ba15f91752b0cf5f4ffc186851d70a3c4a242c7）出现差异。历史提交附件保持不变，以本条澄清为准。
+
+E8-107	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §3、§4，U256、A1、A2、A3、A7、A8）。原条目不改。
+        dbg 运行成对执行链修正与判定增强。(a) gdb -batch 默认退出码为 0，程序 exit 20 时 gdb 日志打印 "exited with code 024"，facts 仅读 exitcode 会使 rc/信号恒为 0；按 U256 所有 dbg 行每遍成对运行：(a) gdb 下产出 gdb.log 与 dump，(b) 不挂 gdb 产出 stdout/stderr/exitcode，rc 和信号取自 (b)，并从 (a) 解析退出码交叉核对，不一致判 GDB_DIVERGENT；(b) 运行器展开 $EV 绝对路径，消除命令中 $ 字符，并规范产出 gdb.log；(c) 判定器补齐 exp_hit1 断言与 fail_layer1 检查；(d) 事实提取器解析 M210_HIT 行号与命中次数。
+
+E8-108	P05-S4 R8 M2b 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2b 任务书 §3，U257）。原条目不改。
+        M2-03 的 19 个 NO_REF 点（G5 13、G6 6）补跑同环境非 sanitizer 参照点。参照驱动要求源文件、注入文件、-D 宏、--wrap 参数完全一致，仅去掉 -fsanitize=address,undefined -fno-omit-frame-pointer。参照点写入附表 PREREG_M2_SANREF_R8_M2b.tsv（19 行），状态标记为 INFLUENCED，exp_rc1/exp_class 取对应 san 行原值；主表 19 行的 san_ref_point_id 填入参照 id（非 exp 列）。
