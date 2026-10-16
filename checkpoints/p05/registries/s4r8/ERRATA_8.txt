@@ -662,3 +662,17 @@ E8-115	P05-S4 R8 M2e 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-
             改用链接参数 -Wl,--wrap=malloc_aligned 拦截 malloc_aligned，实现 S4FMM_INJECT=aligned:K 注入（新驱动 init-F3-san-AL）。
         (3) 预注册替换：
             原 SOLN-1764-{closed2d-ng1,fft-ng5,kottke-ng5}-F3-san-FA 3 行标 SUPERSEDED_BY，由 SOLN-1764-*-F3-san-AL 3 行替代。
+
+E8-116	P05-S4 R8 M2e 报告文书瑕疵勘误（只追加；依据 AGENTS.md 第 2、5 节与 P05-S3R5 任务书 §2 H-5(a)、§3 U288）。原报告不改。
+        报告第 126 行写了"100%"，第 225 行写了"完全证实"，违反 M2e 任务书 §6 措辞约束（不使用强化词）。勘误更正为客观陈述：正式两遍结果全部 MATCH，无分歧；1b 物理事实经堆栈实测再次证实。
+
+E8-117	P05-S4 R8 M2e 文书标题勘误（只追加；依据 AGENTS.md 第 2、5 节与 P05-S3R5 任务书 §2 H-5(b)、§3 U288）。原文件不改。
+        SUMMARY_R8_M2e.txt 第 1 行误写为 VERDICT_SUMMARY_R8_M2d，FACTS_pass1.tsv 和 FACTS_pass2.tsv 第 1 行误写为 # FACTS_R8_M2d。均为自 r8m2d 复制模板未改轮次后缀的文书瑕疵，表中数据与行号内容正确。
+
+E8-118	P05-S4 R8 M2e 执行偏离披露与证据清单规则更新（只追加；依据 AGENTS.md 第 2、5 节与 P05-S3R5 任务书 §2 H-5(c)(d)(e)、§3 U288）。
+        (1) safe_run.log 清单核验规则更新：evidence/p05-s4r8/m2d/safe_run.log 和 m2e/safe_run.log 与各自 SHA256SUMS.txt 不一致，原因是写完清单后 git add/commit 追加了两行（m2d 前 21 行、m2e 前 28 行与清单一致）。自 s3r5 起，证据清单中 safe_run.log 改为记录"清单写入时的行数及前 N 行的 sha256"，不再记录整个文件的哈希。
+        (2) 执行偏离披露：posctrl 运行 3 次、start 门禁运行 5 次，违反"只运行一次"规则，且有一次在 start 门禁之前就追加了 RULINGS/ERRATA。按执行偏离接受，不追认为合规。
+        (3) 误写跨轮次目录：r8m2e 曾两次写入 m2d 证据目录，已在 r8m2e 报告中披露并删除。
+
+E8-119	P05-S4 R8 M2e 回归清单文书勘误（只追加；依据 AGENTS.md 第 2、5 节与 P05-S3R5 任务书 §2 H-5(f)、§3 U288）。原清单不改。
+        REGRESSION_PLAN_F4_R8_M2e.tsv 只注明 aligned 的 K 需要重新映射，没有覆盖 init:K 重新映射；F3 行的 b_baseline_behavior 写成"对照基线依然崩溃"，措辞不当。在 S3R5 中重新输出更正后的 REGRESSION_PLAN_F4_S3R5.tsv。
