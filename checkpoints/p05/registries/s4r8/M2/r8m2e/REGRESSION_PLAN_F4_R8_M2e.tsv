@@ -1,0 +1,31 @@
+# REGRESSION_PLAN_F4_R8_M2e.tsv -- F4 regression plan for SOLN 27 points and S3R5 closeout items (U281, G-7)
+point_id	f4_driver	f4_exp_rc1	f4_exp_rc2	f4_exp_class	f4_exp_init_clean	f4_exp_crash_call	b_baseline_behavior	notes
+SOLN-1763-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-closed2d-ng1-B-dbg-C	init-B-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1763-closed2d-ng1-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-fft-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1763-fft-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1763-kottke-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	1	CRASH at call 1 (1763) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1763-kottke-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-closed2d-ng1-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1764) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1764-closed2d-ng1-F3-san-AL	init-F4-san-AL	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：驱动 init-F4-san-AL，同 inject_r8m2e_aligned 注入器，库换成 F4 san 库；S4FMM_INJECT=aligned:K 注入；F4 上 K 需重新映射确认
+SOLN-1764-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-fft-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1764) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1764-fft-ng5-F3-san-AL	init-F4-san-AL	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：驱动 init-F4-san-AL，同 inject_r8m2e_aligned 注入器，库换成 F4 san 库；S4FMM_INJECT=aligned:K 注入；F4 上 K 需重新映射确认
+SOLN-1764-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1764-kottke-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1764) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1764-kottke-ng5-F3-san-AL	init-F4-san-AL	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：驱动 init-F4-san-AL，同 inject_r8m2e_aligned 注入器，库换成 F4 san 库；S4FMM_INJECT=aligned:K 注入；F4 上 K 需重新映射确认
+SOLN-1765-closed2d-ng1-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-closed2d-ng1-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1765) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1765-closed2d-ng1-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-fft-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-fft-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1765) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1765-fft-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-kottke-ng5-F3-dbg-C	init-F4-dbg	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+SOLN-1765-kottke-ng5-B-dbg-C	init-B-dbg	-	-	CRASH	-	2	CRASH at call 2 (1765) [BASELINE_ONLY 仅基线，非修复证据]	基线驱动使用 init-B-dbg (G-7 更正)；仅作基线对照，非修复证据
+SOLN-1765-kottke-ng5-F3-san-C	init-F4-san	1	0	REPORTED_FAILURE	HOLD	NONE	对照基线依然崩溃	S3R5 修后：分配失败立即置 S->solution=NULL 并报 S4_MSG 返回 1；调用2重试时 S->solution==NULL 重新进入 InitSolution 成功
+S3R5-CLOSEOUT-MAKE-TEST	make_test_runner	0	-	CONTROL_OK	-	NONE	相对基线B无新增失败	S3R5 收口项1（只登记，不执行）：冻结树 F4 上 make test 相对未修复基线 B 无新增失败（主套件功能回归测试）
+S3R5-CLOSEOUT-E2E-API	e2e_api_runner	0	-	CONTROL_OK	-	NONE	经公共API验证全链路	S3R5 收口项2（只登记，不执行）：Python/Lua 公共 API 的“失败→可见报错→重试恢复”全链路端到端恢复测试

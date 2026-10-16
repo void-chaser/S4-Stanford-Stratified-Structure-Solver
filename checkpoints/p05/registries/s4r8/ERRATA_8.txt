@@ -648,3 +648,17 @@ E8-114	P05-S4 R8 M2d 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-
         (1) 预注册错误改正（18 行）：driver_r6b_state.cpp 使用全缓冲 printf 输出返回码；进程被 SIGSEGV 击毙时 stdout 为空，rc1/rc2 在进程崩溃时不可观测。原预注册 v4 增量表中对预期 CRASH / SAN_CRASH 的行登记了 exp_rc1/exp_rc2 数值期望，导致实测 MISSING 报 MISMATCH。更正为 exp_rc1="-"、exp_rc2="-"（不判），改判 exp_signal、exp_crash_call=2、exp_crash_site、exp_post_call1_solution=NONNULL。
         (2) 装置标签错误改正（1764-san 3 行）：init-F3-san 驱动在 S4_HAVE_ASAN 条件下，numalloc.c 中的 malloc_aligned 走 posix_memalign，不经过链接器的 --wrap=malloc。因此 MALLOC_MAP_R8_M2c.tsv 中 closed2d san k=8、fft/kottke san k=9 实际命中的均为 1765_solved（NULL == sol->solved），原预注册 PREREG_M2_DELTA_R8_M2c.tsv 中的 SOLN-1764-{closed2d-ng1,fft-ng5,kottke-ng5}-F3-san 三行属装置标签错误。更正为：原行标 SUPERSEDED_BY；改用 S4.cpp:52-113 现有的 S4_FAIL_ALLOC_AT 进行注入，建立 -C-FA 行。
         (3) 崩溃位置与事实列更正：r8m2c 分诊表第 28–45 行误写崩溃发生在 "S4.cpp:1773 memset(NULL)"，与物理实测不符（1773 位于判空之后）。真实崩溃位置经实测堆栈确认：1765 发生在调用 2（driver_r6b_state.cpp:227），F3 停在 S4.cpp:2021 sol->solved，B 停在 S4.cpp:2012；1764 dbg 发生在调用 2（driver_r6b_state.cpp:227），崩在 libc __memset_avx2_unaligned_erms（实测帧 #1 确认为 S4.cpp:1995 memset(pab)）；调用 1 失败返回后，S->solution 保持非 NULL（R6BSTATE 1 记录），S4.cpp:1802 使调用 2 重试跳过 InitSolution 直接解引用空指针崩溃。
+
+E8-115	P05-S4 R8 M2e 更正（只追加；依据 AGENTS.md 第 2、5 节与 P05-S4 R8 M2e 任务书 §2、§3、§4，U276，G-1 至 G-8）。原条目不改。
+        3 个 SOLN-1764-*-F3-san-FA 行分诊改正为装置错误，更正为使用 malloc_aligned 注入器（init-F3-san-AL）：
+        (1) 装置错误纠偏（任务书 U273 依据错误）：
+            S4_FAIL_ALLOC_AT 开关在 S4/S4.cpp:65-71 受 !s4_fail_alloc_armed 保护，仅在 S4_Simulation_Clone 作用域（S4.cpp:733 S4FailAllocScopeGuard）内打开。
+            driver_r6b_state.cpp 不调用 Clone，因此 armed 恒为 0，S4_FAIL_ALLOC_AT=3 处于惰性状态，不会触发注入。
+            且 driver_r6b_state.cpp:260-262 仅在 s4fmm_inject_requested() 为真（设置 S4FMM_INJECT）时打印 S4FMM HITCOUNT，故 exp_hit=1 客观不可观测。
+            此外 -FA 行原登记的 k_fail=9 系自 1765 行照抄的错误。
+        (2) 注入器纠偏：
+            init-F3-san 下 S4_malloc 调用 malloc_aligned，后者在 ASAN 下走 posix_memalign，不经过 --wrap=malloc。
+            lib_F3_san/objs/S4.o 对 malloc_aligned 为外部未解析引用（U malloc_aligned），定义于 numalloc.o（T malloc_aligned）。
+            改用链接参数 -Wl,--wrap=malloc_aligned 拦截 malloc_aligned，实现 S4FMM_INJECT=aligned:K 注入（新驱动 init-F3-san-AL）。
+        (3) 预注册替换：
+            原 SOLN-1764-{closed2d-ng1,fft-ng5,kottke-ng5}-F3-san-FA 3 行标 SUPERSEDED_BY，由 SOLN-1764-*-F3-san-AL 3 行替代。

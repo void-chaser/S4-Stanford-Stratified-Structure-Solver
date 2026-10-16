@@ -1,0 +1,8 @@
+# STATE_SUMMARY_R6c.txt -- computed by state_judge_m2_r8m2d.py from STATE_pass1.tsv
+points 0 ; FLAKY (pass 1 != pass 2) 0
+point verdict, pass 1: {}
+point verdict, pass 2: {}
+
+mode	route	inj_call	invariant	HOLD	VIOLATED	N/A	UNJUDGED	DEFERRED
+
+FLAKY point ids: none

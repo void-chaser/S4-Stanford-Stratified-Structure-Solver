@@ -1,0 +1,4 @@
+point_id	item	verdict	verdict_detail	mismatches	flaky_fields	unjudged_missing	unjudged_by_design	superseded_by	notes
+SOLN-1764-closed2d-ng1-F3-san-AL	SOLN-1764	MATCH	MATCH	-	-	-	-	-	all verified
+SOLN-1764-fft-ng5-F3-san-AL	SOLN-1764	MATCH	MATCH	-	-	-	-	-	all verified
+SOLN-1764-kottke-ng5-F3-san-AL	SOLN-1764	MATCH	MATCH	-	-	-	-	-	all verified

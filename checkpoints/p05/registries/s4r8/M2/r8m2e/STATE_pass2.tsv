@@ -1,0 +1,3 @@
+# RESULTS_R6c_STATE.tsv -- P05-S4 R6c-1 judgement of 177 points, passes 1 and 2 (facts only; rules in r6c_judge.py; v2 pre-registration).
+# I4 is I4' (U14).  I7 DEFERRED (U9).  point_verdict is per pass; flaky marks a disagreement between passes.
+point_id	pass	mode	route	inj_call	request	NTH_or_K	M	k_fail	k_preretry	k_retry	retry_call	control_id	failing_layer	req_layer	I1	I2	I3	I4	I5	I6	I7	hit	point_verdict	flaky	notes

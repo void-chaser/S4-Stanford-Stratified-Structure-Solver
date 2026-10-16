@@ -1,0 +1,34 @@
+# FACTS_R8_M2d pass 2
+point_id	pass	tree	rc	signal	rc1	rc2	rc3	hit	hit1	hit2	inject2_invalid	inject2_suppressed	san_reports	san_crash	init_clean	gdb_divergent	m210_hits	crash_call	crash_site	post_call1_solution	call1_sha256	call2_sha256	call3_sha256	call1_nonfinite	call2_nonfinite	call3_nonfinite	status	notes
+M2-06-01-F3-C	2	F3	0	0	20	0	0	1	1	-	-	-	-	-	-	-	-	NONE	-	-	1a93c3e8f09efe3bf0f593770cb677563cc42007cb4045aa76fef0b1fd9fa07c	702abd78b2511f25ae23279201b79059dfefebd67dd7ac8e61a7178ec31eb112	702abd78b2511f25ae23279201b79059dfefebd67dd7ac8e61a7178ec31eb112	0	0	0	OK	
+SOLN-1763-closed2d-ng1-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1763-closed2d-ng1-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1755	-	-	-	-	-	-	-	OK	
+SOLN-1763-closed2d-ng1-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1763-fft-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1763-fft-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1755	-	-	-	-	-	-	-	OK	
+SOLN-1763-fft-ng5-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1763-kottke-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1763-kottke-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	1	S4.cpp:1755	-	-	-	-	-	-	-	OK	
+SOLN-1763-kottke-ng5-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	1	S4.cpp:1764	-	-	-	-	-	-	-	OK	
+SOLN-1764-closed2d-ng1-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1995	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-closed2d-ng1-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1986	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-closed2d-ng1-F3-san-AL	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:1995	-	-	-	-	-	-	-	OK	
+SOLN-1764-fft-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1995	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-fft-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1986	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-fft-ng5-F3-san-AL	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:1995	-	-	-	-	-	-	-	OK	
+SOLN-1764-kottke-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1995	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-kottke-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:1986	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1764-kottke-ng5-F3-san-AL	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:1995	-	-	-	-	-	-	-	OK	
+SOLN-1765-closed2d-ng1-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2021	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-closed2d-ng1-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2012	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-closed2d-ng1-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:2021	-	-	-	-	-	-	-	OK	
+SOLN-1765-fft-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2021	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-fft-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2012	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-fft-ng5-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:2021	-	-	-	-	-	-	-	OK	
+SOLN-1765-kottke-ng5-F3-dbg-C	2	F3	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2021	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-kottke-ng5-B-dbg-C	2	B	139	11	MISSING	MISSING	-	1	1	-	-	-	-	-	-	0	0	2	S4.cpp:2012	NONNULL	-	-	-	-	-	-	OK	
+SOLN-1765-kottke-ng5-F3-san-C	2	F3	1	0	MISSING	MISSING	-	1	1	-	-	-	2	1	-	-	-	2	S4.cpp:2021	-	-	-	-	-	-	-	OK	
+M2-01-CTRL-01-F3	2	F3	0	0	0	0	0	0	0	-	-	-	-	-	-	0	0	NONE	-	-	768d9d0644220f2d29c6dbd1d24dcc7f80cbc319981520e0a29b5a180b2891db	768d9d0644220f2d29c6dbd1d24dcc7f80cbc319981520e0a29b5a180b2891db	768d9d0644220f2d29c6dbd1d24dcc7f80cbc319981520e0a29b5a180b2891db	0	0	0	OK	
+M2-01-CTRL-02-F3	2	F3	0	0	0	0	0	0	0	-	-	-	-	-	-	0	0	NONE	-	-	00b931238a3c049a15d55a745612461d29ccf04f20229b0e52061e13c7bbfe95	00b931238a3c049a15d55a745612461d29ccf04f20229b0e52061e13c7bbfe95	00b931238a3c049a15d55a745612461d29ccf04f20229b0e52061e13c7bbfe95	0	0	0	OK	
+M2-01-CTRL-03-F3	2	F3	0	0	0	0	0	0	0	-	-	-	-	-	-	0	0	NONE	-	-	ea0c232709c9a9142f7fa022de792075ee38ec497ab7ceee79f07ddfed523dde	ea0c232709c9a9142f7fa022de792075ee38ec497ab7ceee79f07ddfed523dde	ea0c232709c9a9142f7fa022de792075ee38ec497ab7ceee79f07ddfed523dde	0	0	0	OK	
+M2-05-CTRL-P0-F3	2	F3	0	0	0	0	0	0	0	-	-	-	-	-	-	0	0	NONE	-	-	72bf48aa1f37ab581577ee94b3df7cf3bc07456d9f9c65b81add9113756d2120	72bf48aa1f37ab581577ee94b3df7cf3bc07456d9f9c65b81add9113756d2120	72bf48aa1f37ab581577ee94b3df7cf3bc07456d9f9c65b81add9113756d2120	0	0	0	OK	

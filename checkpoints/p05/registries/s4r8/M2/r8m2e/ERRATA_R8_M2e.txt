@@ -1,0 +1,16 @@
+# ERRATA_R8_M2e.txt -- P05-S4 R8 M2e 勘误记录
+# 依据：AGENTS.md 第 2、5 节，P05-S4 R8 M2e 任务书 §2、§3，U276 至 U282
+
+E8-115	P05-S4 R8 M2e 更正（依据 U276，G-1 至 G-8）。
+	3 个 SOLN-1764-*-F3-san-FA 行分诊改正为装置错误，更正为使用 malloc_aligned 注入器（init-F3-san-AL）：
+	(1) 装置错误纠偏（任务书 U273 依据错误）：
+	    S4_FAIL_ALLOC_AT 开关在 S4/S4.cpp:65-71 受 !s4_fail_alloc_armed 保护，仅在 S4_Simulation_Clone 作用域（S4.cpp:733 S4FailAllocScopeGuard）内打开。
+	    driver_r6b_state.cpp 不调用 Clone，因此 armed 恒为 0，S4_FAIL_ALLOC_AT=3 处于惰性状态，不会触发注入。
+	    且 driver_r6b_state.cpp:260-262 仅在 s4fmm_inject_requested() 为真（设置 S4FMM_INJECT）时打印 S4FMM HITCOUNT，故 exp_hit=1 客观不可观测。
+	    此外 -FA 行原登记的 k_fail=9 系自 1765 行照抄的错误。
+	(2) 注入器纠偏：
+	    init-F3-san 下 S4_malloc 调用 malloc_aligned，后者在 ASAN 下走 posix_memalign，不经过 --wrap=malloc。
+	    lib_F3_san/objs/S4.o 对 malloc_aligned 为外部未解析引用（U malloc_aligned），定义于 numalloc.o（T malloc_aligned）。
+	    改用链接参数 -Wl,--wrap=malloc_aligned 拦截 malloc_aligned，实现 S4FMM_INJECT=aligned:K 注入（新驱动 init-F3-san-AL）。
+	(3) 预注册替换：
+	    原 SOLN-1764-{closed2d-ng1,fft-ng5,kottke-ng5}-F3-san-FA 3 行标 SUPERSEDED_BY，由 SOLN-1764-*-F3-san-AL 3 行替代。

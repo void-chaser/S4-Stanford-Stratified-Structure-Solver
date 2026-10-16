@@ -1,0 +1,92 @@
+# test_noinj_control_r8m2e.txt -- S-C non-injection control run on init-F3-san-AL
+# Driver: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2e/build/init-F3-san-AL
+## Combo: closed2d-ng1 (mode=closed2d, ng=1)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 111
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=closed2d num_basis=1
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6STATE 0 cache layer 1 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 2 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 2 cached_null 1 cached_ptr (nil)
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5feb5c1218b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=8 alignment=16 caller=0x5feb5c11fe3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5feb5c12202e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5feb5c12226c hit=0
+S4FMM S4_MALLOC_ALIGNED k=2 size=16 alignment=16 caller=0x5feb5c11fe3f hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=0 caller=0x5feb5c13c8c3 hit=0
+S4FMM S3R4_WIN_OPEN
+S4FMM S3R4_WIN_CLOSE malloc_in_window=0 rc=0
+S4FMM S3R4_OUT_MALLOC k=5 n=4 caller=0x5feb5c13c8c3 hit=0
+S4FMM S3R4_WIN_OPEN
+
+## Combo: fft-ng5 (mode=fft, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=fft num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6STATE 0 cache layer 1 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 2 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 2 cached_null 1 cached_ptr (nil)
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x5e5d4d4178b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x5e5d4d415e3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x5e5d4d41802e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x5e5d4d41826c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x5e5d4d593227 hit=0
+S4FMM S4_MALLOC_ALIGNED k=2 size=80 alignment=16 caller=0x5e5d4d415e3f hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x5e5d4d4328c3 hit=0
+S4FMM S3R4_WIN_OPEN
+S4FMM S3R4_WIN_CLOSE malloc_in_window=0 rc=0
+S4FMM S3R4_OUT_MALLOC k=6 n=4 caller=0x5e5d4d4328c3 hit=0
+
+## Combo: kottke-ng5 (mode=kottke, ng=5)
+exit_code: 0
+stdout_lines: 58
+stderr_lines: 123
+has_hit: False
+has_hitcount_nz: False
+has_asan: False
+--- stdout head ---
+S4FMM DRIVER_R6B mode=kottke num_basis=5
+R6STATE 0 n_layers 3
+R6STATE 0 solution_null 1
+R6STATE 0 field_cache_null 1
+R6STATE 0 layer 0 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 0 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 1 modes_null 1 modes_ptr (nil) copy -1 nshapes 1
+R6STATE 0 cache layer 1 cached_null 1 cached_ptr (nil)
+R6STATE 0 layer 2 modes_null 1 modes_ptr (nil) copy -1 nshapes 0
+R6STATE 0 cache layer 2 cached_null 1 cached_ptr (nil)
+--- stderr head ---
+S4FMM S3R4_OUT_MALLOC k=1 n=344 caller=0x6125d61508b5 hit=0
+S4FMM S4_MALLOC_ALIGNED k=1 size=40 alignment=16 caller=0x6125d614ee3f hit=0
+S4FMM S3R4_OUT_MALLOC k=2 n=384 caller=0x6125d615102e hit=0
+S4FMM S3R4_OUT_MALLOC k=3 n=256 caller=0x6125d615126c hit=0
+S4FMM S3R4_OUT_MALLOC k=4 n=648 caller=0x6125d62cc227 hit=0
+S4FMM S4_MALLOC_ALIGNED k=2 size=80 alignment=16 caller=0x6125d614ee3f hit=0
+S4FMM S3R4_OUT_MALLOC k=5 n=0 caller=0x6125d616b8c3 hit=0
+S4FMM S3R4_WIN_OPEN
+S4FMM S3R4_WIN_CLOSE malloc_in_window=0 rc=0
+S4FMM S3R4_OUT_MALLOC k=6 n=4 caller=0x6125d616b8c3 hit=0
+
