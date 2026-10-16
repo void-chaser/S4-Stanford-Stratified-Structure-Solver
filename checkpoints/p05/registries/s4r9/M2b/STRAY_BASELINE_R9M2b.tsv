@@ -1,0 +1,4 @@
+# STRAY_BASELINE_R9M2b (start): path	kind	bytes	mtime_ns	sha256
+testing/d003/__pycache__	DIR	0	1791706769865053065	-
+testing/d003/__pycache__/judge_d003.cpython-314.pyc	FILE	17900	1791703690232097427	4a6fab27746ffb4eb47d69ff394305e433f7fb1e393165f21d18d8f4d004e158
+testing/d003/__pycache__/matrix_r2.cpython-314.pyc	FILE	17250	1791706769865053065	1ee7a9f345ac67ef46ac8b6b869e958bca12ec61f1e7775732cd5b8e9514b92a

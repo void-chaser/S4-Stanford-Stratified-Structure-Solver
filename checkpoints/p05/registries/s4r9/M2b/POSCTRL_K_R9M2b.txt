@@ -1,0 +1,23 @@
+# POSCTRL_K_R9M2b.txt -- Positive control report for K inheritance redo (U300)
+
+CASE: CASE_1_HIT_COUNT_MISMATCH
+  Expected: K_DIVERGENT_R2
+  Actual:   K_DIVERGENT_R2 (HIT_COUNT_MISMATCH(F3=3 F4=2))
+  Status:   PASS
+
+CASE: CASE_2_SIZE_MISMATCH
+  Expected: K_DIVERGENT_R2
+  Actual:   K_DIVERGENT_R2 (SIZE_MISMATCH(call 1: F3=id=21,size=48 F4=id=21,size=96))
+  Status:   PASS
+
+CASE: CASE_3_NO_SEQ_EVIDENCE
+  Expected: NO_SEQ_EVIDENCE_R2
+  Actual:   NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+  Status:   PASS
+
+CASE: CASE_4_ALL_IDENTICAL
+  Expected: PASS_K_INHERITED_R2
+  Actual:   PASS_K_INHERITED_R2 (Verified 2 calls identical)
+  Status:   PASS
+
+OVERALL_RESULT: ALL_PASS

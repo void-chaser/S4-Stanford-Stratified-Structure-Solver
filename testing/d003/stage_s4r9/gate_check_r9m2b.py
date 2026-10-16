@@ -142,6 +142,8 @@ def read_baseline(baseline_tsv):
     return out
 
 def run_checks(mode, start_file=None, ev_dir=None):
+    if mode in ("end", "end_R2"):
+        mode = "end"
     if not ev_dir:
         ev_dir = os.environ.get("EV", os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r9", "m2b"))
     baseline_tsv = os.path.join(ev_dir, "STRAY_BASELINE_R9M2b.tsv")

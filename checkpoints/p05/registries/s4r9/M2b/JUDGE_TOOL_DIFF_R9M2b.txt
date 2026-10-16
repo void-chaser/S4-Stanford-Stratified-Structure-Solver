@@ -1,0 +1,749 @@
+# JUDGE_TOOL_DIFF_R9M2b.txt -- Unified diff and analysis of R9 judge/runner tools vs R8 M2e originals (Rule 4 / Step S-F)
+================================================================================
+一、会影响判定输入的实质改动（F-6 三项）专项说明与论证
+================================================================================
+1. facts_m2_r9.py: 增加从 stdout R6STATE 1 solution_null 提取 post_call1_solution
+   - 改动位置: facts_m2_r9.py:370-374, 406-410
+   - 改动内容: 当 gdb dump 未提取到 post_call1_solution 时，从 combined_text (stdout) 正则匹配 '^R6STATE 1 solution_null (\d+)'，匹配到 1 记 NULL，0 记 NONNULL。
+   - 引入原因: R9 M2 中 9 个 SOLN san/san-AL 点（SOLN-1763/1765-*-san 及 SOLN-1764-*-san-AL）未挂接 gdb 脚本（gdb_script='-'），无法从 gdb.log 提取变量。驱动在无 gdb 时将该状态打印到 stdout。
+   - 对 191 点判定影响论证: 预注册中这 9 点的 exp_post_call1_solution 登记为 NULL。实测驱动确实输出 solution_null 1，提取结果为 NULL，判定与期望一致。此改动仅用于填补未挂 gdb 点的状态提取空白，未修改任何其他基础判定列（rc1, rc2, signal, hit, class），因此对 191 点判定结果无非预期负面影响。
+
+2. state_judge_m2_r9.py: 在 -F3 对照不存在时改用 -F4，并调整 dump 目录查找顺序
+   - 改动位置: state_judge_m2_r9.py:439-448, 462-470
+   - 改动内容: 若 control_point_id 以 -F3 结尾且在磁盘上找不到该对照点目录，自动回退查找对应 -F4 目录；同时将 dump 查找顺序调整为支持 formal/run/pass{N}/{point_id} 路径。
+   - 引入原因: R9 M2 运行在 F4 树上，对照点命名已改为 -F4（如 M2-01-CTRL-11-F4）；正式运行产物落盘在 formal/run/pass{N}/ 目录下。
+   - 对 191 点判定影响论证: 在 PREREG_REGRESS_F4_R9.tsv 中，对照点 ID 已全数更正为 -F4 命名，因此在正式运行中未触发 -F3 回退逻辑；dump 目录调整仅使 state_judge 能正确读取到实际产物。依据 F-3，173 个回归点在 F4 上 HIT 行与 F3 完全等价，其不变量事实均与对照点严格吻合，对 191 点判定无非预期负面影响。
+
+3. verdict_m2_r9.py: 对照点与 san_ref 做 F3→F4 重映射
+   - 改动位置: verdict_m2_r9.py:292-293 (san_ref), 356-357 (ctrl_id)
+   - 改动内容: 当 san_ref 或 ctrl_id 不在 facts 表中且将其后缀 -F3 替换为 -F4 后存在时，自动映射到 -F4 点读取对照事实。
+   - 引入原因: M2-03 部分回归点（如 M2-03-G6-01-F4-C）预注册中的 san_ref_point_id 仍保留历史引用 M2-03-SANREF-G6-01-F3-C。R9 仅执行 F4 点，磁盘上实际对照点为 M2-03-SANREF-G6-01-F4-C。
+   - 对 191 点判定影响论证: M2-03 对照点在 F4 上的运行事实与 F3 对照点完全一致（rc1=0, class=CONTROL_OK）。映射到 F4 同配置真实运行点比对是正确的修后验证行为，避免了因历史标签不匹配导致的虚假 san_ref_point_missing 误报，对 191 点判定无非预期负面影响。此外，依据 F-2，SOLN 18 点未受此代码段影响（exp_san 未被 verdict 判定）。
+
+================================================================================
+二、五个 R9 脚本相对 R8 M2e 原件的逐段说明与统一 Diff
+================================================================================
+
+--------------------------------------------------------------------------------
+工具: facts_m2_r9.py
+原件: testing/d003/stage_s4/facts_m2_r8m2e.py
+当前: testing/d003/stage_s4r9/facts_m2_r9.py
+--------------------------------------------------------------------------------
+改动逐段说明:
+  - 第 1-2 行: 更新标准首段与文件描述
+  - 第 370-374 行: 无 gdb dump 时从 stdout 提取 R6STATE 1 solution_null (NULL / NONNULL)
+  - 第 406-410 行: 非崩溃分支中同样支持从 stdout 提取 post_call1_solution
+
+统一 Diff:
+--- testing/d003/stage_s4/facts_m2_r8m2e.py
++++ testing/d003/stage_s4r9/facts_m2_r9.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python3
+
+-# facts_m2_r8m2e.py -- P05-S4 R8 M2d facts extractor v6.
+
++# REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+
++# facts_m2_r9.py -- P05-S4 R9 facts extractor.
+
+ # Enhancements:
+
+ #  - Adds crash_call fact in {1, 2, 3, NONE, UNKNOWN, -} (from GDB bt or ASAN stack driver line)
+
+ #  - Adds crash_site fact (first S4/ frame file:line, skipping libc frames)
+
+@@ -366,7 +367,11 @@
+                 else:
+
+                     facts["post_call1_solution"] = "NONNULL"
+
+             else:
+
+-                facts["post_call1_solution"] = "-"
+
++                m_sol_std = re.search(r"^R6STATE\s+1\s+solution_null\s+(\d+)", combined_text, re.M)
+
++                if m_sol_std:
+
++                    facts["post_call1_solution"] = "NULL" if m_sol_std.group(1) == "1" else "NONNULL"
+
++                else:
+
++                    facts["post_call1_solution"] = "-"
+
+ 
+
+             # Check divergence
+
+             div_reasons = []
+
+@@ -398,7 +403,11 @@
+         facts["gdb_divergent"] = "-"
+
+         facts["m210_hits"] = "-"
+
+         facts["init_clean"] = "-"
+
+-        facts["post_call1_solution"] = "-"
+
++        m_sol_std = re.search(r"^R6STATE\s+1\s+solution_null\s+(\d+)", combined_text, re.M)
+
++        if m_sol_std:
+
++            facts["post_call1_solution"] = "NULL" if m_sol_std.group(1) == "1" else "NONNULL"
+
++        else:
+
++            facts["post_call1_solution"] = "-"
+
+ 
+
+     # 4. Crash call and crash site extraction (U272)
+
+     is_crashed = (
+
+
+--------------------------------------------------------------------------------
+工具: state_judge_m2_r9.py
+原件: testing/d003/stage_s4/state_judge_m2_r8m2e.py
+当前: testing/d003/stage_s4r9/state_judge_m2_r9.py
+--------------------------------------------------------------------------------
+改动逐段说明:
+  - 第 1-2 行: 更新标准首段与文件描述
+  - 第 439-448 行: 对照点 ID 支持 -F3 到 -F4 存在性检查与自动适配
+  - 第 462-470 行: 增加 formal/run/pass{N} 路径作为 dump_candidates 首选，支持非 gdb 点直接读取 outs
+
+统一 Diff:
+--- testing/d003/stage_s4/state_judge_m2_r8m2e.py
++++ testing/d003/stage_s4r9/state_judge_m2_r9.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+
+-# state_judge_m2_r8m2e.py -- P05-S4 R8 M2e state analyzer.
+
+-# Copied from state_judge_m2_r8m2c.py; original unchanged.
+
++# REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+
++# state_judge_m2_r9.py -- P05-S4 R9 state analyzer.
+
+ import argparse
+
+ import os
+
+ import re
+
+@@ -436,6 +436,16 @@
+         if d.get("state_analyzer") in ("-", "", None):
+
+             continue
+
+         cid = ctrl_of.get(pid) or d.get("control_point_id")
+
++        if cid and cid.endswith("-F3"):
+
++            # If -F3 does not exist on disk but -F4 does, adapt to -F4
+
++            f3_exists = any(os.path.isdir(os.path.join(base or ev, "pass1", cid))
+
++                            for base in (args.state_dir, args.dumps_dir, ev))
+
++            if not f3_exists:
+
++                cid_f4 = cid.replace("-F3", "-F4")
+
++                f4_exists = any(os.path.isdir(os.path.join(base or ev, "pass1", cid_f4))
+
++                                for base in (args.state_dir, args.dumps_dir, ev))
+
++                if f4_exists:
+
++                    cid = cid_f4
+
+         ic = int(d["inj_call"]) if d.get("inj_call") not in (None, "", "-") else 1
+
+         rcall = int(d["retry_call"]) if d.get("retry_call") not in (None, "", "-") else RETRY_CALL.get(ic, 2)
+
+ 
+
+@@ -449,12 +459,20 @@
+             ]
+
+             gp = next((p for p in gdb_candidates if os.path.isfile(p)), gdb_candidates[0])
+
+ 
+
+-            if fr is None or not os.path.isfile(gp):
+
++            dump_candidates = [
+
++                os.path.join(args.dumps_dir or os.path.join(ev, "dump"), pid, "pass" + pas),
+
++                os.path.join(args.dumps_dir or os.path.join(ev, "run"), "pass" + pas, pid),
+
++                os.path.join(args.dumps_dir or ev, "pass" + pas, pid),
+
++            ]
+
++            dp = next((p for p in dump_candidates if os.path.isdir(p)), dump_candidates[0])
+
++            outs = read_outs(dp)
+
++
+
++            if fr is None or (not os.path.isfile(gp) and not outs):
+
+                 verdict[pas][pid] = "UNJUDGED"
+
+                 rows.append((d, pas, cid, None, None, None, None, "UNJUDGED"))
+
+                 continue
+
+ 
+
+-            g = GdbLog(read_text(gp))
+
++            g = GdbLog(read_text(gp)) if os.path.isfile(gp) else GdbLog("")
+
+             c = None
+
+             if cid and cid not in ("-", "NA"):
+
+                 cgdb_candidates = [
+
+@@ -467,13 +485,7 @@
+                 if cgp:
+
+                     c = GdbLog(read_text(cgp))
+
+ 
+
+-            dump_candidates = [
+
+-                os.path.join(args.dumps_dir or os.path.join(ev, "dump"), pid, "pass" + pas),
+
+-                os.path.join(args.dumps_dir or os.path.join(ev, "run"), "pass" + pas, pid),
+
+-                os.path.join(args.dumps_dir or ev, "pass" + pas, pid),
+
+-            ]
+
+-            dp = next((p for p in dump_candidates if os.path.isdir(p)), dump_candidates[0])
+
+-            outs = read_outs(dp)
+
++            # (dump_candidates already resolved above)
+
+ 
+
+             couts = {}
+
+             if cid and cid not in ("-", "NA"):
+
+
+--------------------------------------------------------------------------------
+工具: verdict_m2_r9.py
+原件: testing/d003/stage_s4/verdict_m2_r8m2e.py
+当前: testing/d003/stage_s4r9/verdict_m2_r9.py
+--------------------------------------------------------------------------------
+改动逐段说明:
+  - 第 1-2 行: 更新标准首段与文件描述
+  - 第 292-293 行: san_ref 对照点支持 -F3 到 -F4 映射
+  - 第 356-357 行: I6_ONLY 对照点 ctrl_id 支持 -F3 到 -F4 映射
+
+统一 Diff:
+--- testing/d003/stage_s4/verdict_m2_r8m2e.py
++++ testing/d003/stage_s4r9/verdict_m2_r9.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python3
+
+-# verdict_m2_r8m2e.py -- P05-S4 R8 M2e verdict engine v6.
+
++# REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+
++# verdict_m2_r9.py -- P05-S4 R9 verdict engine.
+
+ # Enhancements:
+
+ #  - exp="-" does not judge (skips comparison for that column)
+
+ #  - Adds strict equality for exp_crash_call in {1, 2, 3, NONE}
+
+@@ -288,6 +289,8 @@
+             if san_ref in ("NO_REF", ""):
+
+                 unjudged_design_reasons.append("san_ref_unspecified(NO_REF)")
+
+             elif san_ref not in (None, "-"):
+
++                if san_ref not in facts1_rows and san_ref.replace("-F3", "-F4") in facts1_rows:
+
++                    san_ref = san_ref.replace("-F3", "-F4")
+
+                 ref_r1 = facts1_rows.get(san_ref)
+
+                 ref_r2 = facts2_rows.get(san_ref)
+
+                 if not ref_r1 or not ref_r2:
+
+@@ -350,6 +353,8 @@
+         out_assert = e.get("output_assertion", "NONE")
+
+         if out_assert == "I6_ONLY" and e.get("control_point_id") not in (None, "", "-"):
+
+             ctrl_id = e.get("control_point_id")
+
++            if ctrl_id not in facts1_rows and ctrl_id.replace("-F3", "-F4") in facts1_rows:
+
++                ctrl_id = ctrl_id.replace("-F3", "-F4")
+
+             ctrl_r1 = facts1_rows.get(ctrl_id)
+
+             ctrl_r2 = facts2_rows.get(ctrl_id)
+
+             if ctrl_r1 and ctrl_r2:
+
+
+--------------------------------------------------------------------------------
+工具: posctrl_r9.py
+原件: testing/d003/stage_s4/posctrl_m2_r8m2e.py
+当前: testing/d003/stage_s4r9/posctrl_r9.py
+--------------------------------------------------------------------------------
+改动逐段说明:
+  - 第 1-2 行: 更新标准首段与文件描述
+  - 增加对 R9 特有场景（如 SOLN 期望、F4 对照映射、post_call1_solution）的合成校验用例
+
+统一 Diff:
+--- testing/d003/stage_s4/posctrl_m2_r8m2e.py
++++ testing/d003/stage_s4r9/posctrl_r9.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python3
+
+-# posctrl_m2_r8m2e.py -- Synthetic positive controls for P05-S4 R8 M2e.
+
++# REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+
++# posctrl_r9.py -- Synthetic positive controls for P05-S4 R9 (Section 4 S-J).
+
+ # Executes 41 cases:
+
+ #  - 34 r8m2c regression cases (A..R, S1..S8, P1..P7)
+
+ #  - 7 new r8m2e cases (D1..D7):
+
+@@ -15,6 +16,7 @@
+ import argparse
+
+ import csv
+
+ import os
+
++import re
+
+ import shutil
+
+ import subprocess
+
+ import sys
+
+@@ -24,10 +26,10 @@
+ SANREF_DEFAULT = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r8", "M2", "r8m2b", "PREREG_M2_SANREF_R8_M2b.tsv")
+
+ CTRL_MAP_DEFAULT = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r8", "M2", "r8m2a3", "CONTROL_MAPPING_R8_M2a3.tsv")
+
+ 
+
+-FACTS_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "facts_m2_r8m2e.py")
+
+-STATE_JUDGE_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "state_judge_m2_r8m2e.py")
+
+-VERDICT_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "verdict_m2_r8m2e.py")
+
+-RUNNER_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "run_m2_r8m2e.py")
+
++FACTS_PY = os.path.join(REPO, "testing", "d003", "stage_s4r9", "facts_m2_r9.py")
+
++STATE_JUDGE_PY = os.path.join(REPO, "testing", "d003", "stage_s4r9", "state_judge_m2_r9.py")
+
++VERDICT_PY = os.path.join(REPO, "testing", "d003", "stage_s4r9", "verdict_m2_r9.py")
+
++RUNNER_PY = os.path.join(REPO, "testing", "d003", "stage_s4r9", "run_m2_r9.py")
+
+ SMOKE_GATE_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "smoke_gate_r8m2e.py")
+
+ SUMMARY_PY = os.path.join(REPO, "testing", "d003", "stage_s4", "generate_summary_tables_r8m2e.py")
+
+ 
+
+@@ -1315,7 +1317,7 @@
+     record_case("Case E1", "ASAN 拦截帧 (__interceptor_memset) 被跳过，提取首个 S4 帧 (S4.cpp:1995)", passed, f"site={r_e1['crash_site']}, call={r_e1['crash_call']}")
+
+ 
+
+     # Case E2: aligned:K request parsing verification (U277)
+
+-    drv_al = os.path.join(args.ev, "build", "init-F3-san-AL")
+
++    drv_al = os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s3r5", "build", "init-F4-san-AL")
+
+     env_e2 = os.environ.copy()
+
+     env_e2["FMM_MODE"] = "closed2d"
+
+     env_e2["S4FMM_NG"] = "1"
+
+@@ -1328,7 +1330,7 @@
+ 
+
+     # Case E3: S4FMM HITCOUNT parsing in facts extractor
+
+     sys.path.insert(0, os.path.dirname(FACTS_PY))
+
+-    import facts_m2_r8m2e as facts_mod
+
++    import facts_m2_r9 as facts_mod
+
+     sample_text = "R6CALLS 1 0\nRC first 0\nR6CALLS 2 0\nRC retry 0\nS4FMM HITCOUNT 1\n"
+
+     rc1, rc2, rc3, hit = facts_mod.parse_output_rcs_and_hits(sample_text, is_ctrl=False, env_str="S4FMM_INJECT=aligned:3", item="SOLN-1764")
+
+     passed_e3 = (hit == "1" and rc1 == "0" and rc2 == "0")
+
+@@ -1338,7 +1340,7 @@
+     c_dir_e4 = os.path.join(scratch, "case_E4")
+
+     os.makedirs(c_dir_e4, exist_ok=True)
+
+     mock_formal_tsv = os.path.join(c_dir_e4, "MOCK_VERDICT_FORMAL.tsv")
+
+-    pr_formal = os.path.join(args.ev, "PREREG_EFFECTIVE_FORMAL_R8_M2e.tsv")
+
++    pr_formal = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r8", "M2", "r8m2e", "PREREG_EFFECTIVE_FORMAL_R8_M2e.tsv")
+
+     with open(pr_formal, encoding="utf-8") as fh:
+
+         pr_rows = list(csv.DictReader((l for l in fh if not l.startswith("#")), delimiter="\t"))
+
+     with open(mock_formal_tsv, "w", encoding="utf-8", newline="") as fh:
+
+@@ -1375,9 +1377,126 @@
+     passed_e6 = (total_e6 == 259 and sup_e6 == 57 and act_e6 == 202)
+
+     record_case("Case E6", "合并总表合计断言满足 (总行数 259, SUPERSEDED 57, 有效行 202)", passed_e6, f"total={total_e6}, sup={sup_e6}, act={act_e6}")
+
+ 
+
+-    # Write POSCTRL summary log
+
++            # =========================================================================
+
++    # R9 New Synthetic Positive Control Cases (Section 4 S-J)
+
++    # Testing: post_call1_solution=NULL, crash_call=NONE, I6 HOLD/VIOLATED
+
++    # =========================================================================
+
++
+
++    def make_prereg_file(out_p, mod_fn):
+
++        with open(args.prereg, encoding="utf-8") as fh:
+
++            rows = list(csv.DictReader(fh, delimiter="\t"))
+
++        fnames = list(rows[0].keys())
+
++        for f in ["exp_crash_call", "exp_crash_site", "exp_post_call1_solution"]:
+
++            if f not in fnames:
+
++                fnames.append(f)
+
++        with open(out_p, "w", encoding="utf-8", newline="") as fh:
+
++            fh.write("\t".join(fnames) + "\n")
+
++            for r in rows:
+
++                if r["point_id"] == "M2-01-01-F3":
+
++                    mod_fn(r)
+
++                fh.write("\t".join([r.get(h, "-") for h in fnames]) + "\n")
+
++
+
++    # Case R9_1: post_call1_solution=NULL matches expectation -> MATCH
+
++    c_dir_r9_1 = os.path.join(scratch, "case_R9_1")
+
++    setup_base_case_dirs(c_dir_r9_1, prereg_rows)
+
++    pr_r9_1 = os.path.join(scratch, "PREREG_CASE_R9_1.tsv")
+
++    make_prereg_file(pr_r9_1, lambda r: r.update({"exp_post_call1_solution": "NULL", "exp_crash_call": "NONE", "exp_I1": "-", "exp_I2": "-", "exp_I4": "-", "exp_I5": "-"}))
+
++    for pas in ("pass1", "pass2"):
+
++        p_path = os.path.join(c_dir_r9_1, pas, "M2-01-01-F3", "gdb.log")
+
++        txt = open(p_path, encoding="utf-8").read()
+
++        txt = re.sub(r"R6BSTATE\s+1\s+solution\s+\S+", "R6BSTATE 1 solution null", txt)
+
++        with open(p_path, "w", encoding="utf-8") as fh:
+
++            fh.write(txt)
+
++    ok, v_r9_1 = run_pipeline(c_dir_r9_1, pr_r9_1, args.control_map)
+
++    if ok:
+
++        r = v_r9_1["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MATCH" and r["mismatches"] == "-")
+
++        record_case("Case R9_1", "post_call1_solution=NULL 匹配预期 -> MATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_1", "post_call1_solution=NULL", False, "pipeline failed")
+
++
+
++    # Case R9_2: post_call1_solution=NONNULL 不符预期 NULL -> MISMATCH
+
++    c_dir_r9_2 = os.path.join(scratch, "case_R9_2")
+
++    setup_base_case_dirs(c_dir_r9_2, prereg_rows)
+
++    pr_r9_2 = os.path.join(scratch, "PREREG_CASE_R9_2.tsv")
+
++    make_prereg_file(pr_r9_2, lambda r: r.update({"exp_post_call1_solution": "NULL"}))
+
++    for pas in ("pass1", "pass2"):
+
++        p_path = os.path.join(c_dir_r9_2, pas, "M2-01-01-F3", "gdb.log")
+
++        with open(p_path, "a", encoding="utf-8") as fh:
+
++            fh.write("\nR6BSTATE 1 solution solved 0=1\n")
+
++    ok, v_r9_2 = run_pipeline(c_dir_r9_2, pr_r9_2, args.control_map)
+
++    if ok:
+
++        r = v_r9_2["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MISMATCH" and "exp_post_call1_solution(NONNULL!=NULL)" in r["mismatches"])
+
++        record_case("Case R9_2", "post_call1_solution 不符 (实测NONNULL != 预期NULL) -> MISMATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_2", "post_call1_solution 不符", False, "pipeline failed")
+
++
+
++    # Case R9_3: crash_call=NONE 匹配预期 -> MATCH
+
++    c_dir_r9_3 = os.path.join(scratch, "case_R9_3")
+
++    setup_base_case_dirs(c_dir_r9_3, prereg_rows)
+
++    pr_r9_3 = os.path.join(scratch, "PREREG_CASE_R9_3.tsv")
+
++    make_prereg_file(pr_r9_3, lambda r: r.update({"exp_crash_call": "NONE"}))
+
++    ok, v_r9_3 = run_pipeline(c_dir_r9_3, pr_r9_3, args.control_map)
+
++    if ok:
+
++        r = v_r9_3["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MATCH" and r["mismatches"] == "-")
+
++        record_case("Case R9_3", "crash_call=NONE 匹配预期 -> MATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_3", "crash_call=NONE", False, "pipeline failed")
+
++
+
++    # Case R9_4: crash_call=1 不符预期 NONE -> MISMATCH
+
++    c_dir_r9_4 = os.path.join(scratch, "case_R9_4")
+
++    setup_base_case_dirs(c_dir_r9_4, prereg_rows)
+
++    pr_r9_4 = os.path.join(scratch, "PREREG_CASE_R9_4.tsv")
+
++    make_prereg_file(pr_r9_4, lambda r: r.update({"exp_crash_call": "NONE", "exp_class": "REPORTED_FAILURE"}))
+
++    for pas in ("pass1", "pass2"):
+
++        p_path = os.path.join(c_dir_r9_4, pas, "M2-01-01-F3")
+
++        with open(os.path.join(p_path, "exitcode.txt"), "w") as fh:
+
++            fh.write("139\n")
+
++        with open(os.path.join(p_path, "gdb.log"), "w") as fh:
+
++            fh.write("Program received signal SIGSEGV, Segmentation fault.\n#0 0x0 in Simulation_ComputeLayerSolution () at S4/S4.cpp:1995\n#1 0x0 in main () at testing/d003/stage_s4/driver_r6b_state.cpp:211\n")
+
++    ok, v_r9_4 = run_pipeline(c_dir_r9_4, pr_r9_4, args.control_map)
+
++    if ok:
+
++        r = v_r9_4["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MISMATCH" and "exp_crash_call(1!=NONE)" in r["mismatches"])
+
++        record_case("Case R9_4", "crash_call 不符 (实测1 != 预期NONE) -> MISMATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_4", "crash_call 不符", False, "pipeline failed")
+
++
+
++    # Case R9_5: I6=HOLD 匹配预期 -> MATCH
+
++    c_dir_r9_5 = os.path.join(scratch, "case_R9_5")
+
++    setup_base_case_dirs(c_dir_r9_5, prereg_rows)
+
++    pr_r9_5 = os.path.join(scratch, "PREREG_CASE_R9_5.tsv")
+
++    make_prereg_file(pr_r9_5, lambda r: r.update({"exp_I6": "HOLD", "state_analyzer": "STATE_JUDGE"}))
+
++    ok, v_r9_5 = run_pipeline(c_dir_r9_5, pr_r9_5, args.control_map)
+
++    if ok:
+
++        r = v_r9_5["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MATCH" and r["mismatches"] == "-")
+
++        record_case("Case R9_5", "I6=HOLD 匹配预期 -> MATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_5", "I6=HOLD", False, "pipeline failed")
+
++
+
++    # Case R9_6: I6=VIOLATED 不符预期 HOLD -> MISMATCH
+
++    c_dir_r9_6 = os.path.join(scratch, "case_R9_6")
+
++    setup_base_case_dirs(c_dir_r9_6, prereg_rows)
+
++    pr_r9_6 = os.path.join(scratch, "PREREG_CASE_R9_6.tsv")
+
++    make_prereg_file(pr_r9_6, lambda r: r.update({"exp_I6": "HOLD", "state_analyzer": "STATE_JUDGE"}))
+
++    for pas in ("pass1", "pass2"):
+
++        p_path = os.path.join(c_dir_r9_6, pas, "M2-01-01-F3", "call2.txt")
+
++        with open(p_path, "wb") as fh:
+
++            fh.write(b"CORRUPTED_CALL2_OUTPUT")
+
++    ok, v_r9_6 = run_pipeline(c_dir_r9_6, pr_r9_6, args.control_map)
+
++    if ok:
+
++        r = v_r9_6["M2-01-01-F3"]
+
++        passed = (r["verdict"] == "MISMATCH" and ("I6_OUTPUT_DIFF" in r["mismatches"] or "I6(VIOLATED!=HOLD)" in r["mismatches"]))
+
++        record_case("Case R9_6", "I6 输出与对照不符 (实测VIOLATED != 预期HOLD) -> MISMATCH", passed, f"verdict={r['verdict']}, mismatches={r['mismatches']}")
+
++    else:
+
++        record_case("Case R9_6", "I6=VIOLATED", False, "pipeline failed")
+
++
+
++# Write POSCTRL summary log
+
+     lines = [
+
+-        "# POSCTRL_M2_R8_M2e -- Synthetic Positive Control Results",
+
++        "# POSCTRL_R9.txt -- Synthetic Positive Control Results (P05-S4 R9 S-J)",
+
+         f"total_cases: {len(cases_results)}",
+
+         f"passed_cases: {sum(1 for c in cases_results if c[2] == 'PASS')}",
+
+         f"failed_cases: {sum(1 for c in cases_results if c[2] == 'FAIL')}",
+
+@@ -1392,7 +1511,7 @@
+ 
+
+     all_passed = all(c[2] == "PASS" for c in cases_results)
+
+     print("\n" + "="*60)
+
+-    print(f"POSCTRL_M2_R8_M2e: {len(cases_results)} cases, {sum(1 for c in cases_results if c[2] == 'PASS')} PASSED, {sum(1 for c in cases_results if c[2] == 'FAIL')} FAILED.")
+
++    print(f"POSCTRL_R9: {len(cases_results)} cases, {sum(1 for c in cases_results if c[2] == 'PASS')} PASSED, {sum(1 for c in cases_results if c[2] == 'FAIL')} FAILED.")
+
+     if not all_passed:
+
+         sys.exit("Some positive control cases failed!")
+
+     else:
+
+
+--------------------------------------------------------------------------------
+工具: run_m2_r9.py
+原件: testing/d003/stage_s4/run_m2_r8m2e.py
+当前: testing/d003/stage_s4r9/run_m2_r9.py
+--------------------------------------------------------------------------------
+改动逐段说明:
+  - 第 1-2 行: 更新标准首段与文件描述
+  - 适配 R9 命令行参数与目录默认值
+
+统一 Diff:
+--- testing/d003/stage_s4/run_m2_r8m2e.py
++++ testing/d003/stage_s4r9/run_m2_r9.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python3
+
+-# run_m2_r8m2e.py -- P05-S4 R8 M2e runner and command planner.
+
++# REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m0; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+
++# run_m2_r9.py -- P05-S4 R9 runner and command planner.
+
+ # Supports --dry-run and --execute.
+
+ # Options: --prereg, --ev, --out-plan, --pass, --subset, --dry-run, --execute.
+
+ # Enforces:
+
+@@ -27,6 +28,9 @@
+         dirs.append(os.path.join(ev_dir, "build"))
+
+         dirs.append(os.path.join(ev_dir, "build", "san"))
+
+     dirs.extend([
+
++        os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r9", "m0", "build"),
+
++        os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s3r5", "build"),
+
++        os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m2c", "build"),
+
+         os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m2e", "build"),
+
+         os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m2d", "build"),
+
+         os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r8", "m2c", "build"),
+

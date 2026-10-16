@@ -1,0 +1,28 @@
+# POSCTRL_SOLN_R9M2b.txt -- Positive control report for SOLN supplementary judge (Step S-E)
+
+CASE: CASE_1_UNTAMPERED_MATCH
+  Expected: 18/18 MATCH
+  Actual:   18/18 MATCH
+  Status:   PASS
+
+CASE: CASE_2_TAMPER_CALL2_SHA_P1
+  Expected: i6_p1=VIOLATED,verdict=MISMATCH
+  Actual:   i6_p1=VIOLATED,verdict=MISMATCH
+  Status:   PASS
+
+CASE: CASE_3_TAMPER_CALL2_SHA_P2
+  Expected: i6_p2=VIOLATED,verdict=MISMATCH
+  Actual:   i6_p2=VIOLATED,verdict=MISMATCH
+  Status:   PASS
+
+CASE: CASE_4_TAMPER_SAN_REPORTS_P1
+  Expected: san_p1=FAIL,verdict=MISMATCH
+  Actual:   san_p1=FAIL,verdict=MISMATCH
+  Status:   PASS
+
+CASE: CASE_5_TAMPER_SAN_CRASH_P1
+  Expected: san_p1=FAIL,verdict=MISMATCH
+  Actual:   san_p1=FAIL,verdict=MISMATCH
+  Status:   PASS
+
+OVERALL_RESULT: ALL_PASS

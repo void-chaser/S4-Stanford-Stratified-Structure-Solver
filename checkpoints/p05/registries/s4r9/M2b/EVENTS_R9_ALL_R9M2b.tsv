@@ -1,0 +1,64 @@
+# EVENTS_R9_ALL_R9M2b.tsv -- Complete safe_run event table for R9 M0, M2, M2b and git reflog amend (Step S-G)
+序号	轮次	日志行号	时间	命令前120字符	类别
+1	r9m0	1	2026-10-16T18:16:22Z	sh testing/d003/stage_s4r9/gate_r9.sh start	门禁
+2	r9m0	2	2026-10-16T18:19:23Z	python3 -I -B testing/d003/stage_s4r9/effective_set_r9.py	首跑
+3	r9m0	3	2026-10-16T18:24:20Z	python3 -I -B -c	首跑
+4	r9m0	52	2026-10-16T18:24:33Z	python3 -I -B -c	重跑
+5	r9m0	94	2026-10-16T18:24:44Z	python3 -I -B -c	重跑
+6	r9m0	118	2026-10-16T18:27:12Z	python3 -I -B testing/d003/stage_s4r9/build_r9.py	首跑
+7	r9m0	119	2026-10-16T18:29:22Z	python3 -I -B testing/d003/stage_s4r9/build_r9.py	重跑
+8	r9m0	120	2026-10-16T18:29:54Z	rm -rf /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/trees /srv/nvme/p	rm
+9	r9m0	121	2026-10-16T18:30:24Z	python3 -I -B testing/d003/stage_s4r9/build_r9.py	重跑
+10	r9m0	122	2026-10-16T18:32:53Z	python3 -I -B testing/d003/stage_s4r9/gdb_audit_r9.py	首跑
+11	r9m0	123	2026-10-16T18:33:20Z	python3 -I -B testing/d003/stage_s4r9/gdb_audit_r9.py	重跑
+12	r9m0	124	2026-10-16T18:35:16Z	python3 -I -B testing/d003/stage_s4r9/noinj_control_r9.py	首跑
+13	r9m0	125	2026-10-16T18:37:11Z	python3 -I -B testing/d003/stage_s4r9/noinj_control_r9.py	重跑
+14	r9m0	126	2026-10-16T18:41:29Z	python3 -I -B testing/d003/stage_s4r9/k_inherit_r9.py	首跑
+15	r9m0	127	2026-10-16T18:46:21Z	python3 -I -B testing/d003/stage_s4r9/prereg_r9.py	首跑
+16	r9m0	128	2026-10-16T18:46:52Z	python3 -I -B testing/d003/stage_s4r9/prereg_r9.py	重跑
+17	r9m0	129	2026-10-16T18:55:47Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	首跑
+18	r9m0	130	2026-10-16T18:56:05Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+19	r9m0	131	2026-10-16T18:56:35Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+20	r9m0	132	2026-10-16T18:57:36Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+21	r9m0	133	2026-10-16T18:58:18Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+22	r9m0	134	2026-10-16T19:00:05Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+23	r9m0	135	2026-10-16T19:00:53Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+24	r9m0	136	2026-10-16T19:01:41Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+25	r9m0	137	2026-10-16T19:02:47Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+26	r9m0	138	2026-10-16T19:10:50Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+27	r9m0	139	2026-10-16T19:14:46Z	python3 -I -B testing/d003/stage_s4r9/posctrl_r9.py --ev /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/chec	重跑
+28	r9m2	1	2026-10-16T19:06:37Z	python3 -I -B testing/d003/stage_s4r9/run_smoke_r9.py	首跑
+29	r9m2	2	2026-10-16T19:07:47Z	rm -rf /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m2/smoke	rm
+30	r9m2	3	2026-10-16T19:08:16Z	python3 -I -B testing/d003/stage_s4r9/run_smoke_r9.py	重跑
+31	r9m2	4	2026-10-16T19:16:21Z	rm -rf /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m2/smoke /srv/nvme/p	rm
+32	r9m2	5	2026-10-16T19:16:22Z	python3 -I -B testing/d003/stage_s4r9/run_smoke_r9.py	重跑
+33	r9m2	6	2026-10-16T19:18:24Z	rm -rf /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m2/smoke /srv/nvme/p	rm
+34	r9m2	7	2026-10-16T19:18:24Z	python3 -I -B testing/d003/stage_s4r9/run_smoke_r9.py	重跑
+35	r9m2	8	2026-10-16T19:20:07Z	python3 -I -B testing/d003/stage_s4r9/run_formal_r9.py	首跑
+36	r9m2	9	2026-10-16T19:22:35Z	python3 -I -B testing/d003/stage_s4r9/consolidate_r9.py	首跑
+37	r9m2	10	2026-10-16T19:23:12Z	python3 -I -B testing/d003/stage_s4r9/consolidate_r9.py	重跑
+38	r9m2	11	2026-10-16T19:26:59Z	sh testing/d003/stage_s4r9/gate_r9.sh end /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evi	门禁
+39	r9m2b	1	2026-10-16T20:52:31Z	sh testing/d003/stage_s4r9/gate_r9m2b.sh start	门禁
+40	r9m2b	2	2026-10-16T20:55:00Z	python3 -I -B testing/d003/stage_s4r9/hitseq_r9m2b.py	首跑
+41	r9m2b	3	2026-10-16T20:55:27Z	python3 -I -B testing/d003/stage_s4r9/hitseq_r9m2b.py	重跑
+42	r9m2b	4	2026-10-16T20:57:58Z	python3 -I -B checkpoints/p05/evidence/p05-s4r9/m2b/tmp/test_groups.py	首跑
+43	r9m2b	5	2026-10-16T20:58:14Z	python3 -I -B checkpoints/p05/evidence/p05-s4r9/m2b/tmp/test_groups.py	重跑
+44	r9m2b	6	2026-10-16T20:59:45Z	python3 -I -B checkpoints/p05/evidence/p05-s4r9/m2b/tmp/test_groups.py	重跑
+45	r9m2b	7	2026-10-16T21:01:58Z	python3 -I -B testing/d003/stage_s4r9/posctrl_k_r9m2b.py	首跑
+46	r9m2b	8	2026-10-16T21:02:34Z	python3 -I -B testing/d003/stage_s4r9/posctrl_k_r9m2b.py	重跑
+47	r9m2b	9	2026-10-16T21:03:28Z	python3 -I -B testing/d003/stage_s4r9/posctrl_k_r9m2b.py	重跑
+48	r9m2b	10	2026-10-16T21:04:24Z	python3 -I -B testing/d003/stage_s4r9/posctrl_k_r9m2b.py	重跑
+49	r9m2b	11	2026-10-16T21:04:33Z	python3 -I -B testing/d003/stage_s4r9/k_inherit_r9m2b.py	首跑
+50	r9m2b	12	2026-10-16T21:07:16Z	python3 -I -B testing/d003/stage_s4r9/posctrl_soln_r9m2b.py	首跑
+51	r9m2b	13	2026-10-16T21:07:25Z	python3 -I -B testing/d003/stage_s4r9/soln_supp_r9m2b.py	首跑
+52	r9m2b	14	2026-10-16T21:08:46Z	python3 -I -B testing/d003/stage_s4r9/judge_diff_r9m2b.py	首跑
+53	r9m2b	15	2026-10-16T21:11:04Z	python3 -I -B testing/d003/stage_s4r9/events_r9m2b.py	首跑
+54	r9m2b	16	2026-10-16T21:14:39Z	sh testing/d003/stage_s4r9/gate_r9m2b.sh end	门禁
+55	r9m2b	17	2026-10-16T21:16:31Z	rm -rf testing/d003/stage_s4r9/__pycache__	rm
+56	r9m2b	18	2026-10-16T21:17:26Z	python3 -I -B testing/d003/stage_s4r9/events_r9m2b.py	重跑
+57	r9m2b	19	2026-10-16T21:18:27Z	sh testing/d003/stage_s4r9/gate_r9m2b.sh end_R2	门禁
+58	r9m2b	20	2026-10-16T21:18:46Z	python3 -I -B testing/d003/stage_s4r9/events_r9m2b.py	重跑
+59	r9m2b	21	2026-10-16T21:19:36Z	rm -rf testing/d003/stage_s4r9/__pycache__	rm
+60	r9m2b	22	2026-10-16T21:19:45Z	python3 -I -B testing/d003/stage_s4r9/copy_registries_r9m2b.py	首跑
+61	r9m2b	23	2026-10-16T21:19:56Z	python3 -I -B testing/d003/stage_s4r9/events_r9m2b.py	重跑
+62	r9m2	git_reflog	2026-10-17T06:29:53+11:00	git commit --amend (a7f6044 -> ebf3d00: closeout(p05-s4r9)) [reflog: ebf3d00 HEAD@{1}: commit (amend): closeout(p05-s4r9	amend(历史改写)

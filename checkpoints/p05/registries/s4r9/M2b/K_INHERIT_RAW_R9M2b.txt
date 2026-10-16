@@ -1,0 +1,781 @@
+# K_INHERIT_RAW_R9M2b.txt -- Raw GDB call sequence comparison for K inheritance redo (Rule U300)
+
+=== KGRP-001: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=closed1d;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-002: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=closed2d;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-003: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=experimental;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-004: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-005: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=jones;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-006: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-007: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=nv;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-008: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=tensor;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-009: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=vl;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8/d003plan-F3-plain/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/d003plan-F4-plain
+F3 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+  [2] arg=None func=None None:0
+  [3] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-010: dual | dual-F3-dbg vs dual-F4-dbg | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/dual-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/dual-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-011: init | init-F4-dbg | FMM_MODE=closed2d;S4FMM_NG=1 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-012: init | init-F4-dbg | FMM_MODE=fft;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-013: init | init-F4-dbg | FMM_MODE=kottke;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-014: init | init-F4-san | FMM_MODE=closed2d;S4FMM_NG=1 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-015: init | init-F4-san | FMM_MODE=fft;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-016: init | init-F4-san | FMM_MODE=kottke;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-017: init | init-F4-san-AL | FMM_MODE=closed2d;S4FMM_NG=1 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-018: init | init-F4-san-AL | FMM_MODE=fft;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-019: init | init-F4-san-AL | FMM_MODE=kottke;S4FMM_NG=5 ===
+Quoted from s3r5 K_MAP_F4_S3R5.tsv per U295/U300 (ES3R5-2 caliber note applied).
+
+=== KGRP-020: layers | layers-F3-dbg vs layers-F4-dbg | FMM_MODE=fft;S4FMM_LAYOUT=P0;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/layers-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/layers-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-021: layers | layers-F3-dbg vs layers-F4-dbg | FMM_MODE=fft;S4FMM_LAYOUT=P2;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/layers-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/layers-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-022: layers | layers-F3-dbg vs layers-F4-dbg | FMM_MODE=fft;S4FMM_LAYOUT=PP1;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/layers-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/layers-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-023: layers | layers-F3-dbg vs layers-F4-dbg | FMM_MODE=fft;S4FMM_LAYOUT=PP2;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/layers-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/layers-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-024: layers-dual | layers-dual-F3-dbg vs layers-dual-F4-dbg | FMM_MODE=fft;S4FMM_LAYOUT=PP1;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/layers-dual-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/layers-dual-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+  [3] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-025: nan | nan-F3 vs nan-F4 | FMM_MODE=tensor;S4FMM_NG=5 (bp=S4_TEST_LINEARSOLVE_NULLINFO2BUF_AFTER, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/nan-F3
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/nan-F4
+F3 captured hits:
+  [1] arg=None func=None None:0
+F4 captured hits:
+  [1] arg=None func=None None:0
+Verdict: NO_SEQ_EVIDENCE_R2 (No sequence evidence (plain driver without debug symbols; substitute with F-3 HIT equivalence))
+
+=== KGRP-026: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=fft;S4FMM_NG=1 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=31 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=31 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-027: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=63 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=63 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-028: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=95 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=95 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-029: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=kottke;S4FMM_NG=1 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=31 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=31 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-030: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=63 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=63 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-031: polyinj | polyinj-F3-dbg vs polyinj-F4-dbg | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-dbg
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-dbg
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=95 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=95 func=malloc_aligned S4/numalloc.c:68
+  [3] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-032: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=fft;S4FMM_NG=1 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-033: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-034: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-035: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=kottke;S4FMM_NG=1 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-036: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-037: polyinj | polyinj-F3-san vs polyinj-F4-san | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap_malloc, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/polyinj-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/polyinj-F4-san
+F3 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+F4 captured hits:
+  [1] arg=344 func=S4_Simulation_New S4/S4.cpp:286
+  [2] arg=384 func=S4_Simulation_New S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New S4/S4.cpp:323
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-038: r6bseam-seamF | r6bseam-seamF-F3 vs r6bseam-seamF-F4 | FMM_MODE=closed1d;S4FMM_NG=9 (bp=S4_TEST_LINEARSOLVE_NULLINFO2_AFTER, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bseam-seamF-F4
+F3 captured hits:
+  [1] arg=134 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:139
+  [2] arg=138 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:146
+F4 captured hits:
+  [1] arg=134 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:139
+  [2] arg=138 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:146
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-039: r6bseam-seamF | r6bseam-seamF-F3 vs r6bseam-seamF-F4 | FMM_MODE=fft;S4FMM_NG=5 (bp=S4_TEST_LINEARSOLVE_AFTER, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bseam-seamF-F4
+F3 captured hits:
+  [1] arg=5 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:217
+F4 captured hits:
+  [1] arg=5 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:217
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-040: r6bseam-seamF | r6bseam-seamF-F3 vs r6bseam-seamF-F4 | FMM_MODE=fft;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bseam-seamF-F4
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-041: r6bseam-seamF | r6bseam-seamF-F3 vs r6bseam-seamF-F4 | FMM_MODE=jones;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bseam-seamF-F4
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-042: r6bseam-seamF | r6bseam-seamF-F3 vs r6bseam-seamF-F4 | FMM_MODE=kottke;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bseam-seamF-F3/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bseam-seamF-F4
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-043: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=closed1d;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-044: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=closed2d;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-045: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=experimental;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_Experimental S4/fmm/fmm_experimental.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_Experimental S4/fmm/fmm_experimental.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-046: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=fft;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:191
+  [2] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:191
+  [2] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-047: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-048: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=jones;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:263
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:282
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:301
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:263
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:282
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:301
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-049: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=jones;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:108
+  [3] arg=6176 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:155
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:108
+  [3] arg=6176 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:155
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-050: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=kottke;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:271
+  [2] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:271
+  [2] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-051: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=16 func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:87
+F4 captured hits:
+  [1] arg=16 func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:87
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-052: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=nv;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-053: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=nv;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:59
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:112
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:59
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:112
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-054: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=vl;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-055: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=vl;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/drivers_r8m1/r6bstate-F3-dbg/driver
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-dbg
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:58
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:117
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:58
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:117
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-056: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=closed1d;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-057: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=closed2d;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-058: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=experimental;S4FMM_NG=1 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_Experimental S4/fmm/fmm_experimental.cpp:40
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_Experimental S4/fmm/fmm_experimental.cpp:40
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-059: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=fft;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:191
+  [2] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:191
+  [2] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:221
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-060: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+F4 captured hits:
+  [1] arg=6144 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:75
+  [2] arg=16 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:83
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-061: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=jones;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:263
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:282
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:301
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:263
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:282
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:301
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-062: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=jones;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:108
+  [3] arg=6176 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:155
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:108
+  [3] arg=6176 func=FMMGetEpsilon_PolBasisJones S4/fmm/fmm_PolBasisJones.cpp:155
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-063: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=kottke;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:271
+  [2] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:271
+  [2] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:296
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-064: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=16 func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:87
+F4 captured hits:
+  [1] arg=16 func=FMMGetEpsilon_Kottke S4/fmm/fmm_kottke.cpp:87
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-065: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=nv;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:213
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-066: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=nv;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:59
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:112
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:59
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisNV S4/fmm/fmm_PolBasisNV.cpp:112
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-067: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=vl;S4FMM_K=1;S4FMM_NG=5 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+F4 captured hits:
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:220
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-068: r6bstate | r6bstate-F3-san vs r6bstate-F4-san | FMM_MODE=vl;S4FMM_NG=5 (bp=__wrap__Z9S4_mallocm, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/r6bstate-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/r6bstate-F4-san
+F3 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:58
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:117
+F4 captured hits:
+  [1] arg=192 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:40
+  [2] arg=192 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:58
+  [3] arg=6496 func=FMMGetEpsilon_PolBasisVL S4/fmm/fmm_PolBasisVL.cpp:117
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-069: seamF | seamF-F3-san vs seamF-F4-san | FMM_MODE=closed1d;S4FMM_NG=9 (bp=S4_TEST_LINEARSOLVE_NULLINFO2_AFTER, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/seamF-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/seamF-F4-san
+F3 captured hits:
+  [1] arg=134 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:139
+  [2] arg=138 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:146
+F4 captured hits:
+  [1] arg=134 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:139
+  [2] arg=138 func=FMMGetEpsilon_ClosedForm S4/fmm/fmm_closed.cpp:146
+Verdict: PASS_K_INHERITED_R2 (Verified 2 calls identical)
+
+=== KGRP-070: seamF | seamF-F3-san vs seamF-F4-san | FMM_MODE=fft;S4FMM_NG=5 (bp=S4_TEST_LINEARSOLVE_AFTER, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/seamF-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/seamF-F4-san
+F3 captured hits:
+  [1] arg=5 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:217
+F4 captured hits:
+  [1] arg=5 func=FMMGetEpsilon_FFT S4/fmm/fmm_FFT.cpp:217
+Verdict: PASS_K_INHERITED_R2 (Verified 1 calls identical)
+
+=== KGRP-071: seamF | seamF-F3-san vs seamF-F4-san | FMM_MODE=fft;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/seamF-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/seamF-F4-san
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-072: seamF | seamF-F3-san vs seamF-F4-san | FMM_MODE=jones;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/seamF-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/seamF-F4-san
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+
+=== KGRP-073: seamF | seamF-F3-san vs seamF-F4-san | FMM_MODE=kottke;S4FMM_NG=9 (bp=S4_TEST_ALLOC_HOOK, k_max=1) ===
+F3 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r8/m2a2/build_R3/drivers/seamF-F3-san
+F4 exe: /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m0/build/seamF-F4-san
+F3 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2318
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2280
+F4 captured hits:
+  [1] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+  [2] arg=id=22,size=11952 func=Simulation_ComputeLayerModes S4/S4.cpp:2331
+  [3] arg=id=21,size=48 func=Simulation_ComputeLayerModes S4/S4.cpp:2293
+Verdict: PASS_K_INHERITED_R2 (Verified 3 calls identical)
+

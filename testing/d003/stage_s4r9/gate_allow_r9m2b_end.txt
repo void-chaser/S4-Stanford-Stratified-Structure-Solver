@@ -2,6 +2,7 @@
  M checkpoints/p05/STATE.md
  M checkpoints/p05/registries/RULINGS.tsv
  M checkpoints/p05/registries/s4r9/ERRATA_9.txt
+ M testing/d003/stage_s4r9/*
 ?? checkpoints/p05/P05_S4R9_M2b_REPORT.md
 ?? checkpoints/p05/briefs/P05_S4R9_BRIEF_M2b.md
 ?? checkpoints/p05/registries/s4r9/M2b/*

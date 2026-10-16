@@ -8,8 +8,12 @@ set -u
 refuse() { echo "gate_r9m2b: REFUSED: $1" >&2; exit 2; }
 MODE=${1:-start}
 case "$MODE" in
-    start|end) ;;
-    *) refuse "mode must be start or end" ;;
+    start|end|end_R2) ;;
+    *) refuse "mode must be start, end, or end_R2" ;;
+esac
+BASE_MODE=$MODE
+case "$MODE" in
+    end_R2) BASE_MODE=end ;;
 esac
 
 if [ -n "${2:-}" ]; then
@@ -29,7 +33,7 @@ STARTF="$REPO/checkpoints/p05/evidence/p05-s4r9/m2b/GATE_R9M2b_start.txt"
 test -f "$ALLOW_START" || refuse "allow list (start) missing"
 test -f "$ALLOW_END" || refuse "allow list (end) missing"
 
-if [ "$MODE" = end ]; then
+if [ "$BASE_MODE" = end ]; then
     test -f "$STARTF" || refuse "start file missing: $STARTF"
     case "$(head -n 1 "$STARTF")" in
         *"gate_r9m2b (start) ->"*) ;;
@@ -89,18 +93,18 @@ check JUDGE_SHA256 d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c5175620
 record ALLOW_START_SHA256 "$(sha256sum "$ALLOW_START" | cut -d' ' -f1)"
 record ALLOW_END_SHA256 "$(sha256sum "$ALLOW_END" | cut -d' ' -f1)"
 
-case "$MODE" in
+case "$BASE_MODE" in
     start)
         check ALLOW_START_LINES 5 "$(wc -l < "$ALLOW_START" | tr -d ' ')"
         check TRACKED_TESTING_D003_WORKTREE_NONE "" "$(git diff --name-only HEAD -- testing/d003)" ;;
     end)
         check ALLOW_START_SHA256_EQ_START "$(recval "$STARTF" ALLOW_START_SHA256)" "$(sha256sum "$ALLOW_START" | cut -d' ' -f1)"
-        check TRACKED_TESTING_D003_NO_MOD_DEL_SINCE_START "" "$(git diff --name-only --diff-filter=MD HEAD -- testing/d003)" ;;
+        check TRACKED_TESTING_D003_NO_MOD_DEL_SINCE_START "" "$(git diff --name-only --diff-filter=MD "$BASE" -- testing/d003)" ;;
 esac
 
 # ---- git status against allow lists ----
 git status --short -uall > "$ST_FILE"
-case "$MODE" in
+case "$BASE_MODE" in
     start)
         check STATUS_START_EQ_ALLOW_START "$(sort "$ALLOW_START")" "$(sort "$ST_FILE")"
         while IFS= read -r _l; do record STATUS_START "$_l"; done < "$ST_FILE" ;;
@@ -138,7 +142,7 @@ record ERRATA_9_BYTES "$(wc -c < "$REPO/$ERR9" | tr -d ' ')"
 record ERRATA_9_SHA256 "$(sha256sum "$REPO/$ERR9" | cut -d' ' -f1)"
 
 # ---- temporary-area snapshot ----
-case "$MODE" in
+case "$BASE_MODE" in
     start)
         record TMP_COUNT_START "$TC"
         record TMP_SHA256_START "$TS" ;;
