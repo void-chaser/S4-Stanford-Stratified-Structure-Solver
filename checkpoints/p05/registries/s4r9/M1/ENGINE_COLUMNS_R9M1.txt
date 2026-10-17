@@ -1,0 +1,29 @@
+# ENGINE_COLUMNS_R9M1.txt -- Audit of exp_* columns evaluated by M1 verdict engines (Step S-D)
+# Generated: 2026-10-17T15:12:32Z
+# References: judge_d003.py, recheck_f3_r8m1c4.py, verdict_m1c_r8m1c3.py
+
+1. Columns read and strictly compared across all points:
+   - exp_rc1: Checked for equality against first run return code rc1.
+   - exp_rc2: Checked for equality against retry return code rc2.
+   - exp_hit: Checked for equality against fault injection hit count.
+   - exp_class / exp_point_verdict: Checked against judge_d003 classification or point verdict.
+
+2. Columns conditionally read for specific subsets:
+   - exp_rc3:
+     * Read for: M1c G5 3-call state points (r6bstate driver with third call).
+     * Ignored for: M1b all points (1-call/2-call drivers without rc3) and M1c G6/G6c/CTRL_AUX (seam points without rc3). Marked as '-' in those rows.
+   - exp_I1, exp_I2, exp_I3, exp_I4, exp_I5, exp_I6 (State Invariants):
+     * Read for: M1c G5 points where state analyzer executes and dumps call states.
+     * Ignored for: M1b all points (no state analyzer dump) and M1c G6/G6c/CTRL_AUX (seam tests without state analyzer; evaluated as N/A). Marked as '-' in those rows.
+
+3. Columns not read by the verdict engine across any row:
+   - exp_I7:
+     * Status in frozen table: Marked as 'DEFERRED'.
+     * Engine behavior: Not included in invariant check list INV = [I1..I6]. Never evaluated.
+   - exp_san:
+     * Not present in M1 fact tables (M1 contains no AddressSanitizer/UBSan fault injection points).
+
+Summary of Totals:
+   - PREREG_M1_F4_R9M1.tsv: 651 rows (M1b: 415, M1c: 236)
+   - PREREG_M1_CITED_F2_R9M1.tsv: 651 rows (M1b: 415, M1c: 236)
+   - Combined total: 1302 rows

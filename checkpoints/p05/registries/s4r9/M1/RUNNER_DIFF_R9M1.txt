@@ -1,0 +1,32 @@
+# RUNNER_DIFF_R9M1.txt -- P05-S4 R9 M1 gate script diff explanation (Step S-A)
+
+1. testing/d003/stage_s4r9/gate_r9m1.sh
+   - Source: Adapted from testing/d003/stage_s4r9/gate_r9m2c.sh (3bb6072 version).
+   - Standard header: REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m1; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp".
+   - Baseline HEAD updated to 3bb60723b3b23e313fd51d5a54f2258c98ac07eb.
+   - Evidence directory updated to checkpoints/p05/evidence/p05-s4r9/m1.
+   - Output files renamed to GATE_R9M1_start.txt and GATE_R9M1_end.txt.
+   - Allow lists updated to gate_allow_r9m1_start.txt and gate_allow_r9m1_end.txt.
+   - Modes: Strictly start and end only. Rerun naming supported via optional argument 2 (TAG, e.g. _R2) to set OUTNAME without script edits or mode changes.
+   - FAILS counting and exit code:
+     * Captures PY_FAILS from gate_check_r9m1.py (which exits with fails).
+     * Counts actual lines starting with '^FAIL\t' in output via grep -c.
+     * Asserts consistency between accumulated FAILS and actual '^FAIL\t' lines.
+     * Enforces self-check: exit 0 only if FAILS == 0 and fail_lines == 0, otherwise exits with non-zero FAILS.
+
+2. testing/d003/stage_s4r9/gate_check_r9m1.py
+   - Source: Adapted from testing/d003/stage_s4r9/gate_check_r9m2c.py (3bb6072 version).
+   - Standard header: # REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m1; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp".
+   - Baseline constants updated:
+     * EXPECTED_BASE: 3bb60723b3b23e313fd51d5a54f2258c98ac07eb.
+     * EXPECTED_STATE_BYTES: 7868.
+     * EXPECTED_STATE_SHA: 64b369ef0f3f076719ed7ac865d088c707f7b6c0c1bbf7e54d3d28dc674945e4.
+     * EXPECTED_RULINGS_BYTES: 124392.
+     * EXPECTED_RULINGS_SHA: f302748c2ffacfcdd9a0ca96a41bb82a567daa7096ccfe2d9852a4f38895b113.
+     * EXPECTED_ERRATA_S3R5_BYTES: 1712.
+     * EXPECTED_ERRATA_S3R5_SHA: a23ff03cd260548ae74205ca27c94d47a8a677d9c47bacfc5be6f5dec3077349.
+     * EXPECTED_ERRATA_9_BYTES: 13893.
+     * EXPECTED_ERRATA_9_SHA: e7e93590bec5a0340ed28859b0f292b8d21f1adfbd6502ef61ff741785052f12.
+   - Added verification for M2c registries directory: verify_sums_dir(checkpoints/p05/registries/s4r9/M2c, 11).
+   - Updated stray baseline name to STRAY_BASELINE_R9M1.tsv.
+   - Self-check exit with fails count preserved.

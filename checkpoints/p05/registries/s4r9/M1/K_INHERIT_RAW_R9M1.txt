@@ -1,0 +1,1408 @@
+# K_INHERIT_RAW_R9M1.txt -- Raw GDB and trace capture for K inheritance in P05-S4 R9 M1 (Rule U300/U309)
+
+=== KGRP-M1-001: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=closed1d;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=None func=None loc=None:0
+--- F4 Hits (1) ---
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-002: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=closed2d;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=None func=None loc=None:0
+--- F4 Hits (1) ---
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-003: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=experimental;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=None func=None loc=None:0
+--- F4 Hits (1) ---
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-004: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=16) ===
+--- F3 Hits (17) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (17) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-005: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=16) ===
+--- F3 Hits (17) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (17) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-006: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=4) ===
+--- F3 Hits (2) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (2) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-007: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-008: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-009: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=16) ===
+--- F3 Hits (17) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (17) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-010: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=16) ===
+--- F3 Hits (17) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (17) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-011: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=None func=None loc=None:0
+--- F4 Hits (1) ---
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-012: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-013: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-014: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (6) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-015: d003 | d003-F3-plain vs d003-F4-plain | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-016: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-017: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-018: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-019: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-020: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=3) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-021: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-022: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-023: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-024: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-025: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+  arg=exec func=None loc=None:0
+
+=== KGRP-M1-026: d003plan | d003plan-F3-plain vs d003plan-F4-plain | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (4) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-027: init | init-F3 vs init-F4-plain | FMM_MODE=closed2d;S4FMM_NG=1 (bp=__wrap_malloc, k_max=7) ===
+--- F3 Hits (9) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (9) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-028: init | init-F3 vs init-F4-plain | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap_malloc, k_max=8) ===
+--- F3 Hits (10) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (10) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-029: init | init-F3 vs init-F4-plain | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap_malloc, k_max=8) ===
+--- F3 Hits (10) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (10) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-030: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=fft;S4FMM_NG=1 (bp=__wrap_malloc, k_max=1) ===
+--- F3 Hits (3) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (3) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-031: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=fft;S4FMM_NG=5 (bp=__wrap_malloc, k_max=64) ===
+--- F3 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-032: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap_malloc, k_max=64) ===
+--- F3 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-033: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=kottke;S4FMM_NG=1 (bp=__wrap_malloc, k_max=64) ===
+--- F3 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-034: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=kottke;S4FMM_NG=5 (bp=__wrap_malloc, k_max=64) ===
+--- F3 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-035: polyinj | polyinj-F3 vs polyinj-F4-plain | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap_malloc, k_max=64) ===
+--- F3 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+--- F4 Hits (66) ---
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+  arg=None func=None loc=None:0
+
+=== KGRP-M1-036: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=closed1d;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+--- F4 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== KGRP-M1-037: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=closed2d;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+--- F4 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== KGRP-M1-038: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=experimental;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+--- F4 Hits (1) ---
+  arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+
+=== KGRP-M1-039: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=16) ===
+--- F3 Hits (18) ---
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+--- F4 Hits (18) ---
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== KGRP-M1-040: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+--- F4 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  arg=0 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+
+=== KGRP-M1-041: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=fft;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=4) ===
+--- F3 Hits (2) ---
+  arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+--- F4 Hits (2) ---
+  arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+
+=== KGRP-M1-042: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+--- F4 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== KGRP-M1-043: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+--- F4 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== KGRP-M1-044: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=jones;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+--- F4 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+
+=== KGRP-M1-045: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=16) ===
+--- F3 Hits (18) ---
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+--- F4 Hits (18) ---
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== KGRP-M1-046: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+--- F4 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  arg=0 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+
+=== KGRP-M1-047: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=kottke;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=2) ===
+--- F3 Hits (1) ---
+  arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+--- F4 Hits (1) ---
+  arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+
+=== KGRP-M1-048: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+--- F4 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== KGRP-M1-049: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+--- F4 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== KGRP-M1-050: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=nv;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+--- F4 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+
+=== KGRP-M1-051: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z13fft_plan_execP12tag_fft_plan, k_max=4) ===
+--- F3 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+--- F4 Hits (6) ---
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== KGRP-M1-052: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, k_max=2) ===
+--- F3 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+--- F4 Hits (4) ---
+  arg=0 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  arg=0 func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== KGRP-M1-053: r6bstate | r6bstate-F3-dbg vs r6bstate-F4-dbg | FMM_MODE=vl;S4FMM_NG=9 (bp=__wrap__Z9S4_mallocm, k_max=7) ===
+--- F3 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+--- F4 Hits (4) ---
+  arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+

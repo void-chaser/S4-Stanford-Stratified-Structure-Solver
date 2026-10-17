@@ -1,0 +1,39 @@
+# BUILD_OPTION_DIFF_R9M1.txt -- Comparison of F3 and F4 compiler/linker options (Rule U310)
+# Requirement: All options must be identical when tree/lib paths are stripped (0 differences).
+
+=== d003-F3-plain vs d003-F4-plain ===
+IDENTICAL (0 differences)
+
+=== d003plan-F3-plain vs d003plan-F4-plain ===
+IDENTICAL (0 differences)
+
+=== r6bstate-F3-dbg vs r6bstate-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== r6bseam-seamF-F3 vs r6bseam-seamF-F4 ===
+IDENTICAL (0 differences)
+
+=== seam-fmmret-F3 vs seam-fmmret-F4 ===
+IDENTICAL (0 differences)
+
+=== init-F3 vs init-F4-plain ===
+IDENTICAL (0 differences)
+
+=== poly-F3 vs poly-F4-plain ===
+IDENTICAL (0 differences)
+
+=== polyinj-F3 vs polyinj-F4-plain ===
+IDENTICAL (0 differences)
+
+=== r6dnv1-F3-plain vs r6dnv1-F4-plain ===
+IDENTICAL (0 differences)
+
+=== tri-F3-dbg vs tri-F4-dbg ===
+IDENTICAL (0 differences)
+
+=== seam-seamF-F3 vs seam-seamF-F4 ===
+IDENTICAL (0 differences)
+
+=== r6bseam-fmmret-F3 vs r6bseam-fmmret-F4 ===
+IDENTICAL (0 differences)
+

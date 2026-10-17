@@ -1,0 +1,18 @@
+# WARN_COUNT_R9M1.tsv -- Warning counts of F4 artifacts vs F3 equivalents
+artifact	kind	f4_warnings	f3_artifact	f3_warnings	status
+lib_F4_seamF_plain	library	71	seamF-F3-plain	71	MATCH
+lib_F4_fmmret_dbg	library	62	fmmret-F3	62	MATCH
+lib_F4_plain	library	71	lib_F3_plain	71	MATCH
+lib_F4_dbg	library	62	lib_F3_dbg	62	MATCH
+d003-F4-plain	driver	0	d003-F3-plain	0	MATCH
+d003plan-F4-plain	driver	0	d003plan-F3-plain	0	MATCH
+r6bstate-F4-dbg	driver	0	r6bstate-F3-dbg	0	MATCH
+r6bseam-seamF-F4	driver	0	r6bseam-seamF-F3	0	MATCH
+seam-fmmret-F4	driver	0	seam-fmmret-F3	0	MATCH
+init-F4-plain	driver	0	init-F3	0	MATCH
+poly-F4-plain	driver	3	poly-F3	3	MATCH
+polyinj-F4-plain	driver	3	polyinj-F3	3	MATCH
+r6dnv1-F4-plain	driver	0	r6dnv1-F3-plain	0	MATCH
+tri-F4-dbg	driver	0	tri-F3-dbg	0	MATCH
+seam-seamF-F4	driver	0	seam-seamF-F3	0	MATCH
+r6bseam-fmmret-F4	driver	0	r6bseam-fmmret-F3	0	MATCH

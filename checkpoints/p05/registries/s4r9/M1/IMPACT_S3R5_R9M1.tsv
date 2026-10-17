@@ -1,0 +1,5 @@
+# IMPACT_S3R5_R9M1.tsv -- S3R5 change impact list for M1 F3 side (Rule U308)
+# S3R5 change scope: Simulation_InitSolution (F3 lines 1754-1774 in S4.cpp)
+# Total M1 F3-side rows examined: 651 (M1b: 415, M1c: 236)
+# Total impacted rows: 0 行
+table	point_id	group	matched_line	rule_application	basis
