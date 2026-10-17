@@ -1,5 +1,5 @@
 # ENGINE_COLUMNS_R9M1.txt -- Audit of exp_* columns evaluated by M1 verdict engines (Step S-D)
-# Generated: 2026-10-17T15:12:32Z
+# Generated: 2026-10-17T15:24:18Z
 # References: judge_d003.py, recheck_f3_r8m1c4.py, verdict_m1c_r8m1c3.py
 
 1. Columns read and strictly compared across all points:

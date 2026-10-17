@@ -1,0 +1,28 @@
+# SMOKE_SUMMARY_R9M1.txt -- Smoke test summary (Step S-F)
+# Points tested: 23
+
+[01/23] M1b 4.2 M1-42-F4-fftjones-ng1-m1 drv=r6dnv1-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[02/23] M1b 4.2 M1-42-tri-F4-jones-ng9-m1 drv=tri-F4-dbg rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[03/23] M1b ADDITIONS_22 ADD22-A-1-F4 drv=init-F4-plain rc1=1 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[04/23] M1b ADDITIONS_22 ADD22-B-11-F4 drv=polyinj-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[05/23] M1b CTRL_SEAM CTRL-SEAM-fmmret-F4 drv=seam-seamF-F4 rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[06/23] M1b G1 CTL-closed1d-F4 drv=d003-F4-plain rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[07/23] M1b G2a R4-ACF1-F-F4 drv=seam-seamF-F4 rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[08/23] M1b G2a R4-FE01-F-F4 drv=seam-fmmret-F4 rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[09/23] M1b G2b M-once-fft-plan-3-F4 drv=d003plan-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[10/23] M1b G2c M-once-fft-exec-1-F4 drv=d003plan-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[11/23] M1b G2c_control addf-F-ctrl-F4 drv=d003plan-F4-plain rc1=None rc2=None hit=0 class=INVALID -> NOT_RUN_AS_EXPECTED
+[12/23] M1b G3 M2-once-fft-plan-1-F-F4 drv=d003plan-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[13/23] M1b G4 R6T-twice-fft-plan-12-F-F4 drv=d003plan-F4-plain rc1=0 rc2=20 hit=1 class=REPORTED_FAILURE -> MATCH
+[14/23] M1b G7 M1-G7-F4-fftnv-ng1-m1 drv=r6dnv1-F4-plain rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[15/23] M1b G8 M1-G8-F4-m1 drv=tri-F4-dbg rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[16/23] M1b M1_CTRL M1-CTRL-F4-fftjones-ng1 drv=r6dnv1-F4-plain rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[17/23] M1b POLY_33 POLY-closed2d-ng1-F4 drv=poly-F4-plain rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[18/23] M1c CTRL_AUX C-01-closed1d-once-once-F4 drv=r6bstate-F4-dbg rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[19/23] M1c G5 M-once-closed1d-malloc-1-F4 drv=r6bstate-F4-dbg rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[20/23] M1c G6 R4-ACF1-F-F4 drv=r6bseam-seamF-F4 rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[21/23] M1c G6 R4-FE01-F-F4 drv=r6bseam-fmmret-F4 rc1=20 rc2=0 hit=1 class=REPORTED_FAILURE -> MATCH
+[22/23] M1c G6c SC01-fmmret-F-closed1d-F4 drv=r6bseam-fmmret-F4 rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+[23/23] M1c G6c SC11-seamF-closed1d-F4 drv=r6bseam-seamF-F4 rc1=0 rc2=0 hit=0 class=CONTROL_OK -> MATCH
+
+Summary: TOTAL=23, MISMATCH=0, INVALID=0, GDB_DIV=0

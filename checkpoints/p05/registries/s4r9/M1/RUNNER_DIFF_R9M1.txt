@@ -1,4 +1,4 @@
-# RUNNER_DIFF_R9M1.txt -- P05-S4 R9 M1 gate script diff explanation (Step S-A)
+# RUNNER_DIFF_R9M1.txt -- P05-S4 R9 M1 gate script diff explanation (Step S-A / S-H)
 
 1. testing/d003/stage_s4r9/gate_r9m1.sh
    - Source: Adapted from testing/d003/stage_s4r9/gate_r9m2c.sh (3bb6072 version).
@@ -30,3 +30,9 @@
    - Added verification for M2c registries directory: verify_sums_dir(checkpoints/p05/registries/s4r9/M2c, 11).
    - Updated stray baseline name to STRAY_BASELINE_R9M1.tsv.
    - Self-check exit with fails count preserved.
+
+3. testing/d003/stage_s4r9/gate_allow_r9m1_end_R2.txt and gate_r9m1_R2.sh
+   - In accordance with Rule U305 (2) ("committed gate scripts and allow files must not be modified; create new files with new round/rerun tag when changes are needed"), the committed gate_allow_r9m1_end.txt was left unchanged.
+   - In Record Commit (i) (00490a7), preregistration and apparatus files were committed. When preregistration keying was refined and final small tables produced, those files showed as modified (' M ') in git status.
+   - gate_allow_r9m1_end_R2.txt adds ' M checkpoints/p05/registries/s4r9/M1/*' and ' M testing/d003/stage_s4r9/*' to accommodate files tracked in commit (i) that received final updates prior to closing commit (ii).
+   - gate_r9m1_R2.sh references gate_allow_r9m1_end_R2.txt and executes the end gate verification.

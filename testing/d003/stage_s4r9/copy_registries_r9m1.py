@@ -17,16 +17,22 @@ def sha256_file(p):
             h.update(c)
     return h.hexdigest()
 
-FILES_TO_COPY = [
+ALL_REGISTRY_FILES = [
     "BUILD_OPTION_DIFF_R9M1.txt",
     "BUILD_R9M1.tsv",
     "DRIVERS_F3_SIDE_R9M1.tsv",
     "ENGINE_COLUMNS_R9M1.txt",
+    "EVENTS_R9M1.tsv",
+    "F3_F4_EQUIV_R9M1.tsv",
     "GATE_R9M1_start.txt",
+    "GATE_R9M1_end.txt",\n    "GATE_R9M1_end_R2.txt",\n    "GATE_R9M1_end_R3.txt",
     "IMPACT_S3R5_R9M1.tsv",
     "K_INHERIT_RAW_R9M1.txt",
     "K_INHERIT_R9M1.tsv",
+    "M1_SUMMARY_F4_R9M1.tsv",
     "NOINJ_R9M1.tsv",
+    "noinj_r9m1.txt",
+    "POSCTRL_M1_R9M1.txt",
     "PREREG_M1_CITED_F2_R9M1.tsv",
     "PREREG_M1_CITED_F2_R9M1.tsv.sha256",
     "PREREG_M1_CITED_F2_R9M1_TIMESTAMP_UTC.txt",
@@ -34,24 +40,16 @@ FILES_TO_COPY = [
     "PREREG_M1_F4_R9M1.tsv.sha256",
     "PREREG_M1_F4_R9M1_TIMESTAMP_UTC.txt",
     "RUNNER_DIFF_R9M1.txt",
-    "STRAY_BASELINE_R9M1.tsv",
-    "WARN_COUNT_R9M1.tsv",
-    "noinj_r9m1.txt",
-]
-
-# Optional files that may exist at end
-OPTIONAL_FILES = [
-    "POSCTRL_M1_R9M1.txt",
     "SMOKE_M1_F4_R9M1.tsv",
+    "SMOKE_SUMMARY_R9M1.txt",
+    "STRAY_BASELINE_R9M1.tsv",
     "VERDICT_M1_F4_R9M1.tsv",
-    "F3_F4_EQUIV_R9M1.tsv",
-    "M1_SUMMARY_F4_R9M1.tsv",
-    "EVENTS_R9M1.tsv",
-    "GATE_R9M1_end.txt",
+    "VERDICT_M1_F4_R9M1_AGG.tsv",
+    "WARN_COUNT_R9M1.tsv",
 ]
 
 copied = []
-for fn in FILES_TO_COPY + OPTIONAL_FILES:
+for fn in ALL_REGISTRY_FILES:
     src_p = os.path.join(EV, fn)
     dst_p = os.path.join(DEST, fn)
     if os.path.isfile(src_p):

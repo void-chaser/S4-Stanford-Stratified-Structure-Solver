@@ -1,0 +1,20 @@
+# POSCTRL_M1_R9M1.txt -- Positive control for comparison engine (Step S-E)
+
+=== Case 1: Untampered F3 facts as input ===
+Command: python3 -I -B /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r9/compare_f3_f4_r9m1.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1/tmp/posctrl_clean.tsv
+Exit code: 0
+Stdout:
+Comparison complete: ROWS=651, DIFFS=0
+HIT counts: BOTH_EMPTY=144, NONEMPTY_IDENTICAL=507, DIVERGENT=0
+Output -> /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1/tmp/posctrl_clean.tsv
+
+=== Case 2: Tampered copy (1 rc1, 1 I1) ===
+Command: python3 -I -B /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/testing/d003/stage_s4r9/compare_f3_f4_r9m1.py --tamper /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1/tmp/posctrl_tampered_facts.tsv --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1/tmp/posctrl_tampered.tsv
+Exit code: 2
+Stdout:
+Comparison complete: ROWS=651, DIFFS=2
+HIT counts: BOTH_EMPTY=144, NONEMPTY_IDENTICAL=507, DIVERGENT=0
+Output -> /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1/tmp/posctrl_tampered.tsv
+
+Verification: Exactly 2 differences detected (1 rc1 in M1b, 1 I1 in M1c G5).
+Positive control PASS.

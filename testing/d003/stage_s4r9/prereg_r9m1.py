@@ -44,14 +44,15 @@ with open(os.path.join(EV, "DRIVERS_F3_SIDE_R9M1.tsv"), encoding="utf-8") as f:
 plan_b1 = {}
 with open(os.path.join(REPO, "checkpoints/p05/registries/s4r8/M1b/r8m1b1/PLAN_M1B_R8_M1b1.tsv"), encoding="utf-8") as f:
     for r in csv.DictReader(f, delimiter="\t"):
-        plan_b1[r["point_id"]] = r
+        plan_b1[(r["group"], r["point_id"])] = r
 
 supp_b3 = {}
 with open(os.path.join(REPO, "checkpoints/p05/registries/s4r8/M1b/r8m1b3/PREREG_SUPP_R8_M1b3.tsv"), encoding="utf-8") as f:
     lines = [l.strip().split("\t") for l in f if l.strip() and not l.startswith("#")]
     h = lines[0]
     for l in lines[1:]:
-        supp_b3[dict(zip(h, l))["point_id"]] = dict(zip(h, l))
+        r = dict(zip(h, l))
+        supp_b3[(r["group"], r["point_id"])] = r
 
 with open(os.path.join(REPO, "checkpoints/p05/registries/s4r8/M1b/r8m1b3/EFFECTIVE_M1B_R8_M1b3.tsv"), encoding="utf-8") as f:
     lines = [l.strip().split("\t") for l in f if l.strip() and not l.startswith("#")]
@@ -98,7 +99,7 @@ for r in m1b_f3:
     eff_cls = r["effective_class_p1"]
 
     if src in ("M1b1_ENV_AGREE", "M1b1_NOT_RUN"):
-        info = plan_b1[pid]
+        info = plan_b1[(grp, pid)]
         f3_drv = info["driver_name"]
         f3_sha = info["driver_sha256"]
         env = info["env_str"]
@@ -108,7 +109,7 @@ for r in m1b_f3:
         exp_hit = info["expected_hit"]
         exp_cls = info["expected_class"]
     elif src == "SUPP_R8_M1b3":
-        info = supp_b3[pid]
+        info = supp_b3[(grp, pid)]
         f3_drv = info["driver_name"]
         f3_sha = info["driver_sha256"]
         env = info["env"]
@@ -178,13 +179,13 @@ for r in m1b_f2:
     eff_cls = r["effective_class_p1"]
 
     if src in ("M1b1_ENV_AGREE", "M1b1_NOT_RUN"):
-        info = plan_b1[pid]
+        info = plan_b1[(grp, pid)]
         f2_drv = info["driver_name"]
         f2_sha = info["driver_sha256"]
         env = info["env_str"]
         base_id = info["base_id"] if "base_id" in info else pid.replace("-F2", "").replace("F2-", "")
     elif src == "SUPP_R8_M1b3":
-        info = supp_b3[pid]
+        info = supp_b3[(grp, pid)]
         f2_drv = info["driver_name"]
         f2_sha = info["driver_sha256"]
         env = info["env"]
