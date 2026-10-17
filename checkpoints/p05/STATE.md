@@ -13,7 +13,7 @@
 | `HEAD:S4`（当前冻结被测树 F4） | `589e15eb11fcb04e031b524f25a443e7921946cf`（F4 提交 `05097a7`；前一树 F3 `6cff923…`；F2 `e124925…`；F `4a6f649…`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S4 R9 M2b（r9m2b）完成，待用户审核**：R9 勘误 E9-1..6（U299）；HIT 行等价 173/173（346/346 MATCH，两遍全同）；K 继承证明依 U300 重做完成（73 组：54 PASS_K_INHERITED_R2，9 PASS_CITED_S3R5，10 NO_SEQ_EVIDENCE_R2，0 DIVERGENT；KGRP-071 专项归因闭环）；SOLN 独立补判 18/18 全部 MATCH（exp_I6=HOLD，exp_san=0，阳性对照全过）；装置改动统一 diff 登记完成；事件总表 54 项闭合提取；RP-R8-M2c-1/1b 18 点修后事实 + 补判结果，待用户裁决。不宣布阶段完成，不询问是否签收。 |
+| 当前轮次 | **P05-S4 R9 M2c（r9m2c）完成，待用户审核**：M2b 流程纠正与两项裁决落实完成。RULINGS 截断已通过只读断言核验（U302）；门禁吞 FAIL 修正与全仓扫描完成（E9-8/U305）；未披露的 4 处裸写已在事件表与报告中完整披露（E9-9/E9-11）；KGRP-071 原始日志两边各 4 次命中事实更正完成（E9-10）；HIT 行等价 346 行切分完成（178 BOTH_EMPTY，168 NONEMPTY_IDENTICAL）；10 组 NO_SEQ 采信 HIT 行等价作为替代证据判定通过（U303，SUBSTITUTE_OK 10/10）；RP-R8-M2c-1/1b 按 U304 带范围声明关闭；事件总表四份日志 + reflog 1 + 裸写 4 项闭合提取；下一步为 R9 M1，随后为 M3。不宣布阶段完成，不询问是否签收。 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -27,7 +27,8 @@
 | S4R8 M2a–e | 增量与纠偏完成；正式两遍有效 202 点全 MATCH（0 FLAKY / 0 GDB_DIV）；总表 259 点；K-1 关闭 | `P05_S4R8_M2A_REPORT.md` … `M2E` |
 | S3R5（s3r5） | 冻结 F4 05097a7（树 589e15e…）；3 库告警无新增；无注入对照 9/9 PASS；K 映射 18/18 一致；自检 D 9/9 事实 | `P05_S3R5_CLOSEOUT.md` |
 | S4R9 M0+M2 | F4 装置 16 驱动+7 库（0 diff）；无注入对照 146/146 PASS；K 继承 73 组全 PASS；正式两遍 191/191 MATCH；总表 259 行（有效 202 全 MATCH） | `P05_S4R9_M2_REPORT.md` |
-| S4R9 M2b | R9 勘误 E9-1..6（U299）；HIT 行等价 173/173（346/346 MATCH）；K 重做 73 组（54 PASS，9 CITED，10 NO_SEQ，0 DIV）；SOLN 补判 18/18 MATCH；事件表 54 项闭合 | `P05_S4R9_M2b_REPORT.md` |
+| S4R9 M2b | R9 勘误 E9-1..6（U299）；HIT 行等价 173/173；K 重做 73 组（54 PASS，9 CITED，10 NO_SEQ，0 DIV）；SOLN 补判 18/18 MATCH；事件总表 62 项（m0 27、m2 11、reflog 1、m2b 23，更正见 M2c） | `P05_S4R9_M2b_REPORT.md` |
+| S4R9 M2c | M2b 流程纠正（E9-7..13，U302–U305）；RULINGS 截断披露；全仓门禁扫描 90 份；KGRP-071 更正（4 vs 4）；HIT 切分（178 空，168 非空一致）；U303 替代证据 10/10 OK；RP-R8-M2c-1/1b 关闭（U304） | `P05_S4R9_M2c_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接；完整台账见 RED_POINTS_LEDGER_R6c）
 
@@ -41,7 +42,7 @@
 | "其他层失败"变体（M2-05） | layers-F4-dbg 8 点实测完成，全 MATCH | 完成（M2-05） | `VERDICT_R9.tsv` |
 | 注释措辞 `S4_internal.h:263` | 已改为 U31 措辞（提交 `a07b5ac`） | 回归确认 | `P05_S3R3_CLOSEOUT.md` |
 | 张量路径 K-1（RP-R6d-8） | **已由用户裁决带范围声明关闭（U274，U281/R9维持）**：M2-06-01-F4-C 实测 MATCH | 关闭（U274/U281） | `M206_DIAG_SUMMARY.txt` |
-| RP-R8-M2c-1 / 1b（新红点） | 18 点修后事实 + 补判结果，待用户裁决 | 待用户裁决 | `P05_S4R9_M2b_REPORT.md` |
+| RP-R8-M2c-1 / 1b（新红点） | **按 U304 带范围声明关闭**：18 点 SOLN 修后验证全 MATCH，I6 两遍 HOLD，san 报告 0 | 关闭（U304） | `P05_S4R9_M2c_REPORT.md` |
 | B 侧 jones/vl SILENT、nv CRASH | OPEN（基线，不是修复证据） | S5 | `P05_S1R_O1_ATTRIBUTION.md` |
 | NB=1–8（RP-R6d-16）、类别 C | M2-07 81 点全 MATCH；M2-08 转 S5（U249） | M2-07 / S5 | `VERDICT_R9.tsv` |
 | Python/Lua 可见性（RP-R6d-15） | 按 U235 在 M3 做 | M3（U235） | `PROJECT_ROADMAP.md` |
@@ -52,11 +53,13 @@
 | U2 中 stage e（I1 特殊规则） | M2-02 NOT_FOUND_IN_SCOPE 裁决在 S4 不出点，转 S5（U248） | 转 S5（U248） | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 | r8m2c/d SOLN 18/28 点分诊与更正 | U276-U282 裁决落实；S3R5 修复完成，R9 F4 验证 18 点全 MATCH | 已闭合（U276-U282） | `M2_CONSOLIDATED_F4_R9.tsv` |
 
+> 开放项说明：本轮完成 R9 M2c 流程纠偏与两项裁决落实；下一步计划为推进至 R9 M1（在 F4 树上重跑 M1 1302 行并与 F3 冻结事实进行等价比对），随后进行 M3 阶段收口。
+
 ## 4. 证据位置
 
 只列最近三轮证据与清单位置，其余指向各轮报告：
+- **S4 R9 M2c（r9m2c）**：证据 `checkpoints/p05/evidence/p05-s4r9/m2c/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M2c/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2c_REPORT.md`。
 - **S4 R9 M2b（r9m2b）**：证据 `checkpoints/p05/evidence/p05-s4r9/m2b/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M2b/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2b_REPORT.md`。
 - **S4 R9 M0+M2（r9m0/r9m2）**：证据 `checkpoints/p05/evidence/p05-s4r9/m0/` 与 `.../m2/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M0/` 与 `.../M2/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2_REPORT.md`。
 - **S3 R5（s3r5）**：证据 `checkpoints/p05/evidence/p05-s3r5/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s3r5/`（`SHA256SUMS.txt`）；报告 `P05_S3R5_CLOSEOUT.md`。
-- **S4 R8 M2e（r8m2e）**：证据 `checkpoints/p05/evidence/p05-s4r8/m2e/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r8/M2/r8m2e/`（`SHA256SUMS.txt`）；报告 `P05_S4R8_M2E_REPORT.md`。
 - 更早轮次证据与清单位置：详见各轮报告（`checkpoints/p05/P05_S4R*_REPORT*.md`）。完整台账：`RED_POINTS_LEDGER_R6c.tsv`；裁决总表：`registries/RULINGS.tsv`。

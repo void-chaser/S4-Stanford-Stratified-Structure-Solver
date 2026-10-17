@@ -1,0 +1,29 @@
+# RUNNER_DIFF_R9M2c.txt -- P05-S4 R9 M2c gate script diff explanation (S-A)
+
+1. testing/d003/stage_s4r9/gate_r9m2c.sh
+   - Source: Adapted from testing/d003/stage_s4r9/gate_r9m2b.sh (42d7d97 version).
+   - Standard header: REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m2c; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp".
+   - Baseline HEAD updated to 42d7d9751ca6506601c47271c46f3b3242ad2453.
+   - Evidence directory updated to checkpoints/p05/evidence/p05-s4r9/m2c.
+   - Output files renamed to GATE_R9M2c_start.txt and GATE_R9M2c_end.txt.
+   - Allow lists updated to gate_allow_r9m2c_start.txt and gate_allow_r9m2c_end.txt.
+   - Modes: Strictly start and end only. Rerun naming supported via optional argument 2 (TAG, e.g. _R2) to set OUTNAME without script edits or mode changes.
+   - FAILS counting and exit code fix (G-2):
+     * Captures PY_FAILS from gate_check_r9m2c.py (which now exits with fails).
+     * Counts actual lines starting with '^FAIL\t' in output via grep -c.
+     * Asserts consistency between accumulated FAILS and actual '^FAIL\t' lines.
+     * Enforces self-check: exit 0 only if FAILS == 0 and fail_lines == 0, otherwise exits with non-zero FAILS.
+
+2. testing/d003/stage_s4r9/gate_check_r9m2c.py
+   - Source: Adapted from testing/d003/stage_s4r9/gate_check_r9m2b.py (42d7d97 version).
+   - Baseline commit updated to 42d7d9751ca6506601c47271c46f3b3242ad2453.
+   - Baseline expectations updated for 42d7d97 state:
+     * STATE.md (7127 B, sha256 929bf727441b1616f305aa127d7c99997273f1612d41c52781f89008f50bfdf3)
+     * RULINGS.tsv (122611 B, sha256 1ebffb14520317619132305baacd87e11a86991f10a9db681346e8e6084075a5)
+     * ERRATA_9.txt (6153 B, sha256 0ed71687335636274e22481ee7934681db042e3ba63e5be278b352caa8ac2bb5)
+   - Added ebf3d00 prefix preservation assertions:
+     * RULINGS.tsv first 121086 B sha256 equals f17bd838a699282b7a993f82ee93455aceae06e3ba3bb3d07b5277a5d20e6986 (ebf3d00)
+     * ERRATA_9.txt first 260 B sha256 equals c381586d31f0d640d5a8daf4c1125d76c67ec68c6c033e10c71730cbc429034c (ebf3d00)
+   - Added verification of registries/s4r9/M2b/SHA256SUMS.txt (14 files) at start and end, alongside s3r5, M0, M2.
+   - Stray baseline products recorded in STRAY_BASELINE_R9M2c.tsv under EV.
+   - Fixed main() to exit with sys.exit(fails) (G-2).
