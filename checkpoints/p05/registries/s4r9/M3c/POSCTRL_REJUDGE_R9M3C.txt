@@ -1,0 +1,22 @@
+# POSCTRL_REJUDGE_R9M3C.txt -- positive control of rejudge_e2e_r9m3c.py on tampered records written to disk
+# each case is a real file under checkpoints/p05/evidence/p05-s4r9/m3c/posctrl/rejudge/<case>/pass{1,2}/points/;
+# the verdict is recomputed by the formal script from the file content (no constant self-proof).
+py_API_SILENT: PASS (expected=API_SILENT actual=API_SILENT rc=1)
+py_RETRY_DIFF: PASS (expected=RETRY_DIFF actual=RETRY_DIFF rc=1)
+py_HIT_OFF_TARGET: PASS (expected=HIT_OFF_TARGET actual=HIT_OFF_TARGET rc=1)
+py_INVALID: PASS (expected=INVALID actual=INVALID rc=1)
+py_CONTROL_BAD: PASS (expected=CONTROL_BAD actual=CONTROL_BAD rc=1)
+lua_batch_API_SILENT: PASS (expected=API_SILENT actual=API_SILENT rc=1)
+lua_batch_RETRY_DIFF: PASS (expected=RETRY_DIFF actual=RETRY_DIFF rc=1)
+lua_batch_HIT_OFF_TARGET: PASS (expected=HIT_OFF_TARGET actual=HIT_OFF_TARGET rc=1)
+lua_batch_INVALID: PASS (expected=INVALID actual=INVALID rc=1)
+lua_batch_CONTROL_BAD: PASS (expected=CONTROL_BAD actual=CONTROL_BAD rc=1)
+lua_repl_API_SILENT: PASS (expected=API_SILENT actual=API_SILENT rc=1)
+lua_repl_RETRY_DIFF: PASS (expected=RETRY_DIFF actual=RETRY_DIFF rc=1)
+lua_repl_HIT_OFF_TARGET: PASS (expected=HIT_OFF_TARGET actual=HIT_OFF_TARGET rc=1)
+lua_repl_INVALID: PASS (expected=INVALID actual=INVALID rc=1)
+lua_repl_CONTROL_BAD: PASS (expected=CONTROL_BAD actual=CONTROL_BAD rc=1)
+py_FLAKY: PASS (expected=FLAKY actual=FLAKY rc=1)
+OVERALL_POSITIVE_CONTROL: PASS (16/16)
+CATEGORIES_COVERED: API_SILENT,CONTROL_BAD,FLAKY,HIT_OFF_TARGET,INVALID,RETRY_DIFF
+FRONTENDS_COVERED: py,lua_batch,lua_repl

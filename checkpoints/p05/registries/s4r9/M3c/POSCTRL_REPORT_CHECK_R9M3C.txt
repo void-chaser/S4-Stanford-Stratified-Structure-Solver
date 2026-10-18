@@ -1,0 +1,4 @@
+# POSCTRL_REPORT_CHECK_R9M3C.txt -- report_check on a deliberately wrong report copy (shakedown)
+TAMPERED_COPY: checkpoints/p05/evidence/p05-s4r9/m3c/posctrl/report_check/WRONG_REPORT.md
+REPORT_CHECK_FAILS_ON_WRONG_COPY=4
+RESULT: PASS (required FAILS>0)

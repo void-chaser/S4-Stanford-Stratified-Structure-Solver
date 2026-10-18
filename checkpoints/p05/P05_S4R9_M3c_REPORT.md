@@ -64,7 +64,7 @@
 
 ## 6. 最终红点台账摘要（RED_POINTS_LEDGER_FINAL_R9M3C.tsv）
 
-- 输入 7 个已提交红点台账；按 id 去重（R6c 的 legacy id 按 R6d 台账显式映射合并）后 26 个红点 id。
+- 输入 7 个已提交红点台账；按 id 去重（R6c 的 legacy id 按 R6d 台账显式映射合并）后 26 个红点 id（台账文件数据区共 27 行 = 1 行表头 + 26 个红点；附录 A 的“27 行”即此文件行数）。
 - 冲突 21 处（同一 id 在不同台账的原始状态不同，均为历史演进/别名措辞），以最新裁决解决并在文件尾部逐条列出。
 - 范围内仍开放红点 0；非红点行（observation 等）与转入 S5 的项分别标注。RP-R8-M2c-1/1b 按 U304 记为已关闭，U350 确认；RP-R6d-15 按 U345（条件满足）带范围声明关闭。
 
@@ -86,6 +86,9 @@
 | 4 | rejudge v1 把逐点 JSON 当作预注册记录传入，取不到 exp_visible，25 个注入点误判 API_SILENT | 试跑期脚本迭代：修正为 prereg+point 合并后 DIFFS=0；冻结期未再改脚本 |
 | 5 | append_errata v1 的 U346 断言字符串与报告表二带反引号的文本不一致，写入前 HARD_STOP（未落盘） | 修正断言后通过；ERRATA 前缀 sha 断言仍通过 |
 | 6 | 框架落盘：本会话的 /tmp/dsh-spill-* 属框架，不算执行者违规；end 门禁记录 /tmp 快照 | 单列，不计入表一 |
+| 7 | 收尾链在 sha_sums 之后又追加了一行进度（PROGRESS_R9M3C.txt），使正式 end 门禁 EVIDENCE_SHA256SUMS_OK FAIL | 照实记录于附录 B；删除该误加行以保持证据清单完整（不改结果表），冻结期未重跑门禁 |
+| 8 | end 门禁在试跑期运行 2 次（第 1 次暴露 FROZEN/EVENTS/SUMS 的路径与清单问题，修正后复跑） | 照实披露；正式冻结期只运行 1 次 |
+| 9 | 一条占位 noop 命令把 2>/dev/null 加在 safe_run 调用外层（cp 到 /dev/null，未写任何文件） | 违反“含写入命令不得用 2>/dev/null”；未落盘、未影响任何结果；此后未再使用 |
 
 ## 8. 需用户裁决
 
@@ -120,8 +123,43 @@
 
 ### 附录 A（收尾时由 closeout 写入正式结果）
 
-（APPENDIX_A_PLACEHOLDER）
+记录提交 (i) 之后由冻结脚本执行；本附录的数字全部由 closeout 从结果表复算，未手写。
+
+- 门禁：start PASS=46 FAILS=0；start 前缀复核 PASS=39 FAILS=0
+- L 项复核：AUDIT_R9M3B_R9M3C.tsv 6/6 属实；规划者事实有误：none
+- 裁决/勘误：RULINGS 最大 U350（142281 字节，sha 443d8a38）；ERRATA_9.txt 最后 E9-66，共 66 条（56754 字节，sha 9bd2933d）
+- M3b 独立复核：REJUDGE 42 点，DIFFS=0；类别 CONTROL_OK=17, E2E_OK=25，其他 none；阳性对照 OVERALL_POSITIVE_CONTROL: PASS (16/16)
+- 复验：m3b 证据清单 all 43 OK；registries/s4r9/M3b 清单 all 18 OK；make test reconcile 8 行全部 OK；REVERIFY FAILS=0
+- make test 只读重解析：verdict=NO_NEW_FAILURE unit_count=265；4 遍 × 2 段对账 全部 OK（8/8 reconcile 的 ok 列）
+- 新增红点：无（E2E 无 API_SILENT / RETRY_DIFF / RETRY_FAIL）
+- 签收就绪：READINESS 共 26 行：MET=14 GAP=0 TRANSFERRED_S5=5 CLOSED_BY_RULING=7；GAP 明细：none
+- 最终红点台账：27 行（非红点行 4），范围内仍开放 0 个；冲突 21 处（以最新裁决解决）
+- S5 移交：10 项（S5_HANDOFF_R9M3C.tsv）
+- 报告检查阳性对照：RESULT: PASS (required FAILS>0)
+- STATE 最终字节数：5908（<=8192）
+- 逐点明细：REJUDGE_E2E_R9M3C.tsv；红点台账：RED_POINTS_LEDGER_FINAL_R9M3C.tsv；就绪审计：READINESS_P05_S3S4_R9M3C.tsv
 
 ### 附录 B（end 门禁之后追加；只追加，不改正文）
 
-（APPENDIX_B_PLACEHOLDER）
+end 门禁（GATE_R9M3C_end.txt，冻结期单次调用）：88 项断言，PASS=87、FAILS=1。
+
+| # | 断言 | 事实 | 分类 |
+|---|---|---|---|
+| 1 | EVIDENCE_SHA256SUMS_OK | actual = sha mismatch: PROGRESS_R9M3C.txt。原因：收尾链在 sha_sums_r9m3c.py 之后又追加了一行进度（PROGRESS_R9M3C.txt），清单哈希与文件不再一致。 | 执行顺序错误（非检查器缺陷）：冻结期不重跑门禁；为保持证据清单完整，删除了该误加行（不改任何结果表），删除后按清单逐项校验 16/16 一致；门禁输出保持 FAIL 记录 |
+
+其余 87 项全部 PASS，包括：FROZEN 15 项 sha 未变；全部冻结脚本 POST_I 调用计数（rejudge formal、reverify、readiness、red_ledger_final、closeout、report_check、copy_registries、events、sha_sums、gate end 各 1）；POST_I_NO_TESTING_D003_WRITES=0；COMMITTED_I_FILES_UNCHANGED_AT_END；EVENTS 98 行与重算一致；UNLOGGED_SELF=0；其它轮证据目录未动；REGISTRIES_M3C_SUMS_ALL_OK（清单 13 项与报告 14 项一致）；预注册 sha 未变；S-B（REJUDGE DIFFS=0、POSCTRL PASS 16/16、REVERIFY FAILS=0）；S-C 输出齐全与签收草稿标记；E2E 42 行 {CONTROL_OK:17, E2E_OK:25}；CALIB 27 个 TARGET；MAKETEST NO_NEW_FAILURE；STATE 5908 字节；REPORT_CHECK FAILS=0。
+
+试跑期 end 门禁（$EV/shakedown/GATE_R9M3C_end.txt，共运行 2 次）的 FAIL 项全部是试跑期必然：记录提交 (i) 之前的 RULINGS/ERRATA 未提交、--commit-i HEAD 下所有历史调用都被计数、以及第 2 次 end 调用使 gate 计数为 2；冻结期正式门禁其它 87 项全部通过，证明这些检查本身可用。
+
+冻结期正式结果摘要（与附录 A 一致）：S-B 独立重判 DIFFS=0、E2E_OK=25、CONTROL_OK=17、阳性对照 16/16 PASS、复验 FAILS=0；READINESS MET=14 GAP=0 TRANSFERRED_S5=5 CLOSED_BY_RULING=7；最终红点台账 26 个 id、范围内开放 0、冲突 21 处；S5 移交 10 项。
+
+git log -1（记录提交 (i)）：be0c3d1 P05-S4 R9 M3c (i): freeze brief, rulings U343..U350, errata E9-58..E9-66, L audit, S-B/S-C harness and drafts; awaiting user review
+
+git status --short（附录 B 落盘前、收尾提交 (ii) 前）：
+
+M checkpoints/p05/P05_S4R9_M3c_REPORT.md
+ M checkpoints/p05/STATE.md
+?? checkpoints/p05/registries/s4r9/M3c/
+?? testing/d003/stage_s4r9/fix_report_r9m3c.py
+
+（registries/s4r9/M3c/ 下 14 个文件 = 13 项小表 + SHA256SUMS.txt，将在收尾提交 (ii) 一并提交。）

@@ -1,0 +1,74 @@
+# REVERIFY_R9M3B_R9M3C.tsv -- independent read-only re-verification of the M3b formal results
+kind	target	recomputed	result	detail
+manifest	m3b_evidence	items=43	OK	all 43 OK
+manifest_item	m3b_evidence/AUDIT_R9M3A_R9M3B.tsv	37b9ace29fe6026f	OK	37b9ace29fe6026f
+manifest_item	m3b_evidence/BUILD_BASELINE_R9M3B.tsv	144e4f54eae7178b	OK	144e4f54eae7178b
+manifest_item	m3b_evidence/CALIB_E2E_R9M3B.tsv	f550f99341089c18	OK	f550f99341089c18
+manifest_item	m3b_evidence/COVERAGE_E2E_R9M3B.tsv	2fdb3421fb1af64d	OK	2fdb3421fb1af64d
+manifest_item	m3b_evidence/E2E_API_SURVEY_R9M3B.md	122abf5f329bcf60	OK	122abf5f329bcf60
+manifest_item	m3b_evidence/E2E_BUILD_R9M3B.tsv	88b7cec7207747ea	OK	88b7cec7207747ea
+manifest_item	m3b_evidence/E2E_VERDICT_R9M3B.tsv	493578e72fe09362	OK	493578e72fe09362
+manifest_item	m3b_evidence/EVENTS_R9M3B.tsv	34cdaf993228dfa1	OK	34cdaf993228dfa1
+manifest_item	m3b_evidence/FROZEN_SCRIPTS_R9M3B.tsv	3a095b356c78eb5a	OK	3a095b356c78eb5a
+manifest_item	m3b_evidence/GATE_R9M3B_end.txt_SHAKEDOWN2	2438b8d6330b30ff	OK	2438b8d6330b30ff
+manifest_item	m3b_evidence/GATE_R9M3B_start.txt	38b27998038f81b9	OK	38b27998038f81b9
+manifest_item	m3b_evidence/GATE_R9M3B_start.txt_SHAKEDOWN1	619b11a623d02480	OK	619b11a623d02480
+manifest_item	m3b_evidence/GATE_R9M3B_start_RECHECK.txt	58556c0d5c67d74b	OK	58556c0d5c67d74b
+manifest_item	m3b_evidence/LEDGER_CHECK_R9M3B.tsv	24df11583d8a8d37	OK	24df11583d8a8d37
+manifest_item	m3b_evidence/MAKETEST_UNITS_R9M3B.tsv	1adb0995d1803fc5	OK	1adb0995d1803fc5
+manifest_item	m3b_evidence/MAKETEST_VERDICT_R9M3B.tsv	f683111c398a316f	OK	f683111c398a316f
+manifest_item	m3b_evidence/POSCTRL_E2E_R9M3B.txt	d909d3ad839dc6cc	OK	d909d3ad839dc6cc
+manifest_item	m3b_evidence/POSCTRL_MAKETEST_R9M3B.txt	aff13c65852bc22a	OK	aff13c65852bc22a
+manifest_item	m3b_evidence/PREREG_E2E_R9M3B.sha256.txt	df4d2456eba5ccf8	OK	df4d2456eba5ccf8
+manifest_item	m3b_evidence/PREREG_E2E_R9M3B.tsv	9e3895bb05f3b454	OK	9e3895bb05f3b454
+manifest_item	m3b_evidence/PROGRESS_R9M3B.txt	fd94dfaf1cb41051	OK	fd94dfaf1cb41051
+manifest_item	m3b_evidence/RED_POINTS_LEDGER_APPEND_R9M3B.tsv	9024ab7ce661c2c8	OK	9024ab7ce661c2c8
+manifest_item	m3b_evidence/REGISTRY_OUTPUTS_R9M3B.tsv	3c1556cc694b7c76	OK	3c1556cc694b7c76
+manifest_item	m3b_evidence/REPORT_CHECK_R9M3B.txt	692668c5014a58a8	OK	692668c5014a58a8
+manifest_item	m3b_evidence/STRAY_BASELINE_R9M3B.tsv	277b398ccfc9bc5b	OK	277b398ccfc9bc5b
+manifest_item	m3b_evidence/calib/lua_batch_cf.log	1c10c1e14c0f87e5	OK	1c10c1e14c0f87e5
+manifest_item	m3b_evidence/calib/lua_batch_exp.log	c26abf5e93a082b4	OK	c26abf5e93a082b4
+manifest_item	m3b_evidence/calib/lua_batch_fft.log	6cc835a0e2cb20c6	OK	6cc835a0e2cb20c6
+manifest_item	m3b_evidence/calib/lua_batch_jones.log	27fde635524dbefd	OK	27fde635524dbefd
+manifest_item	m3b_evidence/calib/lua_batch_kt.log	61b84c37af391220	OK	61b84c37af391220
+manifest_item	m3b_evidence/calib/lua_batch_nv.log	8ca35458abfcd783	OK	8ca35458abfcd783
+manifest_item	m3b_evidence/calib/lua_batch_vl.log	faf3f9dca67f5ab9	OK	faf3f9dca67f5ab9
+manifest_item	m3b_evidence/calib/lua_repl_cf.log	1e1e5bd3458afd31	OK	1e1e5bd3458afd31
+manifest_item	m3b_evidence/calib/lua_repl_fft.log	f4dfdcecb09789e6	OK	f4dfdcecb09789e6
+manifest_item	m3b_evidence/calib/lua_repl_kt.log	c15b035b421ed5e5	OK	c15b035b421ed5e5
+manifest_item	m3b_evidence/calib/lua_repl_vl.log	527e76109600039c	OK	527e76109600039c
+manifest_item	m3b_evidence/calib/py_cf.log	d37c308674c99ee4	OK	d37c308674c99ee4
+manifest_item	m3b_evidence/calib/py_fft.log	a1cdf65656a8ee9b	OK	a1cdf65656a8ee9b
+manifest_item	m3b_evidence/calib/py_jones.log	8b8bfa662fc3107f	OK	8b8bfa662fc3107f
+manifest_item	m3b_evidence/calib/py_kt.log	5628124fe0ae3776	OK	5628124fe0ae3776
+manifest_item	m3b_evidence/calib/py_nv.log	f1f45b7faa675f91	OK	f1f45b7faa675f91
+manifest_item	m3b_evidence/calib/py_vl.log	14903a39619f84b5	OK	14903a39619f84b5
+manifest_item	m3b_evidence/e2e_build/build.log	da405a4e5c8d0406	OK	da405a4e5c8d0406
+manifest	registries_M3b	items=18	OK	all 18 OK
+manifest_item	registries_M3b/AUDIT_R9M3A_R9M3B.tsv	37b9ace29fe6026f	OK	37b9ace29fe6026f
+manifest_item	registries_M3b/CALIB_E2E_R9M3B.tsv	f550f99341089c18	OK	f550f99341089c18
+manifest_item	registries_M3b/COVERAGE_E2E_R9M3B.tsv	2fdb3421fb1af64d	OK	2fdb3421fb1af64d
+manifest_item	registries_M3b/E2E_API_SURVEY_R9M3B.md	122abf5f329bcf60	OK	122abf5f329bcf60
+manifest_item	registries_M3b/E2E_BUILD_R9M3B.tsv	88b7cec7207747ea	OK	88b7cec7207747ea
+manifest_item	registries_M3b/E2E_VERDICT_R9M3B.tsv	493578e72fe09362	OK	493578e72fe09362
+manifest_item	registries_M3b/FROZEN_SCRIPTS_R9M3B.tsv	3a095b356c78eb5a	OK	3a095b356c78eb5a
+manifest_item	registries_M3b/GATE_R9M3B_start.txt	38b27998038f81b9	OK	38b27998038f81b9
+manifest_item	registries_M3b/GATE_R9M3B_start_RECHECK.txt	58556c0d5c67d74b	OK	58556c0d5c67d74b
+manifest_item	registries_M3b/LEDGER_CHECK_R9M3B.tsv	24df11583d8a8d37	OK	24df11583d8a8d37
+manifest_item	registries_M3b/MAKETEST_UNITS_R9M3B.tsv	1adb0995d1803fc5	OK	1adb0995d1803fc5
+manifest_item	registries_M3b/MAKETEST_VERDICT_R9M3B.tsv	f683111c398a316f	OK	f683111c398a316f
+manifest_item	registries_M3b/POSCTRL_E2E_R9M3B.txt	d909d3ad839dc6cc	OK	d909d3ad839dc6cc
+manifest_item	registries_M3b/POSCTRL_MAKETEST_R9M3B.txt	aff13c65852bc22a	OK	aff13c65852bc22a
+manifest_item	registries_M3b/PREREG_E2E_R9M3B.sha256.txt	df4d2456eba5ccf8	OK	df4d2456eba5ccf8
+manifest_item	registries_M3b/PREREG_E2E_R9M3B.tsv	9e3895bb05f3b454	OK	9e3895bb05f3b454
+manifest_item	registries_M3b/RED_POINTS_LEDGER_APPEND_R9M3B.tsv	9024ab7ce661c2c8	OK	9024ab7ce661c2c8
+manifest_item	registries_M3b/REPORT_CHECK_R9M3B.txt	692668c5014a58a8	OK	692668c5014a58a8
+reconcile	B_p1/test_python_binding	units=4 Ran_N=4 skipped=0/0	OK	ok_col=OK
+reconcile	B_p1/s4test_unittest	units=257 Ran_N=257 skipped=1/1	OK	ok_col=OK
+reconcile	F4_p1/test_python_binding	units=4 Ran_N=4 skipped=0/0	OK	ok_col=OK
+reconcile	F4_p1/s4test_unittest	units=257 Ran_N=257 skipped=1/1	OK	ok_col=OK
+reconcile	B_p2/test_python_binding	units=4 Ran_N=4 skipped=0/0	OK	ok_col=OK
+reconcile	B_p2/s4test_unittest	units=257 Ran_N=257 skipped=1/1	OK	ok_col=OK
+reconcile	F4_p2/test_python_binding	units=4 Ran_N=4 skipped=0/0	OK	ok_col=OK
+reconcile	F4_p2/s4test_unittest	units=257 Ran_N=257 skipped=1/1	OK	ok_col=OK
+# FAILS=0

@@ -1,0 +1,34 @@
+# REPORT_CHECK_R9M3C.txt -- report check (forbidden words, sections, numeric and appendix-A judgement cross-checks)
+PASS	FORBIDDEN_WORDS_NEGATION_AWARE	none
+PASS	REQUIRED_SECTIONS	all present
+PASS	APPENDIX_A_PLACEHOLDER_REPLACED	placeholder absent
+PASS	NO_BLANK_LINE_INSIDE_TABLES	none
+PASS	NUM_RULINGS_MAX_U	recomputed=U350 present_in_report=True
+PASS	NUM_ERRATA_LAST_ID	recomputed=E9-66 present_in_report=True
+PASS	NUM_ERRATA_COUNT_TEXT	recomputed=共 66 条 present_in_report=True
+PASS	NUM_STATE_BYTES	recomputed=5908 present_in_report=True
+PASS	NUM_GATE_START_FAILS	recomputed=FAILS=0 present_in_report=True
+PASS	NUM_GATE_START_PASS	recomputed=PASS=46 present_in_report=True
+PASS	NUM_REJUDGE_DIFFS	recomputed=DIFFS=0 present_in_report=True
+PASS	NUM_REJUDGE_POINTS	recomputed=REJUDGE 42 点 present_in_report=True
+PASS	NUM_E2E_CATEGORIES	recomputed=CONTROL_OK=17, E2E_OK=25 present_in_report=True
+PASS	NUM_MAKETEST_VERDICT	recomputed=verdict=NO_NEW_FAILURE present_in_report=True
+PASS	NUM_MAKETEST_UNIT_COUNT	recomputed=unit_count=265 present_in_report=True
+PASS	NUM_AUDIT_SHU	recomputed=6/6 属实 present_in_report=True
+PASS	NUM_READINESS_COUNTS	recomputed=MET=14 GAP=0 TRANSFERRED_S5=5 CLOSED_BY_RULING=7 present_in_report=True
+PASS	NUM_S5_HANDOFF_COUNT	recomputed=S5 移交：10 项 present_in_report=True
+PASS	NUM_REVERIFY_FAILS	recomputed=REVERIFY FAILS=0 present_in_report=True
+PASS	NUM_POSCTRL_REJUDGE	recomputed=OVERALL_POSITIVE_CONTROL: PASS (16/16) present_in_report=True
+PASS	NUM_POSCTRL_REPORT_CHECK	recomputed=RESULT: PASS (required FAILS>0) present_in_report=True
+PASS	APPENDIX_A_PRESENT	appendix A present
+PASS	APPX_RECONCILE_JUDGEMENT	recomputed reconcile_phrase=全部 OK
+PASS	APPX_REJUDGE_DIFFS	DIFFS=0
+PASS	APPX_RULINGS_MAX	U350
+PASS	APPX_ERRATA	E9-66
+PASS	APPX_STATE_BYTES	5908
+PASS	APPX_READINESS	readiness counts
+PASS	APPX_RED_LEDGER	red ledger line
+PASS	APPX_S5_HANDOFF	10
+PASS	APPX_POSCTRL_REJUDGE	positive control line
+PASS	STATE_BYTES_LE_8192	bytes=5908
+FAILS=0

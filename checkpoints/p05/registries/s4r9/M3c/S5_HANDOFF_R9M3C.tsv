@@ -1,0 +1,12 @@
+# S5_HANDOFF_R9M3C.tsv -- items transferred to P05-S5 with their source rulings
+item	transfer_scope	source
+B 侧 jones/vl SILENT、nv CRASH	S5	STATE.md:46
+NB=1–8、类别 C	S5	STATE.md:47
+ES3R4-5/528/1164	S5	STATE.md:50
+非 FMM `S4_malloc`（约 35–43 处）	S5	STATE.md:52
+U2 stage e（I1 特殊规则）	S5	STATE.md:54
+B 侧 jones/vl SILENT_SWALLOW、nv CRASH	S5（基线观察，不是修复证据）	P05_S1R_O1_ATTRIBUTION.md
+NB=1–8、类别 C（M2-08）	S5（U249）	registries/RULINGS.tsv U249
+ES3R4-5/528/1164	S5（U90/U95/U99/U100，OUT_OF_SCOPE_D003）	registries/RULINGS.tsv
+非 FMM S4_malloc（约 35–43 处）	S5（范围决策）	PROJECT_ROADMAP.md
+U2 stage e（I1 特殊规则）	S5（U248，NOT_FOUND_IN_SCOPE）	registries/RULINGS.tsv

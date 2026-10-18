@@ -1,0 +1,4 @@
+# REJUDGE_COMPARE_R9M3C.txt -- point-wise comparison of the independent verdict with E2E_VERDICT_R9M3B.tsv
+POINTS=42
+DIFFS=0
+VERDICT_COUNTS CONTROL_OK=17, E2E_OK=25

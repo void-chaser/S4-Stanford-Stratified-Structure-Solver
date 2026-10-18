@@ -1,0 +1,18 @@
+# FROZEN_SCRIPTS_R9M3C.tsv -- frozen scripts and referenced result tables recorded before record commit (i)
+# expected_calls: the end gate's POST_I count expectation read from this file; '-' mode means any invocation token
+path	sha256	expected_calls	mode
+testing/d003/stage_s4r9/rejudge_e2e_r9m3c.py	fc5a7fc7fde32e88853abb13da17ec6388a1fac9c650f6278540916bd7c471af	1	formal
+testing/d003/stage_s4r9/reverify_sums_r9m3c.py	9ffd790aef4b9c987b93f7a4a4143e05eebabeed026362dca85d862270c41fb8	1	-
+testing/d003/stage_s4r9/readiness_r9m3c.py	d9b1a73469e055c09585084e607c6aec021d0e48acbddd7c512049b638e552ed	1	-
+testing/d003/stage_s4r9/red_ledger_final_r9m3c.py	98e1bbe548e4ab1525ea98b628e268ed616bdef191f87b966be9853145ac5455	1	-
+testing/d003/stage_s4r9/closeout_report_state_r9m3c.py	e4782be45a7c7ec9a17cfa0886123fc76c2ef63974fe941e17fce284597c221a	1	-
+testing/d003/stage_s4r9/report_check_r9m3c.py	ababe945133e082364d502213b6b0b335959c32710823a010cd0d5e675ce5311	1	-
+testing/d003/stage_s4r9/copy_registries_r9m3c.py	bfdbc5000a42605c7ac3bc3ede4f01be5c6d2d89995d3659b76c6dbcb1825a7e	1	-
+testing/d003/stage_s4r9/events_r9m3c.py	1a6df9b74dcc798d83eab5b6f5656abee546717cc3dfdef514bd13d2823fe22d	1	-
+testing/d003/stage_s4r9/sha_sums_r9m3c.py	fc9428cf5a6b14613d663414cf47afb13ebdd0b692be2b50375723f2260e34aa	1	-
+testing/d003/stage_s4r9/gate_r9m3c.sh	5af8eee94d58d926bc9bb1c8172d8173a808a7ebb18d61a379380b390911e198	1	end
+testing/d003/stage_s4r9/gate_check_r9m3c.py	4c2f5a8d4789011edbdd1d1e034133ec26de22a50fae91e34dd88d099b1be853	0	-
+testing/d003/stage_s4r9/posctrl_rejudge_r9m3c.py	994f9b1cdda59659eb377999f6a4ba5097cb439d2c85fa315ccb9b9263b1e415	0	-
+testing/d003/stage_s4r9/posctrl_report_check_r9m3c.py	a26c6b83493e592affb34b7ff359d95427cf549587e99d13b66d0890e284570b	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/PREREG_E2E_R9M3B.tsv	9e3895bb05f3b454a08b65824ba6740718ae4ae4af77b1515121a4d49b9b31da	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/CALIB_E2E_R9M3B.tsv	f550f99341089c1820b4ea1ec7b5bf80250a34e3f6467421b42bb26116243c77	0	-
