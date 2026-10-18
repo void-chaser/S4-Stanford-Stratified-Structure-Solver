@@ -1,0 +1,10 @@
+# TREES_R9M3A.tsv -- identity check of the two exported trees (S-C step 1)
+check	result	detail
+F4_GITLINKS_EXCLUDED	1	Cgeom
+F4_VS_HEAD	path_set_equal=True missing=0 extra=0	S4_blobs_ok=True bad=0
+F4_FILE_COUNT	3216	3216
+F4_MISSING_LIST	0	none
+B_VS_37a82e8_S4	S4_blobs_ok=True bad=0	S4_files_in_tree=70 expected=70
+B_S4_EXTRA_FILES	0	none
+F4_S4_MANIFEST_SHA256	f18bd3f293608ab6fe54b6159bd75f98cdda144af0314cb1fbb58a07faa380e6	files=70
+B_S4_MANIFEST_SHA256	4792228a522be624c13c270da09856d63a7c2342bc682426e731c3eb1d7d3ea3	files=70

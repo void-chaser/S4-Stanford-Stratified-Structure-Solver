@@ -1,0 +1,13 @@
+# REPORT_CHECK_R9M3A.txt -- report check (forbidden words, sections, numeric cross-checks)
+PASS	FORBIDDEN_WORDS_NEGATION_AWARE	none
+PASS	REQUIRED_SECTIONS	all present
+PASS	NUM_RULINGS_MAX_U	recomputed=U333 present_in_report=True
+PASS	NUM_ERRATA_LAST_ID	recomputed=E9-45 present_in_report=True
+PASS	NUM_ERRATA_COUNT	recomputed=45 present_in_report=True
+FAIL	NUM_STATE_BYTES	recomputed=5191 present_in_report=False
+PASS	NUM_GATE_START_FAILS	recomputed=0 present_in_report=True
+PASS	NUM_PREREG_E2E_POINTS	recomputed=18 present_in_report=True
+PASS	NUM_AUDIT_ITEMS_SHU_SHI	recomputed=7 present_in_report=True
+PASS	NUM_REGISTRY_ITEMS	recomputed=15 present_in_report=True
+PASS	STATE_BYTES_LE_8192	bytes=5191
+FAILS=1

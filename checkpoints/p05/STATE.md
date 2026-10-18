@@ -30,7 +30,7 @@
 | S4R9 M1/M1R2 | 参考结果（U312/U318），不作为 M1 有效结果 | `P05_S4R9_M1_REPORT.md` / `M1R2` |
 | S4R9 M1R3 | 物理事实有效；651 点两遍全 MATCH；F3/F4 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R3_REPORT.md` |
 | S4R9 M1R4 | r9m1r4 复核结果经 U328 采纳；流程缺陷见 E9-35.. | `P05_S4R9_M1R4_REPORT.md` |
-| S4R9 M3a | J-1..J-6 属实（E9-35..E9-44，U328–U333）；make test 导出树回归；E2E 装置+预注册 18 点（不运行） | `P05_S4R9_M3a_REPORT.md` |
+| S4R9 M3a | J-1..J-6 属实（E9-35..E9-44、E9-45，U328–U333）；make test 四遍 rc=0、175 单元、**NO_NEW_FAILURE**；E2E 装置+预注册 18 点（不运行、冒烟 1 次） | `P05_S4R9_M3a_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接）
 
@@ -53,7 +53,7 @@
 | r8m2c/d SOLN 18/28 点 | U276-U282 落实，R9 F4 18 点全 MATCH | 已闭合 | `M2_CONSOLIDATED_F4_R9.tsv` |
 | ClosedForm / LinearSolve 族 E2E 可达性 | NOT_REACHABLE_VIA_API（M3a 调研结论） | M3b 复核 | `E2E_API_SURVEY_R9M3A.md` |
 
-> 说明：本轮完成 R9 M3a（勘误收口 + make test 回归 + E2E 装置与预注册），不宣布阶段完成；预注册与不可达点族的处理等待用户审核后进入 M3b。
+> 说明：本轮完成 R9 M3a（勘误收口 + make test 回归 NO_NEW_FAILURE/175 单元 + E2E 装置与预注册 18 点，未运行 E2E 点），不宣布阶段完成；预注册、不可达点族与 end 门禁 FAIL 项的处置等待用户审核后进入 M3b。
 
 ## 4. 证据位置
 

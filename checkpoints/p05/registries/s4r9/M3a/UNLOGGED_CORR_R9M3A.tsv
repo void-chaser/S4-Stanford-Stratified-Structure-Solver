@@ -1,0 +1,5 @@
+# UNLOGGED_CORR_R9M3A.tsv -- corrected attribution of the two lines rewritten between 786b150 and 2f86aa1 (J-4 / U331)
+# the committed file is not modified in this round; this table is the correction record
+line_no	file_path	mtime_786b150	mtime_2f86aa1	m1r3_log_write_cmds	m1r4_log_write_cmds	reassigned_owner	correction
+6	checkpoints/p05/registries/RULINGS.tsv	2026-10-18T03:44:43.043315+00:00	2026-10-18T05:23:53.447869+00:00	0	1	r9m1r4 (recorded in m1r4 safe_run.log)	该行 mtime 由 r9m1r4 的 append 写入产生（m1r4 日志有记录），不是 r9m1r3 的未记录写入；应归 r9m1r4
+7	checkpoints/p05/registries/s4r9/ERRATA_9.txt	2026-10-18T03:44:43.185690+00:00	2026-10-18T05:23:53.585629+00:00	0	1	r9m1r4 (recorded in m1r4 safe_run.log)	该行 mtime 由 r9m1r4 的 append 写入产生（m1r4 日志有记录），不是 r9m1r3 的未记录写入；应归 r9m1r4

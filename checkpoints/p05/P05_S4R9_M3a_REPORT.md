@@ -141,4 +141,50 @@
 
 ### 附录 A（收尾时写入正式 make test 数字）
 
-（正式四遍在记录提交 (i) 之后由冻结脚本执行；结果在本附录给出。）
+正式四遍（记录提交 (i) 之后，冻结脚本 `run_maketest_r9m3a.py`）：
+
+| 遍 | 树 | make rc | 单元数 |
+|---|---|---|---|
+| p1 | B | 0 | 175 |
+| p1 | F4 | 0 | 175 |
+| p2 | B | 0 | 175 |
+| p2 | F4 | 0 | 175 |
+
+- 判定（`MAKETEST_VERDICT_R9M3A.tsv`）：**NO_NEW_FAILURE**；B 与 F4 的失败集合都为空（none），F4 两遍之间 0 处不一致（flaky=none），两树单元集合相同（suite_diff=none）；逐单元 ×4 遍见 `MAKETEST_UNITS_R9M3A.tsv`（175 单元）。
+- 阳性对照（冻结期正式调用 1 次）：`POSCTRL_MAKETEST_R9M3A.txt`，NEW_FAILURE 与 FLAKY 两个合成用例都命中（OVERALL PASS）。
+- registries 交付物：`registries/s4r9/M3a/SHA256SUMS.txt` 共 17 项（加 `SHA256SUMS.txt` 自身，对应 §10.1 的 18 项）。
+- 冻结期异常（照实记录，不修不重跑）：`run_maketest_r9m3a.py` 第一次调用在第四遍 F4 p2 写盘过程被会话执行时限中断（会话侧 120 s 死线），中断现场已原样复制到 `maketest_interrupted/`；随后对同一冻结脚本作了**第二次**（也是最后一次）调用，四遍全部 rc=0。因此 end 门禁的 `POST_I_CALL_COUNT_RUN_MAKETEST_EQ_1` 按事实计得 2 并判 FAIL，列入需用户裁决。
+- start 门禁复核（记录提交 (i) 之前，`GATE_R9M3A_start_RECHECK`）：33 PASS / 10 FAIL。10 条 FAIL 全部是本轮合法改动造成的“轮次起点不变量”不再成立（STATE 字节数与 sha、RULINGS 字节数/sha/最大 U 号、ERRATA_9 字节数/sha/最后一条 E 号、M1R4 清单 sha 等），不是新缺陷；该项设计缺陷（复核无法在改动后通过）登记在需用户裁决。
+### 附录 B（end 门禁之后追加；只追加，不改正文）
+
+end 门禁（`GATE_R9M3A_end.txt`，冻结期单次调用）结果：53 PASS / 9 FAIL，FAILS=9。逐条分类如下（按 §1-6 不修脚本、不重跑，照实记录）：
+
+| # | 断言 | 事实 | 分类 |
+|---|---|---|---|
+| 1 | `POST_I_CALL_COUNT_RUN_MAKETEST_EQ_1` actual=2 | 第四遍被会话 120 s 死线中断后对同一冻结脚本作了第二次（最后一次）调用 | **真实偏差**，见附录 A |
+| 2 | `POST_I_NO_TESTING_D003_WRITES` actual=1（第 117 行） | 收尾用的 `closeout_report_state_r9m3a.py` 在 (i) 之后才写入 `testing/d003/stage_s4r9/` | **真实偏差**（应在本轮 (i) 之前写好收尾脚本） |
+| 3 | `UNLOGGED_SELF_ZERO` actual=2 | `registries/s4r9/M3a/SHA256SUMS.txt`（由 `copy_registries_r9m3a.py` 内部生成，命令里没有该文件名）与 `e2e_lua_r9m3a.lua`（(i) 之前的裸写入，见 E9-45） | 真实偏差，与 E9-45 同源 |
+| 4 | `POST_I_CALL_COUNT_JUDGE_MAKETEST_POSCTRL_EQ_1` actual=0 | 门禁常量仍写 `judge_maketest_r9m3a.py`，实际冻结文件是 `_v3` | **门禁代码缺陷**（版本号未同步） |
+| 5 | `POST_I_CALL_COUNT_JUDGE_MAKETEST_FORMAL_EQ_1` actual=0 | 同上 | 门禁代码缺陷 |
+| 6 | `POST_I_CALL_COUNT_GATE_EQ_1` actual=0 | 门禁常量仍写 `gate_r9m3a.sh`，实际是 `gate_r9m3a_v3.sh` | 门禁代码缺陷 |
+| 7 | `GIT_STATUS_WITHIN_ROUND_ALLOW_LIST` / `GIT_TRACKED_NO_MODIFICATION` | 这两项属于 start 模式语义，end 模式下报告与 STATE 本来就应被修改 | 门禁代码缺陷（模式范围放错） |
+| 8 | `REGISTRIES_M3A_SUMS_ALL_OK` actual=no numbered deliverables parsed | 报告 §10.1 的条目带反引号，门禁解析正则不接受反引号；实际清单 17 项与报告 18 项（含 `SHA256SUMS.txt`）一致 | 门禁代码缺陷（解析口径） |
+
+另：冻结期 `report_check_r9m3a.py` 单次调用结果为 10 PASS / 1 FAIL（`NUM_STATE_BYTES`：报告在 STATE 最终更新前写定，报告写 5062、STATE 实际 5191）。按 §1-6 不重跑；STATE 的最终字节数为 5191。
+
+start 门禁复核（(i) 之前）33 PASS / 10 FAIL，10 条全部是“轮次起点不变量”在本轮合法改动后不再成立（STATE 字节数/sha、RULINGS 字节数/sha/最大 U、ERRATA_9 字节数/sha/最后 E、M1R4 清单 sha），属复核设计缺陷，不是新缺陷。
+
+上述真实偏差（第 1–3 条）与两处检查器缺陷（end 门禁 4 条、start 复核 1 组）均在报告 §10 的裁决项之外单列，等待用户裁决。
+
+### 附录 C（收尾提交前的 git 快照）
+
+git log -1（记录提交 (i)）：`dea55abd23a8e857d0c1c0047dc9ee07366dc495 P05-S4 R9 M3a (i): freeze brief, rulings U-328..333, errata E9-35..E9-45, prereg tables, E2E harnesses and shakedown tables`
+
+git status --short（报告落盘后、收尾提交前）：
+
+```
+ M checkpoints/p05/P05_S4R9_M3a_REPORT.md
+ M checkpoints/p05/STATE.md
+?? checkpoints/p05/registries/s4r9/M3a/
+?? testing/d003/stage_s4r9/closeout_report_state_r9m3a.py
+```

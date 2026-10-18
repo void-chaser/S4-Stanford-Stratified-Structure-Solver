@@ -1,0 +1,5 @@
+# POSCTRL_MAKETEST_R9M3A.txt -- positive control of the make test parser/judge (S-C step 4)
+# seed log: checkpoints/p05/evidence/p05-s4r9/m3a/shakedown/1/F4_maketest.log (the shakedown F4 run; used only as a syntactically valid log body)
+CASE_A_F4_ONE_EXTRA_FAIL: PASS (expected=NEW_FAILURE actual=NEW_FAILURE new_failures=['test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing'] flaky=[('F4', 'test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing', 'FAIL', 'ok')])
+CASE_B_F4_P1_P2_DIFFER: PASS (expected=FLAKY actual=FLAKY new_failures=[] flaky=[('F4', 'test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing', 'FAIL', 'ok')])
+OVERALL_POSITIVE_CONTROL: PASS (2/2)

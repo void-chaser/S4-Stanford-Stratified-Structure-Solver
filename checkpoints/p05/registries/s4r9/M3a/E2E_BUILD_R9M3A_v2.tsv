@@ -1,0 +1,17 @@
+# E2E_BUILD_R9M3A_v2.tsv -- v2 of the E2E build table (v1 used nm -C, which demangles and hid two wrappers)
+check	value	detail
+PYEXT_PATH	checkpoints/p05/evidence/p05-s4r9/m3a/trees/E2E_F4/S4.cpython-314-x86_64-linux-gnu.so	
+PYEXT_SHA256	eae23933e6604d4ae9c67e94d5f118d9db4ff639cb4536a1bd582437cb584a47	
+LUA_FRONTEND_PATH	checkpoints/p05/evidence/p05-s4r9/m3a/trees/E2E_F4/build/S4_e2e	
+LUA_FRONTEND_SHA256	20d43f997f2a1b5b47dcc6dd5d28c122df7ff8a980e79cc8b90ae27e50cc8fd6	
+INJECTOR_OBJ_PATH	checkpoints/p05/evidence/p05-s4r9/m3a/trees/E2E_F4/build/inject_r9m3a.o	
+INJECTOR_OBJ_SHA256	636cb15e7021982da40b950266c60d58acd6316ef06774f0ccee2c9043f476a3	
+LIB_S4_A_PATH	checkpoints/p05/evidence/p05-s4r9/m3a/trees/E2E_F4/build/libS4.a	
+LIB_S4_A_SHA256	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	
+PYEXT_NM_WRAP_DEFINED	4/4	__wrap_malloc,__wrap__Z13fft_plan_execP12tag_fft_plan,__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i,__wrap__Z9S4_mallocm
+PYEXT_DYNAMIC_WRAP_DEFINED	4/4	dynamic symbol table
+PYEXT_UNRESOLVED_REAL_FFT	0	raw mangled symbols still unresolved (expected 0 when wrapped)
+LUA_FRONTEND_NM_WRAP_DEFINED	4/4	__wrap_malloc,__wrap__Z13fft_plan_execP12tag_fft_plan,__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i,__wrap__Z9S4_mallocm
+LUA_FRONTEND_DYNAMIC_WRAP_DEFINED	0/4	dynamic symbol table
+LUA_FRONTEND_UNRESOLVED_REAL_FFT	0	raw mangled symbols still unresolved (expected 0 when wrapped)
+BUILD_LOG	checkpoints/p05/evidence/p05-s4r9/m3a/e2e_build/build.log	full compiler/linker output

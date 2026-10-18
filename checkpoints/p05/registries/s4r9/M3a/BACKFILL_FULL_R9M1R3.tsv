@@ -1,0 +1,16 @@
+# BACKFILL_FULL_R9M1R3.tsv -- post-(i) call counts for all 14 frozen r9m1r3 scripts (window >= 2026-10-18T04:28:39Z, python3/sh token match)
+script	expected	actual	physical_lines	conclusion	errata_id	note
+testing/d003/stage_s4r9/posctrl_r9m1r3_v2.py	1	1	148	PASS	E9-36	
+testing/d003/stage_s4r9/run_smoke_r9m1r3_v3.py	1	1	149	PASS	E9-36	
+testing/d003/stage_s4r9/run_formal_r9m1r3_v2.py	1	1	150	PASS	E9-36	
+testing/d003/stage_s4r9/verdict_r9m1r3.py	1	1	151	PASS	E9-36	
+testing/d003/stage_s4r9/compare_f3_f4_r9m1r3.py	1	1	152	PASS	E9-36	
+testing/d003/stage_s4r9/cmp_vs_r9m1r2_r9m1r3.py	1	1	154	PASS	E9-36	
+testing/d003/stage_s4r9/summarize_m1_r9m1r3.py	1	1	153	PASS	E9-36	
+testing/d003/stage_s4r9/copy_registries_r9m1r3.py	1	1	159	PASS	E9-36	
+testing/d003/stage_s4r9/events_r9m1r3.py	1	2	158,160	FAIL	E9-36	
+testing/d003/stage_s4r9/sha_sums_r9m1r3.py	1	1	162	PASS	E9-36	
+testing/d003/stage_s4r9/report_check_r9m1r3.py	1	3	155,156,157	FAIL	E9-36	
+testing/d003/stage_s4r9/finalize_r9m1r3.py	1	1	164	PASS	E9-36	
+testing/d003/stage_s4r9/gate_r9m1r3_v5.sh	1	1	163	PASS	E9-36	
+testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py	1	0	163 (via gate .sh)	PASS_VIA_PARENT	E9-36	本脚本无独立 cmd= 行；由 gate_r9m1r3_v5.sh 内部调用，gate 自身调用行=163

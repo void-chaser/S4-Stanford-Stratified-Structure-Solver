@@ -1,0 +1,21 @@
+# PREREG_MAKETEST_R9M3A.tsv -- pre-registration of the make test main-suite regression (S-C step 2, before any formal run)
+item	value
+status	INFLUENCED
+influence_basis	参考历史 S3R5 收口记录中 make test 的既有用法，并采用本轮 U333 的判据；非 BLIND
+trees_F4	checkpoints/p05/evidence/p05-s4r9/m3a/trees/F4 (git archive HEAD; S4 tree 589e15eb11fcb04e031b524f25a443e7921946cf)
+trees_B	checkpoints/p05/evidence/p05-s4r9/m3a/trees/B (git archive HEAD minus S4, then git archive 37a82e8 S4; S4 tree 1d738e64f9864a475fdb3de34cd3601605df2c64)
+run_order	B pass1, F4 pass1, B pass2, F4 pass2; each pass is a full 'make -C <tree> test PYTHON=python3' including its own 'rm -rf build' rebuild
+run_env	PYTHONDONTWRITEBYTECODE=1; TMPDIR inside the round evidence directory
+unit_rule_unittest	unittest -v lines of the form '<test> (<module>.<Class>) ... <status>' with status in ok|FAIL|ERROR|skipped|expected failure|unexpected success; unit id = <module>.<Class>.<test>
+unit_rule_unittest_fail	status in FAIL, ERROR, unexpected success
+unit_rule_testfast	one unit 'selftest_analytic' (stage banner '=== analytic reference self-check ==='); status PASS iff the stage exit code is 0, else FAIL
+unit_rule_testlua	three units: 'lua_regression' (testing/runtests.sh), 'lua_regression_negative' (testing/s4test/test_lua_regression_negative.sh), 'lua_api_negative' (testing/s4test/test_lua_api_negative.py); each status PASS iff its stage exit code is 0, else FAIL; per-case lines ('Running <file>', PASS/FAIL lines) are kept as sub-facts, not as units
+unit_rule_stage_exit	the make target exit codes are recorded but are not units
+criteria_no_new_failure	failing set of F4 (union over its two passes) is a subset of the failing set of B (union over its two passes) -> NO_NEW_FAILURE
+criteria_flaky	F4 pass1 and pass2 differ in any unit status -> FLAKY
+criteria_suite_diff	the unit id sets of B and F4 differ -> SUITE_DIFF (needs user decision)
+verdict_precedence	SUITE_DIFF > NEW_FAILURE > FLAKY > NO_NEW_FAILURE
+posctrl_case_new_failure	artificial logs in which F4 has exactly one more FAIL than B -> expected verdict NEW_FAILURE
+posctrl_case_flaky	artificial logs in which F4 pass1 and pass2 differ in exactly one unit -> expected verdict FLAKY
+shakedown_note	试跑期对 F4 跑过一次 make test，仅用于调好解析脚本；该次结果不计正式结果，已在报告中列出
+notes	the project scripts write temp files inside the exported tree only, except testing/s4test/test_lua_regression_negative.sh which creates and removes a directory under /tmp via mktemp -d

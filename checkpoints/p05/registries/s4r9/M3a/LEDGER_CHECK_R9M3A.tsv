@@ -1,0 +1,5 @@
+# LEDGER_CHECK_R9M3A.tsv -- ledger vs STATE open-item table (read only); ledger=/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/registries/s4r9/M2/RED_POINTS_LEDGER_APPEND_R9.tsv
+red_point_id	ledger_status	state_presence	consistency	owner_round
+RP-R8-M2c-1	修后验证事实：6 点实测 REPORTED_FAILURE 判定 MATCH；是否关闭待用户裁决	PRESENT	CONSISTENT	
+RP-R8-M2c-1b	修后验证事实：12 点实测 REPORTED_FAILURE 判定 MATCH，未再发生重试崩溃；是否关闭待用户裁决	ABSENT	STATE_MISSING_ENTRY	
+K-1	CLOSED (维持 U274 关闭)	PRESENT	CONSISTENT	

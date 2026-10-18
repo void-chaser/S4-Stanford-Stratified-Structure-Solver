@@ -1,0 +1,7 @@
+# POSCTRL_R9M3A.txt -- positive control for the recertification logic on tampered on-disk copies (J-1, U329)
+# every case has an untouched baseline copy (expect 0 differences) and a tampered copy (expect exactly 1)
+CASE_1_VERDICT_ONE_ROW_FLIPPED: PASS (expected baseline=0 tampered=1, actual baseline_diffs=0 tampered_diffs=1)
+CASE_2_EQUIV_G6_I3_CHANGED: PASS (expected baseline=0 tampered=1, actual baseline_diffs=0 tampered_diffs=1 changed=True)
+CASE_3_FORMAL_FACTS_RC1_CHANGED: PASS (expected baseline=0 tampered=1, actual baseline_mismatch=0 tampered_mismatch=1 changed=True)
+CASE_4_EVENTS_ONE_ROW_DELETED: PASS (expected baseline=0 tampered=1, actual baseline_diffs=0 tampered_diffs=1 rows=143)
+OVERALL_POSITIVE_CONTROL: PASS (4/4 cases)

@@ -1,0 +1,10 @@
+# MAKETEST_VERDICT_R9M3A.tsv -- make test verdict for R9 M3a (S-C step 3)
+item	value
+verdict	NO_NEW_FAILURE
+unit_count	175
+B_failing	none
+F4_failing	none
+new_failures	none
+flaky	none
+suite_diff	none
+criteria	F4 failing set subset of B failing set AND no F4 p1/p2 difference AND identical unit sets
