@@ -1,0 +1,7 @@
+# FROZEN_SCRIPTS_R9M3E.tsv -- frozen scripts after the shakedown chain and before the record commit (i).
+# The end gate reads the POST_I call expectations from this file.
+path	sha256	expected_calls	mode
+testing/d003/stage_s4r9/gate_check_r9m3e.py	c379ff21b12ef37f4e132c63925447f880aff5fc75557f7a269db48f6ad288a7	0	-
+testing/d003/stage_s4r9/gate_r9m3e.sh	949fc85b207f2f84e440212c68caf74291474953d475b044a6a55b9b2a0f241c	1	end
+testing/d003/stage_s4r9/m3e_chain_r9m3e.py	e2116e38c63c3c67b80cbb7ba70f10ae4e5614cf781cc85f2547956a2a560257	6	-
+testing/d003/stage_s4r9/m3e_prep_r9m3e.py	57c1a625e68acb3d599dce21793fa8851a53716cfe6fff95e9a2cbcb31790260	0	-

@@ -1,0 +1,16 @@
+# ERRATA_RECHECK_R9M3E.txt -- facts recomputed for E9-74..E9-77
+FACT	E9_74_A	value=39
+FACT	E9_74_M	value=3
+FACT	E9_74_D	value=0
+FACT	E9_74_M_FILES	value=checkpoints/p05/STATE.md;checkpoints/p05/registries/RULINGS.tsv;checkpoints/p05/registries/s4r9/ERRATA_9.txt
+FACT	E9_74_M_EXPECT_MATCH	value=True
+FACT	E9_74_RULINGS_PURE_APPEND	value=True
+FACT	E9_74_ERRATA_PURE_APPEND	value=True
+FACT	E9_75_ROOT_REGISTRIES_ABSENT	value=True
+FACT	E9_75_M3D_SUMS	value=all 11 OK count=11
+FACT	E9_76_U5_PRESENT	value=True
+FACT	E9_76_U5_TEXT	value=planner corrections E6-3 (partial_modes=1 is not defect evidence) and E6-4 (no-TWICE route is out of scope) cite U5; the text of U5 itself is not stored, only t
+FACT	E9_76_E6_4_PRESENT	value=True
+FACT	E9_76_E6_4_TEXT	value=== E6-4 [PLANNER CORRECTION U5b] Without TWICE the 12th plan call comes from GetFieldOnGrid; RP-R5-2 is out of scope ==
+FACT	E9_76_S5_M3D_06_SOURCE_RULING	value=OUT_OF_SCOPE_D003
+FAILS=0

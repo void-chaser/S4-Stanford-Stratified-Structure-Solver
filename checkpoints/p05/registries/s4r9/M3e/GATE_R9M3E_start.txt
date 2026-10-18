@@ -1,0 +1,64 @@
+# P05-S4 R9 M3e start gate GATE_R9M3E_start.txt
+RECORD	HEAD	value=37fbc0f2b9c48010b81ad220293fe6f3af5c02bd
+RECORD	M3D_REG_ITEMS	value=11
+RECORD	M3D_EV_ITEMS	value=39
+RECORD	HIST_s3r5_ITEMS	value=14
+RECORD	HIST_M0_ITEMS	value=25
+RECORD	HIST_M1_ITEMS	value=28
+RECORD	HIST_M1R2_ITEMS	value=33
+RECORD	HIST_M1R3_ITEMS	value=26
+RECORD	HIST_M1R4_ITEMS	value=11
+RECORD	HIST_M2_ITEMS	value=14
+RECORD	HIST_M2b_ITEMS	value=13
+RECORD	HIST_M2c_ITEMS	value=11
+RECORD	HIST_M3a_ITEMS	value=17
+RECORD	HIST_M3b_ITEMS	value=18
+RECORD	HIST_M3c_ITEMS	value=13
+RECORD	HIST_M3d_ITEMS	value=11
+RECORD	TMP_COUNT	value=0
+RECORD	TMP_SHA256	value=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+RECORD	START_TIME_UTC	value=2026-10-18T08:37:27Z
+RECORD	RULINGS_BYTES	value=145103
+RECORD	RULINGS_SHA256	value=21ab76d29e8cb11392687c92bdd5ba67f18e1cace152631ec89dbbfe5d13c405
+RECORD	ERRATA_9_BYTES	value=62654
+RECORD	ERRATA_9_SHA256	value=d71543bbedeec8a00b2aa2fa3ad0197b787f8d6a83a825cdb811d3a18cf8cd87
+RECORD	STATE_BYTES	value=6636
+RECORD	STATE_SHA256	value=6eeb7559b32b12d07a3e26251787b2c322e1a6bc12f5c5a92427a26c37d01af3
+RECORD	RULINGS_MAX_U_START	value=U358
+RECORD	ERRATA_9_COUNT	value=73
+PASS	BRANCH_IS_EXPECTED	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_IS_M3D_BASE	expected=37fbc0f2b9c48010b81ad220293fe6f3af5c02bd	actual=37fbc0f2b9c48010b81ad220293fe6f3af5c02bd
+PASS	HEAD_S4_TREE_EQ_F4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	F3_8d8202a_S4_TREE	expected=6cff923a02baf19e01966b2339755cbf3a5deeef	actual=6cff923a02baf19e01966b2339755cbf3a5deeef
+PASS	F2_a07b5ac_S4_TREE	expected=e124925f5b242486a913b813fa181664f665b048	actual=e124925f5b242486a913b813fa181664f665b048
+PASS	B_37a82e8_S4_TREE	expected=1d738e64f9864a475fdb3de34cd3601605df2c64	actual=1d738e64f9864a475fdb3de34cd3601605df2c64
+PASS	JUDGE_SHA256	expected=d2d04145...09eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	GIT_STATUS_EMPTY	expected=no changes	actual=0 lines
+PASS	M3D_REGISTRY_SUMS_ALL_OK	expected=all 11 OK	actual=all 11 OK count=11 expected=11
+PASS	M3D_EVIDENCE_SUMS_ALL_OK	expected=all 39 OK	actual=all 39 OK count=39 expected=39
+PASS	HIST_s3r5_ALL_OK	expected=all 14 OK	actual=all 14 OK count=14 expected=14
+PASS	HIST_M0_ALL_OK	expected=all 25 OK	actual=all 25 OK count=25 expected=25
+PASS	HIST_M1_ALL_OK	expected=all 28 OK	actual=all 28 OK count=28 expected=28
+PASS	HIST_M1R2_ALL_OK	expected=all 33 OK	actual=all 33 OK count=33 expected=33
+PASS	HIST_M1R3_ALL_OK	expected=all 26 OK	actual=all 26 OK count=26 expected=26
+PASS	HIST_M1R4_ALL_OK	expected=all 11 OK	actual=all 11 OK count=11 expected=11
+PASS	HIST_M2_ALL_OK	expected=all 14 OK	actual=all 14 OK count=14 expected=14
+PASS	HIST_M2b_ALL_OK	expected=all 13 OK	actual=all 13 OK count=13 expected=13
+PASS	HIST_M2c_ALL_OK	expected=all 11 OK	actual=all 11 OK count=11 expected=11
+PASS	HIST_M3a_ALL_OK	expected=all 17 OK	actual=all 17 OK count=17 expected=17
+PASS	HIST_M3b_ALL_OK	expected=all 18 OK	actual=all 18 OK count=18 expected=18
+PASS	HIST_M3c_ALL_OK	expected=all 13 OK	actual=all 13 OK count=13 expected=13
+PASS	HIST_M3d_ALL_OK	expected=all 11 OK	actual=all 11 OK count=11 expected=11
+PASS	ROOT_REGISTRIES_ABSENT	expected=absent	actual=absent
+PASS	BRIEF_ABSENT_BEFORE_SAVE	expected=absent	actual=absent
+PASS	RULINGS_START_BYTES	expected=145103	actual=145103
+PASS	RULINGS_START_SHA_PREFIX	expected=21ab76d2...	actual=21ab76d29e8c
+PASS	RULINGS_START_MAX_U358	expected=U358	actual=U358
+PASS	RULINGS_LINES_5_FIELDS	expected=5 fields	actual=all lines 5 fields
+PASS	ERRATA_9_START_BYTES	expected=62654	actual=62654
+PASS	ERRATA_9_START_SHA_PREFIX	expected=d71543bb...	actual=d71543bbedee
+PASS	ERRATA_9_LAST_E9_73_COUNT73	expected=E9-73 count=73	actual=E9-73 count=73
+PASS	STATE_START_BYTES	expected=6636	actual=6636
+PASS	STATE_START_SHA_PREFIX	expected=6eeb7559...	actual=6eeb7559b32b
+COUNTS	pass=34	fail=0	skip=0	total=34
+FAILS=0
