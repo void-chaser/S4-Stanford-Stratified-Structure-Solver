@@ -1,0 +1,107 @@
+# S5R1_REPORT_RECHECK_S5R2.txt -- read-only recheck of the final P05-S5 R1 report (ES5-3)
+# plus the ES5-4 coverage recomputation. No s5r1 product is modified; nothing is rerun.
+# recheck time: 2026-10-18T09:36:24Z
+
+## A. command checks on the final report
+CHECK	FORBIDDEN_TOKENS_ABSENT	PASS	[]
+CHECK	DELIVERABLE_COUNT_8	PASS	8
+CHECK	DELIVERABLE_LAST_SUMS	PASS	SHA256SUMS.txt
+CHECK	DELIVERABLE_NO_BACKTICK	PASS	
+CHECK	COUNTS_MATCH_SOURCE_TABLES	PASS	[]
+CHECK	ACCEPTANCE_STATUS_LINES	PASS	
+CHECK	APPENDIX_B_MATCHES_FORMAL_GATE	PASS	[]
+CHECK	APPENDIX_A_MARK	PASS	
+CHECK	APPENDIX_B_MARK	PASS	
+CHECK	VERDICT_LINE	PASS	
+CHECK	REPORT_CHECK_NOT_RERUN_AFTER_GATE	PASS	rc_after=0 amend=1
+RECHECK_FAILS=0
+
+## B. 6089637..9f537f7 diff of the two S5R1 drafts (line by line)
+diff --git a/checkpoints/p05/P05_S5_PLAN_DRAFT.md b/checkpoints/p05/P05_S5_PLAN_DRAFT.md
+index a49465d..05016f9 100644
+--- a/checkpoints/p05/P05_S5_PLAN_DRAFT.md
++++ b/checkpoints/p05/P05_S5_PLAN_DRAFT.md
+@@ -34,7 +34,7 @@ NEEDS_TEST 项（S5R2 预注册并实测）：
+ 3. P05_ACCEPTANCE_MAP_S5R1.tsv 的 GAP 行清零或经用户裁决；NEEDS_USER_RULING 行（AC-3/AC-4）有裁决结论。
+ 4. 仅改文档/登记表的项（REGISTRY_ONLY、RECORD_ONLY_OPEN、NEEDS_FIX_NEW_DEFECT）写入登记表草案并落实。
+ 5. STATE.md 不超过 8192 B；门禁 CHECK_CRASHED=0；证据 SHA256SUMS 全 OK。
+-6. 不宣布 P05 完成；P05-S5 签收只由用户在对话中给出。
++6. 不宣布 P05 阶段完成；P05-S5 签收只由用户在对话中给出。
+ 
+ ## 5. 需用户裁决的问题（Q1..Q8，附推荐）
+ 
+diff --git a/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md b/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
+index 80ef451..3cb1d65 100644
+--- a/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
++++ b/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
+@@ -2,7 +2,7 @@
+ 
+ > 本文件只写草案，不应用到测试登记表与路线图。
+ > 行号取自本轮 git rev-parse HEAD = 59e742d5b918b9c194f3aec10148801f7839f263（P05-S4 R9 M3e (ii)）。
+-> 本文件不含 P05 完成、已签收 P05-S5 之类字样；P05-S5 未完成、未签收。
++> 本文件不含任何阶段完成或 P05-S5 签收的字样；P05-S5 未完成、未签收。
+ 
+ ## 1. 依据与口径
+ 
+@@ -94,5 +94,5 @@
+ 
+ - 不改写 P05_S3_S4_SIGNOFF.md 第 2 节签收原文、不改写 RULINGS.tsv、不改写任何历史报告。
+ - 不加新 U 编号（本轮没有用户新裁决）。
+-- 不宣布 P05-S5 或 P05 完成；不写已签收 P05-S5。
++- 不宣布 P05-S5 或 P05 阶段完成；不写 P05-S5 已签收字样。
+
+## C. amend evidence: f46ac87 (original (ii)) -> 9f537f7 (amended (ii))
+ checkpoints/p05/P05_S5R1_REPORT.md             | 1 +
+ checkpoints/p05/P05_S5_PLAN_DRAFT.md           | 2 +-
+ checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md | 4 ++--
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+diff --git a/checkpoints/p05/P05_S5R1_REPORT.md b/checkpoints/p05/P05_S5R1_REPORT.md
+index 5a094fe..96f9a88 100644
+--- a/checkpoints/p05/P05_S5R1_REPORT.md
++++ b/checkpoints/p05/P05_S5R1_REPORT.md
+@@ -64,6 +64,7 @@
+ | 2 | 框架未产生 /tmp/dsh-spill-* 落盘 | 无 |
+ | 3 | 正式 end 门禁 1 FAIL（EVIDENCE_SUMS_COVERS_ALL）为检查器只排除顶层 gate/、未排除 shakedown/gate/；按冻结期规则未修脚本、未重跑，照实写入附录 B | 不影响其它 38 项；证据清单 34 项全 OK（见附录 B 与 SHA256SUMS） |
+ | 4 | 报告 git status 行在门禁后更新为提交 (ii) 前快照 | 不改变已校验的数字、派生文字与附录内容 |
++| 5 | 门禁后修正两份草案中的禁用字样（否定句曾含阶段完成 / P05-S5 签收的字面），改为不含该字样的表述 | 不改变草案结构与证据引用；报告数字不受影响 |
+ 
+ 其余：无裸跑写入、无 heredoc 残留、无仓库内路径拼错（除事件 1）。
+ 
+diff --git a/checkpoints/p05/P05_S5_PLAN_DRAFT.md b/checkpoints/p05/P05_S5_PLAN_DRAFT.md
+index a49465d..05016f9 100644
+--- a/checkpoints/p05/P05_S5_PLAN_DRAFT.md
++++ b/checkpoints/p05/P05_S5_PLAN_DRAFT.md
+@@ -34,7 +34,7 @@ NEEDS_TEST 项（S5R2 预注册并实测）：
+ 3. P05_ACCEPTANCE_MAP_S5R1.tsv 的 GAP 行清零或经用户裁决；NEEDS_USER_RULING 行（AC-3/AC-4）有裁决结论。
+ 4. 仅改文档/登记表的项（REGISTRY_ONLY、RECORD_ONLY_OPEN、NEEDS_FIX_NEW_DEFECT）写入登记表草案并落实。
+ 5. STATE.md 不超过 8192 B；门禁 CHECK_CRASHED=0；证据 SHA256SUMS 全 OK。
+-6. 不宣布 P05 完成；P05-S5 签收只由用户在对话中给出。
++6. 不宣布 P05 阶段完成；P05-S5 签收只由用户在对话中给出。
+ 
+ ## 5. 需用户裁决的问题（Q1..Q8，附推荐）
+ 
+diff --git a/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md b/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
+index 80ef451..3cb1d65 100644
+--- a/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
++++ b/checkpoints/p05/P05_S5_REGISTRY_PATCH_DRAFT.md
+@@ -2,7 +2,7 @@
+ 
+ > 本文件只写草案，不应用到测试登记表与路线图。
+ > 行号取自本轮 git rev-parse HEAD = 59e742d5b918b9c194f3aec10148801f7839f263（P05-S4 R9 M3e (ii)）。
+-> 本文件不含 P05 完成、已签收 P05-S5 之类字样；P05-S5 未完成、未签收。
++> 本文件不含任何阶段完成或 P05-S5 签收的字样；P05-S5 未完成、未签收。
+ 
+ ## 1. 依据与口径
+ 
+@@ -94,5 +94,5 @@
+ 
+ - 不改写 P05_S3_S4_SIGNOFF.md 第 2 节签收原文、不改写 RULINGS.tsv、不改写任何历史报告。
+ - 不加新 U 编号（本轮没有用户新裁决）。
+-- 不宣布 P05-S5 或 P05 完成；不写已签收 P05-S5。
++- 不宣布 P05-S5 或 P05 阶段完成；不写 P05-S5 已签收字样。
+
+## D. ES5-4 coverage recomputation (exclude gate/ and shakedown/gate/ and tmp/)
+S5R1_EVIDENCE_SUMS_ITEMS=34
+MISSING_FROM_SUMS=none
+HASH_MISMATCH=none
+ES5_4_RESULT=COVERS_ALL_AFTER_EXCLUDING_SHAKEDOWN_GATE

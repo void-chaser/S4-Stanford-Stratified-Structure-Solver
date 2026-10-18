@@ -1,0 +1,66 @@
+# D017_S4MALLOC_INVENTORY_S5R2.tsv -- read-only inventory of every S4_malloc text occurrence
+# in git show 05097a7 S4/ (.c/.cpp/.h/.hpp). [源码] only; nothing was run for this table.
+# d003_scope IN = user scope decision (mode/cache installation acceptance path or FMM/FFT
+# failure propagation chain); OUT = D017 range (allocation points not in D003/P05).
+# COUNTS total_occurrences=59 call=52 in_scope=21 out_scope=38 out_scope_call=31 non_call=7
+# D017_SCOPE = OUT rows; out_scope_call=31 allocation sites (the D017 list), non_call=7
+file	line	function	kind	in_fmm_dir	d003_scope	d003_basis	null_check_present	consequence_on_fail
+S4/S4.cpp	52	UNKNOWN	COMMENT	NO	OUT	非分配点（注释/定义/声明）	NO	注释行，非分配点（[源码]）
+S4/S4.cpp	107	s4_report_alloc_count_value	DEF	NO	OUT	非分配点（注释/定义/声明）	NO	S4_malloc 定义（调试分配器），非调用点（[源码]）
+S4/S4.cpp	311	S4_Simulation_New	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查存在（[源码]）
+S4/S4.cpp	381	S4_Simulation_New	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查存在（[源码]）
+S4/S4.cpp	498	S4_Simulation_CopyPattern	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	525	S4_Simulation_CopyExcitationSafe	COMMENT	NO	OUT	非分配点（注释/定义/声明）	NO	注释行，非分配点（[源码]）
+S4/S4.cpp	527	S4_Simulation_CopyExcitationSafe	COMMENT	NO	OUT	非分配点（注释/定义/声明）	NO	注释行，非分配点（[源码]）
+S4/S4.cpp	621	S4_Simulation_Clone_impl	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查存在（[源码]）
+S4/S4.cpp	625	S4_Simulation_Clone_impl	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查存在（[源码]）
+S4/S4.cpp	1303	S4_Layer_SetRegionVertices	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	1642	Simulation_AddLayerPatternPolygon	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查；该函数后续 return 0（[源码]）
+S4/S4.cpp	1771	Simulation_InitSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	1931	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	1932	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查；该函数后续 return 1（[源码]）
+S4/S4.cpp	1933	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	1962	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查存在（[源码]）
+S4/S4.cpp	2015	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	2016	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	2043	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	2093	Simulation_ComputeLayerSolution	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	2323	Simulation_ComputeLayerModes	CALL	NO	IN	P05-S3R R2 / U29：ComputeLayerModes q 分配（mode/cache 安装路径）	YES	NULL 检查后按该函数错误路径返回 20（[源码]）
+S4/S4.cpp	2443	Simulation_ComputeLayerModes	CALL	NO	IN	P05-S3R R3 / U29：ComputeLayerModes rwork 分配	YES	NULL 检查后按该函数错误路径返回 20（[源码]）
+S4/S4.cpp	2468	Simulation_ComputeLayerModes	CALL	NO	IN	P05-S3R R4 / U29：ComputeLayerModes work 分配	YES	NULL 检查后按该函数错误路径返回 20（[源码]）
+S4/S4.cpp	2528	S4_Simulation_GetPowerFlux	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	2580	Simulation_GetPoyntingFluxByG	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	2684	Simulation_GetAmplitudes	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3341	Simulation_OutputLayerPatternRealization	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	3440	Simulation_GetField	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3535	Simulation_GetFieldPlane	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3602	Simulation_GetEpsilon	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	3667	Simulation_GetSMatrixDeterminant	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3718	Simulation_GetStressTensorIntegral	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3782	Simulation_GetLayerVolumeIntegral	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	3835	Simulation_GetLayerZIntegral	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	4029	Simulation_AddFieldToCache	CALL	NO	IN	P05-S3R D1 / U29：AddFieldToCache 分配（缓存安装路径）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4.cpp	4105	Simulation_GetSMatrix	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	4106	Simulation_GetSMatrix	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	4107	Simulation_GetSMatrix	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	NO	无 NULL 检查（[源码]）
+S4/S4.cpp	4355	S4_Simulation_GetFieldPlane	CALL	NO	OUT	用户范围决策：不在模式/缓存安装验收路径，也不在 FMM/FFT 失败传播链	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/S4_internal.h	67	UNKNOWN	DECL	NO	OUT	非分配点（注释/定义/声明）	NO	声明，非分配点（[源码]）
+S4/fmm/fmm_FFT.cpp	75	FMMGetEpsilon_FFT	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_FFT.cpp	83	FMMGetEpsilon_FFT	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisJones.cpp	108	FMMGetEpsilon_PolBasisJones	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisJones.cpp	155	FMMGetEpsilon_PolBasisJones	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisJones.cpp	170	FMMGetEpsilon_PolBasisJones	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisJones.cpp	345	FMMGetEpsilon_PolBasisJones	COMMENT	YES	OUT	非分配点（注释/定义/声明）	YES	注释行，非分配点（[源码]）
+S4/fmm/fmm_PolBasisJones.cpp	346	FMMGetEpsilon_PolBasisJones	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisNV.cpp	59	FMMGetEpsilon_PolBasisNV	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisNV.cpp	112	FMMGetEpsilon_PolBasisNV	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisNV.cpp	125	FMMGetEpsilon_PolBasisNV	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisNV.cpp	236	FMMGetEpsilon_PolBasisNV	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisVL.cpp	58	FMMGetEpsilon_PolBasisVL	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisVL.cpp	117	FMMGetEpsilon_PolBasisVL	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisVL.cpp	130	FMMGetEpsilon_PolBasisVL	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_PolBasisVL.cpp	243	FMMGetEpsilon_PolBasisVL	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_closed.cpp	40	FMMGetEpsilon_ClosedForm	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
+S4/fmm/fmm_experimental.cpp	40	FMMGetEpsilon_Experimental	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 20（[源码]）
+S4/fmm/fmm_kottke.cpp	77	FMMGetEpsilon_Kottke	COMMENT	YES	OUT	非分配点（注释/定义/声明）	YES	注释行，非分配点（[源码]）
+S4/fmm/fmm_kottke.cpp	87	FMMGetEpsilon_Kottke	CALL	YES	IN	D003 范围：FMM/FFT 失败传播链上的分配点（S3/S4 FMM 六文件候选；U38/U90/U95）	YES	NULL 检查后按该函数错误路径返回 1（[源码]）
