@@ -93,3 +93,13 @@ ES5-14
 - 证据：S5R3 报告附录 A（COUNTS pass=38 fail=40 total=78、FAILS=40、以 CHECK_CRASHED=0 为通过条件）；S5R3 报告附录 C。
 - 影响：冻结后发现可修的检查器缺陷，冻结期不能修，只能照实登记为下一轮收口。
 - 处理方式：U381。S5R4 试跑必须 FAILS=0 且 CHECK_CRASHED=0，使用 staging 证据根/checkpoints 根/POST_I 起点行完整演练；任何 FAIL 逐项归因，检查器缺陷在提交 (i) 之前修好并用同一脚本 sha 重跑。
+ES5-15
+- 事实：gate_check_s5r4.py:997 把 "STAGING_MODE"+TAB+"yes" 与记录格式 RECORD\tSTAGING_MODE\tvalue=yes 比较。试跑走的是第 992–994 行的“自身输出”分支，覆盖不到第 995–997 行。
+- 影响：S5R4 正式门禁 FAILS=1、CHECK_CRASHED=0、FINAL_STATUS=INCOMPLETE（失败项 SHAKEDOWN_USED_STAGING_ROOTS）；被检数据（试跑门禁输出 RECORD\tSTAGING_MODE\tvalue=yes、FAILS=0）正确，138 项 PASS 不受影响。
+- 证据：checkpoints/p05/evidence/p05-s5r4/gate/GATE_S5R4_end.txt（sha 20bb6ad0…，1 FAIL）；checkpoints/p05/evidence/p05-s5r4/shakedown/gate/GATE_S5R4_end.txt 第 4 行 RECORD\tSTAGING_MODE\tvalue=yes；P05_S5R4_REPORT.md 附录 C。
+- 处理方式：U386、U388。R5 不改、不重跑 gate_check_s5r4.py；新脚本 s5r5_recheck_staging.py 在 R4 冻结数据上同时用修正逻辑与 R4 原有逻辑重判该行（只读）；R5 门禁不得出现“是否试跑/输出路径是否为自身”的分支，试跑由门禁之外的 s5r5_shakedown_verify.py 核验。
+ES5-16
+- 事实：S5R4 的 STATE 在门禁之前写入了门禁结果（“正式 end 门禁 FAILS=0”与开放问题表“收口范围完成（无可做）”）属于门禁前预投影；就绪审计只核对 STATE 字节和 sha，没有核对内容是否属实，导致 GAP=0 失真（STATE 内容与门禁实际结果不符）。
+- 影响：STATE 与门禁后附录 C 的 FINAL_STATUS=INCOMPLETE 不一致；签收范围判断不能依据该 STATE 行。
+- 证据：checkpoints/p05/STATE.md（R4 版本，sha 1a962c77…）第 2 节 S5R4 行与第 3 节“S5 签收”行；P05_S5R4_REPORT.md 附录 C 事件 C2。
+- 处理方式：U387、U389、U390。R5 起门禁前写的 STATE/草稿/报告正文不得写任何门禁结果，只能写“见附录 C”；就绪审计必须用正则断言三处不含门禁结果字样，并核对 STATE 的 S5R4 行与 S5R4 附录 C 的 FINAL_STATUS=INCOMPLETE 一致。
