@@ -1,0 +1,36 @@
+# READINESS_P05_S3S4_R9M3D.tsv -- P05-S3/P05-S4 signoff-readiness audit (read-only; recomputed, U357)
+# counts are de-duplicated: one ledger id / one handoff item counts once; a header-repeat row is not a row
+group	item	evidence_registry_path	recomputed	ruling	status	note
+ROADMAP_P05	每个受影响的 prepare/execute 点有正负对照	registries/s4r9/M1R3/VERDICT_M1_F4_R9M1R3.tsv; registries/s4r9/M3b/E2E_VERDICT_R9M3B.tsv	M1R3 MATCH=626（其他=[('NOT_REACHED_AS_EXPECTED', 22), ('NOT_RUN_AS_EXPECTED', 3)]）; E2E 注入点=25 全部 E2E_OK、对照=17 CONTROL_OK	U314/U319/U320	MET	
+ROADMAP_P05	失败后模式/缓存不安装	registries/s4r9/M1R3/VERDICT_M1_F4_R9M1R3.tsv; P05_S3_4b_CLOSURE.md	S3-4b 已按 U29 带范围声明关闭（状态注记 FAILED_CALL_STATE）；M1R3 seam/CTRL 组 MATCH	U29	CLOSED_BY_RULING	
+ROADMAP_P05	Python/Lua 可见失败、恢复重试正确	registries/s4r9/M3b/E2E_VERDICT_R9M3B.tsv; m3c/REJUDGE_E2E_R9M3C.tsv	E2E_OK=25 CONTROL_OK=17 其他=[]；独立重判差异=0	U343/U345	MET	
+WUKEZUO	①范围内红点全部修复并完成修后回归	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv	红点唯一 id 数=26；范围内仍开放=0（台账数据行=26，表头式/重复行已去重）	U304/U350	MET	
+WUKEZUO	②开放项完成或经裁决转出	registries/RULINGS.tsv; STATE.md §3; m3d/S5_HANDOFF_R9M3D.tsv	STATE 开放项行见本表 STATE_OPEN 组；GAP=0；移交双向覆盖=OK（台账 TRANSFERRED_S5=6、移交唯一项=7）	-（事实项）	MET	
+WUKEZUO	③无待跑运行	m3d/AUDIT_R9M3C_R9M3D.tsv; m3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv; m3d/S5_HANDOFF_R9M3D.tsv	缺失的正式产物=0	-（事实项）	MET	
+WUKEZUO	④STATE/registries/报告一致	registries/s4r9/M3c/SHA256SUMS.txt; P05_S4R9_M3d_REPORT.md; STATE.md	历史 registries 清单全部 OK=True（s3r5=14,M0=25,M1=28,M1R2=33,M1R3=26,M1R4=11,M2=14,M2b=13,M2c=11,M3a=17,M3b=18,M3c=13）；STATE 字节=6636；正式 end 门禁核对报告-清单一致性	-（事实项）	MET	
+WUKEZUO	⑤make test 相对基线无新增失败	registries/s4r9/M3b/MAKETEST_VERDICT_R9M3B.tsv	verdict=NO_NEW_FAILURE unit_count=265	U333/U338	MET	
+WUKEZUO	⑥预注册矩阵无 MISMATCH/FLAKY/VALUE_DRIFT	registries/s4r9/M1R3/VERDICT_M1_F4_R9M1R3.tsv; registries/s4r9/M2/VERDICT_R9.tsv	M1R3 MISMATCH=0 MATCH=626 其他=[('NOT_REACHED_AS_EXPECTED', 22), ('NOT_RUN_AS_EXPECTED', 3)]；M2 MATCH=191 异常=0；合计异常=0	U314/U319/U320	MET	
+WUKEZUO	⑦Python/Lua 正常与失败→可见报错→重试恢复	registries/s4r9/M3b/E2E_VERDICT_R9M3B.tsv; m3c/POSCTRL_REJUDGE_R9M3C.txt	E2E_OK=25 CONTROL_OK=17；独立重判差异=0	U343/U345	MET	
+STATE_OPEN	S3-4b（模式/缓存安装）	STATE.md:42 (registries/RULINGS.tsv)	state=用户带范围声明关闭（U29）; destination=已回归	U29	CLOSED_BY_RULING	
+STATE_OPEN	806、415、RP-S3R4-1	STATE.md:43 (registries/RULINGS.tsv)	state=M1/M2 已覆盖（U225）; destination=完成	U225	MET	
+STATE_OPEN	RNV1（RP-R6d-1）	STATE.md:44 (registries/RULINGS.tsv)	state=F2/F3/F4 全部 MATCH; destination=完成	U25	MET	
+STATE_OPEN	双目标（M2-04）、sanitizer（M2-03）	STATE.md:45 (registries/RULINGS.tsv)	state=MATCH / 31 点全 MATCH; destination=完成	U244/U246	MET	
+STATE_OPEN	张量路径 K-1（RP-R6d-8）	STATE.md:46 (registries/RULINGS.tsv)	state=用户带范围声明关闭（U274/U281）; destination=关闭	U274/U281	CLOSED_BY_RULING	
+STATE_OPEN	RP-R8-M2c-1/1b	STATE.md:47 (registries/RULINGS.tsv)	state=U350 确认按 U304 关闭（18 点全 MATCH）; destination=关闭	U304/U350	CLOSED_BY_RULING	
+STATE_OPEN	其他层失败变体（RP-R6d-14）	STATE.md:48 (registries/RULINGS.tsv)	state=U354 关闭（M2-05 8 点全 MATCH；范围 P0/P2/PP1/PP2、F4、driver_r8m2a2_layers）; destination=关闭（U354）	U354	CLOSED_BY_RULING	
+STATE_OPEN	S1/S2 移交：七处 info=NULL seam	STATE.md:49 (registries/RULINGS.tsv)	state=U356 闭合（M1R3 G6 7/7 MATCH）; destination=关闭（U356）	U356	CLOSED_BY_RULING	
+STATE_OPEN	B 侧 jones/vl SILENT、nv CRASH	STATE.md:50 (registries/RULINGS.tsv)	state=OPEN（基线，不是修复证据）; destination=S5	-（事实项）	TRANSFERRED_S5	
+STATE_OPEN	NB=1–8、类别 C	STATE.md:51 (registries/RULINGS.tsv)	state=M2-07 81 点全 MATCH；M2-08 转 S5（U249）; destination=S5	U249	TRANSFERRED_S5	
+STATE_OPEN	Python/Lua 可见性（RP-R6d-15）	STATE.md:52 (registries/RULINGS.tsv)	state=U352 接受 S-B 复核（DIFFS=0），U345 关闭条件成立; destination=关闭（U345/U352）	U345/U352	CLOSED_BY_RULING	
+STATE_OPEN	ClosedForm / LinearSolve 族 E2E 可达性	STATE.md:53 (registries/RULINGS.tsv)	state=已复核（U339/U340）：ClosedForm 可达；seam 族标 SEAM_ONLY; destination=已裁决	U339/U340	CLOSED_BY_RULING	
+STATE_OPEN	ES3R4-5/528/1164	STATE.md:54 (registries/RULINGS.tsv)	state=OUT_OF_SCOPE_D003（U90/U95/U99/U100）; destination=S5	U90/U95/U99/U100	TRANSFERRED_S5	
+STATE_OPEN	U38 缺陷分类	STATE.md:55 (registries/RULINGS.tsv)	state=U38 已由 U90 裁决（806、415 已修；528、1164 转 S5），M3 只核对台账，不重新分类; destination=已裁决（U90/U333c）	U90/U333	CLOSED_BY_RULING	
+STATE_OPEN	非 FMM `S4_malloc`（约 35–43 处）	STATE.md:56 (registries/RULINGS.tsv)	state=OUT_OF_SCOPE_D003; destination=S5	-（事实项）	TRANSFERRED_S5	
+STATE_OPEN	ADD22 -3→1 返回码跨树变化	STATE.md:57 (registries/RULINGS.tsv)	state=已核实（E8-77）; destination=已核实	-（事实项）	MET	
+STATE_OPEN	U2 stage e（I1 特殊规则）	STATE.md:58 (registries/RULINGS.tsv)	state=NOT_FOUND_IN_SCOPE，S4 不出点（U248）; destination=S5	U248	TRANSFERRED_S5	
+STATE_OPEN	r8m2c/d SOLN 18/28 点	STATE.md:59 (registries/RULINGS.tsv)	state=U276-U282 落实，R9 F4 18 点全 MATCH; destination=已闭合	U276/U282	MET	
+# COUNTS MET=14 GAP=0 TRANSFERRED_S5=5 CLOSED_BY_RULING=9
+# GAPS=0
+# LEDGER_UNIQUE_IDS=26 LEDGER_ROWS=26 HANDOFF_UNIQUE_ITEMS=7 LEDGER_TRANSFERRED_S5=6
+# RULING_CELLS_ALL_REAL_U=YES
+# UNIQUE=28 ROWS=28

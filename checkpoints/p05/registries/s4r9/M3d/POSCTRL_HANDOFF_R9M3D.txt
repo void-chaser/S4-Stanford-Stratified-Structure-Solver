@@ -1,0 +1,5 @@
+# POSCTRL_HANDOFF_R9M3D.txt -- formal handoff script on a ledger copy with RP-R6d-7 removed
+TAMPERED_COPY: checkpoints/p05/evidence/p05-s4r9/m3d/posctrl/handoff/LEDGER_MISSING_R6D7.tsv (data row RP-R6d-7 removed)
+FSM_RC=3
+FSM_STDOUT_TAIL: HARD_STOP handoff bidirectionality: missing_from_handoff=[] not_transferred_in_ledger=['RP-R6d-7']
+RESULT: PASS (required rc!=0 and a message naming RP-R6d-7)

@@ -1,0 +1,29 @@
+# FROZEN_SCRIPTS_R9M3D.tsv -- frozen scripts and referenced result tables recorded after the shakedown
+# chain and before the start-prefix recheck / record commit (i). The end gate reads every script name and
+# POST_I count expectation from this file (U337 / E9-59 discipline).
+path	sha256	expected_calls	mode
+testing/d003/stage_s4r9/red_ledger_final_r9m3d.py	a9033bf94422deda9246ca36094ade05c3e7c5899ef8b1e25f154fb5f586fa70	1	-
+testing/d003/stage_s4r9/s5_handoff_r9m3d.py	e253e04e7f44dfb9e15d8094aac4442f522d35154393278b94c46f410b1c7afb	1	-
+testing/d003/stage_s4r9/readiness_r9m3d.py	4067806ce9d785907b2d9a10773db4037f1abbbc27faa88079f3ee231ef102d6	1	-
+testing/d003/stage_s4r9/closeout_report_state_r9m3d.py	c1f0920927dbbb7aba03982bd1fdad8455ef8aac4425d7ad954df97c1efba88e	1	-
+testing/d003/stage_s4r9/report_check_r9m3d.py	3c989de7d172ec9ff40fb7378783eb3a6d931ed7faae45c6318a496651037544	1	-
+testing/d003/stage_s4r9/copy_registries_r9m3d.py	2251cd8e7704c570cb0025406bf73fd294607c5a2f5db27d6f7e3eaec6d1ae6a	1	-
+testing/d003/stage_s4r9/events_r9m3d.py	71e7185afe1d9ed23e14eb4de63bd3ca4efd6e9a30f14f0c713845447ef41d90	1	-
+testing/d003/stage_s4r9/sha_sums_r9m3d.py	7cdf4df0a927767ff3c989710891ee63d838b096e58bfff695eb318d6f0cf2e6	1	-
+testing/d003/stage_s4r9/gate_r9m3d.sh	8eb82f7483498bbd3c6ea0c1bd22e89b05a1ae3522368e8d274eca602f4eb46c	1	end
+testing/d003/stage_s4r9/progress_r9m3d.py	b2e83452bbf865eeb0c3665ed5b0c474ba0df0db8735d1ec312346b77d1f9a4b	1	-
+testing/d003/stage_s4r9/gate_check_r9m3d.py	cc39872fcc7adb7456f29236b305ad082ceb94cc68ef1787e5fecc5c4dbc4303	0	-
+testing/d003/stage_s4r9/update_state_r9m3d.py	81101785c2a7ab1631139b1f8dd9e4d96072ea4b692052c17ca5d703b4693b92	0	-
+testing/d003/stage_s4r9/append_rulings_r9m3d.py	273fdd512f93ff3a7eab11c58be50e209d583aedc586dbbfc049c5417ac9d1ce	0	-
+testing/d003/stage_s4r9/append_errata_r9m3d.py	b298584539847aaef83c06f6a3c9f13c3079860739c85a8a10ba6fccd523105e	0	-
+testing/d003/stage_s4r9/audit_r9m3c_r9m3d.py	210dbaddd77c0b2ace9ecc1e2b8090ce817e526fca87220fc725145c6f0a6208	0	-
+testing/d003/stage_s4r9/write_signoff_v2_r9m3d.py	5b0bc6a6896e21ad09e55dd0f461d124dcf273920da6797260604ae8c705c2c0	0	-
+testing/d003/stage_s4r9/posctrl_handoff_r9m3d.py	e58ed25b68bd59168cfa95e2b58ce16897bad99e2733ce19534d0cbe90995306	0	-
+testing/d003/stage_s4r9/posctrl_readiness_r9m3d.py	b4a8c47440c837ec3a4ca8781128d437638b35bd7b97790402caae13143e4383	0	-
+testing/d003/stage_s4r9/posctrl_report_check_r9m3d.py	765c408aa06cdd9d84c2967af4e00d84129b971e8d8bbe893aeab60f499f0d0d	0	-
+testing/d003/stage_s4r9/fix_report_r9m3d.py	07ab1ee7dda4e57cd897307bf36afc4b98313b62a6f834418528e97934112b61	0	-
+testing/d003/stage_s4r9/write_frozen_r9m3d.py	d206eed1538d8e5f97eb397e8b0f1762350aed16066db4182f2fd3c2ebf45610	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/PREREG_E2E_R9M3B.tsv	9e3895bb05f3b454a08b65824ba6740718ae4ae4af77b1515121a4d49b9b31da	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/CALIB_E2E_R9M3B.tsv	f550f99341089c1820b4ea1ec7b5bf80250a34e3f6467421b42bb26116243c77	0	-
+checkpoints/p05/evidence/p05-s4r9/m3d/AUDIT_R9M3C_R9M3D.tsv	d029b9e08c69b1359c4779feb842b4fe0121aeacf9094fc6a335dc2d3c94d22a	0	-
+checkpoints/p05/registries/s4r9/M3c/RED_POINTS_LEDGER_FINAL_R9M3C.tsv	a469c3c86df13df3e0ff8f97c83bd759bc03dddcfb1f7583b3b66453fa75aa38	0	-

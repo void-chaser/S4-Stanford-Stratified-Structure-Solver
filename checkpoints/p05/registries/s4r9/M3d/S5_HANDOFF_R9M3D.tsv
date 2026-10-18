@@ -1,0 +1,13 @@
+# S5_HANDOFF_R9M3D.tsv -- de-duplicated P05-S5 handoff (U355): one row per unique item
+# columns: item_id, canonical_name, scope, source_ruling, ledger_ids, state_rows
+# ledger TRANSFERRED_S5 ids covered: 6 (RP-R6d-16,RP-R6d-17,RP-R6d-18,RP-R6d-3,RP-R6d-6,RP-R6d-7)
+# unique items=7 rows=7 (M3c handoff had 10 data rows -> 5 unique canonical names)
+item_id	canonical_name	scope	source_ruling	ledger_ids	state_rows
+S5-M3D-01	B 侧 jones/vl SILENT、nv CRASH	S5（基线观察，不是修复证据）	-（事实项：B 列不是修复证据）	RP-R6d-6	STATE §3「B 侧 jones/vl SILENT、nv CRASH」
+S5-M3D-02	NB=1–8、类别 C	S5（M2-07 81 点全 MATCH；M2-08 转 S5）	U249	RP-R6d-16;RP-R6d-17	STATE §3「NB=1–8、类别 C」
+S5-M3D-03	ES3R4-5/528/1164	S5（OUT_OF_SCOPE_D003）	U90/U95/U99/U100	-	STATE §3「ES3R4-5/528/1164」
+S5-M3D-04	非 FMM S4_malloc（约 35–43 处）	S5（范围决策）	-（事实项：范围决策）	RP-R6d-18	STATE §3「非 FMM S4_malloc（约 35–43 处）」
+S5-M3D-05	U2 stage e（I1 特殊规则）	S5（NOT_FOUND_IN_SCOPE）	U248	-	STATE §3「U2 stage e（I1 特殊规则）」
+S5-M3D-06	RP-R6d-3 no-TWICE 路径（OUT_OF_SCOPE_D003）	S5（OUT_OF_SCOPE_D003）	OUT_OF_SCOPE_D003	RP-R6d-3	-
+S5-M3D-07	RP-R6d-7 D016（B 侧 rc 来源未追踪）	S5（B 侧基线观察；F 侧归 D016/D003）	-（事实项：B 侧基线）	RP-R6d-7	-
+# UNIQUE=7 ROWS=7

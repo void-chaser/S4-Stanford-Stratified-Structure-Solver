@@ -1,0 +1,5 @@
+# POSCTRL_READINESS_R9M3D.txt -- formal readiness script on a ledger copy with extra header-style rows
+TAMPERED_COPY: checkpoints/p05/evidence/p05-s4r9/m3d/posctrl/readiness/LEDGER_EXTRA_HEADER_ROWS.tsv (3 extra header lines inserted)
+FSM_RC=0
+CRITERION1_UNIQUE_IDS=26 LEDGER_UNIQUE_IDS=26
+RESULT: PASS (required rc=0 and criterion-1 count == unique id count)

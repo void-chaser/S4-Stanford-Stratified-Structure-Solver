@@ -99,6 +99,11 @@ start 门禁输出：m3d/GATE_R9M3D_start.txt；start 前缀复核：m3d/GATE_R9
 | 2 | 收尾链试跑在冻结清单写定之前运行（§5 要求“收尾链试跑 → 冻结清单”） | 照实披露；试跑期 end 门禁的 FROZEN 来源检查（POST_I 调用计数、EVENTS 锚点、证据清单截断头、冻结 sha）标 SKIP，正式冻结期 end 门禁从 FROZEN 读取并全部执行 |
 | 3 | append_errata_r9m3d.py v1 存在 5 元组解包错误（运行即退出，未写入任何字节） | 照实披露；修正后通过，ERRATA 前缀 sha 断言仍通过、落账 E9-67–E9-73 |
 | 4 | 框架落盘：/tmp/dsh-spill-* 属框架，不算执行者违规 | 单列，不计入表一；start/end 门禁各记录一次 /tmp 快照 |
+| 5 | 试跑期 progress 首条命令的文本参数未加引号，shell 把分号后的“shakedown begin”当成命令执行（rc=127，progress 只写入前半句） | 照实披露；非写入路径问题；此后文本参数一律加引号 |
+| 6 | 试跑期 start 前缀复核在冻结清单写定之前先运行一次（输出到 shakedown/，作为收尾链试跑的输入）；任务书 §5 的正式顺序是收尾链试跑 → 冻结清单 → start 前缀复核 | 照实披露；正式 start 前缀复核严格在冻结清单之后运行（FROZEN 检查全部执行，PASS=42 FAILS=0） |
+| 7 | 试跑期 end 门禁运行 2 次：第 1 次暴露 3 个检查器缺陷（MODIFIED_TRACKED 允许清单在试跑期未含 append-only 三文件、POST_I_NO_TESTING_D003_WRITES 正则转义错误、U357 真实 U 编号正则转义错误）；修正后复跑 0 FAIL | 照实披露；冻结期 end 门禁只运行 1 次 |
+| 8 | posctrl_handoff_r9m3d.py v1 在 stderr 合并到 stdout 时对 None 做字符串拼接而崩溃（未写结果文件） | 照实披露；修正后 PASS（正式 handoff 脚本对删掉 RP-R6d-7 的副本返回 rc=3） |
+| 9 | copy_registries 的 DEST 参数多写了一级 ..，11 个小表与清单被写到仓库根 registries/s4r9/M3d/（仍在仓库内，但不在允许的写入目标内） | 执行路径错误：已先核对 realpath 再删除误写目录；在 checkpoints/p05/registries/s4r9/M3d/ 用同一 11 个文件重新生成清单并逐项比对 sha256（11/11 OK）；end 门禁的 REGISTRIES_M3D_SUMS_ALL_OK FAIL 照实记录在附录 B |
 
 ## 7 需用户裁决
 
@@ -112,6 +117,7 @@ start 门禁输出：m3d/GATE_R9M3D_start.txt；start 前缀复核：m3d/GATE_R9
 
 - 本轮只做只读复核，未运行 S4 的任何程序；S4/、判定器、历史装置、M3c 已提交产物均未修改（由 end 门禁按 BASE 前缀校验）。
 - P 项复核 6/6 属实；U351–U358 落账；E9-67–E9-73 落账。
+- end 门禁冻结期单次运行：COUNTS pass=97 fail=2 skip=0 total=99；两处 FAIL 均为检查器口径/执行路径问题（见附录 B 补充说明），按 §5 不重跑门禁，照实记录。
 - 本轮已完成 R9 M3d 范围，等待用户审核。
 
 ## 9 交付物清单
@@ -141,8 +147,155 @@ start 门禁输出：m3d/GATE_R9M3D_start.txt；start 前缀复核：m3d/GATE_R9
 
 ### 附录 A（closeout 由表计算生成）
 
-（APPENDIX_A_PLACEHOLDER）
+记录提交 (i) 之后由冻结脚本执行；本附录的数字全部由 closeout 从结果表复算，未手写。
+
+- 门禁：start PASS=48 FAILS=0（total=48）；start 前缀复核 PASS=42 FAILS=0（total=42）
+- §3 P 项复核：AUDIT_R9M3C_R9M3D.tsv 6/6 属实；规划者事实有误：none
+- 裁决：RULINGS 最大 U358（145103 字节，sha 21ab76d2）；U354/U356 状态=生效/生效
+- 勘误：ERRATA_9.txt 最后 E9-73，共 73 条（62654 字节，sha d71543bb）
+- 修正版台账：唯一 id=26，数据行=26，TRANSFERRED_S5=6，范围内仍开放=0，冲突=21
+- S5 移交：唯一项=7（台账 TRANSFERRED_S5 全部覆盖，双向核对 OK）
+- 就绪审计：READINESS 共 28 行：MET=14 GAP=0 TRANSFERRED_S5=5 CLOSED_BY_RULING=9；GAP 明细：none
+- 阳性对照：handoff=PASS；readiness=PASS；report_check=PASS
+- 冻结清单：FROZEN_SCRIPTS_R9M3D.tsv 共 25 项（脚本名由 end 门禁从该清单读取）
+- STATE 最终字节数：6636（<=8192），sha 6eeb7559
+- 数据来源：m3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv、m3d/S5_HANDOFF_R9M3D.tsv、m3d/READINESS_P05_S3S4_R9M3D.tsv、m3d/AUDIT_R9M3C_R9M3D.tsv
 
 ### 附录 B（end 门禁）
 
-（APPENDIX_B_PLACEHOLDER）
+| 状态 | 检查 | 期望 | 实际 |
+|---|---|---|---|
+| PASS | BRANCH_IS_EXPECTED | codex/p05-d003-fft-error-propagation | codex/p05-d003-fft-error-propagation |
+| PASS | HEAD_PRESENT | 40-hex sha | 9e5c18f6237f1b297bb33a12306a136f6aca14ea |
+| PASS | HEAD_S4_TREE_EQ_F4 | 589e15eb11fcb04e031b524f25a443e7921946cf | 589e15eb11fcb04e031b524f25a443e7921946cf |
+| PASS | F3_8d8202a_S4_TREE | 6cff923a02baf19e01966b2339755cbf3a5deeef | 6cff923a02baf19e01966b2339755cbf3a5deeef |
+| PASS | F2_a07b5ac_S4_TREE | e124925f5b242486a913b813fa181664f665b048 | e124925f5b242486a913b813fa181664f665b048 |
+| PASS | B_37a82e8_S4_TREE | 1d738e64f9864a475fdb3de34cd3601605df2c64 | 1d738e64f9864a475fdb3de34cd3601605df2c64 |
+| PASS | JUDGE_SHA256 | d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb | d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb |
+| PASS | ARTIFACT_lib_F4_dbg | 6a711fbbec84d1fb322ee1d9c678ae6750a04f647e3f1eba7840c8c7502fae26 | 6a711fbbec84d1fb322ee1d9c678ae6750a04f647e3f1eba7840c8c7502fae26 |
+| PASS | ARTIFACT_lib_F4_san | ce057b5065bb5ac487d66992930991c1f09f17431abfc957777f375436be0fbd | ce057b5065bb5ac487d66992930991c1f09f17431abfc957777f375436be0fbd |
+| PASS | ARTIFACT_lib_F4_plain | 5a4bfa601bf14b896b9c0c25807c0a38c05d040a17268cf0669902763cda5757 | 5a4bfa601bf14b896b9c0c25807c0a38c05d040a17268cf0669902763cda5757 |
+| PASS | ARTIFACT_init-F4-dbg | a4643e7e67ad74019104466ff9773ec2cfc1e684e488705a16a4a8f32526aca2 | a4643e7e67ad74019104466ff9773ec2cfc1e684e488705a16a4a8f32526aca2 |
+| PASS | ARTIFACT_init-F4-san | 33a230029df224ddecb64f0884833e7e20251c461f0459ce315122d5987666c3 | 33a230029df224ddecb64f0884833e7e20251c461f0459ce315122d5987666c3 |
+| PASS | ARTIFACT_init-F4-san-AL | f14c536ea54d81348dd4f53f36c5c2eba65c0ca15fdb16160b8296186d7f5f8e | f14c536ea54d81348dd4f53f36c5c2eba65c0ca15fdb16160b8296186d7f5f8e |
+| PASS | ARTIFACT_init-B-dbg | 3ccc2897fae2ce293d3c656e2a334dad05e53fe7f622b749a71e19bfd021b0b8 | 3ccc2897fae2ce293d3c656e2a334dad05e53fe7f622b749a71e19bfd021b0b8 |
+| PASS | HIST_REGISTRY_s3r5_ALL_OK | all 14 OK | all 14 OK count=14 expected=14 |
+| PASS | HIST_REGISTRY_M0_ALL_OK | all 25 OK | all 25 OK count=25 expected=25 |
+| PASS | HIST_REGISTRY_M1_ALL_OK | all 28 OK | all 28 OK count=28 expected=28 |
+| PASS | HIST_REGISTRY_M1R2_ALL_OK | all 33 OK | all 33 OK count=33 expected=33 |
+| PASS | HIST_REGISTRY_M1R3_ALL_OK | all 26 OK | all 26 OK count=26 expected=26 |
+| PASS | HIST_REGISTRY_M1R4_ALL_OK | all 11 OK | all 11 OK count=11 expected=11 |
+| PASS | HIST_REGISTRY_M2_ALL_OK | all 14 OK | all 14 OK count=14 expected=14 |
+| PASS | HIST_REGISTRY_M2b_ALL_OK | all 13 OK | all 13 OK count=13 expected=13 |
+| PASS | HIST_REGISTRY_M2c_ALL_OK | all 11 OK | all 11 OK count=11 expected=11 |
+| PASS | HIST_REGISTRY_M3a_ALL_OK | all 17 OK | all 17 OK count=17 expected=17 |
+| PASS | HIST_REGISTRY_M3b_ALL_OK | all 18 OK | all 18 OK count=18 expected=18 |
+| PASS | HIST_REGISTRY_M3c_ALL_OK | all 13 OK | all 13 OK count=13 expected=13 |
+| PASS | M3B_SUMS_SHA256 | 4a802924ce529df402f79cfe721da9a3550a6293d2950fd637b5c42015e4dc59 | 4a802924ce529df402f79cfe721da9a3550a6293d2950fd637b5c42015e4dc59 |
+| PASS | M3B_SUMS_ITEM_COUNT | 18 | 18 |
+| PASS | M3B_REPORT_SHA256 | 788417e8cc55fe836d0887fd69df295498a761d53a631e485d9e820ed5e81467 | 788417e8cc55fe836d0887fd69df295498a761d53a631e485d9e820ed5e81467 |
+| PASS | M3C_EVIDENCE_SUMS_ALL_OK | all 16 OK | all 16 OK count=16 |
+| PASS | S4_DIR_ZERO_MODIFICATION | S4 unmodified | S4 unmodified |
+| PASS | TMP_SNAPSHOT_READ | snapshot read | count=0 sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 |
+| PASS | STATUS_ARTIFACT_WRITTEN | written | written |
+| PASS | SCRIPT_NAME_AUDIT | no foreign or non-final r9m3d script names | 21 r9m3d scripts, 0 foreign/non-final names |
+| PASS | BRIEF_SAVED | brief file present | 11442 |
+| PASS | START_RECORDS_PRESENT | records present | 25 records |
+| PASS | TMP_SNAPSHOT_RECORDED | recorded | count=0 sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 |
+| PASS | TMP_ENTRIES_KNOWN | only framework spills or disclosed entries | entries=0 |
+| PASS | RULINGS_PREFIX_OF_START_UNCHANGED | 443d8a380f85975ebd1d023bf0667696ec24cb53078e78bae16462470fe26116 | 443d8a380f85975ebd1d023bf0667696ec24cb53078e78bae16462470fe26116 |
+| PASS | RULINGS_NOT_TRUNCATED | >= 142281 | 145103 |
+| PASS | ERRATA_9_PREFIX_OF_START_UNCHANGED | 9bd2933d41d9ada8eba9928cd187f92a274b28e36d35d3c43c5de5a562390432 | 9bd2933d41d9ada8eba9928cd187f92a274b28e36d35d3c43c5de5a562390432 |
+| PASS | ERRATA_9_NOT_TRUNCATED | >= 56754 | 62654 |
+| PASS | RULINGS_LINES_5_FIELDS_NO_DUP_END | all lines 5 fields | all lines 5 fields, no duplicate id |
+| PASS | RULINGS_END_MAX_U | U358 | U358 |
+| PASS | AUDIT_PRESENT_6_ROWS | 6 | 6 rows |
+| PASS | AUDIT_ALL_TRUE | 6/6 true | 6/6 true |
+| PASS | ERRATA_END_LAST_AND_COUNT | E9-73 count=73 | E9-73 count=73 expected=73 |
+| PASS | ERRATA_U353_ENTRY | U353 erratum present | U353 erratum present |
+| PASS | HIST_REGISTRY_s3r5_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M0_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M1_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M1R2_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M1R3_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M1R4_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M2_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M2b_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M2c_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M3a_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M3b_IDENTICAL_TO_BASE | identical | identical |
+| PASS | HIST_REGISTRY_M3c_IDENTICAL_TO_BASE | identical | identical |
+| FAIL | M3C_AND_M3B_COMMITTED_FILES_UNCHANGED | identical | diff --git a/testing/d003/stage_s4r9/WHITELIST_R9M3D.txt b/testing/d003/stage_s4r9/WHITELI |
+| PASS | MODIFIED_TRACKED_FILES_WITHIN_END_ALLOW_LIST | only the report modified | only the report modified |
+| PASS | STATE_BYTES_LE_8192 | <= 8192 | 6636 |
+| PASS | STATE_REFLECTS_U352_U354_U356 | state markers present | all markers present |
+| PASS | ROOT_NO_NEW_SO_AT_END | no *.so | no *.so |
+| PASS | COMMIT_I_PRESENT | commit (i) found | 9e5c18f6237f1b297bb33a12306a136f6aca14ea |
+| PASS | FROZEN_LIST_READ | rows | 25 rows |
+| PASS | FROZEN_COVERS_ROUND_SCRIPTS | frozen == round scripts | 21 frozen stage rows |
+| PASS | POST_I_CALL_COUNT_RED_LEDGER_FINAL_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_S5_HANDOFF_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_READINESS_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_CLOSEOUT_REPORT_STATE_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_REPORT_CHECK_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_COPY_REGISTRIES_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_EVENTS_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_SHA_SUMS_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_GATE_R9M3D_END_EQ_1 | 1 | 1 |
+| PASS | POST_I_CALL_COUNT_PROGRESS_R9M3D_-_EQ_1 | 1 | 1 |
+| PASS | POST_I_NO_TESTING_D003_WRITES | 0 | 0 |
+| PASS | FROZEN_SCRIPTS_SHA_UNCHANGED_END | all frozen OK | all 25 frozen OK |
+| PASS | COMMITTED_I_FILES_UNCHANGED_AT_END | unmodified | unmodified |
+| PASS | M3D_BRIEF_UNCHANGED_AT_END | brief unchanged | brief unchanged |
+| PASS | EVENTS_ROW_SET_EQ_RECOMPUTATION | row set equals recomputation | rows=85 anchor=85 all timestamps match |
+| PASS | EVIDENCE_SHA256SUMS_OK | all OK | trunc line 87 cd11adec ok, 39 items OK |
+| PASS | EVIDENCE_SUMS_COVERS_ALL | manifest covers every non-gate file | all 39 files covered |
+| PASS | EV_NO_WRITE_AFTER_SHA_SUMS | sha_sums is the last $EV write | no $EV write after sha_sums |
+| PASS | UNLOGGED_SELF_ZERO | 0 | 0 |
+| PASS | OTHER_ROUND_EVIDENCE_UNTOUCHED | none | none |
+| FAIL | REGISTRIES_M3D_SUMS_ALL_OK | all OK matching report | missing SHA256SUMS.txt |
+| PASS | SB_LEDGER_UNIQUE_26_T5_6_R14_CLOSED | 26 ids, 6 T5, RP-R6d-14 closed by U354 | unique=26 rows=26 t5=RP-R6d-16,RP-R6d-17,RP-R6d-18,RP-R6d-3,RP-R6d-6,RP-R6d-7 |
+| PASS | SB_HANDOFF_UNIQUE_7_BIDIRECTIONAL | 7 unique items, both directions covered | rows=7 unique=7 covered=['RP-R6d-16', 'RP-R6d-17', 'RP-R6d-18', 'RP-R6d-3', 'RP-R6d-6', 'R |
+| PASS | SB_READINESS_28_ROWS_GAP0_U357 | 28 rows, GAP=0, U357 compliant, crit1==unique | rows=28 counts=[('CLOSED_BY_RULING', 9), ('MET', 14), ('TRANSFERRED_S5', 5)] crit1=26 uniq |
+| PASS | SB_POSCTRL_ALL_PASS | all three PASS | all three PASS |
+| PASS | REPORT_CHECK_FAILS_ZERO | FAILS=0 | FAILS=0 |
+| PASS | SIGNOFF_DRAFT_V2_MARKED_AND_CONSISTENT | draft v2 marked and consistent | first=# 草稿，非签收；签收只由用户在对话中给出 — P05-S3 / P05-S4 签收范围声明（草稿 v2） missing=[] s5_items=7 handoff= |
+| PASS | E2E_VERDICT_COUNTS_25_17 | {E2E_OK:25, CONTROL_OK:17} | 42 rows [('CONTROL_OK', 17), ('E2E_OK', 25)] |
+| PASS | MAKETEST_NO_NEW_FAILURE | NO_NEW_FAILURE | NO_NEW_FAILURE |
+| PASS | CALIB_TARGET_ROWS_27 | 27 | 27 |
+| PASS | M3B_PREREG_SHA256_UNCHANGED | 9e3895bb05f3b454a08b65824ba6740718ae4ae4af77b1515121a4d49b9b31da | 9e3895bb05f3b454a08b65824ba6740718ae4ae4af77b1515121a4d49b9b31da |
+
+- COUNTS；pass=97；fail=2；skip=0；total=99
+- FAILS=2
+- 该门禁在冻结期为唯一一次运行；输出位于 m3d/gate/GATE_R9M3D_end.txt，不纳入 $EV/SHA256SUMS.txt。
+
+### 附录 B 补充说明（两处 FAIL 的处理；冻结期未重跑门禁）
+
+end 门禁在冻结期只运行一次（任务书 §5 禁止重跑），COUNTS pass=97 fail=2 skip=0 total=99。两处 FAIL 均为检查口径/执行路径问题，不是结果表或证据缺陷；照实记录如下，并以手工只读复核替代。
+
+| # | FAIL 断言 | 事实 | 分类与手工复核 |
+|---|---|---|---|
+| 1 | M3C_AND_M3B_COMMITTED_FILES_UNCHANGED | 检查器把 BASE..worktree 下 testing/d003/stage_s4r9 的全树 diff 当成“M3c 产物被改动”，而本轮在该目录新增了 24 个 r9m3d 文件；检查器未区分 A（新增）与 M/D（修改/删除） | 检查器口径缺陷。手工复核：git diff BASE -- P05_S4R9_M3c_REPORT.md、briefs/P05_S4R9_BRIEF_M3c.md、registries/s4r9/M3c、P05_S3_S4_SIGNOFF_DRAFT.md 输出为空；git diff --name-status BASE -- testing/d003/stage_s4r9 只有 A 行，无 M/D 行 |
+| 2 | REGISTRIES_M3D_SUMS_ALL_OK | copy_registries 的 DEST 参数多写了一级 ..，11 个小表与清单被写到仓库根 registries/s4r9/M3d/；门禁读 checkpoints/p05/registries/s4r9/M3d/，报 missing SHA256SUMS.txt | 执行路径错误（见正文 §6.2 第 9 条）。冻结期未重跑门禁；收尾提交前先核对 realpath 再删除误写目录，并在正确位置用同一 11 个文件生成清单，逐项比对 sha256 = 11/11 OK；checkpoints/p05/registries/s4r9/M3d/ 现为 11 项 + SHA256SUMS.txt，与正文 §9.1 的 12 项一一对应 |
+
+本补充只改报告（$EV 之外）；$EV 在 sha_sums 之后没有新的写入（end 门禁 EV_NO_WRITE_AFTER_SHA_SUMS=PASS，EVIDENCE_SHA256SUMS_OK=PASS，39 项）。
+
+git log -1（记录提交 (i)）：9e5c18f P05-S4 R9 M3d (i): freeze brief, rulings U351..U358, errata E9-67..E9-73, P-1..P-6 audit, corrected ledger/handoff/readiness, signoff draft v2; awaiting user review
+
+git status --short（附录 B 落盘前、收尾提交 (ii) 前）：
+
+M checkpoints/p05/P05_S4R9_M3d_REPORT.md
+?? checkpoints/p05/registries/s4r9/M3d/AUDIT_R9M3C_R9M3D.tsv
+?? checkpoints/p05/registries/s4r9/M3d/FROZEN_SCRIPTS_R9M3D.tsv
+?? checkpoints/p05/registries/s4r9/M3d/GATE_R9M3D_start.txt
+?? checkpoints/p05/registries/s4r9/M3d/GATE_R9M3D_start_RECHECK.txt
+?? checkpoints/p05/registries/s4r9/M3d/POSCTRL_HANDOFF_R9M3D.txt
+?? checkpoints/p05/registries/s4r9/M3d/POSCTRL_READINESS_R9M3D.txt
+?? checkpoints/p05/registries/s4r9/M3d/POSCTRL_REPORT_CHECK_R9M3D.txt
+?? checkpoints/p05/registries/s4r9/M3d/READINESS_P05_S3S4_R9M3D.tsv
+?? checkpoints/p05/registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv
+?? checkpoints/p05/registries/s4r9/M3d/REPORT_CHECK_R9M3D.txt
+?? checkpoints/p05/registries/s4r9/M3d/S5_HANDOFF_R9M3D.tsv
+?? checkpoints/p05/registries/s4r9/M3d/SHA256SUMS.txt
+
+（registries/s4r9/M3d/ 下 12 个文件 = 11 项小表 + SHA256SUMS.txt，将在收尾提交 (ii) 一并提交。）

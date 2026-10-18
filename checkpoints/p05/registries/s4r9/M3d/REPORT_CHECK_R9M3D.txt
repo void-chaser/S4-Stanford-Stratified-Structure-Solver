@@ -1,0 +1,42 @@
+# REPORT_CHECK_R9M3D.txt -- report check (forbidden words, sections, numbers, appendix-A lines, signoff v2,
+# positive controls) -- every value recomputed from the result tables
+PASS	FORBIDDEN_WORDS_NEGATION_AWARE	none
+PASS	REQUIRED_SECTIONS	all present
+PASS	APPENDIX_A_PLACEHOLDER_REPLACED	placeholder absent
+PASS	APPENDIX_B_PLACEHOLDER_PRESENT	count=1
+PASS	NO_BLANK_LINE_INSIDE_TABLES	none
+PASS	DEADLINE_MARKER	marker present
+PASS	STATE_BYTES_LE_8192	bytes=6636
+PASS	NUM_RULINGS_MAX_U	recomputed=RULINGS 最大 U358 present=True
+PASS	NUM_ERRATA_LAST_AND_COUNT	recomputed=ERRATA_9.txt 最后 E9-73，共 73 条 present=True
+PASS	NUM_AUDIT_TRUE	recomputed=6/6 属实 present=True
+PASS	NUM_LEDGER_UNIQUE	recomputed=唯一 id 26 present=True
+PASS	NUM_HANDOFF_UNIQUE	recomputed=S5 移交：唯一项 7 present=True
+PASS	APPENDIX_A_PRESENT	appendix A present
+PASS	APPX_A_LINE_01	expected line 1
+PASS	APPX_A_LINE_02	expected line 2
+PASS	APPX_A_LINE_03	expected line 3
+PASS	APPX_A_LINE_04	expected line 4
+PASS	APPX_A_LINE_05	expected line 5
+PASS	APPX_A_LINE_06	expected line 6
+PASS	APPX_A_LINE_07	expected line 7
+PASS	APPX_A_LINE_08	expected line 8
+PASS	APPX_A_LINE_09	expected line 9
+PASS	APPX_A_LINE_10	expected line 10
+PASS	APPX_A_LINE_11	expected line 11
+PASS	APPX_A_LINE_12	expected line 12
+PASS	APPENDIX_B_PRESENT	appendix B heading present
+PASS	SIGNOFF_V2_FIRST_LINE	# 草稿，非签收；签收只由用户在对话中给出 — P05-S3 / P05-S4 签收范围声明（草稿 v2）
+PASS	SIGNOFF_V2_MARKED	marked as draft
+PASS	SIGNOFF_V2__S1_S2_U356_	key present
+PASS	SIGNOFF_V2_7_7_MATCH	key present
+PASS	SIGNOFF_V2_info_NULL	key present
+PASS	SIGNOFF_V2__solve_info	key present
+PASS	SIGNOFF_V2__S5_	key present
+PASS	SIGNOFF_V2__v1_	key present
+PASS	SIGNOFF_V2_P_6	key present
+PASS	SIGNOFF_V2_S5_ITEM_COUNT	items=7 handoff=7
+PASS	POSCTRL_HANDOFF_PASS	result=PASS
+PASS	POSCTRL_READINESS_PASS	result=PASS
+PASS	POSCTRL_REPORT_CHECK_PASS	result=PASS
+FAILS=0

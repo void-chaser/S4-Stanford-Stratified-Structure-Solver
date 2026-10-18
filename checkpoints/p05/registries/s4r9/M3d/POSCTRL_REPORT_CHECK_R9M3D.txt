@@ -1,0 +1,4 @@
+# POSCTRL_REPORT_CHECK_R9M3D.txt -- report_check on a deliberately wrong report copy
+TAMPERED_COPY: checkpoints/p05/evidence/p05-s4r9/m3d/posctrl/report_check/WRONG_REPORT.md (sentinel replacements=2)
+REPORT_CHECK_FAILS_ON_WRONG_COPY=17
+RESULT: PASS (required FAILS>0)
