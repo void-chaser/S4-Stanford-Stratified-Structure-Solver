@@ -1,0 +1,3 @@
+# PREREG_REJUDGE_S5R4.tsv.sha256.txt -- sha256/UTC recorded before the first formal rejudge call
+file	sha256	bytes	rows	status	utc_recorded
+PREREG_REJUDGE_S5R4.tsv	274e4d45a84a6cec447334453989eba38f63779f5cb7fad10e1f7780154ca21a	13427	99	INFLUENCED	2026-10-18T11:06:22Z

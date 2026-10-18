@@ -1,0 +1,5 @@
+ac_id	acceptance_criterion	committed_evidence	status	notes
+AC-1	每个受影响的 prepare/execute 点有正负对照	P05_S4R9_M2_REPORT.md + registries/s4r9/M2/；P05_S4R9_M1R3_REPORT.md + registries/s4r9/M1R3/	MET	F4 上 M2 两遍与 M1R3 651 点已提交判定（U364 历史证据可引用）；不外推到其它树/布局
+AC-2	失败后模式/缓存不安装	P05_S3_4b_CLOSURE.md（U29：202 注入点 HOLD 202 / VIOLATED 0）；P05_S4R9_M3c_REPORT.md + registries/s4r9/M3c/	MET	U29 关闭声明与 M3c 就绪审计 GAP=0；范围声明见 U29 原文
+AC-3	Python/Lua 可见失败，恢复重试正确	PREREG_E2E_S5R3.tsv; E2E_VERDICT_S5R3.tsv; PREREG_D016_S5R3.tsv; D016_VERDICT_S5R3.tsv; POSCTRL_E2E_S5R3.txt; POSCTRL_D016_S5R3.txt	MET	S5R3 在 F4 上重跑：E2E E2E_OK=25 CONTROL_OK=17（py=10 lua_batch=11 lua_repl=4）；D016 MATCH=33 MISMATCH=0 FLAKY=0（U375 最终映射）
+AC-4	M3a/M3b 的 make test 与 E2E 结果能否作为 S5 前端与回归的已提交证据	U364（历史证据可引用，S5R3 在 F4 上重跑）；MAKETEST_VERDICT_S5R3.tsv; E2E_VERDICT_S5R3.tsv	MET	由 U364 回答；S5R3 重跑 make test NO_NEW_FAILURE（unit_count=265）与 E2E 42 点，MISMATCH/FLAKY 均为 0

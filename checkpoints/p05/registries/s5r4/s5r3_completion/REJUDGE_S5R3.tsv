@@ -1,0 +1,85 @@
+# REJUDGE_S5R4.tsv -- independent re-judgement v2 of the S5R3 E2E and D016 recorded verdicts (U379)
+# reimplemented from the pre-registration semantics only: no import of judge_e2e_s5r3.py / d016_run_s5r3.py;
+# inputs are the S5R3 pre-registration tables and per-point JSON records (read only, no injection re-run).
+# reading skips '#' comments, the header row and first-field=SUMMARY rows; values are read by column name.
+# D016: 36 prereg rows = 33 behaviour rows re-judged + 3 ARTIFACT rows (build table, not behaviour).
+# D016_ARTIFACT_ROWS=3 BUILD_KEYS=11
+scope	point	recorded_verdict	rejudged_verdict	match	note
+E2E	lua_batch_cf_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_ctl_cf	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_exp	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_fft	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_jones	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_kt	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_nv	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_ctl_vl	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_batch_exp_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_fft_exec	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_fft_plan	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_fft_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_jones_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_kt_exec	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_kt_plan	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_kt_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_nv_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_batch_vl_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_repl_cf_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_repl_ctl_cf	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_repl_ctl_fft	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_repl_ctl_kt	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_repl_ctl_vl	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	lua_repl_fft_plan	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_repl_kt_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	lua_repl_vl_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_cf_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_ctl_cf	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_ctl_fft	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_ctl_jones	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_ctl_kt	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_ctl_nv	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_ctl_vl	CONTROL_OK	CONTROL_OK	SAME	pass1=CONTROL_OK pass2=CONTROL_OK
+E2E	py_fft_exec	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_fft_plan	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_fft_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_jones_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_kt_exec	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_kt_plan	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_kt_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_nv_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+E2E	py_vl_s4malloc	E2E_OK	E2E_OK	SAME	pass1=E2E_OK pass2=E2E_OK
+D016	VL_NB1/lua	MATCH	MATCH	SAME	FAILURE obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB1/py	MATCH	MATCH	SAME	FAILURE obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB2/lua	MATCH	MATCH	SAME	FAILURE obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB2/py	MATCH	MATCH	SAME	FAILURE obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB3/lua	MATCH	MATCH	SAME	FAILURE obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB3/py	MATCH	MATCH	SAME	FAILURE obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB4/lua	MATCH	MATCH	SAME	FAILURE obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB4/py	MATCH	MATCH	SAME	FAILURE obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB1_RETRY/lua	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB1_RETRY/py	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB2_RETRY/lua	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB2_RETRY/py	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB3_RETRY/lua	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB3_RETRY/py	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	VL_NB4_RETRY/lua	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=FAIL_VISIBLE obs2=FAIL_VISIBLE
+D016	VL_NB4_RETRY/py	MATCH	MATCH	SAME	RETRY_SAME_OBJECT obs1=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned' obs2=EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'
+D016	Jones_NB1/lua	MATCH	MATCH	SAME	CONTROL obs1=VALUES finite=YES obs2=VALUES finite=YES
+D016	Jones_NB1/py	MATCH	MATCH	SAME	CONTROL obs1=RETURNED finite=YES obs2=RETURNED finite=YES
+D016	NV_NB1/lua	MATCH	MATCH	SAME	CONTROL obs1=VALUES finite=YES obs2=VALUES finite=YES
+D016	NV_NB1/py	MATCH	MATCH	SAME	CONTROL obs1=RETURNED finite=YES obs2=RETURNED finite=YES
+D016	VL_NB5/lua	MATCH	MATCH	SAME	CONTROL obs1=VALUES finite=YES obs2=VALUES finite=YES
+D016	VL_NB5/py	MATCH	MATCH	SAME	CONTROL obs1=RETURNED finite=YES obs2=RETURNED finite=YES
+D016	VL_NB9/lua	MATCH	MATCH	SAME	CONTROL obs1=VALUES finite=YES obs2=VALUES finite=YES
+D016	VL_NB9/py	MATCH	MATCH	SAME	CONTROL obs1=RETURNED finite=YES obs2=RETURNED finite=YES
+D016	VL_NB9_RECOVER/lua	MATCH	MATCH	SAME	RECOVERY obs1=rel_err=0.000e+00 obs2=rel_err=0.000e+00
+D016	VL_NB9_RECOVER/py	MATCH	MATCH	SAME	RECOVERY obs1=rel_err=0.000e+00 obs2=rel_err=0.000e+00
+D016	VL_NB9_REF/lua	MATCH	MATCH	SAME	REFERENCE obs1=VALUES finite=YES obs2=VALUES finite=YES
+D016	VL_NB9_REF/py	MATCH	MATCH	SAME	REFERENCE obs1=RETURNED finite=YES obs2=RETURNED finite=YES
+D016	LUA_RC/lua	MATCH	MATCH	SAME	PROCESS obs1=rc=0 obs2=rc=0
+D016	LUA_STDERR_INFO2/lua	MATCH	MATCH	SAME	PROCESS obs1=count=0 obs2=count=0
+D016	LUA_STDERR_MSG_COUNT/lua	MATCH	MATCH	SAME	PROCESS obs1=count=8 obs2=count=8
+D016	PY_RC/py	MATCH	MATCH	SAME	PROCESS obs1=rc=0 obs2=rc=0
+D016	PY_STDERR_INFO2/py	MATCH	MATCH	SAME	PROCESS obs1=count=0 obs2=count=0
+D016	ROOT_CAUSE_RC	RECORD	NOT_JUDGED_SOURCE_RECORD	NA	[源码] S4.cpp:2435-2438 ComputeLayerModes returns 20; row is a RECORD, not a behaviour judgement
+SUMMARY	E2E_ROWS=42	E2E_INJECTED=25	E2E_DIFFS=0
+SUMMARY	D016_RECORDED_ROWS=34	D016_REJUDGED_ROWS=33	D016_NOT_JUDGED=1	D016_DIFFS=0	DIFFS=0

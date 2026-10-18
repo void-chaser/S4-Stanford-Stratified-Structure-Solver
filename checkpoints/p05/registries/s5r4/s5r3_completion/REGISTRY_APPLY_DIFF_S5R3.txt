@@ -1,0 +1,43 @@
+# REGISTRY_APPLY_DIFF_S5R3.txt -- U376 patch application to ISSUE_REGISTRY.md and PROJECT_ROADMAP.md
+# only the lines listed in PATCHSPEC may change; the assertion compares every other line byte-for-byte.
+# S5R3 inputs read at run time: D016 SUMMARY MATCH=33 MISMATCH=0 FLAKY=0; E2E {'E2E_OK': 25, 'CONTROL_OK': 17}; make test NO_NEW_FAILURE
+
+FILE testing/s4test/ISSUE_REGISTRY.md before_bytes=24151 after_bytes=24402 before_sha256=54e204b57d8c2d81f6661aaa2bcf8fc8d5a336c813a6bc702f627133a39032b8 after_sha256=a2d113b50554c16350e92703954b511c10432437cebedbdbdca6bbf414f873d9
+FILE PROJECT_ROADMAP.md before_bytes=22128 after_bytes=22211 before_sha256=8ff6d491e2efd21d23f4362d7541ad6c85a346317f1fd5dd74d0f6977d801ad1 after_sha256=5a22f21ea6788f932a5d8a14c3d35c4b2e705b45266bd1ccd2b15ba8ea60ff06
+
+# PATCHSPEC (file/line/action)
+file	line	action	before_prefix	after_prefix
+testing/s4test/ISSUE_REGISTRY.md	48	REPLACE_IN_LINE	| D016 / P1（P05-S5 R2 核对完成；P05 期间提前登记） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：pattern_generate_flow_field 在 1./max_field 之前不检	| D016 / P1（P05-S5 R2 核对完成；P05 期间提前登记） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：pattern_generate_flow_field 在 1./max_field 之前不检查 max_field，最终 return 0；下游 Pattern_Gener
+testing/s4test/ISSUE_REGISTRY.md	29	REPLACE_IN_LINE	> 2026-10-18 P05-S5 R2 记录：S3-4b（失败后模式/缓存不安装）由 U29 在 F4 上带范围声明关闭（202 注入点 HOLD 202/VIOLATED 0）；F4 上 M2 正式两遍 191/191 MATCH、	> 2026-10-18 P05-S5 R2 记录：S3-4b（失败后模式/缓存不安装）由 U29 在 F4 上带范围声明关闭（202 注入点 HOLD 202/VIOLATED 0）；F4 上 M2 正式两遍 191/191 MATCH、M1R3 651 点两遍全 MATCH。U364：M3a/M3b 的 make 
+PROJECT_ROADMAP.md	51	REPLACE_IN_LINE	| P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execut	| P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重
+PROJECT_ROADMAP.md	145	REPLACE_IN_LINE	    - **D016**（已实施，归 D003 失败传播范围）：零场除零不应静默产生 NaN，应在根因处返回错误。修法已实施（P05-S3R2 提交 3e77aa9；F4 pattern.c 2210–2216，[源码]）。2026-1	    - **D016**（已实施，归 D003 失败传播范围）：零场除零不应静默产生 NaN，应在根因处返回错误。修法已实施（P05-S3R2 提交 3e77aa9；F4 pattern.c 2210–2216，[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python/Lua 公共 API
+
+# ASSERT_ONLY_LISTED_LINES_CHANGED: PASS
+# changed_lines=29,48,51,145
+
+# unified diff testing/s4test/ISSUE_REGISTRY.md
+--- a/testing/s4test/ISSUE_REGISTRY.md
++++ b/testing/s4test/ISSUE_REGISTRY.md
+@@ -28,3 +28,3 @@
+ | D003 / P1 | FFT prepare/execute 失败处理及上层传播不完整 | checkpoint 已含 FFT wrapper/kiss FFT/网格路径的部分处理。历史六文件 FMM 候选和 runner 存在；完整候选未生产验收/集成 | 列实际计算分支、计划/执行调用点；复用候选与现有注入器，补缺口；失败不得安装模式/缓存；恢复后重试与全新对象一致；Python/Lua 报错可见 |
+-> 2026-10-18 P05-S5 R2 记录：S3-4b（失败后模式/缓存不安装）由 U29 在 F4 上带范围声明关闭（202 注入点 HOLD 202/VIOLATED 0）；F4 上 M2 正式两遍 191/191 MATCH、M1R3 651 点两遍全 MATCH。U364：M3a/M3b 的 make test 与 E2E 作为 F4 上的历史证据可被 S5 引用；S5R3 在 F4 上重跑一次 make test 与全量 E2E（M3b 42 点加 D016 点）；修复前证据不得称为修复后验证。D003 本身仍为 OPEN。
++> 2026-10-18 P05-S5 R2 记录：S3-4b（失败后模式/缓存不安装）由 U29 在 F4 上带范围声明关闭（202 注入点 HOLD 202/VIOLATED 0）；F4 上 M2 正式两遍 191/191 MATCH、M1R3 651 点两遍全 MATCH。U364：M3a/M3b 的 make test 与 E2E 作为 F4 上的历史证据可被 S5 引用；S5R3 在 F4 上重跑一次 make test 与全量 E2E（M3b 42 点加 D016 点）；修复前证据不得称为修复后验证。D003 本身仍为 OPEN。 S5R3 收口在 F4 上重跑：make test NO_NEW_FAILURE、E2E 42 点全通过、D016 重跑 MATCH=33 MISMATCH=0 FLAKY=0（见 checkpoints/p05/registries/s5r3/）。
+ > 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-01）：B 侧 jones/vl 静默、nv CRASH 只作为 B 列基线观察记录，不是修复证据（U359 范围声明 (a)）；S5 不重跑 B 树。
+@@ -47,3 +47,3 @@
+ | D015 / P1 | 非网格导出崩溃，或写失败仍返回成功 | Python Postscript/POVRay 入口可见 fopen 结果未检查；输出/关闭错误待动态复现。不是 legacy D15 网格错误处理 | 覆盖正常导出、不可打开目标、延迟写/关闭失败、stdout 所有权和失败清理；Python/Lua/C 相关入口传播明确失败 |
+-| D016 / P1（P05-S5 R2 核对完成；P05 期间提前登记） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：pattern_generate_flow_field 在 1./max_field 之前不检查 max_field，最终 return 0；下游 Pattern_GenerateFlowField 的调用方（PolBasisVL/Jones/NV）已有 if(0 != error) 清理路径，但该情形从未走入 | 2026-10-11 P05-S1R 实测：VL 基、n_G=1（NumBasis 1–4）时，图案层流场 max_field=0，场被写为 NaN，NaN 进入 Epsilon_inv/Epsilon2，特征值求解以 info=2 失败，公共 API 抛 RuntimeError、驱动 rc 20；B/A/H 三树一致。修法已实施：P05-S3R2 提交 3e77aa9；F4 源码 pattern.c 2210–2216（[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python 与 Lua 公共 API 实测（U365）：在 F4 上、在该输入下经公共 API 可见失败且恢复正确；正式两遍 MATCH=31、MISMATCH=2、FLAKY=0（见 checkpoints/p05/registries/s5r2/D016_VERDICT_S5R2.tsv；照实报告，不改期望） | 现状：已实施（源码确认）且公共 API 已实测（S5R2）；NV 的 -10 路径触发不了，维持 [源码] 结论。R-P05-01（让 n_G=1 可计算）不包含在本条，见 R-P05-01 行 |
++| D016 / P1（P05-S5 R2 核对完成；P05 期间提前登记） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：pattern_generate_flow_field 在 1./max_field 之前不检查 max_field，最终 return 0；下游 Pattern_GenerateFlowField 的调用方（PolBasisVL/Jones/NV）已有 if(0 != error) 清理路径，但该情形从未走入 | 2026-10-11 P05-S1R 实测：VL 基、n_G=1（NumBasis 1–4）时，图案层流场 max_field=0，场被写为 NaN，NaN 进入 Epsilon_inv/Epsilon2，特征值求解以 info=2 失败，公共 API 抛 RuntimeError、驱动 rc 20；B/A/H 三树一致。修法已实施：P05-S3R2 提交 3e77aa9；F4 源码 pattern.c 2210–2216（[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python 与 Lua 公共 API 实测（U365）：在 F4 上、在该输入下经公共 API 可见失败且恢复正确；正式两遍 MATCH=31、MISMATCH=2、FLAKY=0；MISMATCH=2 为比较器格式缺陷（ES5-6），行为点全 MATCH；S5R3 重跑结果见 checkpoints/p05/registries/s5r3/D016_VERDICT_S5R3.tsv（MATCH=33 MISMATCH=0 FLAKY=0） | 现状：已实施（源码确认）且公共 API 已实测（S5R2）；NV 的 -10 路径触发不了，维持 [源码] 结论。R-P05-01（让 n_G=1 可计算）不包含在本条，见 R-P05-01 行 |
+ | D017 / P2（P05-S5 R2 期间登记；不在 P05 修；U369） | 非 FMM 路径的 S4_malloc 失败未逐点检查/未统一传播：F4 上 S4_malloc 共 59 处文本出现（CALL 52；IN 21；OUT 38，其中 OUT CALL 31 即本条范围），非 FMM 其余分配点不属 D003/P05（用户范围决策） | 逐点清单（file:line/function/kind/in_fmm_dir/d003_scope/null_check/后果，[源码]）见 checkpoints/p05/registries/s5r2/D017_S4MALLOC_INVENTORY_S5R2.tsv；另有定义/声明/注释 7 处不是分配点 | 不在 P05 修，不阻塞 P06；后续如需处理按独立工作项 |
+# unified diff PROJECT_ROADMAP.md
+--- a/PROJECT_ROADMAP.md
++++ b/PROJECT_ROADMAP.md
+@@ -50,3 +50,3 @@
+ | P04 | Phase 1：生产集成验收 | 将通过的最小修复集成到工作分支并全新构建；经 Python、Lua 和相关 C/RNP 路径复验；跑既有主套件 | D001 生产物理矩阵通过；D002 原生契约通过；相关历史回归无新增失败；独立复核后记录源码提交和关闭范围 | P02、P03 | 2026-10-10 有限范围 CLOSED：固定候选 5cf534ce5ec223a6388d29bbb2c58f981f070241 经 Codex 最终生产技术审核接受（checkpoints/p04-final/FINAL_REVIEW.md）；必要 leak 行1–4按负责人B保存证据验收，非独立动态LSan认证。负责人批准后采纳于 codex/p04-adoption-20261010，采纳SHA为上述固定候选；范围与限制见登记表。P05未启动。 |
+-| P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重试正确 | P04；固定选项、全新对象避免依赖 D004 | S1–S4 已由用户签收（带范围声明，见 checkpoints/p05/P05_S3_S4_SIGNOFF.md 第 2 节）；S5 进行中（R2：登记落实与 D016 公共 API 实测；U364：S5R3 收口在 F4 上重跑 make test 与全量 E2E）；验收映射见 checkpoints/p05/registries/s5r1/P05_ACCEPTANCE_MAP_S5R1.tsv |
++| P05 | Phase 2 A：D003 | 核对现有六文件 FMM 候选和 checkpoint 差异；针对实际启用的 FFT/Jones/NV/VL 等分支完成失败传播/清理/重试验证 | 每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重试正确 | P04；固定选项、全新对象避免依赖 D004 | S1–S4 已由用户签收（带范围声明，见 checkpoints/p05/P05_S3_S4_SIGNOFF.md 第 2 节）；S5 收口轮 R3：F4 上 make test / E2E 42 点 / D016 重跑（MATCH=33 MISMATCH=0 FLAKY=0），验收映射见 checkpoints/p05/registries/s5r3/P05_ACCEPTANCE_MAP_S5R3.tsv（等待用户审核） |
+ | P06 | Phase 2 A：D004 + core smoke | 修正 solve 后 SetOptions 的失效/状态契约；测试同对象和全新对象一致，再测 D003 失败→改选项→重试组合 | targeted + D003/D004 core smoke；原生产物理回归仍通过；两缺陷各有最小 diff | P05 | 待执行 |
+@@ -144,3 +144,3 @@
+   - 2026-10-11 P05-S1R 更新（提前登记，P05-S5 时核对；依据 `checkpoints/p05/P05_S1R_O1_ATTRIBUTION.md`）：VL 基在 `n_G=1`（NumBasis 1–4）下确定性失败（`info=2`，错误码 20），B/A/H 三树一致，是显式报告而非静默错误数值。根因是图案层向量场归一化遇全零场时除零得 NaN 且仍返回成功。已按用户裁决拆为两条：
+-    - **D016**（已实施，归 D003 失败传播范围）：零场除零不应静默产生 NaN，应在根因处返回错误。修法已实施（P05-S3R2 提交 3e77aa9；F4 pattern.c 2210–2216，[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python/Lua 公共 API 实测：在 F4 上、在该输入下经公共 API 可见失败且恢复正确（U365）；正式两遍 MATCH=31、MISMATCH=2、FLAKY=0（见 checkpoints/p05/registries/s5r2/D016_VERDICT_S5R2.tsv；照实报告，不改期望）；见 [登记表](testing/s4test/ISSUE_REGISTRY.md)。
++    - **D016**（已实施，归 D003 失败传播范围）：零场除零不应静默产生 NaN，应在根因处返回错误。修法已实施（P05-S3R2 提交 3e77aa9；F4 pattern.c 2210–2216，[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python/Lua 公共 API 实测：在 F4 上、在该输入下经公共 API 可见失败且恢复正确（U365）；正式两遍 MATCH=31、MISMATCH=2、FLAKY=0；MISMATCH=2 为比较器格式缺陷（ES5-6），行为点全 MATCH；S5R3 重跑结果见 checkpoints/p05/registries/s5r3/D016_VERDICT_S5R3.tsv（MATCH=33 MISMATCH=0 FLAKY=0）；见 [登记表](testing/s4test/ISSUE_REGISTRY.md)。
+     - **R-P05-01**（OPEN，经 U366 转出 P05，不阻塞）：让 n_G=1 可计算需先确认 allzero 到 1x1 的设计意图并取得独立参考解；反事实通量与 allzero 设计意图保持 OPEN，写进 S5 范围声明；见 [登记表](testing/s4test/ISSUE_REGISTRY.md) 的 R-P05-01 行。

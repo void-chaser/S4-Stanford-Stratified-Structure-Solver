@@ -1,0 +1,11 @@
+# POSCTRL_GATE_S5R4.txt -- positive control of the five fixed end-gate checks (U378)
+# every tampered copy is on disk under checkpoints/p05/evidence/p05-s5r4/posctrl/gate/ and the FORMAL gate script
+# was invoked in --only single-check mode; clean copy must PASS, tampered copy must FAIL.
+# git status: allowed/disallowed real-format strings plus the real work-tree status.
+FROZEN_POST_I_CALL_COUNTS_MATCH: PASS (clean=PASS tampered=FAIL)
+RULINGS_LINES_5_FIELDS: PASS (clean=PASS tampered=FAIL)
+D016_VERDICT_ROWS_34: PASS (clean=PASS tampered=FAIL)
+CALIB_DIFF_ZERO: PASS (clean=PASS tampered=FAIL)
+MODIFIED_TRACKED_FILES_WITHIN_END_ALLOW_LIST: PASS (clean=PASS tampered=FAIL)
+MODIFIED_TRACKED_REAL_STATUS: PASS (clean=PASS tampered=n/a)
+OVERALL_POSITIVE_CONTROL: PASS (6/6)

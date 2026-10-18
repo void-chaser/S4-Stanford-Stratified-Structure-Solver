@@ -1,0 +1,8 @@
+# POSCTRL_REJUDGE_S5R4.txt -- positive control of rejudge_s5r4.py on tampered on-disk copies
+# each case is a full copy of the S5R3 inputs; the formal rejudge script is run on it.
+# clean copy must give DIFFS=0; each tampered copy must give DIFFS>=1.
+PASS: clean_copy -- rc=0 DIFFS=0
+PASS: tamper_e2e_visible_error_removed -- DIFFS=1 (must be >=1)
+PASS: tamper_d016_recovery_over_threshold -- DIFFS=1 (must be >=1)
+PASS: tamper_recorded_verdict_flip -- DIFFS=1 (must be >=1)
+OVERALL_POSITIVE_CONTROL: PASS (4/4)

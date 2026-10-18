@@ -1,0 +1,37 @@
+# READINESS_S5R4.tsv -- P05-S5 R4 readiness audit (task brief section 7); runs after the final STATE (U382)
+# META	STATE_BYTES=3424	STATE_SHA256=1a962c77e13f8c3f1189b7227855bf8826f48b7af84a43badd6cc21de509807c	STATE_PATH=checkpoints/p05/STATE.md
+row_kind	item	requirement	status	evidence	note
+RED_POINT	AUDIT-TRACE-M2c	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:AUDIT-TRACE-M2c	checkpoints/p05/evidence/p05-s4r8/m2c/SOURCE_TRACE_R8_M2c.tsv (174 rows audited; 0 new diffs beyond F1-F3)
+RED_POINT	K-1	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:K-1	U274/U281 关闭维持；R9 回归点 M2-06-01-F4-C 实测 MATCH (rc1=20, REPORTED_FAILURE)；无静默吞没。
+RED_POINT	RP-R5-1	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R5-1	checkpoints/p05/P05_S4R5_REPORT.md (sec 8); checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-1; checkpoints/p05/registrie
+RED_POINT	RP-R6d-1	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-1	checkpoints/p05/evidence/p05-s4r6d/RNV1_SOURCE_R6d.md; RESULTS_R6d_RNV1_pass1_run2.tsv (72 rows, CRASH 72/72 MATCH); RES
+RED_POINT	RP-R6d-10	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-10	S4/S4_internal.h:263 [源码]; registries/s4r6b/ERRATA_6b.txt U11
+RED_POINT	RP-R6d-11	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-11	registries/s4r6c/ERRATA_6c.txt U14; RESULTS_R6c_STATE.tsv I4 notes; S4.cpp:2012, 1339-1348, 1364-1372, 1805 [源码]
+RED_POINT	RP-R6d-12	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-12	registries/s4r6c/ERRATA_6c_PREFIX_CHECK.txt; GATE_R6c2.txt
+RED_POINT	RP-R6d-13	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-13	registries/s4r6b/ERRATA_6b.txt U9; P05_S4R6c_REPORT.md section 3.2 (I7 DEFERRED 177)
+RED_POINT	RP-R6d-14	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-14	registries/s4r9/M2/VERDICT_R9.tsv M2-05 rows: 8 rows (4 injection P0/P2/PP1/PP2 + 4 controls, incl M2-05-P0-F4-C) all MA
+RED_POINT	RP-R6d-15	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-15	registries/s4r5/S3_HANDOFF_COVERAGE_R5.tsv; M3c independent re-judge REJUDGE_E2E_R9M3C.tsv (DIFFS=0, E2E_OK=25, CONTROL_
+RED_POINT	RP-R6d-16	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-16	registries/s4r5/S3_HANDOFF_COVERAGE_R5.tsv
+RED_POINT	RP-R6d-17	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-17	registries/s4r5/S3_HANDOFF_COVERAGE_R5.tsv
+RED_POINT	RP-R6d-18	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-18	registries/s4r4/S4_MALLOC_STATIC_R4.txt; user scope decision (STATE section 3 item 7)
+RED_POINT	RP-R6d-19	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-19	registries/s4r6c/STATE_SUMMARY_R6c.txt
+RED_POINT	RP-R6d-2	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-2	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-1; RESULTS_R6_TWICE_pass1.tsv (R6-1, 24 rows x 2, MATCH)
+RED_POINT	RP-R6d-20	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-20	evidence/p05-s4r6c/STATE_SUMMARY_R6c_SEAM.txt; RESULTS_R6c_SEAM.tsv
+RED_POINT	RP-R6d-3	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-3	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-4, U5
+RED_POINT	RP-R6d-4	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-4	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-3, U5
+RED_POINT	RP-R6d-5	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-5	checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-2 (U3)
+RED_POINT	RP-R6d-6	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-6	checkpoints/p05/registries/s4r3/RESULTS_R3.tsv (tree B rows); RESULTS_R6d_RNV1_pass*_run2.tsv (B rows, CRASH 72/72 incl.
+RED_POINT	RP-R6d-7	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-7	checkpoints/p05/P05_S4R5_REPORT.md section 4.3; checkpoints/p05/P05_S3R2_CLOSEOUT.md (D016); R6d count/vl_ng1_noinject.o
+RED_POINT	RP-R6d-8	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-8	checkpoints/p05/P05_S3R2_CLOSEOUT.md section 3.4 and 6; registries/s4r5/RESULTS_R5_K1.tsv (kottke only)
+RED_POINT	RP-R6d-9	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R6d-9	S4/S4_internal.h:263 [源码]; checkpoints/p05/registries/s4r6/ERRATA_6.txt E6-8; registries/s4r6b/ERRATA_6b.txt E6b-1
+RED_POINT	RP-R8-M2c-1	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R8-M2c-1	R9 M2 正式两遍实测 6 点全 MATCH (100%): SOLN-1763-closed2d-ng1-F4-dbg, SOLN-1763-closed2d-ng1-F4-san, SOLN-1763-fft-ng5-F4-dbg, 
+RED_POINT	RP-R8-M2c-1b	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R8-M2c-1b	R9 M2 正式两遍实测 12 点全 MATCH (100%): 1764行 6点 (SOLN-1764-closed2d-ng1-F4-dbg, SOLN-1764-closed2d-ng1-F4-san-AL, SOLN-1764-ff
+RED_POINT	RP-R9M3B-NONE	S4 签收时红点已修复并有修后回归	MET	registries/s4r9/M3d/RED_POINTS_LEDGER_FINAL_R9M3D.tsv:RP-R9M3B-NONE	正式两遍全部 E2E_OK/CONTROL_OK（[('CONTROL_OK', 17), ('E2E_OK', 25)]）；无 API_SILENT/RETRY_DIFF/RETRY_FAIL
+SUMMARY	OPEN_ITEMS	25 行开放项全部为已转出（附 U 编号）或已关闭（附证据）	MET	checkpoints/p05/P05_S5_OPEN_ITEMS.tsv	rows=25 dispositions=OPEN_TRANSFERRED_OUT,RECORD_ONLY_OPEN,REGISTERED_D017,REGISTERED_R-P05-02,REGISTRY_SYNC,TEST_S5R2,TEST_S5R3
+SUMMARY	PENDING_RUNS	无待跑运行（正式重判已产出）	MET	checkpoints/p05/evidence/p05-s5r4/	missing=none markers=none
+SUMMARY	CONSISTENCY	STATE/registries/报告/草稿关键数字一致	MET	STATE.md + verdict tables + registry	state_missing=none refs=MATCH=33 unit_count=265 verdict=NO_NEW_FAILURE DIFFS=0 registry=26/26 GAP=0 26/26
+SUMMARY	MAKETEST	make test 相对基线 NO_NEW_FAILURE 且与 Ran N 对账（R3 结果，U385 不重跑）	MET	evidence/p05-s5r3/MAKETEST_VERDICT_S5R3.tsv	verdict=NO_NEW_FAILURE unit_count=265 reconcile=8/8
+SUMMARY	PREREG_MATRIX	D016/E2E 预注册矩阵无 MISMATCH/FLAKY/VALUE_DRIFT；S5R4 独立重判 DIFFS=0	MET	D016_VERDICT_S5R3.tsv; E2E_VERDICT_S5R3.tsv; REJUDGE_S5R4.tsv	d016={'MATCH': '33', 'MISMATCH': '0', 'FLAKY': '0'} e2e_bad=none rejudge_diffs=0
+SUMMARY	E2E_CHAINS	Python/Lua 正常→失败→可见报错→重试/新对象恢复全部通过（R3 证据）	MET	D016_VERDICT_S5R3.tsv; E2E_VERDICT_S5R3.tsv	d016_match=33 e2e_ok_by_frontend={'lua_batch': 11, 'lua_repl': 4, 'py': 10} e2e_rows=42
+SUMMARY	REGISTRY_COMPLETION	S5R3 应交付小表 26/26 可覆盖（19 项已在 registries/s5r3，7 项源可用）	MET	registries/s5r3/ + 本轮证据	registry_completion=26/26 (present19=19 sources7=7) 26/26
+SUMMARY	SHAKEDOWN	试跑 end 门禁 FAILS=0 且 CHECK_CRASHED=0（staging 完整演练）	MET	evidence/p05-s5r4/shakedown/gate/GATE_S5R4_end.txt	shakedown_fails=0 shakedown_crashed=0 staging_run=False (the formal readiness audit requires the real FAILS=0 output; the staging rehearsal cannot read its own end-gate output)

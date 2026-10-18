@@ -1,0 +1,32 @@
+# COPY_DIFF_S5R4.txt -- line diff of the S5R4 end gate against the S5R3 end gate (task brief section 6)
+# left  = testing/d003/stage_s5r3/gate_check_s5r3.py
+# right = testing/d003/stage_s5r4/gate_check_s5r4.py
+# every hunk is classified into a DECLARED category; strict_unexpected counts undeclared hunks.
+# categories: CONSTANT FIX1 FIX2 FIX3 FIX4 FIX5 STAGING NEW_CHECK RENAME
+# unchanged lines: 209 of the S5R3 gate are carried over verbatim (checked below)
+DECLARED STAGING    hunk1 @@ -1,20 +1,52 @@ (48 changed lines)
+DECLARED FIX3       hunk2 @@ -36,6 +68,12 @@ (6 changed lines)
+DECLARED STAGING    hunk3 @@ -50,13 +88,15 @@ (12 changed lines)
+DECLARED STAGING    hunk4 @@ -66,7 +106,11 @@ (6 changed lines)
+DECLARED STAGING    hunk5 @@ -99,31 +143,28 @@ (23 changed lines)
+DECLARED STAGING    hunk6 @@ -131,11 +172,9 @@ (4 changed lines)
+DECLARED STAGING    hunk7 @@ -144,158 +183,331 @@ (359 changed lines)
+DECLARED STAGING    hunk8 @@ -304,119 +516,389 @@ (432 changed lines)
+DECLARED STAGING    hunk9 @@ -424,23 +906,24 @@ (9 changed lines)
+DECLARED STAGING    hunk10 @@ -450,7 +933,7 @@ (2 changed lines)
+DECLARED NEW_CHECK  hunk11 @@ -458,18 +941,19 @@ (11 changed lines)
+DECLARED STAGING    hunk12 @@ -483,14 +967,65 @@ (59 changed lines)
+# HUNKS=12
+# HUNKS_BY_CATEGORY=FIX3=1;NEW_CHECK=1;STAGING=10
+# R3_CHECKS_STATIC=70 PRESENT=60 RENAMED=10 UNRESOLVED=0
+# RENAME RULINGS_MAX_U_377 -> RULINGS_MAX_U_385
+# RENAME ERRATA_S5_LAST_IS_ES5_8 -> ERRATA_S5_LAST_IS_ES5_14
+# RENAME STATE_MARKERS -> STATE_MARKERS_R4
+# RENAME PREREG_D016_ROWS -> PREREG_D016_ROWS_36
+# RENAME REJUDGE_DIFFS_ZERO -> REJUDGE_S5R4_DIFFS_ZERO
+# RENAME ACCEPTANCE_ALL_MET -> ACCEPTANCE_S5R3_ALL_MET
+# RENAME REGISTRY_ISSUE_HAS_ES5_6 -> REGISTRY_ISSUE_HAS_ES5_9
+# RENAME REGISTRY_ROADMAP_HAS_ES5_6 -> REGISTRY_ROADMAP_HAS_S5R4
+# RENAME REPORT_SIGNOFF_DRAFT_REF -> REPORT_SIGNOFF_DRAFT_V2_REF
+# RENAME REGISTRIES_SUMS_ALL_OK -> REGISTRY_EXPECTED_ALL_IN_SUMS
+strict_unexpected=0

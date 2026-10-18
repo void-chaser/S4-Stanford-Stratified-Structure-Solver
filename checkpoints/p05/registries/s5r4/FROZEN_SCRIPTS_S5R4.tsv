@@ -1,0 +1,27 @@
+# FROZEN_SCRIPTS_S5R4.tsv -- frozen scripts after the shakedown rehearsal and before record commit (i).
+# The end gate reads POST_I call expectations from this file BY COLUMN NAME (task brief section 6).
+# mode '-' means any invocation counts; the other value names the mode word that must appear in the command.
+path	sha256	expected_calls	mode
+testing/d003/stage_s5r4/s5r4_startgate.py	65b44d18e681f750177e017c1bf94b0075fe71d77b05fbb283ff1344f40f5790	0	-
+testing/d003/stage_s5r4/s5r4_prep.py	cfdb8d34a8814a3f7caf6fc28a1b59591d04eff2a848527a5154e14cdbc861a6	0	-
+testing/d003/stage_s5r4/s5r4_prereg.py	e89aa5c037ca7cde284c78d82c5a46e5971a3571f96e4cf41861de968529316e	0	-
+testing/d003/stage_s5r4/rejudge_s5r4.py	8601dbfad5c325179d37ac1bfc9605487d1a6979d0118864a58f7c98a227b44a	1	formal
+testing/d003/stage_s5r4/s5r4_rejudge_check.py	c2977dcfc086506d819c0a808b3ab85e51a5abb8ecc52dd4867bd862c776a396	0	-
+testing/d003/stage_s5r4/s5r4_copycheck.py	0f4c2c9fb7354647893fafd6d848c2959a71cb7648a6200827af9aabb3ce03e6	0	-
+testing/d003/stage_s5r4/s5r4_gate_posctrl.py	b95268eec2ae2094fea6535d54a76a67e3e29b1b1e5bdbb1f41fe454263c3a35	0	-
+testing/d003/stage_s5r4/s5r4_frozen.py	1eb5cdf3bda7a17e24bc55ee4e31876ea69816cdbfeb7e6e49a59c7a763a2d0c	0	-
+testing/d003/stage_s5r4/s5r4_state.py	ae3e84c266135e39687456cdb8f512eed607541bb1fcbbb30527b33571c288f4	1	formal
+testing/d003/stage_s5r4/s5r4_readiness.py	c727bf0062fab7a08b3c4e80ed14c42bf9ee3e5b448354be7282cc1287a064b5	1	formal
+testing/d003/stage_s5r4/s5r4_r3recheck.py	1cee0bc987050427a67348922c8372bbe6450813e762a76a90edcc3e85fcd93c	1	formal
+testing/d003/stage_s5r4/s5r4_acceptance.py	344d78a073562618e1b1b75f5e6c1da2b383b4fb63d89b7709cf1a2b5bbedc2e	1	formal
+testing/d003/stage_s5r4/s5r4_signoff.py	7258f6c21f00db0d13a25241291dc6a0771a054e68c245597fb5e003e4b77f2e	1	formal
+testing/d003/stage_s5r4/s5r4_apply_patch.py	5ed4a86e2d003029a0adc7930663599ed40b2e3892361f21d09a041b0d40b264	1	formal
+testing/d003/stage_s5r4/s5r4_report.py	24dbd66f856a7e5c8d857f5fa49bb5f9cb3a577fa5ae10c0d8e7c9be839a994a	1	formal
+testing/d003/stage_s5r4/s5r4_report_check.py	73ab1fa8be25512a647fd3bdb9410135ce9ab02a953f4bb2a7e156f5f5f1d77e	1	formal
+testing/d003/stage_s5r4/s5r4_registry.py	9e71df8407b259d2e71bb92da4c1cedd1f613b84336c31ab763a33b5713bac13	1	formal
+testing/d003/stage_s5r4/s5r4_events.py	de059c5b0eba94c462d3f7f2c3e0caabcac77fc22a557c0a8917245826d237b1	1	formal
+testing/d003/stage_s5r4/s5r4_sha_sums.py	4ad273b0542b13801578d0ec93874177bf3e30a5f187c28ad191645c1cdd0f18	1	formal
+testing/d003/stage_s5r4/s5r4_chain.py	96129ba32ef7ba4f8c38b3a5bd865e978200075c1515610dcd6f4df1b3d8d3e2	1	formal
+testing/d003/stage_s5r4/gate_s5r4.sh	3ca3f38d525bd117ed5e9ad65c85396976172f72fddb86cce39a33f0325ace39	1	-
+testing/d003/stage_s5r4/gate_check_s5r4.py	829f2708601ae55678d00ec8ef46754781ffe12538fd2cd98a126313692fd2c7	0	-
+testing/d003/stage_s5r4/s5r4_appendix.py	74ef8095252c1a248600e31fe235fb1fbb3d5feeb44e56d27875859a0c8fe8b8	0	-

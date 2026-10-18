@@ -1,0 +1,977 @@
+# COPY_DIFF_S5R3.txt -- U373 copy proof for the S5R3 apparatus scripts
+# Substitution rule (applied to the ORIGINAL line): 'p05-s4r9/m3b' / 'p05-s4r9/m3a' -> 'p05-s5r3';
+#   'stage_s4r9' -> 'stage_s5r3'; script file names *_r9m3b*/*_r9m3a* -> *_s5r3; 'R9M3B'/'R9M3A' -> 'S5R3';
+#   'r9m3b'/'r9m3a' -> 's5r3'; 'M3A'/'M3a'/'m3a' -> 'M3B'/'M3b'/'m3b'.
+# STRICT pairs: after the substitution the copy must be identical, except declared additions listed below.
+# ADAPTED pairs: the brief requires a resumable segment runner and a 4-case positive control; the full
+#   unified diff is printed and every residual line is reported as ADAPTED (no silent logic change).
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/build_e2e_r9m3b_v2.py -> testing/d003/stage_s5r3/build_e2e_s5r3.py
+original_lines=169 copy_lines=169 residual=14 declared=14 unexpected=0
+--- testing/d003/stage_s4r9/build_e2e_r9m3b_v2.py
++++ testing/d003/stage_s5r3/build_e2e_s5r3.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+-# build_e2e_r9m3b.py -- rebuild the F4 export with the D003 injector linked into the Python extension and the Lua
+-# frontend (same link parameters as build_e2e_r9m3a.py), record artefact sha256, the 4 __wrap symbols and compare
+-# with the M3a build table. New file (r9m3b).
+-# usage: python3 -I -B testing/d003/stage_s4r9/build_e2e_r9m3b.py [--force-make]
++# build_e2e_s5r3.py -- rebuild the F4 export with the D003 injector linked into the Python extension and the Lua
++# frontend (same link parameters as build_e2e_s5r3.py), record artefact sha256, the 4 __wrap symbols and compare
++# with the M3b build table (registries/s4r9/M3b/E2E_BUILD_R9M3B.tsv). New file (s5r3, U373).
++# usage: python3 -I -B testing/d003/stage_s5r3/build_e2e_s5r3.py [--force-make]
+ import os, sys, subprocess, hashlib, datetime, re
+@@ -8,3 +8,3 @@
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b")
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
+ TREE = os.path.join(EV, "trees/E2E_F4")
+@@ -19,3 +19,3 @@
+         "-Wl,--wrap=_Z9S4_mallocm"]
+-M3A = {"PYEXT_SHA256": "eae23933e6604d4ae9c67e94d5f118d9db4ff639cb4536a1bd582437cb584a47",
++M3B = {"PYEXT_SHA256": "2890991cce5796da2c206cd95ab09371c764c14440ebcf6117ba9ea6f660aaa7",
+        "LUA_FRONTEND_SHA256": "20d43f997f2a1b5b47dcc6dd5d28c122df7ff8a980e79cc8b90ae27e50cc8fd6",
+@@ -23,2 +23,3 @@
+        "LIB_S4_A_SHA256": "a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d"}
++M3B_TREE = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4")
+ ROWS = []
+@@ -47,9 +48,9 @@
+ 
+-def compare_with_m3a(name, path, m3a_path):
+-    if not os.path.isfile(m3a_path):
+-        return (name + "_BYTE_DIFF_VS_M3A", "M3A_MISSING", os.path.relpath(m3a_path, REPO))
++def compare_with_m3b(name, path, m3b_path):
++    if not os.path.isfile(m3b_path):
++        return (name + "_BYTE_DIFF_VS_M3B", "M3B_MISSING", os.path.relpath(m3b_path, REPO))
+     b1 = open(path, "rb").read()
+-    b2 = open(m3a_path, "rb").read()
++    b2 = open(m3b_path, "rb").read()
+     if len(b1) != len(b2):
+-        return (name + "_BYTE_DIFF_VS_M3A", "LENGTH_DIFF", "%d vs %d" % (len(b1), len(b2)))
++        return (name + "_BYTE_DIFF_VS_M3B", "LENGTH_DIFF", "%d vs %d" % (len(b1), len(b2)))
+     rng = section_offsets(path).get(".note.gnu.build-id")
+@@ -60,3 +61,3 @@
+     if not diffs:
+-        return (name + "_BYTE_DIFF_VS_M3A", "IDENTICAL", "0 differing bytes")
++        return (name + "_BYTE_DIFF_VS_M3B", "IDENTICAL", "0 differing bytes")
+     v = b1[:rng[0]] + b1[rng[1]:]
+@@ -65,4 +66,4 @@
+         note = "IDENTICAL_EXCEPT_BUILD_ID"
+-    elif v.replace(b"m3b", b"m3a") == w:
+-        note = "DIFFERENT_ONLY_BY_TREE_PATH_m3b_vs_m3a"
++    elif v.replace(b"s5r3", b"m3b") == w:
++        note = "DIFFERENT_ONLY_BY_TREE_PATH_s5r3_vs_m3b"
+     else:
+@@ -73,3 +74,3 @@
+         detail += " first_bytes=%02x/%02x" % (b1[outside[0]], b2[outside[0]])
+-    return (name + "_BYTE_DIFF_VS_M3A", note, detail)
++    return (name + "_BYTE_DIFF_VS_M3B", note, detail)
+ 
+@@ -94,3 +95,3 @@
+     os.makedirs(OUTDIR, exist_ok=True)
+-    open(LOG, "w", encoding="utf-8").write("# E2E build log r9m3b " + datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") + NL)
++    open(LOG, "w", encoding="utf-8").write("# E2E build log s5r3 " + datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") + NL)
+     if not os.path.isdir(os.path.join(TREE, "S4")):
+@@ -109,5 +110,5 @@
+     ROWS.append(("MAKE_LIB_AND_LUA", str(rc), "build/libS4.a + build/S4"))
+-    inj_obj = os.path.join(TREE, "build", "inject_r9m3b.o")
++    inj_obj = os.path.join(TREE, "build", "inject_s5r3.o")
+     rc, _ = run(["g++", "-O1", "-fPIC", "-c", INJ, "-I", os.path.join(TREE, "S4"), "-I", os.path.join(TREE, "S4", "fmm"), "-o", inj_obj])
+-    ROWS.append(("COMPILE_INJECTOR_FPIC", str(rc), "inject_r9m3b.o"))
++    ROWS.append(("COMPILE_INJECTOR_FPIC", str(rc), "inject_s5r3.o"))
+     inc = subprocess.check_output(["python3-config", "--includes"], text=True).split()
+@@ -119,3 +120,3 @@
+     rc, _ = run(cmd)
+-    ROWS.append(("LINK_PYEXT_WITH_WRAP", str(rc), "same four --wrap options as build_e2e_r9m3a.py"))
++    ROWS.append(("LINK_PYEXT_WITH_WRAP", str(rc), "same four --wrap options as build_e2e_s5r3.py"))
+     luaside = os.path.join(TREE, "build", "S4_e2e")
+@@ -124,3 +125,3 @@
+     rc, _ = run(cmd)
+-    ROWS.append(("LINK_LUA_WITH_WRAP", str(rc), "same four --wrap options as build_e2e_r9m3a.py"))
++    ROWS.append(("LINK_LUA_WITH_WRAP", str(rc), "same four --wrap options as build_e2e_s5r3.py"))
+     art = {}
+@@ -132,3 +133,3 @@
+             ROWS.append((name + "_PATH", os.path.relpath(path, REPO), ""))
+-            ROWS.append((name + "_SHA256", h, "compare_with_M3a=" + ("SAME" if M3A.get(name + "_SHA256") == h else "DIFFERENT")))
++            ROWS.append((name + "_SHA256", h, "compare_with_M3B=" + ("SAME" if M3B.get(name + "_SHA256") == h else "DIFFERENT")))
+         else:
+@@ -148,9 +149,8 @@
+         ROWS.append((name + "_UNRESOLVED_RAW_FFT", str(len(unresolved)), ",".join(unresolved)))
+-    M3A_TREE = os.path.normpath(os.path.join(EV, "..", "m3a/trees/E2E_F4"))
+-    ROWS.append(compare_with_m3a("PYEXT", pyside, os.path.join(M3A_TREE, "S4" + suffix)))
+-    ROWS.append(compare_with_m3a("LUA_FRONTEND", luaside, os.path.join(M3A_TREE, "build/S4_e2e")))
++    ROWS.append(compare_with_m3b("PYEXT", pyside, os.path.join(M3B_TREE, "S4" + suffix)))
++    ROWS.append(compare_with_m3b("LUA_FRONTEND", luaside, os.path.join(M3B_TREE, "build/S4_e2e")))
+     ROWS.append(("WRAP_OPTIONS", "4", " ".join(WRAP)))
+     ROWS.append(("BUILD_LOG", os.path.relpath(LOG, REPO), "full compiler/linker output"))
+-    with open(os.path.join(EV, "E2E_BUILD_R9M3B.tsv"), "w", encoding="utf-8") as fh:
+-        fh.write("# E2E_BUILD_R9M3B.tsv -- artefacts, wrap-symbol checks and M3a sha comparison of the M3b E2E build" + NL)
++    with open(os.path.join(EV, "E2E_BUILD_S5R3.tsv"), "w", encoding="utf-8") as fh:
++        fh.write("# E2E_BUILD_S5R3.tsv -- artefacts, wrap-symbol checks and M3b sha comparison of the S5R3 E2E build (U373)" + NL)
+         fh.write(TAB.join(["check", "value", "detail"]) + NL)
+@@ -160,3 +160,3 @@
+         print(TAB.join(r))
+-    print("WROTE " + os.path.join(EV, "E2E_BUILD_R9M3B.tsv"))
++    print("WROTE " + os.path.join(EV, "E2E_BUILD_S5R3.tsv"))
+     bad = [r for r in ROWS if r[0].endswith("_SHA256") and len(r[1]) != 64]
+- DECLARED | # with the M3b build table. New file (s5r3).
++ DECLARED | # with the M3b build table (registries/s4r9/M3b/E2E_BUILD_R9M3B.tsv). New file (s5r3, U373).
+- DECLARED | M3B = {"PYEXT_SHA256": "eae23933e6604d4ae9c67e94d5f118d9db4ff639cb4536a1bd582437cb584a47",
++ DECLARED | M3B = {"PYEXT_SHA256": "2890991cce5796da2c206cd95ab09371c764c14440ebcf6117ba9ea6f660aaa7",
++ DECLARED | M3B_TREE = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4")
+- DECLARED |     elif v.replace(b"m3b", b"m3b") == w:
+- DECLARED |         note = "DIFFERENT_ONLY_BY_TREE_PATH_m3b_vs_m3b"
++ DECLARED |     elif v.replace(b"s5r3", b"m3b") == w:
++ DECLARED |         note = "DIFFERENT_ONLY_BY_TREE_PATH_s5r3_vs_m3b"
+- DECLARED |             ROWS.append((name + "_SHA256", h, "compare_with_M3b=" + ("SAME" if M3B.get(name + "_SHA256") == h else "DIFFERENT")))
++ DECLARED |             ROWS.append((name + "_SHA256", h, "compare_with_M3B=" + ("SAME" if M3B.get(name + "_SHA256") == h else "DIFFERENT")))
+- DECLARED |     M3B_TREE = os.path.normpath(os.path.join(EV, "..", "m3b/trees/E2E_F4"))
+- DECLARED |         fh.write("# E2E_BUILD_S5R3.tsv -- artefacts, wrap-symbol checks and M3b sha comparison of the M3b E2E build" + NL)
++ DECLARED |         fh.write("# E2E_BUILD_S5R3.tsv -- artefacts, wrap-symbol checks and M3b sha comparison of the S5R3 E2E build (U373)" + NL)
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/calib_e2e_r9m3b_v3.py -> testing/d003/stage_s5r3/calib_e2e_s5r3.py
+original_lines=192 copy_lines=192 residual=0 declared=0 unexpected=0
+--- testing/d003/stage_s4r9/calib_e2e_r9m3b_v3.py
++++ testing/d003/stage_s5r3/calib_e2e_s5r3.py
+@@ -1,3 +1,3 @@
+ #!/usr/bin/env python3
+-# calib_e2e_r9m3b_v2.py -- injection-free gdb calibration of the E2E option groups. New file (r9m3b).
++# calib_e2e_s5r3_v2.py -- injection-free gdb calibration of the E2E option groups. New file (s5r3).
+ # v2 fixes two v1 defects found in shakedown: (a) the site regex rejected the demangled symbol
+@@ -5,3 +5,3 @@
+ # does not keep the --args list. No injection environment variable is set anywhere in this script.
+-# usage: python3 -I -B testing/d003/stage_s4r9/calib_e2e_r9m3b_v2.py [--only py:cf,lua_batch:exp]
++# usage: python3 -I -B testing/d003/stage_s5r3/calib_e2e_s5r3_v2.py [--only py:cf,lua_batch:exp]
+ import os, sys, subprocess, re
+@@ -9,7 +9,7 @@
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b")
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
+ TREE = os.path.join(EV, "trees/E2E_F4")
+-PY_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_python_r9m3b.py")
+-LUA_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_lua_r9m3b.lua")
+-REPL_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_lua_repl_r9m3b.txt")
++PY_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_python_s5r3.py")
++LUA_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_lua_s5r3.lua")
++REPL_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_lua_repl_s5r3.txt")
+ LUA_BIN = os.path.join(TREE, "build/S4_e2e")
+@@ -64,3 +64,3 @@
+ def run_group(fe, spec):
+-    tag = "r9m3bv2"
++    tag = "s5r3v2"
+     cmdf = gdb_cmd_file(fe, spec, tag)
+@@ -174,5 +174,5 @@
+                 fails.append(("NO_EXEC_CALL", fe, spec))
+-    out = os.path.join(EV, "CALIB_E2E_R9M3B.tsv")
++    out = os.path.join(EV, "CALIB_E2E_S5R3.tsv")
+     with open(out, "w", encoding="utf-8") as fh:
+-        fh.write("# CALIB_E2E_R9M3B.tsv -- injection-free gdb calibration of the E2E option groups (S-C3), produced by calib_e2e_r9m3b_v2.py" + NL)
++        fh.write("# CALIB_E2E_S5R3.tsv -- injection-free gdb calibration of the E2E option groups (S-C3), produced by calib_e2e_s5r3_v2.py" + NL)
+         fh.write("# Each frontend x option group was run under gdb -nx -batch with breakpoints on __wrap__Z9S4_mallocm," + NL)
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/run_e2e_r9m3b.py -> testing/d003/stage_s5r3/run_e2e_s5r3.py
+original_lines=117 copy_lines=117 residual=0 declared=0 unexpected=0
+--- testing/d003/stage_s4r9/run_e2e_r9m3b.py
++++ testing/d003/stage_s5r3/run_e2e_s5r3.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-# run_e2e_r9m3b.py -- E2E driver: one fresh process per step, reference in a separate no-injection process.
+-# usage: python3 -I -B testing/d003/stage_s4r9/run_e2e_r9m3b.py smoke OUTDIR
+-#        python3 -I -B testing/d003/stage_s4r9/run_e2e_r9m3b.py formal PASS_DIR      (resumable: finished points are skipped)
++# run_e2e_s5r3.py -- E2E driver: one fresh process per step, reference in a separate no-injection process.
++# usage: python3 -I -B testing/d003/stage_s5r3/run_e2e_s5r3.py smoke OUTDIR
++#        python3 -I -B testing/d003/stage_s5r3/run_e2e_s5r3.py formal PASS_DIR      (resumable: finished points are skipped)
+ # Python points: ref (separate process) -> inject process (A first solve, B same-object retry after the
+@@ -11,9 +11,9 @@
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b")
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
+ TREE = os.path.join(EV, "trees/E2E_F4")
+-PY_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_python_r9m3b.py")
+-LUA_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_lua_r9m3b.lua")
+-REPL_SCRIPT = os.path.join(REPO, "testing/d003/stage_s4r9/e2e_lua_repl_r9m3b.txt")
++PY_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_python_s5r3.py")
++LUA_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_lua_s5r3.lua")
++REPL_SCRIPT = os.path.join(REPO, "testing/d003/stage_s5r3/e2e_lua_repl_s5r3.txt")
+ LUA_BIN = os.path.join(TREE, "build/S4_e2e")
+-PREREG = os.path.join(EV, "PREREG_E2E_R9M3B.tsv")
++PREREG = os.path.join(EV, "PREREG_E2E_S5R3.tsv")
+ TAB = chr(9)
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/judge_e2e_r9m3b.py -> testing/d003/stage_s5r3/judge_e2e_s5r3.py
+original_lines=435 copy_lines=454 residual=23 declared=23 unexpected=0
+--- testing/d003/stage_s4r9/judge_e2e_r9m3b.py
++++ testing/d003/stage_s5r3/judge_e2e_s5r3.py
+@@ -1,4 +1,4 @@
+ #!/usr/bin/env python3
+-# judge_e2e_r9m3b.py -- classify E2E point records for the three frontends, and the positive control over
+-# tampered on-disk records. New file (r9m3b).
++# judge_e2e_s5r3.py -- classify E2E point records for the three frontends, and the positive control over
++# tampered on-disk records. New file (s5r3).
+ # categories: E2E_OK, API_SILENT, RETRY_DIFF, RETRY_FAIL, INVALID, HIT_OFF_TARGET, FLAKY, CONTROL_OK, CONTROL_BAD
+@@ -6,9 +6,9 @@
+ # starting with "GetPoyntingFlux: " (WITNESS/HIT lines never satisfy it).
+-# usage: judge_e2e_r9m3b.py posctrl OUT.txt
+-#        judge_e2e_r9m3b.py formal PASS1_DIR PASS2_DIR OUT.tsv
+-import os, sys, json, re
++# usage: judge_e2e_s5r3.py posctrl OUT.txt
++#        judge_e2e_s5r3.py formal PASS1_DIR PASS2_DIR OUT.tsv
++import os, sys, json, re, shutil
+ 
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b")
+-PREREG = os.path.join(EV, "PREREG_E2E_R9M3B.tsv")
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
++PREREG = os.path.join(EV, "PREREG_E2E_S5R3.tsv")
+ POSCTRL = os.path.join(EV, "posctrl/e2e")
+@@ -234,3 +234,3 @@
+     with open(out_tsv, "w", encoding="utf-8") as fh:
+-        fh.write("# E2E_VERDICT_R9M3B.tsv -- per-point E2E verdict over the two formal passes (S-D)" + NL)
++        fh.write("# E2E_VERDICT_S5R3.tsv -- per-point E2E verdict over the two formal passes (S-D)" + NL)
+         fh.write(TAB.join(["point_id", "frontend", "pass1", "pass2", "verdict", "detail"]) + NL)
+@@ -401,3 +401,3 @@
+     with open(out_txt, "w", encoding="utf-8") as fh:
+-        fh.write("# POSCTRL_E2E_R9M3B.txt -- positive control of judge_e2e_r9m3b.py on tampered records written to disk" + NL)
++        fh.write("# POSCTRL_E2E_S5R3.txt -- positive control of judge_e2e_s5r3.py on tampered records written to disk" + NL)
+         fh.write("# every case is a real file under " + os.path.relpath(POSCTRL, REPO) + "/<case>/pass{1,2}/points/; the verdict is" + NL)
+@@ -416,5 +416,22 @@
+ 
++def mode_shakedown(pass1_dir):
++    # task brief section 6: one shakedown pass is duplicated as pass1/pass2 for the comparator flow,
++    # marked SHAKEDOWN_DUP; this is a gate exercise, not a formal result.
++    pass2_dir = os.path.join(os.path.dirname(pass1_dir.rstrip("/")), "pass2")
++    if os.path.realpath(pass2_dir) != os.path.realpath(pass1_dir):
++        os.makedirs(os.path.join(pass2_dir, "points"), exist_ok=True)
++        for f in sorted(os.listdir(os.path.join(pass1_dir, "points"))):
++            if f.endswith(".json"):
++                shutil.copyfile(os.path.join(pass1_dir, "points", f), os.path.join(pass2_dir, "points", f))
++        open(os.path.join(pass2_dir, "SHAKEDOWN_DUP"), "w").write(
++            "pass2 is a byte-copy of pass1 (task brief section 6)" + NL)
++    out = os.path.join(os.path.dirname(pass1_dir.rstrip("/")), "E2E_VERDICT_S5R3.tsv")
++    counts, rows = formal_verdict(pass1_dir, pass2_dir, out)
++    print("SHAKEDOWN_DUP verdict written: " + os.path.relpath(out, REPO))
++    return 0 if not [r for r in rows if r[4] in ("FLAKY",)] else 1
++
++
+ def main():
+     if len(sys.argv) < 2:
+-        print("usage: judge_e2e_r9m3b.py posctrl OUT.txt | formal PASS1_DIR PASS2_DIR OUT.tsv", file=sys.stderr)
++        print("usage: judge_e2e_s5r3.py posctrl OUT.txt | formal PASS1_DIR PASS2_DIR OUT.tsv | shakedown PASS1_DIR", file=sys.stderr)
+         return 2
+@@ -422,3 +439,3 @@
+     if mode == "posctrl":
+-        out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "POSCTRL_E2E_R9M3B.txt")
++        out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "POSCTRL_E2E_S5R3.txt")
+         return mode_posctrl(out)
+@@ -429,2 +446,4 @@
+         return 0
++    if mode == "shakedown":
++        return mode_shakedown(sys.argv[2])
+     print("unknown mode", file=sys.stderr)
+- DECLARED | import os, sys, json, re
++ DECLARED | import os, sys, json, re, shutil
++ DECLARED | def mode_shakedown(pass1_dir):
++ DECLARED |     # task brief section 6: one shakedown pass is duplicated as pass1/pass2 for the comparator flow,
++ DECLARED |     # marked SHAKEDOWN_DUP; this is a gate exercise, not a formal result.
++ DECLARED |     pass2_dir = os.path.join(os.path.dirname(pass1_dir.rstrip("/")), "pass2")
++ DECLARED |     if os.path.realpath(pass2_dir) != os.path.realpath(pass1_dir):
++ DECLARED |         os.makedirs(os.path.join(pass2_dir, "points"), exist_ok=True)
++ DECLARED |         for f in sorted(os.listdir(os.path.join(pass1_dir, "points"))):
++ DECLARED |             if f.endswith(".json"):
++ DECLARED |                 shutil.copyfile(os.path.join(pass1_dir, "points", f), os.path.join(pass2_dir, "points", f))
++ DECLARED |         open(os.path.join(pass2_dir, "SHAKEDOWN_DUP"), "w").write(
++ DECLARED |             "pass2 is a byte-copy of pass1 (task brief section 6)" + NL)
++ DECLARED |     out = os.path.join(os.path.dirname(pass1_dir.rstrip("/")), "E2E_VERDICT_S5R3.tsv")
++ DECLARED |     counts, rows = formal_verdict(pass1_dir, pass2_dir, out)
++ DECLARED |     print("SHAKEDOWN_DUP verdict written: " + os.path.relpath(out, REPO))
++ DECLARED |     return 0 if not [r for r in rows if r[4] in ("FLAKY",)] else 1
++ DECLARED | 
++ DECLARED | 
+- DECLARED |         print("usage: judge_e2e_s5r3.py posctrl OUT.txt | formal PASS1_DIR PASS2_DIR OUT.tsv", file=sys.stderr)
++ DECLARED |         print("usage: judge_e2e_s5r3.py posctrl OUT.txt | formal PASS1_DIR PASS2_DIR OUT.tsv | shakedown PASS1_DIR", file=sys.stderr)
++ DECLARED |     if mode == "shakedown":
++ DECLARED |         return mode_shakedown(sys.argv[2])
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/e2e_python_r9m3b.py -> testing/d003/stage_s5r3/e2e_python_s5r3.py
+original_lines=80 copy_lines=80 residual=0 declared=0 unexpected=0
+--- testing/d003/stage_s4r9/e2e_python_r9m3b.py
++++ testing/d003/stage_s5r3/e2e_python_s5r3.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-# e2e_python_r9m3b.py -- Python public-API E2E harness for one option group.
+-# usage: python3 -B e2e_python_r9m3b.py MODE SPEC      (MODE: calib|ref|inject|fresh)
+-#   calib : build + one solve, no injection (used by calib_e2e_r9m3b.py)
++# e2e_python_s5r3.py -- Python public-API E2E harness for one option group.
++# usage: python3 -B e2e_python_s5r3.py MODE SPEC      (MODE: calib|ref|inject|fresh)
++#   calib : build + one solve, no injection (used by calib_e2e_s5r3.py)
+ #   ref   : clean reference in its own process (no injection env)
+@@ -38,3 +38,3 @@
+     else:
+-        raise SystemExit("e2e_python_r9m3b: unknown spec " + spec)
++        raise SystemExit("e2e_python_s5r3: unknown spec " + spec)
+     return sim
+@@ -56,3 +56,3 @@
+     if len(sys.argv) < 3:
+-        raise SystemExit("usage: e2e_python_r9m3b.py MODE SPEC")
++        raise SystemExit("usage: e2e_python_s5r3.py MODE SPEC")
+     mode, spec = sys.argv[1], sys.argv[2]
+@@ -73,3 +73,3 @@
+     else:
+-        raise SystemExit("e2e_python_r9m3b: unknown mode " + mode)
++        raise SystemExit("e2e_python_s5r3: unknown mode " + mode)
+     sys.stdout.write(json.dumps(out) + chr(10))
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/e2e_lua_r9m3b.lua -> testing/d003/stage_s5r3/e2e_lua_s5r3.lua
+original_lines=58 copy_lines=58 residual=0 declared=0 unexpected=0
+--- testing/d003/stage_s4r9/e2e_lua_r9m3b.lua
++++ testing/d003/stage_s5r3/e2e_lua_s5r3.lua
+@@ -1,3 +1,3 @@
+--- e2e_lua_r9m3b.lua -- Lua batch frontend E2E point (one solve per process).
+--- usage: S4_e2e -a "<spec>" e2e_lua_r9m3b.lua      (the spec travels in S4.arg, which
++-- e2e_lua_s5r3.lua -- Lua batch frontend E2E point (one solve per process).
++-- usage: S4_e2e -a "<spec>" e2e_lua_s5r3.lua      (the spec travels in S4.arg, which
+ -- main_lua.c sets only for -a; extra argv is treated as script files, so none is passed)
+@@ -6,3 +6,3 @@
+ if type(spec) ~= "string" or spec == "" then
+-    error("e2e_lua_r9m3b: spec must be passed as -a \"<spec>\" (S4.arg)")
++    error("e2e_lua_s5r3: spec must be passed as -a \"<spec>\" (S4.arg)")
+ end
+@@ -11,3 +11,3 @@
+     if f == nil then
+-        error("e2e_lua_r9m3b: method missing: " .. name)
++        error("e2e_lua_s5r3: method missing: " .. name)
+     end
+@@ -52,3 +52,3 @@
+ else
+-    error("e2e_lua_r9m3b: unknown spec " .. tostring(spec))
++    error("e2e_lua_s5r3: unknown spec " .. tostring(spec))
+ end
+
+==============================================================================
+STRICT testing/d003/stage_s4r9/e2e_lua_repl_r9m3b.txt -> testing/d003/stage_s5r3/e2e_lua_repl_s5r3.txt
+original_lines=20 copy_lines=20 residual=0 declared=0 unexpected=0
+
+==============================================================================
+ADAPTED testing/d003/stage_s4r9/run_maketest_r9m3a.py -> testing/d003/stage_s5r3/run_maketest_s5r3.py (copy + required additions; residual lines are ADAPTED)
+original_lines=42 copy_lines=51 residual=63
+--- testing/d003/stage_s4r9/run_maketest_r9m3a.py
++++ testing/d003/stage_s5r3/run_maketest_s5r3.py
+@@ -1,8 +1,10 @@
+ #!/usr/bin/env python3
+-# run_maketest_r9m3a.py -- the four formal make test passes in the frozen order B p1, F4 p1, B p2, F4 p2.
+-# usage: python3 -I -B testing/d003/stage_s4r9/run_maketest_r9m3a.py
+-import os, sys, subprocess, datetime
++# run_maketest_s5r3.py -- one segment of the four formal make test passes (B p1, F4 p1, B p2, F4 p2).
++# Copied from run_maketest_r9m3a.py; the only addition is per-segment resume (task brief section 4):
++# a segment whose log and .done marker exist is skipped, so an interrupted run can continue.
++# usage: run_maketest_s5r3.py B:1|F4:1|B:2|F4:2
++import os, sys, subprocess, datetime, hashlib
+ 
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3a")
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
+ TREES = os.path.join(EV, "trees")
+@@ -10,2 +12,7 @@
+ NL = chr(10)
++SEGMENTS = ("B:1", "F4:1", "B:2", "F4:2")
++
++
++def sha_f(p):
++    return hashlib.sha256(open(p, "rb").read()).hexdigest()
+ 
+@@ -13,27 +20,29 @@
+ def main():
++    if len(sys.argv) < 2 or sys.argv[1] not in SEGMENTS:
++        print("usage: run_maketest_s5r3.py " + "|".join(SEGMENTS))
++        return 2
++    tree, pas = sys.argv[1].split(":")
+     os.makedirs(OUT, exist_ok=True)
+-    rcs = []
+-    for tree, pas in (("B", 1), ("F4", 1), ("B", 2), ("F4", 2)):
+-        tdir = os.path.join(TREES, tree)
+-        if not os.path.isdir(tdir):
+-            print("HARD_STOP: tree missing " + tdir)
+-            return 2
+-        if os.path.commonpath([os.path.realpath(tdir), os.path.realpath(TREES)]) != os.path.realpath(TREES):
+-            print("HARD_STOP: tree is not under $EV/trees: " + tdir)
+-            return 2
+-        logname = os.path.join(OUT, "%s_p%d.log" % (tree, pas))
+-        print("RUN %s pass %d -> %s" % (tree, pas, logname))
+-        sys.stdout.flush()
+-        env = dict(os.environ)
+-        env["PYTHONDONTWRITEBYTECODE"] = "1"
+-        with open(logname, "w", encoding="utf-8") as fh:
+-            fh.write("# make test %s pass %d, utc=%s" % (tree, pas, datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")) + NL)
+-            p = subprocess.run(["make", "-C", tdir, "test", "PYTHON=python3"], env=env, stdout=fh, stderr=subprocess.STDOUT)
+-        rcs.append((tree, pas, p.returncode))
+-        print("  rc=%d" % p.returncode)
+-    with open(os.path.join(OUT, "MAKETEST_RCS_R9M3A.txt"), "w", encoding="utf-8") as fh:
+-        for tree, pas, rc in rcs:
+-            fh.write("%s_p%d rc=%d" % (tree, pas, rc) + NL)
+-    print("RC_SUMMARY " + str(rcs))
+-    return 0
++    tdir = os.path.join(TREES, tree)
++    if not os.path.isdir(tdir):
++        print("HARD_STOP: tree missing " + tdir)
++        return 2
++    logname = os.path.join(OUT, "%s_p%s.log" % (tree, pas))
++    done = os.path.join(OUT, "%s_p%s.done" % (tree, pas))
++    if os.path.isfile(logname) and os.path.isfile(done):
++        print("SKIP segment %s (already complete): %s" % (sys.argv[1], os.path.relpath(done, REPO)))
++        return 0
++    print("RUN %s -> %s" % (sys.argv[1], os.path.relpath(logname, REPO)))
++    sys.stdout.flush()
++    env = dict(os.environ)
++    env["PYTHONDONTWRITEBYTECODE"] = "1"
++    with open(logname, "w", encoding="utf-8") as fh:
++        fh.write("# make test %s pass %s, utc=%s" % (tree, pas, datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")) + NL)
++        p = subprocess.run(["make", "-C", tdir, "test", "PYTHON=python3"], env=env,
++                           stdout=fh, stderr=subprocess.STDOUT)
++    with open(done, "w", encoding="utf-8") as fh:
++        fh.write("segment=%s rc=%d utc=%s log_sha256=%s" % (sys.argv[1], p.returncode,
++                 datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), sha_f(logname)) + NL)
++    print("  rc=%d" % p.returncode)
++    return 0 if p.returncode == 0 else 1
+ 
+- ADAPTED | # run_maketest_s5r3.py -- the four formal make test passes in the frozen order B p1, F4 p1, B p2, F4 p2.
+- ADAPTED | # usage: python3 -I -B testing/d003/stage_s5r3/run_maketest_s5r3.py
+- ADAPTED | import os, sys, subprocess, datetime
++ ADAPTED | # run_maketest_s5r3.py -- one segment of the four formal make test passes (B p1, F4 p1, B p2, F4 p2).
++ ADAPTED | # Copied from run_maketest_r9m3a.py; the only addition is per-segment resume (task brief section 4):
++ ADAPTED | # a segment whose log and .done marker exist is skipped, so an interrupted run can continue.
++ ADAPTED | # usage: run_maketest_s5r3.py B:1|F4:1|B:2|F4:2
++ ADAPTED | import os, sys, subprocess, datetime, hashlib
++ ADAPTED | SEGMENTS = ("B:1", "F4:1", "B:2", "F4:2")
++ ADAPTED | 
++ ADAPTED | 
++ ADAPTED | def sha_f(p):
++ ADAPTED |     return hashlib.sha256(open(p, "rb").read()).hexdigest()
++ ADAPTED |     if len(sys.argv) < 2 or sys.argv[1] not in SEGMENTS:
++ ADAPTED |         print("usage: run_maketest_s5r3.py " + "|".join(SEGMENTS))
++ ADAPTED |         return 2
++ ADAPTED |     tree, pas = sys.argv[1].split(":")
+- ADAPTED |     rcs = []
+- ADAPTED |     for tree, pas in (("B", 1), ("F4", 1), ("B", 2), ("F4", 2)):
+- ADAPTED |         tdir = os.path.join(TREES, tree)
+- ADAPTED |         if not os.path.isdir(tdir):
+- ADAPTED |             print("HARD_STOP: tree missing " + tdir)
+- ADAPTED |             return 2
+- ADAPTED |         if os.path.commonpath([os.path.realpath(tdir), os.path.realpath(TREES)]) != os.path.realpath(TREES):
+- ADAPTED |             print("HARD_STOP: tree is not under $EV/trees: " + tdir)
+- ADAPTED |             return 2
+- ADAPTED |         logname = os.path.join(OUT, "%s_p%d.log" % (tree, pas))
+- ADAPTED |         print("RUN %s pass %d -> %s" % (tree, pas, logname))
+- ADAPTED |         sys.stdout.flush()
+- ADAPTED |         env = dict(os.environ)
+- ADAPTED |         env["PYTHONDONTWRITEBYTECODE"] = "1"
+- ADAPTED |         with open(logname, "w", encoding="utf-8") as fh:
+- ADAPTED |             fh.write("# make test %s pass %d, utc=%s" % (tree, pas, datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")) + NL)
+- ADAPTED |             p = subprocess.run(["make", "-C", tdir, "test", "PYTHON=python3"], env=env, stdout=fh, stderr=subprocess.STDOUT)
+- ADAPTED |         rcs.append((tree, pas, p.returncode))
+- ADAPTED |         print("  rc=%d" % p.returncode)
+- ADAPTED |     with open(os.path.join(OUT, "MAKETEST_RCS_S5R3.txt"), "w", encoding="utf-8") as fh:
+- ADAPTED |         for tree, pas, rc in rcs:
+- ADAPTED |             fh.write("%s_p%d rc=%d" % (tree, pas, rc) + NL)
+- ADAPTED |     print("RC_SUMMARY " + str(rcs))
+- ADAPTED |     return 0
++ ADAPTED |     tdir = os.path.join(TREES, tree)
++ ADAPTED |     if not os.path.isdir(tdir):
++ ADAPTED |         print("HARD_STOP: tree missing " + tdir)
++ ADAPTED |         return 2
++ ADAPTED |     logname = os.path.join(OUT, "%s_p%s.log" % (tree, pas))
++ ADAPTED |     done = os.path.join(OUT, "%s_p%s.done" % (tree, pas))
++ ADAPTED |     if os.path.isfile(logname) and os.path.isfile(done):
++ ADAPTED |         print("SKIP segment %s (already complete): %s" % (sys.argv[1], os.path.relpath(done, REPO)))
++ ADAPTED |         return 0
++ ADAPTED |     print("RUN %s -> %s" % (sys.argv[1], os.path.relpath(logname, REPO)))
++ ADAPTED |     sys.stdout.flush()
++ ADAPTED |     env = dict(os.environ)
++ ADAPTED |     env["PYTHONDONTWRITEBYTECODE"] = "1"
++ ADAPTED |     with open(logname, "w", encoding="utf-8") as fh:
++ ADAPTED |         fh.write("# make test %s pass %s, utc=%s" % (tree, pas, datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")) + NL)
++ ADAPTED |         p = subprocess.run(["make", "-C", tdir, "test", "PYTHON=python3"], env=env,
++ ADAPTED |                            stdout=fh, stderr=subprocess.STDOUT)
++ ADAPTED |     with open(done, "w", encoding="utf-8") as fh:
++ ADAPTED |         fh.write("segment=%s rc=%d utc=%s log_sha256=%s" % (sys.argv[1], p.returncode,
++ ADAPTED |                  datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), sha_f(logname)) + NL)
++ ADAPTED |     print("  rc=%d" % p.returncode)
++ ADAPTED |     return 0 if p.returncode == 0 else 1
+
+==============================================================================
+ADAPTED testing/d003/stage_s4r9/judge_maketest_r9m3b_v2.py -> testing/d003/stage_s5r3/judge_maketest_s5r3.py (copy + required additions; residual lines are ADAPTED)
+original_lines=310 copy_lines=384 residual=212
+--- testing/d003/stage_s4r9/judge_maketest_r9m3b_v2.py
++++ testing/d003/stage_s5r3/judge_maketest_s5r3.py
+@@ -1,10 +1,13 @@
+ #!/usr/bin/env python3
+-# judge_maketest_r9m3b.py -- read-only re-parse of the four M3a make test logs (no make run). New file (r9m3b).
+-# A unittest unit is the line "test_x (mod.Class.test_x)"; its status is the first status word on that line or on a
+-# following line, scanning until the next unit line (M3a only looked one line ahead and lost the docstring units).
+-# Reconciliation is mandatory: per log and per unittest block, the recognised unit count must equal "Ran N" and the
+-# skipped count must equal "OK (skipped=k)". Mismatch -> RECONCILE_FAIL, never adjusted away.
++# judge_maketest_s5r3.py -- P05-S5 R3 make test judge. Copied from judge_maketest_r9m3b_v2.py
++# (U374: same criteria, same "Ran N" reconciliation); s5r3 additions are the shakedown mode
++# (single F4 run duplicated as four logs, marked SHAKEDOWN_DUP) and the four-case positive control.
++# A unittest unit is the line "test_x (mod.Class.test_x)"; its status is the first status word on that
++# line or on a following line, scanning until the next unit line.
++# Reconciliation is mandatory: per log and per unittest block, the recognised unit count must equal
++# "Ran N" and the skipped count must equal "OK (skipped=k)". Mismatch -> RECONCILE_FAIL.
+ # modes:
+-#   formal  -- read <m3a>/maketest/{B_p1,F4_p1,B_p2,F4_p2}.log, write MAKETEST_UNITS_R9M3B.tsv + MAKETEST_VERDICT_R9M3B.tsv
+-#   posctrl -- tampered on-disk copies under $EV/posctrl/maketest/<case>/ and the same formal code path, write POSCTRL_MAKETEST_R9M3B.txt
++#   formal [LOGDIR UNITS VERDICT]
++#   shakedown [LOGDIR]
++#   posctrl [--seed-dir DIR] OUT.txt
+ import os, sys, re, shutil
+@@ -12,5 +15,4 @@
+ REPO = os.getcwd()
+-EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3b")
+-M3A = os.path.join(EV, "..", "m3a")
+-M3A = os.path.normpath(M3A)
++EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s5r3")
++SHK = os.path.join(EV, "shakedown")
+ TAB = chr(9)
+@@ -31,3 +33,2 @@
+ STATUS_RE = re.compile(r"\.\.\.\s+(ok|FAIL|ERROR|skipped|expected failure|unexpected success)\b")
+-RUNS = [("B", "p1"), ("F4", "p1"), ("B", "p2"), ("F4", "p2")]
+ LOGNAMES = ["B_p1", "F4_p1", "B_p2", "F4_p2"]
+@@ -191,3 +192,3 @@
+     with open(units_path, "w", encoding="utf-8") as fh:
+-        fh.write("# MAKETEST_UNITS_R9M3B.tsv -- per unit x 4 passes, re-parsed read-only from the M3a logs (S-B)" + NL)
++        fh.write("# MAKETEST_UNITS_S5R3.tsv -- per unit x 4 passes, parsed from the S5R3 formal logs (U374)" + NL)
+         fh.write(TAB.join(["unit", "stage"] + LOGNAMES) + NL)
+@@ -198,3 +199,3 @@
+     with open(verdict_path, "w", encoding="utf-8") as fh:
+-        fh.write("# MAKETEST_VERDICT_R9M3B.tsv -- make test verdict for R9 M3b (S-B; same criteria as U333a)" + NL)
++        fh.write("# MAKETEST_VERDICT_S5R3.tsv -- make test verdict for P05-S5 R3 (U374; same criteria as U333a)" + NL)
+         fh.write(TAB.join(["item", "value"]) + NL)
+@@ -223,53 +224,117 @@
+ 
+-def mode_posctrl(out_txt):
++def mode_shakedown():
++    logdir = os.path.join(SHK, "maketest")
++    os.makedirs(logdir, exist_ok=True)
++    src = os.path.join(EV, "maketest/F4_p1.log")
++    if not os.path.isfile(src):
++        print("HARD_STOP shakedown F4 run missing")
++        return 2
++    for k in LOGNAMES:
++        shutil.copyfile(src, os.path.join(logdir, k + ".log"))
++    open(os.path.join(logdir, "SHAKEDOWN_DUP"), "w").write(
++        "all four logs are copies of the single F4 shakedown run (task brief section 6)" + NL)
++    verdict, detail, recon, cnt = run_formal(logdir, os.path.join(logdir, "MAKETEST_UNITS_S5R3.tsv"),
++                                             os.path.join(logdir, "MAKETEST_VERDICT_S5R3.tsv"))
++    print("SHAKEDOWN verdict=%s unit_count=%d (SHAKEDOWN_DUP)" % (verdict, cnt))
++    return 0 if verdict == "NO_NEW_FAILURE" else 1
++
++
++def mode_posctrl(seeddir, out_txt):
++    seed = {k: os.path.join(seeddir, k + ".log") for k in LOGNAMES}
++    for k, p in seed.items():
++        if not os.path.isfile(p):
++            print("HARD_STOP posctrl seed missing " + p)
++            return 2
+     cases = []
+-    src = os.path.join(M3A, "maketest")
+-    seed = {k: os.path.join(src, k + ".log") for k in LOGNAMES}
+-    # case A: flip one docstring-carried status of F4_p1 from ok to FAIL
+-    dA = os.path.join(EV, "posctrl/maketest/caseA")
+-    os.makedirs(dA, exist_ok=True)
+-    for k in LOGNAMES:
+-        shutil.copyfile(seed[k], os.path.join(dA, k + ".log"))
+-    lines = read_lines(os.path.join(dA, "F4_p1.log"))
++
++    def fresh(case):
++        d = os.path.join(EV, "posctrl/maketest", case)
++        os.makedirs(d, exist_ok=True)
++        for k in LOGNAMES:
++            shutil.copyfile(seed[k], os.path.join(d, k + ".log"))
++        return d
++
++    def patch_status(path, uid, new_status):
++        lines = read_lines(path)
++        pat = re.compile(r"^(" + re.escape(uid) + r" \(.*?\)\.\.\.\s+)(ok|FAIL|ERROR|skipped)")
++        hit = None
++        for i, l in enumerate(lines):
++            m = pat.match(l.strip())
++            if m:
++                hit = i
++                break
++        if hit is None:
++            return False
++        nl = lines[hit]
++        pos = nl.rfind("ok")
++        if pos < 0:
++            return False
++        lines[hit] = nl[:pos] + new_status + nl[pos + 2:]
++        open(path, "w", encoding="utf-8").write(NL.join(lines) + NL)
++        return True
++
++    def flip_docstring_unit(d, logname):
++        lines = read_lines(os.path.join(d, logname))
++        blocks = split_blocks(lines)
++        block = blocks["s4test_unittest"]
++        ents = parse_unittest_block(block)
++        for uid, st, idx in ents:
++            if st == "ok":
++                m = UNIT_RE.match(block[idx].strip())
++                if not m.group(3).strip():
++                    for j in range(idx + 1, min(idx + 8, len(block))):
++                        if UNIT_RE.match(block[j].strip()):
++                            break
++                        if status_in(block[j]) == "ok":
++                            start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
++                            absj = start + j
++                            nl = lines[absj]
++                            pos = nl.rfind("ok")
++                            lines[absj] = nl[:pos] + "FAIL" + nl[pos + 2:]
++                            open(os.path.join(d, logname), "w", encoding="utf-8").write(NL.join(lines) + NL)
++                            return uid, status_in(block[j])
++        return None, None
++
++    # A: one docstring-carried ok unit flipped to FAIL in F4_p1 -> NEW_FAILURE
++    d = fresh("caseA_docstring_unit_ok_to_fail")
++    uid, st = flip_docstring_unit(d, "F4_p1.log")
++    if uid is None:
++        print("HARD_STOP posctrl case A unit not found")
++        return 2
++    cases.append(("A_DOCSTRING_UNIT_OK_TO_FAIL", "NEW_FAILURE", d, "flipped %s (F4_p1) ok->FAIL" % uid))
++    # B: one unit flipped ok->FAIL in B_p2 only -> FLAKY
++    d = fresh("caseB_flaky")
++    uid, st = flip_docstring_unit(d, "B_p2.log")
++    if uid is None:
++        print("HARD_STOP posctrl case B unit not patched")
++        return 2
++    cases.append(("B_FLAKY_P2_STATUS_DIFF", "FLAKY", d, "flipped %s in B_p2 only" % uid))
++    # C: one unit renamed in F4_p2 only -> SUITE_DIFF (counts still reconcile with Ran N)
++    d = fresh("caseC_suite_diff")
++    lines = read_lines(os.path.join(d, "F4_p2.log"))
++    hit = None
++    for i, line in enumerate(lines):
++        m = UNIT_RE.match(line.strip())
++        if m and status_in(m.group(3)) is not None:
++            hit = i
++            break
++    if hit is None:
++        print("HARD_STOP posctrl case C unit not found")
++        return 2
++    m = UNIT_RE.match(lines[hit].strip())
++    old_uid = m.group(2)
++    new_uid = old_uid + "_RENAMED"
++    lines[hit] = lines[hit].replace(old_uid, new_uid)
++    open(os.path.join(d, "F4_p2.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
++    cases.append(("C_SUITE_DIFF_UNIT_RENAMED", "SUITE_DIFF", d, "renamed %s -> %s in F4_p2" % (old_uid, new_uid)))
++    # D: one unit line deleted from F4_p1 -> RECONCILE_FAIL (count no longer equals Ran N)
++    d = fresh("caseD_reconcile_fail")
++    lines = read_lines(os.path.join(d, "F4_p1.log"))
+     blocks = split_blocks(lines)
+-    block = blocks["s4test_unittest"]
+-    ents = parse_unittest_block(block)
+-    target = None
+-    for uid, st, idx in ents:
+-        if st == "ok" and idx + 1 < len(block):
+-            # status must have been carried by a following line
+-            if not status_in(UNIT_RE.match(block[idx].strip()).group(3)):
+-                for j in range(idx + 1, min(idx + 6, len(block))):
+-                    if UNIT_RE.match(block[j].strip()):
+-                        break
+-                    if status_in(block[j]) == "ok":
+-                        target = (uid, j)
+-                        break
+-                if target:
+-                    break
+-    if target is None:
+-        print("POSCTRL_CASE_A cannot find a docstring-carried ok unit")
+-        return 1
+-    uid, j = target
+-    blk_start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
+-    abs_j = blk_start + j
+-    nl = lines[abs_j]
+-    pos = nl.rfind("ok")
+-    lines[abs_j] = nl[:pos] + "FAIL" + nl[pos + 2:]
+-    open(os.path.join(dA, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
+-    cases.append(("A_DOCSTRING_UNIT_OK_TO_FAIL", "NEW_FAILURE", dA, "flipped %s (%s) from ok to FAIL" % (uid, "F4_p1")))
+-    # case B: delete one unit line of F4_p1 so the count no longer matches Ran N
+-    dB = os.path.join(EV, "posctrl/maketest/caseB")
+-    os.makedirs(dB, exist_ok=True)
+-    for k in LOGNAMES:
+-        shutil.copyfile(seed[k], os.path.join(dB, k + ".log"))
+-    lines = read_lines(os.path.join(dB, "F4_p1.log"))
+-    blocks = split_blocks(lines)
+-    block = blocks["s4test_unittest"]
+-    ents = parse_unittest_block(block)
++    ents = parse_unittest_block(blocks["s4test_unittest"])
+     drop_uid, drop_st, drop_idx = ents[5]
+-    blk_start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
+-    del lines[blk_start + drop_idx]
+-    open(os.path.join(dB, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
+-    cases.append(("B_DELETE_ONE_UNIT_LINE", "RECONCILE_FAIL", dB, "deleted unit line " + drop_uid))
++    start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
++    del lines[start + drop_idx]
++    open(os.path.join(d, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
++    cases.append(("D_DELETE_ONE_UNIT_LINE", "RECONCILE_FAIL", d, "deleted unit line " + drop_uid))
+     results = []
+@@ -282,10 +347,13 @@
+     with open(out_txt, "w", encoding="utf-8") as fh:
+-        fh.write("# POSCTRL_MAKETEST_R9M3B.txt -- positive control of judge_maketest_r9m3b.py on tampered log copies (S-B3)" + NL)
+-        fh.write("# seed logs: " + os.path.relpath(src, REPO) + "/{B,F4}_p{1,2}.log (read-only); each case keeps all four copies on disk" + NL)
++        fh.write("# POSCTRL_MAKETEST_S5R3.txt -- positive control of judge_maketest_s5r3.py on tampered on-disk log copies (U374)" + NL)
++        fh.write("# seed logs: " + os.path.relpath(seeddir, REPO) + "/{B,F4}_p{1,2}.log; each case keeps all four copies on disk" + NL)
++        fh.write("# verdict recomputed by the same formal code path (no constant self-proof)" + NL)
+         for name, want, got, ok, note in results:
+             fh.write("%s: %s (expected=%s actual=%s) -- %s" % (name, "PASS" if ok else "FAIL", want, got, note) + NL)
+-        fh.write("OVERALL_POSITIVE_CONTROL: %s (%d/%d)" % ("PASS" if all_ok else "FAIL", sum(1 for r in results if r[3]), len(results)) + NL)
++        fh.write("OVERALL_POSITIVE_CONTROL: %s (%d/%d)" % ("PASS" if all_ok else "FAIL",
++                                                           sum(1 for r in results if r[3]), len(results)) + NL)
++        fh.write("CATEGORIES_COVERED: " + ",".join(sorted(set(r[1] for r in results))) + NL)
+     for name, want, got, ok, note in results:
+-        print("%-28s want=%-16s got=%-16s %s" % (name, want, got, "PASS" if ok else "FAIL"))
+-    print("OVERALL %s" % ("PASS" if all_ok else "FAIL"))
++        print("%-30s want=%-14s got=%-15s %s" % (name, want, got, "PASS" if ok else "FAIL"))
++    print("OVERALL %s %d/%d" % ("PASS" if all_ok else "FAIL", sum(1 for r in results if r[3]), len(results)))
+     return 0 if all_ok else 1
+@@ -296,11 +364,17 @@
+     if mode == "formal":
+-        logdir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(M3A, "maketest")
+-        units_path = sys.argv[3] if len(sys.argv) > 3 else os.path.join(EV, "MAKETEST_UNITS_R9M3B.tsv")
+-        verdict_path = sys.argv[4] if len(sys.argv) > 4 else os.path.join(EV, "MAKETEST_VERDICT_R9M3B.tsv")
++        logdir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "maketest")
++        units_path = sys.argv[3] if len(sys.argv) > 3 else os.path.join(EV, "MAKETEST_UNITS_S5R3.tsv")
++        verdict_path = sys.argv[4] if len(sys.argv) > 4 else os.path.join(EV, "MAKETEST_VERDICT_S5R3.tsv")
+         verdict, detail, recon, cnt = run_formal(logdir, units_path, verdict_path)
+         return 0 if verdict == "NO_NEW_FAILURE" else 1
++    if mode == "shakedown":
++        return mode_shakedown()
+     if mode == "posctrl":
+-        out_txt = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "POSCTRL_MAKETEST_R9M3B.txt")
+-        return mode_posctrl(out_txt)
+-    print("unknown mode", file=sys.stderr)
++        a = sys.argv
++        seeddir = os.path.join(EV, "maketest")
++        if "--seed-dir" in a:
++            seeddir = a[a.index("--seed-dir") + 1]
++        out_txt = a[a.index("--seed-dir") + 2] if "--seed-dir" in a else (a[2] if len(a) > 2 else os.path.join(EV, "POSCTRL_MAKETEST_S5R3.txt"))
++        return mode_posctrl(seeddir, out_txt)
++    print("unknown mode " + mode, file=sys.stderr)
+     return 2
+- ADAPTED | # judge_maketest_s5r3.py -- read-only re-parse of the four M3b make test logs (no make run). New file (s5r3).
+- ADAPTED | # A unittest unit is the line "test_x (mod.Class.test_x)"; its status is the first status word on that line or on a
+- ADAPTED | # following line, scanning until the next unit line (M3b only looked one line ahead and lost the docstring units).
+- ADAPTED | # Reconciliation is mandatory: per log and per unittest block, the recognised unit count must equal "Ran N" and the
+- ADAPTED | # skipped count must equal "OK (skipped=k)". Mismatch -> RECONCILE_FAIL, never adjusted away.
++ ADAPTED | # judge_maketest_s5r3.py -- P05-S5 R3 make test judge. Copied from judge_maketest_r9m3b_v2.py
++ ADAPTED | # (U374: same criteria, same "Ran N" reconciliation); s5r3 additions are the shakedown mode
++ ADAPTED | # (single F4 run duplicated as four logs, marked SHAKEDOWN_DUP) and the four-case positive control.
++ ADAPTED | # A unittest unit is the line "test_x (mod.Class.test_x)"; its status is the first status word on that
++ ADAPTED | # line or on a following line, scanning until the next unit line.
++ ADAPTED | # Reconciliation is mandatory: per log and per unittest block, the recognised unit count must equal
++ ADAPTED | # "Ran N" and the skipped count must equal "OK (skipped=k)". Mismatch -> RECONCILE_FAIL.
+- ADAPTED | #   formal  -- read <m3b>/maketest/{B_p1,F4_p1,B_p2,F4_p2}.log, write MAKETEST_UNITS_S5R3.tsv + MAKETEST_VERDICT_S5R3.tsv
+- ADAPTED | #   posctrl -- tampered on-disk copies under $EV/posctrl/maketest/<case>/ and the same formal code path, write POSCTRL_MAKETEST_S5R3.txt
++ ADAPTED | #   formal [LOGDIR UNITS VERDICT]
++ ADAPTED | #   shakedown [LOGDIR]
++ ADAPTED | #   posctrl [--seed-dir DIR] OUT.txt
+- ADAPTED | M3B = os.path.join(EV, "..", "m3b")
+- ADAPTED | M3B = os.path.normpath(M3B)
++ ADAPTED | SHK = os.path.join(EV, "shakedown")
+- ADAPTED | RUNS = [("B", "p1"), ("F4", "p1"), ("B", "p2"), ("F4", "p2")]
+- ADAPTED |         fh.write("# MAKETEST_UNITS_S5R3.tsv -- per unit x 4 passes, re-parsed read-only from the M3b logs (S-B)" + NL)
++ ADAPTED |         fh.write("# MAKETEST_UNITS_S5R3.tsv -- per unit x 4 passes, parsed from the S5R3 formal logs (U374)" + NL)
+- ADAPTED |         fh.write("# MAKETEST_VERDICT_S5R3.tsv -- make test verdict for R9 M3b (S-B; same criteria as U333a)" + NL)
++ ADAPTED |         fh.write("# MAKETEST_VERDICT_S5R3.tsv -- make test verdict for P05-S5 R3 (U374; same criteria as U333a)" + NL)
+- ADAPTED | def mode_posctrl(out_txt):
++ ADAPTED | def mode_shakedown():
++ ADAPTED |     logdir = os.path.join(SHK, "maketest")
++ ADAPTED |     os.makedirs(logdir, exist_ok=True)
++ ADAPTED |     src = os.path.join(EV, "maketest/F4_p1.log")
++ ADAPTED |     if not os.path.isfile(src):
++ ADAPTED |         print("HARD_STOP shakedown F4 run missing")
++ ADAPTED |         return 2
++ ADAPTED |     for k in LOGNAMES:
++ ADAPTED |         shutil.copyfile(src, os.path.join(logdir, k + ".log"))
++ ADAPTED |     open(os.path.join(logdir, "SHAKEDOWN_DUP"), "w").write(
++ ADAPTED |         "all four logs are copies of the single F4 shakedown run (task brief section 6)" + NL)
++ ADAPTED |     verdict, detail, recon, cnt = run_formal(logdir, os.path.join(logdir, "MAKETEST_UNITS_S5R3.tsv"),
++ ADAPTED |                                              os.path.join(logdir, "MAKETEST_VERDICT_S5R3.tsv"))
++ ADAPTED |     print("SHAKEDOWN verdict=%s unit_count=%d (SHAKEDOWN_DUP)" % (verdict, cnt))
++ ADAPTED |     return 0 if verdict == "NO_NEW_FAILURE" else 1
++ ADAPTED | 
++ ADAPTED | 
++ ADAPTED | def mode_posctrl(seeddir, out_txt):
++ ADAPTED |     seed = {k: os.path.join(seeddir, k + ".log") for k in LOGNAMES}
++ ADAPTED |     for k, p in seed.items():
++ ADAPTED |         if not os.path.isfile(p):
++ ADAPTED |             print("HARD_STOP posctrl seed missing " + p)
++ ADAPTED |             return 2
+- ADAPTED |     src = os.path.join(M3B, "maketest")
+- ADAPTED |     seed = {k: os.path.join(src, k + ".log") for k in LOGNAMES}
+- ADAPTED |     # case A: flip one docstring-carried status of F4_p1 from ok to FAIL
+- ADAPTED |     dA = os.path.join(EV, "posctrl/maketest/caseA")
+- ADAPTED |     os.makedirs(dA, exist_ok=True)
+- ADAPTED |     for k in LOGNAMES:
+- ADAPTED |         shutil.copyfile(seed[k], os.path.join(dA, k + ".log"))
+- ADAPTED |     lines = read_lines(os.path.join(dA, "F4_p1.log"))
++ ADAPTED | 
++ ADAPTED |     def fresh(case):
++ ADAPTED |         d = os.path.join(EV, "posctrl/maketest", case)
++ ADAPTED |         os.makedirs(d, exist_ok=True)
++ ADAPTED |         for k in LOGNAMES:
++ ADAPTED |             shutil.copyfile(seed[k], os.path.join(d, k + ".log"))
++ ADAPTED |         return d
++ ADAPTED | 
++ ADAPTED |     def patch_status(path, uid, new_status):
++ ADAPTED |         lines = read_lines(path)
++ ADAPTED |         pat = re.compile(r"^(" + re.escape(uid) + r" \(.*?\)\.\.\.\s+)(ok|FAIL|ERROR|skipped)")
++ ADAPTED |         hit = None
++ ADAPTED |         for i, l in enumerate(lines):
++ ADAPTED |             m = pat.match(l.strip())
++ ADAPTED |             if m:
++ ADAPTED |                 hit = i
++ ADAPTED |                 break
++ ADAPTED |         if hit is None:
++ ADAPTED |             return False
++ ADAPTED |         nl = lines[hit]
++ ADAPTED |         pos = nl.rfind("ok")
++ ADAPTED |         if pos < 0:
++ ADAPTED |             return False
++ ADAPTED |         lines[hit] = nl[:pos] + new_status + nl[pos + 2:]
++ ADAPTED |         open(path, "w", encoding="utf-8").write(NL.join(lines) + NL)
++ ADAPTED |         return True
++ ADAPTED | 
++ ADAPTED |     def flip_docstring_unit(d, logname):
++ ADAPTED |         lines = read_lines(os.path.join(d, logname))
++ ADAPTED |         blocks = split_blocks(lines)
++ ADAPTED |         block = blocks["s4test_unittest"]
++ ADAPTED |         ents = parse_unittest_block(block)
++ ADAPTED |         for uid, st, idx in ents:
++ ADAPTED |             if st == "ok":
++ ADAPTED |                 m = UNIT_RE.match(block[idx].strip())
++ ADAPTED |                 if not m.group(3).strip():
++ ADAPTED |                     for j in range(idx + 1, min(idx + 8, len(block))):
++ ADAPTED |                         if UNIT_RE.match(block[j].strip()):
++ ADAPTED |                             break
++ ADAPTED |                         if status_in(block[j]) == "ok":
++ ADAPTED |                             start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
++ ADAPTED |                             absj = start + j
++ ADAPTED |                             nl = lines[absj]
++ ADAPTED |                             pos = nl.rfind("ok")
++ ADAPTED |                             lines[absj] = nl[:pos] + "FAIL" + nl[pos + 2:]
++ ADAPTED |                             open(os.path.join(d, logname), "w", encoding="utf-8").write(NL.join(lines) + NL)
++ ADAPTED |                             return uid, status_in(block[j])
++ ADAPTED |         return None, None
++ ADAPTED | 
++ ADAPTED |     # A: one docstring-carried ok unit flipped to FAIL in F4_p1 -> NEW_FAILURE
++ ADAPTED |     d = fresh("caseA_docstring_unit_ok_to_fail")
++ ADAPTED |     uid, st = flip_docstring_unit(d, "F4_p1.log")
++ ADAPTED |     if uid is None:
++ ADAPTED |         print("HARD_STOP posctrl case A unit not found")
++ ADAPTED |         return 2
++ ADAPTED |     cases.append(("A_DOCSTRING_UNIT_OK_TO_FAIL", "NEW_FAILURE", d, "flipped %s (F4_p1) ok->FAIL" % uid))
++ ADAPTED |     # B: one unit flipped ok->FAIL in B_p2 only -> FLAKY
++ ADAPTED |     d = fresh("caseB_flaky")
++ ADAPTED |     uid, st = flip_docstring_unit(d, "B_p2.log")
++ ADAPTED |     if uid is None:
++ ADAPTED |         print("HARD_STOP posctrl case B unit not patched")
++ ADAPTED |         return 2
++ ADAPTED |     cases.append(("B_FLAKY_P2_STATUS_DIFF", "FLAKY", d, "flipped %s in B_p2 only" % uid))
++ ADAPTED |     # C: one unit renamed in F4_p2 only -> SUITE_DIFF (counts still reconcile with Ran N)
++ ADAPTED |     d = fresh("caseC_suite_diff")
++ ADAPTED |     lines = read_lines(os.path.join(d, "F4_p2.log"))
++ ADAPTED |     hit = None
++ ADAPTED |     for i, line in enumerate(lines):
++ ADAPTED |         m = UNIT_RE.match(line.strip())
++ ADAPTED |         if m and status_in(m.group(3)) is not None:
++ ADAPTED |             hit = i
++ ADAPTED |             break
++ ADAPTED |     if hit is None:
++ ADAPTED |         print("HARD_STOP posctrl case C unit not found")
++ ADAPTED |         return 2
++ ADAPTED |     m = UNIT_RE.match(lines[hit].strip())
++ ADAPTED |     old_uid = m.group(2)
++ ADAPTED |     new_uid = old_uid + "_RENAMED"
++ ADAPTED |     lines[hit] = lines[hit].replace(old_uid, new_uid)
++ ADAPTED |     open(os.path.join(d, "F4_p2.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
++ ADAPTED |     cases.append(("C_SUITE_DIFF_UNIT_RENAMED", "SUITE_DIFF", d, "renamed %s -> %s in F4_p2" % (old_uid, new_uid)))
++ ADAPTED |     # D: one unit line deleted from F4_p1 -> RECONCILE_FAIL (count no longer equals Ran N)
++ ADAPTED |     d = fresh("caseD_reconcile_fail")
++ ADAPTED |     lines = read_lines(os.path.join(d, "F4_p1.log"))
+- ADAPTED |     block = blocks["s4test_unittest"]
+- ADAPTED |     ents = parse_unittest_block(block)
+- ADAPTED |     target = None
+- ADAPTED |     for uid, st, idx in ents:
+- ADAPTED |         if st == "ok" and idx + 1 < len(block):
+- ADAPTED |             # status must have been carried by a following line
+- ADAPTED |             if not status_in(UNIT_RE.match(block[idx].strip()).group(3)):
+- ADAPTED |                 for j in range(idx + 1, min(idx + 6, len(block))):
+- ADAPTED |                     if UNIT_RE.match(block[j].strip()):
+- ADAPTED |                         break
+- ADAPTED |                     if status_in(block[j]) == "ok":
+- ADAPTED |                         target = (uid, j)
+- ADAPTED |                         break
+- ADAPTED |                 if target:
+- ADAPTED |                     break
+- ADAPTED |     if target is None:
+- ADAPTED |         print("POSCTRL_CASE_A cannot find a docstring-carried ok unit")
+- ADAPTED |         return 1
+- ADAPTED |     uid, j = target
+- ADAPTED |     blk_start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
+- ADAPTED |     abs_j = blk_start + j
+- ADAPTED |     nl = lines[abs_j]
+- ADAPTED |     pos = nl.rfind("ok")
+- ADAPTED |     lines[abs_j] = nl[:pos] + "FAIL" + nl[pos + 2:]
+- ADAPTED |     open(os.path.join(dA, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
+- ADAPTED |     cases.append(("A_DOCSTRING_UNIT_OK_TO_FAIL", "NEW_FAILURE", dA, "flipped %s (%s) from ok to FAIL" % (uid, "F4_p1")))
+- ADAPTED |     # case B: delete one unit line of F4_p1 so the count no longer matches Ran N
+- ADAPTED |     dB = os.path.join(EV, "posctrl/maketest/caseB")
+- ADAPTED |     os.makedirs(dB, exist_ok=True)
+- ADAPTED |     for k in LOGNAMES:
+- ADAPTED |         shutil.copyfile(seed[k], os.path.join(dB, k + ".log"))
+- ADAPTED |     lines = read_lines(os.path.join(dB, "F4_p1.log"))
+- ADAPTED |     blocks = split_blocks(lines)
+- ADAPTED |     block = blocks["s4test_unittest"]
+- ADAPTED |     ents = parse_unittest_block(block)
++ ADAPTED |     ents = parse_unittest_block(blocks["s4test_unittest"])
+- ADAPTED |     blk_start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
+- ADAPTED |     del lines[blk_start + drop_idx]
+- ADAPTED |     open(os.path.join(dB, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
+- ADAPTED |     cases.append(("B_DELETE_ONE_UNIT_LINE", "RECONCILE_FAIL", dB, "deleted unit line " + drop_uid))
++ ADAPTED |     start = lines.index([b for n, b in STAGES if n == "s4test_unittest"][0])
++ ADAPTED |     del lines[start + drop_idx]
++ ADAPTED |     open(os.path.join(d, "F4_p1.log"), "w", encoding="utf-8").write(NL.join(lines) + NL)
++ ADAPTED |     cases.append(("D_DELETE_ONE_UNIT_LINE", "RECONCILE_FAIL", d, "deleted unit line " + drop_uid))
+- ADAPTED |         fh.write("# POSCTRL_MAKETEST_S5R3.txt -- positive control of judge_maketest_s5r3.py on tampered log copies (S-B3)" + NL)
+- ADAPTED |         fh.write("# seed logs: " + os.path.relpath(src, REPO) + "/{B,F4}_p{1,2}.log (read-only); each case keeps all four copies on disk" + NL)
++ ADAPTED |         fh.write("# POSCTRL_MAKETEST_S5R3.txt -- positive control of judge_maketest_s5r3.py on tampered on-disk log copies (U374)" + NL)
++ ADAPTED |         fh.write("# seed logs: " + os.path.relpath(seeddir, REPO) + "/{B,F4}_p{1,2}.log; each case keeps all four copies on disk" + NL)
++ ADAPTED |         fh.write("# verdict recomputed by the same formal code path (no constant self-proof)" + NL)
+- ADAPTED |         fh.write("OVERALL_POSITIVE_CONTROL: %s (%d/%d)" % ("PASS" if all_ok else "FAIL", sum(1 for r in results if r[3]), len(results)) + NL)
++ ADAPTED |         fh.write("OVERALL_POSITIVE_CONTROL: %s (%d/%d)" % ("PASS" if all_ok else "FAIL",
++ ADAPTED |                                                            sum(1 for r in results if r[3]), len(results)) + NL)
++ ADAPTED |         fh.write("CATEGORIES_COVERED: " + ",".join(sorted(set(r[1] for r in results))) + NL)
+- ADAPTED |         print("%-28s want=%-16s got=%-16s %s" % (name, want, got, "PASS" if ok else "FAIL"))
+- ADAPTED |     print("OVERALL %s" % ("PASS" if all_ok else "FAIL"))
++ ADAPTED |         print("%-30s want=%-14s got=%-15s %s" % (name, want, got, "PASS" if ok else "FAIL"))
++ ADAPTED |     print("OVERALL %s %d/%d" % ("PASS" if all_ok else "FAIL", sum(1 for r in results if r[3]), len(results)))
+- ADAPTED |         logdir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(M3B, "maketest")
++ ADAPTED |         logdir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "maketest")
++ ADAPTED |     if mode == "shakedown":
++ ADAPTED |         return mode_shakedown()
+- ADAPTED |         out_txt = sys.argv[2] if len(sys.argv) > 2 else os.path.join(EV, "POSCTRL_MAKETEST_S5R3.txt")
+- ADAPTED |         return mode_posctrl(out_txt)
+- ADAPTED |     print("unknown mode", file=sys.stderr)
++ ADAPTED |         a = sys.argv
++ ADAPTED |         seeddir = os.path.join(EV, "maketest")
++ ADAPTED |         if "--seed-dir" in a:
++ ADAPTED |             seeddir = a[a.index("--seed-dir") + 1]
++ ADAPTED |         out_txt = a[a.index("--seed-dir") + 2] if "--seed-dir" in a else (a[2] if len(a) > 2 else os.path.join(EV, "POSCTRL_MAKETEST_S5R3.txt"))
++ ADAPTED |         return mode_posctrl(seeddir, out_txt)
++ ADAPTED |     print("unknown mode " + mode, file=sys.stderr)
+
+SUMMARY strict_pairs=7 strict_declared=37 strict_unexpected=0 adapted_pairs=2 adapted_residual=275
+COPY_CHECK_VERDICT: PASS
