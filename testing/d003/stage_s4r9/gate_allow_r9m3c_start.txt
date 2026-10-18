@@ -1,0 +1,6 @@
+# P05-S4 R9 M3c allowed git status entries at start-gate time (fnmatch patterns)
+?? checkpoints/p05/briefs/P05_S4R9_BRIEF_M3c.md
+?? testing/d003/stage_s4r9/*r9m3c*
+?? testing/d003/stage_s4r9/WHITELIST_R9M3C.txt
+?? testing/d003/stage_s4r9/gate_allow_r9m3c_start.txt
+?? testing/d003/stage_s4r9/gate_allow_r9m3c_end.txt

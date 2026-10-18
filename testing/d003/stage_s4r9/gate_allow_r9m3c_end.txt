@@ -1,0 +1,4 @@
+# P05-S4 R9 M3c allowed git status entries at end-gate time (fnmatch patterns)
+ M checkpoints/p05/STATE.md
+ M checkpoints/p05/P05_S4R9_M3c_REPORT.md
+?? checkpoints/p05/registries/s4r9/M3c/*

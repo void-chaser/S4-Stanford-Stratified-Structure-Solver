@@ -1,0 +1,6 @@
+# WHITELIST_R9M3C.txt -- historical script/evidence names that r9m3c scripts may read for audit purposes.
+# Each entry: token<TAB>reason
+closeout_report_state_r9m3b.py	read-only inspection of the M3b closeout column-index defect (L-1)
+gate_check_r9m3b_v3.py	read-only inspection of the M3b hard-coded script name (L-2)
+sha_sums_r9m3b.py	read-only inspection of the M3b hard-coded v1 script name (L-2, U347)
+sha_sums_r9m3b_v2.py	read-only inspection of the M3b frozen script name (L-2, U347)
