@@ -374,3 +374,38 @@ E9-66
 - 证据文件与行号：MAKETEST_VERDICT_R9M3B.tsv reconcile rows; P05_S4R9_M3b_REPORT.md 附录 A
 - 影响范围：M3b 报告附录 A 的 make test 结论文字错误。
 - 处理方式：按 U348 以 MAKETEST_VERDICT_R9M3B.tsv 的 8/8 OK 为准，报告不改，只登记勘误。
+E9-67
+- 事实：M3c 台账 RP-R6d-14=TRANSFERRED_S5 依据 U20，但 M2 的 M2-05 行全部 MATCH，且 U245 布局与位置描述对应；实际值：M2-05 rows=8 all_MATCH=True ids=M2-05-CTRL-P0-F4,M2-05-CTRL-P2-F4,M2-05-CTRL-PP1-F4,M2-05-CTRL-PP2-F4,M2-05-P0-F4-C,M2-05-P2-F4,M2-05-PP1-F4,M2-05-PP2-F4; U245 layouts P0/P2/PP1/PP2+driver_r8m2a2_layers=True; ledger RP-R6d-14 status=TRANSFERRED_S5 ruling=U20 location="other-layer failure" variants (two layers with a pattern; pattern layer not at position 1); layout description corresponds=True
+- 证据文件与行号：M2/VERDICT_R9.tsv; RULINGS.tsv U245; M3C ledger RP-R6d-14
+- 影响范围：M3c 最终台账把已由 M2-05 实测覆盖的其他层失败变体记为转 S5，与 M2 判定表不一致。
+- 处理方式：登记 E9-67；M3d 台账按 U354 将 RP-R6d-14 记为已关闭（8 点全 MATCH，范围 P0/P2/PP1/PP2、F4、driver_r8m2a2_layers）。
+E9-68
+- 事实：M3c S5 移交 10 行去重后 5 项；台账 TRANSFERRED_S5 有 7 个 id，RP-R6d-3、RP-R6d-7 在移交表里没有对应项；实际值：M3c handoff data rows=10; unique canonical names=5 (b侧jones/vlsilentnvcrash|es3r4-5/528/1164|nb=1–8类别c|u2stagee|非fmms4_malloc); ledger TRANSFERRED_S5 ids=7 (RP-R6d-14,RP-R6d-16,RP-R6d-17,RP-R6d-18,RP-R6d-3,RP-R6d-6,RP-R6d-7); ids without a handoff item=RP-R6d-14,RP-R6d-3,RP-R6d-7
+- 证据文件与行号：M3c/S5_HANDOFF_R9M3C.tsv; M3c/RED_POINTS_LEDGER_FINAL_R9M3C.tsv
+- 影响范围：M3c 的 S5 移交表含重复项，且缺 RP-R6d-3、RP-R6d-7；台账与移交两个方向的对应不成立。
+- 处理方式：登记 E9-68；M3d 的 S5 移交表去重为 7 个唯一项，并按 U355 双向核对（补入 RP-R6d-3、RP-R6d-7）。
+E9-69
+- 事实：READINESS ① 写红点行=27，而台账唯一 id 数是 26；多算的是表头行，给脚本文件名与行号；实际值：READINESS ① 写红点行=27；台账唯一 id 数=26；台账非注释非空行=27（含表头）；多算=1；表头行号=13；成因：testing/d003/stage_s4r9/readiness_r9m3c.py 的 108–117 行循环未跳过表头，117 行 ledger_rows += 1 把表头算成一行
+- 证据文件与行号：testing/d003/stage_s4r9/readiness_r9m3c.py; RED_POINTS_LEDGER_FINAL_R9M3C.tsv:13
+- 影响范围：M3c 就绪审计第①条的红点行数把台账表头算成数据行（27 vs 唯一 id 26）。
+- 处理方式：登记 E9-69；M3d 就绪审计按列名解析、跳过表头式行并按唯一 id 去重，① 的红点数等于台账唯一 id 数。
+E9-70
+- 事实：签收草稿 v1 的转入 S5 项有 10 条，含重复，并且缺 RP-R6d-3、RP-R6d-7；实际值：signoff v1 转入 S5 项=10 条；规范化去重=5；缺 RP-R6d-3=True；缺 RP-R6d-7=True
+- 证据文件与行号：P05_S3_S4_SIGNOFF_DRAFT.md 转入 S5 的项
+- 影响范围：M3c 签收草稿 v1 的转入 S5 项重复且缺项，与台账不一致。
+- 处理方式：登记 E9-70；M3d 签收草稿 v2 的转入 S5 只列去重后的唯一项，每项注明来源裁决。
+E9-71
+- 事实：M1R3 G6 组 R4-CL01..04、R4-PJ01、R4-PN01、R4-PV01（F4）共 7 点 MATCH；v1 未说明移交闭合；实际值：7 点=R4-CL01-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-CL02-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-CL03-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-CL04-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-PJ01-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-PN01-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4;R4-PV01-F-F4 driver=r6bseam-seamF-F4 pass1=HOLD pass2=HOLD verdict=MATCH tree=F4; P05_S1_S2_SIGNOFF §2(2) 原文存在=True; signoff v1 说明该移交已闭合=False
+- 证据文件与行号：M1R3/VERDICT_M1_F4_R9M1R3.tsv; P05_S1_S2_SIGNOFF.md §2; P05_S3_S4_SIGNOFF_DRAFT.md
+- 影响范围：M3c 签收草稿 v1 未说明 S1/S2 范围声明第 (2) 条的七处 info=NULL seam 移交已闭合。
+- 处理方式：登记 E9-71；M3d 签收草稿 v2 单列“S1/S2 签收移交项的闭合”一节（U356），并注明 F4 上族 B 的 info=NULL 锚点已不存在。
+E9-72
+- 事实：READINESS RP-R6d-15 行仍是“待用户审核”旧措辞；裁决列写“见 STATE 行”的行数要数出；实际值：READINESS RP-R6d-15 state 含“待用户审核”=True（recomputed=state=正式两遍实测：CONTROL_OK=17, E2E_OK=25；其他类别 none; destination=已实测（待用户审核））；裁决列写“见 STATE 行”的行数=16（全字段含=16）；总行数=26
+- 证据文件与行号：M3c/READINESS_P05_S3S4_R9M3C.tsv
+- 影响范围：M3c 就绪审计的 RP-R6d-15 行沿用“待用户审核”旧措辞，且裁决列写“见 STATE 行”（U357 不允许）。
+- 处理方式：登记 E9-72；M3d 就绪审计每行裁决号为真实 U 编号或“-（事实项）”，RP-R6d-15 行改用 U345/U352。
+E9-73
+- 事实：M3c end 门禁 EVIDENCE_SHA256SUMS_OK 的 FAIL 判为执行顺序错误：正式收尾链中 sha_sums（safe_run.log 第 99 行）之后又写了一行 progress（第 100 行），使证据清单的日志前缀与实际写入顺序不一致；结果表未受影响，删除误加行后逐项校验 16/16 一致。M3c 表二的三条顺序偏差（第 1、2、3 条：脚本先于 start 门禁、FROZEN 先于收尾试跑链、readiness 先于红点台账）同样接受。
+- 证据文件与行号：P05_S4R9_M3c_REPORT.md 附录 B; m3c/GATE_R9M3C_end.txt; m3c/safe_run.log:99,100; 表二 §7.2 第 1–3 条
+- 影响范围：M3c end 门禁产生一处执行顺序型 FAIL，核验效力受损；M3c 的收尾链顺序与任务书不一致。
+- 处理方式：按 U353 只登记勘误，不重跑 M3c；M3d 把“progress 最后一行”放在 sha_sums 之前，并把 sha_sums 作为 $EV 的最后一次写入。

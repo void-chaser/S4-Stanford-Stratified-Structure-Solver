@@ -1,0 +1,3 @@
+# WHITELIST_R9M3D.txt -- historical script/evidence names that r9m3d scripts may read for audit purposes.
+# Each entry: token<TAB>reason
+# (no historical script names are referenced by the r9m3d scripts; r9m3c inputs are committed tables)

@@ -1,0 +1,6 @@
+# P05-S4 R9 M3d allowed git status entries at start-gate time (fnmatch patterns)
+?? checkpoints/p05/briefs/P05_S4R9_BRIEF_M3d.md
+?? testing/d003/stage_s4r9/*r9m3d*
+?? testing/d003/stage_s4r9/WHITELIST_R9M3D.txt
+?? testing/d003/stage_s4r9/gate_allow_r9m3d_start.txt
+?? testing/d003/stage_s4r9/gate_allow_r9m3d_end.txt

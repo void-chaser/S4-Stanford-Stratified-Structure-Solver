@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+# copy_registries_r9m3d.py -- copy the round's small tables into registries/s4r9/M3d, verify every sha256, write
+# the manifest, and declare the script-internal outputs in $EV/REGISTRY_OUTPUTS_R9M3D.tsv. New file (r9m3d).
+# usage: copy_registries_r9m3d.py DEST FILE [FILE ...]
+import os, sys, hashlib, shutil
+REPO = os.getcwd()
+EV = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4r9/m3d")
+NL = chr(10)
+
+
+def sha(p):
+    h = hashlib.sha256()
+    with open(p, "rb") as fh:
+        while True:
+            b = fh.read(65536)
+            if not b:
+                break
+            h.update(b)
+    return h.hexdigest()
+
+
+def main():
+    dest = sys.argv[1]
+    srcs = sys.argv[2:]
+    os.makedirs(dest, exist_ok=True)
+    rows = []
+    bad = []
+    for src in srcs:
+        if not os.path.isfile(src):
+            bad.append(src + ":missing")
+            continue
+        name = os.path.basename(src)
+        dst = os.path.join(dest, name)
+        shutil.copyfile(src, dst)
+        a, b = sha(src), sha(dst)
+        if a != b:
+            bad.append(name + ":sha")
+        rows.append((a, name))
+    rows.sort(key=lambda x: x[1])
+    man = os.path.join(dest, "SHA256SUMS.txt")
+    with open(man, "w", encoding="utf-8") as fh:
+        fh.write("# SHA256SUMS.txt -- small-table registry for P05-S4 R9 M3d (copied from the raw evidence dir)" + NL)
+        for h, name in rows:
+            fh.write("%s  %s" % (h, name) + NL)
+    declared = [os.path.relpath(os.path.join(dest, name), REPO) for h, name in rows]
+    declared.append(os.path.relpath(man, REPO))
+    with open(os.path.join(EV, "REGISTRY_OUTPUTS_R9M3D.tsv"), "w", encoding="utf-8") as fh:
+        fh.write("# REGISTRY_OUTPUTS_R9M3D.tsv -- outputs produced inside the scripts (declared for the end gate)" + NL)
+        for rel in declared:
+            fh.write(rel + NL)
+    for rel in declared:
+        print("DECLARED " + rel)
+    print("copied=%d manifest=%s bad=%d" % (len(rows), os.path.relpath(man, REPO), len(bad)))
+    for b in bad:
+        print("BAD " + b)
+    return 0 if not bad else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

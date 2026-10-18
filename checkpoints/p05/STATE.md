@@ -7,11 +7,11 @@
 | 项 | 值 |
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
-| 本轮开工基线 HEAD（r9m3c） | `01fd3c0e4cf436aef5780486c8b8327c25849713` |
+| 本轮开工基线 HEAD（r9m3d） | `c4f67071e80f8dd573f3653c04250708e7339b7f` |
 | `HEAD:S4`（冻结被测树 F4） | `589e15eb11fcb04e031b524f25a443e7921946cf`（F4 提交 `05097a7`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段状态 | S1、S2 已由用户确认（带范围声明）；S3、S4、S5 未确认 |
-| 当前轮次 | **P05-S4 R9 M3c（r9m3c）**：U343–U350、E9-58–E9-66 落账 + M3b 独立只读复核（DIFFS=0）+ 签收就绪审计（MET=14 GAP=0 TRANSFERRED_S5=5）+ 最终红点台账 + 签收范围声明草稿 |
+| 当前轮次 | **P05-S4 R9 M3d（r9m3d）**：U351–U358 落账 + §3 P-1…P-6 复核（6/6 属实）+ E9-67–E9-73 勘误 + 修正版最终红点台账（唯一 id 26，TRANSFERRED_S5=6）+ 去重 S5 移交（唯一项 7）+ 签收范围声明草稿 v2 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -33,6 +33,7 @@
 | S4R9 M3a | J-1..J-6 属实（E9-35..E9-44、E9-45，U328–U333）；make test 四遍 rc=0、175 单元、**NO_NEW_FAILURE**；E2E 装置+预注册 18 点（不运行、冒烟 1 次） | `P05_S4R9_M3a_REPORT.md` |
 | S4R9 M3b | U334–U342、E9-46–E9-57；make test 只读重解析 NO_NEW_FAILURE（265 单元、4 遍对账通过）；E2E 预注册 42 点、正式两遍 CONTROL_OK=17, E2E_OK=25；新红点 0 | `P05_S4R9_M3b_REPORT.md` |
 | S4R9 M3c | U343–U350、E9-58–E9-66；M3b 独立复核 DIFFS=0；READINESS MET=14 GAP=0 TRANSFERRED_S5=5；红点范围内开放 0；S5 移交 10 项 | `P05_S4R9_M3c_REPORT.md` |
+| S4R9 M3d | U351–U358、E9-67–E9-73；§3 P-1…P-6 复核 6/6 属实；红点唯一 id 26、TRANSFERRED_S5=6；去重 S5 移交 7 项；签收草稿 v2 | `P05_S4R9_M3d_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接）
 
@@ -44,9 +45,11 @@
 | 双目标（M2-04）、sanitizer（M2-03） | MATCH / 31 点全 MATCH | 完成 | `M2_CONSOLIDATED_F4_R9.tsv` |
 | 张量路径 K-1（RP-R6d-8） | 用户带范围声明关闭（U274/U281） | 关闭 | `M206_DIAG_SUMMARY.txt` |
 | RP-R8-M2c-1/1b | U350 确认按 U304 关闭（18 点全 MATCH） | 关闭 | `P05_S4R9_M2c_REPORT.md` |
+| 其他层失败变体（RP-R6d-14） | U354 关闭（M2-05 8 点全 MATCH；范围 P0/P2/PP1/PP2、F4、driver_r8m2a2_layers） | 关闭（U354） | `VERDICT_R9.tsv` |
+| S1/S2 移交：七处 info=NULL seam | U356 闭合（M1R3 G6 7/7 MATCH） | 关闭（U356） | `VERDICT_M1_F4_R9M1R3.tsv` |
 | B 侧 jones/vl SILENT、nv CRASH | OPEN（基线，不是修复证据） | S5 | `P05_S1R_O1_ATTRIBUTION.md` |
 | NB=1–8、类别 C | M2-07 81 点全 MATCH；M2-08 转 S5（U249） | S5 | `VERDICT_R9.tsv` |
-| Python/Lua 可见性（RP-R6d-15） | U345 独立复核一致（DIFFS=0），带范围声明关闭 | 关闭（待用户审核） | `REJUDGE_E2E_R9M3C.tsv` |
+| Python/Lua 可见性（RP-R6d-15） | U352 接受 S-B 复核（DIFFS=0），U345 关闭条件成立 | 关闭（U345/U352） | `REJUDGE_E2E_R9M3C.tsv` |
 | ClosedForm / LinearSolve 族 E2E 可达性 | 已复核（U339/U340）：ClosedForm 可达；seam 族标 SEAM_ONLY | 已裁决 | `COVERAGE_E2E_R9M3B.tsv` |
 | ES3R4-5/528/1164 | OUT_OF_SCOPE_D003（U90/U95/U99/U100） | S5 | `P05_S3R4_CLOSEOUT.md` |
 | U38 缺陷分类 | U38 已由 U90 裁决（806、415 已修；528、1164 转 S5），M3 只核对台账，不重新分类 | 已裁决（U90/U333c） | `registries/RULINGS.tsv` |
@@ -55,10 +58,11 @@
 | U2 stage e（I1 特殊规则） | NOT_FOUND_IN_SCOPE，S4 不出点（U248） | S5 | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 | r8m2c/d SOLN 18/28 点 | U276-U282 落实，R9 F4 18 点全 MATCH | 已闭合 | `M2_CONSOLIDATED_F4_R9.tsv` |
 
-> 说明：本轮完成 R9 M3c（裁决/勘误 + M3b 独立只读复核 + 签收就绪审计 + 最终红点台账 + 签收范围声明草稿），不宣布阶段完成；等待用户审核。
+> 说明：本轮完成 R9 M3d（U351–U358 落账 + §3 P 项复核 + 勘误 + 修正版红点台账/去重 S5 移交/就绪审计/签收草稿 v2），不宣布阶段完成；等待用户审核。
 
 ## 4. 证据位置
 
+- **S4 R9 M3d（r9m3d）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3d/`（`SHA256SUMS.txt`）；小表 `checkpoints/p05/registries/s4r9/M3d/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M3d_REPORT.md`。
 - **S4 R9 M3c（r9m3c）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3c/`（`SHA256SUMS.txt`）；小表 `checkpoints/p05/registries/s4r9/M3c/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M3c_REPORT.md`。
 - **S4 R9 M3b（r9m3b）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3b/`（`SHA256SUMS.txt`）；小表 `checkpoints/p05/registries/s4r9/M3b/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M3b_REPORT.md`。
 - **S4 R9 M3a（r9m3a）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3a/`；小表 `checkpoints/p05/registries/s4r9/M3a/`；报告 `P05_S4R9_M3a_REPORT.md`。

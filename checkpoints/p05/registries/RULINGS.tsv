@@ -357,3 +357,11 @@ U347	P05-S4 R9 M3c 任务书 §2	M3b end 门禁 EVIDENCE_SHA256SUMS_OK 的 FAIL 
 U348	P05-S4 R9 M3c 任务书 §2	M3b 报告附录 A 中“4 遍 × 2 段对账 存在 FAIL”一句是 closeout 脚本的列下标错误（取了 skipped 期望列而不是 ok 列），与事实相反。事实以 MAKETEST_VERDICT_R9M3B.tsv 的 8/8 OK 为准；报告不改，只登记勘误。	P05-S4 R9 M3c 任务书 §2	生效
 U349	P05-S4 R9 M3c 任务书 §2	不另立 M3a 门禁更正件；U337 加 E9-57 已足够。	P05-S4 R9 M3c 任务书 §2	生效
 U350	P05-S4 R9 M3c 任务书 §2	RP-R8-M2c-1/1b 已由 U304 关闭。旧台账不改，在本轮最终红点台账中按 U304 记为已关闭。	P05-S4 R9 M3c 任务书 §2	生效
+U351	P05-S4 R9 M3d 任务书 §2	M3c 的 U343–U350 与 E9-58–E9-66 落账生效。	P05-S4 R9 M3d 任务书 §2	生效
+U352	P05-S4 R9 M3d 任务书 §2	M3c 的 S-B 独立复核结果（DIFFS=0、E2E_OK=25、CONTROL_OK=17、阳性对照 16/16、REVERIFY FAILS=0）接受。U345 的关闭条件成立，RP-R6d-15 按 U345 的范围声明关闭。	P05-S4 R9 M3d 任务书 §2	生效
+U353	P05-S4 R9 M3d 任务书 §2	M3c end 门禁 EVIDENCE_SHA256SUMS_OK 的 FAIL 判为执行顺序错误：sha_sums 之后又写了一行 progress。结果表未受影响。接受“删除误加行、逐项校验 16/16 一致”的处理，只登记勘误，不重跑。M3c 表二的三条顺序偏差同样接受，只登记勘误。	P05-S4 R9 M3d 任务书 §2	生效
+U354	P05-S4 R9 M3d 任务书 §2	RP-R6d-14（其他层失败变体）不再转 S5。依据：U245 定义了 P0/P2/PP1/PP2 四种布局，R9 M2 在 F4 上正式两遍测了 M2-05 共 8 点（4 个注入点、4 个对照），全部 MATCH；另有补测点 M2-05-P0-F4-C，也是 MATCH。范围声明：仅限这四种布局、F4、驱动 driver_r8m2a2_layers。U20 的“推迟”由本裁决结束。前提：§3 P-1 复核属实；不属实时，本裁决不生效，并写入“需用户裁决”。复核：P-1 属实（8 点全 MATCH）。	P05-S4 R9 M3d 任务书 §2	生效
+U355	P05-S4 R9 M3d 任务书 §2	S5 移交清单以去重后的唯一项为准。最终红点台账里每个 TRANSFERRED_S5 的 id 都必须出现在移交清单中，反过来移交清单的每一项也必须能对应到台账 id 或 STATE 行，不能有只出现在一边的项。RP-R6d-3（no-TWICE 路径，OUT_OF_SCOPE_D003）和 RP-R6d-7（D016，B 侧 rc 来源未追踪）按台账现状转 S5，补进移交清单。	P05-S4 R9 M3d 任务书 §2	生效
+U356	P05-S4 R9 M3d 任务书 §2	S1/S2 签收范围声明第 (2) 条（七处 info=NULL 的 LinearSolve 修前 seam 移交 P05-S4）以 M1R3 中 G6 组 R4-CL01..CL04、R4-PJ01、R4-PN01、R4-PV01（F4）的判定作为闭合证据。前提：§3 P-5 复核为 7/7 MATCH。签收草稿 v2 要单列一节写明这项移交已闭合，并注明 F4 上族 B 原有的 info=NULL 锚点已不存在（P05_S4R4_REPORT.md §2a），所以这 7 点测的是修复后的 &solve_info 路径。复核：P-5 7/7 MATCH。	P05-S4 R9 M3d 任务书 §2	生效
+U357	P05-S4 R9 M3d 任务书 §2	就绪审计重算时，每一行的“裁决号”必须是 RULINGS.tsv 中真实存在的 U 编号，或者写 “-（事实项）”，不得写“见 STATE 行”。RP-R6d-15 那行改用 U345/U352。	P05-S4 R9 M3d 任务书 §2	生效
+U358	P05-S4 R9 M3d 任务书 §2	M3c 已提交的产物不改；M3d 的修正版作为签收前的唯一现行版本。STATE 的开放问题表要同步反映 U354 与 U356。	P05-S4 R9 M3d 任务书 §2	生效
