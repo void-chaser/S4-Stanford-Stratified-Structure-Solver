@@ -34,7 +34,7 @@ NEEDS_TEST 项（S5R2 预注册并实测）：
 3. P05_ACCEPTANCE_MAP_S5R1.tsv 的 GAP 行清零或经用户裁决；NEEDS_USER_RULING 行（AC-3/AC-4）有裁决结论。
 4. 仅改文档/登记表的项（REGISTRY_ONLY、RECORD_ONLY_OPEN、NEEDS_FIX_NEW_DEFECT）写入登记表草案并落实。
 5. STATE.md 不超过 8192 B；门禁 CHECK_CRASHED=0；证据 SHA256SUMS 全 OK。
-6. 不宣布 P05 完成；P05-S5 签收只由用户在对话中给出。
+6. 不宣布 P05 阶段完成；P05-S5 签收只由用户在对话中给出。
 
 ## 5. 需用户裁决的问题（Q1..Q8，附推荐）
 

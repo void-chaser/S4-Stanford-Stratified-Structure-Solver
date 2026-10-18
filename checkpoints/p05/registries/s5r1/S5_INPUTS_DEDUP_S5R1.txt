@@ -1,0 +1,12 @@
+# S5_INPUTS_DEDUP_S5R1.txt -- P05-S5 R1 input de-duplication record
+# pre-dedup rows=29 ; merged rows=3 ; unique rows=25
+
+MERGE S5-M3D-03 <- S5-M3D-03（A） | U99（C：pattern.c:798 内层循环） | U100（C：FFT/Kottke 忽略 -1..-9）
+MERGE S5-C-01 <- S5-C-01（C：PROJECT_ROADMAP D016） | ISSUE_REGISTRY 物理行 41（D：D016 行）
+MERGE S5-C-02 <- S5-C-02（C：PROJECT_ROADMAP R-P05-01） | ISSUE_REGISTRY 物理行 114（D：R-P05-01 行）
+
+GROUP_COUNTS A=7 B=9 C=3 D=6
+PRE_DEDUP_ROWS=29
+MERGED_ROWS=3
+UNIQUE_ROWS=25
+NOTE S5-M3D-03 是去重后的合并行；U99（pattern.c:798）与 U100（Pattern_DiscretizeCell -1..-9）是同一 ES3R4-5/528/1164 移交族内的子项，其来源裁决已由 S5_HANDOFF_R9M3D.tsv 的 source_ruling（U90/U95/U99/U100）覆盖，故不另立行。

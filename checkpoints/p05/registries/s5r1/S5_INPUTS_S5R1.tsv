@@ -1,0 +1,26 @@
+input_id	group	canonical_name	source_file	source_locator	source_ruling	current_status_text
+S5-M3D-01	A	B 侧 jones/vl SILENT、nv CRASH	S5_HANDOFF_R9M3D.tsv	第 6 行（第 3 列 scope）	-（事实项：B 列不是修复证据）	S5（基线观察，不是修复证据）
+S5-M3D-02	A	NB=1–8、类别 C	S5_HANDOFF_R9M3D.tsv	第 7 行（第 3 列 scope）	U249	S5（M2-07 81 点全 MATCH；M2-08 转 S5）
+S5-M3D-03	A	ES3R4-5/528/1164	S5_HANDOFF_R9M3D.tsv	第 8 行（第 3 列 scope）	U90/U95/U99/U100	S5（OUT_OF_SCOPE_D003）
+S5-M3D-04	A	非 FMM S4_malloc（约 35–43 处）	S5_HANDOFF_R9M3D.tsv	第 9 行（第 3 列 scope）	-（事实项：范围决策）	S5（范围决策）
+S5-M3D-05	A	U2 stage e（I1 特殊规则）	S5_HANDOFF_R9M3D.tsv	第 10 行（第 3 列 scope）	U248	S5（NOT_FOUND_IN_SCOPE）
+S5-M3D-06	A	RP-R6d-3 no-TWICE 路径（OUT_OF_SCOPE_D003）	S5_HANDOFF_R9M3D.tsv	第 11 行（第 3 列 scope）	U5	S5（OUT_OF_SCOPE_D003）
+S5-M3D-07	A	RP-R6d-7 D016（B 侧 rc 来源未追踪）	S5_HANDOFF_R9M3D.tsv	第 12 行（第 3 列 scope）	-（事实项：B 侧基线）	S5（B 侧基线观察；F 侧归 D016/D003）
+S5-B-01	B	F10 历史因果	checkpoints/p05/P05_S1_S2_SIGNOFF.md; checkpoints/p05/registries/s1r2/J5_RECORDED_ITEMS.txt	P05_S1_S2_SIGNOFF.md 第 (3) 条（物理行 25）；J5_RECORDED_ITEMS.txt 物理行 6	-（事实项）	
+S5-B-02	B	F8 历史目录哈希	checkpoints/p05/P05_S1_S2_SIGNOFF.md; checkpoints/p05/registries/s1r2/J5_RECORDED_ITEMS.txt	P05_S1_S2_SIGNOFF.md 第 (3) 条（物理行 25）；J5_RECORDED_ITEMS.txt 物理行 16	-（事实项）	
+S5-B-03	B	反事实通量正确性（VL NB=1）	checkpoints/p05/P05_S1_S2_SIGNOFF.md; checkpoints/p05/registries/s1r2/J5_RECORDED_ITEMS.txt	P05_S1_S2_SIGNOFF.md 第 (3) 条（物理行 25）；J5_RECORDED_ITEMS.txt 物理行 24	-（事实项）	
+S5-B-04	B	allzero 分支设计意图	checkpoints/p05/P05_S1_S2_SIGNOFF.md; checkpoints/p05/registries/s1r2/J5_RECORDED_ITEMS.txt	P05_S1_S2_SIGNOFF.md 第 (3) 条（物理行 25）；J5_RECORDED_ITEMS.txt 物理行 34	-（事实项）	
+S5-B-05	B	S1 报告 11.2 哈希来源：logs/60-t6-results.json	checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md; checkpoints/p05/P05_S1R2_CLOSEOUT.md	S1_BASELINE_AND_ENUMERATION.md 11.2 表物理行 359；P05_S1R2_CLOSEOUT.md 物理行 280（不一致 5 个之一）	-（事实项）	- 来源：`logs/60-t6-results.json`，`logs/60-t6-main.log`。
+S5-B-06	B	S1 报告 11.2 哈希来源：logs/60-t6-main.log	checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md; checkpoints/p05/P05_S1R2_CLOSEOUT.md	S1_BASELINE_AND_ENUMERATION.md 11.2 表物理行 58；P05_S1R2_CLOSEOUT.md 物理行 280（不一致 5 个之一）	-（事实项）	- T6 Python 进程中：`S4.__file__ = /tmp/S4-p05-baseline/S4.cpython-314-x86_64-linux-gnu.so`，`startswith baseline = True`（`logs/60-t6-main.log`）。
+S5-B-07	B	S1 报告 11.2 哈希来源：logs/61-t6-diag-layer.log	checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md; checkpoints/p05/P05_S1R2_CLOSEOUT.md	S1_BASELINE_AND_ENUMERATION.md 11.2 表物理行 374；P05_S1R2_CLOSEOUT.md 物理行 280（不一致 5 个之一）	-（事实项）	### 7.4 分层溯源 [实测]（`logs/61-t6-diag-layer.log`）
+S5-B-08	B	S1 报告 11.2 哈希来源：logs/62-t6-repeat.log	checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md; checkpoints/p05/P05_S1R2_CLOSEOUT.md	S1_BASELINE_AND_ENUMERATION.md 11.2 表物理行 389；P05_S1R2_CLOSEOUT.md 物理行 280（不一致 5 个之一）	-（事实项）	### 7.5 重复性 [实测]（`logs/62-t6-repeat.log`）
+S5-B-09	B	S1 报告 11.2 哈希来源：s1_run.sh	checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md; checkpoints/p05/P05_S1R2_CLOSEOUT.md	S1_BASELINE_AND_ENUMERATION.md 11.2 表物理行 485；P05_S1R2_CLOSEOUT.md 物理行 280（不一致 5 个之一）	-（事实项）	| `s1_run.sh` | f250b2d4b04a7c1f2c13fb423093f8b6f7cd1575e9c63a93a89fcefe8a93220a |
+S5-C-01	C	D016 图案层零场除零（归 D003 失败传播范围）	PROJECT_ROADMAP.md; testing/s4test/ISSUE_REGISTRY.md	PROJECT_ROADMAP.md 物理行 145–146；ISSUE_REGISTRY.md 物理行 41	-（事实项）	2026-10-11 P05-S1R 实测：VL 基、n_G=1（NumBasis 1–4）时，图案层流场 max_field=0，场被写为 NaN，NaN 进入 Epsilon_inv/Epsilon2，特征值求解以 info=2 失败，公共 API 抛 RuntimeError、驱动 rc 20；B/A/H 三树一致。
+S5-C-02	C	R-P05-01 让 n_G=1 可计算（未验证，暂不处理）	PROJECT_ROADMAP.md; testing/s4test/ISSUE_REGISTRY.md	PROJECT_ROADMAP.md 物理行 146；ISSUE_REGISTRY.md 物理行 114	-（事实项）	VL 基在 n_G=1（NumBasis 1–4）时无法求解：图案层 allzero 到 1x1 流场网格使闭合单元上的边界通量抵消、场恒为零。该分支的设计意图未知；让 n_G=1 可计算需要改变该行为，属于行为变更而非失败传播。
+S5-C-03	C	S2 闭合不含 fmm_kottke 除数数值安全	checkpoints/p05/P05_S1_S2_SIGNOFF.md	P05_S1_S2_SIGNOFF.md 物理行 21（第 1 条）	-（事实项）	(1) S2 对 fmm_kottke.cpp 的闭合仅限分配失败与 solve_info 传播，不含除数数值安全；
+S5-D-01	D	D003 FFT prepare/execute 失败处理与上层传播	testing/s4test/ISSUE_REGISTRY.md	ISSUE_REGISTRY.md 物理行 28（D003 行）	-（事实项）	checkpoint 已含 FFT wrapper/kiss FFT/网格路径的部分处理。历史六文件 FMM 候选和 runner 存在；完整候选未生产验收/集成
+S5-D-02	D	ISSUE_REGISTRY 含 P05 的行（P04）	testing/s4test/ISSUE_REGISTRY.md	ISSUE_REGISTRY.md 物理行 85	-（事实项）	| P04 | 固定候选clean保存流水线38步PASS、0unexpected、18/18产物绑定；主测试total257/pass256/skip1（OOM为Code Review Only）、Lua回归及binding smoke4/4；上述有限范围关闭，P05未启动 |
+S5-D-03	D	ISSUE_REGISTRY 含 P05 的行（R-P04-01）	testing/s4test/ISSUE_REGISTRY.md	ISSUE_REGISTRY.md 物理行 107	-（事实项）	| R-P04-01 | A-10r 契约外短工作区越界；保存 SIGSEGV 探针存在，非正式 judged 用例。2026-10-10 正式复验观测：默认候选探针 rc -11（SIGSEGV）；ASan 候选与 seam 候选探针报告 heap-buffer-overflow（ztrevc_，Eigensystems.cpp:2936）。两者均为未判定探针，不计入候选 ...
+S5-D-04	D	ISSUE_REGISTRY 含 P05 的行（R-P04-07）	testing/s4test/ISSUE_REGISTRY.md	ISSUE_REGISTRY.md 物理行 113	-（事实项）	| R-P04-07 | 历史 D002 等 provenance 未知；证据溯源事项 | 找到原定义/提交/输入则记录明确来源；找不到保持未知。不得用当前有限修复补造历史因果 | 并行资料整理或文档阶段，默认不阻塞 P05 |
+S5-D-05	D	ISSUE_REGISTRY 含 P05 的行（ISSUE_REGISTRY 行 117）	testing/s4test/ISSUE_REGISTRY.md	ISSUE_REGISTRY.md 物理行 117	-（事实项）	下一轮默认修复顺序仍为 P05/D003 → P06/D004；P05 应核对实际 FMM/FFT 失败传播和已登记 VL NB1 可达性。以上后续事项仅在其自身任务明确启动后执行，不回头扩大本次 P04 验收。
+S5-D-06	D	PROJECT_ROADMAP P05 行（验收标准与当前状态）	PROJECT_ROADMAP.md	PROJECT_ROADMAP.md 物理行 51（P05 行，第 4/5 列）	-（事实项）	验收：每个受影响的 prepare/execute 点有正负对照；失败后模式/缓存不安装；Python/Lua 可见失败，恢复重试正确。当前状态：待执行；优先复用已有候选

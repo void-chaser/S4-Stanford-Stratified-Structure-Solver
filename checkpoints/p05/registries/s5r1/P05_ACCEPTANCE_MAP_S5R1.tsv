@@ -1,0 +1,5 @@
+ac_id	acceptance_criterion	committed_evidence	status	notes
+AC-1	每个受影响的 prepare/execute 点有正负对照	P05_S4R9_M2_REPORT.md（F4 正式两遍 191/191 MATCH；M2-07 81 点）+ registries/s4r9/M2/（VERDICT_R9.tsv、M2_CONSOLIDATED_F4_R9.tsv）；P05_S4R9_M1R3_REPORT.md + registries/s4r9/M1R3/	MET	F4 上 M2 两遍与 M1R3 651 点均有已提交判定；范围限 M2 点族与 F4，不外推到其它树/布局
+AC-2	失败后模式/缓存不安装	P05_S3_4b_CLOSURE.md（U29：202 注入点 I1–I6，HOLD 202 / VIOLATED 0）；P05_S4R9_M3c_REPORT.md + registries/s4r9/M3c/（READINESS GAP=0）	MET	U29 关闭声明与 M3c 就绪审计均在 F4 上；范围声明见 U29 原文
+AC-3	Python/Lua 可见失败，恢复重试正确	P05_S4R9_M3b_REPORT.md + registries/s4r9/M3b/E2E_VERDICT_R9M3B.tsv、PREREG_E2E_R9M3B.tsv；M3c 独立复核（U352，DIFFS=0）	NEEDS_USER_RULING	证据是 S4 的 M3a/M3b 结果；能否作为 S5 前端与回归证据需用户裁决（AC-4）
+AC-4	M3a/M3b 的 make test 与 E2E 结果能否作为 S5 前端与回归的已提交证据	P05_S4R9_M3a_REPORT.md（make test 175 单元、NO_NEW_FAILURE）；P05_S4R9_M3b_REPORT.md（E2E_OK=25、CONTROL_OK=17、新红点 0）	NEEDS_USER_RULING	利：F4 上已跑过真实前端、有预注册与独立复核，S5 重跑成本高；弊：S5 若只引用 S4 证据，则修复前证据不得称修复后验证的界线易被模糊，且 M3b 的 Lua REPL 只覆盖 cf/fft/kt/vl 四族。执行者不自行认定

@@ -1,0 +1,9 @@
+# FROZEN_SCRIPTS_S5R1.tsv -- frozen scripts after the shakedown chain, before record commit (i).
+# The end gate reads POST_I call expectations from this file BY COLUMN NAME (task brief section 5).
+path	sha256	expected_calls	mode
+testing/d003/stage_s5r1/gate_check_s5r1.py	899210470523dc33095b9bce18fd2036b96d71fa45f987a35e2bb6a9eb77b3a9	0	-
+testing/d003/stage_s5r1/gate_s5r1.sh	0ab3be15f3e72cee3ddf3b90f0560781b340e72d34dbaec4065f6aaeb6d03ae7	1	end
+testing/d003/stage_s5r1/s5r1_appendix.py	bd729099b327317b6d0b5db460984c97b2946ba6758517c4367ec1633296924d	0	-
+testing/d003/stage_s5r1/s5r1_chain.py	4a4998a4174724dd40a9c0b1c9e0cdd13a12c489203ba4ca3d582b011f47916d	6	-
+testing/d003/stage_s5r1/s5r1_prep.py	af862c21a3d3981176383260e6ba55d5647bdde2afdb665ba3d2fe7e67fe9411	1	all
+testing/d003/stage_s5r1/s5r1_startgate.py	3fb5d374aa141e2071dabe3ee35604a60259ac1a85f34afce9346ac024504892	0	-

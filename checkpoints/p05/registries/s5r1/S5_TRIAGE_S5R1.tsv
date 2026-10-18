@@ -1,0 +1,26 @@
+input_id	class	rationale	evidence_ref	blocks_P06_D004	proposed_registry_action	needs_user_ruling
+S5-M3D-01	RECORD_ONLY_OPEN	B 列基线观察，不是修复证据（U359 范围声明 (a)）；S5 只需登记现状	S5_HANDOFF_R9M3D.tsv S5-M3D-01；P05_S3_S4_SIGNOFF.md 第 18 行	NO：B 树行为不在 P06/D004 路径上，P06 依赖 F4 修复后行为	ISSUE_REGISTRY/S5 登记表注明 B 列观察不是修复证据，保持 OPEN	NO
+S5-M3D-02	RECORD_ONLY_OPEN	M2-07 81 点全 MATCH；余下类别 C（1D+FFT 候选）无 S4 内可执行用例，转 S5 登记	S5_HANDOFF_R9M3D.tsv S5-M3D-02；RULINGS.tsv U249	NO：类别 C 不在 D004 的 solve 后选项路径	登记 NB=1–8 与类别 C 现状，保持 OPEN	NO
+S5-M3D-03	REGISTRY_ONLY	ES3R4-5/528/1164 为 OUT_OF_SCOPE_D003 的既有问题；U99/U100 已裁决交 P05-S5 登记、不在 P05-S3/S4 修复	RULINGS.tsv U90/U95/U99/U100；ERRATA_S3R4.txt ES3R4-5	NO：不在 FMM/FFT 失败传播链上	在 ISSUE_REGISTRY 登记 528、1164、ES3R4-5(a)(b)（含 pattern.c:798、Pattern_DiscretizeCell -1..-9），状态 OPEN（不在 P05 修）	NO
+S5-M3D-04	NEEDS_FIX_NEW_DEFECT	非 FMM 的约 35–43 处 S4_malloc 不在 D003 范围（用户范围决策）；须另立登记号，不在 P05 修	S5_HANDOFF_R9M3D.tsv S5-M3D-04；STATE.md 范围决策行	NO：不属模式/缓存安装路径，也不在 FMM/FFT 失败传播链	另立独立登记项（建议编号 D017）：逐点列非 FMM S4_malloc 调用位置，状态 OPEN；见注册表补丁草案 2.3	NO
+S5-M3D-05	RECORD_ONLY_OPEN	M2-02 阶段 e 在 S4 内 NOT_FOUND_IN_SCOPE，转 S5（U248）	RULINGS.tsv U248；S5_HANDOFF_R9M3D.tsv	NO：无 S4 内可执行点，不在 P06 路径	登记 NOT_FOUND_IN_SCOPE，保持 OPEN	NO
+S5-M3D-06	RECORD_ONLY_OPEN	no-TWICE 路径 OUT_OF_SCOPE_D003；来源按 E9-76 记 U5（E6-4）	E9-76；RULINGS.tsv U5；S5_HANDOFF_R9M3D.tsv	NO：no-TWICE 不在 D003 注入范围	登记范围外（U5），保持 OPEN	NO
+S5-M3D-07	RECORD_ONLY_OPEN	RP-R6d-7：D016 的 B 侧 rc 来源未追踪；F 侧归 D016/D003	S5_HANDOFF_R9M3D.tsv S5-M3D-07；M3d 报告 7	NO：B 侧基线观察，F 侧已归 D016/D003	登记 B 侧 rc 来源未追踪，保持 OPEN	NO
+S5-B-01	NEEDS_USER_RULING	F10 历史因果未确认；需历史负载原始输入或允许独立复现	J5_RECORDED_ITEMS.txt 第 1 项；P05_S1_S2_SIGNOFF.md 第 25 行	NO：D016 修法不依赖 F10 因果	保持 OPEN；需用户提供输入	YES
+S5-B-02	NEEDS_USER_RULING	F8：按 spec 不访问历史候选目录，六文件哈希未验证；需用户授权或提供比对	J5_RECORDED_ITEMS.txt 第 2 项	NO：S5 修复对象是当前仓库源码	保持未验证；不改写历史	YES
+S5-B-03	NEEDS_USER_RULING	反事实通量正确性仅有一个单点反事实（0.95890），无独立参考解	J5_RECORDED_ITEMS.txt 第 8 项；R-P05-01	NO：只影响让 n_G=1 可计算这一半	保持 OPEN；需独立参考解	YES
+S5-B-04	NEEDS_USER_RULING	allzero 到 1x1 的设计意图未知（源码无注释）	J5_RECORDED_ITEMS.txt 第 9 项；R-P05-01	NO：不阻塞 D016	保持 OPEN；需原作者/用户确认	YES
+S5-B-05	NEEDS_USER_RULING	S1 报告 11.2 记录的哈希与 EVIDENCE.sha256 不一致，来源无法判定	S1_BASELINE_AND_ENUMERATION.md 11.2；P05_S1R2_CLOSEOUT.md 第 278–283 行	NO：文档溯源问题，不影响实现	保持未验证；不改写 11.2 与清单	YES
+S5-B-06	NEEDS_USER_RULING	同上（5 个不一致哈希之一）	S1_BASELINE_AND_ENUMERATION.md 11.2；J4_SUMMARY.txt	NO	保持未验证；不改写 11.2 与清单	YES
+S5-B-07	NEEDS_USER_RULING	同上（5 个不一致哈希之一）	S1_BASELINE_AND_ENUMERATION.md 11.2；J4_SUMMARY.txt	NO	保持未验证；不改写 11.2 与清单	YES
+S5-B-08	NEEDS_USER_RULING	同上（5 个不一致哈希之一）	S1_BASELINE_AND_ENUMERATION.md 11.2；J4_SUMMARY.txt	NO	保持未验证；不改写 11.2 与清单	YES
+S5-B-09	NEEDS_USER_RULING	同上（5 个不一致哈希之一）	S1_BASELINE_AND_ENUMERATION.md 11.2；J4_SUMMARY.txt	NO	保持未验证；不改写 11.2 与清单	YES
+S5-C-01	NEEDS_TEST	D016 已在 P05-S3R2 提交 3e77aa9 实施（F4 源码确认：max_field 零/非有限返回 -10）；登记表 D016 行仍写待 P05-S3 实施，属过期文字；Python 异常文本在 S3R2 未实测	P05_S3R2_CLOSEOUT.md 第 17、38、186 行；[源码] S4/pattern/pattern.c 2210–2216	NO：D016 不在 D004 的 solve 后选项路径	更新 D016 行：已实施（3e77aa9）、F4 源码确认；Python 异常文本留 S5R2 实测；补丁草案 2.2	NO
+S5-C-02	NEEDS_USER_RULING	让 n_G=1 可计算需要先确认设计意图并取得独立参考解（J5 第 8、9 项）	ISSUE_REGISTRY.md 第 114 行；PROJECT_ROADMAP.md 第 6 节	NO：暂不处理，不阻塞 P05	登记 R-P05-01 保持 OPEN；补丁草案 2.2 注	YES
+S5-C-03	RECORD_ONLY_OPEN	S2 对 fmm_kottke 的闭合明确不含除数数值安全（签收范围声明 (1)）；S5 登记，不修	P05_S1_S2_SIGNOFF.md 第 21–22 行；U359 范围声明	NO：不在 D003 失败传播链	S5 登记表注明 S2 闭合不含除数数值安全，保持 OPEN	NO
+S5-D-01	NEEDS_TEST	D003 的三条验收标准需 S5 前端与回归实测/映射；现有证据为 S4 的 M1/M2/M3 E2E	P05_S4R9_M2_REPORT.md；P05_S4R9_M3b_REPORT.md；P05_ACCEPTANCE_MAP_S5R1.tsv	YES：P06/D004 以 P05/D003 为前置	S5R2 预注册并实测缺口点；注册表 P05 行与 D003 行状态文字见草案 2.1/2.5	YES
+S5-D-02	REGISTRY_ONLY	ISSUE_REGISTRY P04 行仍写 P05未启动，与当前阶段不符	ISSUE_REGISTRY.md 物理行 85	NO：文字同步	更新该行为 P05 进行中（S5）	NO
+S5-D-03	REGISTRY_ONLY	R-P04-01 排期写 P05 主线之后，需与 S5 登记交叉引用	ISSUE_REGISTRY.md 物理行 107	NO：排期文字	补交叉引用（见 P05-S5 登记表），不改范围	NO
+S5-D-04	REGISTRY_ONLY	R-P04-07 写默认不阻塞 P05，需与 S5 登记一致	ISSUE_REGISTRY.md 物理行 113	NO：文字同步	保持原文；在 S5 登记表引用	NO
+S5-D-05	REGISTRY_ONLY	文末下一轮默认修复顺序 P05/D003 到 P06/D004 需更新为进入 S5	ISSUE_REGISTRY.md 物理行 117	NO：文字同步	更新为 P05 进入 S5；P05 收口后进入 P06/D004	NO
+S5-D-06	NEEDS_TEST	PROJECT_ROADMAP P05 行的验收标准需逐条映射到已提交证据；当前状态列仍写待执行	PROJECT_ROADMAP.md 物理行 51	YES：P06/D004 以 P05 为前置	更新 P05 行状态文字（见草案 3.1）；验收映射见 P05_ACCEPTANCE_MAP_S5R1.tsv	YES
