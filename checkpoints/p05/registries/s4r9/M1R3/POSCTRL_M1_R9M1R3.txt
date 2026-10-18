@@ -1,0 +1,7 @@
+# POSCTRL_M1_R9M1R3.txt -- Positive control verification report (Step S-F, Rule U316)
+
+ALL_POSITIVE_CONTROLS_PASSED: True
+
+- Case 1: F3 frozen facts comparison -> DIFFS = 0 (expected 0) -> PASS
+- Case 2: Tampered replica -> MISMATCH count = 5 (expected exactly 5) -> PASS
+- Case 3: Old prereg 3894d899 comparison -> G2b MISMATCH = 22 (expected 22), Other = 0 -> PASS

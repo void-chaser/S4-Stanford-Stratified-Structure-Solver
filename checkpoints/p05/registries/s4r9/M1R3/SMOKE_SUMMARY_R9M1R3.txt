@@ -1,0 +1,3 @@
+Smoke Test Summary (P05-S4 R9 M1R3):
+Total points tested: 25
+FAILS: 0
