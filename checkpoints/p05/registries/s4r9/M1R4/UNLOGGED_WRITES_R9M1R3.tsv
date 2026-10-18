@@ -1,0 +1,73 @@
+# UNLOGGED_WRITES_R9M1R3.tsv -- Comprehensive audit of files modified during r9m1r3 vs safe_run.log (Step S-B)
+file_path	mtime_utc	category	logged_status	safe_run_log_line	audit_notes
+checkpoints/p05/P05_S4R9_M1R3_REPORT.md	2026-10-18T04:47:10.637181+00:00	REPORT_OR_STATE	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/STATE.md	2026-10-18T04:34:03.635123+00:00	REPORT_OR_STATE	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/briefs/P05_S4R9_BRIEF_M1R3.md	2026-10-18T03:24:13.486036+00:00	REPORT_OR_STATE	LOGGED	1	Recorded in safe_run.log
+checkpoints/p05/registries/RULINGS.tsv	2026-10-18T03:44:43.043315+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/ERRATA_9.txt	2026-10-18T03:44:43.185690+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/AUDIT_R9M1R2_R9M1R3.tsv	2026-10-18T03:43:17.577853+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/BARE_WRITE_AUDIT_R9M1R3.tsv	2026-10-18T03:43:20.412215+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/ENGINE_COLUMNS_R9M1R3.txt	2026-10-18T04:03:51.166198+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/EVENTS_R9M1R3.tsv	2026-10-18T04:42:45.973006+00:00	REGISTRY_OR_OTHER	LOGGED	161	Recorded in safe_run.log
+checkpoints/p05/registries/s4r9/M1R3/F3_F4_EQUIV_R9M1R3.tsv	2026-10-18T04:32:06.027356+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/FROZEN_SCRIPTS_R9M1R3.tsv	2026-10-18T04:26:15.953228+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/GATE_R9M1R3_end.txt	2026-10-18T04:44:56.618527+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/GATE_R9M1R3_start_v4.txt	2026-10-18T03:37:52.176077+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/K_COUNT_R9M1R3.tsv	2026-10-18T04:01:41.270036+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/K_COVERAGE_R9M1R3.tsv	2026-10-18T04:01:41.284816+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/M1_SUMMARY_F4_R9M1R3.tsv	2026-10-18T04:32:19.929894+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/POSCTRL_M1_R9M1R3.txt	2026-10-18T04:29:17.389634+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_CITED_F2_R9M1R3.tsv	2026-10-18T04:03:51.164885+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_CITED_F2_R9M1R3.tsv.sha256	2026-10-18T04:03:51.166080+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_CITED_F2_R9M1R3_TIMESTAMP_UTC.txt	2026-10-18T04:03:51.166115+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_F4_R9M1R3.tsv	2026-10-18T04:03:51.153885+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_F4_R9M1R3.tsv.sha256	2026-10-18T04:03:51.159276+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_F4_R9M1R3_TIMESTAMP_UTC.txt	2026-10-18T04:03:51.159329+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/PREREG_VS_R9M1R2_DIFF_R9M1R3.tsv	2026-10-18T04:03:51.161885+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/R9M1R2_VS_R9M1R3_R9M1R3.tsv	2026-10-18T04:32:34.586077+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/RUNNER_DIFF_R9M1R3.txt	2026-10-18T04:25:57.941072+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/SCRIPT_VERSIONS_R9M1R3.tsv	2026-10-18T03:43:17.582171+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/SHA256SUMS.txt	2026-10-18T04:46:06.993105+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/SMOKE_M1_F4_R9M1R3.tsv	2026-10-18T04:29:32.779191+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/SMOKE_SUMMARY_R9M1R3.txt	2026-10-18T04:29:32.779245+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/VERDICT_M1_F4_R9M1R3.tsv	2026-10-18T04:31:50.091888+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/M1R3/VERDICT_M1_F4_R9M1R3_AGG.tsv	2026-10-18T04:31:50.092006+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+testing/d003/stage_s4r9/append_errata_r9m1r3.py	2026-10-18T03:44:33.707707+00:00	STAGE_SCRIPT	LOGGED	112	Recorded in safe_run.log
+testing/d003/stage_s4r9/append_rulings_r9m1r3.py	2026-10-18T03:44:33.707707+00:00	STAGE_SCRIPT	LOGGED	111	Recorded in safe_run.log
+testing/d003/stage_s4r9/audit_r9m1r2_r9m1r3.py	2026-10-18T03:41:36.865705+00:00	STAGE_SCRIPT	LOGGED	109	Recorded in safe_run.log
+testing/d003/stage_s4r9/audit_r9m1r2_r9m1r3_v2.py	2026-10-18T03:43:01.640579+00:00	STAGE_SCRIPT	LOGGED	110	Recorded in safe_run.log
+testing/d003/stage_s4r9/cmp_vs_r9m1r2_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	132	Recorded in safe_run.log
+testing/d003/stage_s4r9/compare_f3_f4_r9m1r3.py	2026-10-18T04:08:28.478466+00:00	STAGE_SCRIPT	LOGGED	130	Recorded in safe_run.log
+testing/d003/stage_s4r9/copy_registries_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	147	Recorded in safe_run.log
+testing/d003/stage_s4r9/events_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	158	Recorded in safe_run.log
+testing/d003/stage_s4r9/finalize_r9m1r3.py	2026-10-18T04:09:25.922431+00:00	STAGE_SCRIPT	LOGGED	164	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_allow_r9m1r3_end.txt	2026-10-18T03:26:41.880995+00:00	STAGE_SCRIPT	LOGGED	2	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_allow_r9m1r3_start.txt	2026-10-18T03:38:20.149030+00:00	STAGE_SCRIPT	LOGGED	2	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_check_r9m1r3.py	2026-10-18T03:28:44.824721+00:00	STAGE_SCRIPT	LOGGED	3	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py	2026-10-18T03:36:18.969901+00:00	STAGE_SCRIPT	LOGGED	24	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_check_r9m1r3_v3.py	2026-10-18T03:36:50.506975+00:00	STAGE_SCRIPT	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py	2026-10-18T03:38:20.149030+00:00	STAGE_SCRIPT	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py	2026-10-18T04:25:39.414971+00:00	STAGE_SCRIPT	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+testing/d003/stage_s4r9/gate_r9m1r3.sh	2026-10-18T03:28:44.824587+00:00	STAGE_SCRIPT	LOGGED	3	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_r9m1r3_v2.sh	2026-10-18T03:36:18.969901+00:00	STAGE_SCRIPT	LOGGED	24	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_r9m1r3_v3.sh	2026-10-18T03:36:50.506975+00:00	STAGE_SCRIPT	LOGGED	64	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_r9m1r3_v4.sh	2026-10-18T03:39:27.545318+00:00	STAGE_SCRIPT	LOGGED	94	Recorded in safe_run.log
+testing/d003/stage_s4r9/gate_r9m1r3_v5.sh	2026-10-18T04:25:39.414971+00:00	STAGE_SCRIPT	LOGGED	163	Recorded in safe_run.log
+testing/d003/stage_s4r9/kcount_r9m1r3.py	2026-10-18T03:55:24.999341+00:00	STAGE_SCRIPT	LOGGED	116	Recorded in safe_run.log
+testing/d003/stage_s4r9/kcount_r9m1r3_v2.py	2026-10-18T04:00:58.082864+00:00	STAGE_SCRIPT	LOGGED	118	Recorded in safe_run.log
+testing/d003/stage_s4r9/posctrl_r9m1r3.py	2026-10-18T04:06:27.181305+00:00	STAGE_SCRIPT	LOGGED	121	Recorded in safe_run.log
+testing/d003/stage_s4r9/posctrl_r9m1r3_v2.py	2026-10-18T04:11:13.654148+00:00	STAGE_SCRIPT	LOGGED	122	Recorded in safe_run.log
+testing/d003/stage_s4r9/prereg_r9m1r3.py	2026-10-18T04:03:08.727398+00:00	STAGE_SCRIPT	LOGGED	119	Recorded in safe_run.log
+testing/d003/stage_s4r9/prereg_r9m1r3_v2.py	2026-10-18T04:03:41.259538+00:00	STAGE_SCRIPT	LOGGED	120	Recorded in safe_run.log
+testing/d003/stage_s4r9/report_check_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	155	Recorded in safe_run.log
+testing/d003/stage_s4r9/run_formal_r9m1r3.py	2026-10-18T04:07:26.953362+00:00	STAGE_SCRIPT	LOGGED	126	Recorded in safe_run.log
+testing/d003/stage_s4r9/run_formal_r9m1r3_v2.py	2026-10-18T04:19:04.839376+00:00	STAGE_SCRIPT	LOGGED	128	Recorded in safe_run.log
+testing/d003/stage_s4r9/run_smoke_r9m1r3.py	2026-10-18T04:06:53.435209+00:00	STAGE_SCRIPT	LOGGED	123	Recorded in safe_run.log
+testing/d003/stage_s4r9/run_smoke_r9m1r3_v2.py	2026-10-18T04:12:20.837465+00:00	STAGE_SCRIPT	LOGGED	124	Recorded in safe_run.log
+testing/d003/stage_s4r9/run_smoke_r9m1r3_v3.py	2026-10-18T04:15:16.123505+00:00	STAGE_SCRIPT	LOGGED	125	Recorded in safe_run.log
+testing/d003/stage_s4r9/sha_sums_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	162	Recorded in safe_run.log
+testing/d003/stage_s4r9/summarize_m1_r9m1r3.py	2026-10-18T04:09:25.921431+00:00	STAGE_SCRIPT	LOGGED	131	Recorded in safe_run.log
+testing/d003/stage_s4r9/verdict_r9m1r3.py	2026-10-18T04:07:54.204293+00:00	STAGE_SCRIPT	LOGGED	127	Recorded in safe_run.log
+checkpoints/p05/evidence/p05-s4r9/m1r2/tmp/status_now_start.txt	2026-10-18T03:36:08.577547+00:00	EVIDENCE_M1R2_CROSS_ROUND	CROSS_ROUND_WRITE	24	H-1 cross-round write caused by gate_r9m1r3_v2.sh start _v2
+checkpoints/p05/evidence/p05-s4r9/m1r2/tmp/tmp_snap_start.txt	2026-10-18T03:34:41.941590+00:00	EVIDENCE_M1R2_CROSS_ROUND	CROSS_ROUND_WRITE	24	H-1 cross-round write caused by gate_r9m1r3_v2.sh start _v2
+checkpoints/p05/evidence/p05-s4r9/m1r2/tmp/py_checks_start.txt	2026-10-18T03:36:08.577547+00:00	EVIDENCE_M1R2_CROSS_ROUND	CROSS_ROUND_WRITE	24	H-1 cross-round write caused by gate_r9m1r3_v2.sh start _v2
