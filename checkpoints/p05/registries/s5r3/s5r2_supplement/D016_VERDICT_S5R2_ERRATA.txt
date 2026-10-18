@@ -1,0 +1,25 @@
+# D016_VERDICT_S5R2_ERRATA.txt -- errata for the D016 formal verdict (P05-S5 R2, frozen period)
+# New file only (brief section 8: after the formal runs no expectation may be changed and no rerun).
+#
+# FACT 1: the two formal passes are behaviourally identical. D016_PASS1_S5R2.json and
+#   D016_PASS2_S5R2.json contain the same observations for all 28 behavioural point rows
+#   (8 failure rows + 8 same-object retries + 8 control rows + 2 recovery rows + 2 reference rows
+#   for the two frontends), 0 FLAKY, both processes rc=0, and rel_err=0.000e+00 for both recovery
+#   rows on both passes.
+# FACT 2: D016_VERDICT_S5R2.tsv SUMMARY is MATCH=31 MISMATCH=2 FLAKY=0. The two MISMATCH rows are
+#   the process rows PY_STDERR_INFO2 and LUA_STDERR_INFO2: the pre-registration records their
+#   expected_status as ABSENT (a label, meaning "the stderr marker does not occur"), while the
+#   frozen comparator (d016_run_s5r2.py, proc_row) compares that label with the observed numeric
+#   count 0. The observed fact is exactly the pre-registered expectation (0 occurrences of
+#   "Layer eigensystem returned info = 2", rc 0, no crash); the MISMATCH is a comparator/format
+#   defect in the frozen runner, not a behavioural deviation and not a changed expectation.
+# FACT 3: the frozen end gate check D016_VERDICT_TWO_PASSES_NO_MISMATCH expects MATCH=33 and will
+#   therefore FAIL with actual MATCH=31 MISMATCH=2. It is recorded in the formal gate appendix as
+#   is (frozen period: no script fix, no rerun).
+#
+# Handling: no expectation value was changed, no formal run was redone, no frozen script was
+# modified. The end gate FAIL is reported truthfully in P05_S5R2_GATE_APPENDIX.md; a later round
+# must register this comparator defect in its own errata and may fix it there.
+# Evidence: D016_PASS1_S5R2.json, D016_PASS2_S5R2.json, D016_VERDICT_S5R2.tsv,
+# logs/py_main_pass1.stderr.txt, logs/lua_main_pass1.stderr.txt, logs/py_main_pass2.stderr.txt,
+# logs/lua_main_pass2.stderr.txt.

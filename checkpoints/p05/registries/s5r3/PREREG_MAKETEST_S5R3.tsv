@@ -1,0 +1,15 @@
+# PREREG_MAKETEST_S5R3.tsv -- make test pre-registration, P05-S5 R3 (U374). Written before any S5R3 make test run.
+# The unit count must be reconciled with the unittest 'Ran N' line; a mismatch is RECONCILE_FAIL, never adjusted away.
+item	value	note
+status	INFLUENCED	historical M3a/M3b results are known; criteria unchanged (U374)
+criterion	NO_NEW_FAILURE	F4 failing set subset of B failing set AND F4 p1/p2 no difference AND identical unit sets AND every log reconciles with Ran N / skipped=k
+tree_B	37a82e8	S4 tree 1d738e64f9864a475fdb3de34cd3601605df2c64; exported with git archive to $EV/trees/B
+tree_F4	05097a7	S4 tree 589e15eb11fcb04e031b524f25a443e7921946cf; exported with git archive to $EV/trees/F4
+runs	B:1,F4:1,B:2,F4:2	four segments, one run_maketest_s5r3.py call per segment, resumable
+command	make -C <tree> test PYTHON=python3	same build and make test command as M3a (task brief section 4)
+historical_M3a	unit_count=175 B_failing=none F4_failing=none	MAKETEST_VERDICT_R9M3A.tsv (INFLUENCED basis; M3a did not reconcile docstring units)
+historical_M3b_reparse	unit_count=265 (261 unittest + 4 stage) per-log reconcile 257/257 + 4/4	MAKETEST_VERDICT_R9M3B.tsv; the S5R3 judge copies the M3b v2 reconcile logic
+expect_unit_rows	265	B_p1/B_p2/F4_p1/F4_p2 unit sets must be identical and reconcile with Ran N
+posctrl_categories	NEW_FAILURE,FLAKY,SUITE_DIFF,RECONCILE_FAIL	4 tampered on-disk log cases, one per category
+judge	judge_maketest_s5r3.py	copied from judge_maketest_r9m3b_v2.py; line diff in COPY_DIFF_S5R3.txt
+runner	run_maketest_s5r3.py	copied from run_maketest_r9m3a.py with per-segment resume; line diff in COPY_DIFF_S5R3.txt

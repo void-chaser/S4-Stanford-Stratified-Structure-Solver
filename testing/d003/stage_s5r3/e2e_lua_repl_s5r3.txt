@@ -1,0 +1,20 @@
+SPEC = S4.arg
+S = S4.NewSimulation()
+S:SetLattice({1,0},{0,1})
+S:SetNumG(25)
+S:AddMaterial("Air", {1,0})
+S:AddMaterial("Slab", {12,0})
+S:AddLayer("Top", 0, "Air")
+S:AddLayer("Middle", 0.5, "Slab")
+S:SetLayerPatternCircle("Middle", "Air", {0,0}, 0.2)
+S:AddLayerCopy("Bottom", 0, "Top")
+S:SetFrequency(0.4)
+S:SetExcitationPlanewave({0,0}, {1,0}, {0,0})
+if SPEC == "fft" then S:UseDiscretizedEpsilon(); S:SetResolution(8) end
+if SPEC == "kt" then S:UseDiscretizedEpsilon(); S:SetResolution(8); S:UseSubpixelSmoothing() end
+if SPEC == "vl" then S:UseDiscretizedEpsilon(); S:SetResolution(8); S:UsePolarizationDecomposition() end
+P1,P2,P3,P4 = S:GetPoyntingFlux("Bottom",0)
+print("A "..tostring(P1).." "..tostring(P2).." "..tostring(P3).." "..tostring(P4))
+Q1,Q2,Q3,Q4 = S:GetPoyntingFlux("Bottom",0)
+print(string.format("B %.17g %.17g %.17g %.17g", Q1, Q2, Q3, Q4))
+print("REPL_DONE")

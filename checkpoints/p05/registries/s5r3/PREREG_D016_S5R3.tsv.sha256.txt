@@ -1,0 +1,3 @@
+# PREREG_D016_S5R3.tsv.sha256.txt -- sha256/UTC recorded immediately after the pre-registration
+file	sha256	bytes	rows	status	utc_recorded
+PREREG_D016_S5R3.tsv	2f59f40fded874c2897061da0ab8085b975ecd9a52203528d0876cbb8d2024bc	6716	36	INFLUENCED	2026-10-18T10:03:33Z

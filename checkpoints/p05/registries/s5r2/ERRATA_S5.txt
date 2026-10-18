@@ -41,3 +41,20 @@ ES5-5
 - 证据：本轮 D017 只读清单：F4 全部 S4_malloc 文本出现 59 处（CALL 52；IN 21；OUT 38，其中 OUT CALL 31）；见 D017_S4MALLOC_INVENTORY_S5R2.tsv。
 - 影响范围：D017 的范围与计数以本轮清单为准；S5R1 输入表原文不改。
 - 处理方式：只登记勘误；补丁 v2 的 D017 行引用本清单计数。
+
+ES5-6
+- 事实：S5R2 的 D016 正式两遍在行为上完全一致：28 个行为点行（8 个失败点 + 8 个同对象重试 + 8 个对照 + 2 个恢复 + 2 个参考，两前端）两遍观测相同、0 FLAKY、两个进程 rc=0、两条恢复行两遍 rel_err=0.000e+00；两个 stderr 计数均为 0。
+- 缺陷位置：d016_run_s5r2.py 第 218-219 行的 proc_row 把预注册标签 ABSENT 与观测计数 0 做字符串直比，导致 PY_STDERR_INFO2/LUA_STDERR_INFO2 判 MISMATCH。行为事实是 0 次出现，正是预注册期望。
+- 冻结前未被发现的原因：S5R2 试跑门禁把 D016_VERDICT 检查写成 deferred 就判 PASS（checkpoints/p05/evidence/p05-s5r2/shakedown/gate/GATE_S5R2_end.txt 第 83 行：PASS D016_VERDICT_TWO_PASSES_NO_MISMATCH expected=MATCH=33 MISMATCH=0 FLAKY=0 actual=deferred(shakedown, formal verdict comes from the frozen period)），缺陷因此在冻结前没有暴露。
+- 影响范围：S5R2 D016_VERDICT_S5R2.tsv 的 SUMMARY 为 MATCH=31 MISMATCH=2 FLAKY=0；MISMATCH 不是行为偏差，也不是期望变更。S5R2 判定表与门禁 FAIL 保留为历史，不改。
+- 处理方式：U372。S5R3 用新脚本 d016_run_s5r3.py（同一点族与输入、同一期望含义；比较器按预注册列名读取，stderr 类行规定为"预注册 ABSENT ⇔ 计数 == 0"，并在新预注册中显式写 expected_count=0；不对任何行做字符串直比的特例）在新预注册 PREREG_D016_S5R3.tsv 下作为新运行正式跑两遍；这不是改期望。
+
+ES5-7
+- 事实：S5R2 报告 §7 没有说明 MISMATCH=2 的原因，也没有指向 D016_VERDICT_S5R2_ERRATA.txt；§8 表二（工具与脚本事件）缺少"冻结期比较器缺陷"一条；ISSUE_REGISTRY.md 第 48 行与 PROJECT_ROADMAP.md 第 145 行的"MISMATCH=2"缺少原因说明。
+- 处理方式：不改 S5R2 报告（历史）。按 U376 用脚本把这两行原文替换为"MISMATCH=2 为比较器格式缺陷（ES5-6），行为点全 MATCH；S5R3 重跑结果见 checkpoints/p05/registries/s5r3/D016_VERDICT_S5R3.tsv"；替换只发生在脚本列出的行，unified diff 见 REGISTRY_APPLY_DIFF_S5R3.txt。
+- 影响范围：本勘误不改变 S5R2 报告、S5R2 registries 与 S5R2 门禁文件本身；S5R3 报告的事件表二列出本缺陷。
+
+ES5-8
+- 事实：D016_VERDICT_S5R2_ERRATA.txt 与 D016_BUILD_S5R2.tsv 留在证据目录 p05-s5r2/，未复制进 registries/s5r2/，因此 s5r2 小表清单不含这两件。
+- 处理方式：按任务书 §2 复制到 registries/s5r3/s5r2_supplement/，不改 registries/s5r2/ 及其 SHA256SUMS.txt；复制件 sha256 与 p05-s5r2/SHA256SUMS.txt 的记录逐项一致（脚本校验结果见 checkpoints/p05/evidence/p05-s5r3/S5R2_SUPPLEMENT_COPY_S5R3.tsv）。
+- 附带说明：本轮按 §2 向 registries/s5r2/ERRATA_S5.txt 纯追加 ES5-6..8，因此 registries/s5r2/SHA256SUMS.txt 中 ERRATA_S5.txt 的旧 sha256 与追加后的文件不再相等。该清单文件本身不改、不重写；S5R3 end 门禁对 s5r2 小表的复核把 ERRATA_S5.txt 记为"按 §2 追加导致预期变化"，其余 10 项仍逐项复核。

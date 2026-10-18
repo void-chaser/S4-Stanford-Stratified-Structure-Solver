@@ -1,0 +1,28 @@
+# D016_BUILD_S5R2.tsv -- F4 build of the D016 public-API test (no injector)
+check	value	detail
+S4_TREE_SHA_OF_05097a7	589e15eb11fcb04e031b524f25a443e7921946cf	expected 589e15eb11fcb04e031b524f25a443e7921946cf
+EXPORT_S4_RC	0	git archive 05097a7:S4 -> trees/F4/S4
+EXPORT_MAKEFILES_RC	0	same commit
+EXPORTED_S4_main_python.c	present	
+EXPORTED_S4_main_lua.c	present	
+EXPORTED_S4_pattern_pattern.c	present	
+EXPORTED_S4_S4.cpp	present	
+EXPORTED_S4_fmm_fmm_PolBasisVL.cpp	present	
+EXPORTED_Makefile.common	present	
+MAKE_LIB_AND_LUA_RC	0	build/libS4.a + build/S4 (no injector)
+LINK_PYEXT_RC	0	no --wrap, no injector
+PYTHON_VERSION	Python 3.14.4	
+EXTENSION_SUFFIX	.cpython-314-x86_64-linux-gnu.so	
+LIB_S4_A_PATH	checkpoints/p05/evidence/p05-s5r2/trees/F4/build/libS4.a	
+LIB_S4_A_BYTES	778078	
+LIB_S4_A_SHA256	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	
+PYEXT_PATH	checkpoints/p05/evidence/p05-s5r2/trees/F4/S4.cpython-314-x86_64-linux-gnu.so	
+PYEXT_BYTES	681496	
+PYEXT_SHA256	9ff61cf13e543d17b1e16a4cece72ac40e54750182a603e47be94f7c396ed033	
+LUA_FRONTEND_PATH	checkpoints/p05/evidence/p05-s5r2/trees/F4/build/S4	
+LUA_FRONTEND_BYTES	694264	
+LUA_FRONTEND_SHA256	fb375c726101ae2d935e929fece54b1867aa0435b24e9fe92bdeda77314396f2	
+REF_M3B_LIB_S4_A	ref=a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	comparison=SAME (reference only; not FAIL)
+REF_M3B_PYEXT	ref=2890991cce5796da2c206cd95ab09371c764c14440ebcf6117ba9ea6f660aaa7	comparison=DIFFERENT (reference only; not FAIL)
+REF_M3B_LUA_FRONTEND	ref=20d43f997f2a1b5b47dcc6dd5d28c122df7ff8a980e79cc8b90ae27e50cc8fd6	comparison=DIFFERENT (reference only; not FAIL)
+BUILD_LOG	checkpoints/p05/evidence/p05-s5r2/logs/d016_build.log	full output

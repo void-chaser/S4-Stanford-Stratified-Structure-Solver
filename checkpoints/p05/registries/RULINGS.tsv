@@ -378,3 +378,9 @@ U368	P05-S5 R2 任务书 §1	S1 报告 11.2 的 5 个哈希来源（S5-B-05..09�
 U369	P05-S5 R2 任务书 §1	非 FMM S4_malloc 登记为 D017；登记前先只读逐点列出清单。	P05-S5 R2 任务书 §1	生效
 U370	P05-S5 R2 任务书 §1	ES3R4-5/528/1164 与 U99 登记为 R-P05-02，U100 登记为 R-P05-03；一律写 F4 行号，旧树行号放在括号里注明。	P05-S5 R2 任务书 §1	生效
 U371	P05-S5 R2 任务书 §1	批准本轮把补丁 v2 应用到 testing/s4test/ISSUE_REGISTRY.md 与 PROJECT_ROADMAP.md，这两个文件纳入本轮提交范围；不改 AGENTS.md。	P05-S5 R2 任务书 §1	生效
+U372	P05-S5 R3 任务书 §1	S5R2 的 D016 比较器缺陷（d016_run_s5r2.py 的 proc_row 把预注册标签 ABSENT 与观测计数 0 比较，导致 PY_STDERR_INFO2/LUA_STDERR_INFO2 判 MISMATCH）登记为 ES5-6；S5R2 判定表与门禁 FAIL 保留为历史，不改。S5R3 用新脚本 d016_run_s5r3.py（同一 D016 点族与输入、同一期望含义）在新预注册 PREREG_D016_S5R3.tsv 下作为新运行正式跑两遍；这不是改期望。	P05-S5 R3 任务书 §1	生效
+U373	P05-S5 R3 任务书 §1	S5R3 全量 E2E 复用 M3b 的 42 点（25 注入 + 17 对照）与 M3b 的装置逻辑：把 testing/d003/stage_s4r9/ 下 M3b 的构建、运行、判定脚本复制为 stage_s5r3/ 的 *_s5r3 版本，只改路径、轮次标签与输出文件名，复制后写逐行 diff 证明没有其他改动；构建方式与 M3b 相同；无注入校准结果必须与 CALIB_E2E_R9M3B.tsv 的命中序号与 size 逐点一致，不一致就停下报告，不得自行调整 nth。	P05-S5 R3 任务书 §1	生效
+U374	P05-S5 R3 任务书 §1	make test 沿用 M3a 的方法：B 树（37a82e8）与 F4 树各两遍，判据 NO_NEW_FAILURE（F4 失败集合 ⊆ B 失败集合、F4 两遍无不一致、两树单元集合相同），单元数必须与日志 "Ran N" 对账。	P05-S5 R3 任务书 §1	生效
+U375	P05-S5 R3 任务书 §1	AC-4 由 U364 回答（历史证据可引用，S5R3 重跑）；AC-3 按 S5R3 E2E 与 D016 结果给出最终映射。	P05-S5 R3 任务书 §1	生效
+U376	P05-S5 R3 任务书 §1	批准 S5R3 修改 testing/s4test/ISSUE_REGISTRY.md 与 PROJECT_ROADMAP.md：只追加或替换由脚本列出的行，内容为 ES5-6/7 的更正说明与 S5R3 结果；这两个文件纳入本轮提交范围；不改 AGENTS.md。	P05-S5 R3 任务书 §1	生效
+U377	P05-S5 R3 任务书 §1	S5R3 编写 P05_S5_SIGNOFF_DRAFT.md（S5 范围声明草稿，标明"未签收"），不写签收文件。	P05-S5 R3 任务书 §1	生效

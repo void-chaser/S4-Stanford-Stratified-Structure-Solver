@@ -1,0 +1,46 @@
+# PREREG_D016_S5R3.tsv -- D016 public-API pre-registration, P05-S5 R3 (U372). status INFLUENCED.
+# Same point family and the same expectation meaning as PREREG_D016_S5R2.tsv; this is a new run, not a change of
+# expectation. Comparator v2 reads expectations BY COLUMN NAME. For a stderr row the rule is:
+#   expected_count=0 means 'pre-registered ABSENT <=> observed occurrence count == 0'. No row is compared
+#   by a label string against a number.
+# PROCESS rows: expected_rc for rc rows, expected_count for occurrence-count rows.
+# ARTIFACT rows: expected_status=MATCH_D016_BUILD_S5R3 means the observed sha256 must equal the value recorded
+#   in D016_BUILD_S5R3.tsv (the S5R3 F4 build).
+# Written before the first formal D016 run of this round; sha256/UTC in PREREG_D016_S5R3.tsv.sha256.txt.
+point_id	frontend	basis	NumBasis	kind	expected_status	expected_rc	expected_exception	expected_text	expected_finite	expected_count	rel_err_threshold	status	note
+VL_NB1	py	VL	1	FAILURE	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	源码追踪：pattern.c:2214 -10 → S4.cpp:2438 20 → main_python.c:137
+VL_NB1_RETRY	py	VL	1	RETRY_SAME_OBJECT	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	同一对象同选项重试，期望同一失败（确定性失败，不崩溃）
+VL_NB1	lua	VL	1	FAILURE	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	REPL 模式 S4L_error 打印后返回；进程不退出、不崩溃
+VL_NB1_RETRY	lua	VL	1	RETRY_SAME_OBJECT	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	同一对象重试，期望同一可见失败
+VL_NB2	py	VL	2	FAILURE	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	源码追踪：pattern.c:2214 -10 → S4.cpp:2438 20 → main_python.c:137
+VL_NB2_RETRY	py	VL	2	RETRY_SAME_OBJECT	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	同一对象同选项重试，期望同一失败（确定性失败，不崩溃）
+VL_NB2	lua	VL	2	FAILURE	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	REPL 模式 S4L_error 打印后返回；进程不退出、不崩溃
+VL_NB2_RETRY	lua	VL	2	RETRY_SAME_OBJECT	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	同一对象重试，期望同一可见失败
+VL_NB3	py	VL	3	FAILURE	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	源码追踪：pattern.c:2214 -10 → S4.cpp:2438 20 → main_python.c:137
+VL_NB3_RETRY	py	VL	3	RETRY_SAME_OBJECT	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	同一对象同选项重试，期望同一失败（确定性失败，不崩溃）
+VL_NB3	lua	VL	3	FAILURE	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	REPL 模式 S4L_error 打印后返回；进程不退出、不崩溃
+VL_NB3_RETRY	lua	VL	3	RETRY_SAME_OBJECT	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	同一对象重试，期望同一可见失败
+VL_NB4	py	VL	4	FAILURE	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	源码追踪：pattern.c:2214 -10 → S4.cpp:2438 20 → main_python.c:137
+VL_NB4_RETRY	py	VL	4	RETRY_SAME_OBJECT	EXCEPTION	20	RuntimeError	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned	NO		-	INFLUENCED	同一对象同选项重试，期望同一失败（确定性失败，不崩溃）
+VL_NB4	lua	VL	4	FAILURE	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	REPL 模式 S4L_error 打印后返回；进程不退出、不崩溃
+VL_NB4_RETRY	lua	VL	4	RETRY_SAME_OBJECT	FAIL_VISIBLE	0	-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	NO		-	INFLUENCED	同一对象重试，期望同一可见失败
+VL_NB5	py	VL	5	CONTROL	RETURNED	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+VL_NB5	lua	VL	5	CONTROL	VALUES	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+VL_NB9	py	VL	9	CONTROL	RETURNED	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+VL_NB9	lua	VL	9	CONTROL	VALUES	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+Jones_NB1	py	Jones	1	CONTROL	RETURNED	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+Jones_NB1	lua	Jones	1	CONTROL	VALUES	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+NV_NB1	py	NV	1	CONTROL	RETURNED	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+NV_NB1	lua	NV	1	CONTROL	VALUES	0	-	-	YES		-	INFLUENCED	对照点：成功且结果有限
+VL_NB9_RECOVER	py	VL	9	RECOVERY	RETURNED	0	-	-	YES		1e-12	INFLUENCED	同一进程失败之后新建对象，与另起进程 VL_NB9_REF 逐元素相对误差 ≤1e-12
+VL_NB9_RECOVER	lua	VL	9	RECOVERY	VALUES	0	-	-	YES		1e-12	INFLUENCED	同一进程失败之后新建对象，与另起进程 VL_NB9_REF 逐元素相对误差 ≤1e-12
+VL_NB9_REF	py	VL	9	REFERENCE	RETURNED	0	-	-	YES		-	INFLUENCED	另起进程参考值
+VL_NB9_REF	lua	VL	9	REFERENCE	VALUES	0	-	-	YES		-	INFLUENCED	另起进程参考值
+PY_RC	py	-	-	PROCESS	0	0	-	-	-		-	INFLUENCED	Python 主进程 exit code；不得崩溃
+LUA_RC	lua	-	-	PROCESS	0	0	-	-	-		-	INFLUENCED	Lua REPL 进程 exit code（EOF 后正常退出）；不得崩溃
+PY_STDERR_INFO2	py	-	-	PROCESS	ABSENT		-	-	-	0	-	INFLUENCED	Python 进程 stderr 不出现 Layer eigensystem returned info = 2
+LUA_STDERR_INFO2	lua	-	-	PROCESS	ABSENT		-	-	-	0	-	INFLUENCED	Lua 进程 stderr 不出现 Layer eigensystem returned info = 2
+LUA_STDERR_MSG_COUNT	lua	-	-	PROCESS	8		-	GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned.	-	8	-	INFLUENCED	4 个失败点 + 4 次同对象重试 = 8 条可见报错
+PYEXT_SHA256	py	-	-	ARTIFACT	MATCH_D016_BUILD_S5R3	-	-	-	-		-	INFLUENCED	F4 构建的 Python 扩展（不注入）
+LUA_SHA256	lua	-	-	ARTIFACT	MATCH_D016_BUILD_S5R3	-	-	-	-		-	INFLUENCED	F4 构建的 Lua 可执行文件（不注入）
+LIBS4A_SHA256	-	-	-	ARTIFACT	MATCH_D016_BUILD_S5R3	-	-	-	-		-	INFLUENCED	F4 构建的 libS4.a
