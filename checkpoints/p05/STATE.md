@@ -20,7 +20,7 @@
 | S4R9 M3c–M3e | 独立复核 DIFFS=0；签收落账 U359–U363 | M3c/M3d/M3e 报告 |
 | S5R1 | 输入 25 行；分类；勘误 E9-78/79 | P05_S5R1_REPORT.md |
 | S5R2 | 裁决 U364–U371；勘误 ES5-1..5；D017 清单；D016 公共 API 实测（MATCH=31 MISMATCH=2，比较器缺陷） | P05_S5R2_REPORT.md |
-| S5R3（进行中，冻结已记录） | 裁决 U372–U377；勘误 ES5-6..8；D016/E2E/make test 预注册已冻结；正式运行在冻结期执行 | P05_S5R3_REPORT.md（收尾时生成） |
+| S5R3 | 裁决 U372–U377；勘误 ES5-6..8；D016 比较器 v2 重跑 MATCH=33 MISMATCH=0 FLAKY=0；E2E E2E_OK=25 CONTROL_OK=17；make test NO_NEW_FAILURE（unit_count=265）；独立重判 DIFFS=?；就绪审计 READINESS_S5R3.tsv | P05_S5R3_REPORT.md |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接）
 
@@ -30,11 +30,12 @@
 | D017 非 FMM S4_malloc | OPEN（不在 P05 修） | 转出 P05，不阻塞 P06（U369） | registries/s5r2/D017_S4MALLOC_INVENTORY_S5R2.tsv |
 | R-P05-01 / R-P05-02 / R-P05-03 | OPEN（不在 P05 修） | 转出 P05，不阻塞 P06（U366/U370） | ISSUE_REGISTRY；ERRATA_S5.txt ES5-6..8 |
 | F10/F8/反事实通量/allzero/11.2 五哈希 | OPEN / 未验证 | 经 U366–U368 转出 P05 | P05_S5_OPEN_ITEMS.tsv；ERRATA_S5.txt |
-| S5 签收 | 等待用户审核 | S5R3 收口范围在冻结期执行；签收只由用户给出 | P05_S5_SIGNOFF_DRAFT.md（未签收） |
+| S5 签收 | 等待用户审核 | S5R3 完成收口范围；签收只由用户给出 | P05_S5_SIGNOFF_DRAFT.md（未签收） |
+| S5R3 遗留（未完成） | OPEN | 独立重判缺失、就绪审计 GAP=2、registries/s5r3 清单不完整（见报告附录 C）；不宣布 S5 完成 | P05_S5R3_REPORT.md 附录 C |
 
 ## 4. 证据位置
 
-- **P05-S5 R3（s5r3）**：证据 checkpoints/p05/evidence/p05-s5r3/；小表 checkpoints/p05/registries/s5r3/；报告 P05_S5R3_REPORT.md（收尾时）；门禁附录 P05_S5R3_GATE_APPENDIX.md（门禁后）；签收草稿 P05_S5_SIGNOFF_DRAFT.md（收尾时）。
+- **P05-S5 R3（s5r3）**：证据 checkpoints/p05/evidence/p05-s5r3/（SHA256SUMS.txt）；小表 checkpoints/p05/registries/s5r3/（SHA256SUMS.txt）；报告 P05_S5R3_REPORT.md；门禁附录 P05_S5R3_GATE_APPENDIX.md；签收草稿 P05_S5_SIGNOFF_DRAFT.md。
 - **P05-S5 R2（s5r2）**：证据 checkpoints/p05/evidence/p05-s5r2/；小表 checkpoints/p05/registries/s5r2/；报告 P05_S5R2_REPORT.md。
-- 裁决总表 registries/RULINGS.tsv（追加 U372–U377）；S5 勘误 registries/s5r2/ERRATA_S5.txt（追加 ES5-6..8）。
-
+- **P05-S5 R1（s5r1）**：证据 checkpoints/p05/evidence/p05-s5r1/；小表 checkpoints/p05/registries/s5r1/；报告 P05_S5R1_REPORT.md。
+- 裁决总表 registries/RULINGS.tsv（追加 U372–U377）；S5 勘误 registries/s5r2/ERRATA_S5.txt（追加 ES5-6..8）；S4 勘误 registries/s4r9/ERRATA_9.txt。

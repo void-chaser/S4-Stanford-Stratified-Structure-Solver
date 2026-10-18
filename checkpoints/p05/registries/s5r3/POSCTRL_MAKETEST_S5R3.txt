@@ -1,0 +1,9 @@
+# POSCTRL_MAKETEST_S5R3.txt -- positive control of judge_maketest_s5r3.py on tampered on-disk log copies (U374)
+# seed logs: checkpoints/p05/evidence/p05-s5r3/maketest/{B,F4}_p{1,2}.log; each case keeps all four copies on disk
+# verdict recomputed by the same formal code path (no constant self-proof)
+A_DOCSTRING_UNIT_OK_TO_FAIL: PASS (expected=NEW_FAILURE actual=NEW_FAILURE) -- flipped test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis (F4_p1) ok->FAIL
+B_FLAKY_P2_STATUS_DIFF: PASS (expected=FLAKY actual=FLAKY) -- flipped test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis in B_p2 only
+C_SUITE_DIFF_UNIT_RENAMED: PASS (expected=SUITE_DIFF actual=SUITE_DIFF) -- renamed test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing -> test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing_RENAMED in F4_p2
+D_DELETE_ONE_UNIT_LINE: PASS (expected=RECONCILE_FAIL actual=RECONCILE_FAIL) -- deleted unit line test_analytic_reference.FluxConventionTests.test_incident_amplitude_sign_convention
+OVERALL_POSITIVE_CONTROL: PASS (4/4)
+CATEGORIES_COVERED: FLAKY,NEW_FAILURE,RECONCILE_FAIL,SUITE_DIFF

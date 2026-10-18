@@ -1,0 +1,9 @@
+# POSCTRL_D016_S5R3.txt -- positive control of the comparator v2 on tampered JSON copies written to disk
+# every case is a real file under checkpoints/p05/evidence/p05-s5r3/posctrl/d016/<case>/pass{1,2}.json
+# judged by the same compare_passes()/write_verdict() code path as the formal verdict (no constant self-proof)
+E_UNTAMPERED_ALL_MATCH: PASS (expected=MATCH actual=MATCH) MATCH=33 MISMATCH=0 FLAKY=0
+A_STDERR_COUNT_1: PASS (expected=MISMATCH actual=MISMATCH) MATCH=32 MISMATCH=1 FLAKY=0
+B_TWO_PASSES_DIFFER: PASS (expected=FLAKY actual=FLAKY) MATCH=32 MISMATCH=0 FLAKY=1
+C_RECOVER_RELERR_2E12: PASS (expected=MISMATCH actual=MISMATCH) MATCH=32 MISMATCH=1 FLAKY=0
+D_FAILURE_RETURNS_FINITE: PASS (expected=MISMATCH actual=MISMATCH) MATCH=32 MISMATCH=1 FLAKY=0
+OVERALL_POSITIVE_CONTROL: PASS (5/5)

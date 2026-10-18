@@ -1,0 +1,12 @@
+# D016_BUILD_S5R3.tsv -- F4 build used by the S5R3 D016 public-API run (no injector, U372)		
+c	h	e	c	k			v	a	l	u	e			d	e	t	a	i	l
+S4_TREE_05097a7	589e15eb11fcb04e031b524f25a443e7921946cf	expected 589e15eb11fcb04e031b524f25a443e7921946cf
+MAKE_LIB_AND_LUA_RC	0	artefacts already built by the shakedown make test run
+LINK_PYEXT_RC	0	extension already present
+LIB_S4_A_PATH	checkpoints/p05/evidence/p05-s5r3/trees/F4/build/libS4.a	
+LIB_S4_A_SHA256	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	
+PYEXT_PATH	checkpoints/p05/evidence/p05-s5r3/trees/F4/S4.cpython-314-x86_64-linux-gnu.so	
+PYEXT_SHA256	995beda2a2b599632b7e77cb7ea49256827a61a09b083318336e2d542f0820d5	
+LUA_FRONTEND_PATH	checkpoints/p05/evidence/p05-s5r3/trees/F4/build/S4	
+LUA_FRONTEND_SHA256	fb375c726101ae2d935e929fece54b1867aa0435b24e9fe92bdeda77314396f2	
+BUILD_LOG	checkpoints/p05/evidence/p05-s5r3/logs/d016_build.log	full output

@@ -1,0 +1,38 @@
+# D016_VERDICT_S5R3.tsv -- P05-S5 R3 D016 public-API verdict, F4 build, two passes
+# expectations pre-registered in PREREG_D016_S5R3.tsv (INFLUENCED); comparator v2 (U372)
+point_id	frontend	expected	observed_pass1	observed_pass2	detail	verdict
+PY_STDERR_INFO2	py	count=0	count=0	count=0		MATCH
+PY_RC	py	rc=0	rc=0	rc=0		MATCH
+LUA_STDERR_MSG_COUNT	lua	count=8	count=8	count=8		MATCH
+LUA_STDERR_INFO2	lua	count=0	count=0	count=0		MATCH
+LUA_RC	lua	rc=0	rc=0	rc=0		MATCH
+VL_NB1	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB1	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB2	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB2	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB3	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB3	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB4	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB4	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB1_RETRY	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB1_RETRY	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB2_RETRY	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB2_RETRY	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB3_RETRY	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB3_RETRY	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+VL_NB4_RETRY	lua	FAIL_VISIBLE + text	FAIL_VISIBLE	FAIL_VISIBLE		MATCH
+VL_NB4_RETRY	py	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'	EXCEPTION RuntimeError 'GetPowerFlux: The layer eigensystem could not be solved; no solution was returned'		MATCH
+Jones_NB1	lua	VALUES finite=YES	VALUES finite=YES	VALUES finite=YES		MATCH
+Jones_NB1	py	RETURNED finite=YES	RETURNED finite=YES	RETURNED finite=YES		MATCH
+NV_NB1	lua	VALUES finite=YES	VALUES finite=YES	VALUES finite=YES		MATCH
+NV_NB1	py	RETURNED finite=YES	RETURNED finite=YES	RETURNED finite=YES		MATCH
+VL_NB5	lua	VALUES finite=YES	VALUES finite=YES	VALUES finite=YES		MATCH
+VL_NB5	py	RETURNED finite=YES	RETURNED finite=YES	RETURNED finite=YES		MATCH
+VL_NB9	lua	VALUES finite=YES	VALUES finite=YES	VALUES finite=YES		MATCH
+VL_NB9	py	RETURNED finite=YES	RETURNED finite=YES	RETURNED finite=YES		MATCH
+VL_NB9_RECOVER	lua	rel_err<=1e-12 vs VL_NB9_REF	rel_err=0.000e+00	rel_err=0.000e+00	rel_err_pass1=0.000e+00 rel_err_pass2=0.000e+00	MATCH
+VL_NB9_RECOVER	py	rel_err<=1e-12 vs VL_NB9_REF	rel_err=0.000e+00	rel_err=0.000e+00	rel_err_pass1=0.000e+00 rel_err_pass2=0.000e+00	MATCH
+VL_NB9_REF	lua	VALUES finite=YES	VALUES finite=YES	VALUES finite=YES		MATCH
+VL_NB9_REF	py	RETURNED finite=YES	RETURNED finite=YES	RETURNED finite=YES		MATCH
+ROOT_CAUSE_RC	source	20 (F4 S4.cpp:2435-2438)	20	20	[源码] ComputeLayerModes returns 20 when FMMGetEpsilon returns nonzero	RECORD
+SUMMARY	MATCH=33	MISMATCH=0	FLAKY=0
