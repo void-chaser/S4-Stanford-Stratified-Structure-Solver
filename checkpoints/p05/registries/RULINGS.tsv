@@ -334,3 +334,9 @@ U324	P05-S4 R9 M1 第三修正轮任务书 §3	H-1 写入 m1r2 证据目录属�
 U325	P05-S4 R9 M1 第三修正轮任务书 §3	H-2、H-3、H-6、H-7 按事实登记为勘误。r9m1r3 已提交的 EVENTS、SHA256SUMS 不改，由本轮按冻结逻辑重算的 EVENTS_RECALC_R9M1R3.tsv 和 SHA_RECHECK_R9M1R3.tsv 作为更正件。	P05-S4 R9 M1 第三修正轮任务书 §3	生效
 U326	P05-S4 R9 M1 第三修正轮任务书 §3	r9m1r3 的 end 门禁没有执行的那几项断言，由本轮 recert 脚本以只读方式补做，结果写进 RECERT_R9M1R3.tsv。GATE_R9M1R3_end.txt 保持原样。	P05-S4 R9 M1 第三修正轮任务书 §3	生效
 U327	P05-S4 R9 M1 第三修正轮任务书 §3	K 的命中数以 K_COUNT_R9M1R3（总数）为准。K_INHERIT_R9M1R2 中 hits 列的含义按 H-8 的复核结果，在 K_RECON_R9M1R4.tsv 里说明。	P05-S4 R9 M1 第三修正轮任务书 §3	生效
+U328	P05-S4 R9 M3a 任务书 §3	r9m1r4 的独立复算（RECERT_R9M1R3.tsv 中 VERDICT/EQUIV/SUMMARY/FORMAL_FACTS 各项）连同规划者复核（J-7），作为 M1 有效结果（r9m1r3 的 VERDICT、F3_F4_EQUIV、M1_SUMMARY）的核证。M1 不再开修正轮。J-1..J-6 按事实登记勘误。	P05-S4 R9 M3a 任务书 §3	生效
+U329	P05-S4 R9 M3a 任务书 §3	r9m1r4 的阳性对照（POSCTRL_RECERT_R9M1R4.txt）不作为有效对照。本轮 S-B 用落盘篡改副本对 recert 的复算逻辑重做阳性对照（POSCTRL_R9M3A.txt），作为替代。	P05-S4 R9 M3a 任务书 §3	生效
+U330	P05-S4 R9 M3a 任务书 §3	r9m1r3 门禁补做断言以本轮 S-B 产出的 BACKFILL_FULL_R9M1R3.tsv 为准（覆盖 FROZEN_SCRIPTS_R9M1R3 的全部 14 个脚本）。events=2、report_check=3 按事实记为 FAIL，与 E9-32 对应，不另作处理。	P05-S4 R9 M3a 任务书 §3	生效
+U331	P05-S4 R9 M3a 任务书 §3	J-4 中 UNLOGGED_WRITES_R9M1R3.tsv 不再改写。本轮输出更正表 UNLOGGED_CORR_R9M3A.tsv，逐行说明两份版本的差异，并按 m1r3/m1r4 日志重新判定那两行的归属。	P05-S4 R9 M3a 任务书 §3	生效
+U332	P05-S4 R9 M3a 任务书 §3	r9m1r4 附录 A.3 的 4 项：项一接受（报告中没有询问用户确认的语句，属检查器误匹配）；项二接受（门禁设计缺陷，finalize 在门禁后单次执行）；项三不按原文接受，以 J-5 的事实为准（EVENTS 覆盖到第 56 行）；项四由本轮把 STATE 压缩到 <= 8192 字节。	P05-S4 R9 M3a 任务书 §3	生效
+U333	P05-S4 R9 M3a 任务书 §3	M3 范围：a) make test，在导出树上 B 与 F4 各两遍，判据为 F4 的失败测试集合包含于 B 的失败测试集合且 F4 两遍一致；b) Python/Lua 公共 API E2E（正常 -> 注入失败 -> 可见报错 -> 同一对象重试恢复 / 全新对象重试恢复），M3a 只做设计、构建与预注册，M3b 运行；c) U38 已由 U90 裁决，M3 只核对台账，不重新分类；d) E2E 中 API 层没有报错（SILENT_SWALLOW）或重试后结果不一致，登记为新红点按 U4 处理，本阶段不改 S4/。	P05-S4 R9 M3a 任务书 §3	生效
