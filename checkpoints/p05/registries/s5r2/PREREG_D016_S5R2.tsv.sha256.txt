@@ -1,0 +1,2 @@
+# sha256 of PREREG_D016_S5R2.tsv, written before the formal D016 runs
+e5bc062d87f6334622ea079af64b7fef0cfeacb1fd3775b518139d3bf52b7230  PREREG_D016_S5R2.tsv

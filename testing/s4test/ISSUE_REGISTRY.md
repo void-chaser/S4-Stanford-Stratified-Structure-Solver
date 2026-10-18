@@ -26,6 +26,13 @@
 | D001 / P0 | scalar、同材质区域、isotropic tensor 等价表示产生不同物理解 | 有限范围 CLOSED；固定候选 5cf534ce5ec223a6388d29bbb2c58f981f070241 已采纳于 codex/p04-adoption-20261010；Codex 最终生产技术审核接受，详见末节 | 默认 Linux 冻结12例及扩展113例，绝对阈值1e-10；其余材料/参数和配置不作全面认证 |
 | D002 / P1 | RNP backtransform 防御性内存缺陷；仅值分支返回状态不可靠（current working registry definition） | 默认构建冻结范围 CLOSED；与D001相同采纳SHA，必要leak按负责人四行B验收，非独立动态LSan认证，详见末节 | 原生契约、仅值状态接收、rcwa失败清理不安装及S4/Python/Lua错误20传播；HAVE_LAPACK 原生运行、query 扩展/失败注入、新 pthread、n>2、A-10r、D012、历史 provenance为范围外登记 |
 | D003 / P1 | FFT prepare/execute 失败处理及上层传播不完整 | checkpoint 已含 FFT wrapper/kiss FFT/网格路径的部分处理。历史六文件 FMM 候选和 runner 存在；完整候选未生产验收/集成 | 列实际计算分支、计划/执行调用点；复用候选与现有注入器，补缺口；失败不得安装模式/缓存；恢复后重试与全新对象一致；Python/Lua 报错可见 |
+> 2026-10-18 P05-S5 R2 记录：S3-4b（失败后模式/缓存不安装）由 U29 在 F4 上带范围声明关闭（202 注入点 HOLD 202/VIOLATED 0）；F4 上 M2 正式两遍 191/191 MATCH、M1R3 651 点两遍全 MATCH。U364：M3a/M3b 的 make test 与 E2E 作为 F4 上的历史证据可被 S5 引用；S5R3 在 F4 上重跑一次 make test 与全量 E2E（M3b 42 点加 D016 点）；修复前证据不得称为修复后验证。D003 本身仍为 OPEN。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-01）：B 侧 jones/vl 静默、nv CRASH 只作为 B 列基线观察记录，不是修复证据（U359 范围声明 (a)）；S5 不重跑 B 树。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-02）：NB=1–8 与类别 C：M2-07 81 点全 MATCH；类别 C（1D+FFT 候选）无 S4 内可执行用例，保持 OPEN（U249）。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-05）：U2 stage e（I1 特殊规则）在 S4 内 NOT_FOUND_IN_SCOPE，保持 OPEN（U248）。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-06）：RP-R6d-3 no-TWICE 路径属 OUT_OF_SCOPE_D003，保持 OPEN（U5；E9-76）。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-M3D-07）：RP-R6d-7 的 D016 B 侧 rc 来源未追踪；F 侧归 D016/D003，B 列观察保持 OPEN。
+> 2026-10-18 P05-S5 R2 RECORD_ONLY_OPEN 落位（S5-C-03）：S2 对 fmm_kottke 的闭合仅限分配失败与 solve_info 传播，不含除数数值安全，保持 OPEN（P05_S1_S2_SIGNOFF.md 第 21 行）。
 | D004 / P1 | 求解后 SetOptions 沿用旧模式/缓存 | Python SetOptions 直接更新 options 后返回，当前函数未显式失效旧状态；现有测试主要在首次求解前设置选项，未覆盖该缺陷 | 同对象 solve→SetOptions→solve 与按最终选项新建的对象比较；覆盖改变截断/离散化/偏振基/内存模式的选项；非法选项失败后的对象状态有明确契约 |
 | D005 / P1 | 核心更新未重新链接 Python extension；header dependency 缺失 | Makefile 多数对象只声明 cpp/c 依赖；setup.py 链接既有 build/libS4.a。make test-python 使用清空构建的绕行方法，普通增量构建问题仍有历史记录。2026-10-10 有限观测：改动 `TLASupport.h` 后 `make -n` 不重编 Eigensystems 对象；改动 `build/libS4.a` 后 `setup.py build_ext` 不更新扩展（mtime 不变）；仅为 mtime/dry-run 观测，未做行为修复验证 | 核心实现、头文件、binding 各一次有可观测影响的修改，普通构建自动更新应受影响产物且加载新代码；清空重建不作为增量修复证明 |
 | D006 / P1 | clean wheel/editable 与 sdist 回装失败 | setup.py 依赖预先存在的 build/libS4.a。2026-10-10 执行者自审：预构建核心库后的 wheel 与 editable 安装、源码目录外 import 与物理烟雾通过；全新 checkout 不先 make 时，wheel 与 editable 失败（缺 build/libS4.a，链接期失败），sdist 不自包含（缺 S4/config.h 与核心源码）、由 sdist 回装失败。仍为 OPEN，未修复 | 在隔离环境分别做 clean wheel、editable、sdist→wheel→安装；从源码目录外 import/执行解析物理 smoke；不依赖开发树残留 archive/so |
@@ -38,7 +45,10 @@
 | D013 / P2，条件提前 | Cgeom metadata 不完整 | Git 索引有 Cgeom gitlink 2837c629…，根目录未见 .gitmodules；历史 source snapshot 保留 PARTIAL | 核对实际构建/发布依赖后补正确 metadata，或在证明无依赖后有意移除遗留引用；若阻塞 clone/install 则纳入 P07，否则 P10 处理 |
 | D014 / P2，最后完成 | 分平台安装文档与 C API example 已过时 | 待稳定构建/API 后逐条校验 | 对实际支持的平台给可执行步骤；C example 用当前公共头文件/库编译运行；当前文档入口不引用失效流程 |
 | D015 / P1 | 非网格导出崩溃，或写失败仍返回成功 | Python Postscript/POVRay 入口可见 fopen 结果未检查；输出/关闭错误待动态复现。不是 legacy D15 网格错误处理 | 覆盖正常导出、不可打开目标、延迟写/关闭失败、stdout 所有权和失败清理；Python/Lua/C 相关入口传播明确失败 |
-| D016 / P1（P05 期间提前登记；P05-S5 时核对） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：`pattern_generate_flow_field` 在 `1./max_field` 之前不检查 `max_field`，最终 `return 0`；下游 `Pattern_GenerateFlowField` 的调用方（PolBasisVL/Jones/NV）已有 `if(0 != error)` 清理路径，但该情形从未走入 | 2026-10-11 P05-S1R 实测：VL 基、`n_G=1`（NumBasis 1–4）时，图案层流场 `max_field=0`，场被写为 NaN，NaN 进入 `Epsilon_inv`/`Epsilon2`，特征值求解以 `info=2` 失败，公共 API 抛 `RuntimeError`、驱动 rc 20；B/A/H 三树一致。机理链见 `checkpoints/p05/P05_S1R_O1_ATTRIBUTION.md`。零场除零本身是数值边界问题；"NaN 产生后仍返回成功、失败信号在传播链上丢失"归 D003 的失败传播范围。用户已批准：本条的最小修法进入 P05-S3 | 最小修法（待 P05-S3 实施，具体改动需用户批准）：在 `pattern_generate_flow_field` 的 `1./max_field` 之前检查 `max_field` 为零或非有限，返回新的负错误码（须先核对不与现有 `-1…-8` 及 `pattern.c`/`pattern.h`/三个调用方的约定冲突）。预期：VL `n_G=1` 仍失败，但在根因处以明确错误报告，而不是 NaN 进入特征值求解。**不包含**让 `n_G=1` 可计算（见 R-P05-01）。关闭须有基线/修复对照与相邻路径回归；实施前状态为未关闭 |
+| D016 / P1（P05-S5 R2 核对完成；P05 期间提前登记） | 图案层向量场归一化遇到全零场时除以零得到 NaN 并仍返回成功：pattern_generate_flow_field 在 1./max_field 之前不检查 max_field，最终 return 0；下游 Pattern_GenerateFlowField 的调用方（PolBasisVL/Jones/NV）已有 if(0 != error) 清理路径，但该情形从未走入 | 2026-10-11 P05-S1R 实测：VL 基、n_G=1（NumBasis 1–4）时，图案层流场 max_field=0，场被写为 NaN，NaN 进入 Epsilon_inv/Epsilon2，特征值求解以 info=2 失败，公共 API 抛 RuntimeError、驱动 rc 20；B/A/H 三树一致。修法已实施：P05-S3R2 提交 3e77aa9；F4 源码 pattern.c 2210–2216（[源码]）。2026-10-18 P05-S5 R2 在 F4 上用 Python 与 Lua 公共 API 实测（U365）：在 F4 上、在该输入下经公共 API 可见失败且恢复正确；正式两遍 MATCH=31、MISMATCH=2、FLAKY=0（见 checkpoints/p05/registries/s5r2/D016_VERDICT_S5R2.tsv；照实报告，不改期望） | 现状：已实施（源码确认）且公共 API 已实测（S5R2）；NV 的 -10 路径触发不了，维持 [源码] 结论。R-P05-01（让 n_G=1 可计算）不包含在本条，见 R-P05-01 行 |
+| D017 / P2（P05-S5 R2 期间登记；不在 P05 修；U369） | 非 FMM 路径的 S4_malloc 失败未逐点检查/未统一传播：F4 上 S4_malloc 共 59 处文本出现（CALL 52；IN 21；OUT 38，其中 OUT CALL 31 即本条范围），非 FMM 其余分配点不属 D003/P05（用户范围决策） | 逐点清单（file:line/function/kind/in_fmm_dir/d003_scope/null_check/后果，[源码]）见 checkpoints/p05/registries/s5r2/D017_S4MALLOC_INVENTORY_S5R2.tsv；另有定义/声明/注释 7 处不是分配点 | 不在 P05 修，不阻塞 P06；后续如需处理按独立工作项 |
+| R-P05-02（P05-S5 R2 登记；OUT_OF_SCOPE_D003；U370） | ES3R4-5/528/1164 与 U99 既有问题：(a) pattern_get_containment_tree 第一个形状无效时返回 i+1=1，被 InitSolution 上报为内存分配失败；(b) F4 pattern.c 第 815 行（B/A 树第 798 行）内层循环 for(j = i+1; i < nshapes; ++i) 用 i 作条件与自增，nshapes>1 时只有 shape 0 被检查（U95/U99）；(c) shape_get_intersection_area 无调用者（死代码；F4 第 474 行，旧树行号 528）；(d) fprint_double 唯一调用点被注释（F4 第 1178 行，旧树行号 1164）（U90） | 未验证/未修复：U99 明确修它会改变正常路径（既有输入可能新报错），故不在 P05-S3/S4 修；行号由脚本对 B(37a82e8)/A(876181c)/F4(05097a7) 三棵树核对（[源码]） | S5 登记，保持 OPEN；不在 P05 修，不阻塞 P06 |
+| R-P05-03（P05-S5 R2 登记；OUT_OF_SCOPE_D003；U370） | FFT/Kottke 忽略 Pattern_DiscretizeCell 的 -1..-9 返回值：fmm_FFT.cpp 与 fmm_kottke.cpp 只在返回 -12 时设 ret=1 并 goto cleanup，其余负值保持原行为（ES3R4-8；U100） | 未验证：U100 只要求写 [源码] 说明各返回码经公共 API 的可达性（文件:行号），未运行 | S5 登记，保持 OPEN；不在 P05 修，不阻塞 P06 |
 
 ## 与历史测试的关联（不是编号等同）
 
@@ -82,7 +92,7 @@
 | D001 | 默认 Linux、HAVE_LAPACK未定义；zgebak四行置换索引修正；冻结12/12、扩展113/113、绝对阈值1e-10；第九轮独立TMM保存数值复算12/12与113/113，非独立动态物理运行 |
 | D002 非leak | 默认构建原生契约ord53/53、asan53/53、seam58/58；第五轮独立正式judge124/124、aggregate71/71，B1–B4及A-07有限校正保持；zhseqr仅值状态接收、NULL/工作区归属、rcwa失败清理及S4/Python/Lua错误20，error20保存43/43 |
 | 必要有限leak | 负责人原批准记录 `.p04-review/remediation/acceptance/acceptance-B-rows1-4-20261010/ACCEPTANCE_B_ROWS1-4.md`（SHA256 64149930e3094f85d3132413d712e642c1a30c4a1405e86cb17a15a3f4852f07）；行1–4全部采用B保存证据验收，非独立动态LSan认证。行3路径解析误报已在最终审核撤销，正确绑定17/17；不缩小原批准范围 |
-| P04 | 固定候选clean保存流水线38步PASS、0unexpected、18/18产物绑定；主测试total257/pass256/skip1（OOM为Code Review Only）、Lua回归及binding smoke4/4；上述有限范围关闭，P05未启动 |
+| P04 | 固定候选clean保存流水线38步PASS、0unexpected、18/18产物绑定；主测试total257/pass256/skip1（OOM为Code Review Only）、Lua回归及binding smoke4/4；上述有限范围关闭；P05 已启动，当前处于 P05-S5 R2（登记落实与 D016 公共 API 实测，仅改文档与登记表） |
 
 覆盖限制：行1–3仅n=2 dense；行4仅S4非均匀层失败，均匀张量未动态运行；Python/Lua未在sanitizer下运行；Lua GetAmplitudes新增分支未独立命中。SolveInParallel在所有worker join且释放data后，对首个非零层状态报错，包括20以外状态；保留既有默认/保存pthread有限结果，不称线程全面认证。
 
@@ -104,14 +114,14 @@
 
 | 引用 | 项目与当前性质 | 下一次有限核验 / 完成标准 | 建议排期与提前条件 |
 |---|---|---|---|
-| R-P04-01 | A-10r 契约外短工作区越界；保存 SIGSEGV 探针存在，非正式 judged 用例。2026-10-10 正式复验观测：默认候选探针 rc -11（SIGSEGV）；ASan 候选与 seam 候选探针报告 heap-buffer-overflow（ztrevc_，Eigensystems.cpp:2936）。两者均为未判定探针，不计入候选 53/53、58/58，属本条范围 | 核对实际分配大小、lwork 与公开契约；确认正常公共调用能否触发。支持范围内则构造最小反例并修复，契约外则明确前置条件或制定防御行为 | P05 主线之后安排 RNP 防御专项；若正常受支持输入可达内存破坏则提前 |
+| R-P04-01 | A-10r 契约外短工作区越界；保存 SIGSEGV 探针存在，非正式 judged 用例。2026-10-10 正式复验观测：默认候选探针 rc -11（SIGSEGV）；ASan 候选与 seam 候选探针报告 heap-buffer-overflow（ztrevc_，Eigensystems.cpp:2936）。两者均为未判定探针，不计入候选 53/53、58/58，属本条范围 | 核对实际分配大小、lwork 与公开契约；确认正常公共调用能否触发。支持范围内则构造最小反例并修复，契约外则明确前置条件或制定防御行为 | P05 收口之后安排 RNP 防御专项（P05-S5 R2 登记交叉引用本条）；若正常受支持输入可达内存破坏则提前 |
 | R-P04-02 | query 防御性失败路径，属于未覆盖契约 | query 失败不安装模式、不继续使用无效尺寸，临时资源释放；用具名失败输入/最小 seam 及成功对照，不重跑全部矩阵 | RNP/rcwa 防御专项；若新证据影响默认求解则提前 |
 | R-P04-03 | HAVE_LAPACK 原生运行未认证；额外构建配置覆盖缺口 | 固定实际编译/链接配置，核验真实 LAPACK 分支、原生 info、工作区所有权及前端错误传播；语法通过不当作原生通过 | 声明支持该配置前必做，发布支持配置矩阵前安排；非当前默认构建关闭前提 |
 | R-P04-04 | pthread/HAVE_UNISTD_H、ParallelInvoke、线程池/OOM；配置及生命周期核验缺口 | 固定线程配置，定向检查构建、worker/join、参数/分配失败和资源清理；具名场景分别接受，区分 Lua 与 Python 入口 | 声明线程配置支持前专项；若受支持正常调用出现崩溃/泄漏/无效成功则提前 |
 | R-P04-05 | n>2、其它层类型、线程下所有权覆盖扩展 | 先选代表矩阵与实际变更/风险路径，分别核验成功/失败/重复调用、必要阳性能力和清理；保持每个配置的覆盖限制 | 随相关路径变更或发布范围扩展分批安排，不建无限“全面认证”前提 |
 | R-P04-06 | D001 新科学矩阵与更广材料/参数；科学覆盖扩展 | 用独立物理参考挑选新增材料/各向异性/参数情形，保存输入及误差阈值；发现正常输入实质反例时登记影响范围 | 科学验证扩展专项；出现具名错误物理结果则提前 |
-| R-P04-07 | 历史 D002 等 provenance 未知；证据溯源事项 | 找到原定义/提交/输入则记录明确来源；找不到保持未知。不得用当前有限修复补造历史因果 | 并行资料整理或文档阶段，默认不阻塞 P05 |
+| R-P04-07 | 历史 D002 等 provenance 未知；证据溯源事项 | 找到原定义/提交/输入则记录明确来源；找不到保持未知。不得用当前有限修复补造历史因果 | 并行资料整理或文档阶段，默认不阻塞 P05（P05-S5 R2 登记交叉引用本条） |
 | R-P05-01（P05-S1R 期间登记，2026-10-11） | VL 基在 `n_G=1`（NumBasis 1–4）时无法求解：图案层 `allzero → 1×1` 流场网格（`fmm_PolBasisVL.cpp` 的 `allzero` 分支）使闭合单元上的边界通量抵消、场恒为零。该分支的设计意图未知（源码无注释，FFT 路径 `fmm_FFT.cpp` 有相同约定）；让 `n_G=1` 可计算需要改变该行为，属于行为变更而非失败传播。未验证项，不写成已确认生产缺陷 | 仅有一个单点反事实：只改 `allzero` 分支的草稿树使 NG=1 通量为 0.9589，Jones 0.9714、Normal 0.9744；无独立参考解，不能据此判断哪个正确。三树（B/A/H）失败行为一致，不涉及 D003 的失败传播 | 需先：(1) 用户或原作者确认 `allzero → 1×1` 的设计意图；(2) 取得 `n_G=1` 的独立参考解（例如更高 NumBasis 的收敛序列外推，或解析参考）。之后才决定修法。其中"在根因处报错"的一半已拆出为 D016，归 P05-S3。暂不处理，不阻塞 P05 |
 | D012（既有 issue） | Python SolveInParallel 静默 no-op，已有 P2 条目 | 按原条目默认 NotImplementedError/unsupported 契约及回归；不另起重复 issue，不外推为实现完整并行 | 仍按 P11 排期；若当前用户流程依赖该入口，可单独提前小修复 |
 
-下一轮默认修复顺序仍为 P05/D003 → P06/D004；P05 应核对实际 FMM/FFT 失败传播和已登记 VL NB1 可达性。以上后续事项仅在其自身任务明确启动后执行，不回头扩大本次 P04 验收。
+下一轮默认修复顺序：P05 进入 S5 收口（前端与回归；U364：S5R3 在 F4 上重跑 make test 与全量 E2E），随后 P06/D004；P05 的 FMM/FFT 失败传播与 VL NB1 可达性已在 S3/S4 登记。以上后续事项仅在其自身任务明确启动后执行，不回头扩大本次 P04 验收。

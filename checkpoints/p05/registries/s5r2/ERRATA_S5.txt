@@ -1,0 +1,43 @@
+# ERRATA_S5.txt -- P05-S5 errata register (append-only from ES5-1; written by P05-S5 R2)
+# This round creates the file with ES5-1..ES5-5. Later rounds append new ES5-n entries only.
+# Written: 2026-10-18T09:36:48Z
+
+ES5-1
+- 事实：S5R1 输入表 S5-B-05/06/07/08 的 source_locator 指向 S1_BASELINE_AND_ENUMERATION.md 全文第一次出现处（第 359/58/374/389 行），应为该报告 11.2 表的第 478/479/480/481 行；对应 current_status_text 应为表中的哈希原文。S5-B-09 的第 485 行无误。
+  更正 S5-B-05：source_locator=S1_BASELINE_AND_ENUMERATION.md 第 478 行（原第 359 行）；current_status_text=| `logs/60-t6-results.json` | 5e2eb52b0d15b891ef12d779e645b20768614d3b38dcf0dff4111f52e45897d6 |
+  更正 S5-B-06：source_locator=S1_BASELINE_AND_ENUMERATION.md 第 479 行（原第 58 行）；current_status_text=| `logs/60-t6-main.log` | 792c82d87872639815e553bd49efb573ff430bc978052731dbf788628e0e8bb5 |
+  更正 S5-B-07：source_locator=S1_BASELINE_AND_ENUMERATION.md 第 480 行（原第 374 行）；current_status_text=| `logs/61-t6-diag-layer.log` | 3e32da67da57b88d90fc2639d09bd1b157b0e3234ce3a0deb0c26bb20c62d149 |
+  更正 S5-B-08：source_locator=S1_BASELINE_AND_ENUMERATION.md 第 481 行（原第 389 行）；current_status_text=| `logs/62-t6-repeat.log` | ad0f7934b8043912718881c61cc4345e320b55f7fb77628b4d415a55ebaeac1e |
+  更正 S5-B-09：source_locator=S1_BASELINE_AND_ENUMERATION.md 第 485 行（原第 485 行）；current_status_text=| `s1_run.sh` | f250b2d4b04a7c1f2c13fb423093f8b6f7cd1575e9c63a93a89fcefe8a93220a |
+- 证据：checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md 第 359/58/374/389 行（第一次出现）与第 478/479/480/481/485 行（11.2 表）；由脚本重新定位。
+- 影响范围：只影响 S5R1 输入表中这 5 行的 locator 与 current_status_text；不影响任何判定或 S5R1 产物。
+- 处理方式：只登记勘误；更正后的 5 行写进本轮 P05_S5_OPEN_ITEMS.tsv 与 ERRATA_S5.txt，不改 registries/s5r1/ 的任何文件。
+
+ES5-2
+- 事实：S5R1 补丁草案与 U99 中的 pattern.c:798 是 B/A 树的行号，F4 上是第 815 行；528 与 1164 是旧树行号，F4 上 shape_get_intersection_area 在 474 行、fprint_double 在 1178 行。U99 原文不改。
+  三棵树并列（由 git show 读出）：
+  B: 内层循环 for(j = i+1; i < nshapes; ++i) 第 798 行；shape_get_intersection_area 起始第 457 行；fprint_double 起始第 1152 行
+  A: 内层循环 for(j = i+1; i < nshapes; ++i) 第 798 行；shape_get_intersection_area 起始第 457 行；fprint_double 起始第 1152 行
+  F4: 内层循环 for(j = i+1; i < nshapes; ++i) 第 815 行；shape_get_intersection_area 起始第 474 行；fprint_double 起始第 1178 行
+- 证据：git show 37a82e8:S4/pattern/pattern.c、876181c:S4/pattern/pattern.c、05097a7:S4/pattern/pattern.c；行号由脚本按文本匹配读出。
+- 影响范围：只影响补丁草案与 U99 引用的行号；U99 原文与 S3R4 产物不改。
+- 处理方式：补丁 v2 与 R-P05-02 登记一律写 F4 行号，旧树行号放括号内（U370）。
+
+ES5-3
+- 事实：S5R1 正式门禁之后对报告与两份草案做了手工修改并 amend 了 (ii)，修改后没有重跑 report_check。reflog 显示 f46ac87（原 (ii)）被 amend 为 9f537f7（终版 (ii)），两次提交均改动了报告与两份草案的禁用字样。
+- 证据：git reflog（9f537f7 commit (amend) ← f46ac87 commit）；git diff --stat f46ac87..9f537f7；6089637..9f537f7 的两份草案逐行差异见 checkpoints/p05/evidence/p05-s5r2/S5R1_REPORT_RECHECK_S5R2.txt 第 B 节；S5R1 safe_run.log 正式门禁行之后没有 report_check 调用。
+- 只读复核结果：本轮对 S5R1 最终版报告重跑禁用词与数字/源表一致性检查，RECHECK_FAILS=0（明细见 S5R1_REPORT_RECHECK_S5R2.txt）。
+- 影响范围：S5R1 已提交产物不改；本轮只登记流程违规与复核结果。
+- 处理方式：只登记勘误；本轮严格遵守正式门禁后不再手工修改、不 amend、不 rebase（任务书 §3.5）。
+
+ES5-4
+- 事实：S5R1 end 门禁的 EVIDENCE_SUMS_COVERS_ALL FAIL 是检查器缺陷：gate_check_s5r1.py 的覆盖检查只排除顶层 gate/，没有排除 shakedown/gate/。
+- 复算：对 p05-s5r1 证据目录排除 gate/、shakedown/gate/ 与 tmp/ 后重算覆盖：清单 34 项，MISSING_FROM_SUMS=none，HASH_MISMATCH=none。
+- 影响范围：S5R1 门禁结论只该是检查器缺陷，不是证据缺失；S5R1 产物不改。
+- 处理方式：S5R2 的 end 门禁检查器把排除列表（gate/、shakedown/gate/、tmp/、trees/）写进门禁输出；S5R1 不重跑。
+
+ES5-5
+- 事实：S5R1 输入表中非 FMM S4_malloc 写为约 35–43 处，从未逐点核实。
+- 证据：本轮 D017 只读清单：F4 全部 S4_malloc 文本出现 59 处（CALL 52；IN 21；OUT 38，其中 OUT CALL 31）；见 D017_S4MALLOC_INVENTORY_S5R2.tsv。
+- 影响范围：D017 的范围与计数以本轮清单为准；S5R1 输入表原文不改。
+- 处理方式：只登记勘误；补丁 v2 的 D017 行引用本清单计数。

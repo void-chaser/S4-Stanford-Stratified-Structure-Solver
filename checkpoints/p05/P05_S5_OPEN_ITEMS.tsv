@@ -1,0 +1,32 @@
+# P05_S5_OPEN_ITEMS.tsv -- the 25 de-duplicated S5R1 inputs with their final disposition (task brief section 6).
+# registry_location is computed after the registry patch is applied (file:line).
+# final_disposition values: REGISTERED_D016 / REGISTERED_D017 / REGISTERED_R-P05-0x / OPEN_TRANSFERRED_OUT /
+# RECORD_ONLY_OPEN / TEST_S5R2 / TEST_S5R3. REGISTRY_SYNC marks the pure text-sync rows of the S5R1
+# REGISTRY_ONLY class (S5-D-02, S5-D-05), which the brief's list does not name separately.
+# ES5-1 corrected locators: S5-B-05/06/07/08 -> 478/479/480/481 (see ERRATA_S5.txt).
+input_id	final_disposition	ruling	registry_location	scope_note
+S5-M3D-01	RECORD_ONLY_OPEN	S5R1 RECORD_ONLY_OPEN（B 列基线观察，不是修复证据）	testing/s4test/ISSUE_REGISTRY.md:30	B 列 jones/vl 静默、nv CRASH 只作为基线观察记录；S5 不重跑 B 树
+S5-M3D-02	RECORD_ONLY_OPEN	U249	testing/s4test/ISSUE_REGISTRY.md:31	NB=1–8 与类别 C；M2-07 81 点全 MATCH；类别 C 无 S4 内可执行用例，保持 OPEN
+S5-M3D-03	REGISTERED_R-P05-02	U90/U95/U99/U100	testing/s4test/ISSUE_REGISTRY.md:50	已登记 R-P05-02（F4 行号）与 R-P05-03（U100）
+S5-M3D-04	REGISTERED_D017	U369	testing/s4test/ISSUE_REGISTRY.md:49	逐点清单与计数见 registries/s5r2/D017_S4MALLOC_INVENTORY_S5R2.tsv
+S5-M3D-05	RECORD_ONLY_OPEN	U248	testing/s4test/ISSUE_REGISTRY.md:32	U2 stage e 在 S4 内 NOT_FOUND_IN_SCOPE，保持 OPEN
+S5-M3D-06	RECORD_ONLY_OPEN	U5（E9-76）	testing/s4test/ISSUE_REGISTRY.md:33	RP-R6d-3 no-TWICE 路径 OUT_OF_SCOPE_D003，保持 OPEN
+S5-M3D-07	RECORD_ONLY_OPEN	S5R1 RECORD_ONLY_OPEN（B 侧基线）	testing/s4test/ISSUE_REGISTRY.md:34	RP-R6d-7 D016 的 B 侧 rc 来源未追踪；F 侧归 D016/D003
+S5-B-01	OPEN_TRANSFERRED_OUT	U366	PROJECT_ROADMAP.md:147	F10 历史因果保持 OPEN，转出 P05，不阻塞
+S5-B-02	OPEN_TRANSFERRED_OUT	U367	PROJECT_ROADMAP.md:148	不授权访问历史目录，保持未验证
+S5-B-03	OPEN_TRANSFERRED_OUT	U366	testing/s4test/ISSUE_REGISTRY.md:124	反事实通量保持 OPEN，转出 P05
+S5-B-04	OPEN_TRANSFERRED_OUT	U366	testing/s4test/ISSUE_REGISTRY.md:124	allzero 设计意图保持 OPEN，转出 P05
+S5-B-05	OPEN_TRANSFERRED_OUT	U368	PROJECT_ROADMAP.md:149	无法判定，不改写 11.2 与 EVIDENCE.sha256；locator 更正为第 478 行（ES5-1）
+S5-B-06	OPEN_TRANSFERRED_OUT	U368	PROJECT_ROADMAP.md:149	无法判定；locator 更正为第 479 行（ES5-1）
+S5-B-07	OPEN_TRANSFERRED_OUT	U368	PROJECT_ROADMAP.md:149	无法判定；locator 更正为第 480 行（ES5-1）
+S5-B-08	OPEN_TRANSFERRED_OUT	U368	PROJECT_ROADMAP.md:149	无法判定；locator 更正为第 481 行（ES5-1）
+S5-B-09	OPEN_TRANSFERRED_OUT	U368	PROJECT_ROADMAP.md:149	无法判定；第 485 行 locator 本无误
+S5-C-01	TEST_S5R2	U365	testing/s4test/ISSUE_REGISTRY.md:48	D016 公共 API 实测（Python/Lua，正式两遍）；见 registries/s5r2/D016_VERDICT_S5R2.tsv
+S5-C-02	OPEN_TRANSFERRED_OUT	U366	testing/s4test/ISSUE_REGISTRY.md:124	R-P05-01 保持 OPEN，转出 P05，不阻塞
+S5-C-03	RECORD_ONLY_OPEN	S5R1 RECORD_ONLY_OPEN	testing/s4test/ISSUE_REGISTRY.md:35	S2 对 fmm_kottke 的闭合不含除数数值安全，保持 OPEN
+S5-D-01	TEST_S5R3	U364	testing/s4test/ISSUE_REGISTRY.md:29	S5R3 在 F4 上重跑 make test 与全量 E2E（M3b 42 点加 D016 点）
+S5-D-02	REGISTRY_SYNC	S5R1 REGISTRY_ONLY（文本同步）	testing/s4test/ISSUE_REGISTRY.md:95	P04 行 P05 状态文字同步为 P05-S5 R2
+S5-D-03	OPEN_TRANSFERRED_OUT	S5R1 REGISTRY_ONLY（R-P04-01）	testing/s4test/ISSUE_REGISTRY.md:117	R-P04-01 保持 OPEN，P05 收口之后安排；已补交叉引用
+S5-D-04	OPEN_TRANSFERRED_OUT	S5R1 REGISTRY_ONLY（R-P04-07）	testing/s4test/ISSUE_REGISTRY.md:123	R-P04-07 保持 OPEN，默认不阻塞；已补交叉引用
+S5-D-05	REGISTRY_SYNC	S5R1 REGISTRY_ONLY（文本同步）	testing/s4test/ISSUE_REGISTRY.md:127	下一轮顺序文字同步为 P05 进入 S5 收口，随后 P06/D004
+S5-D-06	TEST_S5R3	U364	PROJECT_ROADMAP.md:51	P05 行状态更新；最终前端/回归证据由 S5R3 在 F4 上重跑提供
