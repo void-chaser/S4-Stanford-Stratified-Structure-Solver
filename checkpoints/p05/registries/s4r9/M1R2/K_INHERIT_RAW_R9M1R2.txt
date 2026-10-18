@@ -1,0 +1,1408 @@
+# K_INHERIT_RAW_R9M1R2.txt -- Raw GDB and trace capture for K inheritance in P05-S4 R9 M1R2 (Rule U315)
+
+=== Group KGRP-M1-001 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=closed1d;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+F4 (d003-F4-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== Group KGRP-M1-002 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=closed2d;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+F4 (d003-F4-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== Group KGRP-M1-003 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=experimental;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+F4 (d003-F4-kmap-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+
+=== Group KGRP-M1-004 (d003): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=17):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [4] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (d003-F4-kmap-dbg, hits=17):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [4] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-005 (d003): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=17):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [4] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [5] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [6] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [7] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [8] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [9] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [10] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [11] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [12] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [13] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [14] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [15] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [16] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (d003-F4-kmap-dbg, hits=17):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [4] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [5] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [6] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [7] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [8] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [9] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [10] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [11] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [12] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [13] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [14] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [15] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [16] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-006 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=2):
+  [0] arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  [1] arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+F4 (d003-F4-kmap-dbg, hits=2):
+  [0] arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  [1] arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+
+=== Group KGRP-M1-007 (d003): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (d003-F4-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-008 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+F4 (d003-F4-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+
+=== Group KGRP-M1-009 (d003): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=17):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [4] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (d003-F4-kmap-dbg, hits=17):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [4] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-010 (d003): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=17):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [4] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [5] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [6] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [7] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [8] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [9] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [10] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [11] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [12] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [13] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [14] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [15] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [16] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (d003-F4-kmap-dbg, hits=17):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [4] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [5] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [6] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [7] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [8] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [9] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [10] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [11] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [12] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [13] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [14] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [15] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [16] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-011 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=1):
+  [0] arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+F4 (d003-F4-kmap-dbg, hits=1):
+  [0] arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+
+=== Group KGRP-M1-012 (d003): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (d003-F4-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-013 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+F4 (d003-F4-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+
+=== Group KGRP-M1-014 (d003): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (d003-F4-kmap-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-015 (d003): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (d003-F3-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+F4 (d003-F4-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+
+=== Group KGRP-M1-016 (d003plan): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+F4 (d003plan-F4-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+
+=== Group KGRP-M1-017 (d003plan): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+
+=== Group KGRP-M1-018 (d003plan): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+F4 (d003plan-F4-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+
+=== Group KGRP-M1-019 (d003plan): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-020 (d003plan): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+
+=== Group KGRP-M1-021 (d003plan): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+F4 (d003plan-F4-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+
+=== Group KGRP-M1-022 (d003plan): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+
+=== Group KGRP-M1-023 (d003plan): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+F4 (d003plan-F4-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+
+=== Group KGRP-M1-024 (d003plan): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-025 (d003plan): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+F4 (d003plan-F4-kmap-dbg, hits=3):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+
+=== Group KGRP-M1-026 (d003plan): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (d003plan-F3-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (d003plan-F4-kmap-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-027 (init): bp=__wrap_malloc, env=FMM_MODE=closed2d;S4FMM_NG=1 ===
+F3 (init-F3-dbg, hits=9):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [5] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [6] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [8] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+F4 (init-F4-dbg, hits=9):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [5] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [6] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [8] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+
+=== Group KGRP-M1-028 (init): bp=__wrap_malloc, env=FMM_MODE=fft;S4FMM_NG=5 ===
+F3 (init-F3-dbg, hits=10):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+F4 (init-F4-dbg, hits=10):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+
+=== Group KGRP-M1-029 (init): bp=__wrap_malloc, env=FMM_MODE=kottke;S4FMM_NG=5 ===
+F3 (init-F3-dbg, hits=10):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+F4 (init-F4-dbg, hits=10):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+
+=== Group KGRP-M1-030 (polyinj): bp=__wrap_malloc, env=FMM_MODE=fft;S4FMM_NG=1 ===
+F3 (polyinj-F3-dbg, hits=3):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+F4 (polyinj-F4-dbg, hits=3):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+
+=== Group KGRP-M1-031 (polyinj): bp=__wrap_malloc, env=FMM_MODE=fft;S4FMM_NG=5 ===
+F3 (polyinj-F3-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=983 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1765
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [15] arg=3783 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [17] arg=5383 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6167 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+F4 (polyinj-F4-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=983 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1772
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [15] arg=3783 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [17] arg=5383 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6167 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+
+=== Group KGRP-M1-032 (polyinj): bp=__wrap_malloc, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (polyinj-F3-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=95 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=167 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=1751 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1765
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [15] arg=11975 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [17] arg=17159 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6167 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+F4 (polyinj-F4-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=95 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=167 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=1751 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1772
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [15] arg=11975 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [17] arg=17159 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6167 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+
+=== Group KGRP-M1-033 (polyinj): bp=__wrap_malloc, env=FMM_MODE=kottke;S4FMM_NG=1 ===
+F3 (polyinj-F3-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [10] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [11] arg=215 func=malloc_aligned loc=S4/numalloc.c:68
+  [12] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1765
+  [13] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [14] arg=199 func=malloc_aligned loc=S4/numalloc.c:68
+  [15] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [16] arg=263 func=malloc_aligned loc=S4/numalloc.c:68
+  [17] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [18] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [20] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [21] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [22] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [23] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [24] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [25] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [26] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [27] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [28] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [29] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+F4 (polyinj-F4-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=31 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [7] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [9] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [10] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [11] arg=215 func=malloc_aligned loc=S4/numalloc.c:68
+  [12] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1772
+  [13] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [14] arg=199 func=malloc_aligned loc=S4/numalloc.c:68
+  [15] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [16] arg=263 func=malloc_aligned loc=S4/numalloc.c:68
+  [17] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [18] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [19] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [20] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [21] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [22] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [23] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [24] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [25] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [26] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [27] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [28] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [29] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+
+=== Group KGRP-M1-034 (polyinj): bp=__wrap_malloc, env=FMM_MODE=kottke;S4FMM_NG=5 ===
+F3 (polyinj-F3-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=983 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1765
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [15] arg=3783 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [17] arg=5383 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+F4 (polyinj-F4-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=63 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=983 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1772
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [15] arg=3783 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [17] arg=5383 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+
+=== Group KGRP-M1-035 (polyinj): bp=__wrap_malloc, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (polyinj-F3-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=95 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=167 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=1751 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1765
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [15] arg=11975 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2276
+  [17] arg=17159 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+F4 (polyinj-F4-dbg, hits=66):
+  [0] arg=344 func=S4_Simulation_New loc=S4/S4.cpp:286
+  [1] arg=95 func=malloc_aligned loc=S4/numalloc.c:68
+  [2] arg=384 func=S4_Simulation_New loc=S4/S4.cpp:320
+  [3] arg=256 func=S4_Simulation_New loc=S4/S4.cpp:323
+  [4] arg=648 func=Gsel_circular loc=S4/gsel.c:138
+  [5] arg=167 func=malloc_aligned loc=S4/numalloc.c:68
+  [6] arg=103 func=malloc_aligned loc=S4/numalloc.c:68
+  [7] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [8] arg=4 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [9] arg=8 func=pattern_get_containment_tree loc=S4/pattern/pattern.c:825
+  [10] arg=0 func=Simulation_InitSolution loc=S4/S4.cpp:1729
+  [11] arg=16 func=Simulation_InitSolution loc=S4/S4.cpp:1763
+  [12] arg=1751 func=malloc_aligned loc=S4/numalloc.c:68
+  [13] arg=12 func=Simulation_InitSolution loc=S4/S4.cpp:1772
+  [14] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [15] arg=11975 func=malloc_aligned loc=S4/numalloc.c:68
+  [16] arg=48 func=Simulation_ComputeLayerModes loc=S4/S4.cpp:2289
+  [17] arg=17159 func=malloc_aligned loc=S4/numalloc.c:68
+  [18] arg=6144 func=fft_alloc_complex loc=S4/fmm/fft_iface.cpp:52
+  [19] arg=39 func=malloc_aligned loc=S4/numalloc.c:68
+  [20] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [21] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [22] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [23] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [24] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [25] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [26] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [27] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [28] arg=1864 func=kiss_fftnd_alloc loc=S4/kiss_fft/tools/kiss_fftnd.c:47
+  [29] arg=24 func=fft_plan_dft_2d loc=S4/fmm/fft_iface.cpp:108
+  [30] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [31] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [32] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [33] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [34] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [35] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [36] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [37] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [38] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [39] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [40] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [41] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [42] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [43] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [44] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [45] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [46] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [47] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [48] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [49] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [50] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [51] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [52] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [53] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [54] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [55] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [56] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [57] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [58] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [59] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [60] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [61] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [62] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [63] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [64] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+  [65] arg=36 func=shape_get_intersection_area_quad_st loc=S4/pattern/pattern.c:418
+
+=== Group KGRP-M1-036 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=closed1d;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+F4 (r6bstate-F4-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== Group KGRP-M1-037 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=closed2d;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+F4 (r6bstate-F4-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+
+=== Group KGRP-M1-038 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=experimental;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+F4 (r6bstate-F4-dbg, hits=1):
+  [0] arg=192 func=FMMGetEpsilon_Experimental loc=S4/fmm/fmm_experimental.cpp:40
+
+=== Group KGRP-M1-039 (r6bstate): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=18):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [4] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [17] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (r6bstate-F4-dbg, hits=18):
+  [0] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:191
+  [1] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [2] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [3] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [4] arg=exec func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:221
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [17] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-040 (r6bstate): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [1] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [2] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+  [3] arg=plan func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:89
+
+=== Group KGRP-M1-041 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=fft;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=2):
+  [0] arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  [1] arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+F4 (r6bstate-F4-dbg, hits=2):
+  [0] arg=6144 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:75
+  [1] arg=16 func=FMMGetEpsilon_FFT loc=S4/fmm/fmm_FFT.cpp:83
+
+=== Group KGRP-M1-042 (r6bstate): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (r6bstate-F4-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:263
+  [1] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:282
+  [2] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:301
+  [3] arg=exec func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:320
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-043 (r6bstate): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:249
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-044 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=jones;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:108
+  [2] arg=10720 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:155
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisJones loc=S4/fmm/fmm_PolBasisJones.cpp:170
+
+=== Group KGRP-M1-045 (r6bstate): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=18):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [4] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [17] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (r6bstate-F4-dbg, hits=18):
+  [0] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:271
+  [1] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [2] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [3] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [4] arg=exec func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:296
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [6] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [7] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [8] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [9] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [10] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [11] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [12] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [13] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [14] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [15] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [16] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [17] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-046 (r6bstate): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [1] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [2] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+  [3] arg=plan func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:93
+
+=== Group KGRP-M1-047 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=kottke;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=1):
+  [0] arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+F4 (r6bstate-F4-dbg, hits=1):
+  [0] arg=16 func=FMMGetEpsilon_Kottke loc=S4/fmm/fmm_kottke.cpp:87
+
+=== Group KGRP-M1-048 (r6bstate): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (r6bstate-F4-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [1] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [2] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [3] arg=exec func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:213
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-049 (r6bstate): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:196
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-050 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=nv;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:59
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:112
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisNV loc=S4/fmm/fmm_PolBasisNV.cpp:125
+
+=== Group KGRP-M1-051 (r6bstate): bp=__wrap__Z13fft_plan_execP12tag_fft_plan, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+F4 (r6bstate-F4-dbg, hits=6):
+  [0] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [1] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [2] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [3] arg=exec func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:220
+  [4] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+  [5] arg=exec func=GetFieldOnGrid loc=S4/rcwa.cpp:2245
+
+=== Group KGRP-M1-052 (r6bstate): bp=__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=plan func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:204
+  [1] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [2] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+  [3] arg=plan func=GetFieldOnGrid loc=S4/rcwa.cpp:2209
+
+=== Group KGRP-M1-053 (r6bstate): bp=__wrap__Z9S4_mallocm, env=FMM_MODE=vl;S4FMM_NG=9 ===
+F3 (r6bstate-F3-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+F4 (r6bstate-F4-dbg, hits=4):
+  [0] arg=192 func=FMMGetEpsilon_ClosedForm loc=S4/fmm/fmm_closed.cpp:40
+  [1] arg=192 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:58
+  [2] arg=11872 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:117
+  [3] arg=1024 func=FMMGetEpsilon_PolBasisVL loc=S4/fmm/fmm_PolBasisVL.cpp:130
+

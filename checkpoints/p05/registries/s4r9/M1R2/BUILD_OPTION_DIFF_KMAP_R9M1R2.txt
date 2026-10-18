@@ -1,0 +1,62 @@
+# BUILD_OPTION_DIFF_KMAP_R9M1R2.txt -- Option diff between plain and kmap-dbg drivers (Rule U315, §6-6)
+
+=== d003-F3-plain vs d003-F3-kmap-dbg ===
+--- d003-F3-plain
+
++++ d003-F3-kmap-dbg
+
+@@ -1,5 +1,6 @@
+
+ g++
+ -O1
++-g
+ -Wall
+ -Wextra
+ -Wno-unused-parameter
+Difference is strictly '+-g' (1 added, 0 removed).
+
+=== d003-F4-plain vs d003-F4-kmap-dbg ===
+--- d003-F4-plain
+
++++ d003-F4-kmap-dbg
+
+@@ -1,5 +1,6 @@
+
+ g++
+ -O1
++-g
+ -Wall
+ -Wextra
+ -Wno-unused-parameter
+Difference is strictly '+-g' (1 added, 0 removed).
+
+=== d003plan-F3-plain vs d003plan-F3-kmap-dbg ===
+--- d003plan-F3-plain
+
++++ d003plan-F3-kmap-dbg
+
+@@ -1,5 +1,6 @@
+
+ g++
+ -O1
++-g
+ -Wall
+ -Wextra
+ -Wno-unused-parameter
+Difference is strictly '+-g' (1 added, 0 removed).
+
+=== d003plan-F4-plain vs d003plan-F4-kmap-dbg ===
+--- d003plan-F4-plain
+
++++ d003plan-F4-kmap-dbg
+
+@@ -1,5 +1,6 @@
+
+ g++
+ -O1
++-g
+ -Wall
+ -Wextra
+ -Wno-unused-parameter
+Difference is strictly '+-g' (1 added, 0 removed).
+
