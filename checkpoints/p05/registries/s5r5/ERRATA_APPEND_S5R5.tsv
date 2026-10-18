@@ -1,0 +1,8 @@
+# ERRATA_APPEND_S5R5.tsv -- P05-S5 R5 pure append (ES5-15, ES5-16)
+# before_bytes=13848 before_sha256=8aec8fd5e21c9fd2d3e5f3189d921eebe2fdde23524c5ea41087137fd641ba4f
+# after_bytes=15805 after_sha256=e1f02ee80605a8eb1240fdacdf22d9b4e2e38c5a764c1fd946e5d979af8dfa33
+# r4_final_snapshot=checkpoints/p05/registries/s5r5/r4_final/ERRATA_S5_R4FINAL.txt snapshot_sha256=8aec8fd5e21c9fd2d3e5f3189d921eebe2fdde23524c5ea41087137fd641ba4f
+# last_entry=ES5-16 entries_appended=2
+id	appended
+ES5-15	yes
+ES5-16	yes

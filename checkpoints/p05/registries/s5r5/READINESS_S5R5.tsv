@@ -1,0 +1,42 @@
+# READINESS_S5R5.tsv -- P05-S5 R5 readiness audit (U389)
+# META	STATE_BYTES=4344	STATE_SHA256=c713a1018a4cae6b79914669433e7aef2c669f8cc49458f5ecdc705e1b2fa89e	DRAFT_V3_BYTES=5023	DRAFT_V3_SHA256=c7fc843d0d9f90c3b89d9154e4660749ae82c50b29b7b07dd2c0aa3b6afed500	REPORT_BODY_BYTES=9345	REPORT_BODY_SHA256=ac2c5c8f5d0bd00bba1248a30178917d99a421dabf858fd79ee0cfcd5f671589	GENERATED_UTC=2026-10-18T22:21:18Z
+# U389 forbidden phrases: three regexes (FAILS-digit, gate-then-pass/through, no-work-left token); hits=0 expected
+row_kind	item	status	note	source
+SUMMARY	GATE_RESULT_PHRASES	MET	STATE/DRAFT_V3/REPORT_BODY hits=0 for the three U389 regexes	STATE.md; P05_S5_SIGNOFF_DRAFT_v3.md; P05_S5R5_REPORT.md body
+SUMMARY	STATE_S5R4_ROW_CONSISTENT	MET	STATE has ES5-15/INCOMPLETE/RECHECK_STAGING_S5R5.tsv; S5R4 report FINAL_STATUS=INCOMPLETE	STATE.md; P05_S5R4_REPORT.md appendix C
+RED_POINT	AUDIT-TRACE-M2c	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	K-1	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R5-1	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-1	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-10	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-11	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-12	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-13	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-14	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-15	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-16	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-17	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-18	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-19	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-2	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-20	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-3	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-4	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-5	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-6	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-7	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-8	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R6d-9	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R8-M2c-1	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R8-M2c-1b	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+RED_POINT	RP-R9M3B-NONE	MET	R4 readiness row (carried; R5 does not change these data)	registries/s5r4/READINESS_S5R4.tsv
+SUMMARY	OPEN_ITEMS	MET	26 non-comment rows; disposition unchanged	P05_S5_OPEN_ITEMS.tsv
+SUMMARY	PENDING_RUNS	MET	no pending formal matrix run in the R5 scope; sweep/recheck produced; staging rehearsal is scheduled after this audit	this audit
+SUMMARY	CONSISTENCY	MET	S5R3/S5R4 measured numbers present	MAKETEST_VERDICT_S5R3.tsv; D016_VERDICT_S5R3.tsv; E2E_VERDICT_S5R3.tsv; REJUDGE_S5R4.tsv
+SUMMARY	MAKETEST	MET	NO_NEW_FAILURE unit_count=265 (S5R3 on F4; R5 does not rerun)	registries/s5r3/
+SUMMARY	PREREG_MATRIX	MET	D016 MATCH=33 MISMATCH=0 FLAKY=0; E2E 42 points; rejudge DIFFS=0 (S5R4)	registries/s5r3/; registries/s5r4/
+SUMMARY	E2E_CHAINS	MET	E2E_OK=25 CONTROL_OK=17 (S5R3; R5 does not rerun)	registries/s5r3/
+SUMMARY	MEASURED_ARTIFACTS	MET	0 missing of 8 measured artifacts	evidence/p05-s5r5/; registries/s5r5/r4_final/
+SUMMARY	SHAKEDOWN	SCHEDULED	staging rehearsal runs after this audit and before commit (i); its output is verified by s5r5_shakedown_verify.py	this audit
+SUMMARY	GAP_COUNT	0	must be 0 to enter the end gate	this audit
+SUMMARY	GAP	0	GAP=0 required before the end gate	this audit

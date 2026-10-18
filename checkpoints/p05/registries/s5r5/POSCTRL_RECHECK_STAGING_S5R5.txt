@@ -1,0 +1,9 @@
+# POSCTRL_RECHECK_STAGING_S5R5.txt -- positive control of s5r5_recheck_staging.py (U386)
+# four fixtures are written on disk under checkpoints/p05/evidence/p05-s5r5/posctrl/recheck_staging/ and evaluated by
+# the same evaluation function as the formal run; a case passes when the overall verdict of the
+# fixture equals the expected verdict (CORRECTED_LOGIC decides PASS/FAIL).
+PASS	case1_real_copy_expect_PASS	expected=PASS	actual=PASS	corrected=PASS	original=not_staging
+PASS	case2_value_yes_to_no_expect_FAIL	expected=FAIL	actual=FAIL	corrected=FAIL	original=not_staging
+PASS	case3_staging_line_deleted_expect_FAIL	expected=FAIL	actual=FAIL	corrected=FAIL	original=not_staging
+PASS	case4_ev_root_formal_path_expect_FAIL	expected=FAIL	actual=FAIL	corrected=PASS	original=not_staging
+OVERALL_POSITIVE_CONTROL: PASS (4/4)

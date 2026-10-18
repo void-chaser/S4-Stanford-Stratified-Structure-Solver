@@ -1,0 +1,10 @@
+# RULINGS_APPEND_S5R5.tsv -- P05-S5 R5 pure append (U386..U390)
+# before_bytes=154825 before_sha256=24e65c3223c94deafbfd58d74e613aec2e5749159b39dfe93014ee32dc86a2d3
+# after_bytes=156852 after_sha256=d5742e70c40ebb7a08585860d98557eabcd0aaebbdbabb4f47e9be950a38e9c3
+# rows_appended=5 max_u=U390 five_fields_ok=yes once_each=yes
+id	given_in_round	record_file_and_entry	status
+U386	P05-S5 R5 任务书 §1（用户已批准）	P05-S5 R5 任务书 §1	生效
+U387	P05-S5 R5 任务书 §1（用户已批准）	P05-S5 R5 任务书 §1	生效
+U388	P05-S5 R5 任务书 §1（用户已批准）	P05-S5 R5 任务书 §1	生效
+U389	P05-S5 R5 任务书 §1（用户已批准）	P05-S5 R5 任务书 §1	生效
+U390	P05-S5 R5 任务书 §1（用户已批准）	P05-S5 R5 任务书 §1	生效
