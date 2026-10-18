@@ -1,0 +1,3 @@
+# RED_POINTS_LEDGER_APPEND_R9M3B.tsv -- red points opened by the M3b E2E verdict (U333d)
+id	source_round	site	tree	category	evidence	status	destination
+RP-R9M3B-NONE	R9 M3b	Python/Lua public-API E2E	F4	无新红点	正式两遍全部 E2E_OK/CONTROL_OK（[('CONTROL_OK', 17), ('E2E_OK', 25)]）；无 API_SILENT/RETRY_DIFF/RETRY_FAIL	无新红点	无（本阶段不改 S4/）

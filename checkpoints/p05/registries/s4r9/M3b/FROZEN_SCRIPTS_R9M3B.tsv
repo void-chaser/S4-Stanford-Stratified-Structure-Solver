@@ -1,0 +1,18 @@
+# FROZEN_SCRIPTS_R9M3B.tsv -- frozen scripts and pre-registration/calibration files recorded before record commit (i)
+# expected_calls: the end gate's POST_I count expectation read from this file (U337); '-' mode means any invocation token
+path	sha256	expected_calls	mode
+testing/d003/stage_s4r9/run_e2e_r9m3b.py	cfc5b5ebffbea32972a8be123d86fd6dd29053fbbeb351139f317cb68ee680c5	>=1	formal
+testing/d003/stage_s4r9/judge_e2e_r9m3b.py	8f6a92b1cfeb34892b827ce23f74b0bb3d831023347dafab7d120fe0591fdaca	1	posctrl
+testing/d003/stage_s4r9/judge_e2e_r9m3b.py	8f6a92b1cfeb34892b827ce23f74b0bb3d831023347dafab7d120fe0591fdaca	1	formal
+testing/d003/stage_s4r9/judge_maketest_r9m3b_v2.py	2904545f3cfcacc58734f4212bd21a0684a32583017d826e20d5878c7be80554	1	posctrl
+testing/d003/stage_s4r9/judge_maketest_r9m3b_v2.py	2904545f3cfcacc58734f4212bd21a0684a32583017d826e20d5878c7be80554	1	formal
+testing/d003/stage_s4r9/closeout_report_state_r9m3b.py	ba27fe6f069992daf231a626ddd0a790d21a6276593fc374b364b9b577caff94	1	-
+testing/d003/stage_s4r9/report_check_r9m3b.py	f4026320c3b907a0e0c56e2a4c7d03d2adc64f070fcdff53247f05358a652998	1	-
+testing/d003/stage_s4r9/copy_registries_r9m3b.py	37a46ed9971ff4e69188cdc24ac7a86ca142d6eb48b3ed4005d102ba19ca0ae1	1	-
+testing/d003/stage_s4r9/events_r9m3b.py	1aa9d120b31acee7f869a03f62fb260d6901293b9a7860510129f4599c28ed61	1	-
+testing/d003/stage_s4r9/ledger_r9m3b.py	123e18ef11d9c4d6f471c4d589a98eac345c1250eaf6e6743a523dee13a1622d	1	-
+testing/d003/stage_s4r9/sha_sums_r9m3b_v2.py	c92d4b43f44d3beaf0ba56448b65329fb605193a069053242222ff1be84b0367	1	-
+testing/d003/stage_s4r9/gate_r9m3b_v3.sh	5f83de23daff068b8b4af686c0dd1b1b2222a3ce1535cba3e97937be017bc7be	1	end
+testing/d003/stage_s4r9/gate_check_r9m3b_v3.py	7ef18feaef0cb114c990e7bee38a598b77fb1390c6ed0e09f7f2e24f7ab79f28	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/PREREG_E2E_R9M3B.tsv	9e3895bb05f3b454a08b65824ba6740718ae4ae4af77b1515121a4d49b9b31da	0	-
+checkpoints/p05/evidence/p05-s4r9/m3b/CALIB_E2E_R9M3B.tsv	f550f99341089c1820b4ea1ec7b5bf80250a34e3f6467421b42bb26116243c77	0	-

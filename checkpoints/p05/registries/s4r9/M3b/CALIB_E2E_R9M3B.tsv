@@ -1,0 +1,914 @@
+# CALIB_E2E_R9M3B.tsv -- injection-free gdb calibration of the E2E option groups (S-C3), produced by calib_e2e_r9m3b_v2.py
+# Each frontend x option group was run under gdb -nx -batch with breakpoints on __wrap__Z9S4_mallocm,
+# __wrap__Z15fft_plan_dft_2d..., __wrap__Z13fft_plan_exec... and __wrap_malloc. No injection variable was set.
+# EVENT rows are the observed calls in hit order; TARGET rows give each point's nth and calibrated size.
+row_kind	frontend	spec	kind	call_seq	size	site	note
+EVENT	py	cf	malloc		344	malloc	
+EVENT	py	cf	malloc		223	malloc	
+EVENT	py	cf	malloc		384	malloc	
+EVENT	py	cf	malloc		256	malloc	
+EVENT	py	cf	malloc		968	malloc	
+EVENT	py	cf	malloc		423	malloc	
+EVENT	py	cf	malloc		0	malloc	
+EVENT	py	cf	malloc		4	malloc	
+EVENT	py	cf	malloc		8	malloc	
+EVENT	py	cf	malloc		0	malloc	
+EVENT	py	cf	malloc		16	malloc	
+EVENT	py	cf	malloc		4823	malloc	
+EVENT	py	cf	malloc		12	malloc	
+EVENT	py	cf	malloc		48	malloc	
+EVENT	py	cf	malloc		90823	malloc	
+EVENT	py	cf	malloc		48	malloc	
+EVENT	py	cf	malloc		130823	malloc	
+EVENT	py	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	
+EVENT	py	cf	malloc		215	malloc	
+EVENT	py	cf	malloc		823	malloc	
+EVENT	py	cf	malloc		41623	malloc	
+EVENT	py	cf	malloc		47	malloc	
+EVENT	py	cf	malloc		35	malloc	
+EVENT	py	cf	malloc		119	malloc	
+EVENT	py	cf	malloc		823	malloc	
+EVENT	py	cf	malloc		720023	malloc	
+EVENT	py	cf	malloc		1223	malloc	
+EVENT	py	cf	malloc		4823	malloc	
+EVENT	py	fft	malloc		344	malloc	
+EVENT	py	fft	malloc		223	malloc	
+EVENT	py	fft	malloc		384	malloc	
+EVENT	py	fft	malloc		256	malloc	
+EVENT	py	fft	malloc		968	malloc	
+EVENT	py	fft	malloc		423	malloc	
+EVENT	py	fft	malloc		0	malloc	
+EVENT	py	fft	malloc		4	malloc	
+EVENT	py	fft	malloc		8	malloc	
+EVENT	py	fft	malloc		0	malloc	
+EVENT	py	fft	malloc		16	malloc	
+EVENT	py	fft	malloc		4823	malloc	
+EVENT	py	fft	malloc		12	malloc	
+EVENT	py	fft	malloc		48	malloc	
+EVENT	py	fft	malloc		90823	malloc	
+EVENT	py	fft	malloc		48	malloc	
+EVENT	py	fft	malloc		130823	malloc	
+EVENT	py	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	py	fft	malloc		24599	malloc	
+EVENT	py	fft	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	py	fft	malloc		39	malloc	
+EVENT	py	fft	plan	1	5192	fft_plan_dft_2d	
+EVENT	py	fft	malloc		5192	malloc	
+EVENT	py	fft	malloc		24	malloc	
+EVENT	py	fft	plan	2		fft_plan_dft_2d	
+EVENT	py	fft	malloc		5192	malloc	
+EVENT	py	fft	malloc		24	malloc	
+EVENT	py	fft	plan	3		fft_plan_dft_2d	
+EVENT	py	fft	malloc		5192	malloc	
+EVENT	py	fft	malloc		24	malloc	
+EVENT	py	fft	plan	4		fft_plan_dft_2d	
+EVENT	py	fft	malloc		5192	malloc	
+EVENT	py	fft	malloc		24	malloc	
+EVENT	py	fft	plan	5		fft_plan_dft_2d	
+EVENT	py	fft	malloc		5192	malloc	
+EVENT	py	fft	malloc		24	malloc	
+EVENT	py	fft	exec	1		fft_plan_exec	
+EVENT	py	fft	exec	2		fft_plan_exec	
+EVENT	py	fft	exec	3		fft_plan_exec	
+EVENT	py	fft	exec	4		fft_plan_exec	
+EVENT	py	fft	exec	5		fft_plan_exec	
+EVENT	py	fft	malloc		823	malloc	
+EVENT	py	fft	malloc		41623	malloc	
+EVENT	py	fft	malloc		47	malloc	
+EVENT	py	fft	malloc		35	malloc	
+EVENT	py	fft	malloc		119	malloc	
+EVENT	py	fft	malloc		823	malloc	
+EVENT	py	fft	malloc		720023	malloc	
+EVENT	py	fft	malloc		1223	malloc	
+EVENT	py	fft	malloc		4823	malloc	
+EVENT	py	kt	malloc		344	malloc	
+EVENT	py	kt	malloc		223	malloc	
+EVENT	py	kt	malloc		384	malloc	
+EVENT	py	kt	malloc		256	malloc	
+EVENT	py	kt	malloc		968	malloc	
+EVENT	py	kt	malloc		423	malloc	
+EVENT	py	kt	malloc		0	malloc	
+EVENT	py	kt	malloc		4	malloc	
+EVENT	py	kt	malloc		8	malloc	
+EVENT	py	kt	malloc		0	malloc	
+EVENT	py	kt	malloc		16	malloc	
+EVENT	py	kt	malloc		4823	malloc	
+EVENT	py	kt	malloc		12	malloc	
+EVENT	py	kt	malloc		48	malloc	
+EVENT	py	kt	malloc		90823	malloc	
+EVENT	py	kt	malloc		48	malloc	
+EVENT	py	kt	malloc		130823	malloc	
+EVENT	py	kt	malloc		24576	malloc	
+EVENT	py	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	
+EVENT	py	kt	malloc		39	malloc	
+EVENT	py	kt	plan	1	5192	fft_plan_dft_2d	
+EVENT	py	kt	malloc		5192	malloc	
+EVENT	py	kt	malloc		24	malloc	
+EVENT	py	kt	plan	2		fft_plan_dft_2d	
+EVENT	py	kt	malloc		5192	malloc	
+EVENT	py	kt	malloc		24	malloc	
+EVENT	py	kt	plan	3		fft_plan_dft_2d	
+EVENT	py	kt	malloc		5192	malloc	
+EVENT	py	kt	malloc		24	malloc	
+EVENT	py	kt	plan	4		fft_plan_dft_2d	
+EVENT	py	kt	malloc		5192	malloc	
+EVENT	py	kt	malloc		24	malloc	
+EVENT	py	kt	plan	5		fft_plan_dft_2d	
+EVENT	py	kt	malloc		5192	malloc	
+EVENT	py	kt	malloc		24	malloc	
+EVENT	py	kt	exec	1		fft_plan_exec	
+EVENT	py	kt	exec	2		fft_plan_exec	
+EVENT	py	kt	exec	3		fft_plan_exec	
+EVENT	py	kt	exec	4		fft_plan_exec	
+EVENT	py	kt	exec	5		fft_plan_exec	
+EVENT	py	kt	malloc		823	malloc	
+EVENT	py	kt	malloc		41623	malloc	
+EVENT	py	kt	malloc		47	malloc	
+EVENT	py	kt	malloc		35	malloc	
+EVENT	py	kt	malloc		119	malloc	
+EVENT	py	kt	malloc		823	malloc	
+EVENT	py	kt	malloc		720023	malloc	
+EVENT	py	kt	malloc		1223	malloc	
+EVENT	py	kt	malloc		4823	malloc	
+EVENT	py	jones	malloc		344	malloc	
+EVENT	py	jones	malloc		223	malloc	
+EVENT	py	jones	malloc		384	malloc	
+EVENT	py	jones	malloc		256	malloc	
+EVENT	py	jones	malloc		968	malloc	
+EVENT	py	jones	malloc		423	malloc	
+EVENT	py	jones	malloc		0	malloc	
+EVENT	py	jones	malloc		4	malloc	
+EVENT	py	jones	malloc		8	malloc	
+EVENT	py	jones	malloc		0	malloc	
+EVENT	py	jones	malloc		16	malloc	
+EVENT	py	jones	malloc		4823	malloc	
+EVENT	py	jones	malloc		12	malloc	
+EVENT	py	jones	malloc		48	malloc	
+EVENT	py	jones	malloc		90823	malloc	
+EVENT	py	jones	malloc		48	malloc	
+EVENT	py	jones	malloc		130823	malloc	
+EVENT	py	jones	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	py	jones	malloc		24599	malloc	
+EVENT	py	jones	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	py	jones	malloc		39	malloc	
+EVENT	py	jones	plan	1	5192	fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	plan	2		fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	plan	3		fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	plan	4		fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	plan	5		fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	exec	1		fft_plan_exec	
+EVENT	py	jones	exec	2		fft_plan_exec	
+EVENT	py	jones	exec	3		fft_plan_exec	
+EVENT	py	jones	exec	4		fft_plan_exec	
+EVENT	py	jones	exec	5		fft_plan_exec	
+EVENT	py	jones	s4malloc	3	192	FMMGetEpsilon_PolBasisJones	
+EVENT	py	jones	malloc		215	malloc	
+EVENT	py	jones	s4malloc	4	66784	FMMGetEpsilon_PolBasisJones	
+EVENT	py	jones	malloc		66807	malloc	
+EVENT	py	jones	s4malloc	5	4096	FMMGetEpsilon_PolBasisJones	
+EVENT	py	jones	malloc		4119	malloc	
+EVENT	py	jones	malloc		28672	malloc	
+EVENT	py	jones	malloc		8192	malloc	
+EVENT	py	jones	malloc		16384	malloc	
+EVENT	py	jones	plan	6		fft_plan_dft_2d	
+EVENT	py	jones	malloc		5192	malloc	
+EVENT	py	jones	malloc		24	malloc	
+EVENT	py	jones	exec	6		fft_plan_exec	
+EVENT	py	jones	exec	7		fft_plan_exec	
+EVENT	py	jones	exec	8		fft_plan_exec	
+EVENT	py	jones	exec	9		fft_plan_exec	
+EVENT	py	jones	malloc		40855	malloc	
+EVENT	py	jones	malloc		823	malloc	
+EVENT	py	jones	malloc		41623	malloc	
+EVENT	py	jones	malloc		47	malloc	
+EVENT	py	jones	malloc		35	malloc	
+EVENT	py	jones	malloc		119	malloc	
+EVENT	py	jones	malloc		823	malloc	
+EVENT	py	jones	malloc		720023	malloc	
+EVENT	py	jones	malloc		1223	malloc	
+EVENT	py	jones	malloc		4823	malloc	
+EVENT	py	nv	malloc		344	malloc	
+EVENT	py	nv	malloc		223	malloc	
+EVENT	py	nv	malloc		384	malloc	
+EVENT	py	nv	malloc		256	malloc	
+EVENT	py	nv	malloc		968	malloc	
+EVENT	py	nv	malloc		423	malloc	
+EVENT	py	nv	malloc		0	malloc	
+EVENT	py	nv	malloc		4	malloc	
+EVENT	py	nv	malloc		8	malloc	
+EVENT	py	nv	malloc		0	malloc	
+EVENT	py	nv	malloc		16	malloc	
+EVENT	py	nv	malloc		4823	malloc	
+EVENT	py	nv	malloc		12	malloc	
+EVENT	py	nv	malloc		48	malloc	
+EVENT	py	nv	malloc		90823	malloc	
+EVENT	py	nv	malloc		48	malloc	
+EVENT	py	nv	malloc		130823	malloc	
+EVENT	py	nv	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	py	nv	malloc		24599	malloc	
+EVENT	py	nv	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	py	nv	malloc		39	malloc	
+EVENT	py	nv	plan	1	5192	fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	plan	2		fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	plan	3		fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	plan	4		fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	plan	5		fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	exec	1		fft_plan_exec	
+EVENT	py	nv	exec	2		fft_plan_exec	
+EVENT	py	nv	exec	3		fft_plan_exec	
+EVENT	py	nv	exec	4		fft_plan_exec	
+EVENT	py	nv	exec	5		fft_plan_exec	
+EVENT	py	nv	s4malloc	3	192	FMMGetEpsilon_PolBasisNV	
+EVENT	py	nv	malloc		215	malloc	
+EVENT	py	nv	s4malloc	4	76384	FMMGetEpsilon_PolBasisNV	
+EVENT	py	nv	malloc		76407	malloc	
+EVENT	py	nv	s4malloc	5	4096	FMMGetEpsilon_PolBasisNV	
+EVENT	py	nv	malloc		4119	malloc	
+EVENT	py	nv	malloc		28672	malloc	
+EVENT	py	nv	malloc		8192	malloc	
+EVENT	py	nv	malloc		16384	malloc	
+EVENT	py	nv	plan	6		fft_plan_dft_2d	
+EVENT	py	nv	malloc		5192	malloc	
+EVENT	py	nv	malloc		24	malloc	
+EVENT	py	nv	exec	6		fft_plan_exec	
+EVENT	py	nv	exec	7		fft_plan_exec	
+EVENT	py	nv	exec	8		fft_plan_exec	
+EVENT	py	nv	exec	9		fft_plan_exec	
+EVENT	py	nv	malloc		40055	malloc	
+EVENT	py	nv	malloc		823	malloc	
+EVENT	py	nv	malloc		41623	malloc	
+EVENT	py	nv	malloc		47	malloc	
+EVENT	py	nv	malloc		35	malloc	
+EVENT	py	nv	malloc		119	malloc	
+EVENT	py	nv	malloc		823	malloc	
+EVENT	py	nv	malloc		720023	malloc	
+EVENT	py	nv	malloc		1223	malloc	
+EVENT	py	nv	malloc		4823	malloc	
+EVENT	py	vl	malloc		344	malloc	
+EVENT	py	vl	malloc		223	malloc	
+EVENT	py	vl	malloc		384	malloc	
+EVENT	py	vl	malloc		256	malloc	
+EVENT	py	vl	malloc		968	malloc	
+EVENT	py	vl	malloc		423	malloc	
+EVENT	py	vl	malloc		0	malloc	
+EVENT	py	vl	malloc		4	malloc	
+EVENT	py	vl	malloc		8	malloc	
+EVENT	py	vl	malloc		0	malloc	
+EVENT	py	vl	malloc		16	malloc	
+EVENT	py	vl	malloc		4823	malloc	
+EVENT	py	vl	malloc		12	malloc	
+EVENT	py	vl	malloc		48	malloc	
+EVENT	py	vl	malloc		90823	malloc	
+EVENT	py	vl	malloc		48	malloc	
+EVENT	py	vl	malloc		130823	malloc	
+EVENT	py	vl	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	py	vl	malloc		24599	malloc	
+EVENT	py	vl	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	py	vl	malloc		39	malloc	
+EVENT	py	vl	plan	1	5192	fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	plan	2		fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	plan	3		fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	plan	4		fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	plan	5		fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	exec	1		fft_plan_exec	
+EVENT	py	vl	exec	2		fft_plan_exec	
+EVENT	py	vl	exec	3		fft_plan_exec	
+EVENT	py	vl	exec	4		fft_plan_exec	
+EVENT	py	vl	exec	5		fft_plan_exec	
+EVENT	py	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	
+EVENT	py	vl	malloc		215	malloc	
+EVENT	py	vl	s4malloc	4	76384	FMMGetEpsilon_PolBasisVL	
+EVENT	py	vl	malloc		76407	malloc	
+EVENT	py	vl	s4malloc	5	4096	FMMGetEpsilon_PolBasisVL	
+EVENT	py	vl	malloc		4119	malloc	
+EVENT	py	vl	malloc		28672	malloc	
+EVENT	py	vl	malloc		8192	malloc	
+EVENT	py	vl	malloc		16384	malloc	
+EVENT	py	vl	plan	6		fft_plan_dft_2d	
+EVENT	py	vl	malloc		5192	malloc	
+EVENT	py	vl	malloc		24	malloc	
+EVENT	py	vl	exec	6		fft_plan_exec	
+EVENT	py	vl	exec	7		fft_plan_exec	
+EVENT	py	vl	exec	8		fft_plan_exec	
+EVENT	py	vl	exec	9		fft_plan_exec	
+EVENT	py	vl	malloc		40055	malloc	
+EVENT	py	vl	malloc		823	malloc	
+EVENT	py	vl	malloc		41623	malloc	
+EVENT	py	vl	malloc		47	malloc	
+EVENT	py	vl	malloc		35	malloc	
+EVENT	py	vl	malloc		119	malloc	
+EVENT	py	vl	malloc		823	malloc	
+EVENT	py	vl	malloc		720023	malloc	
+EVENT	py	vl	malloc		1223	malloc	
+EVENT	py	vl	malloc		4823	malloc	
+EVENT	lua_batch	cf	malloc		344	malloc	
+EVENT	lua_batch	cf	malloc		31	malloc	
+EVENT	lua_batch	cf	malloc		384	malloc	
+EVENT	lua_batch	cf	malloc		256	malloc	
+EVENT	lua_batch	cf	malloc		39	malloc	
+EVENT	lua_batch	cf	malloc		968	malloc	
+EVENT	lua_batch	cf	malloc		0	malloc	
+EVENT	lua_batch	cf	malloc		4	malloc	
+EVENT	lua_batch	cf	malloc		8	malloc	
+EVENT	lua_batch	cf	malloc		0	malloc	
+EVENT	lua_batch	cf	malloc		16	malloc	
+EVENT	lua_batch	cf	malloc		4823	malloc	
+EVENT	lua_batch	cf	malloc		12	malloc	
+EVENT	lua_batch	cf	malloc		48	malloc	
+EVENT	lua_batch	cf	malloc		90823	malloc	
+EVENT	lua_batch	cf	malloc		48	malloc	
+EVENT	lua_batch	cf	malloc		130823	malloc	
+EVENT	lua_batch	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	
+EVENT	lua_batch	cf	malloc		215	malloc	
+EVENT	lua_batch	cf	malloc		823	malloc	
+EVENT	lua_batch	cf	malloc		41623	malloc	
+EVENT	lua_batch	cf	malloc		47	malloc	
+EVENT	lua_batch	cf	malloc		35	malloc	
+EVENT	lua_batch	cf	malloc		119	malloc	
+EVENT	lua_batch	cf	malloc		823	malloc	
+EVENT	lua_batch	cf	malloc		720023	malloc	
+EVENT	lua_batch	cf	malloc		1223	malloc	
+EVENT	lua_batch	cf	malloc		4823	malloc	
+EVENT	lua_batch	fft	malloc		344	malloc	
+EVENT	lua_batch	fft	malloc		31	malloc	
+EVENT	lua_batch	fft	malloc		384	malloc	
+EVENT	lua_batch	fft	malloc		256	malloc	
+EVENT	lua_batch	fft	malloc		39	malloc	
+EVENT	lua_batch	fft	malloc		968	malloc	
+EVENT	lua_batch	fft	malloc		0	malloc	
+EVENT	lua_batch	fft	malloc		4	malloc	
+EVENT	lua_batch	fft	malloc		8	malloc	
+EVENT	lua_batch	fft	malloc		0	malloc	
+EVENT	lua_batch	fft	malloc		16	malloc	
+EVENT	lua_batch	fft	malloc		4823	malloc	
+EVENT	lua_batch	fft	malloc		12	malloc	
+EVENT	lua_batch	fft	malloc		48	malloc	
+EVENT	lua_batch	fft	malloc		90823	malloc	
+EVENT	lua_batch	fft	malloc		48	malloc	
+EVENT	lua_batch	fft	malloc		130823	malloc	
+EVENT	lua_batch	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_batch	fft	malloc		24599	malloc	
+EVENT	lua_batch	fft	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_batch	fft	malloc		39	malloc	
+EVENT	lua_batch	fft	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_batch	fft	malloc		5192	malloc	
+EVENT	lua_batch	fft	malloc		24	malloc	
+EVENT	lua_batch	fft	plan	2		fft_plan_dft_2d	
+EVENT	lua_batch	fft	malloc		5192	malloc	
+EVENT	lua_batch	fft	malloc		24	malloc	
+EVENT	lua_batch	fft	plan	3		fft_plan_dft_2d	
+EVENT	lua_batch	fft	malloc		5192	malloc	
+EVENT	lua_batch	fft	malloc		24	malloc	
+EVENT	lua_batch	fft	plan	4		fft_plan_dft_2d	
+EVENT	lua_batch	fft	malloc		5192	malloc	
+EVENT	lua_batch	fft	malloc		24	malloc	
+EVENT	lua_batch	fft	plan	5		fft_plan_dft_2d	
+EVENT	lua_batch	fft	malloc		5192	malloc	
+EVENT	lua_batch	fft	malloc		24	malloc	
+EVENT	lua_batch	fft	exec	1		fft_plan_exec	
+EVENT	lua_batch	fft	exec	2		fft_plan_exec	
+EVENT	lua_batch	fft	exec	3		fft_plan_exec	
+EVENT	lua_batch	fft	exec	4		fft_plan_exec	
+EVENT	lua_batch	fft	exec	5		fft_plan_exec	
+EVENT	lua_batch	fft	malloc		823	malloc	
+EVENT	lua_batch	fft	malloc		41623	malloc	
+EVENT	lua_batch	fft	malloc		47	malloc	
+EVENT	lua_batch	fft	malloc		35	malloc	
+EVENT	lua_batch	fft	malloc		119	malloc	
+EVENT	lua_batch	fft	malloc		823	malloc	
+EVENT	lua_batch	fft	malloc		720023	malloc	
+EVENT	lua_batch	fft	malloc		1223	malloc	
+EVENT	lua_batch	fft	malloc		4823	malloc	
+EVENT	lua_batch	kt	malloc		344	malloc	
+EVENT	lua_batch	kt	malloc		31	malloc	
+EVENT	lua_batch	kt	malloc		384	malloc	
+EVENT	lua_batch	kt	malloc		256	malloc	
+EVENT	lua_batch	kt	malloc		39	malloc	
+EVENT	lua_batch	kt	malloc		968	malloc	
+EVENT	lua_batch	kt	malloc		0	malloc	
+EVENT	lua_batch	kt	malloc		4	malloc	
+EVENT	lua_batch	kt	malloc		8	malloc	
+EVENT	lua_batch	kt	malloc		0	malloc	
+EVENT	lua_batch	kt	malloc		16	malloc	
+EVENT	lua_batch	kt	malloc		4823	malloc	
+EVENT	lua_batch	kt	malloc		12	malloc	
+EVENT	lua_batch	kt	malloc		48	malloc	
+EVENT	lua_batch	kt	malloc		90823	malloc	
+EVENT	lua_batch	kt	malloc		48	malloc	
+EVENT	lua_batch	kt	malloc		130823	malloc	
+EVENT	lua_batch	kt	malloc		24576	malloc	
+EVENT	lua_batch	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	
+EVENT	lua_batch	kt	malloc		39	malloc	
+EVENT	lua_batch	kt	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_batch	kt	malloc		5192	malloc	
+EVENT	lua_batch	kt	malloc		24	malloc	
+EVENT	lua_batch	kt	plan	2		fft_plan_dft_2d	
+EVENT	lua_batch	kt	malloc		5192	malloc	
+EVENT	lua_batch	kt	malloc		24	malloc	
+EVENT	lua_batch	kt	plan	3		fft_plan_dft_2d	
+EVENT	lua_batch	kt	malloc		5192	malloc	
+EVENT	lua_batch	kt	malloc		24	malloc	
+EVENT	lua_batch	kt	plan	4		fft_plan_dft_2d	
+EVENT	lua_batch	kt	malloc		5192	malloc	
+EVENT	lua_batch	kt	malloc		24	malloc	
+EVENT	lua_batch	kt	plan	5		fft_plan_dft_2d	
+EVENT	lua_batch	kt	malloc		5192	malloc	
+EVENT	lua_batch	kt	malloc		24	malloc	
+EVENT	lua_batch	kt	exec	1		fft_plan_exec	
+EVENT	lua_batch	kt	exec	2		fft_plan_exec	
+EVENT	lua_batch	kt	exec	3		fft_plan_exec	
+EVENT	lua_batch	kt	exec	4		fft_plan_exec	
+EVENT	lua_batch	kt	exec	5		fft_plan_exec	
+EVENT	lua_batch	kt	malloc		823	malloc	
+EVENT	lua_batch	kt	malloc		41623	malloc	
+EVENT	lua_batch	kt	malloc		47	malloc	
+EVENT	lua_batch	kt	malloc		35	malloc	
+EVENT	lua_batch	kt	malloc		119	malloc	
+EVENT	lua_batch	kt	malloc		823	malloc	
+EVENT	lua_batch	kt	malloc		720023	malloc	
+EVENT	lua_batch	kt	malloc		1223	malloc	
+EVENT	lua_batch	kt	malloc		4823	malloc	
+EVENT	lua_batch	jones	malloc		344	malloc	
+EVENT	lua_batch	jones	malloc		31	malloc	
+EVENT	lua_batch	jones	malloc		384	malloc	
+EVENT	lua_batch	jones	malloc		256	malloc	
+EVENT	lua_batch	jones	malloc		39	malloc	
+EVENT	lua_batch	jones	malloc		968	malloc	
+EVENT	lua_batch	jones	malloc		0	malloc	
+EVENT	lua_batch	jones	malloc		4	malloc	
+EVENT	lua_batch	jones	malloc		8	malloc	
+EVENT	lua_batch	jones	malloc		0	malloc	
+EVENT	lua_batch	jones	malloc		16	malloc	
+EVENT	lua_batch	jones	malloc		4823	malloc	
+EVENT	lua_batch	jones	malloc		12	malloc	
+EVENT	lua_batch	jones	malloc		48	malloc	
+EVENT	lua_batch	jones	malloc		90823	malloc	
+EVENT	lua_batch	jones	malloc		48	malloc	
+EVENT	lua_batch	jones	malloc		130823	malloc	
+EVENT	lua_batch	jones	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_batch	jones	malloc		24599	malloc	
+EVENT	lua_batch	jones	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_batch	jones	malloc		39	malloc	
+EVENT	lua_batch	jones	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	plan	2		fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	plan	3		fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	plan	4		fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	plan	5		fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	exec	1		fft_plan_exec	
+EVENT	lua_batch	jones	exec	2		fft_plan_exec	
+EVENT	lua_batch	jones	exec	3		fft_plan_exec	
+EVENT	lua_batch	jones	exec	4		fft_plan_exec	
+EVENT	lua_batch	jones	exec	5		fft_plan_exec	
+EVENT	lua_batch	jones	s4malloc	3	192	FMMGetEpsilon_PolBasisJones	
+EVENT	lua_batch	jones	malloc		215	malloc	
+EVENT	lua_batch	jones	s4malloc	4	66784	FMMGetEpsilon_PolBasisJones	
+EVENT	lua_batch	jones	malloc		66807	malloc	
+EVENT	lua_batch	jones	s4malloc	5	4096	FMMGetEpsilon_PolBasisJones	
+EVENT	lua_batch	jones	malloc		4119	malloc	
+EVENT	lua_batch	jones	malloc		28672	malloc	
+EVENT	lua_batch	jones	malloc		8192	malloc	
+EVENT	lua_batch	jones	malloc		16384	malloc	
+EVENT	lua_batch	jones	plan	6		fft_plan_dft_2d	
+EVENT	lua_batch	jones	malloc		5192	malloc	
+EVENT	lua_batch	jones	malloc		24	malloc	
+EVENT	lua_batch	jones	exec	6		fft_plan_exec	
+EVENT	lua_batch	jones	exec	7		fft_plan_exec	
+EVENT	lua_batch	jones	exec	8		fft_plan_exec	
+EVENT	lua_batch	jones	exec	9		fft_plan_exec	
+EVENT	lua_batch	jones	malloc		40855	malloc	
+EVENT	lua_batch	jones	malloc		823	malloc	
+EVENT	lua_batch	jones	malloc		41623	malloc	
+EVENT	lua_batch	jones	malloc		47	malloc	
+EVENT	lua_batch	jones	malloc		35	malloc	
+EVENT	lua_batch	jones	malloc		119	malloc	
+EVENT	lua_batch	jones	malloc		823	malloc	
+EVENT	lua_batch	jones	malloc		720023	malloc	
+EVENT	lua_batch	jones	malloc		1223	malloc	
+EVENT	lua_batch	jones	malloc		4823	malloc	
+EVENT	lua_batch	nv	malloc		344	malloc	
+EVENT	lua_batch	nv	malloc		31	malloc	
+EVENT	lua_batch	nv	malloc		384	malloc	
+EVENT	lua_batch	nv	malloc		256	malloc	
+EVENT	lua_batch	nv	malloc		39	malloc	
+EVENT	lua_batch	nv	malloc		968	malloc	
+EVENT	lua_batch	nv	malloc		0	malloc	
+EVENT	lua_batch	nv	malloc		4	malloc	
+EVENT	lua_batch	nv	malloc		8	malloc	
+EVENT	lua_batch	nv	malloc		0	malloc	
+EVENT	lua_batch	nv	malloc		16	malloc	
+EVENT	lua_batch	nv	malloc		4823	malloc	
+EVENT	lua_batch	nv	malloc		12	malloc	
+EVENT	lua_batch	nv	malloc		48	malloc	
+EVENT	lua_batch	nv	malloc		90823	malloc	
+EVENT	lua_batch	nv	malloc		48	malloc	
+EVENT	lua_batch	nv	malloc		130823	malloc	
+EVENT	lua_batch	nv	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_batch	nv	malloc		24599	malloc	
+EVENT	lua_batch	nv	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_batch	nv	malloc		39	malloc	
+EVENT	lua_batch	nv	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	plan	2		fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	plan	3		fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	plan	4		fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	plan	5		fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	exec	1		fft_plan_exec	
+EVENT	lua_batch	nv	exec	2		fft_plan_exec	
+EVENT	lua_batch	nv	exec	3		fft_plan_exec	
+EVENT	lua_batch	nv	exec	4		fft_plan_exec	
+EVENT	lua_batch	nv	exec	5		fft_plan_exec	
+EVENT	lua_batch	nv	s4malloc	3	192	FMMGetEpsilon_PolBasisNV	
+EVENT	lua_batch	nv	malloc		215	malloc	
+EVENT	lua_batch	nv	s4malloc	4	76384	FMMGetEpsilon_PolBasisNV	
+EVENT	lua_batch	nv	malloc		76407	malloc	
+EVENT	lua_batch	nv	s4malloc	5	4096	FMMGetEpsilon_PolBasisNV	
+EVENT	lua_batch	nv	malloc		4119	malloc	
+EVENT	lua_batch	nv	malloc		28672	malloc	
+EVENT	lua_batch	nv	malloc		8192	malloc	
+EVENT	lua_batch	nv	malloc		16384	malloc	
+EVENT	lua_batch	nv	plan	6		fft_plan_dft_2d	
+EVENT	lua_batch	nv	malloc		5192	malloc	
+EVENT	lua_batch	nv	malloc		24	malloc	
+EVENT	lua_batch	nv	exec	6		fft_plan_exec	
+EVENT	lua_batch	nv	exec	7		fft_plan_exec	
+EVENT	lua_batch	nv	exec	8		fft_plan_exec	
+EVENT	lua_batch	nv	exec	9		fft_plan_exec	
+EVENT	lua_batch	nv	malloc		40055	malloc	
+EVENT	lua_batch	nv	malloc		823	malloc	
+EVENT	lua_batch	nv	malloc		41623	malloc	
+EVENT	lua_batch	nv	malloc		47	malloc	
+EVENT	lua_batch	nv	malloc		35	malloc	
+EVENT	lua_batch	nv	malloc		119	malloc	
+EVENT	lua_batch	nv	malloc		823	malloc	
+EVENT	lua_batch	nv	malloc		720023	malloc	
+EVENT	lua_batch	nv	malloc		1223	malloc	
+EVENT	lua_batch	nv	malloc		4823	malloc	
+EVENT	lua_batch	vl	malloc		344	malloc	
+EVENT	lua_batch	vl	malloc		31	malloc	
+EVENT	lua_batch	vl	malloc		384	malloc	
+EVENT	lua_batch	vl	malloc		256	malloc	
+EVENT	lua_batch	vl	malloc		39	malloc	
+EVENT	lua_batch	vl	malloc		968	malloc	
+EVENT	lua_batch	vl	malloc		0	malloc	
+EVENT	lua_batch	vl	malloc		4	malloc	
+EVENT	lua_batch	vl	malloc		8	malloc	
+EVENT	lua_batch	vl	malloc		0	malloc	
+EVENT	lua_batch	vl	malloc		16	malloc	
+EVENT	lua_batch	vl	malloc		4823	malloc	
+EVENT	lua_batch	vl	malloc		12	malloc	
+EVENT	lua_batch	vl	malloc		48	malloc	
+EVENT	lua_batch	vl	malloc		90823	malloc	
+EVENT	lua_batch	vl	malloc		48	malloc	
+EVENT	lua_batch	vl	malloc		130823	malloc	
+EVENT	lua_batch	vl	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_batch	vl	malloc		24599	malloc	
+EVENT	lua_batch	vl	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_batch	vl	malloc		39	malloc	
+EVENT	lua_batch	vl	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	plan	2		fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	plan	3		fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	plan	4		fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	plan	5		fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	exec	1		fft_plan_exec	
+EVENT	lua_batch	vl	exec	2		fft_plan_exec	
+EVENT	lua_batch	vl	exec	3		fft_plan_exec	
+EVENT	lua_batch	vl	exec	4		fft_plan_exec	
+EVENT	lua_batch	vl	exec	5		fft_plan_exec	
+EVENT	lua_batch	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_batch	vl	malloc		215	malloc	
+EVENT	lua_batch	vl	s4malloc	4	76384	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_batch	vl	malloc		76407	malloc	
+EVENT	lua_batch	vl	s4malloc	5	4096	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_batch	vl	malloc		4119	malloc	
+EVENT	lua_batch	vl	malloc		28672	malloc	
+EVENT	lua_batch	vl	malloc		8192	malloc	
+EVENT	lua_batch	vl	malloc		16384	malloc	
+EVENT	lua_batch	vl	plan	6		fft_plan_dft_2d	
+EVENT	lua_batch	vl	malloc		5192	malloc	
+EVENT	lua_batch	vl	malloc		24	malloc	
+EVENT	lua_batch	vl	exec	6		fft_plan_exec	
+EVENT	lua_batch	vl	exec	7		fft_plan_exec	
+EVENT	lua_batch	vl	exec	8		fft_plan_exec	
+EVENT	lua_batch	vl	exec	9		fft_plan_exec	
+EVENT	lua_batch	vl	malloc		40055	malloc	
+EVENT	lua_batch	vl	malloc		823	malloc	
+EVENT	lua_batch	vl	malloc		41623	malloc	
+EVENT	lua_batch	vl	malloc		47	malloc	
+EVENT	lua_batch	vl	malloc		35	malloc	
+EVENT	lua_batch	vl	malloc		119	malloc	
+EVENT	lua_batch	vl	malloc		823	malloc	
+EVENT	lua_batch	vl	malloc		720023	malloc	
+EVENT	lua_batch	vl	malloc		1223	malloc	
+EVENT	lua_batch	vl	malloc		4823	malloc	
+EVENT	lua_batch	exp	malloc		344	malloc	
+EVENT	lua_batch	exp	malloc		31	malloc	
+EVENT	lua_batch	exp	malloc		384	malloc	
+EVENT	lua_batch	exp	malloc		256	malloc	
+EVENT	lua_batch	exp	malloc		39	malloc	
+EVENT	lua_batch	exp	malloc		968	malloc	
+EVENT	lua_batch	exp	malloc		0	malloc	
+EVENT	lua_batch	exp	malloc		4	malloc	
+EVENT	lua_batch	exp	malloc		8	malloc	
+EVENT	lua_batch	exp	malloc		0	malloc	
+EVENT	lua_batch	exp	malloc		16	malloc	
+EVENT	lua_batch	exp	malloc		4823	malloc	
+EVENT	lua_batch	exp	malloc		12	malloc	
+EVENT	lua_batch	exp	malloc		48	malloc	
+EVENT	lua_batch	exp	malloc		90823	malloc	
+EVENT	lua_batch	exp	malloc		48	malloc	
+EVENT	lua_batch	exp	malloc		130823	malloc	
+EVENT	lua_batch	exp	s4malloc	1	192	FMMGetEpsilon_Experimental	
+EVENT	lua_batch	exp	malloc		215	malloc	
+EVENT	lua_batch	exp	malloc		823	malloc	
+EVENT	lua_batch	exp	malloc		41623	malloc	
+EVENT	lua_batch	exp	malloc		47	malloc	
+EVENT	lua_batch	exp	malloc		35	malloc	
+EVENT	lua_batch	exp	malloc		119	malloc	
+EVENT	lua_batch	exp	malloc		823	malloc	
+EVENT	lua_batch	exp	malloc		720023	malloc	
+EVENT	lua_batch	exp	malloc		1223	malloc	
+EVENT	lua_batch	exp	malloc		4823	malloc	
+EVENT	lua_repl	cf	malloc		344	malloc	
+EVENT	lua_repl	cf	malloc		31	malloc	
+EVENT	lua_repl	cf	malloc		384	malloc	
+EVENT	lua_repl	cf	malloc		256	malloc	
+EVENT	lua_repl	cf	malloc		39	malloc	
+EVENT	lua_repl	cf	malloc		968	malloc	
+EVENT	lua_repl	cf	malloc		0	malloc	
+EVENT	lua_repl	cf	malloc		4	malloc	
+EVENT	lua_repl	cf	malloc		8	malloc	
+EVENT	lua_repl	cf	malloc		0	malloc	
+EVENT	lua_repl	cf	malloc		16	malloc	
+EVENT	lua_repl	cf	malloc		4823	malloc	
+EVENT	lua_repl	cf	malloc		12	malloc	
+EVENT	lua_repl	cf	malloc		48	malloc	
+EVENT	lua_repl	cf	malloc		90823	malloc	
+EVENT	lua_repl	cf	malloc		48	malloc	
+EVENT	lua_repl	cf	malloc		130823	malloc	
+EVENT	lua_repl	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	
+EVENT	lua_repl	cf	malloc		215	malloc	
+EVENT	lua_repl	cf	malloc		823	malloc	
+EVENT	lua_repl	cf	malloc		41623	malloc	
+EVENT	lua_repl	cf	malloc		47	malloc	
+EVENT	lua_repl	cf	malloc		35	malloc	
+EVENT	lua_repl	cf	malloc		119	malloc	
+EVENT	lua_repl	cf	malloc		823	malloc	
+EVENT	lua_repl	cf	malloc		720023	malloc	
+EVENT	lua_repl	cf	malloc		1223	malloc	
+EVENT	lua_repl	cf	malloc		4823	malloc	
+EVENT	lua_repl	cf	malloc		4823	malloc	
+EVENT	lua_repl	fft	malloc		344	malloc	
+EVENT	lua_repl	fft	malloc		31	malloc	
+EVENT	lua_repl	fft	malloc		384	malloc	
+EVENT	lua_repl	fft	malloc		256	malloc	
+EVENT	lua_repl	fft	malloc		39	malloc	
+EVENT	lua_repl	fft	malloc		968	malloc	
+EVENT	lua_repl	fft	malloc		0	malloc	
+EVENT	lua_repl	fft	malloc		4	malloc	
+EVENT	lua_repl	fft	malloc		8	malloc	
+EVENT	lua_repl	fft	malloc		0	malloc	
+EVENT	lua_repl	fft	malloc		16	malloc	
+EVENT	lua_repl	fft	malloc		4823	malloc	
+EVENT	lua_repl	fft	malloc		12	malloc	
+EVENT	lua_repl	fft	malloc		48	malloc	
+EVENT	lua_repl	fft	malloc		90823	malloc	
+EVENT	lua_repl	fft	malloc		48	malloc	
+EVENT	lua_repl	fft	malloc		130823	malloc	
+EVENT	lua_repl	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_repl	fft	malloc		24599	malloc	
+EVENT	lua_repl	fft	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_repl	fft	malloc		39	malloc	
+EVENT	lua_repl	fft	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_repl	fft	malloc		5192	malloc	
+EVENT	lua_repl	fft	malloc		24	malloc	
+EVENT	lua_repl	fft	plan	2		fft_plan_dft_2d	
+EVENT	lua_repl	fft	malloc		5192	malloc	
+EVENT	lua_repl	fft	malloc		24	malloc	
+EVENT	lua_repl	fft	plan	3		fft_plan_dft_2d	
+EVENT	lua_repl	fft	malloc		5192	malloc	
+EVENT	lua_repl	fft	malloc		24	malloc	
+EVENT	lua_repl	fft	plan	4		fft_plan_dft_2d	
+EVENT	lua_repl	fft	malloc		5192	malloc	
+EVENT	lua_repl	fft	malloc		24	malloc	
+EVENT	lua_repl	fft	plan	5		fft_plan_dft_2d	
+EVENT	lua_repl	fft	malloc		5192	malloc	
+EVENT	lua_repl	fft	malloc		24	malloc	
+EVENT	lua_repl	fft	exec	1		fft_plan_exec	
+EVENT	lua_repl	fft	exec	2		fft_plan_exec	
+EVENT	lua_repl	fft	exec	3		fft_plan_exec	
+EVENT	lua_repl	fft	exec	4		fft_plan_exec	
+EVENT	lua_repl	fft	exec	5		fft_plan_exec	
+EVENT	lua_repl	fft	malloc		823	malloc	
+EVENT	lua_repl	fft	malloc		41623	malloc	
+EVENT	lua_repl	fft	malloc		47	malloc	
+EVENT	lua_repl	fft	malloc		35	malloc	
+EVENT	lua_repl	fft	malloc		119	malloc	
+EVENT	lua_repl	fft	malloc		823	malloc	
+EVENT	lua_repl	fft	malloc		720023	malloc	
+EVENT	lua_repl	fft	malloc		1223	malloc	
+EVENT	lua_repl	fft	malloc		4823	malloc	
+EVENT	lua_repl	fft	malloc		4823	malloc	
+EVENT	lua_repl	kt	malloc		344	malloc	
+EVENT	lua_repl	kt	malloc		31	malloc	
+EVENT	lua_repl	kt	malloc		384	malloc	
+EVENT	lua_repl	kt	malloc		256	malloc	
+EVENT	lua_repl	kt	malloc		39	malloc	
+EVENT	lua_repl	kt	malloc		968	malloc	
+EVENT	lua_repl	kt	malloc		0	malloc	
+EVENT	lua_repl	kt	malloc		4	malloc	
+EVENT	lua_repl	kt	malloc		8	malloc	
+EVENT	lua_repl	kt	malloc		0	malloc	
+EVENT	lua_repl	kt	malloc		16	malloc	
+EVENT	lua_repl	kt	malloc		4823	malloc	
+EVENT	lua_repl	kt	malloc		12	malloc	
+EVENT	lua_repl	kt	malloc		48	malloc	
+EVENT	lua_repl	kt	malloc		90823	malloc	
+EVENT	lua_repl	kt	malloc		48	malloc	
+EVENT	lua_repl	kt	malloc		130823	malloc	
+EVENT	lua_repl	kt	malloc		24576	malloc	
+EVENT	lua_repl	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	
+EVENT	lua_repl	kt	malloc		39	malloc	
+EVENT	lua_repl	kt	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_repl	kt	malloc		5192	malloc	
+EVENT	lua_repl	kt	malloc		24	malloc	
+EVENT	lua_repl	kt	plan	2		fft_plan_dft_2d	
+EVENT	lua_repl	kt	malloc		5192	malloc	
+EVENT	lua_repl	kt	malloc		24	malloc	
+EVENT	lua_repl	kt	plan	3		fft_plan_dft_2d	
+EVENT	lua_repl	kt	malloc		5192	malloc	
+EVENT	lua_repl	kt	malloc		24	malloc	
+EVENT	lua_repl	kt	plan	4		fft_plan_dft_2d	
+EVENT	lua_repl	kt	malloc		5192	malloc	
+EVENT	lua_repl	kt	malloc		24	malloc	
+EVENT	lua_repl	kt	plan	5		fft_plan_dft_2d	
+EVENT	lua_repl	kt	malloc		5192	malloc	
+EVENT	lua_repl	kt	malloc		24	malloc	
+EVENT	lua_repl	kt	exec	1		fft_plan_exec	
+EVENT	lua_repl	kt	exec	2		fft_plan_exec	
+EVENT	lua_repl	kt	exec	3		fft_plan_exec	
+EVENT	lua_repl	kt	exec	4		fft_plan_exec	
+EVENT	lua_repl	kt	exec	5		fft_plan_exec	
+EVENT	lua_repl	kt	malloc		823	malloc	
+EVENT	lua_repl	kt	malloc		41623	malloc	
+EVENT	lua_repl	kt	malloc		47	malloc	
+EVENT	lua_repl	kt	malloc		35	malloc	
+EVENT	lua_repl	kt	malloc		119	malloc	
+EVENT	lua_repl	kt	malloc		823	malloc	
+EVENT	lua_repl	kt	malloc		720023	malloc	
+EVENT	lua_repl	kt	malloc		1223	malloc	
+EVENT	lua_repl	kt	malloc		4823	malloc	
+EVENT	lua_repl	kt	malloc		4823	malloc	
+EVENT	lua_repl	vl	malloc		344	malloc	
+EVENT	lua_repl	vl	malloc		31	malloc	
+EVENT	lua_repl	vl	malloc		384	malloc	
+EVENT	lua_repl	vl	malloc		256	malloc	
+EVENT	lua_repl	vl	malloc		39	malloc	
+EVENT	lua_repl	vl	malloc		968	malloc	
+EVENT	lua_repl	vl	malloc		0	malloc	
+EVENT	lua_repl	vl	malloc		4	malloc	
+EVENT	lua_repl	vl	malloc		8	malloc	
+EVENT	lua_repl	vl	malloc		0	malloc	
+EVENT	lua_repl	vl	malloc		16	malloc	
+EVENT	lua_repl	vl	malloc		4823	malloc	
+EVENT	lua_repl	vl	malloc		12	malloc	
+EVENT	lua_repl	vl	malloc		48	malloc	
+EVENT	lua_repl	vl	malloc		90823	malloc	
+EVENT	lua_repl	vl	malloc		48	malloc	
+EVENT	lua_repl	vl	malloc		130823	malloc	
+EVENT	lua_repl	vl	s4malloc	1	24576	FMMGetEpsilon_FFT	
+EVENT	lua_repl	vl	malloc		24599	malloc	
+EVENT	lua_repl	vl	s4malloc	2	16	FMMGetEpsilon_FFT	
+EVENT	lua_repl	vl	malloc		39	malloc	
+EVENT	lua_repl	vl	plan	1	5192	fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	plan	2		fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	plan	3		fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	plan	4		fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	plan	5		fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	exec	1		fft_plan_exec	
+EVENT	lua_repl	vl	exec	2		fft_plan_exec	
+EVENT	lua_repl	vl	exec	3		fft_plan_exec	
+EVENT	lua_repl	vl	exec	4		fft_plan_exec	
+EVENT	lua_repl	vl	exec	5		fft_plan_exec	
+EVENT	lua_repl	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_repl	vl	malloc		215	malloc	
+EVENT	lua_repl	vl	s4malloc	4	76384	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_repl	vl	malloc		76407	malloc	
+EVENT	lua_repl	vl	s4malloc	5	4096	FMMGetEpsilon_PolBasisVL	
+EVENT	lua_repl	vl	malloc		4119	malloc	
+EVENT	lua_repl	vl	malloc		28672	malloc	
+EVENT	lua_repl	vl	malloc		8192	malloc	
+EVENT	lua_repl	vl	malloc		16384	malloc	
+EVENT	lua_repl	vl	plan	6		fft_plan_dft_2d	
+EVENT	lua_repl	vl	malloc		5192	malloc	
+EVENT	lua_repl	vl	malloc		24	malloc	
+EVENT	lua_repl	vl	exec	6		fft_plan_exec	
+EVENT	lua_repl	vl	exec	7		fft_plan_exec	
+EVENT	lua_repl	vl	exec	8		fft_plan_exec	
+EVENT	lua_repl	vl	exec	9		fft_plan_exec	
+EVENT	lua_repl	vl	malloc		40055	malloc	
+EVENT	lua_repl	vl	malloc		823	malloc	
+EVENT	lua_repl	vl	malloc		41623	malloc	
+EVENT	lua_repl	vl	malloc		47	malloc	
+EVENT	lua_repl	vl	malloc		35	malloc	
+EVENT	lua_repl	vl	malloc		119	malloc	
+EVENT	lua_repl	vl	malloc		823	malloc	
+EVENT	lua_repl	vl	malloc		720023	malloc	
+EVENT	lua_repl	vl	malloc		1223	malloc	
+EVENT	lua_repl	vl	malloc		4823	malloc	
+EVENT	lua_repl	vl	malloc		4823	malloc	
+TARGET	py	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_ClosedForm
+TARGET	py	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_FFT
+TARGET	py	fft	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	py	fft	exec	1	NA	fft_plan_exec	first exec call; the HIT line carries no size
+TARGET	py	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_Kottke
+TARGET	py	kt	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	py	kt	exec	1	NA	fft_plan_exec	first exec call; the HIT line carries no size
+TARGET	py	jones	s4malloc	3	192	FMMGetEpsilon_PolBasisJones	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisJones
+TARGET	py	nv	s4malloc	3	192	FMMGetEpsilon_PolBasisNV	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisNV
+TARGET	py	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisVL
+TARGET	lua_batch	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_ClosedForm
+TARGET	lua_batch	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_FFT
+TARGET	lua_batch	fft	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	lua_batch	fft	exec	1	NA	fft_plan_exec	first exec call; the HIT line carries no size
+TARGET	lua_batch	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_Kottke
+TARGET	lua_batch	kt	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	lua_batch	kt	exec	1	NA	fft_plan_exec	first exec call; the HIT line carries no size
+TARGET	lua_batch	jones	s4malloc	3	192	FMMGetEpsilon_PolBasisJones	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisJones
+TARGET	lua_batch	nv	s4malloc	3	192	FMMGetEpsilon_PolBasisNV	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisNV
+TARGET	lua_batch	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisVL
+TARGET	lua_batch	exp	s4malloc	1	192	FMMGetEpsilon_Experimental	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_Experimental
+TARGET	lua_repl	cf	s4malloc	1	192	FMMGetEpsilon_ClosedForm	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_ClosedForm
+TARGET	lua_repl	fft	s4malloc	1	24576	FMMGetEpsilon_FFT	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_FFT
+TARGET	lua_repl	fft	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	lua_repl	kt	s4malloc	1	16	FMMGetEpsilon_Kottke	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_Kottke
+TARGET	lua_repl	kt	plan	1	5192	fft_plan_dft_2d	first plan call; size = first malloc inside it
+TARGET	lua_repl	vl	s4malloc	3	192	FMMGetEpsilon_PolBasisVL	first S4_malloc whose frame-1 symbol is FMMGetEpsilon_PolBasisVL

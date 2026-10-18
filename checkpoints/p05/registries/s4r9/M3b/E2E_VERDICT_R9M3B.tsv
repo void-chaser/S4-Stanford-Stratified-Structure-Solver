@@ -1,0 +1,44 @@
+# E2E_VERDICT_R9M3B.tsv -- per-point E2E verdict over the two formal passes (S-D)
+point_id	frontend	pass1	pass2	verdict	detail
+lua_batch_cf_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_ctl_cf	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_exp	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_fft	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_jones	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_kt	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_nv	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_ctl_vl	lua_batch	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_batch_exp_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_fft_exec	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_fft_plan	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_fft_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_jones_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_kt_exec	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_kt_plan	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_kt_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_nv_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_batch_vl_s4malloc	lua_batch	E2E_OK	E2E_OK	E2E_OK	{"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"rc": 1, "error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_repl_cf_s4malloc	lua_repl	E2E_OK	E2E_OK	E2E_OK	{"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_repl_ctl_cf	lua_repl	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_repl_ctl_fft	lua_repl	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_repl_ctl_kt	lua_repl	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_repl_ctl_vl	lua_repl	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+lua_repl_fft_plan	lua_repl	E2E_OK	E2E_OK	E2E_OK	{"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_repl_kt_s4malloc	lua_repl	E2E_OK	E2E_OK	E2E_OK	{"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+lua_repl_vl_s4malloc	lua_repl	E2E_OK	E2E_OK	E2E_OK	{"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]} | {"error": ["GetPoyntingFlux: The layer eigensystem could not be solved; no solution was returned."]}
+py_cf_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=1)"]}
+py_ctl_cf	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_ctl_fft	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_ctl_jones	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_ctl_kt	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_ctl_nv	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_ctl_vl	py	CONTROL_OK	CONTROL_OK	CONTROL_OK	{"rc": 0, "hits": 0} | {"rc": 0, "hits": 0}
+py_fft_exec	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT exec boundary simulation (exec call=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT exec boundary simulation (exec call=1)"]}
+py_fft_plan	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real malloc failure: plan preparation 5192 B (hit=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real malloc failure: plan preparation 5192 B (hit=1)"]}
+py_fft_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 24576 B (hit=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 24576 B (hit=1)"]}
+py_jones_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]}
+py_kt_exec	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT exec boundary simulation (exec call=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT exec boundary simulation (exec call=1)"]}
+py_kt_plan	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real malloc failure: plan preparation 5192 B (hit=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real malloc failure: plan preparation 5192 B (hit=1)"]}
+py_kt_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 16 B (hit=1)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 16 B (hit=1)"]}
+py_nv_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]}
+py_vl_s4malloc	py	E2E_OK	E2E_OK	E2E_OK	{"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]} | {"error_type": "RuntimeError", "hit": ["S4FMM HIT real S4_malloc failure: FMM call 192 B (hit=3)"]}

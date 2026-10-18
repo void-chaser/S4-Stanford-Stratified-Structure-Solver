@@ -1,0 +1,25 @@
+# POSCTRL_E2E_R9M3B.txt -- positive control of judge_e2e_r9m3b.py on tampered records written to disk
+# every case is a real file under checkpoints/p05/evidence/p05-s4r9/m3b/posctrl/e2e/<case>/pass{1,2}/points/; the verdict is
+# recomputed by the same formal code path from the file content (no constant self-proof).
+py_E2E_OK: PASS (expected=E2E_OK actual=E2E_OK)
+py_API_SILENT: PASS (expected=API_SILENT actual=API_SILENT)
+py_RETRY_DIFF: PASS (expected=RETRY_DIFF actual=RETRY_DIFF)
+py_RETRY_FAIL: PASS (expected=RETRY_FAIL actual=RETRY_FAIL)
+py_INVALID: PASS (expected=INVALID actual=INVALID)
+py_HIT_OFF_TARGET: PASS (expected=HIT_OFF_TARGET actual=HIT_OFF_TARGET)
+py_CONTROL_OK: PASS (expected=CONTROL_OK actual=CONTROL_OK)
+py_CONTROL_BAD: PASS (expected=CONTROL_BAD actual=CONTROL_BAD)
+lua_batch_E2E_OK: PASS (expected=E2E_OK actual=E2E_OK)
+lua_batch_API_SILENT: PASS (expected=API_SILENT actual=API_SILENT)
+lua_batch_RETRY_FAIL: PASS (expected=RETRY_FAIL actual=RETRY_FAIL)
+lua_batch_INVALID: PASS (expected=INVALID actual=INVALID)
+lua_batch_HIT_OFF_TARGET: PASS (expected=HIT_OFF_TARGET actual=HIT_OFF_TARGET)
+lua_batch_CONTROL_OK: PASS (expected=CONTROL_OK actual=CONTROL_OK)
+lua_repl_E2E_OK: PASS (expected=E2E_OK actual=E2E_OK)
+lua_repl_RETRY_DIFF: PASS (expected=RETRY_DIFF actual=RETRY_DIFF)
+lua_repl_INVALID: PASS (expected=INVALID actual=INVALID)
+lua_repl_CONTROL_OK: PASS (expected=CONTROL_OK actual=CONTROL_OK)
+py_FLAKY: PASS (expected=FLAKY actual=FLAKY)
+OVERALL_POSITIVE_CONTROL: PASS (19/19)
+CATEGORIES_COVERED: API_SILENT,CONTROL_BAD,CONTROL_OK,E2E_OK,FLAKY,HIT_OFF_TARGET,INVALID,RETRY_DIFF,RETRY_FAIL
+FRONTENDS_COVERED: py,lua_batch,lua_repl

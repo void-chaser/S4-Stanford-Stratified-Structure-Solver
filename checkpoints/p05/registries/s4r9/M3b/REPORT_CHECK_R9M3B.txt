@@ -1,0 +1,21 @@
+# REPORT_CHECK_R9M3B.txt -- report check (forbidden words, sections, numeric cross-checks recomputed from artefacts)
+PASS	FORBIDDEN_WORDS_NEGATION_AWARE	none
+PASS	REQUIRED_SECTIONS	all present
+PASS	NUM_RULINGS_MAX_U	recomputed=U342 present_in_report=True
+PASS	NUM_ERRATA_LAST_ID	recomputed=E9-57 present_in_report=True
+PASS	NUM_ERRATA_COUNT_TEXT	recomputed=共 57 条 present_in_report=True
+PASS	NUM_STATE_BYTES	recomputed=5534 present_in_report=True
+PASS	NUM_GATE_START_FAILS	recomputed=FAILS=0 present_in_report=True
+PASS	NUM_GATE_START_PASS	recomputed=PASS=45 present_in_report=True
+PASS	NUM_PREREG_E2E_POINTS	recomputed=42 present_in_report=True
+PASS	NUM_PREREG_SHA8	recomputed=9e3895bb present_in_report=True
+PASS	NUM_MAKETEST_VERDICT	recomputed=NO_NEW_FAILURE present_in_report=True
+PASS	NUM_MAKETEST_UNIT_COUNT	recomputed=265 present_in_report=True
+PASS	NUM_CALIB_TARGET_ROWS	recomputed=27 present_in_report=True
+PASS	NUM_AUDIT_SHU	recomputed=12/12 present_in_report=True
+PASS	NUM_E2E_CATEGORIES	recomputed=CONTROL_OK=17, E2E_OK=25 present_in_report=True
+PASS	NUM_POSCTRL_E2E	recomputed=OVERALL_POSITIVE_CONTROL: PASS (19/19) present_in_report=True
+PASS	NUM_POSCTRL_MAKETEST	recomputed=OVERALL_POSITIVE_CONTROL: PASS (2/2) present_in_report=True
+PASS	NUM_REGISTRY_ITEMS	recomputed=18 present_in_report=True
+PASS	STATE_BYTES_LE_8192	bytes=5534
+FAILS=0

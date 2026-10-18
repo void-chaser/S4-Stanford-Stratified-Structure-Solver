@@ -1,0 +1,23 @@
+# E2E_BUILD_R9M3B.tsv -- artefacts, wrap-symbol checks and M3a sha comparison of the M3b E2E build
+check	value	detail
+EXPORT_TREE	exists	checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4
+MAKE_LIB_AND_LUA	0	build/libS4.a + build/S4
+COMPILE_INJECTOR_FPIC	0	inject_r9m3b.o
+LINK_PYEXT_WITH_WRAP	0	same four --wrap options as build_e2e_r9m3a.py
+LINK_LUA_WITH_WRAP	0	same four --wrap options as build_e2e_r9m3a.py
+PYEXT_PATH	checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4/S4.cpython-314-x86_64-linux-gnu.so	
+PYEXT_SHA256	2890991cce5796da2c206cd95ab09371c764c14440ebcf6117ba9ea6f660aaa7	compare_with_M3a=DIFFERENT
+LUA_FRONTEND_PATH	checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4/build/S4_e2e	
+LUA_FRONTEND_SHA256	20d43f997f2a1b5b47dcc6dd5d28c122df7ff8a980e79cc8b90ae27e50cc8fd6	compare_with_M3a=SAME
+INJECTOR_OBJ_PATH	checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4/build/inject_r9m3b.o	
+INJECTOR_OBJ_SHA256	636cb15e7021982da40b950266c60d58acd6316ef06774f0ccee2c9043f476a3	compare_with_M3a=SAME
+LIB_S4_A_PATH	checkpoints/p05/evidence/p05-s4r9/m3b/trees/E2E_F4/build/libS4.a	
+LIB_S4_A_SHA256	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	compare_with_M3a=SAME
+PYEXT_NM_WRAP_DEFINED	4/4	__wrap_malloc,__wrap__Z13fft_plan_execP12tag_fft_plan,__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i,__wrap__Z9S4_mallocm
+PYEXT_UNRESOLVED_RAW_FFT	0	
+LUA_FRONTEND_NM_WRAP_DEFINED	4/4	__wrap_malloc,__wrap__Z13fft_plan_execP12tag_fft_plan,__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i,__wrap__Z9S4_mallocm
+LUA_FRONTEND_UNRESOLVED_RAW_FFT	0	
+PYEXT_BYTE_DIFF_VS_M3A	DIFFERENT_ONLY_BY_TREE_PATH_m3b_vs_m3a	n=21 build_id=20 outside=1 outside_offsets=619527 first_bytes=62/61
+LUA_FRONTEND_BYTE_DIFF_VS_M3A	IDENTICAL	0 differing bytes
+WRAP_OPTIONS	4	-Wl,--wrap=malloc -Wl,--wrap=_Z13fft_plan_execP12tag_fft_plan -Wl,--wrap=_Z15fft_plan_dft_2dPiPSt7complexIdES2_i -Wl,--wrap=_Z9S4_mallocm
+BUILD_LOG	checkpoints/p05/evidence/p05-s4r9/m3b/e2e_build/build.log	full compiler/linker output

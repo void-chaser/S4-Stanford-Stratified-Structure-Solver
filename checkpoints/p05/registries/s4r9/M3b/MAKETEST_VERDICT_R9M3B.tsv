@@ -1,0 +1,19 @@
+# MAKETEST_VERDICT_R9M3B.tsv -- make test verdict for R9 M3b (S-B; same criteria as U333a)
+item	value
+verdict	NO_NEW_FAILURE
+unit_count	265
+B_failing	none
+F4_failing	none
+new_failures	none
+flaky	none
+suite_diff	none
+criteria	F4 failing set subset of B failing set AND no F4 p1/p2 difference AND identical unit sets AND all four logs reconcile with Ran N / skipped=k
+# reconciliation rows: log/stage/units/Ran_N/skipped_got/skipped_expected/ok
+reconcile	B_p1	test_python_binding	4	4	0	0	OK
+reconcile	B_p1	s4test_unittest	257	257	1	1	OK
+reconcile	F4_p1	test_python_binding	4	4	0	0	OK
+reconcile	F4_p1	s4test_unittest	257	257	1	1	OK
+reconcile	B_p2	test_python_binding	4	4	0	0	OK
+reconcile	B_p2	s4test_unittest	257	257	1	1	OK
+reconcile	F4_p2	test_python_binding	4	4	0	0	OK
+reconcile	F4_p2	s4test_unittest	257	257	1	1	OK

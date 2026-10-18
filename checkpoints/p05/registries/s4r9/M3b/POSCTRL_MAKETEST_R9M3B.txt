@@ -1,0 +1,5 @@
+# POSCTRL_MAKETEST_R9M3B.txt -- positive control of judge_maketest_r9m3b.py on tampered log copies (S-B3)
+# seed logs: checkpoints/p05/evidence/p05-s4r9/m3a/maketest/{B,F4}_p{1,2}.log (read-only); each case keeps all four copies on disk
+A_DOCSTRING_UNIT_OK_TO_FAIL: PASS (expected=NEW_FAILURE actual=NEW_FAILURE) -- flipped test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis (F4_p1) from ok to FAIL
+B_DELETE_ONE_UNIT_LINE: PASS (expected=RECONCILE_FAIL actual=RECONCILE_FAIL) -- deleted unit line test_analytic_reference.FluxConventionTests.test_incident_amplitude_sign_convention
+OVERALL_POSITIVE_CONTROL: PASS (2/2)

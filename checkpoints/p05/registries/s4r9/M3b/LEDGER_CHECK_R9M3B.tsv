@@ -1,0 +1,8 @@
+# LEDGER_CHECK_R9M3B.tsv -- latest red-point ledger vs STATE open-item table (read-only)
+ledger_id	ledger_status	state_has_row	destination	note
+RP-R8-M2c-1	修后验证事实：6 点实测 REPORTED_FAILURE 判定 MATCH；是否关闭待用户裁决	YES	待用户裁决是否关闭	present in STATE open items
+RP-R8-M2c-1b	修后验证事实：12 点实测 REPORTED_FAILURE 判定 MATCH，未再发生重试崩溃；是否关闭待用户裁决	NO	待用户裁决是否关闭	not found in STATE open items (see report)
+K-1	CLOSED (维持 U274 关闭)	YES	已关闭	present in STATE open items
+# e2e_verdict_counts	[('CONTROL_OK', 17), ('E2E_OK', 25)]
+# maketest_verdict	NO_NEW_FAILURE
+# new_red_points	0

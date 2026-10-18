@@ -181,4 +181,43 @@
 
 ### 附录 A（收尾时由 closeout 写入正式结果）
 
-（APPENDIX_A_PLACEHOLDER）
+记录提交 (i) 之后由冻结脚本执行；本附录的数字全部由 closeout 从结果表复算，未手写。
+
+- E2E 正式两遍（pass1、pass2）：CONTROL_OK=17, E2E_OK=25；其他类别： none
+- E2E 判据：visible 为具体错误文本（Python RuntimeError 含 GetPowerFlux；Lua 以 GetPoyntingFlux: 开头的 stderr 行），HIT 的序号与 size 必须等于 CALIB；FLAKY=none，INVALID=none，HIT_OFF_TARGET=none，MISSING_RUN=none
+- E2E 阳性对照（冻结期正式调用 1 次）：OVERALL_POSITIVE_CONTROL: PASS (19/19)
+- make test 只读重解析：verdict=NO_NEW_FAILURE unit_count=265；4 遍 × 2 段对账 存在 FAIL: [['reconcile', 'B_p1', 'test_python_binding', '4', '4', '0', '0', 'OK'], ['reconcile', 'B_p1', 's4test_unittest', '257', '257', '1', '1', 'OK'], ['reconcile', 'F4_p1', 'test_python_binding', '4', '4', '0', '0', 'OK'], ['reconcile', 'F4_p1', 's4test_unittest', '257', '257', '1', '1', 'OK']]；阳性对照：OVERALL_POSITIVE_CONTROL: PASS (2/2)
+- 构建：Python 扩展 sha 2890991c（与 M3a 差异仅 build-id 与树路径），Lua 前端 sha 20d43f99（与 M3a 逐字节相同）
+- 校准：EVENT 行 882、TARGET 行 27（17 个前端 × 选项组，注入无关；gdb 日志在 $EV/calib/）
+- 预注册：PREREG_E2E_R9M3B.tsv 共 42 行（25 注入点 + 17 无注入对照），sha=9e3895bb，状态 INFLUENCED
+- 新增红点： 无（无 API_SILENT / RETRY_DIFF / RETRY_FAIL）
+- 门禁：start PASS=45 FAILS=0；审计 12/12 属实；FROZEN 调用计数由 end 门禁按清单核对
+- STATE 最终字节数：5534（<=8192）
+- 逐点明细：E2E_VERDICT_R9M3B.tsv；红点表：RED_POINTS_LEDGER_APPEND_R9M3B.tsv；台账核对：LEDGER_CHECK_R9M3B.tsv
+
+台账：RULINGS 最大 U342；ERRATA 最后 E9-57，共 57 条；本轮 M3a 判定 NO_NEW_FAILURE 因上述重解析通过而成立（U338）。
+### 附录 B（end 门禁之后追加；只追加，不改正文）
+
+end 门禁（`GATE_R9M3B_end.txt`，冻结期单次调用）：76 项断言，PASS=75、FAILS=1。按 §1-6（冻结期不修脚本、不重跑）逐项处置如下：
+
+| # | 断言 | 事实 | 分类 |
+|---|---|---|---|
+| 1 | `EVIDENCE_SHA256SUMS_OK` | actual = "no sha_sums_r9m3b.py call after (i)" | **检查器缺陷**：`gate_check_r9m3b_v3.py` 的该检查仍硬编码 v1 脚本名 `sha_sums_r9m3b.py`，而 FROZEN 清单与实际冻结脚本是 `sha_sums_r9m3b_v2.py`。同一门禁的 FROZEN 计数项 `POST_I_CALL_COUNT_SHA_SUMS_R9M3B_V2_EQ_1` 判 PASS（actual=1），证明该脚本被调用恰好 1 次；`EV/SHA256SUMS.txt` 由其生成（截断行 = 第 125 行，sha `387b754d…d37d2e`，43 项）。该项 FAIL 不表示证据清单缺失。 |
+
+其余 75 项全部 PASS，包括：FROZEN 15 项 sha 全部未变；全部冻结脚本的 POST_I 调用计数（run_e2e 2 段、judge_e2e posctrl/formal 各 1、judge_maketest_v2 posctrl/formal 各 1、ledger 1、closeout/report_check/copy_registries/events/sha_sums_v2 各 1、gate end 1）；`POST_I_NO_TESTING_D003_WRITES=0`；`COMMITTED_I_FILES_UNCHANGED_AT_END`；EVENTS 124 行与重算一致；`UNLOGGED_SELF=0`；其它轮证据目录未动；`REGISTRIES_M3B_SUMS_ALL_OK`（清单 18 项与报告 19 项一致）；预注册早于任何 E2E 点；正式两遍 42/42；E2E verdict 42 行 `{CONTROL_OK: 17, E2E_OK: 25}`；CALIB 27 个 TARGET 行；MAKETEST `NO_NEW_FAILURE`；STATE 5534 字节。
+
+正式结果摘要（与附录 A 一致）：E2E 25 个注入点全部 `E2E_OK`、17 个无注入对照全部 `CONTROL_OK`；`FLAKY`/`INVALID`/`HIT_OFF_TARGET`/`API_SILENT`/`RETRY_DIFF`/`RETRY_FAIL` 均为 0；阳性对照 E2E 19/19、MAKETEST 2/2；新增红点 0。make test 只读重解析 `NO_NEW_FAILURE`（4 遍 × 2 段对账 257/257 + 4/4，265 单元），U338 所述条件成立。
+
+门禁版本演进（照实记录）：start 用 `gate_r9m3b.sh`(v1) + `gate_check_r9m3b.py`(v1)，start_recheck 用 v2，end 用 v3。v2 修好了交付物小节解析对反引号与 12.1/14.1 编号的容忍与 `OUTNAME` 后缀拼接；v3 保留了 `sha_sums_r9m3b.py` 旧脚本名硬编码这一处残留缺陷（即上表第 1 项），按 §1-6 不在冻结期修改。
+
+git log -1（记录提交 (i)）：`70eefa824a5572ead8dfd0f8051f026b15047ec0 P05-S4 R9 M3b (i): freeze brief, rulings U334..U342, errata E9-46..E9-57, make-test reparse, E2E harness/calib/prereg; awaiting user review`
+
+git status --short（附录 B 落盘前、收尾提交 (ii) 前）：
+
+```
+ M checkpoints/p05/P05_S4R9_M3b_REPORT.md
+ M checkpoints/p05/STATE.md
+?? checkpoints/p05/registries/s4r9/M3b/
+```
+
+（`registries/s4r9/M3b/` 下 19 个文件 = 18 项小表 + SHA256SUMS.txt，将在收尾提交 (ii) 一并提交。）
