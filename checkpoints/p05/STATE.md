@@ -7,11 +7,11 @@
 | 项 | 值 |
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
-| 本轮开工基线 HEAD（r9m3a） | `2f86aa11c7ee1bb16f663abf03ddbf04674a6912`（r9m1r4 收尾提交） |
+| 本轮开工基线 HEAD（r9m3b） | `6aa11d8b2eb3bea896406842c30eda742af19080` |
 | `HEAD:S4`（冻结被测树 F4） | `589e15eb11fcb04e031b524f25a443e7921946cf`（F4 提交 `05097a7`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段状态 | S1、S2 已由用户确认（带范围声明）；S3、S4、S5 未确认 |
-| 当前轮次 | **P05-S4 R9 M3a（r9m3a）**：M1R4 勘误收口（J-1..J-6 属实 → E9-35..E9-44，U328–U333）+ 导出树 make test 回归 + Python/Lua E2E 装置与预注册（不运行 E2E 点）。M3b 待用户审核预注册后执行。 |
+| 当前轮次 | **P05-S4 R9 M3b（r9m3b）**：M3a 偏差裁决落账（U334–U342、E9-46..E9-57）+ make test 只读重解析 + E2E 装置修订/校准/新预注册/正式两遍（收尾时由 closeout 填写结论） |
 
 ## 2. 关键数字（每轮一行）
 
@@ -31,6 +31,7 @@
 | S4R9 M1R3 | 物理事实有效；651 点两遍全 MATCH；F3/F4 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R3_REPORT.md` |
 | S4R9 M1R4 | r9m1r4 复核结果经 U328 采纳；流程缺陷见 E9-35.. | `P05_S4R9_M1R4_REPORT.md` |
 | S4R9 M3a | J-1..J-6 属实（E9-35..E9-44、E9-45，U328–U333）；make test 四遍 rc=0、175 单元、**NO_NEW_FAILURE**；E2E 装置+预注册 18 点（不运行、冒烟 1 次） | `P05_S4R9_M3a_REPORT.md` |
+| S4R9 M3b | （收尾时由 closeout 填写） | `P05_S4R9_M3b_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接）
 
@@ -44,19 +45,20 @@
 | RP-R8-M2c-1/1b | 按 U304 关闭（18 点全 MATCH） | 关闭 | `P05_S4R9_M2c_REPORT.md` |
 | B 侧 jones/vl SILENT、nv CRASH | OPEN（基线，不是修复证据） | S5 | `P05_S1R_O1_ATTRIBUTION.md` |
 | NB=1–8、类别 C | M2-07 81 点全 MATCH；M2-08 转 S5（U249） | S5 | `VERDICT_R9.tsv` |
-| Python/Lua 可见性（RP-R6d-15） | 装置与预注册完成（M3a）；执行待用户审核 | M3b | `PREREG_E2E_R9M3A.tsv` |
+| Python/Lua 可见性（RP-R6d-15） | 装置与预注册完成；M3b 收尾时由 closeout 填写正式结论 | M3b | `PREREG_E2E_R9M3B.tsv` |
+| ClosedForm / LinearSolve 族 E2E 可达性 | 已复核（U339/U340）：ClosedForm 可达；seam 族标 SEAM_ONLY | 已裁决 | `COVERAGE_E2E_R9M3B.tsv` |
 | ES3R4-5/528/1164 | OUT_OF_SCOPE_D003（U90/U95/U99/U100） | S5 | `P05_S3R4_CLOSEOUT.md` |
 | U38 缺陷分类 | U38 已由 U90 裁决（806、415 已修；528、1164 转 S5），M3 只核对台账，不重新分类 | 已裁决（U90/U333c） | `registries/RULINGS.tsv` |
 | 非 FMM `S4_malloc`（约 35–43 处） | OUT_OF_SCOPE_D003 | S5 | `PROJECT_ROADMAP.md` |
 | ADD22 -3→1 返回码跨树变化 | 已核实（E8-77） | 已核实 | `VERDICT_R9.tsv` |
 | U2 stage e（I1 特殊规则） | NOT_FOUND_IN_SCOPE，S4 不出点（U248） | S5 | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 | r8m2c/d SOLN 18/28 点 | U276-U282 落实，R9 F4 18 点全 MATCH | 已闭合 | `M2_CONSOLIDATED_F4_R9.tsv` |
-| ClosedForm / LinearSolve 族 E2E 可达性 | NOT_REACHABLE_VIA_API（M3a 调研结论） | M3b 复核 | `E2E_API_SURVEY_R9M3A.md` |
 
-> 说明：本轮完成 R9 M3a（勘误收口 + make test 回归 NO_NEW_FAILURE/175 单元 + E2E 装置与预注册 18 点，未运行 E2E 点），不宣布阶段完成；预注册、不可达点族与 end 门禁 FAIL 项的处置等待用户审核后进入 M3b。
+> 说明：本轮进行 R9 M3b（勘误收口 + make test 重解析 + E2E 修订/校准/预注册/正式两遍），不宣布阶段完成；结论由 closeout 填写。
 
 ## 4. 证据位置
 
-- **S4 R9 M3a（r9m3a）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3a/`（`SHA256SUMS.txt`）；小表 `checkpoints/p05/registries/s4r9/M3a/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M3a_REPORT.md`。
+- **S4 R9 M3b（r9m3b）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3b/`（`SHA256SUMS.txt`）；小表 `checkpoints/p05/registries/s4r9/M3b/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M3b_REPORT.md`。
+- **S4 R9 M3a（r9m3a）**：证据 `checkpoints/p05/evidence/p05-s4r9/m3a/`；小表 `checkpoints/p05/registries/s4r9/M3a/`；报告 `P05_S4R9_M3a_REPORT.md`。
 - **S4 R9 M1R4/M1R3/M1R2/M1**：证据 `checkpoints/p05/evidence/p05-s4r9/{m1r4,m1r3,m1r2,m1}/`；小表 `checkpoints/p05/registries/s4r9/{M1R4,M1R3,M1R2,M1}/`；报告见 §2 表。
 - 更早轮次与完整台账：各轮报告；`RED_POINTS_LEDGER_R6c.tsv`；裁决总表 `registries/RULINGS.tsv`；勘误 `registries/s4r9/ERRATA_9.txt`。

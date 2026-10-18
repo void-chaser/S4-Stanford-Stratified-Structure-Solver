@@ -269,3 +269,63 @@ E9-45
 - 证据文件与行号：checkpoints/p05/evidence/p05-s4r9/m3a/safe_run.log；checkpoints/p05/evidence/p05-s4r9/m3a/GATE_R9M3A_end.txt 的 UNLOGGED_SELF 行；本轮报告事件表二。
 - 影响范围：本轮部分文件的写入缺少 safe_run 日志覆盖，削弱了写入可审计性（与 E9-33 同类，但未涉及越界路径，也不是编辑器工具直写）。
 - 处理方式：照实登记，不追改历史日志、不补写日志；报告表二与需用户裁决逐条列出，end 门禁该项按 FAIL 记录。
+E9-46
+- 事实：规划者复核项 K-1 属实（claim: run_e2e_r9m3a_v2.py 把 S4FMM_INJECT/NTH 设给整个 Python 子进程，e2e_python_r9m3a.py 的干净参考在同进程，nth=1 命中落在参考步）。本轮由脚本从原文件复算： run() applies the injection env to the whole child process (testing/d003/stage_s4r9/run_e2e_r9m3a_v2.py:39), the Python harness step 1_clean_ref (testing/d003/stage_s4r9/e2e_python_r9m3a.py:51) is created in that same child and step 2_inject only starts at testing/d003/stage_s4r9/e2e_python_r9m3a.py:54; the reference step therefore runs under the injection env and nth=1 fires there
+- 证据文件与行号：testing/d003/stage_s4r9/run_e2e_r9m3a_v2.py:39; testing/d003/stage_s4r9/run_e2e_r9m3a_v2.py:63; testing/d003/stage_s4r9/e2e_python_r9m3a.py:51
+- 影响范围：M3a 的 Python E2E 参考步在注入环境下执行，预注册的命中点实际未在注入进程的第一次求解处被观测。
+- 处理方式：登记 E9-46；本轮 e2e_python_r9m3b.py 与 run_e2e_r9m3b.py 改为参考值另起无注入进程，注入进程的第一次求解即 A 步。
+E9-47
+- 事实：规划者复核项 K-2 属实（claim: e2e_lua_r9m3a.lua 读全局 arg（main_lua.c 只设 S4.arg）；多余 argv 被当脚本加载；SetDiscretizedEpsilon 不存在且被 if 静默跳过）。本轮由脚本从原文件复算： the Lua harness reads the global arg (testing/d003/stage_s4r9/e2e_lua_r9m3a.lua:3), but main_lua.c stores -a in the local arg variable (S4/main_lua.c:3498) and exposes it only as S4.arg (S4/main_lua.c:3532); every remaining argv token is loaded as a script file (S4/main_lua.c:3551); the harness tests the non-existent method SetDiscretizedEpsilon (testing/d003/stage_s4r9/e2e_lua_r9m3a.lua:24) inside an if/pcall and silently skips it, while the registered name is UseDiscretizedEpsilon (S4/main_lua.c:3320)
+- 证据文件与行号：testing/d003/stage_s4r9/e2e_lua_r9m3a.lua:3; S4/main_lua.c:3498; S4/main_lua.c:3532; S4/main_lua.c:3551; testing/d003/stage_s4r9/e2e_lua_r9m3a.lua:24; S4/main_lua.c:3320
+- 影响范围：M3a 的 Lua 装置不可运行：选项名不存在、参数传递方式错误、多余 argv 会被当作脚本文件。
+- 处理方式：登记 E9-47；本轮 e2e_lua_r9m3b.lua 用 S4.arg + -a 传参、使用真实方法名并在缺失时 error 退出，不再 pcall 静默跳过。
+E9-48
+- 事实：规划者复核项 K-3 属实（claim: fmm_FFT.cpp:75/83 的 S4_malloc 在 PolBasis 之前，jones/nv/vl 的 s4malloc nth=1 落在 fmm_FFT）。本轮由脚本从原文件复算： the FFT epsilon function is called at S4/S4.cpp:2410 before the PolBasis dispatch at S4/S4.cpp:2413, and fmm_FFT.cpp allocates through S4_malloc at S4/fmm/fmm_FFT.cpp:75 and S4/fmm/fmm_FFT.cpp:83 before returning; the injection-free calibration confirms this: in the jones/nv/vl groups the first two S4_malloc hits come from FMMGetEpsilon_FFT (sizes 24576, 16) and the PolBasis site is call 3, so an nth=1 request lands in fmm_FFT
+- 证据文件与行号：S4/S4.cpp:2410; S4/S4.cpp:2413; S4/fmm/fmm_FFT.cpp:75; S4/fmm/fmm_FFT.cpp:83; CALIB_E2E_R9M3B.tsv TARGET py/jones/s4malloc call_seq=3
+- 影响范围：M3a 预注册把 jones/nv/vl 的 s4malloc nth 记为 1，实际会落在 fmm_FFT 而不是 PolBasis。
+- 处理方式：登记 E9-48；本轮以注入无关的 gdb 校准把三族的 nth 定为 3（前两次来自 FMMGetEpsilon_FFT），并记录校准 size。
+E9-49
+- 事实：规划者复核项 K-4 属实（claim: M3a 的不可达结论有误：ClosedForm 是默认路径、Kottke 可经 SubpixelSmoothing 到达、Lua 有 UseExperimentalFMM、Lua REPL 出错不退出）。本轮由脚本从原文件复算： the option default is use_discretized_epsilon=0 (S4/S4.cpp:337) and the else-branch calls FMMGetEpsilon_ClosedForm (S4/S4.cpp:2422), so ClosedForm is the default path, not unreachable; the Kottke branch is selected by use_subpixel_smoothing (S4/S4.cpp:2407, call at S4/S4.cpp:2408) and Python exposes SubpixelSmoothing in the SetOptions kwlist (S4/main_python.c:1749), so Kottke is reachable from the Python API too; Lua registers UseExperimentalFMM (S4/main_lua.c:3330) while main_python.c has no experimental keyword (0 matches for 'Experimental'); the REPL sets interactive=1 (S4/main_lua.c:3570) so S4L_error only exits when !interactive (S4/main_lua.c:236, exit at S4/main_lua.c:238), i.e. the REPL keeps running after an error
+- 证据文件与行号：S4/S4.cpp:337; S4/S4.cpp:2422; S4/S4.cpp:2408; S4/S4.cpp:2407; S4/main_lua.c:3330; S4/main_lua.c:3570; S4/main_lua.c:236; S4/main_lua.c:238
+- 影响范围：M3a 的 E2E_API_SURVEY 把 ClosedForm、Kottke、Lua UseExperimentalFMM、Lua REPL 继续执行误判为不可达，导致点族与研究结论错误。
+- 处理方式：登记 E9-49；本轮 E2E_API_SURVEY_R9M3B.md 逐条按源码改写，并把 CF、KT、EXP、REPL 纳入正式点族。
+E9-50
+- 事实：规划者复核项 K-5 属实（claim: judge_maketest_r9m3a_v3.py 丢掉状态写在下一行的 docstring 单元；日志 Ran 257，表里 s4test 只有 167）。本轮由脚本从原文件复算： judge_maketest_r9m3a_v3.py only looks at the unit line and the immediately following line (testing/d003/stage_s4r9/judge_maketest_r9m3a_v3.py:70, testing/d003/stage_s4r9/judge_maketest_r9m3a_v3.py:71), so a unit whose docstring pushes the status to a later line is dropped; the M3a table has 167 s4test_unittest units while the log says 'Ran 257 tests' (m3a/maketest/F4_p1.log:779), i.e. 90 units are missing
+- 证据文件与行号：testing/d003/stage_s4r9/judge_maketest_r9m3a_v3.py:70; testing/d003/stage_s4r9/judge_maketest_r9m3a_v3.py:71; m3a/MAKETEST_UNITS_R9M3A.tsv:2-176 s4test_unittest=167; m3a/maketest/F4_p1.log:779
+- 影响范围：M3a 的 make test 解析漏掉 90 个带 docstring 的单元，且未与 Ran N 对账，M3a 的 NO_NEW_FAILURE 缺少单元级完备性。
+- 处理方式：登记 E9-50；本轮 judge_maketest_r9m3b.py 按“直到下一个单元行为止”的状态词解析并与 Ran N / skipped=k 逐遍对账。
+E9-51
+- 事实：规划者复核项 K-6 属实（claim: M3a 报告 §5 写了 /tmp 写入，但表一写“无”）。本轮由脚本从原文件复算： report line 60 describes the project-suite /tmp/s4_lua_neg_XXXXXX temporary directory, while the table 9.1 row at line 90 says there was no out-of-bounds write; the two statements are not reconciled in the M3a report
+- 证据文件与行号：checkpoints/p05/P05_S4R9_M3a_REPORT.md:60; checkpoints/p05/P05_S4R9_M3a_REPORT.md:90
+- 影响范围：M3a 报告正文与表一对 /tmp 写入给出相反陈述。
+- 处理方式：登记 E9-51；本轮表一按 U338 补登记为项目套件固有、临时目录、非执行者违规，正文与表一一致。
+E9-52
+- 事实：规划者复核项 K-7 属实（claim: judge_e2e_r9m3a.py 的 Lua visible 含 len(stderr)>0 恒为真；synthetic() 对 Lua 返回 None，未覆盖 Lua）。本轮由脚本从原文件复算： the Lua visible test at testing/d003/stage_s4r9/judge_e2e_r9m3a.py:59 ends with 'or len(stderr)>0' (testing/d003/stage_s4r9/judge_e2e_r9m3a.py:83), which any WITNESS line satisfies, so the Lua branch can never report API_SILENT; synthetic() only builds Python records (testing/d003/stage_s4r9/judge_e2e_r9m3a.py:97) and returns None for Lua (testing/d003/stage_s4r9/judge_e2e_r9m3a.py:123), so the M3a positive control never covered Lua
+- 证据文件与行号：testing/d003/stage_s4r9/judge_e2e_r9m3a.py:59; testing/d003/stage_s4r9/judge_e2e_r9m3a.py:83; testing/d003/stage_s4r9/judge_e2e_r9m3a.py:97; testing/d003/stage_s4r9/judge_e2e_r9m3a.py:123
+- 影响范围：M3a 的 Lua visible 判据恒为真、阳性对照未覆盖 Lua，E2E 判定对 Lua 完全失效。
+- 处理方式：登记 E9-52；本轮 visible 判据改为具体错误文本（GetPoyntingFlux: 开头），阳性对照在落盘篡改副本上覆盖三个前端与全部类别。
+E9-53
+- 事实：规划者复核项 K-8 属实（claim: PREREG fft 行与装置不一致；报告 §10 编号 1/2/4/3、§11 小节标题写成 10.1、§3 写 STATE 5062）。本轮由脚本从原文件复算： PREREG row py_fft_plan (checkpoints/p05/registries/s4r9/M3a/PREREG_E2E_R9M3A.tsv:10) lists DiscretizedEpsilon/DiscretizationResolution/PolarizationBasis but not PolarizationDecomposition, while the harness (testing/d003/stage_s4r9/e2e_python_r9m3a.py:19) also sets PolarizationDecomposition=True; report section 10 is numbered 1,2,4,3 (1,2,4,3) at lines 108-111; report section 11's subsection is titled '### 10.1' (checkpoints/p05/P05_S4R9_M3a_REPORT.md:115); and report section 3 claims STATE 5062 bytes (checkpoints/p05/P05_S4R9_M3a_REPORT.md:37)
+- 证据文件与行号：checkpoints/p05/registries/s4r9/M3a/PREREG_E2E_R9M3A.tsv:10; testing/d003/stage_s4r9/e2e_python_r9m3a.py:19; checkpoints/p05/P05_S4R9_M3a_REPORT.md:115; checkpoints/p05/P05_S4R9_M3a_REPORT.md:37; checkpoints/p05/P05_S4R9_M3a_REPORT.md:108-111 numbering=1,2,4,3
+- 影响范围：M3a 的预注册与装置选项不一致，报告编号与 STATE 数字错误，交付物可追溯性受损。
+- 处理方式：登记 E9-53；本轮预注册的选项列与装置逐组一致，报告编号与 STATE 数字由 report_check 复算校验。
+E9-54
+- 事实：规划者复核项 U334 属实（claim: run_maketest_r9m3a.py 被调用 2 次（第一次会话 120 s 死线中断），以第二次四遍为正式结果）。本轮由脚本从原文件复算： run_maketest_r9m3a.py is called 2 times in the M3a log (lines 112,114); the interrupted first call left its site in maketest_interrupted/ (exists=True); the second call produced the four archive passes used as the formal result
+- 证据文件与行号：m3a/safe_run.log:112; m3a/safe_run.log:114; m3a/maketest_interrupted exists=True
+- 影响范围：M3a 冻结期的 run_maketest 调用计数与“每个脚本调用 1 次”的纪律不符。
+- 处理方式：登记 E9-54；按 U334 接受第二次调用的四遍结果为正式结果，本轮不重跑，报告与 STATE 记录该事实。
+E9-55
+- 事实：规划者复核项 U335 属实（claim: closeout_report_state_r9m3a.py 在 (i) 之后写入 testing/d003；UNLOGGED_SELF=2 属登记处理）。本轮由脚本从原文件复算： the M3a end gate reports POST_I_NO_TESTING_D003_WRITES actual=[(117, "python3 -I -B -c import base64; open('testing/d003/stage_s4r9/closeout_report_st")] and UNLOGGED_SELF_ZERO actual=['checkpoints/p05/registries/s4r9/M3a/SHA256SUMS.txt', 'testing/d003/stage_s4r9/e2e_lua_r9m3a.lua']; the closeout script was called at log line 125, after record commit (i), and it wrote under testing/d003
+- 证据文件与行号：m3a/GATE_R9M3A_end.txt:(POST_I_NO_TESTING_D003_WRITES, UNLOGGED_SELF_ZERO); m3a/safe_run.log:125
+- 影响范围：M3a 的收尾脚本在 (i) 之后写入 testing/d003，且有两个脚本内部生成的产物未出现在命令行里。
+- 处理方式：登记 E9-55；按 U335 接受并登记，本轮收尾脚本全部在 (i) 之前冻结，门禁按“脚本声明的输出清单”归属内部生成物。
+E9-56
+- 事实：规划者复核项 U336 属实（claim: M3a report_check 的 NUM_STATE_BYTES FAIL：以 STATE 实际 5191 字节为准，只登记勘误）。本轮由脚本从原文件复算： REPORT_CHECK_R9M3A.txt has a failing NUM_STATE_BYTES item (FAIL
+- 证据文件与行号：NUM_STATE_BYTES
+- 影响范围：M3a 的 report_check 数字核对与实际 STATE 字节数不符。
+- 处理方式：登记 E9-56；按 U336 以 STATE 实际 5191 字节为准，只登记勘误，不改 M3a 报告。
+E9-57
+- 事实：规划者复核项 U337 属实（claim: M3a end 门禁 6 条缺陷、start 复核 10 条 FAIL，全部按检查器缺陷接受）。本轮由脚本从原文件复算： the M3a end gate has 9 FAIL lines: GIT_STATUS_WITHIN_ROUND_ALLOW_LIST; GIT_TRACKED_NO_MODIFICATION; POST_I_CALL_COUNT_RUN_MAKETEST_EQ_1; POST_I_CALL_COUNT_JUDGE_MAKETEST_POSCTRL_EQ_1; POST_I_CALL_COUNT_JUDGE_MAKETEST_FORMAL_EQ_1; POST_I_CALL_COUNT_GATE_EQ_1; POST_I_NO_TESTING_D003_WRITES; UNLOGGED_SELF_ZERO; REGISTRIES_M3A_SUMS_ALL_OK; the start recheck has FAILS=10 (10 items). The six end-gate defects are: hard-coded script names that never match the frozen versioned files (4 call-count items), start-mode semantics inside end mode (2 items) and the backtick-intolerant deliverable parse (1 item); the 10 recheck FAILs are all round-start invariants that no longer hold after legitimate edits
+- 证据文件与行号：m3a/GATE_R9M3A_end.txt FAIL lines; m3a/GATE_R9M3A_start_RECHECK FAILS=10
+- 影响范围：M3a 的 end 门禁 6 条缺陷与 start 复核 10 条 FAIL 使其核验效力受损。
+- 处理方式：登记 E9-57；本轮 gate_check_r9m3b.py 按 U337 修好：调用计数从 FROZEN 清单读文件名、start 不变量只在 start 模式检查、end 模式只查前缀 sha、清单解析允许反引号。
