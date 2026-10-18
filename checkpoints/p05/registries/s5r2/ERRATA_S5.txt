@@ -58,3 +58,38 @@ ES5-8
 - 事实：D016_VERDICT_S5R2_ERRATA.txt 与 D016_BUILD_S5R2.tsv 留在证据目录 p05-s5r2/，未复制进 registries/s5r2/，因此 s5r2 小表清单不含这两件。
 - 处理方式：按任务书 §2 复制到 registries/s5r3/s5r2_supplement/，不改 registries/s5r2/ 及其 SHA256SUMS.txt；复制件 sha256 与 p05-s5r2/SHA256SUMS.txt 的记录逐项一致（脚本校验结果见 checkpoints/p05/evidence/p05-s5r3/S5R2_SUPPLEMENT_COPY_S5R3.tsv）。
 - 附带说明：本轮按 §2 向 registries/s5r2/ERRATA_S5.txt 纯追加 ES5-6..8，因此 registries/s5r2/SHA256SUMS.txt 中 ERRATA_S5.txt 的旧 sha256 与追加后的文件不再相等。该清单文件本身不改、不重写；S5R3 end 门禁对 s5r2 小表的复核把 ERRATA_S5.txt 记为"按 §2 追加导致预期变化"，其余 10 项仍逐项复核。
+
+ES5-9
+- 事实：rejudge_s5r3.py 正式调用崩溃：read_tsv() 把 D016_VERDICT_S5R3.tsv 的 SUMMARY 行当作数据行，按 point_id/verdict 取值时 KeyError 'point_id'，未产出 REJUDGE_S5R3.tsv。
+- 证据：checkpoints/p05/evidence/p05-s5r3/gate/GATE_S5R3_end.txt 的 FAIL REJUDGE_DIFFS_ZERO（actual=MISSING）；testing/d003/stage_s5r3/rejudge_s5r3.py 第 269-275 行的 read_tsv/verdict 读取路径；S5R3 报告附录 C #6。
+- 影响：S5R3 独立重判缺失；end 门禁 #6 FAIL，并级联 READINESS GAP=2 与 registries/s5r3 清单只剩 10 条（见 ES5-12）。S5R3 判定表本身未受影响。
+- 处理方式：U379。S5R4 新写 testing/d003/stage_s5r4/rejudge_s5r4.py：不 import 判定/比较器脚本；跳过以 # 开头的注释行、表头行与首字段为 SUMMARY 的行，按列名读取；读 S5R3 预注册与逐点 JSON（只读，不重跑注入）；输出到 S5R4 证据。S5R4 对 checkpoints/p05/evidence/p05-s5r3/ 零写入。
+ES5-10
+- 事实：S5R3 end 门禁 5 项 FAIL 均为检查器/冻结标注缺陷，被检数据 sha 不变：
+  (1) RULINGS_LINES_5_FIELDS：检查器把以 # 开头的注释头行也当作 5 字段数据行统计（gate_check_s5r3.py:194-202 未跳过 # 行）；修正=跳过 # 行后每非空行正好 5 个 tab 字段。
+  (2) FROZEN_POST_I_CALL_COUNTS_MATCH：rejudge_s5r3.py 在 FROZEN_SCRIPTS_S5R3.tsv 中写 mode=formal（exp=1），正式调用命令不含 formal 词，门禁按 mode 子串计数得 0；修正=FROZEN mode 按列名读取、mode='-' 表示任意调用、正式命令必须含 formal 词；R4 清单写 mode=formal。
+  (3) MODIFIED_TRACKED_FILES_WITHIN_END_ALLOW_LIST：gate_check_s5r3.py:267-277 把 git status 输出整体 strip() 后首行丢失前导状态空格，路径切片错位（actual=M PROJECT_ROADMAP.md）；修正=用 --porcelain=v1 原始输出、按 ln[:2] 状态 + ln[3:] 路径解析。
+  (4) D016_VERDICT_ROWS_34：gate_check_s5r3.py:307 未排除表头行（actual=35）；修正=排除 # 行、首字段 point_id 的表头行与 SUMMARY 行后计数 34，并断言 MATCH=33/RECORD=1。
+  (5) CALIB_DIFF_ZERO：gate_check_s5r3.py:341 把首列为 SUMMARY 的行也按 diff 列比较（actual=DIFFS=0=）；修正=排除 SUMMARY 行、其余每行 diff==SAME、SUMMARY 的 DIFFS=0 一致。
+- 证据：checkpoints/p05/evidence/p05-s5r3/gate/GATE_S5R3_end.txt 上述 5 条 FAIL；S5R3 报告附录 C #1-#5；数据 sha 以 p05-s5r3/SHA256SUMS.txt（sha ab40c174…）为准。
+- 处理方式：U378。S5R3 判定表、门禁原文与脚本不改；S5R4 用 gate_check_s5r4.py 修正检查逻辑，同一数据重新判定，并逐项配落盘变异阳性对照（POSCTRL_GATE_S5R4.txt）。
+ES5-11
+- 事实：S5R3 报告正文笔误与占位：§4 写'判定行 35'（实际 D016_VERDICT 数据行=34：33 MATCH + 1 RECORD）；§5 写'DIFFS=?'占位（CALIB 实测 DIFFS=0；独立重判 R3 未产出）；§11 写'26 项与 26 条记录一致'但 registries/s5r3/SHA256SUMS.txt 实际只有 10 条。
+- 证据：checkpoints/p05/P05_S5R3_REPORT.md 第 28、36、95 行；S5R3 报告附录 C 已用最终状态声明更正清单不完整一项。
+- 影响：仅报告文字；不改判定/证据。
+- 处理方式：R3 报告不改（历史），S5R4 报告与本勘误记录；S5R4 报告的自检（REPORT_CHECK_S5R4）必须核对派生文字与源表一致。
+ES5-12
+- 事实：S5R3 链顺序与输出路径缺陷：(a) chain copy 在缺 REJUDGE_S5R3.tsv 时 HARD_STOP，导致 registries/s5r3 只复制了 POSCTRL 三件（另加 start gate/FROZEN 等共 10 条），7 件正式交付未复制；(b) signoff 草稿被写到证据目录 $EV/ 而非 checkpoints/p05/，门禁后以 cp 补救；(c) 就绪审计在最终 STATE 之前运行，记录 STATE 的检查因此 GAP。
+- 证据：S5R3 报告附录 C #7/#8 与事件 11/12；registries/s5r3/SHA256SUMS.txt（sha c982514f…，10 条）。
+- 影响：登记清单不完整（10/26）；READINESS GAP=2。
+- 处理方式：U380 与 S5R4 链顺序修正：先产出重判再复制 registry；signoff 直接写 checkpoints/p05/；就绪审计在最终 STATE 之后运行并记录 STATE 字节/sha；S5R4 在 registries/s5r4/s5r3_completion/ 补齐 7 件并给出 26/26 覆盖对照。
+ES5-13
+- 事实：S5R3 签收范围声明草稿 P05_S5_SIGNOFF_DRAFT.md §2 写'阳性对照：D016 5/5、E2E 19/19、make test 4/4；独立重判 DIFFS=0'，其中'独立重判 DIFFS=0'在草稿写就时并无实测产出（R3 正式重判崩溃，见 ES5-9）。
+- 证据：checkpoints/p05/P05_S5_SIGNOFF_DRAFT.md 第 339 行（由 S5R3 链生成）；S5R3 报告附录 C #6。
+- 影响：草稿含未实测结论；不得作为签收依据。
+- 处理方式：U383。S5R3 草稿保留为历史不改；S5R4 新写 P05_S5_SIGNOFF_DRAFT_v2.md，其中 DIFFS=0 只在 S5R4 正式重判实测之后写入并注明行覆盖。
+ES5-14
+- 事实：S5R3 任务书把试跑（shakedown）end 门禁的通过条件定为'CHECK_CRASHED=0'，接受 40 项 FAIL 为'试跑期必然'；5 项检查器缺陷因此在冻结前未被发现，直到正式门禁才暴露。
+- 证据：S5R3 报告附录 A（COUNTS pass=38 fail=40 total=78、FAILS=40、以 CHECK_CRASHED=0 为通过条件）；S5R3 报告附录 C。
+- 影响：冻结后发现可修的检查器缺陷，冻结期不能修，只能照实登记为下一轮收口。
+- 处理方式：U381。S5R4 试跑必须 FAILS=0 且 CHECK_CRASHED=0，使用 staging 证据根/checkpoints 根/POST_I 起点行完整演练；任何 FAIL 逐项归因，检查器缺陷在提交 (i) 之前修好并用同一脚本 sha 重跑。
