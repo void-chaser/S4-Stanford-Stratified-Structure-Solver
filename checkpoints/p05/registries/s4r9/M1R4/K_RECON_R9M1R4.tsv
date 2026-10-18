@@ -1,0 +1,29 @@
+# K_RECON_R9M1R4.tsv -- K hit count reconciliation across 26 groups and coverage audit (Step S-E)
+# Summary: 26 groups audited; 13 groups have truncated hits in old table; all 26 match min(total, k_max+2) hypothesis; coverage 416 + 235 = 651闭环
+group_id	driver_family	k_max	kcount_total_hits	kinherit_old_hits	k_max_plus_2	expected_old_hits	hypothesis_matched	count_comparison	m1_points_count	reconciliation_notes
+KGRP-M1-001	d003	2	1	1	4	1	YES	IDENTICAL	3	Full total 1 fits within k_max+2=4
+KGRP-M1-002	d003	2	1	1	4	1	YES	IDENTICAL	3	Full total 1 fits within k_max+2=4
+KGRP-M1-003	d003	2	1	1	4	1	YES	IDENTICAL	3	Full total 1 fits within k_max+2=4
+KGRP-M1-004	d003	16	17	17	18	17	YES	IDENTICAL	13	Full total 17 fits within k_max+2=18
+KGRP-M1-005	d003	16	17	17	18	17	YES	IDENTICAL	11	Full total 17 fits within k_max+2=18
+KGRP-M1-006	d003	4	2	2	6	2	YES	IDENTICAL	6	Full total 2 fits within k_max+2=6
+KGRP-M1-007	d003	4	16	6	6	6	YES	DIFFERENT	6	Truncated in old table: total 16 hits capped at k_max+2=6
+KGRP-M1-008	d003	7	4	4	9	4	YES	IDENTICAL	5	Full total 4 fits within k_max+2=9
+KGRP-M1-009	d003	16	17	17	18	17	YES	IDENTICAL	13	Full total 17 fits within k_max+2=18
+KGRP-M1-010	d003	16	17	17	18	17	YES	IDENTICAL	11	Full total 17 fits within k_max+2=18
+KGRP-M1-011	d003	2	1	1	4	1	YES	IDENTICAL	3	Full total 1 fits within k_max+2=4
+KGRP-M1-012	d003	4	16	6	6	6	YES	DIFFERENT	6	Truncated in old table: total 16 hits capped at k_max+2=6
+KGRP-M1-013	d003	7	4	4	9	4	YES	IDENTICAL	11	Full total 4 fits within k_max+2=9
+KGRP-M1-014	d003	4	16	6	6	6	YES	DIFFERENT	6	Truncated in old table: total 16 hits capped at k_max+2=6
+KGRP-M1-015	d003	7	4	4	9	4	YES	IDENTICAL	11	Full total 4 fits within k_max+2=9
+KGRP-M1-016	d003plan	1	17	3	3	3	YES	DIFFERENT	4	Truncated in old table: total 17 hits capped at k_max+2=3
+KGRP-M1-017	d003plan	2	17	4	4	4	YES	DIFFERENT	29	Truncated in old table: total 17 hits capped at k_max+2=4
+KGRP-M1-018	d003plan	1	16	3	3	3	YES	DIFFERENT	4	Truncated in old table: total 16 hits capped at k_max+2=3
+KGRP-M1-019	d003plan	2	13	4	4	4	YES	DIFFERENT	6	Truncated in old table: total 13 hits capped at k_max+2=4
+KGRP-M1-020	d003plan	3	4	4	5	4	YES	IDENTICAL	12	Full total 4 fits within k_max+2=5
+KGRP-M1-021	d003plan	1	17	3	3	3	YES	DIFFERENT	4	Truncated in old table: total 17 hits capped at k_max+2=3
+KGRP-M1-022	d003plan	2	17	4	4	4	YES	DIFFERENT	29	Truncated in old table: total 17 hits capped at k_max+2=4
+KGRP-M1-023	d003plan	1	16	3	3	3	YES	DIFFERENT	4	Truncated in old table: total 16 hits capped at k_max+2=3
+KGRP-M1-024	d003plan	2	13	4	4	4	YES	DIFFERENT	6	Truncated in old table: total 13 hits capped at k_max+2=4
+KGRP-M1-025	d003plan	1	16	3	3	3	YES	DIFFERENT	4	Truncated in old table: total 16 hits capped at k_max+2=3
+KGRP-M1-026	d003plan	2	13	4	4	4	YES	DIFFERENT	6	Truncated in old table: total 13 hits capped at k_max+2=4

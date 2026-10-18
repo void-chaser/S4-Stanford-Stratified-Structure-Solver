@@ -1,0 +1,6 @@
+# POSCTRL_RECERT_R9M1R4.txt -- Positive Control Verification for recert_r9m1r4.py (Step S-D)
+CASE_1_VERDICT_TAMPER: PASS (expected=1, actual=1)
+CASE_2_EQUIV_G6_I3_TAMPER: PASS (expected=1, actual=1)
+CASE_3_FORMAL_FACTS_RC1_TAMPER: PASS (expected=differs, actual=differs)
+CASE_4_EVENTS_ROW_DELETED: PASS (expected=mismatch detected, actual=mismatch detected)
+OVERALL_POSITIVE_CONTROL: PASS (4/4 tamperings detected successfully)

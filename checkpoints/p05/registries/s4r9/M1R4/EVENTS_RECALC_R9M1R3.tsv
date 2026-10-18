@@ -1,0 +1,145 @@
+# EVENTS_RECALC_R9M1R3.tsv -- Recomputed safe_run event table for r9m1r3 under physical line numbering (Rule U325)
+log_line	utc_timestamp	category	command_summary
+1	2026-10-18T03:24:13Z	WRITE_FILE	cmd=python3 -I -B -c import base64; open('checkpoints/p05/briefs/P05_S4R9_BRIEF_M1R3.md', 'wb').write(base64.b64decode('IyBQMDUtUzQgUjkgTTEg...
+2	2026-10-18T03:26:41Z	GATE	cmd=python3 -I -B -c import base64; open('testing/d003/stage_s4r9/gate_allow_r9m1r3_start.txt', 'wb').write(base64.b64decode('Pz8gY2hlY2twb2...
+3	2026-10-18T03:28:44Z	GATE	cmd=python3 -I -B -c import base64; open('testing/d003/stage_s4r9/gate_r9m1r3.sh', 'wb').write(base64.b64decode('UkVQTz0kKGdpdCByZXYtcGFyc2U...
+4	2026-10-18T03:28:53Z	OTHER	cmd=python3 -I -B -c
+5	import difflib, os	OTHER	
+7	REPO = os.path.realpath('.')	OTHER	
+8	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+10	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+11	sh_r3 = open('testing/d003/stage_s4r9/gate_r9m1r3.sh').readlines()	OTHER	
+12	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r3, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3.sh'))	OTHER	
+14	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+15	py_r3 = open('testing/d003/stage_s4r9/gate_check_r9m1r3.py').readlines()	OTHER	
+16	diff_py = ''.join(difflib.unified_diff(py_r2, py_r3, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3.py'))	OTHER	
+18	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3.py ===\n{diff_py}\n'	OTHER	
+19	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+20	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+22	2026-10-18T03:29:00Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3.sh start
+23	2026-10-18T03:32:31Z	GATE	cmd=python3 -I -B -c import base64; open('testing/d003/stage_s4r9/gate_allow_r9m1r3_start.txt', 'wb').write(base64.b64decode('Pz8gY2hlY2twb2...
+24	2026-10-18T03:34:02Z	GATE	cmd=python3 -I -B -c import base64; open('testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py', 'wb').write(base64.b64decode('IyEvdXNyL2Jpbi9lbn...
+25	2026-10-18T03:34:24Z	GATE	cmd=python3 -I -B -c import base64; open('testing/d003/stage_s4r9/gate_r9m1r3_v2.sh', 'wb').write(base64.b64decode('UkVQTz0kKGdpdCByZXYtcGFy...
+26	2026-10-18T03:34:34Z	OTHER	cmd=python3 -I -B -c
+27	import difflib, os	OTHER	
+29	REPO = os.path.realpath('.')	OTHER	
+30	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+32	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+33	sh_r3 = open('testing/d003/stage_s4r9/gate_r9m1r3_v2.sh').readlines()	OTHER	
+34	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r3, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v2.sh'))	OTHER	
+36	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+37	py_r3 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py').readlines()	OTHER	
+38	diff_py = ''.join(difflib.unified_diff(py_r2, py_r3, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py'))	OTHER	
+40	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v2.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py ===\n{diff_py}\n'	OTHER	
+41	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+42	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+44	2026-10-18T03:34:41Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3_v2.sh start _v2
+45	2026-10-18T03:36:26Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3_v2.sh start _v2
+46	2026-10-18T03:36:59Z	OTHER	cmd=python3 -I -B -c
+47	import difflib, os	OTHER	
+49	REPO = os.path.realpath('.')	OTHER	
+50	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+52	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+53	sh_r3 = open('testing/d003/stage_s4r9/gate_r9m1r3_v3.sh').readlines()	OTHER	
+54	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r3, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v3.sh'))	OTHER	
+56	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+57	py_r3 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v3.py').readlines()	OTHER	
+58	diff_py = ''.join(difflib.unified_diff(py_r2, py_r3, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v3.py'))	OTHER	
+60	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v3.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v3.py ===\n{diff_py}\n'	OTHER	
+61	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+62	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+64	2026-10-18T03:37:06Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3_v3.sh start _v3
+65	2026-10-18T03:37:51Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3_v3.sh start _v4
+66	2026-10-18T03:38:40Z	OTHER	cmd=python3 -I -B -c
+67	import difflib, os	OTHER	
+68	REPO = os.path.realpath('.')	OTHER	
+69	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+70	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+71	sh_r4 = open('testing/d003/stage_s4r9/gate_r9m1r3_v4.sh').readlines()	OTHER	
+72	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r4, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v4.sh'))	OTHER	
+73	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+74	py_r4 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py').readlines()	OTHER	
+75	diff_py = ''.join(difflib.unified_diff(py_r2, py_r4, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py'))	OTHER	
+76	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v4.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py ===\n{diff_py}\n'	OTHER	
+77	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+78	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+80	2026-10-18T03:38:58Z	OTHER	cmd=python3 -I -B -c
+81	import difflib, os	OTHER	
+82	REPO = os.path.realpath('.')	OTHER	
+83	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+84	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+85	sh_r4 = open('testing/d003/stage_s4r9/gate_r9m1r3_v4.sh').readlines()	OTHER	
+86	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r4, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v4.sh'))	OTHER	
+87	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+88	py_r4 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py').readlines()	OTHER	
+89	diff_py = ''.join(difflib.unified_diff(py_r2, py_r4, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py'))	OTHER	
+90	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v4.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py ===\n{diff_py}\n'	OTHER	
+91	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+92	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+94	2026-10-18T03:39:07Z	GATE	cmd=sh testing/d003/stage_s4r9/gate_r9m1r3_v4.sh start _v5
+95	2026-10-18T03:39:37Z	OTHER	cmd=python3 -I -B -c
+96	import difflib, os	OTHER	
+97	REPO = os.path.realpath('.')	OTHER	
+98	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+99	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+100	sh_r4 = open('testing/d003/stage_s4r9/gate_r9m1r3_v4.sh').readlines()	OTHER	
+101	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r4, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v4.sh'))	OTHER	
+102	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+103	py_r4 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py').readlines()	OTHER	
+104	diff_py = ''.join(difflib.unified_diff(py_r2, py_r4, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py'))	OTHER	
+105	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v4.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py ===\n{diff_py}\n'	OTHER	
+106	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+107	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+109	2026-10-18T03:41:45Z	AUDIT	cmd=python3 -I -B testing/d003/stage_s4r9/audit_r9m1r2_r9m1r3.py
+110	2026-10-18T03:43:17Z	AUDIT	cmd=python3 -I -B testing/d003/stage_s4r9/audit_r9m1r2_r9m1r3_v2.py
+111	2026-10-18T03:44:43Z	RULINGS	cmd=python3 -I -B testing/d003/stage_s4r9/append_rulings_r9m1r3.py
+112	2026-10-18T03:44:43Z	ERRATA	cmd=python3 -I -B testing/d003/stage_s4r9/append_errata_r9m1r3.py
+113	2026-10-18T03:47:16Z	WRITE_FILE	cmd=python3 -I -B -c \nimport os, subprocess, tempfile\n\nREPO = os.path.realpath(".")\nEV_TMP = os.path.join(REPO, "checkpoints/p05/evidenc...
+114	2026-10-18T03:48:58Z	K_COUNT	cmd=python3 -I -B testing/d003/stage_s4r9/test_kcount.py
+115	2026-10-18T03:49:29Z	WRITE_FILE	cmd=python3 -I -B -c \nimport os, subprocess\n\nREPO = os.path.realpath(".")\nf4_plain = os.path.join(REPO, "checkpoints/p05/evidence/p05-s4...
+116	2026-10-18T03:54:28Z	K_COUNT	cmd=python3 -I -B testing/d003/stage_s4r9/kcount_r9m1r3.py
+117	2026-10-18T03:55:25Z	K_COUNT	cmd=python3 -I -B testing/d003/stage_s4r9/kcount_r9m1r3.py
+118	2026-10-18T04:01:21Z	K_COUNT	cmd=python3 -I -B testing/d003/stage_s4r9/kcount_r9m1r3_v2.py
+119	2026-10-18T04:03:19Z	PREREG	cmd=python3 -I -B testing/d003/stage_s4r9/prereg_r9m1r3.py
+120	2026-10-18T04:03:51Z	PREREG	cmd=python3 -I -B testing/d003/stage_s4r9/prereg_r9m1r3_v2.py
+121	2026-10-18T04:09:54Z	POSCTRL	cmd=python3 -I -B testing/d003/stage_s4r9/posctrl_r9m1r3.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05...
+122	2026-10-18T04:11:25Z	POSCTRL	cmd=python3 -I -B testing/d003/stage_s4r9/posctrl_r9m1r3_v2.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/...
+123	2026-10-18T04:11:41Z	SMOKE	cmd=python3 -I -B testing/d003/stage_s4r9/run_smoke_r9m1r3.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p...
+124	2026-10-18T04:12:31Z	SMOKE	cmd=python3 -I -B testing/d003/stage_s4r9/run_smoke_r9m1r3_v2.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoint...
+125	2026-10-18T04:15:53Z	SMOKE	cmd=python3 -I -B testing/d003/stage_s4r9/run_smoke_r9m1r3_v3.py --out /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoint...
+126	2026-10-18T04:16:07Z	FORMAL	cmd=python3 -I -B testing/d003/stage_s4r9/run_formal_r9m1r3.py --out-dir /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoi...
+127	2026-10-18T04:18:11Z	VERDICT	cmd=python3 -I -B testing/d003/stage_s4r9/verdict_r9m1r3.py --pass1 /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p...
+128	2026-10-18T04:19:23Z	FORMAL	cmd=python3 -I -B testing/d003/stage_s4r9/run_formal_r9m1r3_v2.py --out-dir /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/check...
+129	2026-10-18T04:21:27Z	VERDICT	cmd=python3 -I -B testing/d003/stage_s4r9/verdict_r9m1r3.py --pass1 /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p...
+130	2026-10-18T04:21:44Z	COMPARE	cmd=python3 -I -B testing/d003/stage_s4r9/compare_f3_f4_r9m1r3.py --facts /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpo...
+131	2026-10-18T04:21:58Z	VERDICT	cmd=python3 -I -B testing/d003/stage_s4r9/summarize_m1_r9m1r3.py --verdict /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkp...
+132	2026-10-18T04:22:14Z	CMP_PREV	cmd=python3 -I -B testing/d003/stage_s4r9/cmp_vs_r9m1r2_r9m1r3.py --r3 /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoint...
+133	2026-10-18T04:25:57Z	OTHER	cmd=python3 -I -B -c
+134	import difflib, os	OTHER	
+135	REPO = os.path.realpath('.')	OTHER	
+136	EV = os.path.join(REPO, 'checkpoints', 'p05', 'evidence', 'p05-s4r9', 'm1r3')	OTHER	
+137	sh_r2 = open('testing/d003/stage_s4r9/gate_r9m1r2.sh').readlines()	OTHER	
+138	sh_r5 = open('testing/d003/stage_s4r9/gate_r9m1r3_v5.sh').readlines()	OTHER	
+139	diff_sh = ''.join(difflib.unified_diff(sh_r2, sh_r5, fromfile='testing/d003/stage_s4r9/gate_r9m1r2.sh', tofile='testing/d003/stage_s4r9/gate_r9m1r3_v5.sh'))	OTHER	
+140	py_r2 = open('testing/d003/stage_s4r9/gate_check_r9m1r2.py').readlines()	OTHER	
+141	py_r5 = open('testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py').readlines()	OTHER	
+142	diff_py = ''.join(difflib.unified_diff(py_r2, py_r5, fromfile='testing/d003/stage_s4r9/gate_check_r9m1r2.py', tofile='testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py'))	OTHER	
+143	out = f'# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2\n\n=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v5.sh ===\n{diff_sh}\n=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py ===\n{diff_py}\n'	OTHER	
+144	open(os.path.join(EV, 'RUNNER_DIFF_R9M1R3.txt'), 'w', encoding='utf-8').write(out)	OTHER	
+145	print('Wrote RUNNER_DIFF_R9M1R3.txt, len:', len(out))	OTHER	
+147	2026-10-18T04:26:29Z	COPY_REG	cmd=python3 -I -B testing/d003/stage_s4r9/copy_registries_r9m1r3.py commit_i
+148	2026-10-18T04:29:17Z	POSCTRL	cmd=python3 -I -B testing/d003/stage_s4r9/posctrl_r9m1r3_v2.py
+149	2026-10-18T04:29:32Z	SMOKE	cmd=python3 -I -B testing/d003/stage_s4r9/run_smoke_r9m1r3_v3.py
+150	2026-10-18T04:29:57Z	FORMAL	cmd=python3 -I -B testing/d003/stage_s4r9/run_formal_r9m1r3_v2.py
+151	2026-10-18T04:31:50Z	VERDICT	cmd=python3 -I -B testing/d003/stage_s4r9/verdict_r9m1r3.py
+152	2026-10-18T04:32:05Z	COMPARE	cmd=python3 -I -B testing/d003/stage_s4r9/compare_f3_f4_r9m1r3.py
+153	2026-10-18T04:32:19Z	SUMMARIZE	cmd=python3 -I -B testing/d003/stage_s4r9/summarize_m1_r9m1r3.py
+154	2026-10-18T04:32:34Z	CMP_PREV	cmd=python3 -I -B testing/d003/stage_s4r9/cmp_vs_r9m1r2_r9m1r3.py
+155	2026-10-18T04:35:20Z	REPORT_CHECK	cmd=python3 -I -B testing/d003/stage_s4r9/report_check_r9m1r3.py
+156	2026-10-18T04:36:15Z	REPORT_CHECK	cmd=python3 -I -B testing/d003/stage_s4r9/report_check_r9m1r3.py
+157	2026-10-18T04:36:52Z	REPORT_CHECK	cmd=python3 -I -B testing/d003/stage_s4r9/report_check_r9m1r3.py
+158	2026-10-18T04:37:30Z	EVENTS	cmd=python3 -I -B testing/d003/stage_s4r9/events_r9m1r3.py
+159	2026-10-18T04:37:44Z	COPY_REG	cmd=python3 -I -B testing/d003/stage_s4r9/copy_registries_r9m1r3.py final
+160	2026-10-18T04:37:57Z	EVENTS	cmd=python3 -I -B testing/d003/stage_s4r9/events_r9m1r3.py
+161	2026-10-18T04:38:11Z	OTHER	cmd=cp /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-s4r9/m1r3/EVENTS_R9M1R3.tsv /srv/nvme/project...
+162	2026-10-18T04:38:25Z	SHA_SUMS	cmd=python3 -I -B testing/d003/stage_s4r9/sha_sums_r9m1r3.py

@@ -1,0 +1,7 @@
+# M1_RECERT_SUMMARY_R9M1R4.tsv -- Overall recertification and reconciliation summary (Step S-F)
+# GRAND_TOTAL: total_items=61, matched_items=61, discrepancy_items=0
+category	total_checked	consistent_count	discrepancy_count	overall_status	summary_notes
+FORENSIC_AUDIT_H1_H8	8	8	0	PASS	All 8 deviations H-1..H-8 audited as 属实
+M1_RECERTIFICATION_ASSERTIONS	27	27	0	PASS	Physical facts, verdict recompute, equiv recompute, summary totals & backfilled assertions
+K_HIT_COUNT_RECONCILIATION	26	26	0	PASS	All 26 groups reconciled, 13 diff groups matched min(total, k_max+2), coverage 416+235=651
+TOTAL_SUMMARY	61	61	0	PASS	Full recertification closure without rerun

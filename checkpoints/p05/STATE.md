@@ -8,12 +8,12 @@
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
 | 开工基线 HEAD（P05-S4 R8 M0 开工） | `3ab56801e697910bdff9fbe6056807c2e41841b5`（S3R4 续5 收尾；R8 M0 记录提交 `2875c55`） |
-| 本轮开工基线 HEAD（r9m1r3） | `16a789791f792f8814dc8896e03fb1b3f75c6294`（r9m1r2 收尾提交；记录提交 (i) `289237d`） |
+| 本轮开工基线 HEAD（r9m1r4） | `4e9ff8be523bbf52a6b11757a6e04405a4a114e9`（r9m1r3 收尾提交；记录提交 (i) `786b150`） |
 | 收尾提交查询 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
 | `HEAD:S4`（当前冻结被测树 F4） | `589e15eb11fcb04e031b524f25a443e7921946cf`（F4 提交 `05097a7`；前一树 F3 `6cff923…`；F2 `e124925…`；F `4a6f649…`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S4 R9 M1R3（r9m1r3）完成，待用户审核**：纠偏 r9m1r2（E9-21..28，U318–U322）；复核 G-1..G-8 属实；K 补核 26 组全 PASS，K_COVERAGE 对账 416；修正两处口径（G2c 记未运行，G6 接入判定比对）；阳性对照 PASS（5 篡改/22 预注册/F3 0差）；试跑跑通后冻结并单次调用；正式两遍 651 点全 MATCH（0 FLAKY / 0 GDB_DIV）；F3/F4 等价 651 行 0 DIFFS；总表 1302 行闭环（MATCH 1252，NOT_REACHED 44，NOT_RUN 6）。下一步为 M3 阶段收口。不宣布完成，不询问签收。 |
+| 当前轮次 | **P05-S4 R9 M1R4（r9m1r4）完成，待用户审核**：纠偏 r9m1r3（E9-29..E9-34，U323–U327）；复核 H-1..H-8 属实；只读独立复算核证 r9m1r3 物理事实有效，VERDICT 651 点 100% MATCH，F3/F4 等价 651 行 0 DIFFS，总表 1302 行闭环；K 命中数差异查明为旧表截断所致，26 组全对齐，K 覆盖 416+235=651 闭环；补做 r9m1r3 门禁未执行断言全部合格；单向顺序重新收尾。下一步为 M3 阶段收口（make test 主套件回归、Python/Lua 端到端全链路、U38）。不宣布完成，不询问签收。 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -31,7 +31,8 @@
 | S4R9 M2c | M2b 纠正（E9-7..13，U302–U305）；RULINGS 截断披露；全仓扫描 90 份；KGRP-071 更正（4 vs 4）；HIT 切分；U303 替代 10/10 OK；RP 关闭（U304） | `P05_S4R9_M2c_REPORT.md` |
 | S4R9 M1 | 参考结果，有效结果见 M1R2（U312）；F4 重跑 651 行全 MATCH；F3/F4 事实等价比对 651 行 0 DIFFS；M1 总表 1302 行（MATCH 1252，NOT_REACHED 44，NOT_RUN 6） | `P05_S4R9_M1_REPORT.md` |
 | S4R9 M1R2 | 参考结果二，有效结果见 M1R3（U318）；r9m1 纠正（E9-14..20）；K 重做 53 组 PASS；两遍 651 点 MATCH；F3/F4 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R2_REPORT.md` |
-| S4R9 M1R3 | r9m1r2 流程纠正（E9-21..28，U318–U322）；K 补核 26 组全 PASS；正式两遍有效 651 点全 MATCH；F3/F4 等价 651 行 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R3_REPORT.md` |
+| S4R9 M1R3 | 物理事实有效，经 M1R4 核证（U323）；K 补核 26 组全 PASS；正式两遍有效 651 点全 MATCH；F3/F4 等价 651 行 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R3_REPORT.md` |
+| S4R9 M1R4 | r9m1r3 流程纠偏（E9-29..34，U323–U327）；H-1..H-8 属实；只读复核 651 点全 MATCH、0 DIFFS；K 差异查明（26 组全对账）；总表 1302 行；补做门禁全 PASS | `P05_S4R9_M1R4_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接；完整台账见 RED_POINTS_LEDGER_R6c）
 
@@ -56,12 +57,12 @@
 | U2 中 stage e（I1 特殊规则） | M2-02 NOT_FOUND_IN_SCOPE 裁决在 S4 不出点，转 S5（U248） | 转 S5（U248） | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 | r8m2c/d SOLN 18/28 点分诊与更正 | U276-U282 裁决落实；S3R5 修复完成，R9 F4 验证 18 点全 MATCH | 已闭合（U276-U282） | `M2_CONSOLIDATED_F4_R9.tsv` |
 
-> 开放项说明：本轮完成 R9 M1R3（纠正 r9m1r2 流程偏差，K 补核 26 组全 PASS，F4 两遍 651 点全 MATCH，F3/F4 等价 0 DIFFS，总表 1302 行闭环）；下一步推进至 M3 阶段收口（make test、Python/Lua E2E 验证），随后提示阶段收口签收草案。不宣布完成，不询问签收。
+> 开放项说明：本轮完成 R9 M1R4（完成 H-1..H-8 取证与勘误登记，以只读方式独立复核 M1 结果 651 点全 MATCH、0 DIFFS，总表 1302 行闭环，K 差异 26 组全部对账闭环，补做门禁断言全部通过，单向重新收尾完成）；下一步为 M3 阶段收口（make test 主套件回归、Python/Lua 端到端全链路、U38 缺陷分类），随后提示阶段收口签收草案。不宣布完成，不询问签收。
 
 ## 4. 证据位置
 
 只列最近三轮证据与清单位置，其余指向各轮报告：
-- **S4 R9 M1R3（r9m1r3）**：证据 `checkpoints/p05/evidence/p05-s4r9/m1r3/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1R3/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1R3_REPORT.md`。
+- **S4 R9 M1R4（r9m1r4）**：证据 `checkpoints/p05/evidence/p05-s4r9/m1r4/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1R4/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1R4_REPORT.md`。
+- **S4 R9 M1R3（r9m1r3）**：物理事实有效，经 M1R4 核证（U323）；证据 `checkpoints/p05/evidence/p05-s4r9/m1r3/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1R3/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1R3_REPORT.md`。
 - **S4 R9 M1R2（r9m1r2）**：参考结果二（U318）；证据 `checkpoints/p05/evidence/p05-s4r9/m1r2/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1R2/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1R2_REPORT.md`。
-- **S4 R9 M2c（r9m2c）**：证据 `checkpoints/p05/evidence/p05-s4r9/m2c/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M2c/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2c_REPORT.md`。
 - 更早轮次证据与清单位置：详见各轮报告（`checkpoints/p05/P05_S4R*_REPORT*.md`）。完整台账：`RED_POINTS_LEDGER_R6c.tsv`；裁决总表：`registries/RULINGS.tsv`。

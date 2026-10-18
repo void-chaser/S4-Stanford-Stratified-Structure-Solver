@@ -3,8 +3,8 @@ file_path	mtime_utc	category	logged_status	safe_run_log_line	audit_notes
 checkpoints/p05/P05_S4R9_M1R3_REPORT.md	2026-10-18T04:47:10.637181+00:00	REPORT_OR_STATE	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
 checkpoints/p05/STATE.md	2026-10-18T04:34:03.635123+00:00	REPORT_OR_STATE	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
 checkpoints/p05/briefs/P05_S4R9_BRIEF_M1R3.md	2026-10-18T03:24:13.486036+00:00	REPORT_OR_STATE	LOGGED	1	Recorded in safe_run.log
-checkpoints/p05/registries/RULINGS.tsv	2026-10-18T03:44:43.043315+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
-checkpoints/p05/registries/s4r9/ERRATA_9.txt	2026-10-18T03:44:43.185690+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/RULINGS.tsv	2026-10-18T05:23:53.447869+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
+checkpoints/p05/registries/s4r9/ERRATA_9.txt	2026-10-18T05:23:53.585629+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
 checkpoints/p05/registries/s4r9/M1R3/AUDIT_R9M1R2_R9M1R3.tsv	2026-10-18T03:43:17.577853+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
 checkpoints/p05/registries/s4r9/M1R3/BARE_WRITE_AUDIT_R9M1R3.tsv	2026-10-18T03:43:20.412215+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
 checkpoints/p05/registries/s4r9/M1R3/ENGINE_COLUMNS_R9M1R3.txt	2026-10-18T04:03:51.166198+00:00	REGISTRY_OR_OTHER	UNLOGGED	无	Direct write outside safe_run.log (editor tool)
