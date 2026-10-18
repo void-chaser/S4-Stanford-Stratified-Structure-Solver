@@ -430,3 +430,15 @@ E9-77
 - 证据文件与行号：本任务书 §2 后两条；P05_S4R9_M3e_REPORT.md 附录 B。
 - 影响范围：仅记录 M3d 检查器与路径缺陷的修正方式，不改变 M3d 任何已提交产物。
 - 处理方式：只登记勘误，不重跑 M3d。
+
+E9-78
+- 事实：M3e end 门禁的 POST_I_CALL_COUNT_GATE_R9M3E_END 与 POST_I_CALL_COUNT_M3E_CHAIN_R9M3E_- 两项 FAIL 是检查器缺陷，不是事实 FAIL：gate_check_r9m3e.py 第 244 行把 mkc() 的返回元组当作可调用对象传入 safe()，safe() 内 fn() 抛 TypeError: 'tuple' object is not callable。根因是试跑期未实跑 end 门禁的 POST_I 块（m3e/shakedown/ 下无 end 门禁输出），POST_I 计数路径从未被执行。用脚本从 m3e/safe_run.log 只读复算：提交 (i) 之后 chain 6 次（第 59–64 行）、gate end 1 次（第 65 行）；GATE_R9M3E_end.txt 第 14 行 CALL_LINES_M3E_CHAIN_R9M3E_- 为空，与检查器在写 CALL_LINES 之前崩溃一致。
+- 证据文件与行号：checkpoints/p05/evidence/p05-s4r9/m3e/gate/GATE_R9M3E_end.txt 第 14 行、第 49–50 行；checkpoints/p05/evidence/p05-s4r9/m3e/safe_run.log 第 59–64 行（chain）、第 65 行（gate end）；testing/d003/stage_s4r9/gate_check_r9m3e.py 第 244 行；复算见 checkpoints/p05/evidence/p05-s5r1/ERRATA_RECHECK_S5R1.txt。
+- 影响范围：只影响 M3e end 门禁的两项 POST_I 调用计数结论；M3e 的提交产物与事实表不受影响。
+- 处理方式：只登记勘误；不重跑 M3e，不改 M3e 任何产物。修正方式见 P05-S5 R1 任务书第 2 节第 3 条（safe(name, fn, exp) 的 fn 必须是可调用对象）与 S5R1 试跑实跑 end 门禁 POST_I 块。
+
+E9-79
+- 事实：M3e 表一 3 次越界写入尝试（m3e/safe_run.log 第 1、2、3 行，均未落盘）的成因是 safe_run 接 bash -c 时外层 shell 先展开 $REPO/$EV，变量为空后目标变成 /checkpoints/... 与 /tmp。修正方式见 P05-S5 R1 任务书第 2 节第 1 条：safe_run 后直接接 python3 -c / python3 -I -B / sh 脚本，禁止 safe_run -- bash -c；脚本内部路径一律由 git rev-parse --show-toplevel 求得并断言允许前缀。
+- 证据文件与行号：checkpoints/p05/evidence/p05-s4r9/m3e/safe_run.log 第 1、2、3 行；P05_S4R9_M3e_REPORT.md 第 5.1 节表一。
+- 影响范围：只记录越界尝试的成因与修正方式；不改变 M3e 任何产物，/tmp 顶层保持 0 条目。
+- 处理方式：只登记勘误，不重跑 M3e。
