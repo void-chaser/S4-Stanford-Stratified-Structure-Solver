@@ -1,0 +1,11 @@
+?? checkpoints/p05/briefs/P05_S4R9_BRIEF_M1R3.md
+?? testing/d003/stage_s4r9/gate_allow_r9m1r3_end.txt
+?? testing/d003/stage_s4r9/gate_allow_r9m1r3_start.txt
+?? testing/d003/stage_s4r9/gate_check_r9m1r3.py
+?? testing/d003/stage_s4r9/gate_check_r9m1r3_v2.py
+?? testing/d003/stage_s4r9/gate_check_r9m1r3_v3.py
+?? testing/d003/stage_s4r9/gate_check_r9m1r3_v4.py
+?? testing/d003/stage_s4r9/gate_r9m1r3.sh
+?? testing/d003/stage_s4r9/gate_r9m1r3_v2.sh
+?? testing/d003/stage_s4r9/gate_r9m1r3_v3.sh
+?? testing/d003/stage_s4r9/gate_r9m1r3_v4.sh

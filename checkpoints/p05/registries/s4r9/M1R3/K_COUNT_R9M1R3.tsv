@@ -1,0 +1,28 @@
+# K_COUNT_R9M1R3.tsv -- Supplementary GDB hit count verification for 26 d003/d003plan groups (Rule U321)
+group_id	driver_family	clean_env	bp_symbol	k_max	f3_plain_hits	f3_kmap_hits	f4_plain_hits	f4_kmap_hits	status	details
+KGRP-M1-001	d003	FMM_MODE=closed1d;S4FMM_NG=9	__wrap__Z9S4_mallocm	2	1	1	1	1	PASS_EQUAL_HITS	F3: plain=1 kmap=1; F4: plain=1 kmap=1
+KGRP-M1-002	d003	FMM_MODE=closed2d;S4FMM_NG=9	__wrap__Z9S4_mallocm	2	1	1	1	1	PASS_EQUAL_HITS	F3: plain=1 kmap=1; F4: plain=1 kmap=1
+KGRP-M1-003	d003	FMM_MODE=experimental;S4FMM_NG=9	__wrap__Z9S4_mallocm	2	1	1	1	1	PASS_EQUAL_HITS	F3: plain=1 kmap=1; F4: plain=1 kmap=1
+KGRP-M1-004	d003	FMM_MODE=fft;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	16	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-005	d003	FMM_MODE=fft;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	16	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-006	d003	FMM_MODE=fft;S4FMM_NG=9	__wrap__Z9S4_mallocm	4	2	2	2	2	PASS_EQUAL_HITS	F3: plain=2 kmap=2; F4: plain=2 kmap=2
+KGRP-M1-007	d003	FMM_MODE=jones;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	4	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-008	d003	FMM_MODE=jones;S4FMM_NG=9	__wrap__Z9S4_mallocm	7	4	4	4	4	PASS_EQUAL_HITS	F3: plain=4 kmap=4; F4: plain=4 kmap=4
+KGRP-M1-009	d003	FMM_MODE=kottke;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	16	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-010	d003	FMM_MODE=kottke;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	16	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-011	d003	FMM_MODE=kottke;S4FMM_NG=9	__wrap__Z9S4_mallocm	2	1	1	1	1	PASS_EQUAL_HITS	F3: plain=1 kmap=1; F4: plain=1 kmap=1
+KGRP-M1-012	d003	FMM_MODE=nv;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	4	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-013	d003	FMM_MODE=nv;S4FMM_NG=9	__wrap__Z9S4_mallocm	7	4	4	4	4	PASS_EQUAL_HITS	F3: plain=4 kmap=4; F4: plain=4 kmap=4
+KGRP-M1-014	d003	FMM_MODE=vl;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	4	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-015	d003	FMM_MODE=vl;S4FMM_NG=9	__wrap__Z9S4_mallocm	7	4	4	4	4	PASS_EQUAL_HITS	F3: plain=4 kmap=4; F4: plain=4 kmap=4
+KGRP-M1-016	d003plan	FMM_MODE=fft;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	1	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-017	d003plan	FMM_MODE=fft;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	2	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-018	d003plan	FMM_MODE=jones;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	1	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-019	d003plan	FMM_MODE=jones;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	2	13	13	13	13	PASS_EQUAL_HITS	F3: plain=13 kmap=13; F4: plain=13 kmap=13
+KGRP-M1-020	d003plan	FMM_MODE=jones;S4FMM_NG=9	__wrap__Z9S4_mallocm	3	4	4	4	4	PASS_EQUAL_HITS	F3: plain=4 kmap=4; F4: plain=4 kmap=4
+KGRP-M1-021	d003plan	FMM_MODE=kottke;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	1	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-022	d003plan	FMM_MODE=kottke;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	2	17	17	17	17	PASS_EQUAL_HITS	F3: plain=17 kmap=17; F4: plain=17 kmap=17
+KGRP-M1-023	d003plan	FMM_MODE=nv;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	1	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-024	d003plan	FMM_MODE=nv;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	2	13	13	13	13	PASS_EQUAL_HITS	F3: plain=13 kmap=13; F4: plain=13 kmap=13
+KGRP-M1-025	d003plan	FMM_MODE=vl;S4FMM_NG=9	__wrap__Z13fft_plan_execP12tag_fft_plan	1	16	16	16	16	PASS_EQUAL_HITS	F3: plain=16 kmap=16; F4: plain=16 kmap=16
+KGRP-M1-026	d003plan	FMM_MODE=vl;S4FMM_NG=9	__wrap__Z15fft_plan_dft_2dPiPSt7complexIdES2_i	2	13	13	13	13	PASS_EQUAL_HITS	F3: plain=13 kmap=13; F4: plain=13 kmap=13

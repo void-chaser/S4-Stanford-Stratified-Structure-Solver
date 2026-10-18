@@ -1,0 +1,299 @@
+# RUNNER_DIFF_R9M1R3.txt -- Diff of gate runner scripts for r9m1r3 vs r9m1r2
+
+=== diff testing/d003/stage_s4r9/gate_r9m1r2.sh testing/d003/stage_s4r9/gate_r9m1r3_v5.sh ===
+--- testing/d003/stage_s4r9/gate_r9m1r2.sh
++++ testing/d003/stage_s4r9/gate_r9m1r3_v5.sh
+@@ -1,12 +1,12 @@
+-REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m1r2; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# gate_r9m1r2.sh -- P05-S4 R9 M1R2 gate script. New file.
+-# Baseline HEAD: 56b1e43fa4b4b88437d2c49543ee764f39d3ee28
+-# Evidence dir: checkpoints/p05/evidence/p05-s4r9/m1r2
+-# Usage: sh testing/d003/safe_run.sh p05-s4r9/m1r2 -- sh testing/d003/stage_s4r9/gate_r9m1r2.sh start
+-#        sh testing/d003/safe_run.sh p05-s4r9/m1r2 -- sh testing/d003/stage_s4r9/gate_r9m1r2.sh end
+-#        sh testing/d003/safe_run.sh p05-s4r9/m1r2 -- sh testing/d003/stage_s4r9/gate_r9m1r2.sh end _R2
++REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m1r3; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
++# gate_r9m1r3.sh -- P05-S4 R9 M1R3 gate script. New file.
++# Baseline HEAD: 16a789791f792f8814dc8896e03fb1b3f75c6294
++# Evidence dir: checkpoints/p05/evidence/p05-s4r9/m1r3
++# Usage: sh testing/d003/safe_run.sh p05-s4r9/m1r3 -- sh testing/d003/stage_s4r9/gate_r9m1r3.sh start
++#        sh testing/d003/safe_run.sh p05-s4r9/m1r3 -- sh testing/d003/stage_s4r9/gate_r9m1r3.sh end
++#        sh testing/d003/safe_run.sh p05-s4r9/m1r3 -- sh testing/d003/stage_s4r9/gate_r9m1r3.sh end _R2
+ set -u
+-refuse() { echo "gate_r9m1r2: REFUSED: $1" >&2; exit 2; }
++refuse() { echo "gate_r9m1r3: REFUSED: $1" >&2; exit 2; }
+ MODE=${1:-start}
+ case "$MODE" in
+     start|end) ;;
+@@ -16,12 +16,12 @@
+ TAG=${2:-}
+ if [ -n "$TAG" ]; then
+     case "$TAG" in
+-        _*) OUTNAME="GATE_R9M1R2_${MODE}${TAG}.txt" ;;
++        _*) OUTNAME="GATE_R9M1R3_${MODE}${TAG}.txt" ;;
+         GATE_*) OUTNAME="$TAG" ;;
+-        *) OUTNAME="GATE_R9M1R2_${MODE}_${TAG}.txt" ;;
++        *) OUTNAME="GATE_R9M1R3_${MODE}_${TAG}.txt" ;;
+     esac
+ else
+-    OUTNAME="GATE_R9M1R2_${MODE}.txt"
++    OUTNAME="GATE_R9M1R3_${MODE}.txt"
+ fi
+ 
+ if [ -n "${3:-}" ]; then
+@@ -33,9 +33,9 @@
+ OUT="$EV/$OUTNAME"
+ test ! -e "$OUT" || refuse "exists: $OUTNAME"
+ 
+-ALLOW_START="$REPO/testing/d003/stage_s4r9/gate_allow_r9m1r2_start.txt"
+-ALLOW_END="$REPO/testing/d003/stage_s4r9/gate_allow_r9m1r2_end.txt"
+-STARTF="$REPO/checkpoints/p05/evidence/p05-s4r9/m1r2/GATE_R9M1R2_start.txt"
++ALLOW_START="$REPO/testing/d003/stage_s4r9/gate_allow_r9m1r3_start.txt"
++ALLOW_END="$REPO/testing/d003/stage_s4r9/gate_allow_r9m1r3_end.txt"
++STARTF="$REPO/checkpoints/p05/evidence/p05-s4r9/m1r3/GATE_R9M1R3_start.txt"
+ 
+ test -f "$ALLOW_START" || refuse "allow list (start) missing"
+ test -f "$ALLOW_END" || refuse "allow list (end) missing"
+@@ -43,8 +43,8 @@
+ if [ "$MODE" = end ]; then
+     test -f "$STARTF" || refuse "start file missing: $STARTF"
+     case "$(head -n 1 "$STARTF")" in
+-        *"gate_r9m1r2 (start) ->"*) ;;
+-        *) refuse "start file header is not a gate_r9m1r2 start" ;;
++        *"gate_r9m1r3 (start) ->"*) ;;
++        *) refuse "start file header is not a gate_r9m1r3 start" ;;
+     esac
+     [ "$(tail -n 1 "$STARTF")" = "FAILS=0" ] || refuse "start file last line is not FAILS=0"
+ fi
+@@ -67,7 +67,7 @@
+ TS=$(cut -f2 "$TMP_SNAP")
+ 
+ : > "$OUT"
+-printf '# P05-S4 R9 gate_r9m1r2 (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
++printf '# P05-S4 R9 gate_r9m1r3 (%s) -> %s, utc=%s\n' "$MODE" "$OUTNAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUT"
+ 
+ check() {
+     _e=$(printf '%s' "$2" | tr '\n' ';')
+@@ -83,7 +83,7 @@
+     awk -F'\t' -v k="$2" '$1=="RECORD" && $2==k {sub(/^value=/, "", $3); print $3}' "$1" | head -n 1
+ }
+ 
+-BASE=56b1e43fa4b4b88437d2c49543ee764f39d3ee28
++BASE=16a789791f792f8814dc8896e03fb1b3f75c6294
+ HEAD_NOW=$(git rev-parse HEAD)
+ check BRANCH codex/p05-d003-fft-error-propagation "$(git branch --show-current)"
+ if [ "$MODE" = start ]; then
+@@ -102,7 +102,7 @@
+ 
+ case "$MODE" in
+     start)
+-        check ALLOW_START_LINES 5 "$(wc -l < "$ALLOW_START" | tr -d ' ')"
++        check ALLOW_START_LINES 11 "$(wc -l < "$ALLOW_START" | tr -d ' ')"
+         check TRACKED_TESTING_D003_WORKTREE_NONE "" "$(git diff --name-only HEAD -- testing/d003)" ;;
+     end)
+         check ALLOW_START_SHA256_EQ_START "$(recval "$STARTF" ALLOW_START_SHA256)" "$(sha256sum "$ALLOW_START" | cut -d' ' -f1)"
+@@ -130,7 +130,7 @@
+ esac
+ 
+ # ---- Detailed python checks ----
+-python3 -I -B "$REPO/testing/d003/stage_s4r9/gate_check_r9m1r2.py" "$MODE" "$STARTF" "$EV" > "$PY_OUT"
++python3 -I -B "$REPO/testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py" "$MODE" "$STARTF" "$EV" > "$PY_OUT"
+ PY_FAILS=$?
+ cat "$PY_OUT" >> "$OUT"
+ if [ "$PY_FAILS" -ne 0 ]; then
+@@ -162,14 +162,14 @@
+ TAB=$(printf '\t')
+ ACTUAL_FAIL_LINES=$(grep -c "^FAIL${TAB}" "$OUT" || true)
+ if [ "$ACTUAL_FAIL_LINES" -ne "$FAILS" ]; then
+-    echo "gate_r9m1r2: INTERNAL ERROR: ACTUAL_FAIL_LINES ($ACTUAL_FAIL_LINES) != FAILS ($FAILS)" >&2
++    echo "gate_r9m1r3: INTERNAL ERROR: ACTUAL_FAIL_LINES ($ACTUAL_FAIL_LINES) != FAILS ($FAILS)" >&2
+     FAILS=$ACTUAL_FAIL_LINES
+ fi
+ printf 'FAILS=%s\n' "$FAILS" >> "$OUT"
+ 
+ if [ "$FAILS" -ne 0 ] || [ "$ACTUAL_FAIL_LINES" -ne 0 ]; then
+-    echo "gate_r9m1r2: $MODE FAILED: FAILS=$FAILS, fail_lines=$ACTUAL_FAIL_LINES -> $OUT" >&2
++    echo "gate_r9m1r3: $MODE FAILED: FAILS=$FAILS, fail_lines=$ACTUAL_FAIL_LINES -> $OUT" >&2
+     exit "$FAILS"
+ fi
+-echo "gate_r9m1r2: $MODE PASS: FAILS=0, fail_lines=0 -> $OUT"
++echo "gate_r9m1r3: $MODE PASS: FAILS=0, fail_lines=0 -> $OUT"
+ exit 0
+
+=== diff testing/d003/stage_s4r9/gate_check_r9m1r2.py testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py ===
+--- testing/d003/stage_s4r9/gate_check_r9m1r2.py
++++ testing/d003/stage_s4r9/gate_check_r9m1r3_v5.py
+@@ -1,27 +1,27 @@
+ #!/usr/bin/env python3
+ # REPO=$(git rev-parse --show-toplevel); EV=$REPO/checkpoints/p05/evidence/p05-s4r9/m1r2; mkdir -p "$EV/tmp"; export TMPDIR="$EV/tmp"
+-# gate_check_r9m1r2.py -- P05-S4 R9 M1R2 gate helper. New file.
+-# Baseline HEAD: 56b1e43fa4b4b88437d2c49543ee764f39d3ee28
++# gate_check_r9m1r3.py -- P05-S4 R9 M1R2 gate helper. New file.
++# Baseline HEAD: 16a789791f792f8814dc8896e03fb1b3f75c6294
+ import hashlib, os, subprocess, sys
+ 
+ REPO = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+ 
+-EXPECTED_BASE = "56b1e43fa4b4b88437d2c49543ee764f39d3ee28"
++EXPECTED_BASE = "16a789791f792f8814dc8896e03fb1b3f75c6294"
+ EXPECTED_JUDGE_SHA = "d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb"
+ EXPECTED_S4_TREE_F4 = "589e15eb11fcb04e031b524f25a443e7921946cf"
+ EXPECTED_S4_TREE_F3 = "6cff923a02baf19e01966b2339755cbf3a5deeef"
+ EXPECTED_F2_TREE = "e124925f5b242486a913b813fa181664f665b048"
+ EXPECTED_B_TREE = "1d738e64f9864a475fdb3de34cd3601605df2c64"
+ 
+-EXPECTED_STATE_BYTES = 7876
+-EXPECTED_STATE_SHA = "fddfbab890876ef129693bc1911f40801635c0811d4a8cdb777b01374e32af69"
+-EXPECTED_RULINGS_BYTES = 127551
+-EXPECTED_RULINGS_SHA = "177d142095a2dc91a9787fc6bfc2ed5e83174b30f9e70c059622c8f221b98cba"
++EXPECTED_STATE_BYTES = 8056
++EXPECTED_STATE_SHA = "27ae5a33dbf4ebeecde0f92dbf4f989b56f772220d390e3ea9888f24b799651d"
++EXPECTED_RULINGS_BYTES = 130798
++EXPECTED_RULINGS_SHA = "84d3871c2dabdc609c365b09ae58a4b7fb40a10a8ec450af77ede20ec64b5729"
+ 
+ EXPECTED_ERRATA_S3R5_BYTES = 1712
+ EXPECTED_ERRATA_S3R5_SHA = "a23ff03cd260548ae74205ca27c94d47a8a677d9c47bacfc5be6f5dec3077349"
+-EXPECTED_ERRATA_9_BYTES = 13893
+-EXPECTED_ERRATA_9_SHA = "e7e93590bec5a0340ed28859b0f292b8d21f1adfbd6502ef61ff741785052f12"
++EXPECTED_ERRATA_9_BYTES = 19322
++EXPECTED_ERRATA_9_SHA = "0e416f01a52f652a80dd4b34abea9ea7264459dece0297149025a94253a0a745"
+ 
+ HIST_RUNNERS = [
+     "testing/d003/stage_s4/run_r6c_state.py",
+@@ -38,6 +38,7 @@
+ M2B_DIR = os.path.join("checkpoints", "p05", "registries", "s4r9", "M2b")
+ M2C_DIR = os.path.join("checkpoints", "p05", "registries", "s4r9", "M2c")
+ M1_DIR = os.path.join("checkpoints", "p05", "registries", "s4r9", "M1")
++M1R2_DIR = os.path.join("checkpoints", "p05", "registries", "s4r9", "M1R2")
+ 
+ KNOWN_PYC = [
+     "testing/d003/__pycache__/judge_d003.cpython-314.pyc",
+@@ -136,7 +137,7 @@
+ 
+ def run_checks(mode, start_file=None, ev_dir=None):
+     if not ev_dir:
+-        ev_dir = os.environ.get("EV", os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r9", "m1r2"))
++        ev_dir = os.environ.get("EV", os.path.join(REPO, "checkpoints", "p05", "evidence", "p05-s4r9", "m1r3"))
+     baseline_tsv = os.path.join(ev_dir, "STRAY_BASELINE_R9M1R2.tsv")
+ 
+     results = []
+@@ -196,6 +197,9 @@
+ 
+     ok_m1, detail_m1 = verify_sums_dir(os.path.join(REPO, M1_DIR), 28)
+     check("M1_SUMS_28_ALL_OK", ok_m1, "all 28 OK", detail_m1)
++
++    ok_m1r2, detail_m1r2 = verify_sums_dir(os.path.join(REPO, M1R2_DIR), 33)
++    check("M1R2_SUMS_33_ALL_OK", ok_m1r2, "all 33 OK", detail_m1r2)
+ 
+     # 6. STATE.md size and sha256 at start
+     state_path = os.path.join(REPO, "checkpoints", "p05", "STATE.md")
+@@ -278,6 +282,9 @@
+         # End gate check: checkpoints/p05/registries/s4r9/M1/ all files identical to 56b1e43
+         diff_m1 = subprocess.check_output(["git", "diff", EXPECTED_BASE, "--", "checkpoints/p05/registries/s4r9/M1"], cwd=REPO, text=True).strip()
+         check("M1_REGISTRIES_ALL_IDENTICAL_TO_BASE", diff_m1 == "", "no diff against base", "diff: %s" % diff_m1 if diff_m1 else "identical")
++
++        diff_m1r2 = subprocess.check_output(["git", "diff", EXPECTED_BASE, "--", "checkpoints/p05/registries/s4r9/M1R2"], cwd=REPO, text=True).strip()
++        check("M1R2_REGISTRIES_ALL_IDENTICAL_TO_BASE", diff_m1r2 == "", "no diff against base", "diff: %s" % diff_m1r2 if diff_m1r2 else "identical")
+ 
+         # End gate check: §1-10 frozen files sha assertion
+         frozen_tsv_path = os.path.join(ev_dir, "FROZEN_SCRIPTS_R9M1R2.tsv")
+@@ -308,7 +315,7 @@
+             check("FROZEN_SCRIPTS_TSV_EXISTS", False, "present", "missing")
+ 
+         # End gate check: allow files have NO " M " wildcard items
+-        allow_end_path = os.path.join(REPO, "testing", "d003", "stage_s4r9", "gate_allow_r9m1r2_end.txt")
++        allow_end_path = os.path.join(REPO, "testing", "d003", "stage_s4r9", "gate_allow_r9m1r3_end.txt")
+         has_m_wildcard = False
+         bad_m_lines = []
+         if os.path.isfile(allow_end_path):
+@@ -320,6 +327,90 @@
+                             has_m_wildcard = True
+                             bad_m_lines.append(aline)
+         check("ALLOW_END_NO_M_WILDCARD", not has_m_wildcard, True, "bad: " + str(bad_m_lines) if has_m_wildcard else "clean")
++
++        # End gate check: Commit (i) and safe_run.log calls in frozen period
++        import re, datetime
++        commit_i = subprocess.check_output(["git", "log", "--grep=R9 M1R3 (i)", "-1", "--format=%H"], cwd=REPO, text=True).strip()
++        check("COMMIT_I_PRESENT", bool(commit_i), "commit (i) found", commit_i if commit_i else "missing")
++
++        if commit_i:
++            commit_i_epoch = int(subprocess.check_output(["git", "log", "-1", "--format=%ct", commit_i], cwd=REPO, text=True).strip())
++            log_path = os.path.join(ev_dir, "safe_run.log")
++            log_entries = []
++            if os.path.isfile(log_path):
++                with open(log_path, "r", encoding="utf-8") as lf:
++                    for line_idx, line in enumerate(lf, 1):
++                        line = line.strip()
++                        if not line:
++                            continue
++                        parts = line.split("\t")
++                        if len(parts) >= 4:
++                            ts_str = parts[0]
++                            cmd_str = parts[3]
++                            try:
++                                dt = datetime.datetime.strptime(ts_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
++                                epoch = int(dt.timestamp())
++                            except Exception:
++                                epoch = 0
++                            log_entries.append((line_idx, ts_str, epoch, cmd_str))
++
++            post_i_entries = [e for e in log_entries if e[2] >= commit_i_epoch]
++
++            target_scripts = {
++                "posctrl": "posctrl_r9m1r3_v2.py",
++                "smoke": "run_smoke_r9m1r3_v3.py",
++                "formal": "run_formal_r9m1r3_v2.py",
++                "verdict": "verdict_r9m1r3.py",
++                "compare": "compare_f3_f4_r9m1r3.py",
++            }
++            call_counts = {k: 0 for k in target_scripts}
++            testing_d003_writes = []
++            unfrozen_stage_calls = []
++
++            for l_idx, l_ts, l_epoch, l_cmd in post_i_entries:
++                for key, s_name in target_scripts.items():
++                    if re.search(r"\b" + re.escape(s_name) + r"\b", l_cmd):
++                        if not any(prefix in l_cmd for prefix in ("diff ", "git diff", "grep ", "cat ")):
++                            call_counts[key] += 1
++
++                if "open('testing/d003/" in l_cmd or 'open("testing/d003/' in l_cmd:
++                    testing_d003_writes.append((l_idx, l_cmd))
++                if re.search(r">\s*testing/d003/", l_cmd):
++                    testing_d003_writes.append((l_idx, l_cmd))
++
++                stage_matches = re.findall(r"(?:testing/d003/stage_s4r9/[A-Za-z0-9_.-]+)", l_cmd)
++                for sm in stage_matches:
++                    if sm.endswith(".py") or sm.endswith(".sh"):
++                        if sm not in frozen_map:
++                            unfrozen_stage_calls.append((l_idx, sm))
++
++            for key in ["posctrl", "smoke", "formal", "verdict", "compare"]:
++                check("POST_I_CALL_COUNT_" + key.upper() + "_EQ_1", call_counts[key] == 1, 1, call_counts[key])
++
++            check("POST_I_NO_TESTING_D003_WRITES", len(testing_d003_writes) == 0, 0, len(testing_d003_writes))
++            check("POST_I_STAGE_SCRIPTS_ALL_FROZEN", len(unfrozen_stage_calls) == 0, "all frozen", str(unfrozen_stage_calls) if unfrozen_stage_calls else "all frozen")
++
++        # End gate check: events covers all safe_run lines before gate
++        events_tsv_path = os.path.join(ev_dir, "EVENTS_R9M1R3.tsv")
++        if not os.path.isfile(events_tsv_path):
++            events_tsv_path = os.path.join(REPO, "checkpoints", "p05", "registries", "s4r9", "M1R3", "EVENTS_R9M1R3.tsv")
++        if os.path.isfile(events_tsv_path):
++            with open(events_tsv_path, encoding="utf-8") as ef:
++                events_lines = [l for l in ef if l.strip() and not l.startswith("#") and not l.startswith("log_line\t")]
++            log_path = os.path.join(ev_dir, "safe_run.log")
++            safe_log_count = len(open(log_path, encoding="utf-8").read().splitlines()) if os.path.isfile(log_path) else 0
++            check("EVENTS_COVERS_ALL_LOGS_BEFORE_GATE", len(events_lines) == safe_log_count - 1, safe_log_count - 1, len(events_lines))
++        else:
++            check("EVENTS_TSV_EXISTS", False, "present", "missing")
++
++        # End gate check: evidence SHA256SUMS.txt
++        ev_sums_path = os.path.join(ev_dir, "SHA256SUMS.txt")
++        if os.path.isfile(ev_sums_path):
++            sums_proc = subprocess.run(["sha256sum", "-c", "SHA256SUMS.txt"], cwd=ev_dir, capture_output=True, text=True)
++            check("EVIDENCE_SHA256SUMS_ALL_OK", sums_proc.returncode == 0, 0, sums_proc.returncode)
++        else:
++            check("EVIDENCE_SHA256SUMS_EXISTS", False, "present", "missing")
++
+ 
+     # 8. Baseline stray build products
+     if mode == "start":
+
