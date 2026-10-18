@@ -1,0 +1,7 @@
+# POSCTRL_M1_R9M1R2.txt -- Positive control test report for P05-S4 R9 M1R2 (Rule U316)
+
+Case 1: F3 frozen facts comparison -> DIFFS = 0 (expected 0) -> PASS
+Case 2: Tampered replica -> MISMATCH count = 3 (expected exactly 3) -> PASS
+Case 3: Old prereg vs formal facts -> detected 22 G2b MISMATCH rows (expected 22) -> PASS
+
+OVERALL: PASS

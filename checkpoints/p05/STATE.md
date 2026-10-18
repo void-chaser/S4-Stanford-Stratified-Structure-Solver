@@ -8,12 +8,12 @@
 |---|---|
 | 分支 | `codex/p05-d003-fft-error-propagation` |
 | 开工基线 HEAD（P05-S4 R8 M0 开工） | `3ab56801e697910bdff9fbe6056807c2e41841b5`（S3R4 续5 收尾；R8 M0 记录提交 `2875c55`） |
-| 本轮开工基线 HEAD（r9m1） | `3bb60723b3b23e313fd51d5a54f2258c98ac07eb`（r9m2c 收尾提交） |
+| 本轮开工基线 HEAD（r9m1r2） | `56b1e43fa4b4b88437d2c49543ee764f39d3ee28`（r9m1 收尾提交；记录提交 (i) `a413db0`） |
 | 收尾提交查询 | 修改本文件的最后一次提交（`git log -1 --format=%H -- checkpoints/p05/STATE.md`） |
 | `HEAD:S4`（当前冻结被测树 F4） | `589e15eb11fcb04e031b524f25a443e7921946cf`（F4 提交 `05097a7`；前一树 F3 `6cff923…`；F2 `e124925…`；F `4a6f649…`） |
 | 判定器 sha256 | `d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb` |
 | 阶段签收 | S1、S2 已签收（带范围声明，`P05_S1_S2_SIGNOFF.md`）；S3、S4、S5 未签收 |
-| 当前轮次 | **P05-S4 R9 M1（r9m1）完成，待用户审核**：在 F4 树上重跑 M1 的 F3 侧行（651 行），引用 F2 侧冻结行（651 行），合并总表 1302 行全闭环（MATCH 1252、NOT_REACHED_AS_EXPECTED 44、NOT_RUN_AS_EXPECTED 6、MISMATCH 0、FLAKY 0）。装置补齐 7 驱动与 2 库（BUILD_OPTION_DIFF 0 项），无注入对照 82/82 PASS；K 继承 53 组 0 DIVERGENT（18 PASS，35 NO_SEQ 采信 HIT 行等价）；S3R5 影响清单 0 行；阳性对照 DIFFS=0 / DIFFS=2 通过；冒烟 23 点全 MATCH；正式两遍有效 651 点全 MATCH；F3/F4 事实等价比对 651 行 DIFFS=0。下一步为 M3 阶段收口（make test、Python/Lua E2E）。不宣布阶段完成，不询问是否签收。 |
+| 当前轮次 | **P05-S4 R9 M1R2（r9m1r2）完成，待用户审核**：纠正 r9m1 流程偏差（E9-14..20，U312–U317）；K 继承重做 53 组全 PASS（0 DIVERGENT，0 NO_SEQ）；F4 预注册与口径重新冻结（651 行，U313/U314）；阳性对照 PASS（3 处篡改检出）；单次调用正式两遍 651 点全 MATCH（0 FLAKY / 0 GDB_DIV）；F3/F4 事实等价 651 行 0 DIFFS；M1 总表 1302 行闭环（MATCH 1252，NOT_REACHED 44，NOT_RUN 6）。下一步为 M3 阶段收口（make test、Python/Lua E2E）。不宣布阶段完成，不询问是否签收。 |
 
 ## 2. 关键数字（每轮一行）
 
@@ -29,7 +29,8 @@
 | S4R9 M0+M2 | F4 装置 16 驱动+7 库（0 diff）；无注入对照 146/146 PASS；K 继承 73 组全 PASS；正式两遍 191/191 MATCH；总表 259 行（有效 202 全 MATCH） | `P05_S4R9_M2_REPORT.md` |
 | S4R9 M2b | R9 勘误 E9-1..6（U299）；HIT 行等价 173/173；K 重做 73 组（54 PASS，9 CITED，10 NO_SEQ，0 DIV）；SOLN 补判 18/18 MATCH；事件总表 62 项（m0 27、m2 11、reflog 1、m2b 23，更正见 M2c） | `P05_S4R9_M2b_REPORT.md` |
 | S4R9 M2c | M2b 流程纠正（E9-7..13，U302–U305）；RULINGS 截断披露；全仓门禁扫描 90 份；KGRP-071 更正（4 vs 4）；HIT 切分（178 空，168 非空一致）；U303 替代证据 10/10 OK；RP-R8-M2c-1/1b 关闭（U304） | `P05_S4R9_M2c_REPORT.md` |
-| S4R9 M1 | F4 重跑 651 行全 MATCH；F3/F4 事实等价比对 651 行 0 DIFFS；M1 总表 1302 行全闭环（MATCH 1252，NOT_REACHED 44，NOT_RUN 6） | `P05_S4R9_M1_REPORT.md` |
+| S4R9 M1 | 参考结果，有效结果见 M1R2（U312）；F4 重跑 651 行全 MATCH；F3/F4 事实等价比对 651 行 0 DIFFS；M1 总表 1302 行（MATCH 1252，NOT_REACHED 44，NOT_RUN 6） | `P05_S4R9_M1_REPORT.md` |
+| S4R9 M1R2 | r9m1 流程纠正（E9-14..20，U312–U317）；K 重做 53 组全 PASS；正式两遍有效 651 点全 MATCH；F3/F4 等价 651 行 0 DIFFS；总表 1302 行 | `P05_S4R9_M1R2_REPORT.md` |
 
 ## 3. 开放问题（状态 · 去向 · 详情链接；完整台账见 RED_POINTS_LEDGER_R6c）
 
@@ -54,12 +55,12 @@
 | U2 中 stage e（I1 特殊规则） | M2-02 NOT_FOUND_IN_SCOPE 裁决在 S4 不出点，转 S5（U248） | 转 S5（U248） | `STAGE_E_SEARCH_R8_M2a2_R2.tsv` |
 | r8m2c/d SOLN 18/28 点分诊与更正 | U276-U282 裁决落实；S3R5 修复完成，R9 F4 验证 18 点全 MATCH | 已闭合（U276-U282） | `M2_CONSOLIDATED_F4_R9.tsv` |
 
-> 开放项说明：本轮完成 R9 M1（在 F4 树上重跑 M1 651 行并与 F3 冻结事实等价比对，总表 1302 行全闭环）；下一步计划为推进至 M3 阶段收口（make test、Python/Lua E2E 验证），随后向用户提示阶段收口签收。不宣布阶段完成，不询问是否签收。
+> 开放项说明：本轮完成 R9 M1R2（纠正 r9m1 流程偏差，重做 K 继承 53 组全 PASS，F4 正式两遍 651 点全 MATCH，F3/F4 事实等价比对 651 行 0 DIFFS，总表 1302 行全闭合）；下一步计划为推进至 M3 阶段收口（make test、Python/Lua E2E 验证），随后向用户提示阶段收口签收。不宣布阶段完成，不询问是否签收。
 
 ## 4. 证据位置
 
 只列最近三轮证据与清单位置，其余指向各轮报告：
-- **S4 R9 M1（r9m1）**：证据 `checkpoints/p05/evidence/p05-s4r9/m1/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1_REPORT.md`。
+- **S4 R9 M1R2（r9m1r2）**：证据 `checkpoints/p05/evidence/p05-s4r9/m1r2/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M1R2/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M1R2_REPORT.md`。
+- **S4 R9 M1（r9m1）**：参考结果（U312）；证据 `checkpoints/p05/evidence/p05-s4r9/m1/`；小表与清单 `checkpoints/p05/registries/s4r9/M1/`；报告 `P05_S4R9_M1_REPORT.md`。
 - **S4 R9 M2c（r9m2c）**：证据 `checkpoints/p05/evidence/p05-s4r9/m2c/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M2c/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2c_REPORT.md`。
-- **S4 R9 M2b（r9m2b）**：证据 `checkpoints/p05/evidence/p05-s4r9/m2b/`（`SHA256SUMS.txt`）；小表与清单 `checkpoints/p05/registries/s4r9/M2b/`（`SHA256SUMS.txt`）；报告 `P05_S4R9_M2b_REPORT.md`。
 - 更早轮次证据与清单位置：详见各轮报告（`checkpoints/p05/P05_S4R*_REPORT*.md`）。完整台账：`RED_POINTS_LEDGER_R6c.tsv`；裁决总表：`registries/RULINGS.tsv`。
