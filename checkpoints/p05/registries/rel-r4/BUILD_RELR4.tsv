@@ -1,0 +1,11 @@
+# BUILD_RELR4.tsv -- P05 delivery round REL-R4 Lua frontend builds
+# Every tree was built with its own Makefile and the same command, compiler, LAPACK and Lua 5.2.
+# U additionally got the environment variable CFLAGS=-Wno-error=int-conversion (ruling U401);
+# no source file and no Makefile was modified.
+tree	step	clone_dir	command	env_extra	rc	status	log	log_sha256	artifact	artifact_sha256	note
+U	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/upstream/S4	make -j16 build/S4	CFLAGS=-Wno-error=int-conversion	0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/U_lua_frontend.log	340e3c1eaa668ffc7f3ab29965e0efe9f5e1a6d150e149c82e8d7b322d91cd71	build/S4	a724441ae1453cebb62d7b6f6b456258e65eb6ada0b6a47e1db8d770e6605d5e	
+U	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/upstream/S4	make -j16 build/S4	CFLAGS=-Wno-error=int-conversion	0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/U_lua_frontend.log	340e3c1eaa668ffc7f3ab29965e0efe9f5e1a6d150e149c82e8d7b322d91cd71	build/libS4.a	c4d78e0813eed36b0432f3982121f631ee43b53a113860c5dbf9c2f3517e064a	
+B	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/trees/B	make -j16 build/S4		0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/B_lua_frontend.log	1e9274b65b9ed75d87e7db26bfa0d01169517072d8da06f24bc2cba2e37e911f	build/S4	9b05692e7b340d3009e7411f1a5c220245ba85bdd0f7a2af77c3b1798a62e983	
+B	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/trees/B	make -j16 build/S4		0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/B_lua_frontend.log	1e9274b65b9ed75d87e7db26bfa0d01169517072d8da06f24bc2cba2e37e911f	build/libS4.a	fb9ac3f5fd2c121619bb6cd464816f97a3085c8e4a2795a2b5037b370110ffba	
+F4	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/trees/F4	make -j16 build/S4		0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/F4_lua_frontend.log	339e8e2e4ee3511ed7ce8afcb80af9cd5c504ff8d89655362e23eb703e1223b9	build/S4	fb375c726101ae2d935e929fece54b1867aa0435b24e9fe92bdeda77314396f2	
+F4	lua_frontend	checkpoints/p05/evidence/p05-rel-r4/trees/F4	make -j16 build/S4		0	OK	checkpoints/p05/evidence/p05-rel-r4/build_logs/F4_lua_frontend.log	339e8e2e4ee3511ed7ce8afcb80af9cd5c504ff8d89655362e23eb703e1223b9	build/libS4.a	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d	

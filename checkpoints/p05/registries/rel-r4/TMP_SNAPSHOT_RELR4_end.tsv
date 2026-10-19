@@ -1,0 +1,7 @@
+# TMP_SNAPSHOT_RELR4_end.tsv -- top-level temporary-directory snapshot (end) of P05 delivery round REL-R4
+# read only; count = number of top-level entries; sha256 = sha256 of newline-joined Python-sorted names
+# calibration identical to s5r7_tmpsnap.py / relr2_tmpsnap.py
+key	value
+LABEL	end
+TMP_COUNT	0
+TMP_SHA256	01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b

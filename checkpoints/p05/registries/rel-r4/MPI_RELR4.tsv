@@ -1,0 +1,29 @@
+# MPI_RELR4.tsv -- T3 MPI comparisons (task brief section 5.4.5)
+# a. merged out0..3 of -np 4 vs out0.txt of -np 1 and vs the T1 non-MPI out0.txt, compared on
+#    frequencies that are the SAME IEEE double (the Lua numeric for loops accumulate differently per
+#    rank, so most rank frequencies differ from the single-process grid in the last bits; frequency
+#    coverage is recorded, not judged - see ERRATA ER4-2).
+# b. B vs F4 same-named output files must be byte-identical.  c. U vs F4 categorised per section 4.
+# d. README's ../1d/binary_grating.txt is absent; recorded, not judged.
+unit_id	comparison	example	tree_or_pair	np	pass	result	detail	matched	only_merged	only_reference	max_rel_diff
+T3CMP_MPI_example__binary_grating_mpi_U_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/binary_grating_mpi.lua	U	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_U_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/binary_grating_mpi.lua	U	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_B_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/binary_grating_mpi.lua	B	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_B_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/binary_grating_mpi.lua	B	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_F4_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/binary_grating_mpi.lua	F4	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_F4_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/binary_grating_mpi.lua	F4	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_B_vs_F4_np1	byte_identical	examples/MPI_example/binary_grating_mpi.lua	B_vs_F4	1	1	SAME	all same-named files identical	1			
+T3CMP_MPI_example__binary_grating_mpi_B_vs_F4_np4	byte_identical	examples/MPI_example/binary_grating_mpi.lua	B_vs_F4	4	1	SAME	all same-named files identical	4			
+T3CMP_MPI_example__binary_grating_mpi_U_vs_F4_np1	u_vs_f4	examples/MPI_example/binary_grating_mpi.lua	U_vs_F4	1	1	SAME	all -np 1 output files byte-identical	90			0.000000e+00
+T3CMP_MPI_example__binary_grating_mpi_U_vs_F4_np4	u_vs_f4	examples/MPI_example/binary_grating_mpi.lua	U_vs_F4	4	1	SAME	all -np 4 output files byte-identical	92			0.000000e+00
+T3CMP_MPI_example__mpi_simple_U_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/mpi_simple.lua	U	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_U_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/mpi_simple.lua	U	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_B_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/mpi_simple.lua	B	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_B_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/mpi_simple.lua	B	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_F4_np4_merged_vs_np1	np4_merged_vs_np1	examples/MPI_example/mpi_simple.lua	F4	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_F4_np4_merged_vs_t1	np4_merged_vs_t1	examples/MPI_example/mpi_simple.lua	F4	4	1	PASS	identical-double matched=23 max_rel=0.000e+00; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12	23	69	67	0.000000e+00
+T3CMP_MPI_example__mpi_simple_B_vs_F4_np1	byte_identical	examples/MPI_example/mpi_simple.lua	B_vs_F4	1	1	SAME	all same-named files identical	1			
+T3CMP_MPI_example__mpi_simple_B_vs_F4_np4	byte_identical	examples/MPI_example/mpi_simple.lua	B_vs_F4	4	1	SAME	all same-named files identical	4			
+T3CMP_MPI_example__mpi_simple_U_vs_F4_np1	u_vs_f4	examples/MPI_example/mpi_simple.lua	U_vs_F4	1	1	SAME	all -np 1 output files byte-identical	90			0.000000e+00
+T3CMP_MPI_example__mpi_simple_U_vs_F4_np4	u_vs_f4	examples/MPI_example/mpi_simple.lua	U_vs_F4	4	1	SAME	all -np 4 output files byte-identical	92			0.000000e+00
+T3_RECORD_MISSING_1D_REFERENCE	record_only	examples/MPI_example README	ALL			RECORD_ONLY	examples/1d/binary_grating.txt: U=absent; B=absent; F4=absent				

@@ -1,0 +1,16 @@
+# ATTRIB_RELR4.tsv -- section 5.3 attribution of the REL-R4 DIFF_ATTRIBUTED units
+# M = b97f639 (original + Lua/Python frontend fixes; no P04/D001/D002 adoption).
+# M2 = 963ccf1 (first S4/ change after M), M3 = 5cf534c (adopts D001/D002 fixes from 44f4a09).
+# u_vs_m / m_vs_b / b_vs_f4 are the same section-4 categories computed by the verdict engine.
+unit_id	suite	u_vs_m	m_vs_m2	m2_vs_m3	m3_vs_b	b_vs_f4	source	detail	reference_comparison
+M_TREE_FACTS	build						M=b97f63989c4d8192faee119e4dbcb70ef4a27219	HEAD=b97f63989c4d8192faee119e4dbcb70ef4a27219 S4=9a2948b7ef379a712172642a6e87e01a046416e7 build/S4=a792620924da2169affee1fa90782e4ec244ec72d3ce007372c5b66d510600b8 clone_clean=yes	
+M2_TREE	build				M2 = 963ccf1	built for commit-level attribution			
+M3_TREE	build				M3 = 5cf534c	built for commit-level attribution			
+T1CMP_0d__Antonoyiannakis_PRB_60_1999__fig3_4_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12	
+T1CMP_0d__fabry_perot__fresnel_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12	
+T1CMP_0d__fabry_perot__tir_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12	
+T1CMP_0d__fabry_perot__tir_field_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.999e+00 > 1e-12	
+T1CMP_magneto__halfspace_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12	
+T1CMP_simple__simple_U_vs_F4	T1	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12	
+T2CMP_simple_U_vs_F4	T2	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12 | vs reference: U relmax=1.000000e+00; M relmax=1.000000e+00; M2 relmax=0.000000e+00; M3 relmax=0.000000e+00; B relmax=0.000000e+00; F4 relmax=0.000000e+00	
+T2CMP_fresnel_U_vs_F4	T2	SAME	DIFF_ATTRIBUTED	SAME	SAME	SAME	M->M2: commit 963ccf1 (first S4/ change after M; P04 core/API consolidation checkpoint)	U vs F4: stdout relmax=1.000e+00 > 1e-12 | vs reference: U relmax=1.000000e+00; M relmax=1.000000e+00; M2 relmax=0.000000e+00; M3 relmax=0.000000e+00; B relmax=0.000000e+00; F4 relmax=0.000000e+00	

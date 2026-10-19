@@ -1,0 +1,70 @@
+# GATE_RELR4_start.txt -- P05 delivery round REL-R4 start gate (2026-10-19T09:29:03Z)
+# Every line is RECORD<TAB>KEY<TAB>value=V or PASS/FAIL<TAB>name<TAB>expected=..<TAB>actual=..
+# Values are read back by relr4_check.py --phase start|end BY KEY NAME.
+RECORD	ROUND	value=P05 delivery round REL-R4 (rel-r4)
+RECORD	START_TIME_UTC	value=2026-10-19T09:29:03Z
+RECORD	HEAD	value=c126619c77ec1f45511cdf30145431d3d6982c4e
+RECORD	HEAD_SHORT	value=c126619
+RECORD	BRANCH	value=codex/p05-d003-fft-error-propagation
+RECORD	GIT_STATUS_RAW	value=?? testing/d003/stage_relr4/
+RECORD	GIT_STATUS_LINES	value=1
+RECORD	HEAD_S4	value=589e15eb11fcb04e031b524f25a443e7921946cf
+RECORD	B_COMMIT	value=5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+RECORD	B_COMMIT_S4	value=1d738e64f9864a475fdb3de34cd3601605df2c64
+RECORD	F4_COMMIT	value=3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+RECORD	F4_COMMIT_S4	value=589e15eb11fcb04e031b524f25a443e7921946cf
+RECORD	U_COMMIT	value=7fd00a231610bff51f5c7de5f723e3956eab7453
+RECORD	U_COMMIT_S4	value=06553f72e93aaef1a5c9294f358a7f5afbd42bb1
+RECORD	B_COMMIT_SUBJECT	value=docs(p04): note where the A-36 counts come from and the revision-two commit range
+RECORD	F4_COMMIT_SUBJECT	value=P05-S5 R7 (ii): formal end gate GATE_S5R7_end.txt 67/67 FAILS=0 FINAL_STATUS=COMPLETE (append-only appendix C in the rep
+RECORD	U_COMMIT_SUBJECT	value=Fixed bug related to 1D patterning.
+RECORD	HEAD_SUBJECT	value=P05 delivery round REL-R3 (ii): formal end gate 164/164 FAILS=0 FINAL_STATUS=COMPLETE appended as report appendix C, rel
+RECORD	M_COMMIT	value=b97f63989c4d8192faee119e4dbcb70ef4a27219
+RECORD	M_S4	value=9a2948b7ef379a712172642a6e87e01a046416e7
+RECORD	JUDGE_SHA256	value=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+RECORD	RELR3_REGISTRY_ITEMS	value=18
+RECORD	RELR3_REGISTRY_BAD	value=none
+RECORD	RULINGS_BYTES	value=160477
+RECORD	RULINGS_SHA256	value=38a0981e9741e58dd3d3316c11034d8232197cac39396e7f4e172f8e24dcdfcf
+RECORD	RULINGS_ROWS	value=407
+RECORD	RULINGS_LAST_ID	value=U398
+RECORD	TMP_COUNT	value=0
+RECORD	TMP_SHA256	value=01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+RECORD	TMP_CALIBRATION	value=python sorted(os.listdir('/tmp')); sha256 of newline-joined names + trailing newline (s5r7_tmpsnap.py calibration)
+RECORD	PYTHON3_VERSION	value=Python 3.14.4
+RECORD	LUA_VERSION	value=Lua 5.2.4  Copyright (C) 1994-2015 Lua.org, PUC-Rio
+RECORD	GCC_VERSION	value=gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+RECORD	GXX_VERSION	value=g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+RECORD	LAPACK_BLAS_PACKAGES	value=liblapack-dev 3.12.1-7ubuntu1; liblapack3 3.12.1-7ubuntu1; libblas-dev 3.12.1-7ubuntu1; libblas3 3.12.1-7ubuntu1
+RECORD	NPROC	value=16
+RECORD	UNAME_R	value=7.0.0-38-generic
+RECORD	MAKE_VERSION	value=GNU Make 4.4.1
+RECORD	GIT_VERSION	value=git version 2.53.0
+RECORD	MPICC_PATH	value=/usr/bin/mpicc
+RECORD	MPIRUN_PATH	value=/usr/bin/mpirun
+RECORD	MPICC_VERSION	value=gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+RECORD	MPIRUN_VERSION	value=--------------------------------------------------------------------------
+RECORD	OMPI_INFO_VERSION	value=Open MPI v5.0.10
+RECORD	MPICC_SHOWME_COMPILE	value=-I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi
+RECORD	MPICC_SHOWME_LINK	value=-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi
+RECORD	UPSTREAM_LSREMOTE_HEAD	value=7fd00a231610bff51f5c7de5f723e3956eab7453	HEAD
+RECORD	DISK_FREE_SRV_NVME	value=/dev/nvme0n1p1  1.9T  336G  1.5T  19% /srv/nvme
+RECORD	GATE_FILE	value=GATE_RELR4_start.txt
+PASS	BRANCH_IS_EXPECTED	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_IS_C126619	expected=c126619c77ec1f45511cdf30145431d3d6982c4e	actual=c126619c77ec1f45511cdf30145431d3d6982c4e
+PASS	GIT_STATUS_ONLY_ROUND_FILES	expected=clean	actual=clean
+PASS	HEAD_S4_EQ_F4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	B_COMMIT_EQ_5B72793	expected=5b72793051eb705f0e9b2e5398e1a5f0484da0cb	actual=5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+PASS	B_S4_EQ_1D738E64	expected=1d738e64f9864a475fdb3de34cd3601605df2c64	actual=1d738e64f9864a475fdb3de34cd3601605df2c64
+PASS	F4_COMMIT_EQ_3DE6D8B	expected=3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505	actual=3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+PASS	F4_S4_EQ_589E15EB	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	U_COMMIT_EQ_7FD00A2	expected=7fd00a231610bff51f5c7de5f723e3956eab7453	actual=7fd00a231610bff51f5c7de5f723e3956eab7453
+PASS	U_S4_EQ_06553F72	expected=06553f72e93aaef1a5c9294f358a7f5afbd42bb1	actual=06553f72e93aaef1a5c9294f358a7f5afbd42bb1
+PASS	JUDGE_SHA256_OK	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	RELR3_REGISTRY_SUMS_ALL_OK	expected=all 18 OK	actual=all 18 OK
+PASS	RULINGS_LAST_IS_U398	expected=U398	actual=U398
+PASS	MPICC_PRESENT	expected=yes	actual=yes
+PASS	MPIRUN_PRESENT	expected=yes	actual=yes
+COUNTS	pass=15	fail=0	total=15
+FAILS=0
+CHECK_CRASHED=0

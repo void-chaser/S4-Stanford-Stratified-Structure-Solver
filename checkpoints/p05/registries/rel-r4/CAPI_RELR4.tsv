@@ -1,0 +1,25 @@
+# CAPI_RELR4.tsv -- T4 C API results (P13 early check; not a completion or fix of P13)
+# Reference tolerance (pre-registered): |c - r| <= 5e-6*|r| + 1e-6, 35 rows, frequency column identical.
+# Positive control tolerance: relative difference <= 1e-10 at the seven fig12.lua frequency points.
+unit_id	kind	tree	status	rc	detail
+T4_B_build_capi	build_new	B	BUILD_OK	0	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_B_original_main_compile	original_example	B	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/trees/B/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_B_original_makefile	original_makefile	B	RC2	2	make in examples/C_api with the shipped macOS-only Makefile
+T4_B_posctrl_c_vs_lua	positive_control	B	PASS	0/0	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4_B_spec_sweep	spec_reference	B	PASS_REF	0	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4_F4_build_capi	build_new	F4	BUILD_OK	0	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_F4_original_main_compile	original_example	F4	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/trees/F4/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_F4_original_makefile	original_makefile	F4	RC2	2	make in examples/C_api with the shipped macOS-only Makefile
+T4_F4_posctrl_c_vs_lua	positive_control	F4	PASS	0/0	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4_F4_spec_sweep	spec_reference	F4	PASS_REF	0	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4_U_build_capi	build_new	U	BUILD_OK	0	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_U_original_main_compile	original_example	U	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/upstream/S4/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_U_original_makefile	original_makefile	U	RC2	2	make in examples/C_api with the shipped macOS-only Makefile
+T4_U_posctrl_c_vs_lua	positive_control	U	PASS	0/0	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4_U_spec_sweep	spec_reference	U	PASS_REF	0	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4CMP_B_vs_F4_byte_identical	byte_identical	B_vs_F4	SAME		sha_B=1050b45f868293bc19594eead9ebf15b4e02c3770ab1efe0eeb7fa8b675d4721 sha_F4=1050b45f868293bc19594eead9ebf15b4e02c3770ab1efe0eeb7fa8b675d4721
+T4CMP_U_vs_F4_numeric	u_vs_f4	U_vs_F4	OBSERVED		rows=35 max_rel_diff=0.000000e+00
+T4_U_original_main_compile	original_example	U	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/upstream/S4/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_B_original_main_compile	original_example	B	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/trees/B/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_F4_original_main_compile	original_example	F4	RC1	1	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r4/trees/F4/examples/C_api/main.c:11:9: error: unknown type name ‘Simulation’; did you mean ‘S4_Simulation’?
+T4_RECORD_U_CAPI_EXAMPLE	record	U	RECORD_ONLY		the shipped examples/C_api/main.c is written against the pre-P04 C API names; its compile attempts are recorded, not judged

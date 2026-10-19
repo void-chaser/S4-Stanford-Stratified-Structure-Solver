@@ -1,0 +1,198 @@
+# VERDICT_RELR4.tsv -- one row per comparison unit of REL-R4, with the U / B / F4 columns.
+# Categories (task brief section 4): SAME, DIFF_WITHIN_TOL, DIFF_ATTRIBUTED, REGRESSION, IMPROVED, BOTH_FAIL, U_UNAVAILABLE, FLAKY.
+# comparison = U_vs_F4 | B_vs_F4 | same_tree_np | vs_reference | precheck | build | banner | run | record.
+# The engine reads rc, normalised stdout/stderr, file sha256 and numdiff numbers only.
+unit_id	suite	comparison	u	b	f4	category	detail
+T1CMP_0d__Antonoyiannakis_PRB_60_1999__fig3_4_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T1CMP_0d__Antonoyiannakis_PRB_60_1999__fig3_4_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__Antonoyiannakis_PRB_60_1999__fig6_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__Antonoyiannakis_PRB_60_1999__fig6_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__Sakaguchi_OptComm_162_64_1999__table1m2g2_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__Sakaguchi_OptComm_162_64_1999__table1m2g2_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__fresnel_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T1CMP_0d__fabry_perot__fresnel_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__slab_resonances_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_WITHIN_TOL	stdout relmax=3.201e-13 <= 1e-12 (not byte-identical)
+T1CMP_0d__fabry_perot__slab_resonances_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__tir_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T1CMP_0d__fabry_perot__tir_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__tir_field_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.999e+00 > 1e-12
+T1CMP_0d__fabry_perot__tir_field_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__transmission_spectrum_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_0d__fabry_perot__transmission_spectrum_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Bi_OE_18_11969_2010__fig3a_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Bi_OE_18_11969_2010__fig3a_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Christ_PRB_70_125113_2004__fig2b_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_1d__Christ_PRB_70_125113_2004__fig2b_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_1d__Liu_OE_17_21897_2009__fig2a_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig2a_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3a_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3a_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3b_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3b_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3c_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3c_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3d_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3d_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3e_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3e_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3f_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig3f_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig4e_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Liu_OE_17_21897_2009__fig4e_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Oliva_OE_19_14735_2011__fig1c_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Oliva_OE_19_14735_2011__fig1c_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Pietarinen_OE_14_2583_2006__fig2a_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_1d__Pietarinen_OE_14_2583_2006__fig2a_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Fan_PRB_65_2002__fig12_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_WITHIN_TOL	stdout relmax=1.356e-13 <= 1e-12 (not byte-identical)
+T1CMP_2d__Fan_PRB_65_2002__fig12_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_new_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=-11 / F4 rc=1; different stderr messages
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_new_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_normal_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=-11 / F4 rc=1; different stderr messages
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_normal_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_orig_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=-11 / F4 rc=1; different stderr messages
+T1CMP_2d__Li_JOSA_14_2758_1997__ex1_orig_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_2d__Li_JOSA_14_2758_1997__ex2_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	FLAKY	tree U pass1 != pass2 (STDOUT)
+T1CMP_2d__Li_JOSA_14_2758_1997__ex2_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_2d__Li_JOSA_14_2758_1997__ex3_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Li_JOSA_14_2758_1997__ex3_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Suh_APL_82_1999_2003__fig2a_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Suh_APL_82_1999_2003__fig2a_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Suh_APL_82_1999_2003__fig2b_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Suh_APL_82_1999_2003__fig2b_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_2d__Tikhodeev_PRB_66_45102_2002__fig4_U_vs_F4	T1_compare	U_vs_F4	FAIL	PASS	PASS	IMPROVED	U fail (rc=-11), F4 passes (rc=0)
+T1CMP_2d__Tikhodeev_PRB_66_45102_2002__fig4_B_vs_F4	T1_compare	B_vs_F4	FAIL	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_Integrate__integrate_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_Integrate__integrate_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_convergence__1d__binary_grating_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_convergence__1d__binary_grating_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex1__cellA_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex1__cellA_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex1__cellB_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex1__cellB_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex2__fig2_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_convergence__Li_JOSA_14_2758_1997__ex2__fig2_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_convergence__resonance_pos__ref_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_convergence__resonance_pos__ref_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_interpolator__interpolator_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_WITHIN_TOL	stdout relmax=0.000e+00 <= 1e-12 (not byte-identical)
+T1CMP_interpolator__interpolator_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_magneto__halfspace_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T1CMP_magneto__halfspace_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_magneto__slab_U_vs_F4	T1_compare	U_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	U rc=0 / F4 rc=1; same normalised stderr; silent-exit-0 with Lua error: U
+T1CMP_magneto__slab_B_vs_F4	T1_compare	B_vs_F4	FAIL	FAIL	FAIL	BOTH_FAIL	B rc=1 / F4 rc=1; same normalised stderr
+T1CMP_patterns__circle_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__circle_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__composite_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__composite_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__ellipse_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__ellipse_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__nonorth_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__nonorth_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__polygon_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__polygon_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__rectangle_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_patterns__rectangle_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_polarization_basis__square_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_polarization_basis__square_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_polarization_basis__tri_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_polarization_basis__tri_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_simple__simple_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T1CMP_simple__simple_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_spectrum_sampler__sampler_U_vs_F4	T1_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_spectrum_sampler__sampler_B_vs_F4	T1_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1CMP_threading__parallel_U_vs_F4	T1_compare	U_vs_F4	FAIL	PASS	PASS	IMPROVED	U fail (rc=-11), F4 passes (rc=0)
+T1CMP_threading__parallel_B_vs_F4	T1_compare	B_vs_F4	FAIL	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T1MPIREF_MPI_example__binary_grating_mpi_U	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T1MPIREF_MPI_example__binary_grating_mpi_B	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T1MPIREF_MPI_example__binary_grating_mpi_F4	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T1MPIREF_MPI_example__mpi_simple_U	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T1MPIREF_MPI_example__mpi_simple_B	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T1MPIREF_MPI_example__mpi_simple_F4	T1_examples	single_process_reference	PASS			PASS	pass1 RAN_OK rc=0 pass2 rc=0
+T2CMP_simple_U_vs_F4	T2_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T2CMP_simple_B_vs_F4	T2_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T2REF_U_simple	T2_runtests_reference	vs_reference	FAIL_REF			FAIL_REF	numdiff_rc=1 relmax=1.000000e+00
+T2REF_B_simple	T2_runtests_reference	vs_reference		PASS_REF		PASS_REF	numdiff_rc=0 relmax=0.000000e+00
+T2REF_F4_simple	T2_runtests_reference	vs_reference			PASS_REF	PASS_REF	numdiff_rc=0 relmax=0.000000e+00
+T2CMP_fresnel_U_vs_F4	T2_compare	U_vs_F4	PASS	PASS	PASS	DIFF_ATTRIBUTED	stdout relmax=1.000e+00 > 1e-12
+T2CMP_fresnel_B_vs_F4	T2_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T2REF_U_fresnel	T2_runtests_reference	vs_reference	FAIL_REF			FAIL_REF	numdiff_rc=1 relmax=1.000000e+00
+T2REF_B_fresnel	T2_runtests_reference	vs_reference		PASS_REF		PASS_REF	numdiff_rc=0 relmax=0.000000e+00
+T2REF_F4_fresnel	T2_runtests_reference	vs_reference			PASS_REF	PASS_REF	numdiff_rc=0 relmax=0.000000e+00
+T2CMP_fanfig12_U_vs_F4	T2_compare	U_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T2CMP_fanfig12_B_vs_F4	T2_compare	B_vs_F4	PASS	PASS	PASS	SAME	rc=0 both, normalised stdout/stderr and file products identical
+T2REF_U_fanfig12	T2_runtests_reference	vs_reference	PASS_REF			PASS_REF	numdiff_rc=0 relmax=1.276531e-13
+T2REF_B_fanfig12	T2_runtests_reference	vs_reference		PASS_REF		PASS_REF	numdiff_rc=0 relmax=1.276531e-13
+T2REF_F4_fanfig12	T2_runtests_reference	vs_reference			PASS_REF	PASS_REF	numdiff_rc=0 relmax=1.276531e-13
+T2REF_U_runtests_sh	T2_runtests_reference	vs_reference	FAIL			FAIL	F4 harness with S4_BIN=<U>/build/S4
+T2REF_B_runtests_sh	T2_runtests_reference	vs_reference		PASS_REF		PASS_REF	F4 harness with S4_BIN=<B>/build/S4
+T2REF_F4_runtests_sh	T2_runtests_reference	vs_reference			PASS_REF	PASS_REF	F4 harness with S4_BIN=<F4>/build/S4
+T2_U_OWN_MANIFEST	T2_runtests_reference	record	UNRUNNABLE			U_UNAVAILABLE	original testing/testcases.txt: 10 baselines and 7 of 10 scripts missing (EXPECT_SCAN_RELR4.tsv)
+T3_PRECHECK_MPIRUN_TRUE	T3_mpi	precheck	PASS			PASS	no output
+T3_PRECHECK_RANK_PROBE	T3_mpi	precheck	PASS			PASS	rc=0
+T3_U_build_s4mpi	T3_mpi	build	BUILD_OK			BUILD_OK	log=checkpoints/p05/evidence/p05-rel-r4/build_logs/U_s4mpi.log log_sha256=ba6cd876e07faa0d0dc9c9a352c4eb0bf2bfab61b2b852a1386035b156734ab5 exe_sha256=cfa67b88916dc39f1a4f1a2c41c5b116709a9477117317969bc357869b7c107f With_MPI_support=yes cmd=make build/S4mpi CC=mpicc CXX=mpicxx MPI_INC=-I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi MPI_LIB=-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi env_extra=CFLAGS=-Wno-error=int-conversion
+T3_U_banner	T3_mpi	banner	WITH_MPI			WITH_MPI	banner=Stanford Stratified Structure Solver (S4) | Version 1.1.1 |   With MPI support
+T3_B_build_s4mpi	T3_mpi	build		BUILD_OK		BUILD_OK	log=checkpoints/p05/evidence/p05-rel-r4/build_logs/B_s4mpi.log log_sha256=c378d345d01ea3c132c5306f4c8d3638e64729540cbeb83c2cc14f9eb6a9723e exe_sha256=84fb057b721afdf9ae6bbf552c9a96afe905ebcd57dcd079804bf05ff49c66a9 With_MPI_support=yes cmd=make build/S4mpi CC=mpicc CXX=mpicxx MPI_INC=-I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi MPI_LIB=-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi env_extra=
+T3_B_banner	T3_mpi	banner		WITH_MPI		WITH_MPI	banner=Stanford Stratified Structure Solver (S4) | Version 1.1.1 |   With MPI support
+T3_F4_build_s4mpi	T3_mpi	build			BUILD_OK	BUILD_OK	log=checkpoints/p05/evidence/p05-rel-r4/build_logs/F4_s4mpi.log log_sha256=1824246c2fd853778c5e7210501540384a9d0f6300fd27ef017dabc94c60b4f5 exe_sha256=5ec048128db4d7a010ab3128d5b3c64885657d8ac80b7a5ef9704aa9c5e14a76 With_MPI_support=yes cmd=make build/S4mpi CC=mpicc CXX=mpicxx MPI_INC=-I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi MPI_LIB=-L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi env_extra=
+T3_F4_banner	T3_mpi	banner			WITH_MPI	WITH_MPI	banner=Stanford Stratified Structure Solver (S4) | Version 1.1.1 |   With MPI support
+T3_MPI_example__binary_grating_mpi_U_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_U_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_U_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_U_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_B_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_B_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_B_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_B_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_F4_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_F4_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_F4_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__binary_grating_mpi_F4_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3CMP_MPI_example__binary_grating_mpi_U_np4_vs_np1	T3_compare	same_tree_np	DIFF_WITHIN_TOL			DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_U_np4_vs_t1	T3_compare	same_tree_np	DIFF_WITHIN_TOL			DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_B_np4_vs_np1	T3_compare	same_tree_np		DIFF_WITHIN_TOL		DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_B_np4_vs_t1	T3_compare	same_tree_np		DIFF_WITHIN_TOL		DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_F4_np4_vs_np1	T3_compare	same_tree_np			DIFF_WITHIN_TOL	DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_F4_np4_vs_t1	T3_compare	same_tree_np			DIFF_WITHIN_TOL	DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__binary_grating_mpi_B_vs_F4_np1	T3_compare	B_vs_F4		SAME	SAME	SAME	all same-named files byte-identical
+T3CMP_MPI_example__binary_grating_mpi_B_vs_F4_np4	T3_compare	B_vs_F4		SAME	SAME	SAME	all same-named files byte-identical
+T3CMP_MPI_example__binary_grating_mpi_U_vs_F4_np1	T3_compare	U_vs_F4	PASS		PASS	SAME	all -np 1 output files byte-identical
+T3CMP_MPI_example__binary_grating_mpi_U_vs_F4_np4	T3_compare	U_vs_F4	PASS		PASS	SAME	all -np 4 output files byte-identical
+T3_MPI_example__mpi_simple_U_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_U_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_U_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_U_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_B_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_B_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_B_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_B_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_F4_np1_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_F4_np1_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_F4_np4_p1	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3_MPI_example__mpi_simple_F4_np4_p2	T3_mpi	run	PASS			PASS	rc=0 timeout=NO
+T3CMP_MPI_example__mpi_simple_U_np4_vs_np1	T3_compare	same_tree_np	DIFF_WITHIN_TOL			DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_U_np4_vs_t1	T3_compare	same_tree_np	DIFF_WITHIN_TOL			DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_B_np4_vs_np1	T3_compare	same_tree_np		DIFF_WITHIN_TOL		DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_B_np4_vs_t1	T3_compare	same_tree_np		DIFF_WITHIN_TOL		DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_F4_np4_vs_np1	T3_compare	same_tree_np			DIFF_WITHIN_TOL	DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_F4_np4_vs_t1	T3_compare	same_tree_np			DIFF_WITHIN_TOL	DIFF_WITHIN_TOL	identical-double matched=23 max_rel=0.000e+00 <= 1e-12; coverage only_rank=69 only_ref=67; observation: nominal printed-frequency matching matched=46 max_rel=1.458e-12 (those pairs differ in the last bits of the frequency double)
+T3CMP_MPI_example__mpi_simple_B_vs_F4_np1	T3_compare	B_vs_F4		SAME	SAME	SAME	all same-named files byte-identical
+T3CMP_MPI_example__mpi_simple_B_vs_F4_np4	T3_compare	B_vs_F4		SAME	SAME	SAME	all same-named files byte-identical
+T3CMP_MPI_example__mpi_simple_U_vs_F4_np1	T3_compare	U_vs_F4	PASS		PASS	SAME	all -np 1 output files byte-identical
+T3CMP_MPI_example__mpi_simple_U_vs_F4_np4	T3_compare	U_vs_F4	PASS		PASS	SAME	all -np 4 output files byte-identical
+T3_RECORD_MISSING_1D_REFERENCE	T3_mpi	record				RECORD_ONLY	examples/1d/binary_grating.txt U=absent; B=absent; F4=absent
+T4_B_build_capi	T4_capi	build		BUILD_OK		BUILD_OK	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_B_original_makefile	T4_capi	makefile		RC2		RC2	make in examples/C_api with the shipped macOS-only Makefile
+T4_B_spec_sweep	T4_capi	spec		PASS_REF		PASS_REF	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4_B_posctrl_c_vs_lua	T4_capi	posctrl		PASS		PASS	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4_F4_build_capi	T4_capi	build			BUILD_OK	BUILD_OK	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_F4_original_makefile	T4_capi	makefile			RC2	RC2	make in examples/C_api with the shipped macOS-only Makefile
+T4_F4_spec_sweep	T4_capi	spec			PASS_REF	PASS_REF	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4_F4_posctrl_c_vs_lua	T4_capi	posctrl			PASS	PASS	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4_U_build_capi	T4_capi	build	BUILD_OK			BUILD_OK	gcc -O0 -g -IS4 capi_fig12_relr4.c -o fig12 -Lbuild -lS4 -llapack -lblas -lstdc++ -lm
+T4_U_original_makefile	T4_capi	makefile	RC2			RC2	make in examples/C_api with the shipped macOS-only Makefile
+T4_U_spec_sweep	T4_capi	spec	PASS_REF			PASS_REF	rows=35/35 freq_col_identical=True rows_out_of_tol=0 max_abs_diff=0.000000e+00 max_rel_diff=0.000000e+00
+T4_U_posctrl_c_vs_lua	T4_capi	posctrl	PASS			PASS	lua_rows=7 c_rows=7 max_rel_diff=3.795932e-15 max_freq_abs_diff=0.000e+00
+T4CMP_B_vs_F4_byte_identical	T4_compare	B_vs_F4		SAME	SAME	SAME	sha_B=1050b45f868293bc19594eead9ebf15b4e02c3770ab1efe0eeb7fa8b675d4721 sha_F4=1050b45f868293bc19594eead9ebf15b4e02c3770ab1efe0eeb7fa8b675d4721
+T4CMP_U_vs_F4_spec_sweep	T4_compare	U_vs_F4	PASS		PASS	SAME	35 rows byte-identical
+T4_RECORD_U_CAPI_EXAMPLE	T4_capi	record				RECORD_ONLY	original examples/C_api/main.c uses pre-P04 C API names; recorded, not judged
+T5_F4_make_test	T5_make_test	main_suite			PASS	PASS	rc=0 unit_count=265 failures=0
+T5_U_make_test	T5_make_test	main_suite	U_UNAVAILABLE			U_UNAVAILABLE	U has no 'test' target

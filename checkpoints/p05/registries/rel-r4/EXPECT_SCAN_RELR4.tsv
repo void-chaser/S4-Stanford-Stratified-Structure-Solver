@@ -1,0 +1,57 @@
+# EXPECT_SCAN_RELR4.tsv -- source-reading scan used to form the REL-R4 expectations (no expectation here)
+# registered = functions the Lua frontend S4/main_lua.c registers; missing = called by the example but
+# not registered in that tree.  Comments are stripped before scanning.  loadstring is nil under Lua
+# 5.2; GetRealMaterial is registered by no tree.
+example	in_U	in_B	in_F4	calls_loadstring	calls_GetRealMaterial	U_missing_api	F4_missing_api	B_missing_api	U_expected_txt	F4_expected_txt
+examples/0d/Antonoyiannakis_PRB_60_1999/fig3_4.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/Antonoyiannakis_PRB_60_1999/fig6.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/Sakaguchi_OptComm_162_64_1999/table1m2g2.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/fabry_perot/fresnel.lua	yes	yes	yes	no	no	none	none	none	no	yes
+examples/0d/fabry_perot/slab_resonances.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/fabry_perot/tir.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/fabry_perot/tir_field.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/0d/fabry_perot/transmission_spectrum.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Bi_OE_18_11969_2010/fig3a.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Christ_PRB_70_125113_2004/fig2b.lua	yes	yes	yes	no	yes	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig2a.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3a.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3b.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3c.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3d.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3e.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig3f.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Liu_OE_17_21897_2009/fig4e.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Oliva_OE_19_14735_2011/fig1c.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/1d/Pietarinen_OE_14_2583_2006/fig2a.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Fan_PRB_65_2002/fig12.lua	yes	yes	yes	no	no	none	none	none	no	yes
+examples/2d/Li_JOSA_14_2758_1997/ex1_new.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Li_JOSA_14_2758_1997/ex1_normal.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Li_JOSA_14_2758_1997/ex1_orig.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Li_JOSA_14_2758_1997/ex2.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Li_JOSA_14_2758_1997/ex3.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Suh_APL_82_1999_2003/fig2a.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Suh_APL_82_1999_2003/fig2b.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/2d/Tikhodeev_PRB_66_45102_2002/fig4.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/Integrate/integrate.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/MPI_example/binary_grating_mpi.lua	yes	yes	yes	no	no	MPIRank,MPISize	MPIRank,MPISize	MPIRank,MPISize	no	no
+examples/MPI_example/mpi_simple.lua	yes	yes	yes	no	no	MPIRank,MPISize	MPIRank,MPISize	MPIRank,MPISize	no	no
+examples/convergence/1d/binary_grating.lua	yes	yes	yes	yes	no	none	none	none	no	no
+examples/convergence/Li_JOSA_14_2758_1997/ex1/cellA.lua	yes	yes	yes	yes	no	none	none	none	no	no
+examples/convergence/Li_JOSA_14_2758_1997/ex1/cellB.lua	yes	yes	yes	yes	no	none	none	none	no	no
+examples/convergence/Li_JOSA_14_2758_1997/ex2/fig2.lua	yes	yes	yes	yes	no	none	none	none	no	no
+examples/convergence/resonance_pos/ref.lua	yes	yes	yes	yes	no	none	none	none	no	no
+examples/interpolator/interpolator.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/magneto/halfspace.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/magneto/slab.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/circle.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/composite.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/ellipse.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/nonorth.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/polygon.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/patterns/rectangle.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/polarization_basis/square.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/polarization_basis/tri.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/simple/simple.lua	yes	yes	yes	no	no	none	none	none	no	yes
+examples/spectrum_sampler/sampler.lua	yes	yes	yes	no	no	none	none	none	no	no
+examples/threading/parallel.lua	yes	yes	yes	no	no	none	none	none	no	no
+U_TESTCASES	10	missing_script=7	missing_baseline=10	manifest=testing/testcases.txt

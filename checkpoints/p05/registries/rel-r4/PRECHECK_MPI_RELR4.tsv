@@ -1,0 +1,3 @@
+# PRECHECK_RELR4.tsv -- T3 MPI precheck (task brief section 5.4.1)
+T3_PRECHECK_MPIRUN_TRUE	PASS	rc=0	no output
+T3_PRECHECK_RANK_PROBE	PASS	ranks=0,1	rc=0

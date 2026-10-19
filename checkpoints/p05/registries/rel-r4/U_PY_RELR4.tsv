@@ -1,0 +1,5 @@
+# U_PY_RELR4.tsv -- the single attempt at the original U tree's Python interface (task brief section 3)
+step	command	cwd	rc	log	log_sha256	first_error	classification
+gensetup	sh gensetup.py.sh build build/libS4.a	checkpoints/p05/evidence/p05-rel-r4/upstream/S4	0	checkpoints/p05/evidence/p05-rel-r4/u_probe/u_py_gensetup.log	e9b51f577f794d244834e65d62d121f1516cb2af75116d4d7fbbc21776da3922	none	
+setup_build	python3 setup.py build	checkpoints/p05/evidence/p05-rel-r4/upstream/S4	1	checkpoints/p05/evidence/p05-rel-r4/u_probe/u_py_setup_build.log	e387d8d394741571a18e6dff17471840bfc2b150e53ffaa17588391814f95ac5	S4/main_python.c:342:40: error: implicit declaration of function ‘PyInt_AsLong’; did you mean ‘PyLong_AsLong’? [-Wimplicit-function-declaration]	U_PY_UNAVAILABLE
+u_clone_status	git status --porcelain (after the attempt)	checkpoints/p05/evidence/p05-rel-r4/upstream/S4				?? build/; ?? setup.py	

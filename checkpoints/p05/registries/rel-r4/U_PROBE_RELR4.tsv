@@ -1,0 +1,14 @@
+# U_PROBE_RELR4.tsv -- U401 ruling evidence: original failure without the CFLAGS override, and
+# verification that no example calls GetAmplitudes in any tree.
+item	tree	value	detail
+COMPILE_MAIN_LUA_WITHOUT_OVERRIDE	U	rc=1	S4/main_lua.c:2207:17: error: passing argument 2 of ‘Simulation_GetAmplitudes’ makes pointer from integer without a cast [-Wint-conversion]
+COMPILE_MAIN_LUA_WITHOUT_OVERRIDE_ERROR_LINES	U	1	first error above
+COMPILE_MAIN_LUA_WITHOUT_OVERRIDE_LOG	U	checkpoints/p05/evidence/p05-rel-r4/u_probe/main_lua_no_override.log	6d850561c765da29280ff6b5e05855f791fd34a8e024a0139e536459aecc0d67
+EXAMPLES_CALLING_GETAMPLITUDES	U	0	none
+EXAMPLES_LUA_COUNT	U	51	every .lua under examples/
+EXAMPLES_CALLING_GETAMPLITUDES	B	0	none
+EXAMPLES_LUA_COUNT	B	51	every .lua under examples/
+EXAMPLES_CALLING_GETAMPLITUDES	F4	0	none
+EXAMPLES_LUA_COUNT	F4	51	every .lua under examples/
+U_BUILD_WARNING_INT_CONVERSION	U	1	S4/main_lua.c:2207:17: warning: passing argument 2 of ‘Simulation_GetAmplitudes’ makes pointer from integer without a cast [-Wint-conversion]
+U_BUILD_CFLAGS_OVERRIDE_EFFECT	U	succeeds	build/S4 present; see BUILD_RELR4.tsv

@@ -1,0 +1,44 @@
+# ERRATA_RELR4.txt -- P05 交付轮 REL-R4 执行与判定口径的补充记录（预注册之后新增，不改原预注册）
+
+规则：PREREG_RELR4.tsv 在首次正式运行前写定（sha256 90bb8884b7346857e29e22e1d3cc53aeff748bdddd0774240337ad1b02d939df）；
+之后期望值一律不改。本文件只记录判定*实现口径*的补充与执行事件，不改变任何预注册类别或容差。
+
+## ER4-1 U 的 Lua 前端在脚本错误时退出码为 0
+- 现象：U（7fd00a2）的 build/S4 在 Lua 脚本抛错（GetRealMaterial 为 nil、loadstring 为 nil、脚本语法错误）时仍以 rc=0 退出，
+  stderr 有 Lua 错误与 traceback；B/F4 的同类错误 rc=1（P04 的前端重写修正了退出码）。
+- 证据：EXPECT_SCAN_RELR4.tsv（失败原因分类）、VERDICT_RELR4.tsv 中 T1CMP_1d__Christ…fig2b /
+  convergence__1d__binary_grating / cellA / cellB / ex2__fig2 / resonance_pos__ref / magneto__slab 的 detail
+  （"silent-exit-0 with Lua error: U"）、REL-R1 的 38 SAME/11 BOTH_FAIL 复现。
+- 处理：本轮对"有效通过"的定义为 rc==0 且 stderr 无 Lua 错误标记；U 的 rc 不能单独作为通过判据。
+  该口径在预注册中没有写死（预注册只写类别与容差），因此不构成改期望；如按裸 rc 判定，这 7 个单元会被误计为
+  REGRESSION（U pass / F4 fail），实际是两树同样失败的既有问题。
+- 影响单元：T1 的 7 个既有失败示例；类别由误判的 REGRESSION 修正为 BOTH_FAIL。
+
+## ER4-2 T3 MPI 频率匹配只在 IEEE double 完全相同的频点上判值
+- 规则：预注册 criterion 为"相同频率上的值相对差 <= 1e-12；浮点循环可能让各段边界的频点重复或缺失，频点覆盖情况只记录，不算失败"。
+- 事实：Lua 数值 for 循环在单进程（0.25..0.7, step 0.005）与 4 个 rank（起点为 0.25 + r/4*0.45，
+  再 step 0.005）中累积方式不同，90 个频点里只有 23 个（rank0 的前 23 个）与单进程频点是完全相同的 double；
+  其余 67 个只差最后几位。把"打印后相同的十进制文本"当作相同频率会错配 1-ulp 不同的频点，
+  在共振陡峭处产生 1.458e-12 的差值（观测值，记录在 MPI_RELR4.tsv 的 detail）。
+- 处理：判值只在 IEEE double 完全相同的频点上进行（23 点，最大相对差 0），覆盖率与"按打印文本匹配"的观测值
+  都只记录、不判失败。这是对"相同频率"的实现口径澄清，不改预注册的 1e-12 容差。
+
+## ER4-3 T2 两树比较用 rc 判运行是否成功
+- 规则：T2 的类别是"与提交的参考数据是否一致"，不是"两树是否都通过"。
+- 处理：U vs F4 / B vs F4 的 T2 比较中，"运行成功"按 rc==0 判定（U、B、F4 的 simple/fresnel/fanfig12 运行 rc 均为 0），
+  数值差异按参考容差归类；否则 U 的 FAIL_REF 会被误标为 IMPROVED。
+
+## ER4-4 开局门禁文件的重新生成（执行事件）
+- 事件：relr4_check.py --phase start 第一次运行时没有给 --out，按设计默认写 GATE_RELR4_start.txt，
+  覆盖了 relr4_startgate.py 在轮次开头写下的同名文件。
+- 处理：立即把被覆盖前的首跑文件保留为 GATE_RELR4_start_firstrun.txt（sha256 f3ae425250d4b77445676a0cb363055677ab5011db138720482953514589a788），
+  把 check 脚本 start 相的默认输出改为 GATE_RELR4_check_start.txt，并用 relr4_startgate.py 重新生成
+  GATE_RELR4_start.txt。重新生成只影响 START_TIME_UTC 与运行时刻；所有门禁核对的哈希都是不可变 git 对象或
+  /tmp 快照（开始/结束两次均为 0 项、sha256 01ba4719…），因此不影响任何判定。
+- 仍在轮次内、首次正式运行之前；没有改任何预注册期望。
+
+## ER4-5 开局门禁首跑的检查器笔误（执行事件）
+- 事件：relr4_startgate.py 首跑把 rel-r3 registry 的清单条数写死为 16，实际 18，故 FAILS=1。
+- 证据：GATE_RELR4_start_firstrun.txt（首跑，FAILS=1）。
+- 处理：更正检查器的期望条数为实测并核对过的 18 后重跑，FAILS=0；数据未改，第二跑的输出为
+  GATE_RELR4_start.txt（重生成见 ER4-4）。

@@ -1,0 +1,13 @@
+# RULINGS_APPEND_RELR4.tsv -- P05 delivery round REL-R4 RULINGS.tsv append (U399-U403)
+# baseline = whole file before the append (recorded by the start gate)
+# before_bytes=160477 before_sha256=38a0981e9741e58dd3d3316c11034d8232197cac39396e7f4e172f8e24dcdfcf
+# after_bytes=162048 after_sha256=11eee2d243f30953abb4a1b2fd92ac5909eaa29a8ddba68f5e4ebd716cfb67eb
+# prefix_bytes=160477 prefix_sha256=38a0981e9741e58dd3d3316c11034d8232197cac39396e7f4e172f8e24dcdfcf prefix_unchanged=yes
+# rows_appended=5
+id	source	given_in_round	status
+U399	P05 交付轮 REL-R4 任务书 §1（用户裁决）	P05 交付轮 REL-R4 任务书 §1（用户裁决）	生效
+U400	P05 交付轮 REL-R4 任务书 §1（用户裁决）	P05 交付轮 REL-R4 任务书 §1（用户裁决）	生效
+U401	P05 交付轮 REL-R4 任务书 §1（用户裁决）	P05 交付轮 REL-R4 任务书 §1（用户裁决）	生效
+U402	P05 交付轮 REL-R4 任务书 §1（用户裁决）	P05 交付轮 REL-R4 任务书 §1（用户裁决）	生效
+U403	P05 交付轮 REL-R4 任务书 §1（用户裁决）	P05 交付轮 REL-R4 任务书 §1（用户裁决）	生效
+APPENDED_BYTES_SHA256=	11f501f8f91307bf366faa8167762f2bbdd224e212c8d47d82a1f621a7b2b606
