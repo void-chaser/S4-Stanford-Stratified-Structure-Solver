@@ -1,5 +1,5 @@
 # SHA256SUMS.txt -- P05-S5 R7 registry (pure documentation sub-round: P05-S5 sign-off entry)
-# the formal end-gate file GATE_S5R7_end.txt is added after the gate and listed below
+02ac82f0ee9cb95b2f745d2c42066634c47c956f340fa1fde82840ef360d0e3e  GATE_S5R7_end.txt
 0368b11900439cc117b4ff5b7ed17848f5d57fea4db012fdc27e256b4445666b  GATE_S5R7_start.txt
 33ed90b00a9e821b1621516072244e6d49f1656d59fce9d6345547bfb4dca371  RULINGS_APPEND_S5R7.tsv
 e4890bb982965664145df8937cf83493bfb6fb64cfbdc0b0c2af501a3ca29e0c  TMP_SNAPSHOT_S5R7.tsv

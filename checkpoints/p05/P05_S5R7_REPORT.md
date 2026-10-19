@@ -71,3 +71,20 @@
 FINAL_STATUS=PENDING_GATE
 
 本轮已完成 P05-S5 R7 范围，等待用户审核。
+
+## 附录 C（门禁后追加；只追加，不改正文）
+
+正式 end 门禁在提交 (i) a6331a65aeede0e17439f731db6f0ba2dd0a4d04 之后运行一次（冻结期规则：不修、不重跑、不放宽）。以下数值由 s5r7_appendix_c.py 从门禁文件派生：
+
+- 门禁文件：checkpoints/p05/evidence/p05-s5r7/GATE_S5R7_end.txt（sha256 02ac82f0ee9cb95b2f745d2c42066634c47c956f340fa1fde82840ef360d0e3e）
+- 提交前试跑（同一脚本，仅输出名不同）：GATE_S5R7_pre.txt（sha256 ae99336af41b48eccbca33c61ec5974051368ec6aed308799e1b425c66817219），COUNTS pass=67 fail=0 total=67；FAILS=0
+- 正式 COUNTS pass=67 fail=0 total=67；FAILS=0；CHECK_CRASHED=0
+- 失败项：无
+- 崩溃项：无
+- 关键核对（全部 PASS）：S4/ 零改动且 HEAD:S4=F4；RULINGS.tsv 纯追加 1 行 U391（旧前缀 sha256 d5742e70… 不变）；ERRATA_S5.txt 未改（17630 B，sha256 4af12052…）；P05_S5_SIGNOFF.md 存在且 §2 与任务书第 1 节原文逐字节相等（sha256 c7af2fb2…）；草稿 v1/v2/v3、P05_S3_S4_SIGNOFF.md 与 S5R3–S5R6 历史报告的 sha 不变；PROJECT_ROADMAP.md 只在 P05 行追加、P06 行只改状态单元格；ISSUE_REGISTRY.md 只新增 1 行；registries/s5r4 15/15 OK、registries/s5r5 12/12 OK、registries/s5r6 4/4 OK、evidence/p05-s5r5 20/20 OK；判定器 sha 不变；本轮改动文件全部在白名单内；顶层临时目录前后快照一致；无新建 __pycache__；STATE 不含门禁结果字样。
+- git log -1：`a6331a65aeede0e17439f731db6f0ba2dd0a4d04 P05-S5 R7 (i): user sign-off text entered verbatim (P05_S5_SIGNOFF.md section 2 sha256 c7af2fb2, U391 appended to RULINGS.tsv with unchanged prefix), STATE/roadmap/issue-registry sync, s5r7_check 67 checks, s5r7 registry pre-gate tables; awaiting user review`
+- git status --short（附录写入时，提交 (ii) 之前）：`（空）`（正式 end 门禁在提交 (i) 后立即运行，当时工作区干净；附录与清单更新随提交 (ii) 入账）
+
+FINAL_STATUS=COMPLETE
+
+本轮已完成 P05-S5 R7 范围，等待用户审核。
