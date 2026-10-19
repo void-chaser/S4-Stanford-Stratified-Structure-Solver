@@ -40,6 +40,7 @@
 #include <cstring>
 
 int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const int n, std::complex<double> *Epsilon2, std::complex<double> *Epsilon_inv){
+	int ret = 0;
 	double mp1 = 0;
 	int pwr = S->options.lanczos_smoothing_power;
 	if(S->options.use_Lanczos_smoothing){
@@ -55,6 +56,7 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 	const int *G = S->G;
 	const int ndim = (0 == S->Lr[2] && 0 == S->Lr[3]) ? 1 : 2;
 	double *ivalues = (double*)S4_malloc(sizeof(double)*(2+10)*(L->pattern.nshapes+1));
+	if(NULL == ivalues){ return 1; }
 	double *values = ivalues + 2*(L->pattern.nshapes+1);
 
 	// Get all the dielectric tensors
@@ -113,6 +115,7 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 		const int ng2 = ngrid[0]*ngrid[1];
 
 		work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*(6*nn + 4*ng2));
+		if(NULL == work){ S4_free(ivalues); return 1; }
 		mDelta = work;
 		Eta = mDelta + nn;
 		P = Eta + nn;
@@ -125,6 +128,7 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 		int ii[2];
 
 		double *vfield = (double*)S4_malloc(sizeof(double)*2*ng2);
+		if(NULL == vfield){ S4_free(work); S4_free(ivalues); return 1; }
 		if(0 == S->Lr[2] && 0 == S->Lr[3]){ // 1D, generate the trivial field
 			double nv[2] = {-S->Lr[1], S->Lr[0]};
 			double nva = hypot(nv[0],nv[1]);
@@ -198,6 +202,7 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 
 
 		fft_plan plan = fft_plan_dft_2d(ngrid, Ffrom, Fto, 1);
+		if(NULL == plan){ ret = 1; goto plan_done; }
 
 		// We fill in the quarter blocks of F in Fortran order
 		for(int w = 0; w < 4; ++w){
@@ -212,7 +217,7 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 					Ffrom[si1+si0*ngrid[1]] = par[2*(ii[0]+ii[1]*ngrid[0])+_1]*par[2*(ii[0]+ii[1]*ngrid[0])+_2];
 				}
 			}
-			fft_plan_exec(plan);
+			if(0 != fft_plan_exec(plan)){ ret = 1; goto plan_done; }
 
 			for(int j = 0; j < n; ++j){
 				for(int i = 0; i < n; ++i){
@@ -223,15 +228,20 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 				}
 			}
 		}
+plan_done:
 		fft_plan_destroy(plan);
 
 		if(NULL != vfield){ S4_free(vfield); }
+		if(0 != ret){ S4_free(work); S4_free(ivalues); return 1; }
 		// Add to cache
-		Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn);
+		if(0 != Simulation_AddFieldToCache((S4_Simulation*)S, L, S->n_G, P, 4*nn)){
+			S4_free(work); S4_free(ivalues); return 1;
+		}
 	}else{
 		// P contains the cached version
 		// We still need temporary space to compute -Delta
 		work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*2*nn);
+		if(NULL == work){ S4_free(ivalues); return 1; }
 		mDelta = work;
 		Eta = mDelta + nn;
 	}
@@ -257,7 +267,13 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 	// mDelta will contain -Delta = inv(Eta) - Epsilon
 	// Epsilon2 still only has Epsilon along its diagonal
 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., mDelta,n);
-	RNP::LinearSolve<'N'>(n,n, Eta,n, mDelta,n, NULL, NULL);
+	// P05-S3R D4: a zero pivot leaves mDelta unsolved; the loop below would combine it into Epsilon2.
+	// work holds mDelta and Eta on both branches, and ivalues is live.  Return the existing code 1.
+	int solve_info = 0;
+	RNP::LinearSolve<'N'>(n,n, Eta,n, mDelta,n, &solve_info, NULL);
+	if(0 != solve_info){
+		S4_free(work); S4_free(ivalues); return 1;
+	}
 	for(int i = 0; i < n; ++i){
 		RNP::TBLAS::Axpy(n, std::complex<double>(-1.), &Epsilon2[0+i*n2],1, &mDelta[0+i*n],1);
 	}
@@ -270,5 +286,5 @@ int FMMGetEpsilon_PolBasisVL(const S4_Simulation *S, const S4_Layer *L, const in
 
 	S4_free(ivalues);
 
-	return 0;
+	return ret;
 }

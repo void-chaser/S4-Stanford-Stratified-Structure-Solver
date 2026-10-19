@@ -240,7 +240,7 @@ int Simulation_MakeExcitationDipole(S4_Simulation *S, const double k[2], const c
 #ifdef __cplusplus
 // Field cache manipulation
 std::complex<double>* Simulation_GetCachedField(const S4_Simulation *S, const S4_Layer *layer);
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 #endif
 
 //////////////////////// Simulation solutions ////////////////////////
@@ -260,7 +260,7 @@ void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t 
 // 13 - excitation layer name not found
 // 14 - no layers
 // 15 - material not found
-// 20 - the layer eigensystem failed; no layer modes or solution were installed
+// 20 - the layer eigensystem failed; the failed layer has no modes; layers computed before it may keep their modes
 
 
 // Sets up S->solution; if one already exists, destroys it and allocates a new one
