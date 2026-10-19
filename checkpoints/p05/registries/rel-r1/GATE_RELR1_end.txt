@@ -1,0 +1,30 @@
+# GATE_RELR1_end.txt -- P05 delivery round REL-R1 gate (GATE_RELR1_end.txt)
+# One read-only code path: every check reads files/tables and recomputes the fact; nothing is modified.
+# phase=end formal=yes out=checkpoints/p05/evidence/p05-rel-r1/GATE_RELR1_end.txt
+PASS	START_GATE_EXISTS	expected=present	actual=present
+PASS	START_GATE_FAILS_ZERO	expected=FAILS=0	actual=FAILS=0
+PASS	START_GATE_HEAD_S4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	START_GATE_JUDGE	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	START_GATE_RULINGS_LAST_U391	expected=U391	actual=U391
+PASS	HEAD_S4_EQ_F4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	JUDGE_SHA256	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	BASE_HEAD_IS_ANCESTOR	expected=0	actual=0
+PASS	S4_ZERO_CHANGES	expected=clean	actual=clean
+PASS	RULINGS_UNCHANGED	expected=1c0aad12e7a08dc775c14aa08b756f7a1d53d959642f813647b74b957d19f545	actual=1c0aad12e7a08dc775c14aa08b756f7a1d53d959642f813647b74b957d19f545
+PASS	S5R7_REGISTRY_ALL_OK	expected=all 4 OK	actual=all 4 OK
+PASS	PREREG_SHA_MATCHES_RECORD	expected=b0a064fe4cf6c7df34fc19719b6222a3773cf2daed53b3bd124c55e5c41297b8	actual=b0a064fe4cf6c7df34fc19719b6222a3773cf2daed53b3bd124c55e5c41297b8
+PASS	TMP_SNAPSHOT_SAME_AS_START	expected=0 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b	actual=0 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+PASS	RELR1_REGISTRY_ALL_OK	expected=all 17 OK unlisted=0	actual=all 17 OK unlisted=0
+PASS	CHANGED_FILES_WHITELIST	expected=clean	actual=clean
+PASS	STATE_HAS_RELR1_IN_SEC1_AND_SEC2	expected=yes	actual=yes
+PASS	STATE_RELR1_LINES_NO_GATE_RESULT	expected=clean(3 lines)	actual=clean(3 lines)
+PASS	REPORT_COUNTS_BLOCK_PRESENT	expected=present	actual=present
+PASS	REPORT_DERIVED_TEXT_MATCHES_TABLES	expected=all match	actual=all match
+PASS	SUMMARY_CONSISTENT_WITH_VERDICT	expected=consistent	actual=consistent
+PASS	NON_REGRESSION_RULE	expected=PASS	actual=PASS
+PASS	EVIDENCE_SUMS_COVER_NONBINARY	expected=covered	actual=covered
+PASS	FORMAL_OUT_ABSENT_BEFORE_RUN	expected=absent	actual=absent
+COUNTS	pass=23	fail=0	total=23
+FAILS=0
+CHECK_CRASHED=0
+FINAL_STATUS=COMPLETE

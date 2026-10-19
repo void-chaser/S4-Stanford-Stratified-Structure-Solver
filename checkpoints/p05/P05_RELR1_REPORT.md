@@ -132,3 +132,33 @@ PREREG_SHA256=b0a064fe4cf6c7df34fc19719b6222a3773cf2daed53b3bd124c55e5c41297b8
 见 `ERRATA_RELR1.txt`（ER1）：T4 的执行从“`$EV/trees/F4` 归档导出树”改为“同一 F4 树的独立本地克隆 `$EV/t4src/F4`”，因为归档导出树位于主仓库工作树内，管线的 `git -C ROOT archive 963ccf1` 只会归档该子目录前缀（在 963ccf1 中不存在），导致基线导出为空。克隆在运行前核对了 `HEAD=3de6d8b…` 且 `HEAD:S4=589e15eb…`；期望、超时与比较规则均未改动。
 
 正式 end 门禁结果见附录 C（门禁后追加）。
+
+## 附录 C 正式 end 门禁结果（门禁后只追加）
+
+本附录由 relr1_appendix_c.py 在提交 (i) 之后、按任务书第 8.5 节正式运行一次 `relr1_check.py --phase end` 的结果追加；
+正式门禁若 FAILS>0 不修、不重跑，照实写 INCOMPLETE。
+
+| 项 | 值 |
+|---|---|
+| 门禁文件 | checkpoints/p05/evidence/p05-rel-r1/GATE_RELR1_end.txt |
+| 门禁文件 sha256 | `550cafdbe9eeb97ff63c0e930b0889ffefb0a4671230b2388ec26fdc78cf3296` |
+| 正式门禁计数 | pass=23 fail=0 total=23 |
+| FAILS | 0 |
+| FINAL_STATUS | COMPLETE |
+| 正式门禁预跑 | GATE_RELR1_pre.txt（同一条只读代码路径，仅 --out 不同） |
+
+### C.1 交付状态
+
+```
+$ git log -1
+0cdc6d63e10f76b1b7b43d65e7a5a84636f63d64
+P05 delivery round REL-R1 (i): non-regression verification report, registries, gate scripts, STATE rows
+2026-10-19 15:10:31 +1100
+
+$ git status --short
+(empty)
+```
+
+### C.2 结论
+
+本轮已完成 P05 交付轮 REL-R1 范围，等待用户审核。
