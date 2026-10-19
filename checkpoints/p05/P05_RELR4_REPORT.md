@@ -235,6 +235,8 @@ NON_REGRESSION_B=PASS
 | rel-r4 | U 的 Python 尝试由项目自带 `gensetup.py.sh` 在 U 克隆内生成 `setup.py` 与 `build/` | 是（在 `$EV/upstream/S4` 内，证据克隆不提交） | 项目自身生成器行为；`U_PY_RELR4.tsv` 记录了 `git status --porcelain` 的 `?? build/`、`?? setup.py` |
 | rel-r4 | OpenMPI/PMIx 在 `$EV/tmp` 建会话目录 `ompi.*`；examples 的 `S4_malloc` 临时目录也落在 `$EV/tmp` | 是（都在 `$EV/tmp`，仓库内） | 工具/框架事件，非执行者违规；未写 `/tmp` 或仓库外路径；`/dev/shm` 顶层为空 |
 | rel-r4 | 门禁 `safe_run.log` 随每次调用追加 | 是 | 故不纳入 `SHA256SUMS.txt` 的静态清单（清单头部注明） |
+| rel-r4 | end 门禁预跑首跑 1 项 FAIL（GATE_PRE_FILE_PRESENT 自指检查）；修正检查器为仅正式相运行，并 amend 提交 (i) | 是（首跑预跑文件保留为 `GATE_RELR4_pre_firstrun.txt`；提交 (i) amend 后哈希为 `c56e99f1`） | 见 ERRATA ER4-6；修正后预跑 85/85 FAILS=0，正式 end 只运行一次 86/86 FAILS=0（附录 C） |
+| rel-r4 | 判定引擎在正式 end 之前的两处实现修正（有效通过写进状态列；T3 只在 IEEE double 相同频点判值） | 否（只重新生成判定表与清单） | 见 ERRATA ER4-7；不改预注册期望/容差；修正后重新生成 registry 与证据 SHA256SUMS 再作提交 (i) |
 | rel-r4 | framework 的 `/tmp/dsh-spill-*` 类落盘 | 否（未观察到） | 本轮长输出都用 tail/head 限制；`/tmp` 顶层快照开始/结束均为 0 项且 sha 相同 |
 
 ## 9 证据与清单位置
@@ -245,3 +247,32 @@ NON_REGRESSION_B=PASS
 - 勘误：`ERRATA_RELR4.txt`（ER4-1…ER4-5，均在 493 个预注册单元与容差不改的前提下记录口径/执行事件）。
 
 正式 end 门禁结果见附录 C（门禁后追加）。
+## 附录 C 正式 end 门禁结果（门禁后只追加）
+
+本附录由 relr4_appendix_c.py 在提交 (i) 之后、按任务书第 8 节正式运行一次 `relr4_check.py --phase end` 的结果追加；
+正式门禁若 FAILS>0 不修、不重跑，照实写 INCOMPLETE。
+
+| 项 | 值 |
+|---|---|
+| 门禁文件 | checkpoints/p05/evidence/p05-rel-r4/GATE_RELR4_end.txt |
+| 门禁文件 sha256 | `a5465b7a02826788319c313734e217265bc96c8b37b16a8d69641712d3d2833b` |
+| 正式门禁计数 | pass=86 fail=0 total=86 |
+| FAILS | 0 |
+| FINAL_STATUS | COMPLETE |
+| 正式门禁预跑 | GATE_RELR4_pre.txt（同一条只读代码路径，仅 --out 不同） |
+
+### C.1 交付状态
+
+```
+$ git log -1
+c56e99f1b06e4be9f38431c6df8dd6f14510317a
+P05 delivery round REL-R4 (i): U/B/F4 three-tree example comparison, MPI runs and C API cross-check, ERRATA/registries/RULINGS U399-U403/STATE rows, report, gate scripts; awaiting user review
+2026-10-19 20:32:31 +1100
+
+$ git status --short
+(empty)
+```
+
+### C.2 结论
+
+本轮已完成 P05 交付轮 REL-R4 范围，等待用户审核。

@@ -42,3 +42,19 @@
 - 证据：GATE_RELR4_start_firstrun.txt（首跑，FAILS=1）。
 - 处理：更正检查器的期望条数为实测并核对过的 18 后重跑，FAILS=0；数据未改，第二跑的输出为
   GATE_RELR4_start.txt（重生成见 ER4-4）。
+## ER4-6 end 门禁预跑首跑 1 项 FAIL（自指检查），正式 end 之前修正
+- 事件：第一次预跑（--out GATE_RELR4_pre.txt，提交 (i) 之后）出现 1 项 FAIL：GATE_PRE_FILE_PRESENT。
+  原因是预跑时该检查要求"GATE_RELR4_pre.txt 已存在"，而该文件正是本次运行自己的输出（自指）。
+- 处理：把该检查改为只在正式 end 相（formal）运行（预跑不可能看到自己的输出；正式运行时预跑文件已存在）；
+  首跑预跑文件保留为 GATE_RELR4_pre_firstrun.txt（sha256 3a5cbcb7174f406a50f455f752e57519c0d97a0ad9e0cd267eba50034f826b64，
+  门禁输出文件不纳入证据清单）。这次修正发生在提交 (i) 之后，故对提交 (i) 做了 amend（仍是"两个本地提交"中的 (i)，
+  没有第三条提交；提交信息不变、仍以 awaiting user review 结尾）。修正后预跑 85/85 FAILS=0，随后正式 end 只运行一次：
+  86/86 FAILS=0 FINAL_STATUS=COMPLETE（附录 C）。
+
+## ER4-7 判定引擎在正式 end 之前的两处实现修正
+- (a) 有效通过口径（ER4-1）在初版判定引擎里只用于分类、没有写进 VERDICT 的 U/B/F4 状态列，
+  导致 BOTH_FAIL 行的 U 列显示 PASS；修正为状态列也用"rc + stderr 错误标记"的有效结果。
+- (b) T3 的"相同频率"初版按浮点容差匹配，会把只差 1 ulp 的频点当作相同（产生 1.458e-12 的错配观测）；
+  修正为只在 IEEE double 完全相同的频点上判值（ER4-2），覆盖率与错配观测只记录。
+- 两处修正都发生在第一次正式 end 门禁之前，只影响判定表（VERDICT/SUMMARY/RESULTS/MPI_RELR4）的生成，
+  不改变任何预注册期望或容差；修正后重新生成了 registry 与证据 SHA256SUMS，再提交 (i)（amend 见 ER4-6）。
