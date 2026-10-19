@@ -75,3 +75,20 @@
 FINAL_STATUS=PENDING_GATE
 
 本轮已完成 P05-S5 R6 范围，等待用户审核。
+
+## 附录 C（门禁后追加；只追加，不改正文）
+
+正式 end 门禁在提交 (i) ddbb24a6da0f90fa72bd2dddd6682f649755583b 之后运行一次（冻结期规则：不修、不重跑、不放宽）。以下数值由 s5r6_appendix_c.py 从门禁文件派生：
+
+- 门禁文件：checkpoints/p05/evidence/p05-s5r6/GATE_S5R6_end.txt（sha256 58676104fa8c02eaf2f6a4cf238a9e745ed0e12b40aa250074d242cf00212fd0）
+- 提交前试跑（同一脚本，仅输出名不同）：GATE_S5R6_pre.txt（sha256 256490fbdf612058db514171a5ce3ecbda22ac3a085cdab59d0fff0d0a81d444），COUNTS pass=53 fail=0 total=53；FAILS=0
+- 正式 COUNTS pass=53 fail=0 total=53；FAILS=0；CHECK_CRASHED=0
+- 失败项：无
+- 崩溃项：无
+- 关键核对（全部 PASS）：S4/ 零改动且 HEAD:S4=F4；R5 报告前 95 行 sha256 8f7f96b4… 不变且纯追加；ERRATA_S5.txt 纯追加 ES5-17（前缀 e1f02ee8… 不变）；RULINGS.tsv 未改（无用户签收原文，U391 未写）；草稿 v1/v2/v3 与 P05_S3_S4_SIGNOFF.md 的 sha 不变；registries/s5r5 12/12 OK、registries/s5r4 15/15 OK、evidence/p05-s5r5 20/20 OK；判定器 sha 不变；本轮改动文件全部在白名单内；/tmp 前后快照一致（0 条）；无新建 __pycache__。
+- git log -1：`ddbb24a6da0f90fa72bd2dddd6682f649755583b P05-S5 R6 (i): sign-off entry skipped (no user P05-S5 text -> no U391, no signoff file), errata ES5-17 text corrections (R5 report appendix D, first 95 lines sha unchanged), STATE/roadmap/issue-registry sync, s5r6_check 53 checks, s5r6 registry pre-gate tables; awaiting user review`
+- git status --short（附录写入时，提交 (ii) 之前）：`M checkpoints/p05/registries/s5r6/SHA256SUMS.txt | ?? checkpoints/p05/registries/s5r6/GATE_S5R6_end.txt | ?? testing/d003/stage_s5r6/s5r6_appendix_c.py | ?? testing/d003/stage_s5r6/s5r6_sha_sums.py`（正式 end 门禁在提交 (i) 后立即运行，当时工作区干净；s5r6_appendix_c.py / s5r6_sha_sums.py 在其后新增，随提交 (ii) 入账）
+
+FINAL_STATUS=COMPLETE
+
+本轮已完成 P05-S5 R6 范围，等待用户审核。

@@ -1,6 +1,6 @@
 # SHA256SUMS.txt -- P05-S5 R6 registry (pure documentation sub-round)
 # RULINGS_APPEND_S5R6.tsv is absent on purpose: no user sign-off text -> U391 not written
-# the formal end-gate file GATE_S5R6_end.txt is appended after the gate and added below
-3775f03e806d170f600b7c386647d4fb34ea0c2c83018d49bd644e84661ec80f  GATE_S5R6_start.txt
 28de619aa714ea04b432285b1c8963806de21b68320496b2ca40f31f20794dac  ERRATA_APPEND_S5R6.tsv
+58676104fa8c02eaf2f6a4cf238a9e745ed0e12b40aa250074d242cf00212fd0  GATE_S5R6_end.txt
+3775f03e806d170f600b7c386647d4fb34ea0c2c83018d49bd644e84661ec80f  GATE_S5R6_start.txt
 52e89ce15dbb4c544e2b5312141166950c4705979c45781f3446e8701e797481  TMP_SNAPSHOT_S5R6.tsv
