@@ -1,0 +1,7 @@
+# TMP_SNAPSHOT_RELR2.tsv -- top-level temporary-directory snapshot (start) at P05 delivery round REL-R2
+# captured by relr2_tmpsnap.py, the only read-only snapshot command of the round; read only
+# count = number of top-level entries; sha256 = sha256 of the newline-joined Python-sorted names
+key	value
+LABEL	start
+TMP_COUNT	0
+TMP_SHA256	01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b

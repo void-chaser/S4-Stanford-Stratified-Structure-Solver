@@ -1,0 +1,23 @@
+# NOREG_PROBE_RELR2.tsv -- REL-R2 no-injection reachability probe (task brief section 3.5)
+# Candidate public-API inputs run against the REL-R1 exported B and F4 trees (S4 source identical to
+# the product branch); one child process per (case, tree), so a signal shows up in proc_rc.
+# Written 2026-10-19T05:00:15Z
+case	tree	proc_rc	status	all_finite	same_as_other_tree	detail
+vl_nb1	B	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+vl_nb1	F4	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+nv_nb1	B	0	RETURNED	True	YES	1.0,0.0,-0.02559004066097157,0.0
+nv_nb1	F4	0	RETURNED	True	YES	1.0,0.0,-0.02559004066097157,0.0
+jones_nb1	B	0	RETURNED	True	NO	1.0,-8.673617379884035e-19,-0.028643644391032563,8.673617379884035e-19
+jones_nb1	F4	0	RETURNED	True	NO	1.0,0.0,-0.028643644391031637,0.0
+cf_eps0	B	0	RETURNED	True	YES	1.0,0.0,-0.010331327716508834,0.0
+cf_eps0	F4	0	RETURNED	True	YES	1.0,0.0,-0.010331327716508834,0.0
+cf_epsbig	B	0	RETURNED	True	YES	1.0,0.0,-1.0,0.0
+cf_epsbig	F4	0	RETURNED	True	YES	1.0,0.0,-1.0,0.0
+kt_eps0	B	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+kt_eps0	F4	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+kt_epsbig	B	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+kt_epsbig	F4	0	EXCEPTION		YES	GetPowerFlux: The layer eigensystem could not be solved; no solution was returned
+cf_eps_singular_tensor	B	0	RETURNED	True	YES	1.0,0.0,0.0,0.0
+cf_eps_singular_tensor	F4	0	RETURNED	True	YES	1.0,0.0,0.0,0.0
+kt_eps_singular_tensor	B	0	RETURNED	True	YES	1.0,0.0,0.0,0.0
+kt_eps_singular_tensor	F4	0	RETURNED	True	YES	1.0,0.0,0.0,0.0

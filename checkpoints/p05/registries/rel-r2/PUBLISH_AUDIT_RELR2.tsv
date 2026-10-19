@@ -1,0 +1,39 @@
+# PUBLISH_AUDIT_RELR2.tsv -- pre-publish sensitive-information audit (task brief section 5.2)
+# Record only: nothing is rewritten, no history is changed.  Counts are occurrences over the files
+# added or modified in the audited range (git diff --name-only B..tip, content from git show tip:path).
+# D = the REL-R2 round's own text files still uncommitted at audit time (the report itself is
+# excluded because it quotes the pattern strings by construction).
+# Columns: candidate, pattern, hits, files_hit, samples(up to 3, path:line: text)
+A	TOKEN_GHP	0	0	
+A	TOKEN_GITHUB_PAT	0	0	
+A	TOKEN_AKIA	0	0	
+A	PRIVATE_KEY_BEGIN	0	0	
+A	PASSWORD_ASSIGN	0	0	
+A	ABS_PATH_HOME	24	11	checkpoints/p05/P05_S2R_HARNESS_SUPPLEMENT.md:437: | 候选（只读，未变更） | `/home/jackal/s4-fmm-20260930T132345Z`、`/home/jackal/s4-fmm-o1-20260930T183847Z`（本轮未使用） | || checkpoints/p05/P05_S2_TEST_HARNESS.md:65: | `testing/d003/src/history/driver.history.cpp` | `/home/jackal/s4-fmm-accept/src/driver.cpp` | `1be57c35f66e6822fdb21f2ea1d0c36f684d4b1860240cb5a4728841282f3b4d` | `cmp` 与原件逐字节一致 | || checkpoints/p05/P05_S2_TEST_HARNESS.md:66: | `testing/d003/src/history/inject.history.cpp` | `/home/jackal/s4-fmm-accept/src/inject.cpp` | `13b2cbf5c23489c7203dcbdeb71e47103889a6fde7df6cccf6569c852da733da` | `cmp` 与原件逐字节一致 |
+A	ABS_PATH_SRV	5789	155	checkpoints/p05/P05_S4R8_REPORT_M0.md:29: - 2026-10-13T03:37:20Z,一条只读核对命令的写入目标解析到仓库外 `/srv/nvme/projects/x`(被 Read-only file system 拒绝,未落盘;`test -e` 核实不存在)。 || checkpoints/p05/S1_BASELINE_AND_ENUMERATION.md:488: - `.git/worktrees/`：原为本次失败 `git worktree add` 留下的空目录。按主脑授权，经 `ls -A` 确认为空、`worktree list` 只有主工作区后，**已 `rmdir`**（绝对路径 `/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/.git/worktrees`）。 || checkpoints/p05/briefs/P05_S4R8_BRIEF_M0_RESTART2.md:15: 接受为已披露违规。记入表一(写入目标是仓库外的 /srv/nvme/projects/x;被 Read-only file system 拒绝;未落盘,已用 test -e 核实)。
+A	USERNAME	26	13	checkpoints/p05/P05_S2R_HARNESS_SUPPLEMENT.md:437: | 候选（只读，未变更） | `/home/jackal/s4-fmm-20260930T132345Z`、`/home/jackal/s4-fmm-o1-20260930T183847Z`（本轮未使用） | || checkpoints/p05/P05_S2_TEST_HARNESS.md:65: | `testing/d003/src/history/driver.history.cpp` | `/home/jackal/s4-fmm-accept/src/driver.cpp` | `1be57c35f66e6822fdb21f2ea1d0c36f684d4b1860240cb5a4728841282f3b4d` | `cmp` 与原件逐字节一致 | || checkpoints/p05/P05_S2_TEST_HARNESS.md:66: | `testing/d003/src/history/inject.history.cpp` | `/home/jackal/s4-fmm-accept/src/inject.cpp` | `13b2cbf5c23489c7203dcbdeb71e47103889a6fde7df6cccf6569c852da733da` | `cmp` 与原件逐字节一致 |
+A	EMAIL	12	12	S4/S4.cpp:3: * Written by Victor Liu (vkl@stanford.edu) || S4/S4_internal.h:3: * Written by Victor Liu (vkl@stanford.edu) || S4/fmm/fmm_FFT.cpp:3: * Written by Victor Liu (vkl@stanford.edu)
+A	HOSTNAME	0	0	
+A	FILES_SCANNED	2819		AGENTS.md,PROJECT_ROADMAP.md,S4/S4.cpp,S4/S4_internal.h,S4/fmm/fmm_FFT.cpp,S4/fmm/fmm_PolBasisJones.cpp,S4/fmm/fmm_PolBasisNV.cpp,S4/fmm/fmm_PolBasisVL.cpp...
+P	TOKEN_GHP	0	0	
+P	TOKEN_GITHUB_PAT	0	0	
+P	TOKEN_AKIA	0	0	
+P	PRIVATE_KEY_BEGIN	0	0	
+P	PASSWORD_ASSIGN	0	0	
+P	ABS_PATH_HOME	0	0	
+P	ABS_PATH_SRV	0	0	
+P	USERNAME	0	0	
+P	EMAIL	10	10	S4/S4.cpp:3: * Written by Victor Liu (vkl@stanford.edu) || S4/S4_internal.h:3: * Written by Victor Liu (vkl@stanford.edu) || S4/fmm/fmm_FFT.cpp:3: * Written by Victor Liu (vkl@stanford.edu)
+P	HOSTNAME	0	0	
+P	FILES_SCANNED	11		S4/S4.cpp,S4/S4_internal.h,S4/fmm/fmm_FFT.cpp,S4/fmm/fmm_PolBasisJones.cpp,S4/fmm/fmm_PolBasisNV.cpp,S4/fmm/fmm_PolBasisVL.cpp,S4/fmm/fmm_closed.cpp,S4/fmm/fmm_experimental.cpp...
+D	TOKEN_GHP	0	0	
+D	TOKEN_GITHUB_PAT	0	0	
+D	TOKEN_AKIA	0	0	
+D	PRIVATE_KEY_BEGIN	0	0	
+D	PASSWORD_ASSIGN	0	0	
+D	ABS_PATH_HOME	0	0	
+D	ABS_PATH_SRV	0	0	
+D	USERNAME	0	0	
+D	EMAIL	0	0	
+D	HOSTNAME	0	0	
+D	FILES_SCANNED	7		testing/d003/stage_relr2/relr2_doc_P05_D003_SUMMARY.md,testing/d003/stage_relr2/relr2_noreg_case.py,testing/d003/stage_relr2/relr2_noreg_probe.py,testing/d003/stage_relr2/relr2_noreg_repeat.py,testing/d003/stage_relr2/relr2_prod.py,testing/d003/stage_relr2/relr2_tmpsnap.py,testing/d003/stage_relr2/relr2_verify.py

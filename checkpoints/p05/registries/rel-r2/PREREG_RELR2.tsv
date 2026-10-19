@@ -1,0 +1,20 @@
+# PREREG_RELR2.tsv -- P05 delivery round REL-R2 pre-registration. STATUS: INFLUENCED.
+# Written before the first validation run of V1-V6.  Product-branch construction (clone, checkout, patch,
+#   doc/test commit) happens before this file and is construction, not a V-run; the V1-V6 runs all start
+#   after the sha256 of this file is recorded in PREREG_RELR2.tsv.sha256.txt.
+# INFLUENCED: the expectations below come from the task brief section 4 and from the REL-R1 registry
+#   (SAME=317, BOTH_FAIL=12, SKIP_DECLARED=5, NEW_FAIL=0, DIFF=0, FLAKY=0, unit_count=265), not from a blind
+#   trial.  No row is rewritten after this point; any correction goes to ERRATA_RELR2.txt only.
+# Candidates: A = current work branch codex/p05-d003-fft-error-propagation (REL-R3 pushes it as
+#   archive/p05-d003-full-20261019); P = product branch p05/d003-fft-error-propagation built in $EV/prod.
+# $REPO = repository root; $EV = checkpoints/p05/evidence/p05-rel-r2; B = origin/master 5b72793;
+#   F4 = 3de6d8b (S4 tree 589e15eb11fcb04e031b524f25a443e7921946cf).
+# Written: 2026-10-19T04:57:22Z
+# Columns: test_id, item, expected, rule, gate
+test_id	item	expected	rule	gate
+V1	product branch HEAD:S4	589e15eb11fcb04e031b524f25a443e7921946cf	exact equality of git rev-parse HEAD:S4 in $EV/prod	HARD
+V2	product branch non-S4 added paths vs B (5b72793)	only doc/P05_D003_SUMMARY.md plus at most one testing/s4test/test_p05_*.py; no checkpoints/, no testing/d003/, no AGENTS.md; doc <= 200 lines	git diff --name-status 5b72793..HEAD whitelist check; doc line count	HARD
+V3	make test in a fresh clone of the product branch	rc=0; unit set = REL-R1 T1 F4 unit set (MAKETEST_UNITS_RELR1.tsv column F4_p1=ok) plus the unit(s) of the optional new test; zero failures	unit-name set equality; failure set empty	HARD
+V4	testing/runtests.sh independent references (simple, fresnel, Fan fig12)	3/3 PASS with the REL-R1 tolerances (simple 1e-12, fresnel 1e-12, Fan fig12 1e-10)	same reference data and numdiff as REL-R1 T2	HARD
+V5	build/S4 and build/libS4.a sha256 vs REL-R1 F4	record SAME or DIFFERENT; either is acceptable	record only, not a gate	RECORD
+V6	annotated tags and main-repo product branch ref	p05-signed-20261019 -> 3de6d8b, p05-rel-r1-20261019 -> c88bf30 (both annotated tag objects); main repo refs/heads/p05/d003-fft-error-propagation = $EV/prod HEAD	git cat-file -t = tag; tag peeled commit equality; ref equality	HARD

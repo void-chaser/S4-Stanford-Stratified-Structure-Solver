@@ -1,0 +1,9 @@
+# RULINGS_APPEND_RELR2.tsv -- P05 delivery round REL-R2 RULINGS.tsv append (U392, user authorisation)
+# baseline = blob at HEAD c88bf30954a356e1cbdd49cf7a53218778c0ae3e
+# before_bytes=157296 before_sha256=1c0aad12e7a08dc775c14aa08b756f7a1d53d959642f813647b74b957d19f545
+# after_bytes=158104 after_sha256=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7
+# prefix_bytes=157296 prefix_sha256=1c0aad12e7a08dc775c14aa08b756f7a1d53d959642f813647b74b957d19f545 prefix_unchanged=yes
+# rows_appended=1 new_row_id=U392 row_bytes=808 row_sha256=e7645f6cd4a547d892f2f34977003cc8e0969eb5bc944bc83303e3bc1b0c1091
+id	given_in_round	fields	status
+U392	用户对话授权（P05 交付轮 REL-R2 任务书 §2）	5	生效
+ROW_SHA256	e7645f6cd4a547d892f2f34977003cc8e0969eb5bc944bc83303e3bc1b0c1091

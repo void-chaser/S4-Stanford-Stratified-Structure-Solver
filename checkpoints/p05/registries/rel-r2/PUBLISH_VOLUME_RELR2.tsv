@@ -1,0 +1,42 @@
+# PUBLISH_VOLUME_RELR2.tsv -- pre-publish volume audit (task brief section 5.1)
+# object sizes from: git rev-list --objects <range> | git cat-file --batch-check
+# A = current work branch tip c88bf30 (before the REL-R2 bookkeeping commits);
+# P = product branch HEAD 8e4c01491b6edec9eb4eaa617265ce9ca53bd548.
+# GitHub warning line 50 MB, rejection line 100 MB (binary MB = 1048576 bytes).
+candidate	range	tip	new_blob_count	total_bytes	total_mib	blobs_ge_50mb	blobs_ge_100mb
+A_work_branch	5b72793051eb705f0e9b2e5398e1a5f0484da0cb..c88bf30954a356e1cbdd49cf7a53218778c0ae3e	c88bf30954a356e1cbdd49cf7a53218778c0ae3e	3065	48337858	46.10	0	0
+P_product_branch	5b72793051eb705f0e9b2e5398e1a5f0484da0cb..8e4c01491b6edec9eb4eaa617265ce9ca53bd548	8e4c01491b6edec9eb4eaa617265ce9ca53bd548	11	315165	0.30	0	0
+
+# largest 20 new blobs per candidate
+candidate	rank	bytes	mib	path
+A_work_branch	1	1670487	1.59	checkpoints/p05/registries/s4r9/M1R3/BARE_WRITE_AUDIT_R9M1R3.tsv
+A_work_branch	2	971100	0.93	checkpoints/p05/registries/s4r8/M2/r8m2a4/REPLAY_R6c_R8_M2a4.tsv
+A_work_branch	3	924672	0.88	checkpoints/p05/registries/s4r9/M1R2/EVENTS_R9M1R2.tsv
+A_work_branch	4	693390	0.66	checkpoints/p05/registries/s4r9/M1R2/BARE_WRITE_AUDIT_R9M1R2.tsv
+A_work_branch	5	556385	0.53	checkpoints/p05/registries/s3r5/K_MAP_RAW_S3R5.txt
+A_work_branch	6	493059	0.47	checkpoints/p05/registries/s4r9/M1/EVENTS_R9M1.tsv
+A_work_branch	7	489542	0.47	checkpoints/p05/registries/s4r9/M0/COMMAND_PLAN_R9.tsv
+A_work_branch	8	395232	0.38	checkpoints/p05/registries/s4r8/M2/r8m2a4/COMMAND_PLAN_R8_M2a4.tsv
+A_work_branch	9	390890	0.37	checkpoints/p05/registries/s4r8/M1b/r8m1b1/PLAN_M1B_R8_M1b1.tsv
+A_work_branch	10	351368	0.34	checkpoints/p05/registries/s4r8/M1c/r8m1c4/POSCTRL_A2_R8_M1c4_VS_FROZEN.tsv
+A_work_branch	11	351366	0.34	checkpoints/p05/registries/s4r8/M1c/r8m1c4/POSCTRL_A_R8_M1c4_VS_FROZEN.tsv
+A_work_branch	12	351366	0.34	checkpoints/p05/registries/s4r8/M1c/r8m1c4/POSCTRL_B_R8_M1c4_VS_FROZEN.tsv
+A_work_branch	13	351358	0.34	checkpoints/p05/registries/s4r8/M1c/r8m1c4/CMP_REAL_R8_M1c4_VS_FROZEN.tsv
+A_work_branch	14	351264	0.33	checkpoints/p05/registries/s4r8/M1c/r8m1c3/COMPARE_M1C_F3_VS_FROZEN_R8_M1c3.tsv
+A_work_branch	15	284354	0.27	checkpoints/p05/registries/s4r8/M1a/SHA256SUMS_M1a4AUDIT2_EVIDENCE_R2.txt
+A_work_branch	16	283781	0.27	checkpoints/p05/registries/s4r9/M1R2/PREREG_M1_CITED_F2_R9M1R2.tsv
+A_work_branch	17	283769	0.27	checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_CITED_F2_R9M1R3.tsv
+A_work_branch	18	282219	0.27	checkpoints/p05/registries/s4r9/M1R3/PREREG_M1_F4_R9M1R3.tsv
+A_work_branch	19	282202	0.27	checkpoints/p05/registries/s4r9/M1R2/PREREG_M1_F4_R9M1R2.tsv
+A_work_branch	20	272971	0.26	checkpoints/p05/registries/s4r9/M1/PREREG_M1_F4_R9M1.tsv
+P_product_branch	1	151229	0.14	S4/S4.cpp
+P_product_branch	2	69202	0.07	S4/pattern/pattern.c
+P_product_branch	3	14185	0.01	S4/fmm/fmm_PolBasisJones.cpp
+P_product_branch	4	13444	0.01	S4/fmm/fmm_kottke.cpp
+P_product_branch	5	13033	0.01	S4/S4_internal.h
+P_product_branch	6	10274	0.01	S4/fmm/fmm_closed.cpp
+P_product_branch	7	10017	0.01	S4/fmm/fmm_PolBasisVL.cpp
+P_product_branch	8	9976	0.01	S4/fmm/fmm_PolBasisNV.cpp
+P_product_branch	9	9053	0.01	S4/fmm/fmm_FFT.cpp
+P_product_branch	10	8017	0.01	doc/P05_D003_SUMMARY.md
+P_product_branch	11	6735	0.01	S4/fmm/fmm_experimental.cpp

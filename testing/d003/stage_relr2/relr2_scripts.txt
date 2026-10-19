@@ -1,0 +1,17 @@
+# relr2_scripts.txt -- manifest of the REL-R2 scripts and authored files in testing/d003/stage_relr2/
+# The gate reads script names from THIS list (never from a hard-coded name) and checks it matches the directory.
+relr2_appendix_c.py
+relr2_audit.py
+relr2_check.py
+relr2_doc_P05_D003_SUMMARY.md
+relr2_noreg_case.py
+relr2_noreg_probe.py
+relr2_noreg_repeat.py
+relr2_prod.py
+relr2_registry.py
+relr2_rulings.py
+relr2_scripts.txt
+relr2_sha_sums.py
+relr2_state.py
+relr2_tmpsnap.py
+relr2_verify.py

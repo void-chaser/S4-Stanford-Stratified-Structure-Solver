@@ -1,0 +1,36 @@
+# PROD_RELR2.tsv -- REL-R2 product branch construction record (task brief section 3)
+# Built in an independent local clone under the round evidence directory; the main repository
+# was only read (git clone source).  Run 2026-10-19T05:01:59Z
+key	value
+PROD_DIR	checkpoints/p05/evidence/p05-rel-r2/prod
+CLONE_SOURCE	/srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver
+BRANCH	p05/d003-fft-error-propagation
+BASE_COMMIT	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+FIX_COMMIT	3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+STAGED_S4	589e15eb11fcb04e031b524f25a443e7921946cf
+COMMIT1	e6f5f52aa8e310cd04e4acf0f499518d22da373c
+DOC_LINES	95
+DOC_SHA256	526e471615f8a1d57e5acf81069721f124fb746d90c76e5b6180daab17901c71
+COMMIT2	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PROD_HEAD	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PROD_HEAD_S4	589e15eb11fcb04e031b524f25a443e7921946cf
+PROD_WORKTREE_STATUS	clean
+INHERITED_CHECKPOINTS_FROM_B	111 paths: checkpoints/014rf/FINAL_REVIEW.md,checkpoints/014rf/PROVENANCE.json,checkpoints/014rf/VERDICT.json,checkpoints/p04-final/ACCEPTANCE_B_ERRATUM.md,checkpoints/p04-final/ACCEPTANCE_B_ROWS1-4.md,checkpoints/p04-final/ADOPTION_CHECKS.json
+FORBIDDEN_PATHS_ADDED	none
+NON_S4_CHANGED_PATHS	doc/P05_D003_SUMMARY.md
+COMMITS_ABOVE_B	2
+DIFF_STAT	S4/S4.cpp                    | 103 ++++++++++++++++++++++++++++++------- |  S4/S4_internal.h             |   4 +- |  S4/fmm/fmm_FFT.cpp           |  18 +++++-- |  S4/fmm/fmm_PolBasisJones.cpp |  31 ++++++++--- |  S4/fmm/fmm_PolBasisNV.cpp    |  42 ++++++++++----- |  S4/fmm/fmm_PolBasisVL.cpp    |  24 +++++++-- |  S4/fmm/fmm_closed.cpp        |  19 +++++-- |  S4/fmm/fmm_experimental.cpp  |   4 ++ |  S4/fmm/fmm_kottke.cpp        |  27 ++++++++-- |  S4/pattern/pattern.c         | 119 ++++++++++++++++++++++++++++++++++--------- |  doc/P05_D003_SUMMARY.md      |  95 ++++++++++++++++++++++++++++++++
+COMMIT_LIST	8e4c01491b6edec9eb4eaa617265ce9ca53bd548	P05 D003: add the product-branch summary document ;; e6f5f52aa8e310cd04e4acf0f499518d22da373c	P05 D003: propagate FMM/FFT and pattern allocation failures to the public API
+PROD_BUILT_UTC	2026-10-19T05:01:59Z
+
+# steps
+step	status	note
+clone	OK	cloned
+checkout_branch_at_B	OK	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+apply_S4_delta	OK	checked out 10 files from 3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+hard_check_staged_S4	OK	589e15eb11fcb04e031b524f25a443e7921946cf
+commit_source	OK	e6f5f52aa8e310cd04e4acf0f499518d22da373c
+hard_check_commit1_S4	OK	589e15eb11fcb04e031b524f25a443e7921946cf
+add_doc	OK	doc lines=95
+commit_doc	OK	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+final_checks	OK	ok

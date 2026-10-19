@@ -1,0 +1,39 @@
+# V_RELR2.tsv -- REL-R2 product-branch verification V1-V6 (task brief section 4)
+# expected values are copied from PREREG_RELR2.tsv (by column name) where they are typed there;
+# V5 is record-only.  Generated 2026-10-19T05:05:20Z
+test_id	item	expected	actual	result
+V1	product branch HEAD:S4	589e15eb11fcb04e031b524f25a443e7921946cf	589e15eb11fcb04e031b524f25a443e7921946cf	SAME
+V2	product branch non-S4 additions vs B	only doc/P05_D003_SUMMARY.md plus at most one testing/s4test/test_p05_*.py; no checkpoints/, no testing/d003/, no AGENTS.md; doc <= 200 lines	paths=doc/P05_D003_SUMMARY.md; doc_lines=95; unexpected=none	SAME
+V6	annotated tags and main-repo product branch ref	p05-signed-20261019 -> 3de6d8b, p05-rel-r1-20261019 -> c88bf30 (both annotated tag objects); main repo refs/heads/p05/d003-fft-error-propagation = $EV/prod HEAD	tag1=tag->3de6d8b tag2=tag->c88bf30 ref=8e4c014 prod_head=8e4c014	SAME
+V5	build artifact sha256 vs REL-R1 F4 (record only)	record SAME or DIFFERENT; either is acceptable	build/S4=SAME; build/libS4.a=SAME; build_rc=0/0	RECORDED
+V3	make test in a fresh clone of the product branch	rc=0; unit set = REL-R1 T1 F4 unit set (MAKETEST_UNITS_RELR1.tsv column F4_p1=ok) plus the unit(s) of the optional new test; zero failures	rc=0 units=265 failing=none missing=none extra=none recon=True	SAME
+V4	testing/runtests.sh independent references	3/3 PASS with the REL-R1 tolerances (simple 1e-12, fresnel 1e-12, Fan fig12 1e-10)	rc=0 cases=3 passed_line=True	SAME
+
+# records
+key	value
+MAIN_REF	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PROD_HEAD	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+TAG1_COMMIT	3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+TAG1_TYPE	tag
+TAG2_COMMIT	c88bf30954a356e1cbdd49cf7a53218778c0ae3e
+TAG2_TYPE	tag
+V1_HEAD_S4	589e15eb11fcb04e031b524f25a443e7921946cf
+V2_DOC_LINES	95
+V2_NON_S4_PATHS	doc/P05_D003_SUMMARY.md
+V2_TEST_FILE	none
+V3_EXPECTED_UNITS	265
+V3_EXTRA	none
+V3_FAILING	none
+V3_MISSING	none
+V3_RC	0
+V3_RECON_OK	True
+V3_UNIT_COUNT	265
+V4_CASES	3
+V4_PASSED_LINE	True
+V4_RC	0
+V5_BUILD_RC	0/0
+V5_BUILD_S4_SHA256	fb375c726101ae2d935e929fece54b1867aa0435b24e9fe92bdeda77314396f2
+V5_LIBS4_SHA256	a28eaa5d6a0ed347870c9bf9f4c38d16cac23f340cfe17cf1725854f8c6d8b8d
+V5_PYEXT	S4.cpython-314-x86_64-linux-gnu.so
+VCLONE_HEAD	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+VCLONE_HEAD_S4	589e15eb11fcb04e031b524f25a443e7921946cf

@@ -1,0 +1,10 @@
+# PUBLISH_REMOTE_RELR2.tsv -- read-only remote state (task brief section 5.3)
+check	expected	actual	result
+ls_remote_rc	0	0	SAME
+origin_is_void_chaser_fork	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver.git	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver.git	SAME
+remote_p05_branches	absent	absent	SAME
+remote_archive_branches	absent	absent	SAME
+remote_tag_p05_signed	absent	absent	SAME
+remote_tag_p05_rel_r1	absent	absent	SAME
+remote_ref_count	record	9	RECORDED
+remote_heads	record	refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003,refs/heads/codex/master-integration-gate-20261010,refs/heads/codex/p04-acceptance-review-20261009,refs/heads/feature/python314-binding,refs/heads/fix/modern-linux-build,refs/heads/master	RECORDED

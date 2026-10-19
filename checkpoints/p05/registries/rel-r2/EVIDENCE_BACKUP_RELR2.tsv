@@ -1,0 +1,26 @@
+# EVIDENCE_BACKUP_RELR2.tsv -- offline backup inventory, record only (task brief section 5.4)
+# No backup, no compression, no copy is performed by this round.
+# total_bytes = du -s --block-size=1 (disk usage) of checkpoints/p05/evidence; top 20 entries.
+entry	bytes	gib
+TOTAL	12218966016	11.38
+p05-s4r8	2089869312	1.95
+p05-rel-r1	1990213632	1.85
+p05-s2r6	1318256640	1.23
+p05-s4r9	987758592	0.92
+p05-rel-r2	857399296	0.80
+p05-s2r3	606126080	0.56
+p05-s4r7	591237120	0.55
+p05-s4r5	445042688	0.41
+p05-s3r	405700608	0.38
+p05-s2r	370626560	0.35
+p05-s4r4	284635136	0.27
+p05-s3r2	281378816	0.26
+p05-s2r5	244523008	0.23
+p05-s2r2	213905408	0.20
+p05-s1r	200515584	0.19
+p05-s2b	188403712	0.18
+p05-s3r4	179445760	0.17
+p05-s2	174272512	0.16
+p05-s3r3	154669056	0.14
+p05-s5r3	142438400	0.13
+# subdirectory count: 49
