@@ -1,0 +1,9 @@
+# RULINGS_APPEND_S5R7.tsv -- P05-S5 R7 RULINGS.tsv append (U391, user sign-off text)
+# before_bytes=156852 before_sha256=d5742e70c40ebb7a08585860d98557eabcd0aaebbdbabb4f47e9be950a38e9c3
+# after_bytes=157296 after_sha256=1c0aad12e7a08dc775c14aa08b756f7a1d53d959642f813647b74b957d19f545
+# prefix_bytes=156852 prefix_sha256=d5742e70c40ebb7a08585860d98557eabcd0aaebbdbabb4f47e9be950a38e9c3 prefix_unchanged=yes
+# rows_appended=1 new_row_id=U391 row_bytes=444 row_sha256=9d64674ba5fe82b9a6afab20a9255a06bffb1e52a7cb8bfe07306f8199e19ed2
+# signoff_text_sha256=c7af2fb22c9cc9f9ec04d4bfb83cce73478b0a2019ce951f12b1c0804df3f65e
+id	given_in_round	fields	status
+U391	用户对话签收原文（P05-S5 R7 任务书 §1）	5	生效
+ROW_SHA256	9d64674ba5fe82b9a6afab20a9255a06bffb1e52a7cb8bfe07306f8199e19ed2
