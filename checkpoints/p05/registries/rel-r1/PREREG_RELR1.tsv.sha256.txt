@@ -1,0 +1,3 @@
+# PREREG_RELR1.tsv.sha256.txt -- sha256 of the pre-registration written before any formal run
+# algorithm: sha256; unit: bytes; UTC: 2026-10-19T03:48:17Z
+PREREG_RELR1.tsv	b0a064fe4cf6c7df34fc19719b6222a3773cf2daed53b3bd124c55e5c41297b8	bytes=84767	utc=2026-10-19T03:48:17Z

@@ -1,0 +1,7 @@
+# TREES_RELR1.tsv -- P05 delivery round REL-R1 reference trees exported with git archive
+# S4 tree hash is recomputed from the exported files with the git tree-object algorithm (sha1)
+# and compared with 'git rev-parse <commit>:S4'.  U = upstream original master (record only).
+tree	commit	commit_subject	s4_tree_git	s4_tree_export_recomputed	match	export	file_count	makefile_sha256	export_command
+U	7fd00a231610bff51f5c7de5f723e3956eab7453	Fixed bug related to 1D patterning.	06553f72e93aaef1a5c9294f358a7f5afbd42bb1	06553f72e93aaef1a5c9294f358a7f5afbd42bb1	YES	exists	665	db355e71c01bc1ab783595bd226bbcd716b81b233fbad414d3b9896fc2d2f8e1	git archive 7fd00a231610bff51f5c7de5f723e3956eab7453 | tar -x -C checkpoints/p05/evidence/p05-rel-r1/trees/U
+B	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	docs(p04): note where the A-36 counts come from and the revision-two commit range	1d738e64f9864a475fdb3de34cd3601605df2c64	1d738e64f9864a475fdb3de34cd3601605df2c64	YES	ok	879	db355e71c01bc1ab783595bd226bbcd716b81b233fbad414d3b9896fc2d2f8e1	git archive 5b72793051eb705f0e9b2e5398e1a5f0484da0cb | tar -x -C checkpoints/p05/evidence/p05-rel-r1/trees/B
+F4	3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505	P05-S5 R7 (ii): formal end gate GATE_S5R7_end.txt 67/67 FAILS=0 FINAL_STATUS=COMPLETE (append-only a	589e15eb11fcb04e031b524f25a443e7921946cf	589e15eb11fcb04e031b524f25a443e7921946cf	YES	ok	3648	db355e71c01bc1ab783595bd226bbcd716b81b233fbad414d3b9896fc2d2f8e1	git archive 3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505 | tar -x -C checkpoints/p05/evidence/p05-rel-r1/trees/F4

@@ -1,0 +1,9 @@
+# U_DIFF_RELR1.tsv -- REL-R1 record of the upstream reference tree U (7fd00a2), record only
+# Task brief section 5: U is the upstream original master; any U vs B difference belongs to P04 and
+# is not a failure of this round.  U could not be built in this environment.
+item	value
+U_STATUS	U_BUILD_UNAVAILABLE
+U_FIRST_COMPILE_ERROR	S4/main_lua.c:2207:17: error: passing argument 2 of ‘Simulation_GetAmplitudes’ makes pointer from integer without a cast [-Wint-conversion]
+U_T2	not run: build unavailable
+U_T3	not run: build unavailable
+U_VS_B_DIFFERENCE	not observed; recorded only

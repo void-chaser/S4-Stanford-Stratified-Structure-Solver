@@ -1,0 +1,9 @@
+# WARN_DIFF_RELR1.txt -- compiler warnings in the B and F4 build logs (task brief section 3.3)
+# Warning identity drops line/column numbers (source basename + message) so shifted lines are not counted as new.
+# B and F4 were built by the same compiler with the same Makefile.Linux flags.
+B_warnings=38
+F4_warnings=38
+NEW_IN_F4=0
+ONLY_IN_B=0
+B_compile_error_lines=0
+F4_compile_error_lines=0

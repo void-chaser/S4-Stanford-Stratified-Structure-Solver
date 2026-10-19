@@ -1,0 +1,26 @@
+# MAKETEST_RECON_RELR1.tsv -- per log and unittest block: recognised units vs 'Ran N' vs skipped
+log	stage	units	ran_n	skipped_got	skipped_expected	ok
+B_p1	test_python_binding	4	4	0	0	OK
+B_p1	s4test_unittest	257	257	1	1	OK
+B_p1	selftest_analytic	1	-	-	-	OK
+B_p1	lua_regression	1	-	-	-	OK
+B_p1	lua_regression_negative	1	-	-	-	OK
+B_p1	lua_api_negative	1	-	-	-	OK
+F4_p1	test_python_binding	4	4	0	0	OK
+F4_p1	s4test_unittest	257	257	1	1	OK
+F4_p1	selftest_analytic	1	-	-	-	OK
+F4_p1	lua_regression	1	-	-	-	OK
+F4_p1	lua_regression_negative	1	-	-	-	OK
+F4_p1	lua_api_negative	1	-	-	-	OK
+B_p2	test_python_binding	4	4	0	0	OK
+B_p2	s4test_unittest	257	257	1	1	OK
+B_p2	selftest_analytic	1	-	-	-	OK
+B_p2	lua_regression	1	-	-	-	OK
+B_p2	lua_regression_negative	1	-	-	-	OK
+B_p2	lua_api_negative	1	-	-	-	OK
+F4_p2	test_python_binding	4	4	0	0	OK
+F4_p2	s4test_unittest	257	257	1	1	OK
+F4_p2	selftest_analytic	1	-	-	-	OK
+F4_p2	lua_regression	1	-	-	-	OK
+F4_p2	lua_regression_negative	1	-	-	-	OK
+F4_p2	lua_api_negative	1	-	-	-	OK

@@ -1,0 +1,11 @@
+# MAKETEST_VERDICT_RELR1.tsv -- make test verdict for REL-R1 (same criteria as U374)
+item	value
+verdict	NO_NEW_FAILURE
+unit_count	265
+B_failing	none
+F4_failing	none
+new_failures	none
+flaky	none
+suite_diff	none
+T7_clone_vs_F4	EQUAL_UNIT_SET
+criteria	F4 failing set subset of B failing set AND no F4 p1/p2 difference AND identical unit sets AND all four logs reconcile with Ran N / skipped=k

@@ -1,0 +1,6 @@
+# POSCTRL_MAKETEST_RELR1.txt -- positive control of relr1_judge_maketest.py on tampered copies of the
+# formal logs (copies under $EV/posctrl/maketest/; the formal logs are never touched).
+A_ONE_UNIT_FAIL_IN_F4: PASS (expected=NEW_FAILURE actual=NEW_FAILURE) -- flipped test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis ok->FAIL in F4_p1
+B_UNIT_STATUS_DIFF_ACROSS_PASSES: PASS (expected=FLAKY actual=FLAKY) -- flipped test_analytic_reference.ConvergenceTests.test_energy_is_conserved_at_every_num_basis ok->FAIL in B_p2 only
+C_UNIT_RENAMED_IN_F4_P2: PASS (expected=SUITE_DIFF actual=SUITE_DIFF) -- renamed test_python_binding.PythonBindingTests.test_invalid_input_raises_instead_of_crashing in F4_p2
+OVERALL_POSITIVE_CONTROL: PASS (3/3)

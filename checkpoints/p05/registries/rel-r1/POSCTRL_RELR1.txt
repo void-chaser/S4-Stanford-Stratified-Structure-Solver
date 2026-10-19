@@ -1,0 +1,8 @@
+# POSCTRL_RELR1.txt -- positive control of relr1_verdict.py on tampered COPIES of the formal
+# T3 observations of examples/simple (copies under $EV/posctrl/verdict/; the formal units/ are untouched).
+# The same judging code path (judge_t3) is used for every case.
+A_ONE_STDOUT_NUMBER_CHANGED: PASS (expected=DIFF actual=DIFF) -- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r1/posctrl/verdict/caseA_stdout_digit_changed
+B_F4_RETURN_CODE_NONZERO: PASS (expected=NEW_FAIL actual=NEW_FAIL) -- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r1/posctrl/verdict/caseB_f4_rc_nonzero
+C_F4_PASS2_DIFFERS: PASS (expected=FLAKY actual=FLAKY) -- /srv/nvme/projects/S4-Stanford-Stratified-Structure-Solver/checkpoints/p05/evidence/p05-rel-r1/posctrl/verdict/caseC_f4_p2_differs
+OVERALL_POSITIVE_CONTROL: PASS (3/3)
+CATEGORIES_COVERED: DIFF,NEW_FAIL,FLAKY

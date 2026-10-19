@@ -13,6 +13,7 @@
 | 判定器 sha256 | d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb |
 | 阶段状态 | S1–S5 已由用户签收（带范围声明；S5 见 P05_S5_SIGNOFF.md 与 U391） |
 | 当前轮次 | P05-S5 R7（s5r7，纯文档子轮：P05-S5 签收入账 U391、入口同步；不是新阶段） |
+| P05 交付轮 | REL-R1（rel-r1；修复后完整原有功能非破坏性验证；不是 P05 新阶段，不改 S1–S5；门禁结果见 P05_RELR1_REPORT.md 附录 C） |
 
 ## 2 关键数字（每轮一行）
 
@@ -23,6 +24,7 @@
 | S5R5 | 裁决 U386–U390；勘误 ES5-15/16；同类缺陷静态普查 SWEEP_ROWS=139、SELF_BRANCH_ROWS=2、VACUOUS=0；R4 冻结数据重判：修正逻辑成立、R4 原逻辑 not_staging；重判阳性对照 4/4；就绪审计见 READINESS_S5R5.tsv；end 门禁 36/36 FINAL_STATUS=COMPLETE（P05_S5R5_REPORT.md 附录 C） | P05_S5R5_REPORT.md；registries/s5r5/ |
 | S5R6 | 无用户 P05-S5 签收原文：任务书第 2 节跳过，U391 未写，P05_S5_SIGNOFF.md 未创建；勘误 ES5-17（三条文字更正：(a) R5 表一命令管道符转义、(b) POSCTRL_GATE_S5R5.txt 只在证据目录交付、registries/s5r5 为 12 项、(c) R5 附录 A 的 COUNTS 重复）；R5 报告只追加附录 D（前 95 行 sha 不变）；入口同步 PROJECT_ROADMAP.md 与 ISSUE_REGISTRY.md；门禁结果见 P05_S5R6_REPORT.md 附录 C | P05_S5R6_REPORT.md；registries/s5r6/ |
 | S5R7 | 用户给出 P05-S5 签收原文：checkpoints/p05/P05_S5_SIGNOFF.md §2 逐字照录（原文 sha256 c7af2fb2…；S1–S5 五行签收表）；RULINGS.tsv 追加 U391（5 字段，旧前缀 sha 不变）；STATE/ROADMAP/ISSUE 入口同步；转出项保持 OPEN；P05 五个正式阶段全部由用户签收，P06 可启动；门禁结果见 P05_S5R7_REPORT.md 附录 C | P05_S5R7_REPORT.md；registries/s5r7/ |
+| REL-R1 | P05 交付轮（rel-r1）：修复后完整原有功能非破坏性验证；各类别计数与例外清单见报告正文，门禁结果见报告附录 C | P05_RELR1_REPORT.md；registries/rel-r1/ |
 
 ## 3 开放问题（状态 · 去向 · 详情链接）
 
@@ -47,3 +49,6 @@
 - 裁决总表 registries/RULINGS.tsv（S5R7 追加 U391）；S5 勘误 registries/s5r2/ERRATA_S5.txt（末条 ES5-17，本轮未改）；R4 终版 ERRATA 快照 registries/s5r5/r4_final/ERRATA_S5_R4FINAL.txt。
 
 （本文件由 s5r7_state.py 在正式链中生成）
+
+
+（REL-R1 行由 relr1_state.py 于 2026-10-19T04:09:58Z 追加；S1–S5 内容未改）
