@@ -94,3 +94,11 @@ FINAL_STATUS=COMPLETE
 
 本轮已完成 P05-S5 R5 范围，等待用户审核。
 
+
+## 附录 D（S5R6 追加：文字更正，见 ES5-17）
+
+> 本附录只追加，不改第 1–95 行与附录 A/C 的任何字节（前 95 行 sha256 8f7f96b4fc41500c616f6f931160fdd4ee7d46856ca3e4c1d0fdcb1fe138932c，追加前全文件 sha256 9f90d6f7ad390cc5ab14b6bc08bb5a4fbb95fcd98e6231081549ca4d602d91c5）。三条更正均只影响文字与排版，不影响任何判定、证据 sha 或 S5R5 的 36/36 FAILS=0 结论。
+
+- (a) §6.1 表一命令列：原文 `awk -F'\t' ... | tee /dev/stderr | wc -l` 的管道符未转义，把表格拆成多列。正确写法：`awk -F'\t' ... \| tee /dev/stderr \| wc -l`（同一命令、同一事件：tee 目标 /dev/stderr 不在 $REPO 下且未落盘，同一管道的 wc 输出 139）。
+- (b) §7 交付物列表：POSCTRL_GATE_S5R5.txt 不在 registries/s5r5，而在 evidence/p05-s5r5/POSCTRL_GATE_S5R5.txt（sha256 2c5e6f17…；checkpoints/p05/evidence/p05-s5r5/SHA256SUMS.txt 第 10 行）。为避免 registry↔posctrl 循环依赖（该文件本身就是 registry 聚合的阳性对照），不把它补进 registry；registries/s5r5/SHA256SUMS.txt 为 12 项（12/12 OK），目录含清单自身共 13 个文件。
+- (c) 附录 A：`COUNTS COUNTS\tpass=36\tfail=0\ttotal=36` 是 verifier 回显造成的重复；正确内容为 `COUNTS\tpass=36\tfail=0\ttotal=36`（checkpoints/p05/evidence/p05-s5r5/shakedown/gate/GATE_S5R5_end.txt 第 44 行即该单行）。

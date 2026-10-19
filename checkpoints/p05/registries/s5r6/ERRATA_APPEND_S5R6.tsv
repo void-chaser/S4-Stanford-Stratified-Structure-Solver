@@ -1,0 +1,7 @@
+# ERRATA_APPEND_S5R6.tsv -- P05-S5 R6 pure append (ES5-17, three text corrections)
+# before_bytes=15805 before_sha256=e1f02ee80605a8eb1240fdacdf22d9b4e2e38c5a764c1fd946e5d979af8dfa33
+# after_bytes=17630 after_sha256=4af120527c73e5ef8189c1c09f1d055750b01f6e9bc8f5f9aed88d1a47ba9d6c
+# prefix_bytes=15805 prefix_sha256=e1f02ee80605a8eb1240fdacdf22d9b4e2e38c5a764c1fd946e5d979af8dfa33 prefix_unchanged=yes
+# last_entry=ES5-17 entries_appended=1
+id	appended
+ES5-17	yes
