@@ -53,6 +53,7 @@ static void sym2x2rot(const std::complex<double> M[4], const double nvec[2], std
 }
 
 int FMMGetEpsilon_Kottke(const S4_Simulation *S, const S4_Layer *L, const int n, std::complex<double> *Epsilon2, std::complex<double> *Epsilon_inv){
+	int ret = 0;
 	const int n2 = 2*n;
 	const int *G = S->G;
 
@@ -75,6 +76,7 @@ int FMMGetEpsilon_Kottke(const S4_Simulation *S, const S4_Layer *L, const int n,
 
 	//std::complex<double> *work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>)*(6*ng2));
 	std::complex<double> *work = fft_alloc_complex(6*ng2);
+	if(NULL == work){ return 1; }
 	std::complex<double>*fxx = work;
 	std::complex<double>*fxy = fxx + ng2;
 	std::complex<double>*fyx = fxy + ng2;
@@ -83,10 +85,13 @@ int FMMGetEpsilon_Kottke(const S4_Simulation *S, const S4_Layer *L, const int n,
 	std::complex<double>*Fto = fzz + ng2;
 //memset(work, 0, sizeof(std::complex<double>) * 6*ng2);
 	double *discval = (double*)S4_malloc(sizeof(double)*(L->pattern.nshapes+1));
+	if(NULL == discval){ fft_free(work); return 1; }
 
 	fft_plan plans[5];
+	for(int i = 0; i <= 4; ++i){ plans[i] = NULL; }
 	for(int i = 0; i <= 4; ++i){
 		plans[i] = fft_plan_dft_2d(ngrid, fxx+i*ng2, Fto, 1);
+		if(NULL == plans[i]){ ret = 1; goto cleanup; }
 	}
 
 	int ii[2];
@@ -94,7 +99,10 @@ int FMMGetEpsilon_Kottke(const S4_Simulation *S, const S4_Layer *L, const int n,
 		const int si0 = ii[0] >= ngrid[0]/2 ? ii[0]-ngrid[0]/2 : ii[0]+ngrid[0]/2;
 		for(ii[1] = 0; ii[1] < ngrid[1]; ++ii[1]){
 			const int si1 = ii[1] >= ngrid[1]/2 ? ii[1]-ngrid[1]/2 : ii[1]+ngrid[1]/2;
-			Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval);
+			/* P05-S3R4 (U38/U94, 415; U96): only -12 (allocation failure in the polygon triangle index) is reported
+			 * as allocation error 1; cleanup frees plans, discval and work.  Other non-zero returns keep the
+			 * existing behaviour (ignored here; OUT_OF_SCOPE_D003 -> P05-S5). */
+			if(-12 == Pattern_DiscretizeCell(&L->pattern, S->Lr, ngrid[0], ngrid[1], ii[0], ii[1], discval)){ ret = 1; goto cleanup; }
 			int nnz = 0;
 			int imat[2] = {-1,-1};
 			for(int i = 0; i <= L->pattern.nshapes; ++i){
@@ -260,7 +268,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 	{
 //fprintf(stderr, "fzz1[0] = %f+I %f\n", fzz[0].real(), fzz[0].imag());
 //memset(Fto, 0, sizeof(std::complex<double>)*ng2);
-		fft_plan_exec(plans[4]);
+		if(0 != fft_plan_exec(plans[4])){ ret = 1; goto cleanup; }
 //fprintf(stderr, "fzz2[0] = %f+I %f\n", fzz[0].real(), fzz[0].imag());
 //fprintf(stderr, "Fto[0] = %f+I %f\n", Fto[0].real(), Fto[0].imag());
 		for(int j = 0; j < n; ++j){
@@ -277,6 +285,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 	RNP::TBLAS::SetMatrix<'A'>(n,n, 0.,1., Epsilon_inv,n);
 	int solve_info;
 	RNP::LinearSolve<'N'>(n,n, Epsilon2,n, Epsilon_inv,n, &solve_info, NULL);
+	if(0 != solve_info){ ret = 1; goto cleanup; }
 //fprintf(stderr, "Epsilon_inv[0] = %f+I %f\n", Epsilon_inv[0].real(), Epsilon_inv[0].imag());
 
 	// We fill in the quarter blocks of F in Fortran order
@@ -284,7 +293,7 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 		int Ecol = (w&1 ? n : 0);
 		int Erow = (w&2 ? n : 0);
 //memset(Fto, 0, sizeof(std::complex<double>)*ng2);
-		fft_plan_exec(plans[w]);
+		if(0 != fft_plan_exec(plans[w])){ ret = 1; goto cleanup; }
 
 //fprintf(stderr, "Fto(%d)[0] = %f+I %f\n", w, Fto[0].real(), Fto[0].imag());
 		for(int j = 0; j < n; ++j){
@@ -296,7 +305,17 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 			}
 		}
 	}
+	// P05-S3R2 D-K (K-1): the averaged tensors are not checked anywhere else; a
+	// non-finite divisor (abcd or abcde equal to zero or overflowing) reaches
+	// Epsilon2 and Epsilon_inv and then the eigensolver.  Reject it here.
+	for(int q = 0; q < n2*n2; ++q){
+		if(!std::isfinite(Epsilon2[q].real()) || !std::isfinite(Epsilon2[q].imag())){ ret = 1; goto cleanup; }
+	}
+	for(int q = 0; q < n*n; ++q){
+		if(!std::isfinite(Epsilon_inv[q].real()) || !std::isfinite(Epsilon_inv[q].imag())){ ret = 1; goto cleanup; }
+	}
 //fprintf(stderr, "Epsilon2[0] = %f+I %f\n", Epsilon2[0].real(), Epsilon2[0].imag());
+cleanup:
 	for(int i = 0; i <= 4; ++i){
 		fft_plan_destroy(plans[i]);
 	}
@@ -305,5 +324,5 @@ fzz[si1+si0*ngrid[1]].real(), fzz[si1+si0*ngrid[1]].imag()
 	//S4_free(work);
 	fft_free(work);
 
-	return 0;
+	return ret;
 }

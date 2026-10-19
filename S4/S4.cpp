@@ -223,7 +223,7 @@ int Simulation_GetSMatrix(S4_Simulation *S, int layer_from, int layer_to, std::c
 // Field cache manipulation
 void Simulation_InvalidateFieldCache(S4_Simulation *S);
 std::complex<double>* Simulation_GetCachedField(S4_Simulation *S, const S4_Layer *layer);
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen);
 
 // Pattern ownership helpers; defined just below, used by Layer_Destroy and by
 // S4_Simulation_Clone.
@@ -1727,8 +1727,17 @@ int Simulation_InitSolution(S4_Simulation *S){
 			free(L->pattern.parent);
 		}
 		L->pattern.parent = (int*)malloc(sizeof(int)*L->pattern.nshapes);
+		/* P05-S3R4 (RP-S3R4-1, U95): on allocation failure return 1 (allocation error,
+		 * S4_internal.h). L->pattern.parent stays NULL so that the next call does not free a dangling pointer. */
+		/* nshapes == 0: malloc(0) may legitimately return NULL, which is not a failure (U96). */
+		if(NULL == L->pattern.parent && L->pattern.nshapes > 0){
+			S4_TRACE("< Simulation_InitSolution (failed; allocation of pattern parent for layer %s) [omega=%f]\n", L->name, S->omega[0]);
+			return 1;
+		}
 		int error = Pattern_GetContainmentTree(&L->pattern);
 		if(0 != error){
+			/* P05-S3R4 (U38, 806; U95): -4 from the containment tree is its area allocation failure, reported as 1. */
+			if(-4 == error){ error = 1; }
 			S4_TRACE("< Simulation_InitSolution (failed; Pattern_GetContainmentTree returned %d for layer %s) [omega=%f]\n", error, L->name, S->omega[0]);
 			return error;
 		}
@@ -1751,17 +1760,30 @@ int Simulation_InitSolution(S4_Simulation *S){
 	if(NULL != S->solution){
 		Simulation_DestroySolution(S);
 	}
-	S->solution = (Solution_*)malloc(sizeof(Solution_));
-	S->solution->ab = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * S->n_layers * 4 * S->n_G);
-	S->solution->solved = (int*)malloc(sizeof(int) * S->n_layers);
-	if(NULL == S->solution || NULL == S->solution->ab || NULL == S->solution->solved){
+	Solution_ *sol = (Solution_*)malloc(sizeof(Solution_));
+	if(NULL == sol){
 		S4_TRACE("< Simulation_InitSolution (failed; could not allocate S->solution) [omega=%f]\n", S->omega[0]);
 		if(NULL != S->msg){
 			S->msg(S->msgdata, "Simulation_InitSolution", S4_MSG_ERROR, "Could not allocate solution memory");
 		}
 		return 1;
 	}
-	memset(S->solution->solved, 0, sizeof(int) * S->n_layers);
+	sol->ab = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * S->n_layers * 4 * S->n_G);
+	sol->solved = (int*)malloc(sizeof(int) * S->n_layers);
+	if(NULL == sol->ab || NULL == sol->solved){
+		if(NULL != sol->ab){
+			S4_free(sol->ab);
+		}
+		free(sol->solved);
+		free(sol);
+		S4_TRACE("< Simulation_InitSolution (failed; could not allocate S->solution) [omega=%f]\n", S->omega[0]);
+		if(NULL != S->msg){
+			S->msg(S->msgdata, "Simulation_InitSolution", S4_MSG_ERROR, "Could not allocate solution memory");
+		}
+		return 1;
+	}
+	memset(sol->solved, 0, sizeof(int) * S->n_layers);
+	S->solution = sol;
 
 	S4_TRACE("I  Simulation_InitSolution G: (%d) [omega=%f]\n", S->n_G, S->omega[0]);
 
@@ -2265,6 +2287,12 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 	S4_VERB(1, "Computing modes of layer: %s\n", NULL != L->name ? L->name : "");
 
 	*layer_modes = (LayerModes*)malloc(sizeof(LayerModes));
+	// P05-S3R rule R1: nothing else is allocated yet, so there is nothing to release.  Check before
+	// pB is first used (pB->epstype below); *layer_modes is NULL here and the caller sees no mode.
+	if(NULL == *layer_modes){
+		S4_TRACE("< Simulation_ComputeLayerModes (failed; LayerModes malloc returned NULL) [omega=%f]\n", S->omega[0]);
+		return 20;
+	}
 	LayerModes *pB = *layer_modes;
 	const int n = S->n_G;
 	const int n2 = 2*n;
@@ -2296,6 +2324,13 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 		2*n + // for q
 		kp_size + phi_size + Epsilon_inv_size + Epsilon2_size
 		));
+	// P05-S3R rule R2: q is NULL and the pointer arithmetic below would use it.  Discard frees the
+	// struct and is NULL-safe for q, so nothing is released twice.
+	if(NULL == pB->q){
+		S4_TRACE("< Simulation_ComputeLayerModes (failed; q allocation returned NULL) [omega=%f]\n", S->omega[0]);
+		Simulation_DiscardLayerModes(layer_modes);
+		return 20;
+	}
 	pB->kp = pB->q + n2;
 	pB->phi = pB->kp + kp_size;
 	pB->Epsilon_inv = pB->phi + phi_size;
@@ -2364,42 +2399,56 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 		}
 	}else{ // not a uniform layer
 		S4_VERB(1, "Generating epsilon matrix of layer: %s\n", NULL != L->name ? L->name : "");
+		int fmm_ret = 0;
 		if(S->options.use_experimental_fmm){
-			FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+			fmm_ret = FMMGetEpsilon_Experimental(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 		}else{
 			if(S->options.use_discretized_epsilon){
 				if(S->options.use_subpixel_smoothing){
-					FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+					fmm_ret = FMMGetEpsilon_Kottke(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 				}else{ // not using subpixel smoothing
-					FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
-					if(S->options.use_polarization_basis){
+					fmm_ret = FMMGetEpsilon_FFT(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+					if(0 == fmm_ret && S->options.use_polarization_basis){
 						if(S->options.use_jones_vector_basis){
-							FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}else if(S->options.use_normal_vector_basis){
-							FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}else{
-							FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+							fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 						}
 					}
 				}
 			}else{
-				FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
-				if(S->options.use_polarization_basis){
+				fmm_ret = FMMGetEpsilon_ClosedForm(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+				if(0 == fmm_ret && S->options.use_polarization_basis){
 					if(S->options.use_jones_vector_basis){
-						FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisJones(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}else if(S->options.use_normal_vector_basis){
-						FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisNV(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}else{
-						FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
+						fmm_ret = FMMGetEpsilon_PolBasisVL(S, L, n, pB->Epsilon2, pB->Epsilon_inv);
 					}
 				}
 			}
 		}
 //std::cerr << pB->Epsilon2[0] << "\t" << pB->Epsilon2[1] << "\t" << pB->Epsilon_inv[0] << "\t" << pB->Epsilon_inv[1] << std::endl;
+		if(0 != fmm_ret){
+			S4_TRACE("< Simulation_ComputeLayerModes (failed; FMM epsilon generation returned %d) [omega=%f]\n", fmm_ret, S->omega[0]);
+			Simulation_DiscardLayerModes(layer_modes);
+			return 20;
+		}
 		S4_VERB(1, "Solving eigensystem of layer: %s\n", NULL != L->name ? L->name : "");
 		{
 			size_t lwork = (size_t)-1;
 			double *rwork = (double*)S4_malloc(sizeof(double) * 4*n);
+			// P05-S3R rule R3: rwork is NULL.  SolveLayerEigensystem would absorb the NULL and allocate its own
+			// workspace, so the failure would be invisible here.  Stop before the solver runs.  q is live and
+			// Discard frees it; rwork is NULL and is not freed.
+			if(NULL == rwork){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; rwork allocation returned NULL) [omega=%f]\n", S->omega[0]);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 			std::complex<double> *work = NULL;
 			std::complex<double> dum;
 			const int query_info = SolveLayerEigensystem(
@@ -2417,6 +2466,15 @@ int Simulation_ComputeLayerModes(S4_Simulation *S, S4_Layer *L, LayerModes **lay
 			}
 			lwork = (int)(dum.real() + 0.5);
 			work = (std::complex<double>*)S4_malloc(sizeof(std::complex<double>) * lwork);
+			// P05-S3R rule R4: work is NULL.  rwork was allocated above and is still live; free it here,
+			// then discard the modes (which frees q).  work is NULL and is not freed.  Returning before the
+			// success-path frees below means each pointer is released exactly once.
+			if(NULL == work){
+				S4_TRACE("< Simulation_ComputeLayerModes (failed; work allocation returned NULL) [omega=%f]\n", S->omega[0]);
+				S4_free(rwork);
+				Simulation_DiscardLayerModes(layer_modes);
+				return 20;
+			}
 			const int eigen_info = SolveLayerEigensystem(
 				std::complex<double>(S->omega[0],S->omega[1]), n,
 				S->kx, S->ky,
@@ -3966,9 +4024,15 @@ std::complex<double>* Simulation_GetCachedField(const S4_Simulation *S, const S4
 	S4_TRACE("< Simulation_GetCachedField returning P = %p [omega=%f]\n", P, S->omega[0]);
 	return P;
 }
-void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen){
+int Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t n, const std::complex<double> *P, size_t Plen){
 	S4_TRACE("> Simulation_AddFieldToCache(S=%p, layer=%p, n=%d, P=%p) [omega=%f]\n", S, layer, (int)n, P, S->omega[0]);
 	FieldCache *f = (FieldCache*)S4_malloc(sizeof(FieldCache)+sizeof(std::complex<double>)*Plen);
+	// P05-S3R D1: a failed allocation must not reach the dereferences below.  The list head is
+	// not touched on this path, so S->field_cache keeps every node it already had.
+	if(NULL == f){
+		S4_TRACE("< Simulation_AddFieldToCache (failed; allocation returned NULL) [omega=%f]\n", S->omega[0]);
+		return 1;
+	}
 	f->P = (std::complex<double>*)(f+1);
 	memcpy(f->P, P, sizeof(std::complex<double>)*Plen);
 	f->layer = layer;
@@ -3976,6 +4040,7 @@ void Simulation_AddFieldToCache(S4_Simulation *S, const S4_Layer *layer, size_t 
 	f->next = S->field_cache;
 	S->field_cache = f;
 	S4_TRACE("< Simulation_AddFieldToCache [omega=%f]\n", S->omega[0]);
+	return 0;
 }
 
 void Simulation_SetExcitationType(S4_Simulation *S, int type){

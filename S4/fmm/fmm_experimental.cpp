@@ -38,6 +38,10 @@ int FMMGetEpsilon_Experimental(const S4_Simulation *S, const S4_Layer *L, const 
 	const int *G = S->G;
 	const int ndim = (0 == S->Lr[2] && 0 == S->Lr[3]) ? 1 : 2;
 	double *ivalues = (double*)S4_malloc(sizeof(double)*(2+10)*(L->pattern.nshapes+1));
+	// P05-S3R D5: check before values is derived from ivalues below.  Nothing else is allocated in this
+	// function yet, so there is nothing to release; the caller reports 20 (S4.cpp dispatch, fmm_ret).
+	// Driver-unreachable: this check is verified by static reading only.
+	if(NULL == ivalues){ return 20; }
 	double *values = ivalues + 2*(L->pattern.nshapes+1);
 
 	S4_TRACE("I  Experimental epsilon\n");
