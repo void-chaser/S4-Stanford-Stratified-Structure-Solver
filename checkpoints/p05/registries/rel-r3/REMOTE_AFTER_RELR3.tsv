@@ -1,0 +1,18 @@
+# REMOTE_AFTER_RELR3.tsv -- read-only git ls-remote origin after the four pushes
+# status: NEW = ref absent before / present after; UNCHANGED = same sha; CHANGED = different sha.
+# annotated-tag peeled ^{} lines are not refs and are omitted.
+ref	sha	sha_before	status
+HEAD	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	UNCHANGED
+refs/heads/archive/p05-d003-full-20261019	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	absent	NEW
+refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003	963ccf153855734de968e6cf71477f324e33329c	963ccf153855734de968e6cf71477f324e33329c	UNCHANGED
+refs/heads/codex/master-integration-gate-20261010	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	UNCHANGED
+refs/heads/codex/p04-acceptance-review-20261009	263d839300eb07821294b71f125bfd039039250b	263d839300eb07821294b71f125bfd039039250b	UNCHANGED
+refs/heads/feature/python314-binding	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	UNCHANGED
+refs/heads/fix/modern-linux-build	93b1c909fbcf0c59c2d0e4e603276f7a66cef2e9	93b1c909fbcf0c59c2d0e4e603276f7a66cef2e9	UNCHANGED
+refs/heads/master	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	UNCHANGED
+refs/heads/p05/d003-fft-error-propagation	8e4c01491b6edec9eb4eaa617265ce9ca53bd548	absent	NEW
+refs/pull/16/head	263d839300eb07821294b71f125bfd039039250b	263d839300eb07821294b71f125bfd039039250b	UNCHANGED
+refs/pull/16/merge	324b2f899f05567ffeb2b350da9bdda416ed05fd	324b2f899f05567ffeb2b350da9bdda416ed05fd	UNCHANGED
+refs/tags/p05-rel-r1-20261019	b42c4c16298ce644f39c3c33ae6c26ef18820a96	absent	NEW
+refs/tags/p05-signed-20261019	ef925cdea019a7cdf00acb66bc5b59d55f00d868	absent	NEW
+# written 2026-10-19T05:22:40Z

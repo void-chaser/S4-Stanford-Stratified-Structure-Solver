@@ -1,0 +1,30 @@
+# V_RELR3.tsv -- P05 delivery round REL-R3 comparison table R1-R9 (task brief section 5 step 7)
+# expected strings are copied from PREREG_RELR3.tsv by column name; every row is judged only
+# from measured values recorded in PUSH_LOG / REMOTE_BEFORE / REMOTE_AFTER / REMOTE_CLONE / PR.
+# R9 is split as pre-registered: the final empty git status --short after commit (i) is
+# re-measured by the end gate (RECORD STATUS_CLEAN_AFTER_COMMIT).
+# Generated 2026-10-19T05:23:45Z
+test_id	item	expected	actual	result
+R1	remote refs/heads/p05/d003-fft-error-propagation sha	8e4c01491b6edec9eb4eaa617265ce9ca53bd548	ls_remote_sha=8e4c01491b6edec9eb4eaa617265ce9ca53bd548; push_rc=0; match=YES	SAME
+R2	remote refs/heads/archive/p05-d003-full-20261019 sha	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	ls_remote_sha=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b; push_rc=0; match=YES	SAME
+R3	remote refs/tags/p05-signed-20261019 sha	ef925cdea019a7cdf00acb66bc5b59d55f00d868	ls_remote_sha=ef925cdea019a7cdf00acb66bc5b59d55f00d868; push_rc=0; match=YES	SAME
+R4	remote refs/tags/p05-rel-r1-20261019 sha	b42c4c16298ce644f39c3c33ae6c26ef18820a96	ls_remote_sha=b42c4c16298ce644f39c3c33ae6c26ef18820a96; push_rc=0; match=YES	SAME
+R5	remote master and six pre-existing heads	master=5b72793051eb705f0e9b2e5398e1a5f0484da0cb; refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003, refs/heads/codex/master-integration-gate-20261010, refs/heads/codex/p04-acceptance-review-20261009, refs/heads/feature/python314-binding, refs/heads/fix/modern-linux-build, refs/heads/master keep their pre-push shas	master=5b72793051eb705f0e9b2e5398e1a5f0484da0cb; old_heads_changed=none; new_refs=refs/heads/archive/p05-d003-full-20261019,refs/heads/p05/d003-fft-error-propagation,refs/tags/p05-rel-r1-20261019,refs/tags/p05-signed-20261019	SAME
+R6	fresh remote clone of the product branch	HEAD=8e4c01491b6edec9eb4eaa617265ce9ca53bd548; HEAD:S4=589e15eb11fcb04e031b524f25a443e7921946cf	clone_rc=0; HEAD=8e4c01491b6edec9eb4eaa617265ce9ca53bd548; HEAD:S4=589e15eb11fcb04e031b524f25a443e7921946cf	SAME
+R7	make test in the R6 clone	rc=0; units=265; failing=none; missing=none; extra=none	rc=0; units=265; failing=none; missing=none; extra=none	SAME
+R8	Draft PR in the fork	state=OPEN; isDraft=true; baseRefName=master; headRefName=p05/d003-fft-error-propagation; commits=2; changedFiles=11	state=OPEN; isDraft=true; base=master; head=p05/d003-fft-error-propagation; commits=2; changedFiles=11	SAME
+R9	main repository final state (V-generation-time part)	HEAD unrewritten; working tree = round bookkeeping files only; final git status --short empty after commit (i)	HEAD=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b (unrewritten=True); refs_ok=True; status_paths=15 scope=round-bookkeeping-only; final empty status re-measured by end gate	SAME
+
+# records
+key	value
+R1_REMOTE_SHA	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+R2_REMOTE_SHA	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b
+R3_REMOTE_SHA	ef925cdea019a7cdf00acb66bc5b59d55f00d868
+R4_REMOTE_SHA	b42c4c16298ce644f39c3c33ae6c26ef18820a96
+R5_NEW_REFS	refs/heads/archive/p05-d003-full-20261019,refs/heads/p05/d003-fft-error-propagation,refs/tags/p05-rel-r1-20261019,refs/tags/p05-signed-20261019
+R5_OLD_HEADS	014rf-offline-evidence-accepted-20261003=SAME,master-integration-gate-20261010=SAME,p04-acceptance-review-20261009=SAME,python314-binding=SAME,modern-linux-build=SAME,master=SAME
+R8_PR_NUMBER	17
+R8_PR_URL	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17
+R9_GEN_HEAD	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b
+R9_GEN_STATUS_PATHS	15
+R9_GEN_STATUS_SCOPE	round-bookkeeping-only

@@ -1,0 +1,27 @@
+# PUBLISH_AUDIT_RELR3.tsv -- pre-push sensitive-information supplementary audit (task brief section 3)
+# Range: c88bf30..4607e96 (the two REL-R2 bookkeeping commits; the REL-R2 audit covered 5b72793..c88bf30
+# for A and 5b72793..8e4c014 for P and found 0 token/key hits).  Pattern table and counting rule are
+# exactly the REL-R2 report section 6.2 ones.  Record only: nothing is rewritten, no history is changed.
+# Counts are occurrences over the files added or modified in the range (git diff --name-only; content
+# from git show 4607e96:path).  Any token/key hit is a HARD_STOP (no push).
+# Columns: candidate, pattern, hits, files_hit, samples(up to 3, path:line: text), classification
+# classification: NONE (no hit); RECORD_ONLY (non-token pattern); PATTERN_QUOTE_NOT_SECRET
+# (a token regex matching the audit's own pattern name quoted in a report -- REL-R2 section 6.2
+# already excludes the report/audit script from the stop count for exactly this reason);
+# CREDENTIAL (a real token/key hit -> HARD_STOP).
+candidate	pattern	hits	files_hit	samples	classification
+NEW_RELR2_COMMITS	TOKEN_GHP	0	0		NONE
+NEW_RELR2_COMMITS	TOKEN_GITHUB_PAT	0	0		NONE
+NEW_RELR2_COMMITS	TOKEN_AKIA	0	0		NONE
+NEW_RELR2_COMMITS	PRIVATE_KEY_BEGIN	0	0		NONE
+NEW_RELR2_COMMITS	PASSWORD_ASSIGN	1	1	checkpoints/p05/P05_RELR2_REPORT.md:169: | `ghp_` / `github_pat_` / `AKIA` / `BEGIN … PRIVATE KEY` / `password=` | 0 | 0 | 无 token/密钥类命中 |	PATTERN_QUOTE_NOT_SECRET
+NEW_RELR2_COMMITS	ABS_PATH_HOME	8	5	checkpoints/p05/P05_RELR2_REPORT.md:171: | 绝对路径 `/home/` | 24（11） | 0 | 同上（历史工作目录路径） | || checkpoints/p05/P05_RELR2_REPORT.md:227: 2. **敏感信息命中的处理**：A 候选有绝对路径（`/srv/nvme/` 5789 次、`/home/` 24 次）、用户名 26 次、上游作者邮箱 12 次；P 候选只有上游作者邮箱 10 次。本轮只记录、未改写历史。请裁决是否需要在 REL-R3 前对归档分支做历史改写/拆分（例如：敏感路径只保留在证据目录而不进归档分支，或接受现状）。 || checkpoints/p05/STATE.md:28: | REL-R2 | P05 交付轮（rel-r2）：产品分支 p05/d003-fft-error-propagation 于独立克隆构建（2 个提交，HEAD 8e4c014，S4 树 589e15eb；仅新增 doc/P05_D003_SUMMARY.md）；V1–V6 全部与预注册一致（V5 只记录：build/S4 与 libS4.a 与 REL-R1 F4 逐字节 SAME）；免注入可达路径未找到，产品分支不含 D003 专用测试；两个附注标签与分支引用已建（待 	RECORD_ONLY
+NEW_RELR2_COMMITS	ABS_PATH_SRV	9	7	checkpoints/p05/P05_RELR2_REPORT.md:170: | 绝对路径 `/srv/nvme/` | 5789（155） | 0 | 集中在 `checkpoints/p05/` 的历史报告/脚本（命令记录、证据路径） | || checkpoints/p05/P05_RELR2_REPORT.md:227: 2. **敏感信息命中的处理**：A 候选有绝对路径（`/srv/nvme/` 5789 次、`/home/` 24 次）、用户名 26 次、上游作者邮箱 12 次；P 候选只有上游作者邮箱 10 次。本轮只记录、未改写历史。请裁决是否需要在 REL-R3 前对归档分支做历史改写/拆分（例如：敏感路径只保留在证据目录而不进归档分支，或接受现状）。 || checkpoints/p05/STATE.md:28: | REL-R2 | P05 交付轮（rel-r2）：产品分支 p05/d003-fft-error-propagation 于独立克隆构建（2 个提交，HEAD 8e4c014，S4 树 589e15eb；仅新增 doc/P05_D003_SUMMARY.md）；V1–V6 全部与预注册一致（V5 只记录：build/S4 与 libS4.a 与 REL-R1 F4 逐字节 SAME）；免注入可达路径未找到，产品分支不含 D003 专用测试；两个附注标签与分支引用已建（待 	RECORD_ONLY
+NEW_RELR2_COMMITS	USERNAME	10	4	checkpoints/p05/P05_RELR2_REPORT.md:172: | 用户名（`jackal`、`void-chaser`、`Ziyang Li`） | 26（13） | 0 | 同上 | || checkpoints/p05/P05_RELR2_REPORT.md:180: * `origin` = `https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver.git`（void-chaser fork）✅ || checkpoints/p05/P05_RELR2_REPORT.md:230: 5. **REL-R3 的 PR 目标**：建议在 void-chaser fork 内对 `master` 提 **Draft PR**（不直接推上游 `7fd00a2` 所在仓库），标题/正文引用 `doc/P05_D003_SUMMARY.md` 与本报告 §4 的 V1–V6；推送与 PR 需用户在 REL-R3 单独批准。	RECORD_ONLY
+NEW_RELR2_COMMITS	EMAIL	4	2	checkpoints/p05/P05_RELR2_REPORT.md:173: | 邮箱 | 12（12） | 10（10） | 两候选都只有上游作者 `vkl@stanford.edu` 的源码署名；P 的 10 处在改动的 S4 文件头部 | || checkpoints/p05/P05_RELR2_REPORT.md:277: Author: Ziyang Li <155395920+void-chaser@users.noreply.github.com> || checkpoints/p05/registries/rel-r2/PUBLISH_AUDIT_RELR2.tsv:15: A EMAIL 12 12 S4/S4.cpp:3: * Written by Victor Liu (vkl@stanford.edu) || S4/S4_internal.h:3: * Written by Victor Liu (vkl@stanford.edu) || S4/fmm/fmm_FFT.cpp:3: * Written by Victor Liu (vkl@stanford.edu)	RECORD_ONLY
+NEW_RELR2_COMMITS	HOSTNAME	0	0		NONE
+NEW_RELR2_COMMITS	FILES_SCANNED	34		checkpoints/p05/P05_RELR2_REPORT.md,checkpoints/p05/STATE.md,checkpoints/p05/registries/RULINGS.tsv,checkpoints/p05/registries/rel-r2/EVIDENCE_BACKUP_RELR2.tsv,checkpoints/p05/registries/rel-r2/GATE_RELR2_end.txt,checkpoints/p05/registries/rel-r2/GATE_RELR2_start.txt,checkpoints/p05/registries/rel-r2/NOREG_PROBE_RELR2.tsv,checkpoints/p05/registries/rel-r2/NOREG_REPEAT_RELR2.tsv...	RECORD_ONLY
+NEW_RELR2_COMMITS	TOKEN_SECRETS_TOTAL	0		real credential hits; HARD_STOP if non-zero	PASS
+NEW_RELR2_COMMITS	TOKEN_PATTERN_QUOTES_TOTAL	1		token regex matching the audit pattern name quoted by a report (not a secret)	NOT_A_SECRET
+# token/key credential hits over the new range: 0 (pattern-name quotes: 1) -- PASS: no HARD_STOP
+# written 2026-10-19T05:22:03Z

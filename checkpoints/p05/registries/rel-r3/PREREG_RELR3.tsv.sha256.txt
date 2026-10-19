@@ -1,0 +1,3 @@
+# PREREG_RELR3.tsv.sha256.txt -- sha256 of the pre-registration written before any push
+# algorithm: sha256; unit: bytes; UTC: 2026-10-19T05:22:08Z
+PREREG_RELR3.tsv	4140c853dc67483afa66a0c877fda34c5ee21d7c1caf4c17666e9870d1304197	bytes=4651	utc=2026-10-19T05:22:08Z

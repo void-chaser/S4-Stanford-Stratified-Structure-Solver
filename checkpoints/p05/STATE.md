@@ -12,8 +12,8 @@
 | HEAD:S4（冻结被测树 F4） | 589e15eb11fcb04e031b524f25a443e7921946cf（F4 提交 05097a7） |
 | 判定器 sha256 | d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb |
 | 阶段状态 | S1–S5 已由用户签收（带范围声明；S5 见 P05_S5_SIGNOFF.md 与 U391） |
-| 当前轮次 | P05 交付轮 REL-R2（rel-r2：本地分支整理与上传前审查；不是 P05 新阶段，S1–S5 与 REL-R1 历史不改；门禁结果见 P05_RELR2_REPORT.md 附录 C） |
-| P05 交付轮 | REL-R1（rel-r1；修复后完整原有功能非破坏性验证；门禁结果见 P05_RELR1_REPORT.md 附录 C）与 REL-R2（rel-r2；产品分支构建与上传前审查；门禁结果见 P05_RELR2_REPORT.md 附录 C） |
+| 当前轮次 | P05 交付轮 REL-R3（rel-r3：推送到 fork 并开 Draft PR；不是 P05 新阶段，S1–S5、REL-R1、REL-R2 历史不改；门禁结果见 P05_RELR3_REPORT.md 附录 C） |
+| P05 交付轮 | REL-R1（rel-r1；修复后完整原有功能非破坏性验证；门禁结果见 P05_RELR1_REPORT.md 附录 C）、REL-R2（rel-r2；产品分支构建与上传前审查；门禁结果见 P05_RELR2_REPORT.md 附录 C）与 REL-R3（rel-r3；推送 4 个 ref 并开 Draft PR；门禁结果见 P05_RELR3_REPORT.md 附录 C） |
 
 ## 2 关键数字（每轮一行）
 
@@ -26,6 +26,7 @@
 | S5R7 | 用户给出 P05-S5 签收原文：checkpoints/p05/P05_S5_SIGNOFF.md §2 逐字照录（原文 sha256 c7af2fb2…；S1–S5 五行签收表）；RULINGS.tsv 追加 U391（5 字段，旧前缀 sha 不变）；STATE/ROADMAP/ISSUE 入口同步；转出项保持 OPEN；P05 五个正式阶段全部由用户签收，P06 可启动；门禁结果见 P05_S5R7_REPORT.md 附录 C | P05_S5R7_REPORT.md；registries/s5r7/ |
 | REL-R1 | P05 交付轮（rel-r1）：修复后完整原有功能非破坏性验证（与 B 对照）；关键计数 SAME=317；BOTH_FAIL=12（均为既有失败）；SKIP_DECLARED=5；NEW_FAIL=0；DIFF=0；FLAKY=0；unit_count=265；各类别计数与 11 个既有失败例外清单见报告正文，门禁结果见报告附录 C | P05_RELR1_REPORT.md；registries/rel-r1/ |
 | REL-R2 | P05 交付轮（rel-r2）：产品分支 p05/d003-fft-error-propagation 于独立克隆构建（2 个提交，HEAD 8e4c014，S4 树 589e15eb；仅新增 doc/P05_D003_SUMMARY.md）；V1–V6 全部与预注册一致（V5 只记录：build/S4 与 libS4.a 与 REL-R1 F4 逐字节 SAME）；免注入可达路径未找到，产品分支不含 D003 专用测试；两个附注标签与分支引用已建（待 REL-R3 推送）；上传前体积审查 A 新增 blob 3065 个共 46.1 MiB、无 ≥50 MB/≥100 MB blob，P 11 个共 0.3 MiB；敏感信息命中（只记录不改写）A：/srv/nvme/ 5789 次/155 文件、/home/ 24 次/11 文件、用户名 26 次、邮箱 12 次，P：仅上游作者邮箱 10 次；证据目录 11.38 GiB；门禁结果见报告附录 C | P05_RELR2_REPORT.md；registries/rel-r2/ |
+| REL-R3 | P05 交付轮（rel-r3）：按 U393 顺序推送 4 个 ref——产品分支 8e4c014、归档分支 4607e96、标签对象 ef925cde（peel 3de6d8b）与 b42c4c16（peel c88bf30）；R1–R8 SAME（R9 空工作区由 end 门禁复测）；fork 内 Draft PR #17（OPEN、Draft、base master、commits=2、changedFiles=11）；远端克隆 HEAD 8e4c014、S4 589e15eb，make test rc=0、单元 265、无失败；补扫 token/密钥 0、无 ≥50 MB blob；门禁结果见报告附录 C | P05_RELR3_REPORT.md；registries/rel-r3/ |
 
 ## 3 开放问题（状态 · 去向 · 详情链接）
 
@@ -50,9 +51,12 @@
 - 裁决总表 registries/RULINGS.tsv（S5R7 追加 U391）；S5 勘误 registries/s5r2/ERRATA_S5.txt（末条 ES5-17，本轮未改）；R4 终版 ERRATA 快照 registries/s5r5/r4_final/ERRATA_S5_R4FINAL.txt。
 
 - **P05 交付轮 REL-R2（rel-r2）**：证据 checkpoints/p05/evidence/p05-rel-r2/（SHA256SUMS.txt；含产品分支独立克隆 prod/ 与验证克隆 verifyclone/，均不入 git）；小表 checkpoints/p05/registries/rel-r2/；报告 P05_RELR2_REPORT.md（门禁结果见附录 C）；产品分支引用 p05/d003-fft-error-propagation；标签 p05-signed-20261019、p05-rel-r1-20261019。
+- **P05 交付轮 REL-R3（rel-r3）**：证据 checkpoints/p05/evidence/p05-rel-r3/（SHA256SUMS.txt；remoteclone/ 不入 git）；小表 checkpoints/p05/registries/rel-r3/；报告 P05_RELR3_REPORT.md；4 个远端 ref 已推送，Draft PR #17。
 （本文件由 s5r7_state.py 在正式链中生成）
 
 
 （REL-R1 行由 relr1_state.py 于 2026-10-19T04:09:58Z 追加；S1–S5 内容未改）
 
 （REL-R2 行由 relr2_state.py 于 2026-10-19T05:06:14Z 追加；S1–S5 与 REL-R1 的历史数字未改，只补 REL-R1 行计数）
+
+（REL-R3 行由 relr3_state.py 于 2026-10-19T05:24:44Z 追加；S1–S5、REL-R1、REL-R2 的历史数字未改）

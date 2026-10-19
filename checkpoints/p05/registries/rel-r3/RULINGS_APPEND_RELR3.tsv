@@ -1,0 +1,14 @@
+# RULINGS_APPEND_RELR3.tsv -- P05 delivery round REL-R3 RULINGS.tsv append (U393-U398, user rulings)
+# baseline = blob at HEAD 4607e969ba138f8bcaffa4fba6340dd3b2e1f25b (last clause U392)
+# before_bytes=158104 before_sha256=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7
+# after_bytes=160477 after_sha256=38a0981e9741e58dd3d3316c11034d8232197cac39396e7f4e172f8e24dcdfcf
+# prefix_bytes=158104 prefix_sha256=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7 prefix_unchanged=yes
+# rows_appended=6 payload_bytes=2373 payload_sha256=9243231ba595ab8f0b47cd0767030fc9aaa5736c9182cb957aeaaad0b28756f6
+row_index	id	fields	status	row_sha256	source
+row_index	id	fields	status	row_sha256
+1	U393	5	生效	df57ad20a7f3bb52e8e11e2c74e5e15fb50e2d2970bbb3153452d7519467fa28
+2	U394	5	生效	f395ca363c2edf37234e64f52c37f2888d42557199e842411a5f16c2eb35e019
+3	U395	5	生效	544256f30b54e4fa6bf327178809ba176f83304f86b0ab1678057cbd59351af1
+4	U396	5	生效	35060e28cc4701344b9f8bd04d93807c803e8472c4ac0d103ce394586f1da406
+5	U397	5	生效	c0bdeff883efe581e0019b4b691102779d21591822592178fac89ee8bc03ce7d
+6	U398	5	生效	c061f8076e95e700b7f1eb825435b47cf2497a2f23b62e39f35162afa652badf

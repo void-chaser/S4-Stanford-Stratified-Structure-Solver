@@ -1,0 +1,13 @@
+# REMOTE_BEFORE_RELR3.tsv -- all remote refs (name, sha) captured read-only before any push
+# Used by R5: master and the six pre-existing heads must keep these shas after the four pushes.
+# written 2026-10-19T05:22:03Z
+ref	sha
+HEAD	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003	963ccf153855734de968e6cf71477f324e33329c
+refs/heads/codex/master-integration-gate-20261010	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/codex/p04-acceptance-review-20261009	263d839300eb07821294b71f125bfd039039250b
+refs/heads/feature/python314-binding	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/fix/modern-linux-build	93b1c909fbcf0c59c2d0e4e603276f7a66cef2e9
+refs/heads/master	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/pull/16/head	263d839300eb07821294b71f125bfd039039250b
+refs/pull/16/merge	324b2f899f05567ffeb2b350da9bdda416ed05fd

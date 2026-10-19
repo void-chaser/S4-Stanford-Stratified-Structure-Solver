@@ -1,0 +1,9 @@
+# PUSH_PLAN_RELR3.tsv -- the four refs to push, in U393 order (task brief section 3)
+# commits_above_b = git rev-list --count 5b72793..<ref>; tag rows: local_sha is the annotated tag
+# object sha and peel_commit is its peeled commit.  No ref outside these four is pushed.
+seq	order_spec	kind	ref	local_sha	peel_commit	commits_above_b	push_src	push_dst	remote_absent_before
+1	(a)	branch	refs/heads/p05/d003-fft-error-propagation	8e4c01491b6edec9eb4eaa617265ce9ca53bd548		2	refs/heads/p05/d003-fft-error-propagation	refs/heads/p05/d003-fft-error-propagation	absent
+2	(b)	branch	refs/heads/archive/p05-d003-full-20261019	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b		182	refs/heads/archive/p05-d003-full-20261019	refs/heads/archive/p05-d003-full-20261019	absent
+3	(c)	tag	refs/tags/p05-signed-20261019	ef925cdea019a7cdf00acb66bc5b59d55f00d868	3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505	178	refs/tags/p05-signed-20261019		absent
+4	(d)	tag	refs/tags/p05-rel-r1-20261019	b42c4c16298ce644f39c3c33ae6c26ef18820a96	c88bf30954a356e1cbdd49cf7a53218778c0ae3e	180	refs/tags/p05-rel-r1-20261019		absent
+# written 2026-10-19T05:22:03Z

@@ -1,0 +1,23 @@
+# PR_RELR3.tsv -- P05 delivery round REL-R3 Draft PR creation and read-only verification (U395)
+# gh pr create used exactly: --repo void-chaser/S4-Stanford-Stratified-Structure-Solver --base master --head p05/d003-fft-error-propagation --draft
+# --body-file $EV/PR_BODY_RELR3.md.  No merge / no ready-for-review / no reviewer / no upstream PR.
+# written 2026-10-19T05:22:53Z
+key	value
+BODY_LINES	83
+BODY_SHA256	b308cde8cc6873ef5dfa6e7c61089a3839835a952c1bf1c563355d9529b40db3
+CREATE_OUTPUT	Warning: 1 uncommitted change || https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17
+CREATE_RC	0
+CREATE_UTC	2026-10-19T05:22:53Z
+PR_BASE	master
+PR_CHANGED_FILES	11
+PR_COMMITS	2
+PR_HEAD	p05/d003-fft-error-propagation
+PR_ISDRAFT	true
+PR_MERGED_AT	None
+PR_NUMBER	17
+PR_STATE	OPEN
+PR_URL	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17
+PR_VIEW_URL	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17
+TITLE	P05 D003: propagate FMM/FFT and pattern allocation failures to the public API
+VIEW_RAW	{"baseRefName":"master","changedFiles":11,"commits":[{"authoredDate":"2026-10-19T05:01:58Z","authors":[{"email":"155395920+void-chaser@users.noreply.github.com","id":"U_kgDOCUMnUA","login":"void-chaser","name":"Ziyang Li"}],"committedDate":"2026-10-19T05:01:58Z","messageBody":"…blic API\n\nSource-only port of the P05 D003 fix. The S4 tree after this commit is the frozen F4 tree\n589e15eb11fcb04e031b524f25a443e7921946cf (P05 commit 3de6d8b), applied on top of the upstream\nbaseline B (5b72793, S4 tree 1d738e64f9864a475fdb3de34cd3601605df2c64). The ten changed files\nare exactly git diff 5b72793 3de6d8b -- S4 (+311/-80): S4.cpp, S4_internal.h,\nS4/fmm/fmm_FFT.cpp, S4/fmm/fmm_PolBasisJones.cpp, S4/fmm/fmm_PolBasisNV.cpp,\nS4/fmm/fmm_PolBasisVL.cpp, S4/fmm/fmm_closed.cpp, S4/fmm/fmm_experimental.cpp,\nS4/fmm/fmm_kottke.cpp and S4/pattern/pattern.c.\n\nP05 delivery round REL-R1 (non-regression of F4 against B) reported SAME=317, BOTH_FAIL=12\n(pre-existing failures), SKIP_DECLARED=5, NEW_FAIL=0, DIFF=0, FLAKY=0, unit_count=265,\nNON_REGRESSION=PASS. This commit adds no new claim.\n\nawaiting user review","messageHeadline":"P05 D003: propagate FMM/FFT and pattern allocation failures to the pu…","oid":"e6f5f52aa8e310cd04e4acf0f499518d22da373c"},{"authoredDate":"2026-10-19T05:01:58Z","authors":[{"email":"155395920+void-chaser@users.noreply.github.com","id":"U_kgDOCUMnUA","login":"void-chaser","name":"Ziyang Li"}],"committedDate":"2026-10-19T05:01:58Z","messageBody":"doc/P05_D003_SUMMARY.md states the problem, lists the per-file changes, quotes the REL-R1 and\nS5 R3 verification summaries with the fault-injection dependency, lists the known limitations and\nthe transferred items, and says where the full P05 audit records live. It is written from the\ncommit diff and the P05 reports only. This commit does not touch S4/, so the build inputs are\nidentical to the source commit.\n\nawaiting user review","messageHeadline":"P05 D003: add the product-branch summary document","oid":"8e4c01491b6edec9eb4eaa617265ce9ca53bd548"}],"headRefName":"p05/d003-fft-error-propagation","isDraft":true,"mergedAt":null,"number":17,"state":"OPEN","url":"https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17"}
+VIEW_RC	0

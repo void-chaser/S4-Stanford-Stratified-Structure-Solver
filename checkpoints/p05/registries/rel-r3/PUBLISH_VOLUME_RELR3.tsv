@@ -1,0 +1,11 @@
+# PUBLISH_VOLUME_RELR3.tsv -- pre-push volume recomputation (task brief section 3)
+# object sizes from: git rev-list --objects <range> | git cat-file --batch-check
+# A_archive_branch = 5b72793..4607e96 (the range pushed as archive/p05-d003-full-20261019);
+# P_product_branch = 5b72793..8e4c014 (recorded for context; unchanged from REL-R2).
+# GitHub warning line 50 MB, rejection line 100 MB (binary MB = 1048576 bytes).  Any blob >= 50 MB is
+# a HARD_STOP (no push).
+candidate	range	tip	new_blob_count	total_bytes	total_mib	largest_blob_bytes	largest_blob_path	blobs_ge_50mb	blobs_ge_100mb
+A_archive_branch	5b72793051eb705f0e9b2e5398e1a5f0484da0cb..4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	3101	48701808	46.45	1670487	checkpoints/p05/registries/s4r9/M1R3/BARE_WRITE_AUDIT_R9M1R3.tsv	0	0
+P_product_branch	5b72793051eb705f0e9b2e5398e1a5f0484da0cb..8e4c01491b6edec9eb4eaa617265ce9ca53bd548	8e4c01491b6edec9eb4eaa617265ce9ca53bd548	11	315165	0.30	151229	S4/S4.cpp	0	0
+# >=50 MB blobs: A=0 P=0 (any non-zero A count is a HARD_STOP)
+# written 2026-10-19T05:22:03Z

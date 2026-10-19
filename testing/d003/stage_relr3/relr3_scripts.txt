@@ -1,0 +1,17 @@
+# relr3_scripts.txt -- manifest of the REL-R3 scripts in testing/d003/stage_relr3/
+# The gate reads script names from THIS list (never from a hard-coded name) and checks it matches the directory.
+relr3_appendix_c.py
+relr3_audit.py
+relr3_backup_verify.py
+relr3_check.py
+relr3_pr.py
+relr3_prereg.py
+relr3_push.py
+relr3_registry.py
+relr3_rulings.py
+relr3_scripts.txt
+relr3_sha_sums.py
+relr3_state.py
+relr3_tmpsnap.py
+relr3_v.py
+relr3_verify.py

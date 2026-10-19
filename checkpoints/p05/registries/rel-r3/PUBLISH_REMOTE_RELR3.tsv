@@ -1,0 +1,25 @@
+# PUBLISH_REMOTE_RELR3.tsv -- read-only remote baseline before any push (task brief section 2)
+# Compared with REL-R2 checkpoints/p05/registries/rel-r2/PUBLISH_REMOTE_RELR2.tsv by column name.
+check	expected	actual	result
+ls_remote_rc	0	0	SAME
+origin_is_void_chaser_fork	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver.git	https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver.git	SAME
+remote_p05_branches	absent	absent	SAME
+remote_archive_branches	absent	absent	SAME
+remote_tag_p05_signed	absent	absent	SAME
+remote_tag_p05_rel_r1	absent	absent	SAME
+remote_ref_count	9	9	SAME
+remote_heads	refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003,refs/heads/codex/master-integration-gate-20261010,refs/heads/codex/p04-acceptance-review-20261009,refs/heads/feature/python314-binding,refs/heads/fix/modern-linux-build,refs/heads/master	refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003,refs/heads/codex/master-integration-gate-20261010,refs/heads/codex/p04-acceptance-review-20261009,refs/heads/feature/python314-binding,refs/heads/fix/modern-linux-build,refs/heads/master	SAME
+remote_master_sha	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	5b72793051eb705f0e9b2e5398e1a5f0484da0cb	SAME
+
+# all remote refs observed before any push
+ref	sha
+HEAD	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/checkpoint/014rf-offline-evidence-accepted-20261003	963ccf153855734de968e6cf71477f324e33329c
+refs/heads/codex/master-integration-gate-20261010	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/codex/p04-acceptance-review-20261009	263d839300eb07821294b71f125bfd039039250b
+refs/heads/feature/python314-binding	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/heads/fix/modern-linux-build	93b1c909fbcf0c59c2d0e4e603276f7a66cef2e9
+refs/heads/master	5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+refs/pull/16/head	263d839300eb07821294b71f125bfd039039250b
+refs/pull/16/merge	324b2f899f05567ffeb2b350da9bdda416ed05fd
+# written 2026-10-19T05:22:03Z

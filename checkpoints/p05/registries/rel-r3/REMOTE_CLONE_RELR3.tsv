@@ -1,0 +1,21 @@
+# REMOTE_CLONE_RELR3.tsv -- R6 remote clone and R7 make test (task brief section 4 and 5.5)
+# make test stderr was merged into stdout before parsing; expected unit set is the REL-R2 V3 set
+# (REL-R1 registry MAKETEST_UNITS_RELR1.tsv column F4_p1, 265 units).
+# Generated 2026-10-19T05:23:38Z
+test_id	item	expected	actual	result
+R6	fresh remote clone of the product branch	HEAD=8e4c01491b6edec9eb4eaa617265ce9ca53bd548; HEAD:S4=589e15eb11fcb04e031b524f25a443e7921946cf	HEAD=8e4c01491b6edec9eb4eaa617265ce9ca53bd548; HEAD:S4=589e15eb11fcb04e031b524f25a443e7921946cf	SAME
+R7	make test in the R6 clone	rc=0; units=265; failing=none; missing=none; extra=none	rc=0 units=265 failing=none missing=none extra=none recon=True	SAME
+
+# records
+key	value
+R6_CLONE_RC	0
+R6_HEAD	8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+R6_HEAD_S4	589e15eb11fcb04e031b524f25a443e7921946cf
+R7_EXPECTED_UNITS	265
+R7_EXTRA	none
+R7_FAILING	none
+R7_LOG	checkpoints/p05/evidence/p05-rel-r3/logs/maketest_remote.log
+R7_MISSING	none
+R7_RC	0
+R7_RECON_OK	True
+R7_UNIT_COUNT	265
