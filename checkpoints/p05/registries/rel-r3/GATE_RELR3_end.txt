@@ -1,0 +1,196 @@
+# REL-R3 end gate GATE_RELR3_end.txt (2026-10-19T05:25:53Z)
+# RECORD<TAB>KEY<TAB>value=V lines carry facts; PASS/FAIL lines carry the checks.
+# Every table is read by column name; directory-set sha uses Python sorted().
+RECORD	ROUND	value=P05 delivery round REL-R3 (rel-r3)
+RECORD	END_TIME_UTC	value=2026-10-19T05:25:52Z
+RECORD	RULINGS_OPENING_BYTES	value=158104
+RECORD	RULINGS_OPENING_SHA256	value=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7
+RECORD	RELR1_REGISTRY_ITEMS	value=18
+RECORD	RELR2_REGISTRY_ITEMS	value=15
+RECORD	RELR3_REGISTRY_ITEMS	value=17
+RECORD	ROUND_COMMITS	value=1
+RECORD	ROUND_CHANGED_FILES	value=36
+RECORD	RULINGS_BYTES	value=160477
+RECORD	RULINGS_SHA256	value=38a0981e9741e58dd3d3316c11034d8232197cac39396e7f4e172f8e24dcdfcf
+RECORD	REMOTE_REF_COUNT	value=15
+RECORD	REMOTE_PULL_REFS	value=refs/pull/16/head,refs/pull/16/merge,refs/pull/17/head,refs/pull/17/merge
+RECORD	PR_NUMBER	value=17
+RECORD	PR_URL	value=https://github.com/void-chaser/S4-Stanford-Stratified-Structure-Solver/pull/17
+RECORD	PR_LIVE_ERROR	value=none
+RECORD	REPORT_COUNTS_KEYS	value=37
+RECORD	STATE_BYTES	value=9201
+RECORD	STATE_SHA256	value=5dc22b0a0e937407aa9223bd7b3576df860ed2f9f78c8f934831542ff1ae9e7e
+RECORD	RELR3_REGISTRY_ITEMS	value=17
+RECORD	RELR3_REGISTRY_SUMS_SHA256	value=acfbc0784a2b9bc7a581c807e3a5c1b8aeb05ad0e43c1c459829a76a1e37a836
+RECORD	EVIDENCE_SUMS_ITEMS	value=21
+RECORD	TMP_SNAPSHOT_START	value=0/01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+RECORD	TMP_SNAPSHOT_END	value=0/01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+RECORD	SENSITIVE_NEW_TOKEN_SECRETS	value=0
+RECORD	SENSITIVE_NEW_TOKEN_PATTERN_QUOTES	value=1
+PASS	BRANCH_IS_EXPECTED	expected=codex/p05-d003-fft-error-propagation	actual=codex/p05-d003-fft-error-propagation
+PASS	HEAD_S4_TREE_EQ_F4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	JUDGE_SHA256_UNCHANGED	expected=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb	actual=d2d04145e056163895ee917f13f90b68ffac226d3c620913407b0c51756209eb
+PASS	BASE_COMMIT_PRESENT	expected=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	actual=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b
+PASS	S4_DIR_ZERO_MODIFICATION	expected=unmodified	actual=unmodified
+PASS	AGENTS_MD_UNCHANGED	expected=1	actual=1
+PASS	ROADMAP_UNCHANGED	expected=1	actual=1
+PASS	ISSUE_REGISTRY_UNCHANGED	expected=1	actual=1
+PASS	RELR1_REGISTRY_SUMS_ALL_OK	expected=OK	actual=OK
+PASS	RELR2_REGISTRY_SUMS_ALL_OK	expected=OK	actual=OK
+PASS	RELR3_REGISTRY_SUMS_ALL_OK	expected=OK	actual=OK
+PASS	ROUND_COMMITS_EXACTLY_1	expected=1	actual=1
+PASS	ROUND_CHANGED_WITHIN_WHITELIST	expected=ok	actual=ok
+PASS	ROUND_NO_DELETIONS	expected=none	actual=none
+PASS	STATUS_CLEAN_AFTER_COMMIT	expected=clean	actual=clean
+PASS	HEAD_DESCENDS_FROM_BASE	expected=yes	actual=yes
+PASS	RULINGS_PURE_APPEND	expected=ok	actual=ok
+PASS	RULINGS_PREFIX_SHA_UNCHANGED	expected=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7	actual=ca9ab5721d9cd490ed4365b04230f1e16fa93c3e2615528c2e9f1fbe2cd773c7
+PASS	RULINGS_EXACTLY_SIX_NEW_ROWS	expected=6	actual=6
+PASS	RULINGS_NEW_ROWS_U393_U398	expected=U393,U394,U395,U396,U397,U398	actual=U393,U394,U395,U396,U397,U398
+PASS	RULINGS_NEW_ROWS_5_FIELDS	expected=ok	actual=ok
+PASS	RULINGS_NEW_ROWS_STATUS_ACTIVE	expected=ok	actual=ok
+PASS	RULINGS_HAS_PUSH	expected=1	actual=1
+PASS	RULINGS_HAS_FORCE_BAN	expected=1	actual=1
+PASS	RULINGS_HAS_ARCHIVE	expected=1	actual=1
+PASS	RULINGS_HAS_PR	expected=1	actual=1
+PASS	RULINGS_HAS_ROADMAP	expected=1	actual=1
+PASS	RULINGS_HAS_TOKEN0	expected=1	actual=1
+PASS	RULINGS_HAS_BACKUP	expected=1	actual=1
+PASS	RULINGS_NO_P05_S6	expected=0	actual=0
+PASS	TAG1_ANNOTATED	expected=tag	actual=tag
+PASS	TAG2_ANNOTATED	expected=tag	actual=tag
+PASS	TAG1_OBJECT_SHA	expected=ef925cdea019a7cdf00acb66bc5b59d55f00d868	actual=ef925cdea019a7cdf00acb66bc5b59d55f00d868
+PASS	TAG2_OBJECT_SHA	expected=b42c4c16298ce644f39c3c33ae6c26ef18820a96	actual=b42c4c16298ce644f39c3c33ae6c26ef18820a96
+PASS	TAG1_PEELS_TO_F4	expected=3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505	actual=3de6d8bc7a35f036bf5ff6e508f5cdb5ef025505
+PASS	TAG2_PEELS_TO_RELR1_II	expected=c88bf30954a356e1cbdd49cf7a53218778c0ae3e	actual=c88bf30954a356e1cbdd49cf7a53218778c0ae3e
+PASS	PRODUCT_BRANCH_LOCAL_SHA	expected=8e4c01491b6edec9eb4eaa617265ce9ca53bd548	actual=8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PASS	ARCHIVE_BRANCH_LOCAL_SHA	expected=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	actual=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b
+PASS	ARCHIVE_BRANCH_S4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	ARCHIVE_REFS_LOCAL_EXACTLY_ONE	expected=refs/heads/archive/p05-d003-full-20261019	actual=refs/heads/archive/p05-d003-full-20261019
+PASS	REMOTE_LS_RC_ZERO	expected=0	actual=0
+PASS	REMOTE_PRODUCT_BRANCH_SHA	expected=8e4c01491b6edec9eb4eaa617265ce9ca53bd548	actual=8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PASS	REMOTE_ARCHIVE_BRANCH_SHA	expected=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b	actual=4607e969ba138f8bcaffa4fba6340dd3b2e1f25b
+PASS	REMOTE_TAG1_OBJECT_SHA	expected=ef925cdea019a7cdf00acb66bc5b59d55f00d868	actual=ef925cdea019a7cdf00acb66bc5b59d55f00d868
+PASS	REMOTE_TAG2_OBJECT_SHA	expected=b42c4c16298ce644f39c3c33ae6c26ef18820a96	actual=b42c4c16298ce644f39c3c33ae6c26ef18820a96
+PASS	REMOTE_MASTER_UNCHANGED	expected=5b72793051eb705f0e9b2e5398e1a5f0484da0cb	actual=5b72793051eb705f0e9b2e5398e1a5f0484da0cb
+PASS	REMOTE_OLD_HEADS_COUNT_6	expected=6	actual=6
+PASS	REMOTE_OLD_HEADS_UNCHANGED	expected=none	actual=none
+PASS	REMOTE_ONLY_FOUR_NEW_REFS	expected=refs/heads/archive/p05-d003-full-20261019,refs/heads/p05/d003-fft-error-propagation,refs/tags/p05-rel-r1-20261019,refs/tags/p05-signed-20261019	actual=refs/heads/archive/p05-d003-full-20261019,refs/heads/p05/d003-fft-error-propagation,refs/tags/p05-rel-r1-20261019,refs/tags/p05-signed-20261019
+PASS	REMOTE_NO_OTHER_P05_OR_ARCHIVE	expected=none	actual=none
+PASS	REMOTES_ONLY_ORIGIN	expected=origin	actual=origin
+PASS	PR_URL_IS_FORK_PR	expected=1	actual=1
+PASS	PR_LIVE_STATE_OPEN	expected=OPEN	actual=OPEN
+PASS	PR_LIVE_IS_DRAFT	expected=true	actual=true
+PASS	PR_LIVE_BASE_MASTER	expected=master	actual=master
+PASS	PR_LIVE_HEAD_PRODUCT	expected=p05/d003-fft-error-propagation	actual=p05/d003-fft-error-propagation
+PASS	PR_LIVE_COMMITS_2	expected=2	actual=2
+PASS	PR_LIVE_CHANGED_FILES_11	expected=11	actual=11
+PASS	PR_LIVE_NOT_MERGED	expected=not_merged	actual=not_merged
+PASS	PR_TABLE_STATE_OPEN	expected=OPEN	actual=OPEN
+PASS	PR_TABLE_ISDRAFT	expected=true	actual=true
+PASS	PR_TABLE_COMMITS	expected=2	actual=2
+PASS	PR_TABLE_CHANGED_FILES	expected=11	actual=11
+PASS	R6_CLONE_RC_ZERO	expected=0	actual=0
+PASS	R6_CLONE_HEAD	expected=8e4c01491b6edec9eb4eaa617265ce9ca53bd548	actual=8e4c01491b6edec9eb4eaa617265ce9ca53bd548
+PASS	R6_CLONE_HEAD_S4	expected=589e15eb11fcb04e031b524f25a443e7921946cf	actual=589e15eb11fcb04e031b524f25a443e7921946cf
+PASS	R7_MAKE_TEST_RC_ZERO	expected=0	actual=0
+PASS	R7_UNIT_COUNT_265	expected=265	actual=265
+PASS	R7_UNIT_SET_EQ_RELR2_V3	expected=ok	actual=ok
+PASS	R7_NO_FAILURES	expected=none	actual=none
+PASS	R7_NO_MISSING	expected=none	actual=none
+PASS	R7_NO_EXTRA	expected=none	actual=none
+PASS	CLONE_DIR_PRESENT	expected=present	actual=present
+PASS	V_TABLE_ROWS_9	expected=9	actual=9
+PASS	V_TABLE_IDS	expected=R1,R2,R3,R4,R5,R6,R7,R8,R9	actual=R1,R2,R3,R4,R5,R6,R7,R8,R9
+PASS	V_EXPECTED_MATCH_PREREG	expected=ok	actual=ok
+PASS	V_ALL_SAME	expected=R1=SAME,R2=SAME,R3=SAME,R4=SAME,R5=SAME,R6=SAME,R7=SAME,R8=SAME,R9=SAME	actual=R1=SAME,R2=SAME,R3=SAME,R4=SAME,R5=SAME,R6=SAME,R7=SAME,R8=SAME,R9=SAME
+PASS	V_NO_MISMATCH	expected=0	actual=0
+PASS	REPORT_COUNTS_MATCH_SOURCE_TABLES	expected=ok	actual=ok
+PASS	REPORT_HAS_APPENDIX_C_PLACEHOLDER	expected=1	actual=1
+PASS	REPORT_SECTION_1	expected=1	actual=1
+PASS	REPORT_SECTION_2	expected=1	actual=1
+PASS	REPORT_SECTION_3	expected=1	actual=1
+PASS	REPORT_SECTION_4	expected=1	actual=1
+PASS	REPORT_SECTION_5_Draft_PR	expected=1	actual=1
+PASS	REPORT_SECTION_6_R6_R7	expected=1	actual=1
+PASS	REPORT_SECTION_7	expected=1	actual=1
+PASS	REPORT_SECTION_8	expected=1	actual=1
+PASS	REPORT_SECTION_9	expected=1	actual=1
+PASS	REPORT_SECTION_10	expected=1	actual=1
+PASS	REPORT_SECTION_A	expected=1	actual=1
+PASS	REPORT_SECTION_B	expected=1	actual=1
+PASS	REPORT_PHRASE_https_github_com_void_chaser_S4_Stan	expected=1	actual=1
+PASS	REPORT_PHRASE_8e4c01491b6edec9eb4eaa617265ce9ca53b	expected=1	actual=1
+PASS	REPORT_PHRASE_4607e969ba138f8bcaffa4fba6340dd3b2e1	expected=1	actual=1
+PASS	REPORT_PHRASE_ef925cdea019a7cdf00acb66bc5b59d55f00	expected=1	actual=1
+PASS	REPORT_PHRASE_b42c4c16298ce644f39c3c33ae6c26ef1882	expected=1	actual=1
+PASS	REPORT_PHRASE_pending_the_REL_R3_push	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE_archive_p05_d003_full_20261019	expected=1	actual=1
+PASS	REPORT_PHRASE_p05_signed_20261019	expected=1	actual=1
+PASS	REPORT_PHRASE_p05_rel_r1_20261019	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE_gh	expected=1	actual=1
+PASS	REPORT_PHRASE_push	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE_ready	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE_git_log_1	expected=1	actual=1
+PASS	REPORT_PHRASE_git_status_short	expected=1	actual=1
+PASS	REPORT_PHRASE__	expected=1	actual=1
+PASS	REPORT_PHRASE_SAME	expected=1	actual=1
+PASS	REPORT_NO_P05_S6	expected=0	actual=0
+PASS	REPORT_NO_FIXED_CLAIM	expected=0	actual=0
+PASS	REPORT_APPENDIX_C_PLACEHOLDER_TEXT	expected=1	actual=1
+PASS	APPENDIX_C_WRITES_CLOSING_SENTENCE	expected=1	actual=1
+PASS	STATE_CURRENT_ROUND_RELR3	expected=1	actual=1
+PASS	STATE_HAS_RELR3_ROW	expected=1	actual=1
+PASS	STATE_HAS_RELR2_ROW	expected=1	actual=1
+PASS	STATE_S1_S5_SIGNED_TEXT_KEPT	expected=1	actual=1
+PASS	STATE_UNDER_12KB	expected=1	actual=1
+PASS	STATE_NO_GATE_RESULT_PHRASES	expected=0	actual=0
+PASS	STATE_NO_P05_S6	expected=0	actual=0
+PASS	RELR3_REGISTRY_SUMS_ALL_OK	expected=OK	actual=OK
+PASS	RELR3_REGISTRY_COVERS_PREGATE	expected=ok	actual=ok
+PASS	RELR3_REGISTRY_EXTRAS_ONLY_GATE_END	expected=ok	actual=ok
+PASS	RELR3_REGISTRY_COPIES_MATCH_EVIDENCE	expected=ok	actual=ok
+PASS	EVIDENCE_SUMS_ALL_OK	expected=OK	actual=OK
+PASS	EVIDENCE_SUMS_COVERS_ALL_NONBINARY	expected=ok	actual=ok
+PASS	TMP_END_SNAPSHOT_PRESENT	expected=present	actual=present
+PASS	TMP_SNAPSHOT_UNCHANGED	expected=same	actual=same
+PASS	TMP_START_COUNT_ZERO	expected=0	actual=0
+PASS	SCRIPT_MANIFEST_MATCHES_STAGE_DIR	expected=ok	actual=ok
+PASS	PUSH_LOG_HAS_ONE_BRANCH_CREATE	expected=1	actual=1
+PASS	PUSH_LOG_FOUR_PUSHES	expected=4	actual=4
+PASS	PUSH_LOG_FOUR_LS_REMOTE	expected=4	actual=4
+PASS	PUSH_LOG_ALL_PUSH_RC_ZERO	expected=4	actual=4
+PASS	PUSH_LOG_ALL_LS_REMOTE_MATCH	expected=4	actual=4
+PASS	PUSH_ORDER_A_B_C_D	expected=(a),(b),(c),(d)	actual=(a),(b),(c),(d)
+PASS	PUSH_COMMANDS_EXACT	expected=git push origin refs/heads/p05/d003-fft-error-propagation:refs/heads/p05/d003-fft-error-propagation | git push origin refs/heads/archive/p05-d003-full-20261019:refs/heads/archive/p05-d003-full-20261019 | git push origin refs/tags/p05-signed-20261019 | git push origin refs/tags/p05-rel-r1-20261019	actual=git push origin refs/heads/p05/d003-fft-error-propagation:refs/heads/p05/d003-fft-error-propagation | git push origin refs/heads/archive/p05-d003-full-20261019:refs/heads/archive/p05-d003-full-20261019 | git push origin refs/tags/p05-signed-20261019 | git push origin refs/tags/p05-rel-r1-20261019
+PASS	PUSH_NO_FORCE_FLAG	expected=none	actual=none
+PASS	SENSITIVE_NEW_TOKENS_ZERO	expected=0	actual=0
+PASS	SENSITIVE_PATTERN_QUOTES_CLASSIFIED	expected=ok	actual=ok
+PASS	SENSITIVE_NO_CREDENTIAL_ROWS	expected=none	actual=none
+PASS	VOLUME_A_NO_50MB	expected=0	actual=0
+PASS	VOLUME_A_NO_100MB	expected=0	actual=0
+PASS	VOLUME_A_LARGEST_UNDER_50MB	expected=1	actual=1
+PASS	BACKUP_PLAN_PRESENT	expected=present	actual=present
+PASS	BACKUP_PLAN_HAS_RSYNC_AND_TAR	expected=1	actual=1
+PASS	BACKUP_PLAN_SAYS_NOT_EXECUTED	expected=1	actual=1
+PASS	PR_BODY_LINE_COUNT_LE_120	expected=1	actual=1
+PASS	PR_BODY_ENGLISH_NO_CJK	expected=1	actual=1
+PASS	PR_BODY_PHRASE_fault_injection_harness	expected=1	actual=1
+PASS	PR_BODY_PHRASE_D003_specific	expected=1	actual=1
+PASS	PR_BODY_PHRASE_archive_p05_d003_full_20261019	expected=1	actual=1
+PASS	PR_BODY_PHRASE_p05_signed_20261019	expected=1	actual=1
+PASS	PR_BODY_PHRASE_p05_rel_r1_20261019	expected=1	actual=1
+PASS	PR_BODY_PHRASE_pending_the_REL_R3_push	expected=1	actual=1
+PASS	PR_BODY_NO_FIXED_CLAIM	expected=0	actual=0
+PASS	GATE_START_PRESENT	expected=present	actual=present
+PASS	GATE_START_FAILS_ZERO	expected=fails=0	actual=fails=0
+COUNTS	pass=164	fail=0	total=164
+FAILS=0
+CHECK_CRASHED=0

@@ -209,3 +209,33 @@ $ git status --short
 
 # 本附录由 relr3_appendix_c.py 在提交 (i) 之后、按任务书第 7 节正式运行一次 `relr3_check.py --phase end` 的结果追加；
 # 正式门禁若 FAILS>0 不修、不重跑，照实写 INCOMPLETE。
+
+
+| 项 | 值 |
+|---|---|
+| 门禁命令 | relr3_check.py --phase end（正式运行一次） |
+| 门禁文件 | checkpoints/p05/evidence/p05-rel-r3/GATE_RELR3_end.txt |
+| 门禁文件 sha256 | 78ee2ce4f4b7d5b96141ed8fb990f104f3240da03fd680330f21b7aa2109033d |
+| 正式门禁计数 | pass=164 fail=0 total=164 |
+| FAILS | 0 |
+| FINAL_STATUS | COMPLETE |
+| 正式门禁预跑 | GATE_RELR3_pre.txt（同一条只读代码路径，仅 --out 不同） |
+
+### C.1 交付状态
+
+~~~
+$ git log -1
+commit 50f4b9fa8abcc659ae4102e68ca8f55d020a11c2
+Author: Ziyang Li <155395920+void-chaser@users.noreply.github.com>
+Date:   Mon Oct 19 16:25:40 2026 +1100
+
+    P05 delivery round REL-R3 (i): pushed the four U393 refs to the void-chaser fork (product branch 8e4c014, archive branch 4607e96, annotated tag objects ef925cde and b42c4c16, each verified by an immediate read-only ls-remote), opened Draft PR #17 (OPEN, isDraft=true, base master, head product branch, commits=2, changedFiles=11), remote clone HEAD 8e4c014 with HEAD:S4 589e15eb and make test rc=0 with 265 units and no failures, pre-push supplementary audit 0 real token/key hits and no blob >= 50 MB, RULINGS U393-U398 appended, STATE sync, backup plan and read-only backup verifier, gate scripts and pre-gate registries.\n\nawaiting user review
+
+$ git status --short
+M checkpoints/p05/registries/rel-r3/SHA256SUMS.txt
+?? checkpoints/p05/registries/rel-r3/GATE_RELR3_end.txt
+~~~
+
+### C.2 结论
+
+本轮已完成 REL-R3 范围，等待用户审核。
