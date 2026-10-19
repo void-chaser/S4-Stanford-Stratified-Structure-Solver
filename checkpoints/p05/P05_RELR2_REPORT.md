@@ -257,3 +257,39 @@ $ git status --short
 
 本附录由 relr2_appendix_c.py 在提交 (i) 之后、按任务书第 7 节正式运行一次 `relr2_check.py --phase end` 的结果追加；
 正式门禁若 FAILS>0 不修、不重跑，照实写 INCOMPLETE。
+
+
+| 项 | 值 |
+|---|---|
+| 门禁命令 | `relr2_check.py --phase end`（正式运行一次） |
+| 门禁文件 | checkpoints/p05/evidence/p05-rel-r2/GATE_RELR2_end.txt |
+| 门禁文件 sha256 | `80d475bf10033bd520c700b5374d67b7d2a042ab46ae1531edf169fcc2f33a7c` |
+| 正式门禁计数 | pass=98 fail=0 total=98 |
+| FAILS | 0 |
+| FINAL_STATUS | COMPLETE |
+| 正式门禁预跑 | GATE_RELR2_pre.txt（同一条只读代码路径，仅 --out 不同） |
+
+### C.1 交付状态
+
+```
+$ git log -1
+commit 06c9b13a68c5888e3fd4b363be7e5358b074fef3
+Author: Ziyang Li <155395920+void-chaser@users.noreply.github.com>
+Date:   Mon Oct 19 16:10:09 2026 +1100
+
+    P05 delivery round REL-R2 (i): product branch built in an independent clone (2 commits, HEAD 8e4c014, S4 tree 589e15eb), V1-V6 all as pre-registered, no-injection research found no public-API path (no D003 test shipped), pre-publish volume/sensitive/remote/backup audit, RULINGS U392, STATE sync, gate scripts and pre-gate registries.
+    
+    - Product branch p05/d003-fft-error-propagation: source commit e6f5f52 (exactly the ten-file S4 delta 5b72793..3de6d8b, HEAD:S4=589e15eb) plus doc commit 8e4c014 (doc/P05_D003_SUMMARY.md); main-repo tags p05-signed-20261019 (3de6d8b) and p05-rel-r1-20261019 (c88bf30) and the fetched branch ref are the only other .git writes (U392).
+    - V1-V6: SAME/SAME/SAME/SAME/RECORDED(SAME artifacts)/SAME; V3 unit set 265/265; V4 3/3 references pass.
+    - Pre-publish audit: A 3065 new blobs / 46.10 MiB / no blob >= 50 MB; P 11 blobs / 0.30 MiB; no tokens/keys; A has absolute-path, username and upstream-author-email hits (recorded only, not rewritten); origin is the void-chaser fork and no p05/archive/tags exist remotely; evidence 11.38 GiB inventoried, nothing backed up.
+    - Formal end gate is appended as appendix C in commit (ii).
+    
+    awaiting user review
+
+$ git status --short
+(empty)
+```
+
+### C.2 结论
+
+本轮已完成 REL-R2 范围，等待用户审核。
